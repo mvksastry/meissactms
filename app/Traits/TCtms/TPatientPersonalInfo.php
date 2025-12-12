@@ -100,6 +100,8 @@ trait TPatientPersonalInfo
         $newPatientInfo->before_problem_occupation = $input['before_problem_occupation'];
         $newPatientInfo->general_habits = $input['general_habits'];
 
+        $newPatientInfo->status = 'draft';
+
         $newPatientInfo->entered_by = $input['entered_by'];
         $newPatientInfo->entry_date = $input['entry_date'];
         $newPatientInfo->verified_by = $input['verified_by'];

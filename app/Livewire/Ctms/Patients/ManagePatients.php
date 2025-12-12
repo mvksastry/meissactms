@@ -7,6 +7,8 @@ use Livewire\Component;
 
 use Livewire\WithFileUploads;
 
+use App\Models\Ctms\Patient;
+
 class ManagePatients extends Component
 {
     use WithFileUploads;
