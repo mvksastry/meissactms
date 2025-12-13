@@ -26,6 +26,7 @@ use App\Http\Controllers\Ctms\HealthInformationController;
 
 // Livewire - Patient management
 use App\Livewire\Ctms\Patients\ManagePatients;
+use App\Livewire\Ctms\Patients\EditPatients;
 use App\Livewire\Ctms\Patients\PatientInformation;
 use App\Livewire\Ctms\Patients\ManageHealth;
 
@@ -66,6 +67,7 @@ Route::middleware('auth')->group(function () {
 
     // ------- Livewire: Components All Roles------- //
     Route::get('manage-patients', ManagePatients::class);
+    Route::get('edit-patients', EditPatients::class)->name('edit-patients');
     Route::get('patient-information', PatientInformation::class);
     Route::get('manage-health', ManageHealth::class);
 

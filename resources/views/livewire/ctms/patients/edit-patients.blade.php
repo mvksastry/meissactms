@@ -1,5 +1,6 @@
 <div>
-  {{-- In work, do what you enjoy. --}}
+    {{-- The Master doesn't talk, he acts. --}}
+ {{-- In work, do what you enjoy. --}}
   {{-- The whole world belongs to you. --}}
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -8,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Patients : {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h1>
+            <h1 class="m-0">Edit Patients : {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -28,7 +29,7 @@
           <div class="card-header">
             <h3 class="card-title">
               <i class="fas fa-tag"></i>
-              Patient Information
+              Edit Patient Information
             </h3>
           </div>
           <div class="card-body">
@@ -47,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody> 
-                    @foreach($activePatients as $row)
+                    @foreach($draftPatients as $row)
                         <tr>
                             <td>
                                 {{ $row->center_id }}
@@ -65,7 +66,7 @@
                                 {{ ucfirst($row->status) }}
                             </td>
                             <td>
-                                <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
+                                <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
                             </td>
                         </tr>
                     @endforeach
@@ -79,47 +80,47 @@
             @if($patientInfoButtons)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Primary Information</button>
+                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Primary Information</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnLifeStyleData('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Life Style</button>
+                  <button wire:click="fnLifeStyleData('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Life Style</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnClinicalInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Clinical</button>
+                  <button wire:click="fnClinicalInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Clinical</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Sensory Examination</button>  
+                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Sensory Examination</button>  
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp M & DTR Examination</button>    
+                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp M & DTR Examination</button>    
                 </div>
               </div>
               </br>
               <div class="row">
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnRadiographsInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                  <button wire:click="fnRadiographsInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Radiographs</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
+                  <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
+                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMODIQInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp MODIQ Score</button>  
+                  <button wire:click="fnMODIQInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp MODIQ Score</button>  
                 </div>
               
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnRMQInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
+                  <button wire:click="fnRMQInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
                 </div>
                 <!-- /.col -->
                 <!--
@@ -142,43 +143,44 @@
 
     <!-- Main content -->
     @if($openNewPatientEntryForm)
-        @include('livewire.ctms.patients.infos.primary-info')
+        @livewire('ctms.patients.edit.edit-primary-info', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openNewLifeStyleEntryForm)
-        @include('livewire.ctms.patients.infos.patient-life-style')
+        @livewire('ctms.patients.edit.edit-lifestyle-info', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
     
     @if($openNewClinicalInvestigationsEntryForm)
-        @include('livewire.ctms.patients.infos.patient-clinical-investigations')
+        @livewire('ctms.patients.edit.edit-clinical-info', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openNewSensoryExaminationsEntryForm)
-        @include('livewire.ctms.patients.infos.sensory-examination')
+        @livewire('ctms.patients.edit.edit-sensory-info', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openMDTREExaminationsEntryForm)
-        @include('livewire.ctms.patients.infos.patient-mdtre')
+        @livewire('ctms.patients.edit.edit-mdtre-info', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openRadiographsEntryForm)
-        @include('livewire.ctms.patients.infos.patient-radiography')
+        
+        @include('livewire.ctms.patients.edit.patient-radiography')
     @endif
 
     @if($openModifiedPfirmannGradesEntryForm)
-        @include('livewire.ctms.patients.infos.patient-modified-pfirmann-grades')
+        @livewire('ctms.patients.edit.edit-pfirmann-info', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openVisualAnalogScore)
-        @include('livewire.ctms.patients.infos.patient-visual-analog-score')
+        @livewire('ctms.patients.edit.edit-visual-analog-score', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openMODIQScoreEntryForm) 
-        @include('livewire.ctms.patients.infos.patient-modiq-score')
+        @livewire('ctms.patients.edit.edit-modiq-score', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
     
     @if($openRMQScoreEntryForm)
-        @include('livewire.ctms.patients.infos.patient-rmq-score')
+        @livewire('ctms.patients.edit.edit-rmq-score', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
 

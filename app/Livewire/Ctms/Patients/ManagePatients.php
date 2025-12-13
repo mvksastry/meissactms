@@ -13,9 +13,18 @@ class ManagePatients extends Component
 {
     use WithFileUploads;
 
+    //new paitent global uuid
+    public $patient_uuid;
+
     //panel definitions
     public $newPatientEntrySteps = false;
     public $newClinicalInvestigationsEntrySteps = false;
+
+
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
     //state of panel on or off
     public $stateOfNewPatientEntrySteps = "off";
@@ -37,9 +46,8 @@ class ManagePatients extends Component
     //variables
     public $aadhar_id, $pan_num, $other_id, $report_date, $dicharge_rep_file;
 
-    //Errors, Alers, Callouts
-    public $message_panel = false;
-    public $sysAlertSuccess, $sysAlertWarning, $sysAlertInfo, $sysAlertDanger;
+    //edit route if user wants
+    public $edit_button = false;
 
     //image upload related
     public $image_category = null;
@@ -48,12 +56,26 @@ class ManagePatients extends Component
 
     //modals and callouts.
 
+    //public variable for checking status incomplete status
+    public $patient_data_status;
 
     public function render()
-    {    
+    {    $this->patient_data_status = Patient::where('status','draft')->get();
+        if(count($this->patient_data_status) > 0)
+        {
+            $this->message_panel = true;
+            $sysAlertWarning = true;
+            $this->comWarning = "Draft' status Patients Found: Wish To Complete?";
+            //show button for edit test it
+            $this->edit_button = true;
+            
+        }
         return view('livewire.ctms.patients.manage-patients');
     }
-
+    public function fnRedirectToEdit()
+    {
+        $this->redirect(EditPatients::class);
+    }
     //--- UI related code only ---//
 
     //main panel opening only

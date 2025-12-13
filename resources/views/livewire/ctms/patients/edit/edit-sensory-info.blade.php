@@ -1,0 +1,317 @@
+<div>
+    {{-- Care about people's approval and you will be their prisoner. --}}
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-12 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Edit Sensory Examinations - Dermatome Grades Date Created: {{ $se_info->created_at }}
+                </h3>
+                <div class="card-tools">
+                  <ul class="nav nav-pills ml-auto">
+                    <!--
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                      </li>
+                    -->
+                  </ul>
+                </div>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <!-- Morris chart - Sales -->
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="card">
+                        <div class="card-header d-flex p-0">
+                          <h3 class="card-title p-3">Guide Image</h3>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                          <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                            <thead>
+                              <tr>
+                                <th class="text-center">Grading for Each Dermatome (from 0-2): 0=absent, 1=altered, 2=normal</th>
+                              </tr>
+                            </thead>
+                            <tbody> 
+                              <tr>
+                                <td class="text-center">
+                                  <img src="{{asset('assets/dist/img/SEimage.png')}}" alt="AdminLTE Logo" class="w-75 h-75 object-fit-cover" style="opacity: .8">
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>                       
+                        </div><!-- /.card-body -->
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <!-- Custom Tabs -->
+                      <div class="card">
+                        <div class="card-header d-flex p-0">
+                          <h3 class="card-title p-3">Information</h3>
+                          <ul class="nav nav-pills ml-auto p-2">
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Sensory</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
+                          </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                          <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" align="center">Clinical</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody> 
+                                  <tr>
+                                    <td>
+                                      <label>Opd ID*</label>
+                                      <input wire:model="form.opd_id" id="opd_id" value="{{ $se_info->opd_id }}" type="text" class="form-control" placeholder="Out Patient ID">
+                                    </td>
+                                    <td >
+                                      <label>Investigation Report Date*</label>
+                                      <input wire:model="form.report_date" id="report_date" value="{{ $se_info->report_date }}" type="date" class="form-control" placeholder="Report Date">
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <label>In Patient ID*</label>
+                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" value="{{ $se_info->in_patient_id }}" type="text" class="form-control" placeholder="In Patient ID">
+                                    </td>
+                                    <td>
+                                      <label>Admission Date*</label>
+                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="{{ $se_info->admission_date }}" class="form-control" placeholder="Admission Date">
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <label>Discharge Date*</label>
+                                      <input wire:model.defer="form.discharge_date" id="pan_num" type="date" value="{{ $se_info->discharge_date }}" class="form-control" placeholder="Discharge Date">
+                                    </td>
+                                    <td>
+                                      <label>Discharge Report*</label>
+                                      <input wire:model.defer="form.discharge_report" id="discharge_report" type="text" value="{{ $se_info->discharge_report }}" class="form-control" placeholder="" >
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Discharge Report File*</label>
+                                      <input wire:model.defer="form.discharge_report_file" id="discharge_report_file" type="text" value="{{ $se_info->discharge_report_file }}" class="form-control" placeholder="Discharge Report FIle" >
+                                    </td>
+                                  </tr>  
+                                </tbody>
+                              </table>
+                            </div>
+
+
+                            <div class="tab-pane" id="tab_2">
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th colspan="5" align="center">Sensory Observations</th>
+                                  </tr>
+                                </thead>
+                                <tbody> 
+                                  <tr>
+                                    <td>
+                                      <label>S1*</label>
+                                      <input wire:model.defer="form.s1" id="s1" type="text" value="{{ $se_info->S1 }}" class="form-control" placeholder="S1">
+                                    </td>
+                                    <!--
+                                    <td>
+                                      <label>S2*</label>
+                                      <input wire:model.defer="form.s2" id="s2" type="text" value="null" class="form-control" placeholder="S2">
+                                    </td>
+                                    <td>
+                                      <label>S3*</label>
+                                      <input wire:model.defer="form.s3" id="s3" type="text" value="null" class="form-control" placeholder="S3" >
+                                    </td>
+                                    <td>
+                                      <label>S4*</label>
+                                      <input wire:model.defer="form.s4" id="s4" type="text" value="null" class="form-control" placeholder="S4" >
+                                    </td>
+                                    <td>
+                                      <label>S5*</label>
+                                      <input wire:model.defer="form.s5" id="s5" type="text" value="null" class="form-control" placeholder="S5" >
+                                    </td>
+                                    -->
+                                  </tr>
+                                  <!--
+                                  <tr>
+                                    <td>
+                                      <label>S6*</label>
+                                      <input wire:model.defer="form.s6" id="s6" type="text" value="null" class="form-control" placeholder="S6" >
+                                    </td>
+                                    
+                                    <td>
+                                      <label>S7*</label>
+                                      <input wire:model.defer="form.s7" id="s7" type="text" value="null" class="form-control" placeholder="S7" >
+                                    </td>
+                                    <td>
+                                      <label>S8*</label>
+                                      <input wire:model.defer="form.s8" id="s8" type="text" value="null" class="form-control" placeholder="S8" >
+                                    </td>
+                                    <td>
+                                      <label>S9*</label>
+                                      <input wire:model.defer="form.s9" id="s9" type="text" value="null" class="form-control" placeholder="S9" >
+                                    </td>
+                                    <td>
+                                      <label>S10*</label>
+                                      <input wire:model.defer="form.s10" id="s10" type="text" value="null" class="form-control" placeholder="S10" >
+                                    </td>
+                                  </tr>
+                                  -->
+                                  <!--
+                                  <tr>
+                                    <td>
+                                      <label>T08*</label>
+                                      <input wire:model.defer="form.t08" id="t08" type="text" value="null" class="form-control" placeholder="T08" >
+                                    </td>
+                                    <td>
+                                      <label>T09*</label>
+                                      <input wire:model.defer="form.t09" id="t09" type="text" value="null" class="form-control" placeholder="T09" >
+                                    </td>
+                                    <td>
+                                      <label>T10*</label>
+                                      <input wire:model.defer="form.t10" id="t10" type="text" value="null" class="form-control" placeholder="T10" >
+                                    </td>
+                                    <td>
+                                      <label>T11*</label>
+                                      <input wire:model.defer="form.t11" id="t11" type="text" value="null" class="form-control" placeholder="T11" >
+                                    </td>
+                                    <td>
+                                      <label>T12*</label>
+                                      <input wire:model.defer="form.t12" id="t12" type="text" value="null" class="form-control" placeholder="T12" >
+                                    </td>
+                                  </tr>
+                                  -->
+                                  <tr>
+                                    <td>
+                                      <label>L1*</label>
+                                      <input wire:model.defer="form.l1" id="l1" type="text" value="{{ $se_info->L1 }}" class="form-control" placeholder="L1" >
+                                    </td>
+                                    <td>
+                                      <label>L2*</label>
+                                      <input wire:model.defer="form.l2" id="l2" type="text" value="{{ $se_info->L2 }}" class="form-control" placeholder="L2" >
+                                    </td>
+                                    <td>
+                                      <label>L3*</label>
+                                      <input wire:model.defer="form.l3" id="l3" type="text" value="{{ $se_info->L3 }}" class="form-control" placeholder="L3" >
+                                    </td>
+
+                                    <td>
+                                      <label>L4*</label>
+                                      <input wire:model.defer="form.l4" id="l4" type="text" value="{{ $se_info->L4 }}" class="form-control" placeholder="L4" >
+                                    </td>
+                                    <td>
+                                      <label>L5*</label>
+                                      <input wire:model.defer="form.l5" id="l5" type="text" value="{{ $se_info->L5 }}" class="form-control" placeholder="L5" >
+                                    </td>
+                                  </tr>                                    
+                                </tbody>
+                              </table>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_3">
+                                                                    <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="3" align="center"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>        
+                                    <tr>
+                                        <td colspan="1">
+                                        <label>Entered By*</label>
+                                        <input wire:model="form.entered_by" id="entered_by" value="{{ $se_info->entered_by }}" type="text" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                        <td colspan="1">
+                                        <label>Entry Date*</label>
+                                        <input wire:model="form.entry_date" id="entry_date" value="{{ $se_info->entry_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">
+                                        <label>Verified By*</label>
+                                        <input wire:model.defer="form.verified_by" id="consumption_gutka" value="{{ $se_info->verified_by }}" type="text" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                        <td colspan="1">
+                                        <label>Verified Date*</label>
+                                        <input wire:model.defer="form.verified_date" id="consumption_gutka" value="{{ $se_info->verified_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">
+                                        <label>Entry Sealed By*</label>
+                                        <input wire:model="form.entry_sealed_by" id="entry_sealed_by" value="{{ $se_info->sealed_by }}" type="text" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                        <td colspan="2">
+                                        <label>Sealed Date*</label>
+                                        <input wire:model="form.entry_sealed_date" id="entry_sealed_date" value="{{ $se_info->sealed_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                              
+                              <button wire:click="fnSaveSensoryExaminationData()" class="btn btn-warning font-normal mt-3 rounded">ADD SENSORY INFO</button>
+                            </div>
+                            <!-- /.tab-pane -->
+
+                            <!-- /.tab-content -->
+                          </div>
+                          
+                        </div><!-- /.card-body -->
+                      </div>
+                      <!-- ./card -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!--Divider-->
+                  <hr class="border-b-2 border-warning my-2 mx-2">
+                  <!--Divider-->
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+          </section>
+        </div> 
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

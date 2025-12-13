@@ -9,28 +9,28 @@
                       </div>
                       <!-- /.card-header -->
                       <div class="card-body">
-                         @if($sysAlertDanger != null)
+                         @if($sysAlertDanger)
                         <div class="alert alert-danger alert-dismissible">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                           <h5><i class="icon fas fa-ban"></i> Alert!</h5>
                           {{ $sysAlertDanger }}
                         </div>
                         @endif
-                        @if($sysAlertInfo != null)
+                        @if($sysAlertInfo)
                         <div class="alert alert-info alert-dismissible">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                           <h5><i class="icon fas fa-info"></i> Alert!</h5>
                           {{ $sysAlertInfo }}
                         </div>
                         @endif
-                        @if($sysAlertWarning != null)
+                        @if($sysAlertWarning)
                         <div class="alert alert-warning alert-dismissible">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                           <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
                           {{ $sysAlertWarning }}
                         </div>
                         @endif
-                        @if($sysAlertSuccess != null)
+                        @if($sysAlertSuccess)
                         <div class="alert alert-success alert-dismissible">
                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                           <h5><i class="icon fas fa-check"></i> Alert!</h5>
@@ -49,32 +49,32 @@
                       <div class="card-header">
                         <h3 class="card-title">
                           <i class="fas fa-bullhorn"></i>
-                          Callouts
+                          Callout
                         </h3>
                       </div>
                       <!-- /.card-header -->
                       <div class="card-body">
-                        @if($comDanger != null)
+                        @if($comDanger)
                         <div class="callout callout-danger">
                           <h5>Major Issue!</h5>
                           <p>{{ $comDanger}}</p>
                         </div>
                         @endif
-                        @if($comInfo != null)
+                        @if($comInfo)
                         <div class="callout callout-info">
                           <h5>For Information</h5>
 
                           <p>{{ $comInfo }}</p>
                         </div>
                         @endif
-                        @if($comInfo != null)
+                        @if($comWarning)
                         <div class="callout callout-warning">
                           <h5>Warning!</h5>
 
-                          <p>{{ $comInfo }}</p>
+                          <p>{{ $comWarning }}</p>
                         </div>
                         @endif
-                        @if($comSuccess != null)
+                        @if($comSuccess)
                         <div class="callout callout-success">
                           <h5>Success!</h5>
 

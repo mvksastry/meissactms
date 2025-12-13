@@ -31,11 +31,17 @@
             </h3>
           </div>
           <div class="card-body">
+            @if($message_panel)
+              @include('livewire.error-alerts-callouts')
+            @endif
             <!-- /.col-12 -->
             <!-- /.col-12 -->
-            <div class="row bg-indigo">
+            <div class="row">
               <div class="col-sm-4 col-md-2">
                 <button wire:click="fnNewPatientEntrySteps()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp New Patient</button>
+              </div>
+              <div class="col-sm-4 col-md-2">
+                <button wire:click="fnRedirectToEdit()" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Edit Patients</button>
               </div>
             </div>
             <!-- /.row -->
