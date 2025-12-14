@@ -48,13 +48,26 @@ class ClinicalData extends Model
         'procalcitonin',
         'laboratory_report_file',
 
+        'status',
+        'status_date',
+
+        'comment_entered_by',
         'entered_by',
         'entry_date',
+
+        'comment_verified_by',
         'verified_by',
         'verified_date',
+
+        'comment_cro',
+        'cro_approval',
+        'cro_approval_date',
+
+        'comment_sealed_by',
         'sealed_by',
         'sealed_date',
+        
         'created_at',
-        'updated_at',        
+        'updated_at',       
     ];
 }

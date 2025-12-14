@@ -31,11 +31,13 @@ class Center extends Model
         'location',
         'total_size',
         'total_count',
+        'notes',
         'incharge_name',
         'status',
         'notes',
+        
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
 

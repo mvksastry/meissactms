@@ -20,7 +20,6 @@ class Mdtre extends Model
     protected $primaryKey = 'mdtre_exam_id';
 
     protected $fillable = [
-        'mdtre_exam_id', 
         'patient_uuid',
         'center_id',  
         'ctarm_id',  
@@ -47,14 +46,28 @@ class Mdtre extends Model
         'trendelenburg_gait',
         'antalgic_gait',
         'list',
+        
+        'status',
+        'status_date',
 
+        'comment_entered_by',
         'entered_by',
         'entry_date',
+
+        'comment_verified_by',
         'verified_by',
         'verified_date',
+
+        'comment_cro',
+        'cro_approval',
+        'cro_approval_date',
+
+        'comment_sealed_by',
         'sealed_by',
         'sealed_date',
+        
         'created_at',
         'updated_at',
+
     ];
 }

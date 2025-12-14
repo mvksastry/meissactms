@@ -141,9 +141,9 @@
                             <div class="tab-pane" id="tab_3">
                                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                     <thead>
-                                    <tr>
-                                        <th colspan="3" align="center"></th>
-                                    </tr>
+                                      <tr>
+                                          <th colspan="3" align="center"></th>
+                                      </tr>
                                     </thead>
                                     <tbody>        
                                     <tr>
@@ -178,7 +178,6 @@
                                     </tr>
                                     </tbody>
                                 </table>
-  
                                 <button wire:click="fnSavePatientLSInfo()" class="btn btn-warning font-normal mt-3 rounded">EDIT LIFE STYLE INFO</button>
                             </div>
                             <!-- /.tab-pane -->

@@ -40,6 +40,10 @@ class Patient extends Model
         'age',
         'primary_phone_number',
         'alternate_phone_number',
+        'address',
+        'land_mark',
+        'taluka_haveli',
+        'state',
         'emergency_contact_name',   
         'emergency_contact_phone',
         'alternate_contact_name',
@@ -92,12 +96,26 @@ class Patient extends Model
         'notable_family_history',
         'before_problem_occupation',
         'general_habits',
+
+        'status',
+        'status_date',
+
+        'comment_entered_by',
         'entered_by',
         'entry_date',
+
+        'comment_verified_by',
         'verified_by',
         'verified_date',
+
+        'comment_cro',
+        'cro_approval',
+        'cro_approval_date',
+
+        'comment_sealed_by',
         'sealed_by',
         'sealed_date',
+
         'created_at',
         'updated_at',
     ];

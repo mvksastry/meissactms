@@ -36,10 +36,22 @@ class VAScore extends Model
         'variation',
         'quality',
 
+        'status',
+        'status_date',
+
+        'comment_entered_by',
         'entered_by',
         'entry_date',
+
+        'comment_verified_by',
         'verified_by',
         'verified_date',
+
+        'comment_cro',
+        'cro_approval',
+        'cro_approval_date',
+
+        'comment_sealed_by',
         'sealed_by',
         'sealed_date',
         

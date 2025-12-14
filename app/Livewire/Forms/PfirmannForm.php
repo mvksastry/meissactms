@@ -38,7 +38,6 @@ class PfirmannForm extends Form
     #[Validate('required|max:5')]
     public $modified_pfirmans_grade = '';
 
-    
     #[Validate('required|max:55')]
     public $entered_by = '';
 
