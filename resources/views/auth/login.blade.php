@@ -112,7 +112,7 @@
                     </div>
                     <div class="text">
                       <p>meissa-support@gmail.com</p>
-                      <p>admin@yourwebsite.com</p>
+                      <p>admin@meissactms.in</p>
                     </div>
                   </div>
                 </div>
@@ -122,7 +122,7 @@
                       <i class="lni lni-map-marker"></i>
                     </div>
                     <div class="text">
-                      <p>John's House, 13/5 Road, Sidny United State Of America</p>
+                      <p>Blude Ridge Hinjewadi Phase-1</p>
                     </div>
                   </div>
                 </div>
@@ -170,10 +170,9 @@
               <div class="footer-widget wow fadeInUp" data-wow-delay=".4s">
                 <h6>Services</h6>
                 <ul class="links">
-                  <li> <a href="#0">Web Design</a> </li>
-                  <li> <a href="#0">Web Development</a> </li>
-                  <li> <a href="#0">Seo Optimization</a> </li>
-                  <li> <a href="#0">Blog Writing</a> </li>
+                  <li> <a href="#0">E-Lab</a> </li>
+                  <li> <a href="#0">HART</a> </li>
+                  <li> <a href="#0">MARS</a> </li>
                 </ul>
               </div>
             </div>
@@ -184,13 +183,13 @@
                   <li>
                     <a href="#0">
                       <span class="icon"><i class="lni lni-apple"></i></span>
-                      <span class="text">Download on the <b>App Store</b> </span>
+                      <span class="text">Download on the <b>App Store</b> COming up</span>
                     </a>
                   </li>
                   <li>
                     <a href="#0">
                       <span class="icon"><i class="lni lni-play-store"></i></span>
-                      <span class="text">GET IT ON <b>Play Store</b> </span>
+                      <span class="text">GET IT ON <b>Play Store</b> Coming up</span>
                     </a>
                   </li>
                 </ul>

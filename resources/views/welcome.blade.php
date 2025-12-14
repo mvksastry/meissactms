@@ -242,7 +242,7 @@
           <div class="col-xl-5 col-lg-6">
             <div class="about-content-wrapper">
               <div class="section-title mb-30">
-                <h3 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Build trust, the only aspect we focus.</h3>
+                <h3 class="mb-25 wow fadeInUp" data-wow-delay=".2s">We Build trust not just applications, the only aspect we focus.</h3>
                 <p class="wow fadeInUp" data-wow-delay=".3s">Stop wasting time and money designing and managing 
                   complicated content management to get results. Happiness guaranteed,</p>
               </div>
@@ -280,7 +280,8 @@
           <div class="col-xl-5 col-lg-6">
             <div class="section-title mb-60">
               <h3 class="mb-15 wow fadeInUp" data-wow-delay=".2s">Pricing Plan</h3>
-              <p class="wow fadeInUp" data-wow-delay=".4s">Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!</p>
+              <p class="wow fadeInUp" data-wow-delay=".4s">Stop wasting time and money 
+                We Build trust not just applications.</p>
             </div>
           </div>
           <div class="col-xl-7 col-lg-6">
@@ -413,8 +414,8 @@
                       <i class="lni lni-envelope"></i>
                     </div>
                     <div class="text">
-                      <p>yourmail@gmail.com</p>
-                      <p>admin@yourwebsite.com</p>
+                      <p>meissa-support@meissactms.in</p>
+                      <p>admin@meissactms.in</p>
                     </div>
                   </div>
                 </div>
@@ -447,7 +448,7 @@
                 <div class="logo">
                   <a href="#0"> <img src="assets/img/logo/logo.svg" alt=""> </a>
                 </div>
-                <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisis nulla placerat amet amet congue.</p>
+                <p class="desc">Call us now for any neeed.</p>
                 <ul class="socials">
                   <li> <a href="#0"> <i class="lni lni-facebook-filled"></i> </a> </li>
                   <li> <a href="#0"> <i class="lni lni-twitter-filled"></i> </a> </li>
