@@ -111,7 +111,7 @@
                       <i class="lni lni-envelope"></i>
                     </div>
                     <div class="text">
-                      <p>meissa-support@gmail.com</p>
+                      <p>support-meissa@meissa.co.in</p>
                       <p>admin@meissactms.in</p>
                     </div>
                   </div>
@@ -122,7 +122,7 @@
                       <i class="lni lni-map-marker"></i>
                     </div>
                     <div class="text">
-                      <p>Blude Ridge Hinjewadi Phase-1</p>
+                      <p>Blude Ridge, Hinjewadi Phase-1</p>
                     </div>
                   </div>
                 </div>

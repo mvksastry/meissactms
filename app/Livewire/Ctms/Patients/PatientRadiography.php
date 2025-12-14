@@ -7,6 +7,10 @@ use App\Livewire\Forms\PatientForm;
 
 class PatientRadiography extends Component
 {
+
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public PatientForm $form;
 

@@ -13,6 +13,9 @@ class PatientModifiedPfirmannGrades extends Component
     //Trait for data handling
     use TPatientPfirmannData;
 
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public PfirmannForm $form;
     

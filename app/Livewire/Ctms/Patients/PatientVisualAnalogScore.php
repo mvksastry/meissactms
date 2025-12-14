@@ -13,6 +13,9 @@ class PatientVisualAnalogScore extends Component
     //Traits
     use TVAScores;
 
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public PatientVAScoreForm $form;
 

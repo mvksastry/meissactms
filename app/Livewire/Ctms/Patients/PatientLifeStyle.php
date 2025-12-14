@@ -22,11 +22,14 @@ class PatientLifeStyle extends Component
     //Trait binding
     use TPatientLifeStyle;
 
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public PatientLSForm $form;
 
     //data binding
-    public $input, $patient_uuid;
+    public $input;
 
     //Errors, Alers, Callouts
     public $message_panel = false;

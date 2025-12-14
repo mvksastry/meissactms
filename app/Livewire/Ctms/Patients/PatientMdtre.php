@@ -11,6 +11,10 @@ use App\Traits\TCtms\TPatientMdtreData;
 class PatientMdtre extends Component
 {
     use TPatientMdtreData;
+
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public MdtreForm $form;
 

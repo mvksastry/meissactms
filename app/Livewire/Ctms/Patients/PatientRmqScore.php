@@ -15,6 +15,9 @@ class PatientRmqScore extends Component
 {
     use TPatientRMQData;
 
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public PatientRMQForm $form;
 

@@ -13,6 +13,9 @@ class PatientModiqScore extends Component
     //Traits
     use TPatientModqScore;
 
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public ModqScoreForm $form;
     

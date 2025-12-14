@@ -11,6 +11,9 @@ class SensoryExamination extends Component
 {
     use TPatientSEData;
 
+    //global patient uuid
+    public $patient_uuid;
+    
     //Form bindings
     public PatientSEForm $form;
 

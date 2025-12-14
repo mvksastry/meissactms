@@ -123,40 +123,37 @@ trait TPatientPersonalInfo
         //dd($newPatientInfo);
 
         try {
+            $this->message_panel = true;
             $name = $newPatientInfo->name;
             $result = $newPatientInfo->save();
-
             //$name = "New Patient Name"; //for testing
             //$result = true; //for testing
-
             // Attempt to save the user
-            if ($result) {            
-                $this->message_panel = true;
-                $this->comSuccess = 'New Patient ['.$name.'] saved successfully!';
-                Log::channel('patient')->info('New Patient ['.$name.'] saved successfully!');
+            if ($result) {          
+                $msg = 'New Patient ['.$name.'] saved successfully!';
+                $this->comSuccess = $msg;
+                Log::channel('patient')->info($msg);
                 //set global patient uuid
                 $this->patient_uuid = $newPatientInfo->patient_uuid; 
                 //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
                 $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
                 return $result;
             } else {
-                $this->message_panel = true;
-                $this->sysAlertDanger = 'New Patient ['.$name.'] could not be saved';
-                Log::channel('patient')->info('New Patient ['.$name.'] could not be saved');
+                $msg = 'New Patient ['.$name.'] could not be saved';
+                $this->sysAlertDanger = $msg;
+                Log::channel('patient')->info($msg);
             }
 
             } catch (QueryException $e) {
                 // Handles database-related errors (e.g., duplicate email)
-                Log::channel('patient')->info('Database error while saving user: '.$e->getMessage());
-                $this->message_panel = true;
-                $this->sysAlertDanger = 'Database error: Patient ['.$name.'] could not be saved';
-                Log::channel('patient')->info('New Patient ['.$name.'] Database error occurred');
+                $msg = 'Database error for new patient ['.$name.'] while saving : '.$e->getMessage();
+                Log::channel('patient')->info($msg);
+                $this->sysAlertDanger = $msg;
             } catch (\Exception $e) {
                 // Handles any other general exceptions
-                Log::channel('patient')->info('Unexpected error while saving user: '.$e->getMessage());
-                $this->message_panel = true;
-                $this->sysAlertDanger = 'Patient ['.$name.'] unexpected error occurred';
-                Log::channel('patient')->info('Unexpected error: New Patient ['.$name.'] occurred');
+                $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
+                Log::channel('patient')->info($msg);
+                $this->sysAlertDanger = $msge;
             }
     }
 }

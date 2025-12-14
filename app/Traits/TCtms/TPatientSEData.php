@@ -21,7 +21,7 @@ trait TPatientSEData
   {
     $newSEInfo = new SensoryExamination();
 
-    $newSEInfo->patient_uuid = Str::uuid()->toString(); 
+    $newSEInfo->patient_uuid = $this->patient_uuid; 
     $newSEInfo->center_id = 1;
     $newSEInfo->ctarm_id = 1;
     $newSEInfo->opd_id = $input['opd_id'];

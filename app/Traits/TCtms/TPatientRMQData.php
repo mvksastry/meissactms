@@ -23,7 +23,7 @@ trait TPatientRMQData
 
       $nRmqReoly = new RMQReply();
 
-      $nRmqReoly->patient_uuid = Str::uuid()->toString(); 
+      $nRmqReoly->patient_uuid = $this->patient_uuid; 
       $nRmqReoly->center_id =  1; //$input['center_id'];
       $nRmqReoly->ctarm_id =  1; //$input['ctarm_id'];
       $nRmqReoly->opd_id =  $input['opd_id'];

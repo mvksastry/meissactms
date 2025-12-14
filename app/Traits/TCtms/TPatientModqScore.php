@@ -22,7 +22,7 @@ trait TPatientModqScore
       //dd("reached trait");
       $nModqScore = new ModqScore();
 
-      $nModqScore->patient_uuid = Str::uuid()->toString(); 
+      $nModqScore->patient_uuid = $this->patient_uuid; 
       $nModqScore->center_id =  1; //$input['center_id'];
       $nModqScore->ctarm_id =  1; //$input['ctarm_id'];
       $nModqScore->opd_id =  $input['opd_id'];

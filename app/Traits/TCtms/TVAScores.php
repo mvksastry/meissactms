@@ -21,7 +21,7 @@ trait TVAScores
     {
        // dd("reached trait");
         $nVAScores = new VAScore();
-        $nVAScores->patient_uuid = Str::uuid()->toString(); 
+        $nVAScores->patient_uuid = $this->patient_uuid; 
         $nVAScores->center_id =  1; //$input['center_id'];
         $nVAScores->ctarm_id =  1; //$input['ctarm_id'];
         $nVAScores->opd_id =  $input['opd_id'];

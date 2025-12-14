@@ -28,8 +28,8 @@ trait TPatientLifeStyle
         $newLSinfo = new LifeStyle();
 
         $newLSinfo->patient_uuid = $this->patient_uuid; 
-        $newLSinfo->center_id = $input['center_id'];
-        $newLSinfo->ctarm_id = 11;
+        $newLSinfo->center_id = $patientInfo->center_id;
+        $newLSinfo->ctarm_id = $patientInfo->ctarm_id;
         $newLSinfo->opd_id = $input['opd_id'];
         $newLSinfo->in_patient_id = null;
         $newLSinfo->admission_date = $input['admission_date'];

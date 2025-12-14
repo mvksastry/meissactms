@@ -12,6 +12,9 @@ class PatientClinicalInvestigations extends Component
     //Trait
     use TPatientClinicalData;
 
+    //global patient uuid
+    public $patient_uuid;
+
     //Form bindings
     public PatientCIForm $form;
 

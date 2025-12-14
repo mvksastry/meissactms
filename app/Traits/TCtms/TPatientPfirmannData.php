@@ -22,7 +22,7 @@ trait TPatientPfirmannData
        // dd("reached trait");
         $nPfirmannScore = new PfirmannGrade();
 
-        $nPfirmannScore->patient_uuid = Str::uuid()->toString(); 
+        $nPfirmannScore->patient_uuid = $this->patient_uuid; 
         $nPfirmannScore->center_id =  1; //$input['center_id'];
         $nPfirmannScore->ctarm_id =  1; //$input['ctarm_id'];
         $nPfirmannScore->opd_id =  $input['opd_id'];

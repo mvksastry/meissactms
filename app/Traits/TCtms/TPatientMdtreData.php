@@ -24,7 +24,7 @@ trait TPatientMdtreData
     {
       $newMdtreInfos = new Mdtre();
 
-      $newMdtreInfos->patient_uuid = Str::uuid()->toString(); 
+      $newMdtreInfos->patient_uuid = $this->patient_uuid; 
       $newMdtreInfos->center_id =  1; //$input['center_id'];
       $newMdtreInfos->ctarm_id =  1; //$input['ctarm_id'];
       $newMdtreInfos->opd_id =  $input['opd_id'];

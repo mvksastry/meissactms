@@ -23,7 +23,7 @@ trait TPatientClinicalData
         //dd($input);
         $newCIInfo = new ClinicalData();
 
-        $newCIInfo->patient_uuid = Str::uuid()->toString(); 
+        $newCIInfo->patient_uuid = $this->patient_uuid; 
         $newCIInfo->center_id = 1;
         $newCIInfo->ctarm_id = 1;
         $newCIInfo->opd_id = $input['opd_id'];
