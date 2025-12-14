@@ -7,73 +7,70 @@ use Livewire\Form;
  
 class PatientVAScoreForm extends Form
 {
-    #[Validate('required|max:5')]
-    public $patient_uuid = '';
-    
-    #[Validate('required|max:5')]
+    #[Validate('numeric')]
     public $center_id = 1;
 
-    #[Validate('required|max:5')]
+    #[Validate('numeric')]
     public $ctarm_id = 1;
 
-    #[Validate('required|max:5')]
+    #[Validate('numeric')]
     public $opd_id = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('numeric')]
     public $in_patient_id = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $admission_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('numeric')]
     public $aadhar_id = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $pan_num = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $other_id = '';
 
 
 
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $intensity = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $location = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $onset = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $duration = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $variation = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $quality = '';
 
 
 
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $entered_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $entry_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $verified_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $verified_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $entry_sealed_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $entry_sealed_date = '';
 
 }

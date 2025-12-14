@@ -90,7 +90,33 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_9">
-                              @include('livewire.ctms.end-controls')
+                                <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th colspan="3"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>        
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Comment</label>
+                                        <input wire:model.defer="form.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Entered By*</label>
+                                        <input wire:model="form.entered_by" id="entered_by" type="text" value="{{ Auth::user()->name }}" class="form-control" placeholder="Description">
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Entry Date*</label>
+                                        <input wire:model="form.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              
+                              
                               <button wire:click="fnSavePrimaryInfo()" class="btn btn-success text-white font-normal mt-3 rounded">ADD PRIMARY INFO</button>
                             </div>
                             <!-- /.tab-pane -->

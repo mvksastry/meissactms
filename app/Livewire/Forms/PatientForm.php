@@ -233,6 +233,9 @@ class PatientForm extends Form
     public $anyother_habbits = '';
 
     #[Validate('alpha_num')]
+    public $comment_entered_by = '';   
+
+    #[Validate('alpha_num')]
     public $entered_by = '';
 
     #[Validate('alpha_num')]

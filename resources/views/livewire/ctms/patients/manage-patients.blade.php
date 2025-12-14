@@ -54,48 +54,50 @@
                   <button wire:click="fnShowPrimaryInfoForm()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Primary Information</button>
                 </div>
                 <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnLifeStyle()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Life Style</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnClinicalInvestigations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Clinical</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnSensoryExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Sensory Examination</button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMDTRExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp M & DTR Examination</button>    
-                </div>
+                @if($openAllOtherForms)
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnLifeStyle()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Life Style</button>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnClinicalInvestigations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Clinical</button>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnSensoryExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Sensory Examination</button>  
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnMDTRExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp M & DTR Examination</button>    
+                  </div>
+                @endif
               </div>
               </br>
+              
               <div class="row">
                 <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnRadiographs()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Radiographs</button>
-                </div>
+                @if($openAllOtherForms)
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnRadiographs()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnModifiedPfirmannGrades()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnVisualAnalogScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnMODIQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp MODIQ Score</button>  
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnRMQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
+                  </div>
+                @endif
                 <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnModifiedPfirmannGrades()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnVisualAnalogScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMODIQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp MODIQ Score</button>  
-                </div>
-              
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnRMQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
-                </div>
-                <!-- /.col -->
-                <!--
-                -->
               </div>
               <!--Divider-->
               <hr class="border-b-2 border-warning my-2 mx-2">
@@ -118,40 +120,41 @@
     @endif
 
     @if($openNewLifeStyleEntryForm)
-      <livewire:ctms.patients.patient-life-style />
+      <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" />
     @endif
     
     @if($openNewClinicalInvestigationsEntryForm)
-      <livewire:ctms.patients.patient-clinical-investigations />
+      <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" />
     @endif
 
     @if($openNewSensoryExaminationsEntryForm)
-      <livewire:ctms.patients.sensory-examination />
+      <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" />
     @endif
 
     @if($openMDTREExaminationsEntryForm)
-      <livewire:ctms.patients.patient-mdtre />
+      <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" />
     @endif
 
     @if($openRadiographsEntryForm)
-      <livewire:ctms.patients.patient-radiography />
+      <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" />
     @endif
 
     @if($openModifiedPfirmannGradesEntryForm)
-      <livewire:ctms.patients.patient-modified-pfirmann-grades />
+      <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" />
     @endif
 
     @if($openVisualAnalogScore)
-      <livewire:ctms.patients.patient-visual-analog-score />
+      <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" />
     @endif
 
     @if($openMODIQScoreEntryForm) 
-      <livewire:ctms.patients.patient-modiq-score />
+      <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" />
     @endif
     
     @if($openRMQScoreEntryForm)
-      <livewire:ctms.patients.patient-rmq-score />
+      <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" />
     @endif
+
 
 
 

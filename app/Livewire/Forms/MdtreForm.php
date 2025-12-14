@@ -34,63 +34,63 @@ class MdtreForm extends Form
     #[Validate('required|max:5')]
     public $other_id = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $hip_flex_adduction = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $knee_extension = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $ankle_dorsiflexion = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $decreased_patellar_reflex = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $extensor_hallucis_longus = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $hip_abduction = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $ankle_plantar_flexion = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $dec_achilles_tendon_reflex = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $straight_leg_raise = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $contralateral_slr = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $femoral_nerve_stretch_test = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $trendelenburg_gait = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $antalgic_gait = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $list = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $entered_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $entry_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $verified_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $verified_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $entry_sealed_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $entry_sealed_date = '';
 }

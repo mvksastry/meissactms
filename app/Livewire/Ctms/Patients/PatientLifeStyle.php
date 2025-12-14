@@ -3,6 +3,13 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Livewire\WithFileUploads;
+
+use App\Models\Ctms\Patient;
+
 use App\Livewire\Forms\PatientLSForm;
 
 use App\Models\Ctms\LifeStyle;
@@ -19,7 +26,7 @@ class PatientLifeStyle extends Component
     public PatientLSForm $form;
 
     //data binding
-    public $input;
+    public $input, $patient_uuid;
 
     //Errors, Alers, Callouts
     public $message_panel = false;
@@ -30,19 +37,9 @@ class PatientLifeStyle extends Component
 
     public function fnSavePatientLSInfo()
     {
-        $this->message_panel = true;
-        $this->sysAlertSuccess = "Great working";
-        $this->comSuccess = "Great working!";
-
-        //dd($this->entered_by);
         $this->input = $this->form->all();
         //dd($this->input); // ['title' => '...', 'content' => '...']
         $result = $this->savePatientLSInformation($this->input);
-
-        //dd($result); // ['title' => '...', 'content' => '...']
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Great working!";
     }
 
 }

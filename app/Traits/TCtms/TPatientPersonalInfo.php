@@ -19,6 +19,8 @@ use App\Models\Ctms\Patient;
 //use App\Traits\TCommon\Notes;
 //use App\Traits\TCommon\FileUploadHandler;
 //use App\Traits\TElab\ResearchProjectPermission;
+//
+use Illuminate\Support\Facades\Log;
 
 trait TPatientPersonalInfo
 {
@@ -28,6 +30,7 @@ trait TPatientPersonalInfo
 
     public function savePatientInformation($input)
     {
+
         //dd($input);
         $newPatientInfo = new Patient();
 
@@ -47,6 +50,12 @@ trait TPatientPersonalInfo
         $newPatientInfo->age =  $input['age'];
         $newPatientInfo->primary_phone_number =  $input['primary_phone_number'];
         $newPatientInfo->alternate_phone_number =  $input['alternate_phone_number'];
+
+        $newPatientInfo->address =  $input['address'];
+        $newPatientInfo->land_mark =  $input['land_mark'];
+        $newPatientInfo->taluka_haveli =  $input['taluka_haveli'];
+        $newPatientInfo->state =  $input['state'];
+
         $newPatientInfo->emergency_contact_name =  $input['emergency_contact_name'];
         $newPatientInfo->emergency_contact_phone =  $input['emergency_contact_phone'];
         $newPatientInfo->alternate_contact_name =  $input['alternate_contact_name']; 
@@ -101,16 +110,53 @@ trait TPatientPersonalInfo
         $newPatientInfo->general_habits = $input['general_habits'];
 
         $newPatientInfo->status = 'draft';
+        $newPatientInfo->status_date = date('Y-m-d');
 
+        $newPatientInfo->comment_entered_by = $input['comment_entered_by'];
         $newPatientInfo->entered_by = $input['entered_by'];
-        $newPatientInfo->entry_date = $input['entry_date'];
-        $newPatientInfo->verified_by = $input['verified_by'];
-        $newPatientInfo->verified_date = $input['verified_date'];
-        $newPatientInfo->sealed_by = $input['entry_sealed_by'];
-        $newPatientInfo->sealed_date = $input['entry_sealed_date'];
-        dd($newPatientInfo);
-        $result = $newPatientInfo->save();
-        return $result;
-    }
+        $newPatientInfo->entry_date = date('Y-m-d');
 
+        //$newPatientInfo->verified_by = $input['verified_by'];
+        //$newPatientInfo->verified_date = $input['verified_date'];
+        //$newPatientInfo->sealed_by = $input['entry_sealed_by'];
+        //$newPatientInfo->sealed_date = $input['entry_sealed_date'];
+        //dd($newPatientInfo);
+
+        try {
+            $name = $newPatientInfo->name;
+            $result = $newPatientInfo->save();
+
+            //$name = "New Patient Name"; //for testing
+            //$result = true; //for testing
+
+            // Attempt to save the user
+            if ($result) {            
+                $this->message_panel = true;
+                $this->comSuccess = 'New Patient ['.$name.'] saved successfully!';
+                Log::channel('patient')->info('New Patient ['.$name.'] saved successfully!');
+                //set global patient uuid
+                $this->patient_uuid = $newPatientInfo->patient_uuid; 
+                //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
+                $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
+                return $result;
+            } else {
+                $this->message_panel = true;
+                $this->sysAlertDanger = 'New Patient ['.$name.'] could not be saved';
+                Log::channel('patient')->info('New Patient ['.$name.'] could not be saved');
+            }
+
+            } catch (QueryException $e) {
+                // Handles database-related errors (e.g., duplicate email)
+                Log::channel('patient')->info('Database error while saving user: '.$e->getMessage());
+                $this->message_panel = true;
+                $this->sysAlertDanger = 'Database error: Patient ['.$name.'] could not be saved';
+                Log::channel('patient')->info('New Patient ['.$name.'] Database error occurred');
+            } catch (\Exception $e) {
+                // Handles any other general exceptions
+                Log::channel('patient')->info('Unexpected error while saving user: '.$e->getMessage());
+                $this->message_panel = true;
+                $this->sysAlertDanger = 'Patient ['.$name.'] unexpected error occurred';
+                Log::channel('patient')->info('Unexpected error: New Patient ['.$name.'] occurred');
+            }
+    }
 }

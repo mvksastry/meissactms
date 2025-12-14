@@ -7,82 +7,82 @@ use Livewire\Form;
  
 class ModqScoreForm extends Form
 {
-    #[Validate('required|max:5')]
+    #[Validate('alpha|max:45')]
     public $patient_uuid = '';
     
-    #[Validate('required|max:5')]
+    #[Validate('numeric|max:5')]
     public $center_id = 1;
 
-    #[Validate('required|max:5')]
+    #[Validate('numeric|max:5')]
     public $ctarm_id = 1;
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num|max:25')]
     public $opd_id = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num|max:35')]
     public $in_patient_id = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('date')]
     public $admission_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('numeric|max:15')]
     public $aadhar_id = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num|max:15')]
     public $pan_num = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num|max:15')]
     public $other_id = '';
 
 
     
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $pain_intensity = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $personal_care = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $lifting = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $walking = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $sitting = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $standing = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $sleeping = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $social_life = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $travelling = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $emp_home = '';
 
 
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $entered_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $entry_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $verified_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $verified_date = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $entry_sealed_by = '';
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $entry_sealed_date = '';
 }    

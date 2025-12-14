@@ -38,6 +38,7 @@ class Patient extends Model
         'gender',
         'date_of_birth',
         'age',
+        'present_occupation',
         'primary_phone_number',
         'alternate_phone_number',
         'address',

@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Storage;
 //Uuid import class
 use Illuminate\Support\Str;
 
+
 use File;
 
 //Models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\LifeStyle;
 
 trait TPatientLifeStyle
@@ -21,10 +23,11 @@ trait TPatientLifeStyle
     public function savePatientLSInformation($input)
     {
       //dd($input);
+        $patientInfo = Patient::where('patient_uuid', $this->patient_uuid)->first();
 
         $newLSinfo = new LifeStyle();
 
-        $newLSinfo->patient_uuid = Str::uuid()->toString(); 
+        $newLSinfo->patient_uuid = $this->patient_uuid; 
         $newLSinfo->center_id = $input['center_id'];
         $newLSinfo->ctarm_id = 11;
         $newLSinfo->opd_id = $input['opd_id'];
@@ -50,7 +53,7 @@ trait TPatientLifeStyle
         $newLSinfo->verified_date = $input['verified_date'];
         $newLSinfo->sealed_by = $input['entry_sealed_by'];
         $newLSinfo->sealed_date = $input['entry_sealed_date'];
-       // dd($newLSinfo);
+        //dd($newLSinfo);
         $result = $newLSinfo->save();
         return $result;
     }

@@ -8,7 +8,7 @@ use Livewire\Form;
 class PatientLSForm extends Form
 {
 
-    #[Validate('required|max:3')]
+    #[Validate('max:3')]
     public $center_id = '1';
 
     #[Validate('max:3')]
@@ -53,19 +53,19 @@ class PatientLSForm extends Form
     #[Validate('alpha_num')]
     public $entered_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('date')]
     public $entry_date = '';
     
     #[Validate('alpha_num')]
     public $verified_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('date')]
     public $verified_date = '';
 
     #[Validate('alpha_num')]
     public $entry_sealed_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('date')]
     public $entry_sealed_date = '';
 
 

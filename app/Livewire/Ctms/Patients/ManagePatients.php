@@ -3,15 +3,23 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
-
-
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 
 use App\Models\Ctms\Patient;
 
+//
+use Illuminate\Support\Facades\Log;
+
 class ManagePatients extends Component
 {
     use WithFileUploads;
+
+    //form status
+    public $form_status = null;
+    public $openAllOtherForms = false;
 
     //new paitent global uuid
     public $patient_uuid;
@@ -54,10 +62,15 @@ class ManagePatients extends Component
     public $uploadImage = false;
     public $imageInputFile;
 
+    //login credentials
+    public $entered_by;
+
     //modals and callouts.
 
     //public variable for checking status incomplete status
     public $patient_data_status;
+
+
 
     public function render()
     {    $this->patient_data_status = Patient::where('status','draft')->get();
@@ -68,8 +81,9 @@ class ManagePatients extends Component
             $this->comWarning = "Draft' status Patients Found: Wish To Complete?";
             //show button for edit test it
             $this->edit_button = true;
-            
-        }
+            // Log info message
+            Log::channel('patient')->info('Patients with draft status found');
+        }       
         return view('livewire.ctms.patients.manage-patients');
     }
     public function fnRedirectToEdit()
@@ -82,10 +96,20 @@ class ManagePatients extends Component
     public function fnNewPatientEntrySteps()
     {
         //reset and show
+        $this->form_status = "new";
         $this->newPatientEntrySteps = false;
 
         //show now.
         $this->newPatientEntrySteps = true;
+    }
+
+    #[On('newPatientUuidGenerated')] 
+    public function setPatientUuid($id)
+    {
+        $this->patient_uuid = $id;
+        Log::channel('patient')->info('Emitted patient creation event');
+        //dd("event emitted and understood");
+        $this->openAllOtherForms = true;
     }
 
     //respective forms
@@ -145,7 +169,6 @@ class ManagePatients extends Component
 
     public function fnSensoryExaminations()
     {
-
         //close all other open forms
         $this->openNewPatientEntryForm = false; //1
         $this->openNewLifeStyleEntryForm = false;
@@ -317,7 +340,6 @@ class ManagePatients extends Component
         $this->openMODIQScoreEntryForm = false;
         $this->openRMQScoreEntryForm = false;
         
-
         $this->openAdverseEventsEntryForm = true;
     }
 

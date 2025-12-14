@@ -8,7 +8,7 @@ use Livewire\Form;
 class PatientRMQForm extends Form
 {
 
-    #[Validate('required|max:5')]
+    #[Validate('alpha_num')]
     public $patient_uuid = '';
     
     #[Validate('required|max:5')]

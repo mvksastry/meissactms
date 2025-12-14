@@ -8,13 +8,13 @@ use Livewire\Form;
 class PatientCIForm extends Form
 {
 
-    #[Validate('required|max:3')]
+    #[Validate('numeric|max:5')]
     public $center_id = '1';
 
-    #[Validate('max:3')]
+    #[Validate('alpha_num')]
     public $opd_id = '';
 
-    #[Validate('max:3')]
+    #[Validate('alpha_num')]
     public $in_patient_id = '';
 
     #[Validate('date')]

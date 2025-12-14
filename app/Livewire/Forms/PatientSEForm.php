@@ -8,16 +8,16 @@ use Livewire\Form;
 class PatientSEForm extends Form
 {
 
-    #[Validate('required|max:3')]
+    #[Validate('alpha_num')]
     public $center_id = '1';
 
-    #[Validate('required|max:3')]
+    #[Validate('alpha_num')]
     public $ctarm_id = '1';
 
-    #[Validate('max:3')]
+    #[Validate('numeric')]
     public $opd_id = '';
 
-    #[Validate('max:3')]
+    #[Validate('numeric')]
     public $in_patient_id = '';
 
     #[Validate('date')]
@@ -50,19 +50,19 @@ class PatientSEForm extends Form
     #[Validate('alpha_num')]
     public $entered_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('date')]
     public $entry_date = '';
     
     #[Validate('alpha_num')]
     public $verified_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('date')]
     public $verified_date = '';
 
     #[Validate('alpha_num')]
     public $entry_sealed_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('date')]
     public $entry_sealed_date = '';
 
 
