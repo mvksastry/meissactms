@@ -14,6 +14,8 @@ use File;
 //Models
 use App\Models\Ctms\ModqScore;
 
+use Illuminate\Support\Facades\Log;
+
 trait TPatientModqScore
 {
 
@@ -23,14 +25,10 @@ trait TPatientModqScore
       $nModqScore = new ModqScore();
 
       $nModqScore->patient_uuid = $this->patient_uuid; 
-      $nModqScore->center_id =  1; //$input['center_id'];
-      $nModqScore->ctarm_id =  1; //$input['ctarm_id'];
+
       $nModqScore->opd_id =  $input['opd_id'];
       $nModqScore->in_patient_id =  $input['in_patient_id'];
       $nModqScore->admission_date =  $input['admission_date'];
-      $nModqScore->aadhar_id = null;
-      $nModqScore->pan_num = null;
-      $nModqScore->other_id = null;
 
       $nModqScore->pain_intensity = intval($this->pain_intensity);
       $nModqScore->personal_care = intval($this->personal_care);
@@ -42,16 +40,19 @@ trait TPatientModqScore
       $nModqScore->social_life = intval($this->social_life);
       $nModqScore->travelling = intval($this->travelling);
       $nModqScore->employment_home_making = intval($this->emp_home);
-
       $nModqScore->total = $this->total;
       $nModqScore->modq_score = $this->mod_score;
 
+      $nModqScore->status = "draft";
+      $nModqScore->status_date = date('Y-m-d');
+
+      $nModqScore->comment_entered_by = $input['comment_entered_by'];
       $nModqScore->entered_by = $input['entered_by'];
       $nModqScore->entry_date = $input['entry_date'];
-      $nModqScore->verified_by = $input['verified_by'];
-      $nModqScore->verified_date = $input['verified_date'];
-      $nModqScore->sealed_by = $input['entry_sealed_by'];
-      $nModqScore->sealed_date = $input['entry_sealed_date'];
+      //$nModqScore->verified_by = $input['verified_by'];
+      //$nModqScore->verified_date = $input['verified_date'];
+      //$nModqScore->sealed_by = $input['entry_sealed_by'];
+      //$nModqScore->sealed_date = $input['entry_sealed_date'];
 
       //dd($nModqScore);
       $result = $nModqScore->save();

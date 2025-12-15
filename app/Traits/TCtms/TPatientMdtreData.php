@@ -14,6 +14,8 @@ use File;
 //Models
 use App\Models\Ctms\Mdtre;
 
+use Illuminate\Support\Facades\Log;
+
 trait TPatientMdtreData
 {
     //use Base;
@@ -25,14 +27,10 @@ trait TPatientMdtreData
       $newMdtreInfos = new Mdtre();
 
       $newMdtreInfos->patient_uuid = $this->patient_uuid; 
-      $newMdtreInfos->center_id =  1; //$input['center_id'];
-      $newMdtreInfos->ctarm_id =  1; //$input['ctarm_id'];
+
       $newMdtreInfos->opd_id =  $input['opd_id'];
       $newMdtreInfos->in_patient_id =  $input['in_patient_id'];
       $newMdtreInfos->admission_date =  $input['admission_date'];
-      $newMdtreInfos->aadhar_id = null;
-      $newMdtreInfos->pan_num = null;
-      $newMdtreInfos->other_id = null;
 
       $newMdtreInfos->hip_flex_adduction = $input['hip_flex_adduction'];
       $newMdtreInfos->knee_extension = $input['knee_extension'];
@@ -49,12 +47,16 @@ trait TPatientMdtreData
       $newMdtreInfos->antalgic_gait = $input['antalgic_gait'];
       $newMdtreInfos->list = $input['list'];
 
+      $newMdtreInfos->status = "draft";
+      $newMdtreInfos->status_date = date('Y-m-d');
+
+      $newMdtreInfos->comment_entered_by = $input['comment_entered_by'];
       $newMdtreInfos->entered_by = $input['entered_by'];
       $newMdtreInfos->entry_date = $input['entry_date'];
-      $newMdtreInfos->verified_by = $input['verified_by'];
-      $newMdtreInfos->verified_date = $input['verified_date'];
-      $newMdtreInfos->sealed_by = $input['entry_sealed_by'];
-      $newMdtreInfos->sealed_date = $input['entry_sealed_date'];
+      //$newMdtreInfos->verified_by = $input['verified_by'];
+      //$newMdtreInfos->verified_date = $input['verified_date'];
+      //$newMdtreInfos->sealed_by = $input['entry_sealed_by'];
+      //$newMdtreInfos->sealed_date = $input['entry_sealed_date'];
 
       //dd($newMdtreInfos);
 

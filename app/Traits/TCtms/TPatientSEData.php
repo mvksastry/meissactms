@@ -14,6 +14,8 @@ use File;
 //Models
 use App\Models\Ctms\SensoryExamination;
 
+use Illuminate\Support\Facades\Log;
+
 trait TPatientSEData
 {
 
@@ -22,14 +24,10 @@ trait TPatientSEData
     $newSEInfo = new SensoryExamination();
 
     $newSEInfo->patient_uuid = $this->patient_uuid; 
-    $newSEInfo->center_id = 1;
-    $newSEInfo->ctarm_id = 1;
+
     $newSEInfo->opd_id = $input['opd_id'];
     $newSEInfo->in_patient_id = $input['in_patient_id'];
     $newSEInfo->admission_date = $input['admission_date'];
-    $newSEInfo->aadhar_id = null;
-    $newSEInfo->pan_num = null;
-    $newSEInfo->other_id = null;
 
     $newSEInfo->s1 = $input['s1'];
     $newSEInfo->l1 = $input['l1'];
@@ -38,12 +36,16 @@ trait TPatientSEData
     $newSEInfo->l4 = $input['l4'];
     $newSEInfo->l5 = $input['l5'];
 
+    $newSEInfo->status = "draft";
+    $newSEInfo->status_date = date('Y-m-d');
+
+    $newSEInfo->comment_entered_by = $input['comment_entered_by'];
     $newSEInfo->entered_by = $input['entered_by'];
     $newSEInfo->entry_date = $input['entry_date'];
-    $newSEInfo->verified_by = $input['verified_by'];
-    $newSEInfo->verified_date = $input['verified_date'];
-    $newSEInfo->sealed_by = $input['entry_sealed_by'];
-    $newSEInfo->sealed_date = $input['entry_sealed_date'];
+    //$newSEInfo->verified_by = $input['verified_by'];
+    //$newSEInfo->verified_date = $input['verified_date'];
+    //$newSEInfo->sealed_by = $input['entry_sealed_by'];
+    //$newSEInfo->sealed_date = $input['entry_sealed_date'];
     //dd($newSEInfo);
     $result = $newSEInfo->save();
     return $result;

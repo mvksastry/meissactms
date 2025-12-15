@@ -15,6 +15,8 @@ use File;
 //Models
 use App\Models\Ctms\ClinicalData;
 
+use Illuminate\Support\Facades\Log;
+
 trait TPatientClinicalData
 {
 
@@ -24,14 +26,10 @@ trait TPatientClinicalData
         $newCIInfo = new ClinicalData();
 
         $newCIInfo->patient_uuid = $this->patient_uuid; 
-        $newCIInfo->center_id = 1;
-        $newCIInfo->ctarm_id = 1;
+
         $newCIInfo->opd_id = $input['opd_id'];
         $newCIInfo->in_patient_id = $input['in_patient_id'];
         $newCIInfo->admission_date = $input['admission_date'];
-        $newCIInfo->aadhar_id = null;
-        $newCIInfo->pan_num = null;
-        $newCIInfo->other_id = null;
 
         $newCIInfo->o_e = $input['oande'];
         $newCIInfo->pr = $input['pr'];
@@ -53,12 +51,16 @@ trait TPatientClinicalData
         $newCIInfo->procalcitonin = $input['procalcitonin'];
         $newCIInfo->laboratory_report_file = $input['lab_report_file'];
 
+        $newCIInfo->status = "draft";
+        $newCIInfo->status_date = date('Y-m-d');
+
+        $newCIInfo->comment_entered_by = $input['comment_entered_by'];
         $newCIInfo->entered_by = $input['entered_by'];
         $newCIInfo->entry_date = $input['entry_date'];
-        $newCIInfo->verified_by = $input['verified_by'];
-        $newCIInfo->verified_date = $input['verified_date'];
-        $newCIInfo->sealed_by = $input['entry_sealed_by'];
-        $newCIInfo->sealed_date = $input['entry_sealed_date'];
+        //$newCIInfo->verified_by = $input['verified_by'];
+        //$newCIInfo->verified_date = $input['verified_date'];
+        //$newCIInfo->sealed_by = $input['entry_sealed_by'];
+        //$newCIInfo->sealed_date = $input['entry_sealed_date'];
 
         //dd($newCIInfo);
         $result = $newCIInfo->save();

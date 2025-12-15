@@ -16,6 +16,8 @@ use File;
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\LifeStyle;
 
+use Illuminate\Support\Facades\Log;
+
 trait TPatientLifeStyle
 {
     //dd($input);
@@ -28,15 +30,10 @@ trait TPatientLifeStyle
         $newLSinfo = new LifeStyle();
 
         $newLSinfo->patient_uuid = $this->patient_uuid; 
-        $newLSinfo->center_id = $patientInfo->center_id;
-        $newLSinfo->ctarm_id = $patientInfo->ctarm_id;
+
         $newLSinfo->opd_id = $input['opd_id'];
         $newLSinfo->in_patient_id = null;
         $newLSinfo->admission_date = $input['admission_date'];
-        $newLSinfo->aadhar_id = null;
-        $newLSinfo->pan_num = null;
-
-        $newLSinfo->other_id = null;
 
         $newLSinfo->cross_leg_sitting = $input['cross_leg_sitting'];
         $newLSinfo->standing = $input['standing'];
@@ -47,12 +44,16 @@ trait TPatientLifeStyle
         $newLSinfo->ls6 = $input['ls6'];
         $newLSinfo->life_stryle_description = $input['life_style_description'];
 
+        $newLSinfo->status = "draft";
+        $newLSinfo->status_date = date('Y-m-d');
+
+        $newLSinfo->comment_entered_by = $input['comment_entered_by'];
         $newLSinfo->entered_by = $input['entered_by'];
         $newLSinfo->entry_date = $input['entry_date'];
-        $newLSinfo->verified_by = $input['verified_by'];
-        $newLSinfo->verified_date = $input['verified_date'];
-        $newLSinfo->sealed_by = $input['entry_sealed_by'];
-        $newLSinfo->sealed_date = $input['entry_sealed_date'];
+        //$newLSinfo->verified_by = $input['verified_by'];
+        //$newLSinfo->verified_date = $input['verified_date'];
+        //$newLSinfo->sealed_by = $input['entry_sealed_by'];
+        //$newLSinfo->sealed_date = $input['entry_sealed_date'];
         //dd($newLSinfo);
         $result = $newLSinfo->save();
         return $result;

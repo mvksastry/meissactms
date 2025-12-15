@@ -14,6 +14,8 @@ use File;
 //Models
 use App\Models\Ctms\PfirmannGrade;
 
+use Illuminate\Support\Facades\Log;
+
 trait TPatientPfirmannData
 {
 
@@ -23,23 +25,23 @@ trait TPatientPfirmannData
         $nPfirmannScore = new PfirmannGrade();
 
         $nPfirmannScore->patient_uuid = $this->patient_uuid; 
-        $nPfirmannScore->center_id =  1; //$input['center_id'];
-        $nPfirmannScore->ctarm_id =  1; //$input['ctarm_id'];
+
         $nPfirmannScore->opd_id =  $input['opd_id'];
         $nPfirmannScore->in_patient_id =  $input['in_patient_id'];
         $nPfirmannScore->admission_date =  $input['admission_date'];
-        $nPfirmannScore->aadhar_id = null;
-        $nPfirmannScore->pan_num = null;
-        $nPfirmannScore->other_id = null;
 
         $nPfirmannScore->modified_pfirman_grade = $input['modified_pfirmans_grade'];
 
+        $nPfirmannScore->status = "draft";
+        $nPfirmannScore->status_date = date('Y-m-d');
+
+        $nPfirmannScore->comment_entered_by = $input['comment_entered_by'];
         $nPfirmannScore->entered_by = $input['entered_by'];
         $nPfirmannScore->entry_date = $input['entry_date'];
-        $nPfirmannScore->verified_by = $input['verified_by'];
-        $nPfirmannScore->verified_date = $input['verified_date'];
-        $nPfirmannScore->sealed_by = $input['entry_sealed_by'];
-        $nPfirmannScore->sealed_date = $input['entry_sealed_date'];
+        //$nPfirmannScore->verified_by = $input['verified_by'];
+        //$nPfirmannScore->verified_date = $input['verified_date'];
+        //$nPfirmannScore->sealed_by = $input['entry_sealed_by'];
+        //$nPfirmannScore->sealed_date = $input['entry_sealed_date'];
 
         //dd($nPfirmannScore);
         $result = $nPfirmannScore->save();

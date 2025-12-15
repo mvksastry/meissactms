@@ -14,6 +14,8 @@ use File;
 //Models
 use App\Models\Ctms\RMQReply;
 
+use Illuminate\Support\Facades\Log;
+
 trait TPatientRMQData
 {
     public function saveRMQ($input)
@@ -21,29 +23,30 @@ trait TPatientRMQData
 
       $rmq_replies_json = json_encode($this->rmq_replies);
 
-      $nRmqReoly = new RMQReply();
+      $nRmqReply = new RMQReply();
 
-      $nRmqReoly->patient_uuid = $this->patient_uuid; 
-      $nRmqReoly->center_id =  1; //$input['center_id'];
-      $nRmqReoly->ctarm_id =  1; //$input['ctarm_id'];
-      $nRmqReoly->opd_id =  $input['opd_id'];
-      $nRmqReoly->in_patient_id =  $input['in_patient_id'];
-      $nRmqReoly->admission_date =  $input['admission_date'];
-      $nRmqReoly->aadhar_id = null;
-      $nRmqReoly->pan_num = null;
-      $nRmqReoly->other_id = null;
+      $nRmqReply->patient_uuid = $this->patient_uuid; 
+  
+      $nRmqReply->opd_id =  $input['opd_id'];
+      $nRmqReply->in_patient_id =  $input['in_patient_id'];
+      $nRmqReply->admission_date =  $input['admission_date'];
 
-      $nRmqReoly->rmq_replies = $rmq_replies_json;
+      $nRmqReply->rmq_replies = $rmq_replies_json;
 
-      $nRmqReoly->entered_by = $input['entered_by'];
-      $nRmqReoly->entry_date = $input['entry_date'];
-      $nRmqReoly->verified_by = $input['verified_by'];
-      $nRmqReoly->verified_date = $input['verified_date'];
-      $nRmqReoly->sealed_by = $input['entry_sealed_by'];
-      $nRmqReoly->sealed_date = $input['entry_sealed_date'];
+      $nRmqReply->status = "draft";
+      $nRmqReply->status_date = date('Y-m-d');
 
-      //dd($nRmqReoly);
-      $result = $nRmqReoly->save();
+      $nRmqReply->comment_entered_by = $input['comment_entered_by'];
+      $nRmqReply->entered_by = $input['entered_by'];
+      $nRmqReply->entry_date = $input['entry_date'];
+
+      //$nRmqReply->verified_by = $input['verified_by'];
+      //$nRmqReply->verified_date = $input['verified_date'];
+      //$nRmqReply->sealed_by = $input['entry_sealed_by'];
+      //$nRmqReply->sealed_date = $input['entry_sealed_date'];
+
+      //dd($nRmqReply);
+      $result = $nRmqReply->save();
       //here write code to remove form fields for all traits
       $this->resetInputs();
       return $result;
