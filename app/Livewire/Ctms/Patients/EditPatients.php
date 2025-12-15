@@ -184,6 +184,10 @@ class EditPatients extends Component
     public $date_created;
     public $VAScore;
 
+    // important
+    public $created_at;
+    public $empty_result;
+
     public function render()
     {
         $this->draftPatients = Patient::where('status','draft')->get();
@@ -233,10 +237,9 @@ class EditPatients extends Component
     {
         //close all other open forms
         //dd($id);
-        $this->ls_infox = LifeStyle::where('patient_uuid', $id)->first();
-        //dd($lstyle_infox);
-        $this->cardTittle = "Life Style Observations";
-        $this->date_created = $this->ls_infox->created_at;
+        //$this->ls_infox = LifeStyle::where('patient_uuid', $id)->first();
+        //dd($this->empty_result);
+        //dd($id, $this->ls_infox);
         //dd($this->date_created);
         //dd($this->patientPrimaryInfo);
         //close all other open forms

@@ -3,18 +3,69 @@
 namespace App\Livewire\Ctms\Patients\Edit;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+use App\Livewire\Forms\PatientLSForm;
 
 use App\Models\Ctms\LifeStyle;
 
 class EditLifestyleInfo extends Component
 {
+
+    //Form bindings
+    public PatientLSForm $form;
+
     //uuid of the patient
     public $uuid;
     public $ls_info;
+    public $empty_result;
 
     public function render()
     {
         $this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        
+        if($this->ls_info == null)
+        {
+            $this->form->entered_by = Auth::user()->name;
+            $this->empty_result = true;
+        }else{
+            $this->setFormValues($this->ls_info);
+        }
         return view('livewire.ctms.patients.edit.edit-lifestyle-info');
+    }
+
+    public function setFormValues($ls_info)
+    {
+        //dd($ls_info);
+        $this->form->opd_id = $ls_info->opd_id;
+        $this->form->in_patient_id = $ls_info->in_patient_id;
+        $this->form->admission_date = $ls_info->admission_date;
+        $this->form->cross_leg_sitting = $ls_info->cross_leg_sitting;
+        $this->form->standing = $ls_info->standing;
+        $this->form->sitting = $ls_info->sitting;
+        $this->form->ls3 = $ls_info->ls3;
+        $this->form->ls4 = $ls_info->ls4;
+        $this->form->ls5 = $ls_info->ls5;
+        $this->form->ls6 = $ls_info->ls6;
+        $this->form->life_style_description = $ls_info->life_style_description;
+        $this->form->status = $ls_info->status;
+        $this->form->status_date = $ls_info->status_date;
+        $this->form->comment_entered_by = $ls_info->comment_entered_by;
+        $this->form->entered_by = $ls_info->entered_by;
+        $this->form->entry_date = $ls_info->entry_date;
+    }
+
+    public function fnSaveEditedLSInfo()
+    {
+        $this->input = $this->form->all();
+        //dd($this->input);
+        $result = LifeStyle::updateOrcreate(
+            ['patient_uuid' => $this->uuid], $this->input
+        );
+        $result->status = 'draft';
+        $result->status_date = date('Y-m-d');
+        $result->save();
+        $result = null;
     }
 }
