@@ -8,19 +8,19 @@
       <tr>
         <td>
           <label>Emergency Contact Name*</label>
-          <input wire:model="form.emergency_contact_name" class="form-control" value="{{ $patientPrimaryInfo->emergency_contact_name }}" id="opd_id" wire:model="form.opd_id" type="text">
+          <input wire:model="form.emergency_contact_name" class="form-control" value="{{ $patientPrimaryInfo->emergency_contact_name }}"  type="text">
          </td>
         <td>
           <label>Emergency Contact Phone*</label>
-          <input wire:model="form.emergency_contact_phone" class="form-control" value="{{ $patientPrimaryInfo->emergency_contact_phone }}" id="opd_id" wire:model="form.opd_id" type="text">
+          <input wire:model="form.emergency_contact_phone" class="form-control" value="{{ $patientPrimaryInfo->emergency_contact_phone }}"  type="text">
         </td>
         <td>
           <label>Alternate Contact Name*</label>
-          <input wire:model="form.alternate_contact_name" class="form-control" value="{{ $patientPrimaryInfo->alternate_contact_name }}" id="opd_id" wire:model="form.opd_id" type="text">
+          <input wire:model="form.alternate_contact_name" class="form-control" value="{{ $patientPrimaryInfo->alternate_contact_name }}"  type="text">
         </td>
         <td>
           <label>Alternate Contact Phone*</label>
-          <input wire:model="form.alternate_contact_phone" class="form-control" value="{{ $patientPrimaryInfo->alternate_contact_phone }}" id="opd_id" wire:model="form.opd_id" type="text">
+          <input wire:model="form.alternate_contact_phone" class="form-control" value="{{ $patientPrimaryInfo->alternate_contact_phone }}"  type="text">
         </td>
       </tr>
     </tbody>

@@ -240,16 +240,4 @@ class PatientForm extends Form
 
     #[Validate('alpha_num')]
     public $entry_date = '';
-    
-    #[Validate('alpha_num')]
-    public $verified_by = '';
-
-    #[Validate('alpha_num')]
-    public $verified_date = '';
-
-    #[Validate('alpha_num')]
-    public $entry_sealed_by = '';
-
-    #[Validate('alpha_num')]
-    public $entry_sealed_date = '';
 }
