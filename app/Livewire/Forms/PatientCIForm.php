@@ -8,9 +8,6 @@ use Livewire\Form;
 class PatientCIForm extends Form
 {
 
-    #[Validate('numeric|max:5')]
-    public $center_id = '1';
-
     #[Validate('alpha_num')]
     public $opd_id = '';
 
@@ -18,16 +15,7 @@ class PatientCIForm extends Form
     public $in_patient_id = '';
 
     #[Validate('date')]
-    public $admission_date = '';
-
-    #[Validate('numeric')]
-    public $aadhar_id = '';
-
-    #[Validate('alpha_num')]
-    public $pan_num = '';
-
-    #[Validate('alpha_num')]
-    public $other_id = '';
+    public $admission_date = null;
 
     #[Validate('numeric')]
     public $oande = '';
@@ -81,23 +69,15 @@ class PatientCIForm extends Form
     public $procalcitonin = '';
 
     #[Validate('alpha_num')]
-    public $lab_report_file = '';
+    public $laboratory_report_file = '';
+
+    #[Validate('alpha_num')]
+    public $comment_entered_by = '';
 
     #[Validate('alpha_num')]
     public $entered_by = '';
 
-    #[Validate('alpha_num')]
-    public $entry_date = '';
+    #[Validate('date')]
+    public $entry_date = null;
     
-    #[Validate('alpha_num')]
-    public $verified_by = '';
-
-    #[Validate('alpha_num')]
-    public $verified_date = '';
-
-    #[Validate('alpha_num')]
-    public $entry_sealed_by = '';
-
-    #[Validate('alpha_num')]
-    public $entry_sealed_date = '';
 }

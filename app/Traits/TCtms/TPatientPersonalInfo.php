@@ -14,6 +14,24 @@ use File;
 
 //Models
 use App\Models\Ctms\Patient;
+use App\Models\Ctms\LifeStyle;
+use App\Models\Ctms\ClinicalData;
+use App\Models\Ctms\SensoryExamination;
+use App\Models\Ctms\Mdtre;
+
+use App\Models\Ctms\PfirmannGrade;
+use App\Models\Ctms\VAScore;
+use App\Models\Ctms\ModqScore;
+use App\Models\Ctms\RMQReply;
+
+
+
+
+
+
+
+
+
 
 //use App\Traits\Base;
 //use App\Traits\TCommon\Notes;
@@ -135,6 +153,40 @@ trait TPatientPersonalInfo
                 Log::channel('patient')->info($msg);
                 //set global patient uuid
                 $this->patient_uuid = $newPatientInfo->patient_uuid; 
+
+                //make entries in all relevant tables.
+                $newLS = new LifeStyle();
+                $newLS->patient_uuid = $this->patient_uuid;
+                $newLS->save();
+
+                $newCD = new ClinicalData();
+                $newCD->patient_uuid = $this->patient_uuid;
+                $newCD->save();
+
+                $newSE = new SensoryExamination();
+                $newSE->patient_uuid = $this->patient_uuid;
+                $newSE->save();
+
+                $newMDT = new Mdtre();
+                $Mdtre->patient_uuid = $this->patient_uuid;
+                $Mdtre->save();
+
+                $newPfg = new PfirmannGrade();
+                $newPfg->patient_uuid = $this->patient_uuid;
+                $newPfg->save();
+
+                $newVasc = new VAScore();
+                $newVasc->patient_uuid = $this->patient_uuid;
+                $newVasc->save();
+
+                $newModq = new ModqScore();
+                $newModq->patient_uuid = $this->patient_uuid;
+                $newModq->save();
+
+                $newRMQ = new RMQReply();
+                $newRMQ->patient_uuid = $this->patient_uuid;
+                $newRMQ->save();
+
                 //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
                 $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
                 return $result;

@@ -15,7 +15,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Edit Clinical Investigations - Date Created {{ $clinical_info->created_at }}
+                  Edit Clinical Investigations - Date Created {{ ($clinical_info != null) ? $clinical_info->created_at : ""; }}
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -51,33 +51,25 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="4" align="center"> Paitient ID: {{ $uuid }}</th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" value="{{ $clinical_info->opd_id }}" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" value="{{ $clinical_info->in_patient_id }}" type="text" class="form-control" placeholder="In Patient ID">
+                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" value="{{ $clinical_info->report_date }}" type="date" class="form-control" placeholder="Report Date">
+                                      <label>Admission Date*</label>
+                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td colspan="1">
-                                      <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="aadhar_id" value="{{ $clinical_info->admission_date }}" type="date" value="null" class="form-control" placeholder="Admission Date">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="pan_num" value="{{ $clinical_info->discharge_date }}" type="date" value="null" class="form-control" placeholder="Discharge Date">
-                                    </td>
                                   </tr>  
                                 </tbody>
                               </table>
@@ -94,133 +86,117 @@
                                   <tr>
                                     <td>
                                       <label>O E*</label>
-                                      <input wire:model.defer="form.oande" id="oande" type="text" value="{{ $clinical_info->o_e }}" class="form-control" placeholder="O E">
+                                      <input wire:model.defer="form.oande" id="oande" type="text" class="form-control" placeholder="O E">
                                     </td>
                                     <td>
                                       <label>PR*</label>
-                                      <input wire:model.defer="form.pr" id="pr" type="text" value="{{ $clinical_info->pr }}" class="form-control" placeholder="PR">
+                                      <input wire:model.defer="form.pr" type="text" class="form-control" placeholder="PR">
                                     </td>
                                     <td>
                                       <label>Temperature*</label>
-                                      <input wire:model.defer="form.temperature" id="temperature" value="{{ $clinical_info->temperature }}" type="text" class="form-control" placeholder="Temperature" >
+                                      <input wire:model.defer="form.temperature" type="text" class="form-control" placeholder="Temperature" >
                                     </td>
                                     <td>
                                       <label>BP-Systolic*</label>
-                                      <input wire:model.defer="form.bp_systolic" id="bp_systolic" value="{{ $clinical_info->bp_systolic }}" type="text" class="form-control" placeholder="BP Systolic" >
+                                      <input wire:model.defer="form.bp_systolic" type="text" class="form-control" placeholder="BP Systolic" >
                                     </td>
                                     <td>
                                       <label>BP-Diastolic*</label>
-                                      <input wire:model.defer="form.bp_diastolic" id="bp_diastolic" type="text" value="{{ $clinical_info->bp_diastolic }}" class="form-control" placeholder="BP Diastolic" >
+                                      <input wire:model.defer="form.bp_diastolic" type="text" class="form-control" placeholder="BP Diastolic" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>CVS*</label>
-                                      <input wire:model.defer="form.cvs" id="cvs" type="text"  value="{{ $clinical_info->cvs }}" class="form-control" placeholder="CVS" >
+                                      <input wire:model.defer="form.cvs" type="text" class="form-control" placeholder="CVS" >
                                     </td>
 
                                     <td>
                                       <label>P/A*</label>
-                                      <input wire:model.defer="form.panda" id="panda" type="text" value="{{ $clinical_info->p_a }}" class="form-control" placeholder="P/A" >
+                                      <input wire:model.defer="form.panda" type="text" class="form-control" placeholder="P/A" >
                                     </td>
                                     <td>
                                       <label>CNS*</label>
-                                      <input wire:model.defer="form.cns" id="cns" type="text" value="{{ $clinical_info->cns }}" class="form-control" placeholder="CNS" >
+                                      <input wire:model.defer="form.cns" type="text" class="form-control" placeholder="CNS" >
                                     </td>
                                     <td>
                                       <label>CBC*</label>
-                                      <input wire:model.defer="form.cbc" id="cbc" type="text" value="{{ $clinical_info->cbc }}" class="form-control" placeholder="CBC" >
+                                      <input wire:model.defer="form.cbc" type="text" class="form-control" placeholder="CBC" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>ESR*</label>
-                                      <input wire:model.defer="form.esr" id="esr" type="text" value="{{ $clinical_info->esr }}" class="form-control" placeholder="ESR" >
+                                      <input wire:model.defer="form.esr" type="text" class="form-control" placeholder="ESR" >
                                     </td>
                                     <td>
                                       <label>CRP*</label>
-                                      <input wire:model.defer="form.crp" id="crp" type="text" value="{{ $clinical_info->crp }}" class="form-control" placeholder="CRP" >
+                                      <input wire:model.defer="form.crp" type="text" class="form-control" placeholder="CRP" >
                                     </td>
                                     <td>
                                       <label>RFT*</label>
-                                      <input wire:model.defer="form.rft" id="rft" type="text" value="{{ $clinical_info->rft }}" class="form-control" placeholder="RFT" >
+                                      <input wire:model.defer="form.rft" type="text" class="form-control" placeholder="RFT" >
                                     </td>
                                     <td>
                                       <label>LFT*</label>
-                                      <input wire:model.defer="form.lft" id="lft" type="text" value="{{ $clinical_info->lft }}"  class="form-control" placeholder="LFT" >
+                                      <input wire:model.defer="form.lft" type="text" class="form-control" placeholder="LFT" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Clotting Time*</label>
-                                      <input wire:model.defer="form.clotting_time" id="clotting_time" type="text" value="{{ $clinical_info->clotting_time }}" class="form-control" placeholder="Clotting Time" >
+                                      <input wire:model.defer="form.clotting_time" type="text" class="form-control" placeholder="Clotting Time" >
                                     </td>
                                     <td>
                                       <label>Bleeding Time*</label>
-                                      <input wire:model.defer="form.bleeding_time" id="bleeding_time" type="text" value="{{ $clinical_info->bleeding_time }}" class="form-control" placeholder="Bleeding Time" >
+                                      <input wire:model.defer="form.bleeding_time" type="text"  class="form-control" placeholder="Bleeding Time" >
                                     </td>
                                     <td>
                                       <label>Prothrombin time*</label>
-                                      <input wire:model.defer="form.prothrombin_time" id="prothrombin_time" type="text" value="{{ $clinical_info->prothrombin_time }}" class="form-control" placeholder="Prothrombin Time" >
+                                      <input wire:model.defer="form.prothrombin_time" type="text" class="form-control" placeholder="Prothrombin Time" >
                                     </td>
 
                                     <td>
                                       <label>Procalcitonin*</label>
-                                      <input wire:model.defer="form.procalcitonin" id="procalcitonin" type="text" value="{{ $clinical_info->procalcitonin }}" class="form-control" placeholder="Precalcitonin" >
+                                      <input wire:model.defer="form.procalcitonin" type="text" class="form-control" placeholder="Precalcitonin" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="6">
                                       <label>Laboratory Report File*</label>
-                                      <input wire:model.defer="form.lab_report_file" id="lab_report_file" type="text" value="{{ $clinical_info->lab_report_file }}" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="form.lab_report_file" type="text" class="form-control" placeholder="Report File" >
                                     </td>
                                   </tr>                                    
                                 </tbody>
-                              </table>
+                              </table>                              
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                                  <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                                    <thead>
-                                      <tr>
-                                        <th colspan="3" align="center"></th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>        
+                                <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th colspan="3" align="center"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>        
                                     <tr>
                                       <td colspan="1">
+                                      <label>Comment</label>
+                                      <input wire:model="form.comment_entered_by" type="text" class="form-control" placeholder="Description">
+                                      </td>
+                                      <td colspan="1">
                                       <label>Entered By*</label>
-                                      <input wire:model="form.entered_by" id="entered_by" value="{{ $clinical_info->entered_by }}" type="text" value="null" class="form-control" placeholder="Description">
+                                      <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Description">
                                       </td>
                                       <td colspan="1">
                                       <label>Entry Date*</label>
-                                      <input wire:model="form.entry_date" id="entry_date" value="{{ $clinical_info->entry_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td colspan="1">
-                                      <label>Verified By*</label>
-                                      <input wire:model.defer="form.verified_by" id="consumption_gutka" value="{{ $clinical_info->verified_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                      </td>
-                                      <td colspan="1">
-                                      <label>Verified Date*</label>
-                                      <input wire:model.defer="form.verified_date" id="consumption_gutka" value="{{ $clinical_info->verified_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td colspan="1">
-                                      <label>Entry Sealed By*</label>
-                                      <input wire:model="form.entry_sealed_by" id="entry_sealed_by" value="{{ $clinical_info->sealed_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                      </td>
-                                      <td colspan="2">
-                                      <label>Sealed Date*</label>
-                                      <input wire:model="form.entry_sealed_date" id="entry_sealed_date" value="{{ $clinical_info->sealed_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                      <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Description">
                                       </td>
                                     </tr>
                                   </tbody>
                                 </table>
 
-                              <button wire:click="fnSaveClinicalData()" class="btn btn-warning font-normal mt-3 rounded">ADD CLINICAL INFO</button>
+                              <button wire:click="fnSaveEditedClinicalData()" class="btn btn-warning font-normal mt-3 rounded">EDIT CLINICAL INFO</button>
                             </div>
                             <!-- /.tab-pane -->
 

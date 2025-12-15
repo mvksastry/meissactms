@@ -214,7 +214,6 @@ class EditPatients extends Component
         //dd($this->patientPrimaryInfo);
         //close all other open forms
         
-        
         $this->openNewLifeStyleEntryForm = false; //2
         $this->openNewClinicalInvestigationsEntryForm = false; //3
         $this->openNewSensoryExaminationsEntryForm = false; //4
@@ -235,15 +234,6 @@ class EditPatients extends Component
 
     public function fnLifeStyleData($id)
     {
-        //close all other open forms
-        //dd($id);
-        //$this->ls_infox = LifeStyle::where('patient_uuid', $id)->first();
-        //dd($this->empty_result);
-        //dd($id, $this->ls_infox);
-        //dd($this->date_created);
-        //dd($this->patientPrimaryInfo);
-        //close all other open forms
-        //$this->panel_primary_info = false; 
         $this->openNewPatientEntryForm = false; // 1
 
         $this->openNewClinicalInvestigationsEntryForm = false; //3
@@ -263,24 +253,21 @@ class EditPatients extends Component
 
     public function fnClinicalInfo($id)
     {
-        //$this->clinical_info = ClinicalData::where('patient_uuid', $id)->first();
-        //$this->cardTittle = "Clinical Data";
-        //$this->date_created = $this->clinical_info->created_at;
-
         //close all other open forms
         $this->openNewPatientEntryForm = false; //1
         $this->openNewLifeStyleEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
+
+        $this->openNewSensoryExaminationsEntryForm = false; //4
+        $this->openMDTREExaminationsEntryForm = false; //5
+        $this->openRadiographsEntryForm = false; //6
+        $this->openModifiedPfirmannGradesEntryForm = false; //7
+        $this->openVisualAnalogScore = false; //8
+        $this->openMODIQScoreEntryForm = false; //9
+        $this->openRMQScoreEntryForm = false; //10
         $this->openAdverseEventsEntryForm = false;
         //open the form 
         //dd("reached");
-        $this->openNewClinicalInvestigationsEntryForm = true; //2
+        $this->openNewClinicalInvestigationsEntryForm = true; //3
     }
 
     public function fnSensoryExamInfo($id)

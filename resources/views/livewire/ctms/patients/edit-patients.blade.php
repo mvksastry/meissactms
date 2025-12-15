@@ -96,7 +96,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp M & DTR Examination</button>    
+                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp M&DTR Exam</button>    
                 </div>
               </div>
               </br>
