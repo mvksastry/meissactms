@@ -35,6 +35,7 @@ class EditModiqScore extends Component
     public $empHomeSelected;
 
     public $selectedCount;
+    public $total;
     public $modq_score;
     
     //model object retrieved
@@ -53,7 +54,7 @@ class EditModiqScore extends Component
         $this->form->opd_id = ($modq_obj != null) ? $modq_obj->opd_id : "";
         $this->form->in_patient_id = ($modq_obj != null) ? $modq_obj->in_patient_id : "";
         $this->form->admission_date = ($modq_obj != null) ? $modq_obj->admission_date : null;
-/*
+
         $this->pain_intensity = ($modq_obj != null) ? $modq_obj->pain_intensity : "";
         $this->personal_care = ($modq_obj != null) ? $modq_obj->personal_care : "";
         $this->lifting = ($modq_obj != null) ? $modq_obj->lifting : "";
@@ -63,7 +64,7 @@ class EditModiqScore extends Component
         $this->sleeping = ($modq_obj != null) ? $modq_obj->sleeping : "";
         $this->social_life = ($modq_obj != null) ? $modq_obj->social_life : "";
         $this->empoloyment_home_making = ($modq_obj != null) ? $modq_obj->employment_home_making : "";
-*/
+
         $this->form->comment_entered_by = ($modq_obj != null) ? $modq_obj->comment_entered_by : "";
         $this->form->entered_by = Auth::user()->name;
         $this->form->entry_date = ($modq_obj != null) ? $modq_obj->entry_date : null;
@@ -173,8 +174,11 @@ class EditModiqScore extends Component
 
     public function fnEditModqScoreData()
     {
+        $this->form->total = $this->total;
+        $this->form->modq_score = $this->modq_score;
         $this->input = $this->form->all();
-        dd($this->uuid, $this->input);
+        
+        //dd($this->total, $this->modq_score, $this->uuid, $this->input, $this->form);
         $result = ModqScore::updateOrcreate(
             ['patient_uuid' => $this->uuid], $this->input
         );

@@ -48,6 +48,11 @@ class ModqScoreForm extends Form
     #[Validate('numeric')]
     public $emp_home = null;
 
+    #[Validate('numeric')]
+    public $total = null;
+
+    #[Validate('numeric')]
+    public $modq_score = null;
 
     #[Validate('alpha_num')]
     public $comment_entered_by = '';

@@ -476,7 +476,11 @@ performing more physically stressful activities(e.g. lifting, vacuuming).</label
                                       <label class="form-check-label">MOD Score: </label>
                                     </td>
                                     <td>
-                                      {{ $modq_score }} %
+                                      Previous Total {{ ($modq_obj != null) ? $modq_obj->total  : null }}
+                                    </br>
+                                      Previous MODQ Score: {{ ($modq_obj != null) ? $modq_obj->modq_score  : null }}
+                                  </br>
+                                      Current: {{ $modq_score }} %
                                     </td>
                                   </tr>                         
                                 </tbody>
