@@ -220,7 +220,12 @@ class EditPatients extends Component
     {
         $this->openMODIQScoreEntryForm = false;
     }
-    
+ 
+    #[On('close_modqscore_panel')] 
+    public function close_rmqscore_panel()
+    {
+        $this->openRMQScoreEntryForm = false;
+    }
     //------------------------------------//
 
     public function render()

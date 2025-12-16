@@ -168,10 +168,6 @@ class EditModiqScore extends Component
 
     }
 
-
-
-
-
     public function fnEditModqScoreData()
     {
         $this->form->total = $this->total;

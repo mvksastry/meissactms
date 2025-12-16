@@ -6,55 +6,29 @@ use Livewire\Attributes\Validate;
 use Livewire\Form;
  
 class PatientRMQForm extends Form
-{
+{   
+    #[Validate('alpha_num')]
+    public $opd_id = null;
 
     #[Validate('alpha_num')]
-    public $patient_uuid = '';
+    public $in_patient_id = null;
+
+    #[Validate('date')]
+    public $admission_date = null;
+
+
     
-    #[Validate('required|max:5')]
-    public $center_id = 1;
-
-    #[Validate('required|max:5')]
-    public $ctarm_id = 1;
-
-    #[Validate('required|max:5')]
-    public $opd_id = '';
-
-    #[Validate('required|max:5')]
-    public $in_patient_id = '';
-
-    #[Validate('required|max:5')]
-    public $admission_date = '';
-
-    #[Validate('required|max:5')]
-    public $aadhar_id = '';
-
-    #[Validate('required|max:5')]
-    public $pan_num = '';
-
-    #[Validate('required|max:5')]
-    public $other_id = '';
+    #[Validate('numeric')]
+    public $rmq_replies = null;
 
 
+    #[Validate('alpha_num')]
+    public $comment_entered_by = '';
 
-
-
-    #[Validate('required|max:5')]
+    #[Validate('alpha')]
     public $entered_by = '';
 
-    #[Validate('required|max:5')]
-    public $entry_date = '';
-
-    #[Validate('required|max:5')]
-    public $verified_by = '';
-
-    #[Validate('required|max:5')]
-    public $verified_date = '';
-
-    #[Validate('required|max:5')]
-    public $entry_sealed_by = '';
-
-    #[Validate('required|max:5')]
-    public $entry_sealed_date = '';    
+    #[Validate('date')]
+    public $entry_date = null;  
 
 }

@@ -16,7 +16,9 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  RMQ: Roland Morris Low Back Pain and Disability Questionnaire Score: Date Created: {{ $rmq_reply->created_at }}
+                  RMQ: Roland Morris Low Back Pain and Disability Questionnaire Score: 
+                </br>
+                  Date Created: {{ ($rmq_reply != null) ? $rmq_reply->created_at : null}}
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -52,47 +54,36 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" value="{{ $rmq_reply->opd_id }}" type="text" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
-                                    <td colspan="1">
+                                    <td>
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" value="{{ $rmq_reply->in_patient_id }}" type="text" class="form-control">
+                                      <input wire:model.defer="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" value="{{ $rmq_reply->report_date }}" type="date" class="form-control" placeholder="Report Date">
+                                    <td>
+                                      <label>Admission Date*</label>
+                                      <input wire:model.defer="form.admission_date" type="date" class="form-control" placeholder="Aadhar ID">
                                     </td>
                                   </tr>
-                                  <tr>
-                                  <td colspan="1">
-                                      <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="admission_date" value="{{ $rmq_reply->admission_date }}" type="date" class="form-control" placeholder="Aadhar ID">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>PAN*</label>
-                                      <input wire:model.defer="form.pan_num" id="pan_num" type="text" value="{{ $rmq_reply->pan_num }}"  class="form-control" placeholder="PAN">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Aadhar ID*</label>
-                                      <input wire:model.defer="form.aadhar_id" id="aadhar_id" type="text" value="{{ $rmq_reply->aadhar_id }}"  class="form-control" placeholder="Other ID" >
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Other ID*</label>
-                                      <input wire:model.defer="form.other_id" id="other_id" type="text" value="{{ $rmq_reply->other_id }}"  class="form-control" placeholder="Other ID" >
-                                    </td>
-                                  </tr>  
                                 </tbody>
                               </table>
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
+                              <?php //decode the earlier json 
+                                if($rmq_reply != null)
+                                {
+                                  $old_replies = json_decode($rmq_reply->rmq_replies);
+                                }
+                                 //dd($old_replies);
+                              ?>
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
@@ -118,44 +109,30 @@
                                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th colspan="3" align="center"></th>
+                                        <th colspan="2" align="center"></th>
                                     </tr>
                                     </thead>
                                     <tbody>        
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" value="{{ $rmq_reply->entered_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" id="entry_date" value="{{ $rmq_reply->entry_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Verified By*</label>
-                                        <input wire:model.defer="form.verified_by" id="consumption_gutka" value="{{ $rmq_reply->verified_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Verified Date*</label>
-                                        <input wire:model.defer="form.verified_date" id="consumption_gutka" value="{{ $rmq_reply->verified_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entry Sealed By*</label>
-                                        <input wire:model="form.entry_sealed_by" id="entry_sealed_by" value="{{ $rmq_reply->sealed_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
+                                      <tr>
                                         <td colspan="2">
-                                        <label>Sealed Date*</label>
-                                        <input wire:model="form.entry_sealed_date" id="entry_sealed_date" value="{{ $rmq_reply->sealed_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                        <label>Comment</label>
+                                        <input wire:model.defer="form.comment_entered_by" type="text" class="form-control" placeholder="Comment">
                                         </td>
-                                    </tr>
+                                        <td>
+                                      </tr>
+                                      <tr>
+                                        <label>Entered By*</label>
+                                        <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Entered By">
+                                        </td>
+                                        <td>
+                                        <label>Entry Date*</label>
+                                        <input wire:model="form.entry_date" type="date" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                      </tr>
                                     </tbody>
                                 </table>
                               
-                              <button wire:click="fnSaveRMQInfo()" class="btn btn-success text-white font-normal mt-3 rounded">ADD RMQ INFO</button>
+                              <button wire:click="fnEditRMQInfo()" class="btn btn-success text-white font-normal mt-3 rounded">EDIT RMQ INFO</button>
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->
