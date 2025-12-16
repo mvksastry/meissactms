@@ -15,7 +15,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Edit Visual Analog Score - Date Created: {{ $vascore->created_at }}
+                  Edit Visual Analog Score - Date Created: {{ ($vascore != null) ? $vascore->created_at : null }}
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -78,42 +78,24 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" value="{{ $vascore->created_at }}" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" value="{{ $vascore->created_at }}" type="text" class="form-control">
+                                      <input wire:model="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" value="{{ $vascore->created_at }}" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                  <td colspan="1">
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="Admission Date" type="date" value="{{ $vascore->created_at }}" class="form-control" placeholder="Admission Date">
+                                      <input wire:model="form.admission_date" type="date" class="form-control" placeholder="Admission Date">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="Discharge Date" type="date" value="{{ $vascore->created_at }}" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report*</label>
-                                      <input wire:model.defer="form.discharge_report" id="Discharge Report" type="text" value="{{ $vascore->created_at }}" class="form-control" placeholder="Discharge Report" >
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report File*</label>
-                                      <input wire:model.defer="form.discharge_report_file" id="Discharge Report File" type="text" value="{{ $vascore->created_at }}" class="form-control" placeholder="Discharge Rep File" >
-                                    </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>
@@ -122,36 +104,36 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="6" align="center"></th>
+                                    <th colspan="6"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
                                       <label>Intensity</label>
-                                      <input wire:model="form.intensity" id="intensity" value="{{ $vascore->intensity }}" type="text" class="form-control" placeholder="Intensity">
+                                      <input wire:model="form.intensity" type="text" class="form-control" placeholder="Intensity">
                                     </td>
                                     <td colspan="1">
                                       <label>Location</label>
-                                      <input wire:model.defer="form.location" id="location" value="{{ $vascore->location }}" type="text" class="form-control" placeholder="Location">
+                                      <input wire:model="form.location" type="text" class="form-control" placeholder="Location">
                                     </td>
                                     <td colspan="1">
                                       <label>Onset</label>
-                                      <input wire:model="form.onset" id="onset" type="text" value="{{ $vascore->onset }}" class="form-control" placeholder="Onset">
+                                      <input wire:model="form.onset" type="text" class="form-control" placeholder="Onset">
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="1">
                                       <label>Duration</label>
-                                      <input wire:model="form.duration" id="duration" type="text" value="{{ $vascore->duration }}" class="form-control" placeholder="Duration">
+                                      <input wire:model="form.duration" type="text" class="form-control" placeholder="Duration">
                                     </td>
                                     <td colspan="1">
                                       <label>Variation</label>
-                                      <input wire:model="form.variation" id="variation" type="text" value="{{ $vascore->variation }}" class="form-control" placeholder="Variation">
+                                      <input wire:model="form.variation" type="text" class="form-control" placeholder="Variation">
                                     </td>
                                     <td colspan="1">
                                       <label>Quality</label>
-                                      <input wire:model="form.quality" id="quality" type="text" value="{{ $vascore->quality }}" class="form-control" placeholder="Quality">
+                                      <input wire:model="form.quality" type="text" class="form-control" placeholder="Quality">
                                     </td>
                                   </tr>
                                 </tbody>
@@ -162,44 +144,30 @@
                                                                         <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th colspan="3" align="center"></th>
+                                        <th colspan="2" align="center"></th>
                                     </tr>
                                     </thead>
                                     <tbody>        
                                     <tr>
+                                        <td colspan="2">
+                                        <label>Comment</label>
+                                        <input wire:model="form.comment_entered_by" type="text" class="form-control" placeholder="Comment if any">
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="1">
                                         <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" value="{{ $vascore->entered_by }}" type="text" value="null" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Entered By">
                                         </td>
                                         <td colspan="1">
                                         <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" id="entry_date" value="{{ $vascore->entry_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Verified By*</label>
-                                        <input wire:model.defer="form.verified_by" id="consumption_gutka" value="{{ $vascore->verified_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Verified Date*</label>
-                                        <input wire:model.defer="form.verified_date" id="consumption_gutka" value="{{ $vascore->verified_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entry Sealed By*</label>
-                                        <input wire:model="form.entry_sealed_by" id="entry_sealed_by" value="{{ $vascore->sealed_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="2">
-                                        <label>Sealed Date*</label>
-                                        <input wire:model="form.entry_sealed_date" id="entry_sealed_date" value="{{ $vascore->sealed_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Date of Entry">
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                              
-                              <button wire:click="fnSaveVAscoreData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD VA Scores</button>
+                              <button wire:click="fnEditVAscoreData()" class="btn btn-warning font-normal mt-3 rounded">EDIT VA Scores</button>
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->

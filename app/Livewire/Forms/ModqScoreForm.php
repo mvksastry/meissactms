@@ -7,15 +7,6 @@ use Livewire\Form;
  
 class ModqScoreForm extends Form
 {
-    #[Validate('alpha|max:45')]
-    public $patient_uuid = '';
-    
-    #[Validate('numeric|max:5')]
-    public $center_id = 1;
-
-    #[Validate('numeric|max:5')]
-    public $ctarm_id = 1;
-
     #[Validate('alpha_num|max:25')]
     public $opd_id = '';
 
@@ -23,66 +14,47 @@ class ModqScoreForm extends Form
     public $in_patient_id = '';
 
     #[Validate('date')]
-    public $admission_date = '';
-
-    #[Validate('numeric|max:15')]
-    public $aadhar_id = '';
-
-    #[Validate('alpha_num|max:15')]
-    public $pan_num = '';
-
-    #[Validate('alpha_num|max:15')]
-    public $other_id = '';
+    public $admission_date = null;
 
 
     
-    #[Validate('alpha')]
-    public $pain_intensity = '';
+    #[Validate('numeric')]
+    public $pain_intensity = null;
 
-    #[Validate('alpha')]
-    public $personal_care = '';
+    #[Validate('numeric')]
+    public $personal_care = null;
 
-    #[Validate('alpha')]
-    public $lifting = '';
+    #[Validate('numeric')]
+    public $lifting = null;
 
-    #[Validate('alpha')]
-    public $walking = '';
+    #[Validate('numeric')]
+    public $walking = null;
 
-    #[Validate('alpha')]
-    public $sitting = '';
+    #[Validate('numeric')]
+    public $sitting = null;
 
-    #[Validate('alpha')]
-    public $standing = '';
+    #[Validate('numeric')]
+    public $standing = null;
 
-    #[Validate('alpha')]
-    public $sleeping = '';
+    #[Validate('numeric')]
+    public $sleeping = null;
 
-    #[Validate('alpha')]
-    public $social_life = '';
+    #[Validate('numeric')]
+    public $social_life = null;
 
-    #[Validate('alpha')]
-    public $travelling = '';
+    #[Validate('numeric')]
+    public $travelling = null;
 
-    #[Validate('alpha')]
-    public $emp_home = '';
+    #[Validate('numeric')]
+    public $emp_home = null;
 
 
+    #[Validate('alpha_num')]
+    public $comment_entered_by = '';
 
-    #[Validate('alpha')]
+    #[Validate('alpha_num')]
     public $entered_by = '';
 
-    #[Validate('alpha')]
-    public $entry_date = '';
-
-    #[Validate('alpha')]
-    public $verified_by = '';
-
-    #[Validate('alpha')]
-    public $verified_date = '';
-
-    #[Validate('alpha')]
-    public $entry_sealed_by = '';
-
-    #[Validate('alpha')]
-    public $entry_sealed_date = '';
+    #[Validate('date')]
+    public $entry_date = null;
 }    

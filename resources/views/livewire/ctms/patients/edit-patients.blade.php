@@ -92,7 +92,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Sensory Examination</button>  
+                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Sensory Exam</button>  
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">

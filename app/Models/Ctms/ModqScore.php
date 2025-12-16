@@ -20,16 +20,13 @@ class ModqScore extends Model
     protected $primaryKey = 'modqscore_id';
 
     protected $fillable = [
-        'mdtre_exam_id', 
+
+
         'patient_uuid',
-        'center_id',  
-        'ctarm_id',  
+  
         'opd_id',  
         'in_patient_id',  
         'admission_date',  
-        'aadhar_id',  
-        'pan_num',  
-        'other_id', 
         
         'pain_intensity',
         'personal_care',

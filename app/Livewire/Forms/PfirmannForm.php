@@ -7,15 +7,6 @@ use Livewire\Form;
  
 class PfirmannForm extends Form
 {
-    #[Validate('alpha_num|max:55')]
-    public $patient_uuid = '';
-    
-    #[Validate('max:5')]
-    public $center_id = 1;
-
-    #[Validate('max:5')]
-    public $ctarm_id = 1;
-
     #[Validate('max:45')]
     public $opd_id = '';
 
@@ -23,37 +14,17 @@ class PfirmannForm extends Form
     public $in_patient_id = '';
 
     #[Validate('date')]
-    public $admission_date = '';
-
-    #[Validate('max:15')]
-    public $aadhar_id = '';
-
-    #[Validate('max:15')]
-    public $pan_num = '';
-
-    #[Validate('max:25')]
-    public $other_id = '';
-
+    public $admission_date = null;
 
     #[Validate('max:5')]
-    public $modified_pfirmans_grade = '';
+    public $modified_pfirman_grade = '';
 
-    #[Validate('alpha|max:55')]
+    #[Validate('alpha_num')]
+    public $comment_entered_by = '';
+
+    #[Validate('alpha')]
     public $entered_by = '';
 
     #[Validate('date')]
-    public $entry_date = '';
-
-    #[Validate('alpha|max:55')]
-    public $verified_by = '';
-
-    #[Validate('date')]
-    public $verified_date = '';
-
-    #[Validate('alpha|max:55')]
-    public $entry_sealed_by = '';
-
-    #[Validate('date')]
-    public $entry_sealed_date = '';
-
+    public $entry_date = null;
 }

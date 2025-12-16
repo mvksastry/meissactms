@@ -14,7 +14,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Edit Motor & Deep Tendon Reflex Examination - Date Created {{ $mdtre_info->created_at }}
+                  Edit Motor & Deep Tendon Reflex Examination - Date Created {{ ($mdtre_info != null) ? $mdtre_info->created_at : null }}
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -103,27 +103,17 @@
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" value="{{ $mdtre_info->opd_id }}" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" value="{{ $mdtre_info->in_patient_id }}" type="text" class="form-control" placeholder="In Patient ID">
+                                      <input wire:model.defer="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" value="{{ $mdtre_info->report_date }}" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
                                     <td colspan="1">
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="{{ $mdtre_info->admission_date }}" class="form-control" placeholder="Admission Date">
+                                      <input wire:model.defer="form.admission_date" type="date" class="form-control" placeholder="Admission Date">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="pan_num" type="date" value="{{ $mdtre_info->discharge_date }}" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>
@@ -139,40 +129,40 @@
                                   <tr>
                                     <td>
                                       <label>Hip Flexion Adduction *</label>
-                                      <input wire:model.defer="form.hip_flex_adduction" id="aadhar_id" type="text" value="{{ $mdtre_info->hip_flex_adduction }}" class="form-control" placeholder="Hip Flexion Adduction ">
+                                      <input wire:model.defer="form.hip_flex_adduction" class="form-control" placeholder="Hip Flexion Adduction ">
                                     </td>
                                     <td>
                                       <label>Knee Extension *</label>
-                                      <input wire:model.defer="form.knee_extension" id="pan_num" type="text" value="{{ $mdtre_info->knee_extension }}" class="form-control" placeholder="Knee Extension ">
+                                      <input wire:model.defer="form.knee_extension" class="form-control" placeholder="Knee Extension ">
                                     </td>
                                     <td>
                                       <label>Ankle dorsiflexion*</label>
-                                      <input wire:model.defer="form.ankle_dorsiflexion" id="other_id" type="text" value="{{ $mdtre_info->ankle_dorsiflexion }}" class="form-control" placeholder="Ankle dorsiflexion" >
+                                      <input wire:model.defer="form.ankle_dorsiflexion" class="form-control" placeholder="Ankle dorsiflexion" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Decreased Patellar Reflex*</label>
-                                      <input wire:model.defer="form.decreased_patellar_reflex" id="other_id" type="text" value="{{ $mdtre_info->decreased_patellar_reflex }}" class="form-control" placeholder="Decreased Patellar Reflex" >
+                                      <input wire:model.defer="form.decreased_patellar_reflex" class="form-control" placeholder="Decreased Patellar Reflex" >
                                     </td>
                                     <td>
                                       <label>Extensor Hallucis longus*</label>
-                                      <input wire:model.defer="form.extensor_hallucis_longus" id="other_id" type="text" value="{{ $mdtre_info->extensor_hallucis_longus }}" class="form-control" placeholder="Extensor Hallucis longus" >
+                                      <input wire:model.defer="form.extensor_hallucis_longus" class="form-control" placeholder="Extensor Hallucis longus" >
                                     </td>
 
                                     <td>
                                       <label>Hip Abduction*</label>
-                                      <input wire:model.defer="form.hip_abduction" id="other_id" type="text" value="{{ $mdtre_info->hip_abduction }}" class="form-control" placeholder="Hip Abduction" >
+                                      <input wire:model.defer="form.hip_abduction" type="text" class="form-control" placeholder="Hip Abduction" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Ankle plantar flexion*</label>
-                                      <input wire:model.defer="form.ankle_plantar_flexion" id="other_id" type="text" value="{{ $mdtre_info->ankle_plantar_flexion }}" class="form-control" placeholder="Ankle plantar flexion" >
+                                      <input wire:model.defer="form.ankle_plantar_flexion" type="text" class="form-control" placeholder="Ankle plantar flexion" >
                                     </td>
                                     <td>
                                       <label>Decreased Achilles Tendon Reflex *</label>
-                                      <input wire:model.defer="form.dec_achilles_tendon_reflex" id="other_id" type="text" value="{{ $mdtre_info->dec_achilles_tendon_reflex }}" class="form-control" placeholder="Decreased Achilles Tendon Reflex " >
+                                      <input wire:model.defer="form.dec_achilles_tendon_reflex" type="text" class="form-control" placeholder="Decreased Achilles Tendon Reflex " >
                                     </td>
                                     <td></td>
                                   </tr>
@@ -190,17 +180,17 @@
                                   <tr>
                                     <td>
                                       <label>Straight leg raise*</label>
-                                      <input wire:model.defer="form.straight_leg_raise" id="other_id" type="text" value="{{ $mdtre_info->straight_leg_raise }}" class="form-control" placeholder="Other ID" >
+                                      <input wire:model.defer="form.straight_leg_raise" class="form-control" placeholder="Other ID" >
                                     </td>
                                     <td>
                                       <label>Contralateral SLR*</label>
-                                      <input wire:model.defer="form.contralateral_slr" id="other_id" type="text" value="{{ $mdtre_info->contralateral_slr }}" class="form-control" placeholder="Other ID" >
+                                      <input wire:model.defer="form.contralateral_slr" class="form-control" placeholder="Other ID" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Femoral nerve stretch test*</label>
-                                      <input wire:model.defer="form.femoral_nerve_stretch_test" id="other_id" type="text" value="{{ $mdtre_info->femoral_nerve_stretch_test }}" class="form-control" placeholder="Other ID" >
+                                      <input wire:model.defer="form.femoral_nerve_stretch_test" class="form-control" placeholder="Other ID" >
                                     </td>
                                   </tr>
                                 </tbody>
@@ -217,15 +207,15 @@
                                   <tr>
                                     <td>
                                       <label>Trendelenburg gait*</label>
-                                      <input wire:model.defer="form.trendelenburg_gait" id="other_id" type="text" value="{{ $mdtre_info->trendelenburg_gait }}" class="form-control" placeholder="Other ID" >
+                                      <input wire:model.defer="form.trendelenburg_gait" class="form-control" placeholder="Other ID" >
                                     </td>
                                     <td>
                                       <label>Antalgic gait *</label>
-                                      <input wire:model.defer="form.antalgic_gait" id="other_id" type="text" value="{{ $mdtre_info->antalgic_gait }}" class="form-control" placeholder="Other ID" >
+                                      <input wire:model.defer="form.antalgic_gait" type="text" class="form-control" placeholder="Other ID" >
                                     </td>
                                     <td>
                                       <label>List*</label>
-                                      <input wire:model.defer="form.list" id="other_id" type="text" value="{{ $mdtre_info->list }}" class="form-control" placeholder="Other ID" >
+                                      <input wire:model.defer="form.list" type="text" class="form-control" placeholder="Other ID" >
                                     </td>
                                   </tr>                                   
                                 </tbody>
@@ -237,44 +227,30 @@
 
                                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                     <thead>
-                                    <tr>
-                                        <th colspan="3" align="center"></th>
-                                    </tr>
+                                      <tr>
+                                        <th colspan="2" align="center"></th>
+                                      </tr>
                                     </thead>
                                     <tbody>        
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" value="{{ $mdtre_info->entered_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" id="entry_date" value="{{ $mdtre_info->entry_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Verified By*</label>
-                                        <input wire:model.defer="form.verified_by" id="consumption_gutka" value="{{ $mdtre_info->verified_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Verified Date*</label>
-                                        <input wire:model.defer="form.verified_date" id="consumption_gutka" value="{{ $mdtre_info->verified_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entry Sealed By*</label>
-                                        <input wire:model="form.entry_sealed_by" id="entry_sealed_by" value="{{ $mdtre_info->sealed_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
+                                      <tr>
                                         <td colspan="2">
-                                        <label>Sealed Date*</label>
-                                        <input wire:model="form.entry_sealed_date" id="entry_sealed_date" value="{{ $mdtre_info->sealed_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                          <label>Comment</label>
+                                          <input wire:model="form.comment_entered_by" type="text" class="form-control" placeholder="Description">
                                         </td>
-                                    </tr>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="1">
+                                          <label>Entered By*</label>
+                                          <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Description">
+                                        </td>
+                                        <td colspan="1">
+                                          <label>Entry Date*</label>
+                                          <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Description">
+                                        </td>
+                                      </tr>
                                     </tbody>
                                 </table>
-                              <button wire:click="fnSaveMDTREInfo()" class="btn btn-warning font-normal mt-3 rounded">EDIT MDTRE INFO</button>
+                              <button wire:click="fnEditMDTREInfo()" class="btn btn-warning font-normal mt-3 rounded">EDIT MDTRE INFO</button>
                             </div>
                             <!-- /.tab-pane -->
 

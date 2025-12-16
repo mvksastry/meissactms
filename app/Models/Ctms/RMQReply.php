@@ -21,16 +21,12 @@ class RMQReply extends Model
     protected $fillable = [
 
         'patient_uuid',
-        'center_id',
-        'ctarm_id',
+
         'opd_id',
         'in_patient_id',
         'admission_date',
-        'aadhar_id',
-        'pan_num',
-        'other_id',
+
         'rmq_replies',
-        'status',
 
         'status',
         'status_date',

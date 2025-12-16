@@ -3,7 +3,9 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
-
+use Livewire\Attributes\On;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 
 //models
@@ -188,6 +190,39 @@ class EditPatients extends Component
     public $created_at;
     public $empty_result;
 
+    //---listeners from child component---//
+    #[On('close_se_panel')] 
+    public function close_se_panel()
+    {
+        $this->openNewSensoryExaminationsEntryForm = false;
+    }
+
+    #[On('close_mdtre_panel')] 
+    public function close_mdtre_panel()
+    {
+        $this->openMDTREExaminationsEntryForm = false;
+    }
+    
+    #[On('close_pfirman_panel')] 
+    public function close_pfirman_panel()
+    {
+        $this->openModifiedPfirmannGradesEntryForm = false;
+    }
+    
+    #[On('close_vascore_panel')] 
+    public function close_vascore_panel()
+    {
+        $this->openVisualAnalogScore = false;
+    }   
+
+    #[On('close_modqscore_panel')] 
+    public function close_modqscore_panel()
+    {
+        $this->openMODIQScoreEntryForm = false;
+    }
+    
+    //------------------------------------//
+
     public function render()
     {
         $this->draftPatients = Patient::where('status','draft')->get();
@@ -272,10 +307,6 @@ class EditPatients extends Component
 
     public function fnSensoryExamInfo($id)
     {
-        //$this->sensoryexam_info = SensoryExamination::where('patient_uuid', $id)->first();
-        //$this->cardTittle = "Clinical Data";
-        //$this->date_created = $this->sensoryexam_info->created_at;
-
         //close all other open forms
         $this->openNewPatientEntryForm = false; //1
         $this->openNewLifeStyleEntryForm = false;
@@ -339,11 +370,6 @@ class EditPatients extends Component
 
     public function fnVisualAnalogInfo($id)
     {
-        $this->vascore_info = VAScore::where('patient_uuid', $id)->first();
-        //dd($this->pfirmangrade_info);
-        $this->cardTittle = "Clinical Data";
-        $this->date_created = $this->vascore_info;
-
         $this->openNewPatientEntryForm = false; // 1
         $this->openNewLifeStyleEntryForm = false;
         $this->openNewClinicalInvestigationsEntryForm = false; //2
@@ -361,11 +387,6 @@ class EditPatients extends Component
 
     public function fnMODIQInfo($id)
     {
-        $this->modq_info = ModqScore::where('patient_uuid', $id)->first();
-        //dd($this->pfirmangrade_info);
-        $this->cardTittle = "Clinical Data";
-        $this->date_created = $this->modq_info->created_at;
-
         $this->openNewPatientEntryForm = false; // 1
         $this->openNewLifeStyleEntryForm = false;
         $this->openNewClinicalInvestigationsEntryForm = false; //2
@@ -384,10 +405,6 @@ class EditPatients extends Component
     
     public function fnRMQInfo($id)
     {
-        $this->rmq_replies = RMQReply::where('patient_uuid', $id)->first();
-        //dd($this->rmq_replies);
-        $this->date_created = $this->rmq_replies->created_at;
-
         $this->openNewPatientEntryForm = false; // 1
         $this->openNewLifeStyleEntryForm = false;
         $this->openNewClinicalInvestigationsEntryForm = false; //2

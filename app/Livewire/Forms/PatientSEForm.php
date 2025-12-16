@@ -9,61 +9,34 @@ class PatientSEForm extends Form
 {
 
     #[Validate('alpha_num')]
-    public $center_id = '1';
-
-    #[Validate('alpha_num')]
-    public $ctarm_id = '1';
-
-    #[Validate('numeric')]
     public $opd_id = '';
 
-    #[Validate('numeric')]
+    #[Validate('alpha_num')]
     public $in_patient_id = '';
 
     #[Validate('date')]
-    public $admission_date = '';
-
-    #[Validate('numeric')]
-    public $aadhar_id = '';
+    public $admission_date = null;
 
     #[Validate('alpha_num')]
-    public $pan_num = '';
+    public $S1 = '';
+    #[Validate('alpha_num')]
+    public $L1 = '';
+    #[Validate('alpha_num')]
+    public $L2 = '';
+    #[Validate('alpha_num')]
+    public $L3 = '';
+    #[Validate('alpha_num')]
+    public $L4 = '';
+    #[Validate('alpha_num')]
+    public $L5 = '';
 
     #[Validate('alpha_num')]
-    public $other_id = '';
-
-
-    #[Validate('alpha_num')]
-    public $s1 = '';
-    #[Validate('alpha_num')]
-    public $l1 = '';
-    #[Validate('alpha_num')]
-    public $l2 = '';
-    #[Validate('alpha_num')]
-    public $l3 = '';
-    #[Validate('alpha_num')]
-    public $l4 = '';
-    #[Validate('alpha_num')]
-    public $l5 = '';
-
+    public $comment_entered_by = '';
 
     #[Validate('alpha_num')]
     public $entered_by = '';
 
     #[Validate('date')]
-    public $entry_date = '';
+    public $entry_date = null;
     
-    #[Validate('alpha_num')]
-    public $verified_by = '';
-
-    #[Validate('date')]
-    public $verified_date = '';
-
-    #[Validate('alpha_num')]
-    public $entry_sealed_by = '';
-
-    #[Validate('date')]
-    public $entry_sealed_date = '';
-
-
 }

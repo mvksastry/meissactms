@@ -15,7 +15,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Edit Modified Pfirmann’s Grade - Date Created: {{ $pfirmg_info->created_at }}
+                  Edit Modified Pfirmann’s Grade - Date Created: {{ ($pfirmg_info != null) ? $pfirmg_info->created_at : null }}
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -70,27 +70,17 @@
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" value="{{ $pfirmg_info->opd_id }}" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" value="{{ $pfirmg_info->in_patient_id }}" type="text" class="form-control" placeholder="In Patient ID">
+                                      <input wire:model="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" value="{{ $pfirmg_info->report_date }}" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
                                     <td colspan="1">
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="{{ $pfirmg_info->admission_date }}" class="form-control" placeholder="Admission Date">
+                                      <input wire:model="form.admission_date" type="date" class="form-control" placeholder="Admission Date">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="pan_num" type="date" value="{{ $pfirmg_info->discharge_date }}" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>
@@ -106,7 +96,7 @@
                                   <tr>
                                     <td>
                                       <label>Modified Pfirmann Grade (see Image on left as guide)*</label>
-                                      <input wire:model="form.modified_pfirmans_grade" id="modified_pfirmans_grade" type="text" value="{{ $pfirmg_info->modified_pfirman_grade }}" class="form-control" placeholder="Modified Pfirmans Grade">
+                                      <input wire:model="form.modified_pfirman_grade" type="text" class="form-control" placeholder="Modified Pfirmans Grade">
                                     </td>
                                   </tr>
                                 </tbody>
@@ -117,45 +107,31 @@
                             <div class="tab-pane" id="tab_3">
                                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                     <thead>
-                                    <tr>
-                                        <th colspan="3" align="center"></th>
-                                    </tr>
+                                      <tr>
+                                          <th colspan="2"></th>
+                                      </tr>
                                     </thead>
                                     <tbody>        
-                                    <tr>
+                                      <tr>
+                                        <td colspan="2">
+                                        <label>Comment</label>
+                                        <input wire:model.defer="form.comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+                                        </td>
+                                      </tr>
+                                      <tr>
                                         <td colspan="1">
                                         <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" value="{{ $pfirmg_info->entered_by }}" type="text" value="null" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entered_by" type="text" value="null" class="form-control" placeholder="Description">
                                         </td>
                                         <td colspan="1">
                                         <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" id="entry_date" value="{{ $pfirmg_info->entry_date }}" type="date" value="null" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entry_date" type="date" value="null" class="form-control" placeholder="Description">
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Verified By*</label>
-                                        <input wire:model.defer="form.verified_by" id="consumption_gutka" value="{{ $pfirmg_info->verified_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Verified Date*</label>
-                                        <input wire:model.defer="form.verified_date" id="consumption_gutka" value="{{ $pfirmg_info->verified_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entry Sealed By*</label>
-                                        <input wire:model="form.entry_sealed_by" id="entry_sealed_by" value="{{ $pfirmg_info->sealed_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="2">
-                                        <label>Sealed Date*</label>
-                                        <input wire:model="form.entry_sealed_date" id="entry_sealed_date" value="{{ $pfirmg_info->sealed_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
+                                      </tr>
                                     </tbody>
                                 </table>
                               
-                              <button wire:click="fnSavePfirmannGrade()" class="btn btn-warning font-normal mt-3 rounded">ADD PFIRMANN SCORE</button>
+                              <button wire:click="fnEditPfirmannGrade()" class="btn btn-warning font-normal mt-3 rounded">ADD PFIRMANN SCORE</button>
                             </div>
                             <!-- /.tab-pane -->
 

@@ -20,21 +20,17 @@ class SensoryExamination extends Model
 
     protected $fillable = [
         'patient_uuid',                          
-        'center_id',
-        'ctarm_id',
+
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-        'aadhar_id',
-        'pan_num',
-        'other_id',
 
-        's1',
-        'l1',
-        'l2',
-        'l3',
-        'l4',
-        'l5',
+        'S1',
+        'L1',
+        'L2',
+        'L3',
+        'L4',
+        'L5',
         
         'status',
         'status_date',

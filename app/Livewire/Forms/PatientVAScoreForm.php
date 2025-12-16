@@ -8,31 +8,15 @@ use Livewire\Form;
 class PatientVAScoreForm extends Form
 {
     #[Validate('numeric')]
-    public $center_id = 1;
-
-    #[Validate('numeric')]
-    public $ctarm_id = 1;
-
-    #[Validate('numeric')]
     public $opd_id = '';
 
     #[Validate('numeric')]
     public $in_patient_id = '';
 
     #[Validate('date')]
-    public $admission_date = '';
+    public $admission_date = null;
 
-    #[Validate('numeric')]
-    public $aadhar_id = '';
-
-    #[Validate('alpha_num')]
-    public $pan_num = '';
-
-    #[Validate('alpha_num')]
-    public $other_id = '';
-
-
-
+    
 
     #[Validate('alpha_num')]
     public $intensity = '';
@@ -54,23 +38,12 @@ class PatientVAScoreForm extends Form
 
 
 
+    #[Validate('alpha_num')]
+    public $comment_entered_by = '';
 
     #[Validate('alpha_num')]
     public $entered_by = '';
 
     #[Validate('date')]
-    public $entry_date = '';
-
-    #[Validate('alpha_num')]
-    public $verified_by = '';
-
-    #[Validate('date')]
-    public $verified_date = '';
-
-    #[Validate('alpha_num')]
-    public $entry_sealed_by = '';
-
-    #[Validate('date')]
-    public $entry_sealed_date = '';
-
+    public $entry_date = null;
 }

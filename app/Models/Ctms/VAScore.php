@@ -19,15 +19,12 @@ class VAScore extends Model
     protected $primaryKey = 'vascore_id';
 
         protected $fillable = [
-        'patient_uuid',                          
-        'center_id',
-        'ctarm_id',
+
+        'patient_uuid',
+        
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-        'aadhar_id',
-        'pan_num',
-        'other_id',
 
         'intensity',
         'location',

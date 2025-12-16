@@ -15,7 +15,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Edit Sensory Examinations - Dermatome Grades Date Created: {{ $se_info->created_at }}
+                  Edit Sensory Examinations - Dermatome Grades Date Created: {{ ($se_info != null) ? $se_info->created_at : ""; }}
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -74,7 +74,7 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="2" align="center">Clinical</th>
+                                    <th colspan="3">Clinical</th>
                                   </tr>
                                 </thead>
 
@@ -82,46 +82,20 @@
                                   <tr>
                                     <td>
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" value="{{ $se_info->opd_id }}" type="text" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
-                                    <td >
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" value="{{ $se_info->report_date }}" type="date" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-
-                                  <tr>
                                     <td>
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" value="{{ $se_info->in_patient_id }}" type="text" class="form-control" placeholder="In Patient ID">
+                                      <input wire:model="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td>
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="{{ $se_info->admission_date }}" class="form-control" placeholder="Admission Date">
+                                      <input wire:model="form.admission_date" type="date" class="form-control" placeholder="Admission Date">
                                     </td>
-                                  </tr>
-
-                                  <tr>
-                                    <td>
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="pan_num" type="date" value="{{ $se_info->discharge_date }}" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                    <td>
-                                      <label>Discharge Report*</label>
-                                      <input wire:model.defer="form.discharge_report" id="discharge_report" type="text" value="{{ $se_info->discharge_report }}" class="form-control" placeholder="" >
-                                    </td>
-                                  </tr>
-
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Discharge Report File*</label>
-                                      <input wire:model.defer="form.discharge_report_file" id="discharge_report_file" type="text" value="{{ $se_info->discharge_report_file }}" class="form-control" placeholder="Discharge Report FIle" >
-                                    </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>
-
 
                             <div class="tab-pane" id="tab_2">
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
@@ -134,7 +108,7 @@
                                   <tr>
                                     <td>
                                       <label>S1*</label>
-                                      <input wire:model.defer="form.s1" id="s1" type="text" value="{{ $se_info->S1 }}" class="form-control" placeholder="S1">
+                                      <input wire:model="form.S1" type="text" class="form-control" placeholder="S1">
                                     </td>
                                     <!--
                                     <td>
@@ -207,24 +181,24 @@
                                   <tr>
                                     <td>
                                       <label>L1*</label>
-                                      <input wire:model.defer="form.l1" id="l1" type="text" value="{{ $se_info->L1 }}" class="form-control" placeholder="L1" >
+                                      <input wire:model="form.L1" type="text" class="form-control" placeholder="L1" >
                                     </td>
                                     <td>
                                       <label>L2*</label>
-                                      <input wire:model.defer="form.l2" id="l2" type="text" value="{{ $se_info->L2 }}" class="form-control" placeholder="L2" >
+                                      <input wire:model="form.L2" type="text" class="form-control" placeholder="L2" >
                                     </td>
                                     <td>
                                       <label>L3*</label>
-                                      <input wire:model.defer="form.l3" id="l3" type="text" value="{{ $se_info->L3 }}" class="form-control" placeholder="L3" >
+                                      <input wire:model="form.L3" type="text" class="form-control" placeholder="L3" >
                                     </td>
 
                                     <td>
                                       <label>L4*</label>
-                                      <input wire:model.defer="form.l4" id="l4" type="text" value="{{ $se_info->L4 }}" class="form-control" placeholder="L4" >
+                                      <input wire:model="form.L4" type="text" class="form-control" placeholder="L4" >
                                     </td>
                                     <td>
                                       <label>L5*</label>
-                                      <input wire:model.defer="form.l5" id="l5" type="text" value="{{ $se_info->L5 }}" class="form-control" placeholder="L5" >
+                                      <input wire:model="form.L5" type="text" class="form-control" placeholder="L5" >
                                     </td>
                                   </tr>                                    
                                 </tbody>
@@ -233,47 +207,33 @@
                             <!-- /.tab-pane -->
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                                                                    <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th colspan="3" align="center"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>        
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" value="{{ $se_info->entered_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" id="entry_date" value="{{ $se_info->entry_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Verified By*</label>
-                                        <input wire:model.defer="form.verified_by" id="consumption_gutka" value="{{ $se_info->verified_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="1">
-                                        <label>Verified Date*</label>
-                                        <input wire:model.defer="form.verified_date" id="consumption_gutka" value="{{ $se_info->verified_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">
-                                        <label>Entry Sealed By*</label>
-                                        <input wire:model="form.entry_sealed_by" id="entry_sealed_by" value="{{ $se_info->sealed_by }}" type="text" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                        <td colspan="2">
-                                        <label>Sealed Date*</label>
-                                        <input wire:model="form.entry_sealed_date" id="entry_sealed_date" value="{{ $se_info->sealed_date }}" type="date" value="null" class="form-control" placeholder="Description">
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                  <th colspan="2"></th>
+                                </tr>
+                                </thead>
+                                <tbody>        
+                                <tr>
+                                  <td colspan="2">
+                                  <label>Comment</label>
+                                  <input wire:model.defer="form.comment_entered_by" type="text" class="form-control" placeholder="Description">
+                                  </td>
+                                </td>
+                                <tr>
+                                  <td>
+                                  <label>Entered By</label>
+                                  <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Description">
+                                  </td>
+                                  <td>
+                                  <label>Entry Date*</label>
+                                  <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Description">
+                                  </td>
+                                </tr>
+                                </tbody>
+                              </table>
                               
-                              <button wire:click="fnSaveSensoryExaminationData()" class="btn btn-warning font-normal mt-3 rounded">ADD SENSORY INFO</button>
+                              <button wire:click="fnEditSExamData()" class="btn btn-warning font-normal mt-3 rounded">EDIT SENSORY INFO</button>
                             </div>
                             <!-- /.tab-pane -->
 
