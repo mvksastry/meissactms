@@ -8,6 +8,8 @@ use App\Livewire\Forms\PatientVAScoreForm;
 //Traits
 use App\Traits\TCtms\TVAScores;
 
+use App\Models\Ctms\Patient;
+
 class PatientVisualAnalogScore extends Component
 {
     //Traits
@@ -21,6 +23,17 @@ class PatientVisualAnalogScore extends Component
 
     //Visual Analog Scores
     public $intensity, $location, $onset, $duration, $variation, $quality;
+
+    public function mount($patient_uuid)
+    {
+        $this->patient_uuid = $patient_uuid;
+        $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
+        $this->form->opd_id = $newObj->opd_id;
+        $this->form->in_patient_id = $newObj->in_patient_id;
+        $this->form->admission_date = $newObj->admission_date;
+        $this->form->entered_by = $newObj->entered_by;
+        $this->form->entry_date = date('Y-m-d');
+    }
 
     public function render()
     {

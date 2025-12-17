@@ -91,6 +91,13 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
+                              @if($showOldRmqValPanel)
+                              <?php $srvp_decoded = json_decode($srvp->rmq_replies); ?>
+                                @foreach($srvp_decoded as $row)
+                                  <label class="text-success">{{ $row }} -- {{ $rmqreplies[$row] }}</label>
+                                  </br>
+                                @endforeach
+                              @endif
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>

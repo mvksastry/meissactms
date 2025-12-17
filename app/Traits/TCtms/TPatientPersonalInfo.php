@@ -155,15 +155,32 @@ trait TPatientPersonalInfo
                 Log::channel('patient')->info($msg);
                 //set global patient uuid
                 $this->patient_uuid = $newPatientInfo->patient_uuid; 
+                //$this->opd_id = $input['opd_id'];
+                //$this->in_patient_id =  $input['in_patient_id'];
+                //$this->admission_date =  $input['admission_date'];
+
+                //$this->form_header['patient_uuid'] = $newPatientInfo->patient_uuid;
+                //$this->form_header['opd_id'] = $input['opd_id'];
+                //$this->form_header['in_patient_id'] = $input['in_patient_id'];
+                //$this->form_header['admission_date'] = $input['admission_date'];
+                //$this->form_header['entered_by'] = Auth::user()->name;
+                //$this->form_header = json_encode($this->form_header);
+                //$this->dispatch('newFormHeadersGenerated', $this->patient_uuid);
 
                 //make entries in all relevant tables.
                 $newLS = new LifeStyle();
                 $newLS->patient_uuid = $this->patient_uuid;
+                $newLS->opd_id =  $input['opd_id'];
+                $newLS->in_patient_id =  $input['in_patient_id'];
+                $newLS->admission_date =  $input['admission_date'];
                 $newLS->status = 'draft';
                 $newLS->status_date = date('Y-m-d');
                 $newLS->save();
 
                 $newCD = new ClinicalData();
+                $newCD->opd_id =  $input['opd_id'];
+                $newCD->in_patient_id =  $input['in_patient_id'];
+                $newCD->admission_date =  $input['admission_date'];
                 $newCD->patient_uuid = $this->patient_uuid;
                 $newCD->status = 'draft';
                 $newCD->status_date = date('Y-m-d');
@@ -171,36 +188,54 @@ trait TPatientPersonalInfo
 
                 $newSE = new SensoryExamination();
                 $newSE->patient_uuid = $this->patient_uuid;
+                $newSE->opd_id =  $input['opd_id'];
+                $newSE->in_patient_id =  $input['in_patient_id'];
+                $newSE->admission_date =  $input['admission_date'];
                 $newSE->status = 'draft';
                 $newSE->status_date = date('Y-m-d');
                 $newSE->save();
 
                 $newMDT = new Mdtre();
                 $newMDT->patient_uuid = $this->patient_uuid;
+                $newMDT->opd_id =  $input['opd_id'];
+                $newMDT->in_patient_id =  $input['in_patient_id'];
+                $newMDT->admission_date =  $input['admission_date'];
                 $newMDT->status = 'draft';
                 $newMDT->status_date = date('Y-m-d');
                 $newMDT->save();
 
                 $newPfg = new PfirmannGrade();
                 $newPfg->patient_uuid = $this->patient_uuid;
+                $newPfg->opd_id =  $input['opd_id'];
+                $newPfg->in_patient_id =  $input['in_patient_id'];
+                $newPfg->admission_date =  $input['admission_date'];
                 $newPfg->status = 'draft';
                 $newPfg->status_date = date('Y-m-d');
                 $newPfg->save();
 
                 $newVasc = new VAScore();
                 $newVasc->patient_uuid = $this->patient_uuid;
+                $newVasc->opd_id =  $input['opd_id'];
+                $newVasc->in_patient_id =  $input['in_patient_id'];
+                $newVasc->admission_date =  $input['admission_date'];
                 $newVasc->status = 'draft';
                 $newVasc->status_date = date('Y-m-d');
                 $newVasc->save();
 
                 $newModq = new ModqScore();
                 $newModq->patient_uuid = $this->patient_uuid;
+                $newModq->opd_id =  $input['opd_id'];
+                $newModq->in_patient_id =  $input['in_patient_id'];
+                $newModq->admission_date =  $input['admission_date'];              
                 $newModq->status = 'draft';
                 $newModq->status_date = date('Y-m-d');
                 $newModq->save();
 
                 $newRMQ = new RMQReply();
                 $newRMQ->patient_uuid = $this->patient_uuid;
+                $newRMQ->opd_id =  $input['opd_id'];
+                $newRMQ->in_patient_id =  $input['in_patient_id'];
+                $newRMQ->admission_date =  $input['admission_date']; 
                 $newRMQ->status = 'draft';
                 $newRMQ->status_date = date('Y-m-d');
                 $newRMQ->save();

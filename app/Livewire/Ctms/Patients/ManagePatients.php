@@ -52,7 +52,8 @@ class ManagePatients extends Component
     public $openAdverseEventsEntryForm = false;
     
     //variables
-    public $aadhar_id, $pan_num, $other_id, $report_date, $dicharge_rep_file;
+    public $aadhar_id, $pan_num, $other_id, $report_dateope, $dicharge_rep_file;
+    public $opd_id, $ipd_id, $admission_date, $form_header;
 
     //edit route if user wants
     public $edit_button = false;
@@ -73,7 +74,9 @@ class ManagePatients extends Component
 
 
     public function render()
-    {    $this->patient_data_status = Patient::where('status','draft')->get();
+    {    
+        $this->entered_by = Auth::user()->name;
+        $this->patient_data_status = Patient::where('status','draft')->get();
         if(count($this->patient_data_status) > 0)
         {
             $this->message_panel = true;
@@ -153,6 +156,7 @@ class ManagePatients extends Component
 
     public function fnLifeStyle()
     {
+        $this->openNewLifeStyleEntryForm = false;
         //close all other open forms
         $this->openNewPatientEntryForm = false; // 1
         $this->openNewClinicalInvestigationsEntryForm = false; //3

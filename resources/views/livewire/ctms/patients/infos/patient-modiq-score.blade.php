@@ -20,7 +20,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Form 1: Clinical Evaluation – Modified Oswestry Disability Questionnaire
+                  Form 1: Clinical Evaluation  Modified Oswestry Disability Questionnaire
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">

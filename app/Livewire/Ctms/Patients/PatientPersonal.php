@@ -45,13 +45,16 @@ class PatientPersonal extends Component
 
     public $comment_entered_by, $entered_by, $entry_date;
 
-    public function mount()
+    public $form_header;
+
+    public function mount($entered_by)
     {
-         $this->entered_by = Auth::user()->name;
+        $this->form->entered_by = $entered_by;
+        $this->form->entry_date = date('Y-m-d');
     }
 
     public function render()
-    {   
+    {   //$this->entered_by = Auth::user()->name;
         return view('livewire.ctms.patients.patient-personal');
     }
 

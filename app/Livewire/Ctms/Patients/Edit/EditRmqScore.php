@@ -30,6 +30,7 @@ class EditRmqScore extends Component
     {   
         $this->rmquestions = Rmquestion::all();
         $this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        //dd($this->rmq_reply);
         $this->setRmqScoreData($this->rmq_reply);
         return view('livewire.ctms.patients.edit.edit-rmq-score');
     }

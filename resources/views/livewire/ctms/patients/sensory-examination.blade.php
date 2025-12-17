@@ -50,7 +50,7 @@
                             </div>
                         @endif
                     </div>
-                    </div>
+                    
                     <div class="col-6">
                       <div class="card">
                         <div class="card-header d-flex p-0">

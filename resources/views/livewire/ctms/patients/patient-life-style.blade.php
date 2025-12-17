@@ -98,12 +98,16 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Cross Leg Sitting*</label>
+                                      <label>Cross Leg Sitting</label>
                                       <input wire:model.defer="form.cross_leg_sitting" id="oande" type="text" value="null" class="form-control" placeholder="--">
                                     </td>
                                     <td>
-                                      <label>Standing*</label>
+                                      <label>Standing</label>
                                       <input wire:model.defer="form.standing" id="pr" type="text" value="null" class="form-control" placeholder="--">
+                                    </td>
+                                    <td>
+                                      <label>Sitting</label>
+                                      <input wire:model.defer="form.sitting" id="pr" type="text" value="null" class="form-control" placeholder="--">
                                     </td>
                                     <td>
                                       <label>---*</label>

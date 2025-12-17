@@ -22,18 +22,19 @@ trait TPatientPfirmannData
     public function savePfirmannGrade($input)
     {
        // dd("reached trait");
-        $nPfirmannScore = new PfirmannGrade();
+        //$nPfirmannScore = new PfirmannGrade();
+        $nPfirmannScore = PfirmannGrade::where('patient_uuid', $this->patient_uuid)->where('status', 'draft')->first();
+        //dd($nPfirmannScore);
+        //$nPfirmannScore->patient_uuid = $this->patient_uuid; 
 
-        $nPfirmannScore->patient_uuid = $this->patient_uuid; 
-
-        $nPfirmannScore->opd_id =  $input['opd_id'];
-        $nPfirmannScore->in_patient_id =  $input['in_patient_id'];
-        $nPfirmannScore->admission_date =  $input['admission_date'];
+        //$nPfirmannScore->opd_id =  $input['opd_id'];
+        //$nPfirmannScore->in_patient_id =  $input['in_patient_id'];
+        //$nPfirmannScore->admission_date =  $input['admission_date'];
 
         $nPfirmannScore->modified_pfirman_grade = $input['modified_pfirman_grade'];
 
-        $nPfirmannScore->status = "draft";
-        $nPfirmannScore->status_date = date('Y-m-d');
+        //$nPfirmannScore->status = "draft";
+        //$nPfirmannScore->status_date = date('Y-m-d');
 
         $nPfirmannScore->comment_entered_by = $input['comment_entered_by'];
         $nPfirmannScore->entered_by = $input['entered_by'];

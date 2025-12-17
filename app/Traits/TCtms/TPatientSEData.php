@@ -21,23 +21,24 @@ trait TPatientSEData
 
   public function savePatientSEInformation($input)
   {
-    $newSEInfo = new SensoryExamination();
+    //$newSEInfo = new SensoryExamination();
+    $newSEInfo = SensoryExamination::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+    //$newSEInfo->patient_uuid = $this->patient_uuid; 
 
-    $newSEInfo->patient_uuid = $this->patient_uuid; 
+    //dd($newSEInfo);
+    //$newSEInfo->opd_id = $input['opd_id'];
+    //$newSEInfo->in_patient_id = $input['in_patient_id'];
+    //$newSEInfo->admission_date = $input['admission_date'];
 
-    $newSEInfo->opd_id = $input['opd_id'];
-    $newSEInfo->in_patient_id = $input['in_patient_id'];
-    $newSEInfo->admission_date = $input['admission_date'];
+    $newSEInfo->S1 = $input['s1'];
+    $newSEInfo->L1 = $input['l1'];
+    $newSEInfo->L2 = $input['l2'];
+    $newSEInfo->L3 = $input['l3'];
+    $newSEInfo->L4 = $input['l4'];
+    $newSEInfo->L5 = $input['l5'];
 
-    $newSEInfo->S1 = $input['S1'];
-    $newSEInfo->L1 = $input['L1'];
-    $newSEInfo->L2 = $input['L2'];
-    $newSEInfo->L3 = $input['L3'];
-    $newSEInfo->L4 = $input['L4'];
-    $newSEInfo->L5 = $input['L5'];
-
-    $newSEInfo->status = "draft";
-    $newSEInfo->status_date = date('Y-m-d');
+    //$newSEInfo->status = "draft";
+    //$newSEInfo->status_date = date('Y-m-d');
 
     $newSEInfo->comment_entered_by = $input['comment_entered_by'];
     $newSEInfo->entered_by = $input['entered_by'];

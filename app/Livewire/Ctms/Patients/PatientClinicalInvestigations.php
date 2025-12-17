@@ -7,6 +7,8 @@ use App\Livewire\Forms\PatientCIForm;
 
 use App\Traits\TCtms\TPatientClinicalData;
 
+use App\Models\Ctms\Patient;
+
 class PatientClinicalInvestigations extends Component
 {
     //Trait
@@ -32,6 +34,18 @@ class PatientClinicalInvestigations extends Component
     //{
      //   return view('livewire.ctms.patients.patient-clinical-investigations');
     //}
+
+    public function mount($patient_uuid)
+    {
+        $this->patient_uuid = $patient_uuid;
+        $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
+        $this->form->opd_id = $newObj->opd_id;
+        $this->form->in_patient_id = $newObj->in_patient_id;
+        $this->form->admission_date = $newObj->admission_date;
+        $this->form->entered_by = $newObj->entered_by;
+        $this->form->entry_date = date('Y-m-d');
+        //dd($newObj, $this->form);
+    }
 
     public function fnSaveClinicalData()
     {

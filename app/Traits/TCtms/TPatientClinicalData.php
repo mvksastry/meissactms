@@ -23,13 +23,13 @@ trait TPatientClinicalData
     public function savePatientCIInformation($input)
     {
         //dd($input);
-        $newCIInfo = new ClinicalData();
-
-        $newCIInfo->patient_uuid = $this->patient_uuid; 
-
-        $newCIInfo->opd_id = $input['opd_id'];
-        $newCIInfo->in_patient_id = $input['in_patient_id'];
-        $newCIInfo->admission_date = $input['admission_date'];
+        //$newCIInfo = new ClinicalData();
+        $newCIInfo = ClinicalData::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        //$newCIInfo->patient_uuid = $this->patient_uuid; 
+//dd($newCIInfo);
+        //$newCIInfo->opd_id = $input['opd_id'];
+        //$newCIInfo->in_patient_id = $input['in_patient_id'];
+        //$newCIInfo->admission_date = $input['admission_date'];
 
         $newCIInfo->o_e = $input['oande'];
         $newCIInfo->pr = $input['pr'];
@@ -51,8 +51,8 @@ trait TPatientClinicalData
         $newCIInfo->procalcitonin = $input['procalcitonin'];
         $newCIInfo->laboratory_report_file = $input['lab_report_file'];
 
-        $newCIInfo->status = "draft";
-        $newCIInfo->status_date = date('Y-m-d');
+        //$newCIInfo->status = "draft";
+        //$newCIInfo->status_date = date('Y-m-d');
 
         $newCIInfo->comment_entered_by = $input['comment_entered_by'];
         $newCIInfo->entered_by = $input['entered_by'];

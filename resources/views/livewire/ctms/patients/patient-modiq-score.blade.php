@@ -67,6 +67,30 @@
                           <div class="tab-content">
 
                             <!-- /.tab-pane -->
+                            @if($show_entered_values)
+                              
+                                <label>{{ $modq_entered->pain_intensity }} -- {{ $painIntensity[$modq_entered->pain_intensity] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->personal_care }} -- {{ $persCare[$modq_entered->personal_care] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->lifting }} -- {{ $modq_lifting[$modq_entered->lifting] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->walking }} -- {{ $modq_walking[$modq_entered->walking] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->sitting }} -- {{ $modq_sitting[$modq_entered->sitting] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->standing }} -- {{ $modq_standing[$modq_entered->standing] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->sleeping }} -- {{ $modq_sleeping[$modq_entered->sleeping] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->social_life }} -- {{ $modq_sociallife[$modq_entered->social_life] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->travelling }} -- {{ $modq_travelling[$modq_entered->travelling] }}</label>
+                                </br>
+                                <label>{{ $modq_entered->employment_home_making }} -- {{ $modq_emphome[$modq_entered->employment_home_making] }}</label>
+                                </br>
+                              
+                            @endif
                             <div class="tab-pane active" id="tab_1">
                               <div class="form-group">
                                 <label>Pain Intensity</label>

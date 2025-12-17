@@ -43,6 +43,7 @@
                         <label>Note:</label>
                       </br>
                         <label>This form has time stamps and expires in 60 min. Before re-enterning data, visit "Edit Paitents" (above orange buttion) to avoid duplication.</label>
+                        <label class="text-danger"> Only A-Z, a-z, 0-9, . , - _ characters allowed. NO /  \  [ ] ( ) ` ~ characters allowed</label>
                       </div>
                         {{-- Display all validation errors in one block --}}
                         @if ($errors->any())
@@ -129,7 +130,7 @@
                                     <tr>
                                       <td colspan="1">
                                         <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
                                       </td>
                                       <td colspan="1">
                                         <label>Entry Date*</label>

@@ -77,9 +77,11 @@
               <div class="row">
                 <!-- /.col -->
                 @if($openAllOtherForms)
+                  <!--
                   <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnRadiographs()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                    <button  type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Radiographs</button>
                   </div>
+                  -->
                   <!-- /.col -->
                   <div class="col-sm-3 col-md-2">
                     <button wire:click="fnModifiedPfirmannGrades()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
@@ -116,7 +118,7 @@
 
     <!-- Main content -->
     @if($openNewPatientEntryForm)
-      <livewire:ctms.patients.patient-personal />
+      <livewire:ctms.patients.patient-personal :entered_by="$entered_by" />
     @endif
 
     @if($openNewLifeStyleEntryForm)

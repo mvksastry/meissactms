@@ -18,17 +18,17 @@ class PatientSEForm extends Form
     public $admission_date = null;
 
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $S1 = '';
+    public $s1 = '';
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $L1 = '';
+    public $l1 = '';
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $L2 = '';
+    public $l2 = '';
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $L3 = '';
+    public $l3 = '';
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $L4 = '';
+    public $l4 = '';
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $L5 = '';
+    public $l5 = '';
 
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';

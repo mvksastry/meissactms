@@ -112,7 +112,7 @@
                                   <tr>
                                     <td>
                                       <label>Modified Pfirmann Grade (see Image on left as guide)*</label>
-                                      <input wire:model="form.modified_pfirmans_grade" id="modified_pfirmans_grade" type="text" value="null" class="form-control" placeholder="Modified Pfirmans Grade">
+                                      <input wire:model="form.modified_pfirman_grade" type="text" value="null" class="form-control" placeholder="Modified Pfirmans Grade">
                                     </td>
                                   </tr>
                                 </tbody>

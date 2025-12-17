@@ -7,6 +7,7 @@ use App\Livewire\Forms\PfirmannForm;
 
 use App\Traits\TCtms\TPatientPfirmannData;
 
+use App\Models\Ctms\Patient;
 
 class PatientModifiedPfirmannGrades extends Component
 {
@@ -26,7 +27,18 @@ class PatientModifiedPfirmannGrades extends Component
         return view('livewire.ctms.patients.patient-modified-pfirmann-grades');
     }
 
-    
+    public function mount($patient_uuid)
+    {
+        $this->patient_uuid = $patient_uuid;
+        $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
+
+        $this->form->opd_id = $newObj->opd_id;
+        $this->form->in_patient_id = $newObj->in_patient_id;
+        $this->form->admission_date = $newObj->admission_date;
+        $this->form->entered_by = $newObj->entered_by;
+        $this->form->entry_date = date('Y-m-d');
+    }
+
     public function fnSavePfirmannGrade()
     {
         //dd("reached");

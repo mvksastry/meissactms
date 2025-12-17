@@ -22,13 +22,13 @@ trait TPatientModqScore
     public function saveMODQScore($input)
     {
       //dd("reached trait");
-      $nModqScore = new ModqScore();
-
-      $nModqScore->patient_uuid = $this->patient_uuid; 
-
-      $nModqScore->opd_id =  $input['opd_id'];
-      $nModqScore->in_patient_id =  $input['in_patient_id'];
-      $nModqScore->admission_date =  $input['admission_date'];
+      //$nModqScore = new ModqScore();
+      $nModqScore = ModqScore::where('patient_uuid', $this->patient_uuid)->where('status', 'draft')->first();
+      //$nModqScore->patient_uuid = $this->patient_uuid; 
+      //dd($nModqScore);
+      //$nModqScore->opd_id =  $input['opd_id'];
+      //$nModqScore->in_patient_id =  $input['in_patient_id'];
+      //$nModqScore->admission_date =  $input['admission_date'];
 
       $nModqScore->pain_intensity = intval($this->pain_intensity);
       $nModqScore->personal_care = intval($this->personal_care);
@@ -43,8 +43,8 @@ trait TPatientModqScore
       $nModqScore->total = $this->total;
       $nModqScore->modq_score = $this->mod_score;
 
-      $nModqScore->status = "draft";
-      $nModqScore->status_date = date('Y-m-d');
+      //$nModqScore->status = "draft";
+      //$nModqScore->status_date = date('Y-m-d');
 
       $nModqScore->comment_entered_by = $input['comment_entered_by'];
       $nModqScore->entered_by = $input['entered_by'];
@@ -57,6 +57,8 @@ trait TPatientModqScore
       //dd($nModqScore);
       $result = $nModqScore->save();
       //here write code to remove form fields for all traits
+      $this->show_entered_values = true;
+      $this->modq_entered = ModqScore::where('patient_uuid', $this->patient_uuid)->first();
       $this->resetInputs();
       return $result;
     }
@@ -76,4 +78,5 @@ trait TPatientModqScore
       $this->total  = null;
       $this->mod_score  = null;
     }
+
 }

@@ -24,13 +24,13 @@ trait TPatientMdtreData
 
     public function saveMDTREInformation($input)
     {
-      $newMdtreInfos = new Mdtre();
-
-      $newMdtreInfos->patient_uuid = $this->patient_uuid; 
-
-      $newMdtreInfos->opd_id =  $input['opd_id'];
-      $newMdtreInfos->in_patient_id =  $input['in_patient_id'];
-      $newMdtreInfos->admission_date =  $input['admission_date'];
+      //$newMdtreInfos = new Mdtre();
+      $newMdtreInfos = Mdtre::where('patient_uuid', $this->patient_uuid)->where('status', 'draft')->first();
+      //$newMdtreInfos->patient_uuid = $this->patient_uuid; 
+      //dd($newMdtreInfos);
+      //$newMdtreInfos->opd_id =  $input['opd_id'];
+      //$newMdtreInfos->in_patient_id =  $input['in_patient_id'];
+      //$newMdtreInfos->admission_date =  $input['admission_date'];
 
       $newMdtreInfos->hip_flex_adduction = $input['hip_flex_adduction'];
       $newMdtreInfos->knee_extension = $input['knee_extension'];
@@ -47,8 +47,8 @@ trait TPatientMdtreData
       $newMdtreInfos->antalgic_gait = $input['antalgic_gait'];
       $newMdtreInfos->list = $input['list'];
 
-      $newMdtreInfos->status = "draft";
-      $newMdtreInfos->status_date = date('Y-m-d');
+      //$newMdtreInfos->status = "draft";
+      //$newMdtreInfos->status_date = date('Y-m-d');
 
       $newMdtreInfos->comment_entered_by = $input['comment_entered_by'];
       $newMdtreInfos->entered_by = $input['entered_by'];

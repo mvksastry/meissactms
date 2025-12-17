@@ -28,9 +28,9 @@ class LifeStyle extends Model
         'cross_leg_sitting', 
         'standing',
         'sitting',
-        'ls3', 
-        'ls4', 
-        'ls5', 
+        'Ls3', 
+        'Ls4', 
+        'Ls5', 
         'ls6', 
         'life_style_description',
 

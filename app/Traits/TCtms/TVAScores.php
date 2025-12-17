@@ -22,12 +22,13 @@ trait TVAScores
     public function saveVAScores($input)
     {
        // dd("reached trait");
-        $nVAScores = new VAScore();
-        $nVAScores->patient_uuid = $this->patient_uuid; 
-
-        $nVAScores->opd_id =  $input['opd_id'];
-        $nVAScores->in_patient_id =  $input['in_patient_id'];
-        $nVAScores->admission_date =  $input['admission_date'];
+        //$nVAScores = new VAScore();
+        $nVAScores = VAScore::where('patient_uuid', $this->patient_uuid)->where('status', 'draft')->first();
+        //$nVAScores->patient_uuid = $this->patient_uuid; 
+        //dd($nVAScores);
+        //$nVAScores->opd_id =  $input['opd_id'];
+        //$nVAScores->in_patient_id =  $input['in_patient_id'];
+        //$nVAScores->admission_date =  $input['admission_date'];
 
         $nVAScores->intensity = $input['intensity'];
         $nVAScores->location = $input['location'];
