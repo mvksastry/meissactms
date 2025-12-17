@@ -72,7 +72,7 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="2" align="center">Clinical</th>
+                                    <th colspan="3" align="center">Clinical</th>
                                   </tr>
                                 </thead>
 
@@ -82,13 +82,6 @@
                                       <label>Opd ID*</label>
                                       <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
-                                    <td >
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-
-                                  <tr>
                                     <td>
                                       <label>In Patient ID*</label>
                                       <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
@@ -96,24 +89,6 @@
                                     <td>
                                       <label>Admission Date*</label>
                                       <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
-                                    </td>
-                                  </tr>
-
-                                  <tr>
-                                    <td>
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="pan_num" type="date" value="null" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                    <td>
-                                      <label>Discharge Report*</label>
-                                      <input wire:model.defer="form.discharge_report" id="discharge_report" type="text" value="null" class="form-control" placeholder="" >
-                                    </td>
-                                  </tr>
-
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Discharge Report File*</label>
-                                      <input wire:model.defer="form.discharge_report_file" id="discharge_report_file" type="text" value="null" class="form-control" placeholder="Discharge Report FIle" >
                                     </td>
                                   </tr>  
                                 </tbody>

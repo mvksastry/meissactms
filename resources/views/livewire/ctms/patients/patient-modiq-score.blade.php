@@ -497,27 +497,9 @@ performing more physically stressful activities(e.g. lifting, vacuuming).</label
                                       <label>In Patient ID*</label>
                                       <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                  <td colspan="1">
+                                   <td colspan="1">
                                       <label>Admission Date*</label>
                                       <input wire:model.defer="form.admission_date" id="admission_date" type="date" value="null" class="form-control" placeholder="Aadhar ID">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.pan_num" id="pan_num" type="text" value="null" class="form-control" placeholder="PAN">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report*</label>
-                                      <input wire:model.defer="form.other_id" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report File*</label>
-                                      <input wire:model.defer="form.dicharge_rep_file" id="dicharge_rep_file" type="text" value="null" class="form-control" placeholder="Other ID" >
                                     </td>
                                   </tr>  
                                 </tbody>

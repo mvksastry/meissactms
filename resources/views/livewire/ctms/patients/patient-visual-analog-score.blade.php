@@ -90,28 +90,10 @@
                                       <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control">
                                     </td>
                                     <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                  <td colspan="1">
                                       <label>Admission Date*</label>
                                       <input wire:model.defer="form.admission_date" id="Admission Date" type="date" value="null" class="form-control" placeholder="Admission Date">
                                     </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="Discharge Date" type="date" value="null" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report*</label>
-                                      <input wire:model.defer="form.discharge_report" id="Discharge Report" type="text" value="null" class="form-control" placeholder="Discharge Report" >
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report File*</label>
-                                      <input wire:model.defer="form.discharge_report_file" id="Discharge Report File" type="text" value="null" class="form-control" placeholder="Discharge Rep File" >
-                                    </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>
