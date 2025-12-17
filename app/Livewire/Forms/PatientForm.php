@@ -13,16 +13,16 @@ class PatientForm extends Form
     //#[Validate('required|max:5')]
     //public $personal_care = '';
 
-    #[Validate('required|max:20')]
+    #[Validate('required|max:3')]
     public $center_id = '1';
 
-    #[Validate('required|max:20')]
+    #[Validate('required|max:3')]
     public $ctarm_id = '1';
 
-    #[Validate('max:3')]
+    #[Validate('max:20')]
     public $opd_id = '';
 
-    #[Validate('max:3')]
+    #[Validate('max:20')]
     public $in_patient_id = '';
 
     #[Validate('nullable|date')]

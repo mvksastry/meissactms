@@ -14,7 +14,7 @@ class PatientLSForm extends Form
     public $in_patient_id = '';
 
     #[Validate('nullable|date')]
-    public $admission_date = '';
+    public $admission_date = null;
 
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $cross_leg_sitting = '';
@@ -47,5 +47,5 @@ class PatientLSForm extends Form
     public $entered_by = '';
 
     #[Validate('nullable|date')]
-    public $entry_date = '';
+    public $entry_date = null;
 }
