@@ -32,7 +32,7 @@ class PatientForm extends Form
     public $aadhar_id = null;
 
     #[Validate('nullable|alpha_num')]
-    public $pan_num = num;
+    public $pan_num = '';
 
     #[Validate('nullable|alpha_num')]
     public $other_id = '';
