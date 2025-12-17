@@ -13,7 +13,7 @@ class PatientRMQForm extends Form
     #[Validate('alpha_num')]
     public $in_patient_id = null;
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
 
@@ -22,13 +22,13 @@ class PatientRMQForm extends Form
     public $rmq_replies = null;
 
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('alpha')]
     public $entered_by = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $entry_date = null;  
 
 }

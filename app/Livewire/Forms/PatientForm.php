@@ -25,8 +25,8 @@ class PatientForm extends Form
     #[Validate('max:3')]
     public $in_patient_id = '';
 
-    #[Validate('date')]
-    public $admission_date = '';
+    #[Validate('nullable|date')]
+    public $admission_date = null;
 
     #[Validate('numeric')]
     public $aadhar_id = '';
@@ -40,7 +40,7 @@ class PatientForm extends Form
     #[Validate('alpha')]
     public $present_occupation = '';
 
-    #[Validate('alpha')]
+    #[Validate('required|regex:/^[A-Za-z ]+$/')]
     public $name = '';
 
     #[Validate('alpha')]
@@ -49,40 +49,40 @@ class PatientForm extends Form
     #[Validate('alpha')]
     public $alias_name = '';
 
-    #[Validate('alpha')]
+    #[Validate('required|alpha')]
     public $gender = '';
 
-    #[Validate('date')]
-    public $date_of_birth = '';
+    #[Validate('nullable|date')]
+    public $date_of_birth = null;
 
-    #[Validate('numeric')]
+    #[Validate('required|numeric')]
     public $age = '';
 
-    #[Validate('numeric')]
+    #[Validate('required|numeric')]
     public $primary_phone_number = '';
 
     #[Validate('numeric')]
     public $alternate_phone_number = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $address = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $land_mark = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $taluka_haveli = '';
 
     #[Validate('alpha')]
     public $state = '';
 
-    #[Validate('alpha')]
+    #[Validate('regex:/^[A-Za-z ]+$/')]
     public $emergency_contact_name = '';
 
     #[Validate('numeric')]
     public $emergency_contact_phone = '';
 
-    #[Validate('alpha')]
+    #[Validate('regex:/^[A-Za-z ]+$/')]
     public $alternate_contact_name = '';
 
     #[Validate('numeric')]
@@ -103,141 +103,141 @@ class PatientForm extends Form
     #[Validate('numeric')]
     public $bmi = '';
 
-    #[Validate('alpha')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $consent_status = '';
 
-    #[Validate('date')]
-    public $consent_date = '';
+    #[Validate('nullable|date')]
+    public $consent_date = null;
 
-    #[Validate('alpha')]
+    #[Validate('regex:/^[A-Za-z0-9 ]+$/')]
     public $consent_av = '';
 
-    #[Validate('date')]
-    public $consent_approval_date = '';
+    #[Validate('nullable|date')]
+    public $consent_approval_date = null;
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9 ]+$/')]
     public $consent_approval_reference = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9 ]+$/')]
     public $consent_approval_file = '';
 
-    #[Validate('max:3')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $gen_surgical_info = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $surgery_at_lumbar = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $malignancies = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $general_medical_history = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $infections_suffered = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $general_inflammatory_diseases = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $ankylosing_spondylosis = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $rheumatoid_arthritis = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $chronic_kidney_issues = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $chronic_liver_issues = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $hiv = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $aids = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $hepatitis_b = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $hepatitis_c = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $diabetes_mellitus_self = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $diabetes_mellitus_family = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $hypertension_self = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $hypertension_family = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $ihd_self = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $ihd_family = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $paralysis_self = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $paralysis_family = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $past_complaints = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $present_complaints = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $past_medications = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $present_medications = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $addictive_substance_use = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $non_addictive_substance_use = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $past_history = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $notable_family_history = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $before_problem_occupation = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $general_habits = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $consumption_non_tgp = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $consumption_tobacco = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $consumption_gutka = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $consumption_pan = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $anyother_habbits = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z ]+$/')]
     public $comment_entered_by = '';   
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $entered_by = '';
 
-    #[Validate('alpha_num')]
-    public $entry_date = '';
+    #[Validate('nullable|date')]
+    public $entry_date = null;
 }

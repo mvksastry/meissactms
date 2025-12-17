@@ -157,34 +157,50 @@ trait TPatientPersonalInfo
                 //make entries in all relevant tables.
                 $newLS = new LifeStyle();
                 $newLS->patient_uuid = $this->patient_uuid;
+                $newLS->status = 'draft';
+                $newLS->status_date = date('Y-m-d');
                 $newLS->save();
 
                 $newCD = new ClinicalData();
                 $newCD->patient_uuid = $this->patient_uuid;
+                $newCD->status = 'draft';
+                $newCD->status_date = date('Y-m-d');
                 $newCD->save();
 
                 $newSE = new SensoryExamination();
                 $newSE->patient_uuid = $this->patient_uuid;
+                $newSE->status = 'draft';
+                $newSE->status_date = date('Y-m-d');
                 $newSE->save();
 
                 $newMDT = new Mdtre();
-                $Mdtre->patient_uuid = $this->patient_uuid;
-                $Mdtre->save();
+                $newMDT->patient_uuid = $this->patient_uuid;
+                $newMDT->status = 'draft';
+                $newMDT->status_date = date('Y-m-d');
+                $newMDT->save();
 
                 $newPfg = new PfirmannGrade();
                 $newPfg->patient_uuid = $this->patient_uuid;
+                $newPfg->status = 'draft';
+                $newPfg->status_date = date('Y-m-d');
                 $newPfg->save();
 
                 $newVasc = new VAScore();
                 $newVasc->patient_uuid = $this->patient_uuid;
+                $newVasc->status = 'draft';
+                $newVasc->status_date = date('Y-m-d');
                 $newVasc->save();
 
                 $newModq = new ModqScore();
                 $newModq->patient_uuid = $this->patient_uuid;
+                $newModq->status = 'draft';
+                $newModq->status_date = date('Y-m-d');
                 $newModq->save();
 
                 $newRMQ = new RMQReply();
                 $newRMQ->patient_uuid = $this->patient_uuid;
+                $newRMQ->status = 'draft';
+                $newRMQ->status_date = date('Y-m-d');
                 $newRMQ->save();
 
                 //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
@@ -205,7 +221,7 @@ trait TPatientPersonalInfo
                 // Handles any other general exceptions
                 $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
                 Log::channel('patient')->info($msg);
-                $this->sysAlertDanger = $msge;
+                $this->sysAlertDanger = $msg;
             }
     }
 }

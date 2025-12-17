@@ -38,6 +38,29 @@
                   <!-- Morris chart - Sales -->
                   <div class="row">
                     <div class="col-12">
+                                  
+                      <div class="col-12">
+                        <label>Note:</label>
+                      </br>
+                        <label>This form has time stamps and expires in 60 min. Before re-enterning data, visit "Edit Paitents" (above orange buttion) to avoid duplication.</label>
+                      </div>
+              {{-- Display all validation errors in one block --}}
+                  @if ($errors->any())
+                      <div class="text-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+
+                  {{-- Success message --}}
+                  @if (session()->has('success'))
+                      <div class="text-success">
+                          {{ session('success') }}
+                      </div>
+                  @endif
                       <!-- Custom Tabs -->
                       <div class="card">
                         <div class="card-header d-flex p-0">
@@ -106,7 +129,7 @@
                                     <tr>
                                       <td colspan="1">
                                         <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" type="text" value="{{ Auth::user()->name }}" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
                                       </td>
                                       <td colspan="1">
                                         <label>Entry Date*</label>

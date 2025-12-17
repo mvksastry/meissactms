@@ -43,7 +43,12 @@ class PatientPersonal extends Component
     public $non_addictive_substance_use, $past_history, $notable_family_history, $before_problem_occupation;
     public $general_habits;
 
-    public $entered_by, $entry_date, $verified_by, $verified_date, $entry_sealed_by, $entry_sealed_date;
+    public $comment_entered_by, $entered_by, $entry_date;
+
+    public function mount()
+    {
+         $this->entered_by = Auth::user()->name;
+    }
 
     public function render()
     {   
@@ -52,10 +57,10 @@ class PatientPersonal extends Component
 
     public function fnSavePrimaryInfo()
     {
+        $this->validate(); 
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->savePatientInformation($this->input);
         //dd($result);
-        //$this->dispatch('newPatientUuidToParent', $result);
     }
 }

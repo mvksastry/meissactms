@@ -7,24 +7,24 @@ use Livewire\Form;
  
 class PfirmannForm extends Form
 {
-    #[Validate('max:45')]
+    #[Validate('alpha_num')]
     public $opd_id = '';
 
-    #[Validate('max:5')]
+    #[Validate('alpha_num')]
     public $in_patient_id = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
-    #[Validate('max:5')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $modified_pfirman_grade = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
 
-    #[Validate('alpha')]
+    #[Validate('regex:/^[A-Za-z ]+$/')]
     public $entered_by = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $entry_date = null;
 }

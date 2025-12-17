@@ -14,29 +14,29 @@ class PatientSEForm extends Form
     #[Validate('alpha_num')]
     public $in_patient_id = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $S1 = '';
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $L1 = '';
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $L2 = '';
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $L3 = '';
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $L4 = '';
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $L5 = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0 ]+$/')]
     public $entered_by = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $entry_date = null;
     
 }

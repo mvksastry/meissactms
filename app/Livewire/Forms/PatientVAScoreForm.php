@@ -7,43 +7,43 @@ use Livewire\Form;
  
 class PatientVAScoreForm extends Form
 {
-    #[Validate('numeric')]
+    #[Validate('alpha_num')]
     public $opd_id = '';
 
-    #[Validate('numeric')]
+    #[Validate('alpha_num')]
     public $in_patient_id = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
     
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $intensity = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $location = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $onset = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $duration = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $variation = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $quality = '';
 
 
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z ]+$/')]
     public $entered_by = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $entry_date = null;
 }

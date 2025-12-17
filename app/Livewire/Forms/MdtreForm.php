@@ -13,59 +13,59 @@ class MdtreForm extends Form
     #[Validate('alpha_num')]
     public $in_patient_id = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $hip_flex_adduction = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $knee_extension = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $ankle_dorsiflexion = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $decreased_patellar_reflex = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $extensor_hallucis_longus = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $hip_abduction = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $ankle_plantar_flexion = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $dec_achilles_tendon_reflex = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $straight_leg_raise = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $contralateral_slr = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $femoral_nerve_stretch_test = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $trendelenburg_gait = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $antalgic_gait = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $list = '';
 
     
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z ]+$/')]
     public $entered_by = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $entry_date = null;
 }

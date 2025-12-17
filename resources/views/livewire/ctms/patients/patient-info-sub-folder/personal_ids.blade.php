@@ -31,7 +31,10 @@
       <tr>
         <td colspan="1">
           <label>Name*</label>
-          <input wire:model="form.name" id="name" type="text" value="null" class="form-control" placeholder="Full Name">
+          <input wire:model="form.name" id="name" type="text" value="null" class="form-control" placeholder="Full Name">          
+           <div>
+              @error('form.name') <span class="error text-danger">{{ $message }}</span> @enderror 
+          </div>
         </td>
         <td colspan="1">
           <label>Nick Name*</label>
@@ -44,6 +47,9 @@
         <td colspan="1">
           <label>Gender*</label>
           <input wire:model.defer="form.gender" id="item_desc" type="text" value="null" class="form-control" placeholder="Gender">
+          <div>
+              @error('form.gender') <span class="error text-danger">{{ $message }}</span> @enderror 
+          </div>
         </td>
       </tr>
       <tr>
@@ -54,10 +60,17 @@
         <td colspan="1">
           <label>Age*</label>
           <input wire:model.defer="form.age" id="age" type="number"  class="form-control" placeholder="Age">
+          <div>
+              @error('form.age') <span class="error text-danger">{{ $message }}</span> @enderror 
+          </div>
+      
         </td>
         <td colspan="1">
           <label>Primary Phone*</label>
           <input wire:model="form.primary_phone_number" id="primary_phone_number" type="number" value="null" class="form-control" placeholder="Primary Phone Number">
+          <div>
+              @error('form.primary_phone_number') <span class="error text-danger">{{ $message }}</span> @enderror 
+          </div>
         </td>
         <td colspan="1">
           <label>Alternate Phone*</label>

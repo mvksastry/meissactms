@@ -14,70 +14,70 @@ class PatientCIForm extends Form
     #[Validate('alpha_num')]
     public $in_patient_id = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $oande = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $pr = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $temperature = '';
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $bp_systolic = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $bp_diastolic = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $cvs = '';
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $panda = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $cns = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $cbc = '';
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $esr = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $crp = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $rft = '';
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $lft = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $clotting_time = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $bleeding_time = '';
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $prothrombin_time = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $procalcitonin = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $laboratory_report_file = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $entered_by = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $entry_date = null;
     
 }

@@ -13,53 +13,53 @@ class ModqScoreForm extends Form
     #[Validate('alpha_num|max:35')]
     public $in_patient_id = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
 
     
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $pain_intensity = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $personal_care = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $lifting = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $walking = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $sitting = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $standing = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $sleeping = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $social_life = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $travelling = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $emp_home = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $total = null;
 
-    #[Validate('numeric')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $modq_score = null;
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z ]+$/')]
     public $entered_by = '';
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $entry_date = null;
 }    
