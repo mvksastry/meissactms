@@ -57,6 +57,8 @@ class PatientPersonal extends Component
 
     public function fnSavePrimaryInfo()
     {
+        //$this->input = $this->form->all();
+        //dd($this->input);
         $this->validate(); 
         $this->input = $this->form->all();
         //dd($this->input); // 

@@ -8,7 +8,7 @@
         <tr>
           <td colspan="1">
             <label>Height*</label>
-            <input wire:model="form.height" id="height" type="number" value="null" class="form-control" placeholder="Height">
+            <input wire:model="form.height" id="height" type="number" class="form-control" placeholder="Height">
           </td>
           <td colspan="1">
             <label>Height Unit*</label>
@@ -18,15 +18,15 @@
         <tr>
           <td colspan="1">
             <label>Weight*</label>
-            <input wire:model="form.weight" id="weight" type="number" value="null" class="form-control" placeholder="Weight">
+            <input wire:model="form.weight" id="weight" type="number" class="form-control" placeholder="Weight">
           </td>
           <td colspan="1">
             <label>Weight Unit*</label>
-            <input wire:model.defer="form.weight_unit" id="item_desc" type="text" Value="kilo gram" class="form-control" placeholder="Weight Unit">
+            <input wire:model.defer="form.weight_unit" id="item_desc" type="text" class="form-control" placeholder="Weight Unit">
           </td>
           <td colspan="1">
             <label>BMI*</label>
-            <input wire:model.defer="form.bmi" id="item_desc" type="number" value="null" class="form-control" placeholder="BMI" >
+            <input wire:model.defer="form.bmi" id="item_desc" type="number" class="form-control" placeholder="BMI" >
           </td>
         </tr>
       </tbody>

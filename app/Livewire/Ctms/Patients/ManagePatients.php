@@ -103,10 +103,30 @@ class ManagePatients extends Component
         $this->newPatientEntrySteps = true;
     }
 
+    #[On('resetPanelsForNewMessages')] 
+    public function resetMessagePanels()
+    {
+        $this->message_panel = false;
+
+        $this->sysAlertInfo = false;
+        $this->sysAlertSuccess = false;
+        $this->sysAlertWarning = false;
+        $this->sysAlertDanger = false;
+
+        $this->comInfo = false;
+        $this->comSuccess = false;
+        $this->comDanger = false;
+        $this->comWarning = false;
+    }
+
     #[On('newPatientUuidGenerated')] 
     public function setPatientUuid($id)
     {
         $this->patient_uuid = $id;
+        $this->resetMessagePanels();
+
+        $this->messge_panel = true;
+        $this->comSuccess = "New Patient ID Created";
         Log::channel('patient')->info('Emitted patient creation event');
         //dd("event emitted and understood");
         $this->openAllOtherForms = true;

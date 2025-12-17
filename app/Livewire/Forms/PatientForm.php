@@ -88,14 +88,14 @@ class PatientForm extends Form
     #[Validate('numeric')]
     public $alternate_contact_phone = '';
 
-    #[Validate('numeric')]
-    public $height = '';
+    #[Validate('regex:/^[0-9]+$/')]
+    public $height = 0;
 
     #[Validate('alpha')]
     public $height_unit = 'centimeters';
 
-    #[Validate('numeric')]
-    public $weight = '';
+    #[Validate('regex:/^[0-9]+$/')]
+    public $weight = 0;
 
     #[Validate('alpha')]
     public $weight_unit = 'kg';
