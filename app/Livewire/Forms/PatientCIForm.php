@@ -69,7 +69,7 @@ class PatientCIForm extends Form
     public $procalcitonin = '';
 
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $laboratory_report_file = '';
+    public $lab_report_file = '';
 
     #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
     public $comment_entered_by = '';
