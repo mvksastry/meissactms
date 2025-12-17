@@ -147,7 +147,6 @@ trait TPatientPersonalInfo
             //$name = "New Patient Name"; //for testing
             //$result = true; //for testing
             // Attempt to save the user
-            //$this->resetMessagePanels();
             $this->dispatch('resetPanelsForNewMessages');
             
             if ($result) {          
