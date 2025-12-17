@@ -7,7 +7,7 @@
     <tbody>        
       <tr>
         <td colspan="3">
-          <label>Entered By*</label>
+          <label>Comment</label>
           <input wire:model="form.comment_entered_by" class="form-control" value="{{ $patientPrimaryInfo->comment_entered_by }}"  type="text">
         </td>
       </tr>

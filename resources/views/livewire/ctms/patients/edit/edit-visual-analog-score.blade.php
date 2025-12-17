@@ -39,7 +39,22 @@
                       <div class="card">
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
-                          
+                            @if ($errors->any())
+                                <div class="text-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            {{-- Success message --}}
+                            @if (session()->has('success'))
+                                <div class="text-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <img src="{{asset('assets/dist/img/VASscore.png')}}" alt="AdminLTE Logo" class="w-75 h-75 object-fit-cover" style="opacity: .8">

@@ -35,6 +35,22 @@
                   <!-- Morris chart - Sales -->
                   <div class="row">
                     <div class="col-12">
+                        @if ($errors->any())
+                            <div class="text-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        {{-- Success message --}}
+                        @if (session()->has('success'))
+                            <div class="text-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                       <!-- Custom Tabs -->
                       <div class="card">
                         <div class="card-header d-flex p-0">

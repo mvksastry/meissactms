@@ -28,6 +28,22 @@
                     -->
                   </ul>
                 </div>
+                  @if ($errors->any())
+                      <div class="text-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+
+                  {{-- Success message --}}
+                  @if (session()->has('success'))
+                      <div class="text-success">
+                          {{ session('success') }}
+                      </div>
+                  @endif
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content p-0">

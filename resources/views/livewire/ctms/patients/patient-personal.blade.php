@@ -44,7 +44,7 @@
                       </br>
                         <label>This form has time stamps and expires in 60 min. Before re-enterning data, visit "Edit Paitents" (above orange buttion) to avoid duplication.</label>
                       </div>
-              {{-- Display all validation errors in one block --}}
+                  {{-- Display all validation errors in one block --}}
                   @if ($errors->any())
                       <div class="text-danger">
                           <ul>
