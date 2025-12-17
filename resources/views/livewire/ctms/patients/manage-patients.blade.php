@@ -90,7 +90,7 @@
                   </div>
                   <!-- /.col -->
                   <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnMODIQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp MODIQ Score</button>  
+                    <button wire:click="fnMODIQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp MODQ Score</button>  
                   </div>
                   <!-- /.col -->
                   <div class="col-sm-3 col-md-2">

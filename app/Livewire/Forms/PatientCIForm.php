@@ -8,10 +8,10 @@ use Livewire\Form;
 class PatientCIForm extends Form
 {
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
     public $opd_id = '';
 
-    #[Validate('alpha_num')]
+    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
     public $in_patient_id = '';
 
     #[Validate('nullable|date')]

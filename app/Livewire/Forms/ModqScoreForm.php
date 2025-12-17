@@ -7,10 +7,10 @@ use Livewire\Form;
  
 class ModqScoreForm extends Form
 {
-    #[Validate('alpha_num|max:25')]
+    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
     public $opd_id = '';
 
-    #[Validate('alpha_num|max:35')]
+    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
     public $in_patient_id = '';
 
     #[Validate('nullable|date')]

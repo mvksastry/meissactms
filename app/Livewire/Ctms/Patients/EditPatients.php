@@ -425,4 +425,20 @@ class EditPatients extends Component
         $this->openRMQScoreEntryForm = true;
     }
 
+    public function fnRadiographsInfo($id)
+    {
+        $openNewPatientEntryForm = false;
+        $openNewLifeStyleEntryForm = false;
+        $openNewClinicalInvestigationsEntryForm = false;
+        $openNewSensoryExaminationsEntryForm = false;
+        $openMDTREExaminationsEntryForm = false;
+        $openRadiographsEntryForm = false;
+
+        $openModifiedPfirmannGradesEntryForm = false;
+        $openVisualAnalogScore = false;
+        $openMODIQScoreEntryForm = false;
+        $openRMQScoreEntryForm = false;
+        $openAdverseEventsEntryForm = false;
+    }
+
 }
