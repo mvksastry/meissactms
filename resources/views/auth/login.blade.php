@@ -53,8 +53,8 @@
         <div class="row justify-content-center">
           <div class="col-xxl-5 col-xl-5 col-lg-7 col-md-10">
             <div class="section-title text-center mb-50">
-              <h3 class="mb-15">Log in</h3>
-              <p>Active Session is needed for usage.</p>
+              <h3 class="mb-15">CTMS - Meissa</h3>
+              <p>Active Session is needed for usage. Log in</p>
             </div>
           </div>
         </div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="text">
                       <p>support-meissa@meissa.co.in</p>
-                      <p>admin@meissactms.in</p>
+                      <p></p>
                     </div>
                   </div>
                 </div>
