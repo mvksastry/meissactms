@@ -15,6 +15,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 //use App\Traits\Base;
 
+use App\Models\Ctms\Center;
+use App\Models\Ctms\Clinic;
+
 class PatientsController extends Controller
 {
     use HasRoles;
@@ -25,9 +28,9 @@ class PatientsController extends Controller
     public function index()
     {
         //
-        if( Auth::user()->hasAnyRole('ctms_incharge') )
-		{
-            return view('patients.admin.home');
+        if( Auth::user()->hasAnyRole(['ctms_incharge','director']) )
+		{   $centers = Center::all();
+            return view('patients.admin.home')->with('centers', $centers);;
         }
 
         if( Auth::user()->hasAnyRole('researcher') )

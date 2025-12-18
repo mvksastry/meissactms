@@ -57,7 +57,7 @@
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  
+                  @if(count($centers) > 0)
                     <table id="example2" class="table table-sm table-bordered table-hover">
                       <thead>
                         <tr>
@@ -69,36 +69,35 @@
                           <th> Occupied </th>
                           <th> In-Charge </th>
                           <th> Status</th>
+                          <th> Notes</th>
                           <th> Created</th>
                           <th> Updated</th>
                           <th> Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        
+                        @foreach($centers as $row)
                           <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td>  </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>                          
+                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->category }}</td>
+                            <td>{{ $row->description }}</td>
+                            <td>{{ $row->location }}</td>
+                            <td>{{ $row->total_size }}</td>
+                            <td>{{ $row->total_count }}</td>
+                            <td>{{ $row->incharge_name }}</td>
+                            <td>{{ $row->status }}</td>
+                            <td>{{ $row->notes }}</td>
+                            <td>{{ $row->created_at }}</td> 
+                            <td>{{ $row->updated_at }}</td>                          
                             <td>
-                              
-                                <button class="btn btn-sm btn-info">Edit</button>
-                              
-                                <button class="btn btn-sm btn-danger">Inactivate</button>
-                             
+                              <button class="btn btn-sm btn-info">Edit</button>                             
+                              <button class="btn btn-sm btn-danger">Inactivate</button>
                             </td>
                           </tr>
-                       
+                        @endforeach
                       </tbody>
                     </table>
-                 
+                  @else
                     <table id="example2" class="table table-sm table-bordered table-hover">
                       <thead>
                         <tr>
@@ -113,7 +112,7 @@
                         </tr>
                       </tbody>
                     </table>
-                 
+                  @endif
                     <!--Divider-->
                     <hr class="border-b-2 border-warning my-2 mx-2">
                     <!--Divider-->
