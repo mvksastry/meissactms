@@ -31,13 +31,13 @@ trait TPatientClinicalData
         //$newCIInfo->in_patient_id = $input['in_patient_id'];
         //$newCIInfo->admission_date = $input['admission_date'];
 
-        $newCIInfo->o_e = $input['oande'];
+        $newCIInfo->o_e = $input['o_e'];
         $newCIInfo->pr = $input['pr'];
         $newCIInfo->temperature = $input['temperature'];
         $newCIInfo->bp_systolic = $input['bp_systolic'];
         $newCIInfo->bp_diastolic = $input['bp_diastolic'];
         $newCIInfo->cvs = $input['cvs'];
-        $newCIInfo->p_a = $input['panda'];
+        $newCIInfo->p_a = $input['p_a'];
         $newCIInfo->cns = $input['cns'];
 
         $newCIInfo->cbc = $input['cbc'];

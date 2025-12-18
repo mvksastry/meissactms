@@ -3,6 +3,9 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 use App\Livewire\Forms\PatientRMQForm;
 
 //models
@@ -67,16 +70,12 @@ class PatientRmqScore extends Component
         $this->form->in_patient_id = $newObj->in_patient_id;
         $this->form->admission_date = $newObj->admission_date;
 
-        $this->form->entered_by = $newObj->entered_by;
+        $this->form->entered_by = Auth::user()->name;
         $this->form->entry_date = date('Y-m-d');
 
         $this->srvp = RMQReply::where('patient_uuid', $this->patient_uuid)->where('status', 'draft')->first();
-        
-        if($this->srvp != null)
-        {
-            $this->showOldRmqValPanel = true;
-            //dd($this->showOldRmqValPanel);
-        }
+        $this->form->comment_entered_by = $this->srvp->comment_entered_by;
+        //dd($this->srvp);
     }
 
     public function render()

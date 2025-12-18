@@ -91,32 +91,79 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
-                              @if($showOldRmqValPanel)
-                              <?php $srvp_decoded = json_decode($srvp->rmq_replies); ?>
-                                @foreach($srvp_decoded as $row)
-                                  <label class="text-success">{{ $row }} -- {{ $rmqreplies[$row] }}</label>
-                                  </br>
-                                @endforeach
-                              @endif
-                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                                <thead>
-                                  <tr>
-                                    <th colspan="6" align="center"></th>
-                                  </tr>
-                                </thead>
-                                <tbody> 
-                                  @foreach($rmquestions as $row)
-                                  <tr>
-                                    <td>
-                                      <div class="form-check">
-                                        <input class="form-check-input" wire:model="rmq_replies" value="{{ $row->rmquestion_id }}" type="checkbox">
-                                        <label class="form-check-label"> {{ $row->question }}</label>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                  @endforeach                                    
-                                </tbody>
-                              </table>
+                              
+
+                                              
+                              <div class="row">
+                                <div class="col-6">
+                                  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th colspan="1">Select All Applicable</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody> 
+                                      @foreach($rmquestions as $row)
+                                      <tr>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input" wire:model="rmq_replies" value="{{ $row->rmquestion_id }}" type="checkbox">
+                                            <label class="form-check-label"> {{ $row->question }}</label>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      @endforeach                                    
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <div class="col-6">
+
+                                  @if( ($srvp->rmq_replies != null) ? $srvp->rmq_replies : null)
+                                    <?php 
+                                      $srvp_decoded = json_decode($srvp->rmq_replies); 
+                                      //dd($srvp_decoded);
+                                    ?>
+                                    <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th colspan="1">Current Values</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody> 
+                                        @if(count($srvp_decoded) > 0)
+                                          @foreach($srvp_decoded as $row)
+                                            <tr>
+                                              <td>
+                                                <div class="form-check">
+                                                  <label class="form-check-label"> {{ $rmqreplies[$row] }}</label>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                          @endforeach      
+                                        @else
+                                          <tr>
+                                            <td>
+                                              <div class="form-check">
+                                                <label class="form-check-label">Values Not Found</label>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        @endif                              
+                                      </tbody>
+                                    </table>
+                                  @else
+                                    <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th colspan="1">No Current Values</th>
+                                        </tr>
+                                      </thead>
+                                    </table>
+                                  @endif
+                                </div>
+
+                              </div>
+
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
