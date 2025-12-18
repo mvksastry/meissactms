@@ -69,45 +69,24 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="2" align="center">Clinical</th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
-
                                 <tbody> 
                                   <tr>
                                     <td>
                                       <label>Opd ID*</label>
-                                      </br>{{ $sensoryexam_info->opd_id }}
+                                      </br>{{  $sensoryexam_info->opd_id }}
                                     </td>
-                                    <td >
-                                      <label>Investigation Report Date*</label>
-                                      </br>{{ $sensoryexam_info->opd_id }}
-                                     </td>
-                                  </tr>
-
-                                  <tr>
                                     <td>
                                       <label>In Patient ID*</label>
+                                      </br>{{  $sensoryexam_info->opd_id }}
                                     </td>
                                     <td>
                                       <label>Admission Date*</label>
+                                      </br>{{  $sensoryexam_info->opd_id }}
                                      </td>
                                   </tr>
-
-                                  <tr>
-                                    <td>
-                                      <label>Discharge Date*</label>
-                                     </td>
-                                    <td>
-                                      <label>Discharge Report*</label>
-                                    </td>
-                                  </tr>
-
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Discharge Report File*</label>
-                                    </td>
-                                  </tr>  
                                 </tbody>
                               </table>
                             </div>
@@ -124,7 +103,7 @@
                                   <tr>
                                     <td>
                                       <label>S1*</label>
-                                      </br>{{ $sensoryexam_info->s1 }}
+                                      </br>{{ $sensoryexam_info->S1 }}
                                     </td>
                                     <!--
                                     <td>
@@ -197,23 +176,23 @@
                                   <tr>
                                     <td>
                                       <label>L1*</label>
-                                      </br>{{ $sensoryexam_info->l1 }}
+                                      </br>{{ $sensoryexam_info->L1 }}
                                      </td>
                                     <td>
                                       <label>L2*</label>
-                                      </br>{{ $sensoryexam_info->l2 }}
+                                      </br>{{ $sensoryexam_info->L2 }}
                                     </td>
                                     <td>
                                       <label>L3*</label>
-                                      </br>{{ $sensoryexam_info->l3 }}
+                                      </br>{{ $sensoryexam_info->L3 }}
                                     </td>
                                     <td>
                                       <label>L4*</label>
-                                      </br>{{ $sensoryexam_info->l4 }}
+                                      </br>{{ $sensoryexam_info->L4 }}
                                     </td>
                                     <td>
                                       <label>L5*</label>
-                                      </br>{{ $sensoryexam_info->l5 }}
+                                      </br>{{ $sensoryexam_info->L5 }}
                                      </td>
                                   </tr>                                    
                                 </tbody>
@@ -225,11 +204,17 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="3" align="center"></th>
+                                    <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody>        
                                   <tr>
+                                    <td colspan="2">
+                                      <label>Comment By Entered</label>
+                                      </br>{{ $vascore_info->comment_entered_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>                                    
                                     <td colspan="1">
                                       <label>Entered By*</label>
                                       </br>{{ $sensoryexam_info->entered_by }}
@@ -240,6 +225,12 @@
                                     </td>
                                   </tr>
                                   <tr>
+                                    <td colspan="2">
+                                      <label>Comment by Verified</label>
+                                      </br>{{ $vascore_info->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>                                    
                                     <td colspan="1">
                                       <label>Verified By*</label>
                                       </br>{{ $sensoryexam_info->verified_by }}
@@ -250,6 +241,12 @@
                                     </td>
                                   </tr>
                                   <tr>
+                                    <td colspan="2">
+                                      <label>Comment by Sealed Authority</label>
+                                      </br>{{ $vascore_info->comment_sealed_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>                                     
                                     <td colspan="1">
                                       <label>Entry Sealed By*</label>
                                       </br>{{ $sensoryexam_info->entry_sealed_by }}

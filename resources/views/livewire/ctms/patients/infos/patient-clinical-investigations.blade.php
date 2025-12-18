@@ -49,34 +49,24 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Opd ID*</label>
                                       </br>{{  $clinical_info->opd_id }}
                                     </td>
-                                    <td colspan="1">
+                                    <td>
                                       <label>In Patient ID*</label>
-                                      </br>{{  $clinical_info->in_patient_id }}
+                                      </br>{{  $clinical_info->opd_id }}
                                     </td>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Admission Date*</label>
-                                      </br>{{  $clinical_info->admission_date }}
+                                      </br>{{  $clinical_info->opd_id }}
                                      </td>
                                   </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Aadhar ID*</label>
-                                      </br>{{  $clinical_info->aadhar_id }}
-                                     </td>
-                                    <td colspan="1">
-                                      <label>PAN*</label>
-                                      </br>{{  $clinical_info->pan_num }}
-                                    </td>
-                                  </tr>  
                                 </tbody>
                               </table>
                             </div>
@@ -178,7 +168,64 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                              @include('livewire.ctms.end-controls')
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" align="center"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>        
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Comment by Entered</label>
+                                      </br>{{ $clinical_info->comment_entered_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Entered By*</label>
+                                      </br>{{ $clinical_info->entered_by }}
+                                    </td>
+                                    <td colspan="1">
+                                      <label>Entry Date*</label>
+                                      </br>{{ $clinical_info->entry_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Comment By Verified</label>
+                                      </br>{{ $clinical_info->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Verified By*</label>
+                                      </br>{{ $clinical_info->verified_by }}
+                                    </td>
+                                    <td>
+                                      <label>Verified Date*</label>
+                                      </br>{{ $clinical_info->verified_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Comment By Sealed Authority</label>
+                                      </br>{{ $clinical_info->comment_sealed_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Entry Sealed By*</label>
+                                      </br>{{ $clinical_info->entry_sealed_by }}
+                                    </td>
+                                    <td colspan="2">
+                                      <label>Sealed Date*</label>
+                                      </br>{{ $clinical_info->entry_sealed_date }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
                               <button wire:click="fnSaveClinicalData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
                             </div>
                             <!-- /.tab-pane -->

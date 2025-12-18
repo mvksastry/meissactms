@@ -138,7 +138,63 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                              @include('livewire.ctms.end-controls')
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" align="center"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>        
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Comment By Entered</label>
+                                      </br>{{ $ls_info->comment_entered_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Entered By*</label>
+                                      </br>{{ $ls_info->entered_by }}
+                                    </td>
+                                    <td colspan="1">
+                                      <label>Entry Date*</label>
+                                      </br>{{ $ls_info->entry_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Comment By Verified</label>
+                                      </br>{{ $ls_info->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Verified By*</label>
+                                      </br>{{ $ls_info->verified_by }}
+                                    </td>
+                                    <td>
+                                      <label>Verified Date*</label>
+                                      </br>{{ $ls_info->verified_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Comment By Sealed Authority</label>
+                                      </br>{{ $ls_info->comment_sealed_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Entry Sealed By*</label>
+                                      </br>{{ $ls_info->entry_sealed_by }}
+                                    </td>
+                                    <td colspan="2">
+                                      <label>Sealed Date*</label>
+                                      </br>{{ $ls_info->entry_sealed_date }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
                             </div>
                             <!-- /.tab-pane -->
 

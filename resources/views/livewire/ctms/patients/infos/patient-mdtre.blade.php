@@ -95,34 +95,25 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
+                                      </br>{{  $mdtre_info->opd_id }}
+                                      
                                     </td>
-                                    <td colspan="1">
+                                    <td>
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
+                                      </br>{{  $mdtre_info->opd_id }}
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="pan_num" type="date" value="null" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                  </tr>  
+                                      </br>{{  $mdtre_info->opd_id }}
+                                     </td>
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -179,6 +170,7 @@
                               </table>
                             </div>
                           <div class="tab-pane" id="tab_3">
+
                             <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
@@ -233,8 +225,66 @@
                             <!-- /.tab-pane -->
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_5">
-                              @include('livewire.ctms.end-controls')
-                              <button wire:click="fnSaveMDTREInfo()" class="btn btn-success text-white font-normal mt-3 rounded">ADD MDTRE INFO</button>
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" align="center"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>        
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Entered By*</label>
+                                      </br>{{ $mdtre_info->comment_entered_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="1">
+                                      <label>Entered By*</label>
+                                      </br>{{ $mdtre_info->entered_by }}
+                                    </td>
+                                    <td colspan="1">
+                                      <label>Entry Date*</label>
+                                      </br>{{ $mdtre_info->entry_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Verified</label>
+                                      </br>{{ $mdtre_info->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="1">
+                                      <label>Verified By*</label>
+                                      </br>{{ $mdtre_info->verified_by }}
+                                    </td>
+                                    <td colspan="1">
+                                      <label>Verified Date*</label>
+                                      </br>{{ $mdtre_info->verified_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Sealed Authority</label>
+                                      </br>{{ $mdtre_info->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="1">
+                                      <label>Entry Sealed By*</label>
+                                      </br>{{ $mdtre_info->entry_sealed_by }}
+                                    </td>
+                                    <td colspan="2">
+                                      <label>Sealed Date*</label>
+                                      </br>{{ $mdtre_info->entry_sealed_date }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                                                            
+                      
+                              
                             </div>
                             <!-- /.tab-pane -->
 

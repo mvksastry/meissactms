@@ -76,43 +76,25 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Opd ID*</label>
                                       </br>{{  $vascore_info->opd_id }}
                                       
                                     </td>
-                                    <td colspan="1">
+                                    <td>
                                       <label>In Patient ID*</label>
                                       </br>{{  $vascore_info->opd_id }}
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      </br>{{  $vascore_info->opd_id }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                  <td colspan="1">
+                                    <td>
                                       <label>Admission Date*</label>
                                       </br>{{  $vascore_info->opd_id }}
                                      </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      </br>{{  $vascore_info->opd_id }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report*</label>
-                                      </br>{{  $vascore_info->opd_id }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report File*</label>
-                                      </br>{{  $vascore_info->opd_id }}
-                                    </td>
-                                  </tr>  
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -161,10 +143,16 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="3" align="center"></th>
+                                    <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody>        
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Entered By*</label>
+                                      </br>{{ $vascore_info->comment_entered_by }}
+                                    </td>
+                                  </tr>
                                   <tr>
                                     <td colspan="1">
                                       <label>Entered By*</label>
@@ -176,6 +164,12 @@
                                     </td>
                                   </tr>
                                   <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Verified</label>
+                                      </br>{{ $vascore_info->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
                                     <td colspan="1">
                                       <label>Verified By*</label>
                                       </br>{{ $vascore_info->verified_by }}
@@ -183,6 +177,12 @@
                                     <td colspan="1">
                                       <label>Verified Date*</label>
                                       </br>{{ $vascore_info->verified_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Sealed Authority</label>
+                                      </br>{{ $vascore_info->comment_verified_by }}
                                     </td>
                                   </tr>
                                   <tr>

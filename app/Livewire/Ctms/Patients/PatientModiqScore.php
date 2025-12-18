@@ -149,6 +149,7 @@ class PatientModiqScore extends Component
         $this->painIntensitySelected = $this->pain_intensity;
 
         $this->modq_entered = ModqScore::where('patient_uuid', $this->patient_uuid)->first();
+        //dd($this->modq_entered);
         if($this->modq_entered != null)
         {
             $this->show_entered_values = true;

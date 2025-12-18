@@ -49,42 +49,27 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
+                                    </br>
+                                      {{ $rmq_replies->opd_id }}
                                     </td>
                                     <td colspan="1">
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control">
+                                      </br>
+                                      {{ $rmq_replies->in_patient_id }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                  <td colspan="1">
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="admission_date" type="date" value="null" class="form-control" placeholder="Aadhar ID">
+                                      </br>
+                                      {{ $rmq_replies->admission_date }}
                                     </td>
-                                    <td colspan="1">
-                                      <label>PAN*</label>
-                                      <input wire:model.defer="form.pan_num" id="pan_num" type="text" value="null" class="form-control" placeholder="PAN">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Aadhar ID*</label>
-                                      <input wire:model.defer="form.aadhar_id" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Other ID" >
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Other ID*</label>
-                                      <input wire:model.defer="form.other_id" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
-                                    </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>
@@ -99,7 +84,6 @@
                                 <tbody> 
                                   <?php
                                     $replies_rmq = json_decode($rmq_replies->rmq_replies);
-                                    //dd($replies_rmq);
                                   ?>
                                   @foreach($replies_rmq as $row)
                                   <tr>
@@ -115,8 +99,64 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                              @include('livewire.ctms.end-controls')
-                              <button wire:click="fnSaveRMQInfo()" class="btn btn-success text-white font-normal mt-3 rounded">ADD RMQ INFO</button>
+                                                            <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th colspan="2" align="center"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>        
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Entered By Entered</label>
+                                      </br>{{ $rmq_replies->comment_entered_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="1">
+                                      <label>Entered By*</label>
+                                      </br>{{ $rmq_replies->entered_by }}
+                                    </td>
+                                    <td colspan="1">
+                                      <label>Entry Date*</label>
+                                      </br>{{ $rmq_replies->entry_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Verified</label>
+                                      </br>{{ $rmq_replies->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="1">
+                                      <label>Verified By*</label>
+                                      </br>{{ $rmq_replies->verified_by }}
+                                    </td>
+                                    <td colspan="1">
+                                      <label>Verified Date*</label>
+                                      </br>{{ $rmq_replies->verified_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Sealed Authority</label>
+                                      </br>{{ $rmq_replies->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="1">
+                                      <label>Entry Sealed By*</label>
+                                      </br>{{ $rmq_replies->entry_sealed_by }}
+                                    </td>
+                                    <td colspan="2">
+                                      <label>Sealed Date*</label>
+                                      </br>{{ $rmq_replies->entry_sealed_date }}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->

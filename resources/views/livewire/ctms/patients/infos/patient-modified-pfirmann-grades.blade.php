@@ -56,39 +56,29 @@
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <div class="tab-content">
-
                             <div class="tab-pane active" id="tab_1">
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="4" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody> 
                                   <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
+                                      </br>{{  $vascore_info->opd_id }}
+                                      
                                     </td>
-                                    <td colspan="1">
+                                    <td>
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
+                                      </br>{{  $vascore_info->opd_id }}
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Report Date">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.discharge_date" id="pan_num" type="date" value="null" class="form-control" placeholder="Discharge Date">
-                                    </td>
-                                  </tr>  
+                                      </br>{{  $vascore_info->opd_id }}
+                                     </td>
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -113,13 +103,20 @@
                             <!-- /.tab-pane -->
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                                                            <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                              
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="3" align="center"></th>
+                                    <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody>        
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Entered By*</label>
+                                      </br>{{ $pfirmangrade_info->comment_entered_by }}
+                                    </td>
+                                  </tr>
                                   <tr>
                                     <td colspan="1">
                                       <label>Entered By*</label>
@@ -131,6 +128,12 @@
                                     </td>
                                   </tr>
                                   <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Verified</label>
+                                      </br>{{ $pfirmangrade_info->comment_verified_by }}
+                                    </td>
+                                  </tr>
+                                  <tr>
                                     <td colspan="1">
                                       <label>Verified By*</label>
                                       </br>{{ $pfirmangrade_info->verified_by }}
@@ -138,6 +141,12 @@
                                     <td colspan="1">
                                       <label>Verified Date*</label>
                                       </br>{{ $pfirmangrade_info->verified_date }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">
+                                      <label>Verified By Sealed Authority</label>
+                                      </br>{{ $pfirmangrade_info->comment_verified_by }}
                                     </td>
                                   </tr>
                                   <tr>
@@ -152,7 +161,9 @@
                                   </tr>
                                 </tbody>
                               </table>
-                              @include('livewire.ctms.end-controls')
+
+                              
+                              
                             </div>
                             <!-- /.tab-pane -->
 
