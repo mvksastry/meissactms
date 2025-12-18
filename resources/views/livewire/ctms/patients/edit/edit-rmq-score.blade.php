@@ -39,6 +39,9 @@
                   <div class="row">
                     <div class="col-12">
                       <!-- Custom Tabs -->
+                        @if($message_panel)
+                          @include('livewire.error-alerts-callouts')
+                        @endif
                         @if ($errors->any())
                             <div class="text-danger">
                                 <ul>
@@ -48,7 +51,6 @@
                                 </ul>
                             </div>
                         @endif
-
                         {{-- Success message --}}
                         @if (session()->has('success'))
                             <div class="text-success">
@@ -100,25 +102,52 @@
                                 }
                                  //dd($old_replies);
                               ?>
-                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                                <thead>
-                                  <tr>
-                                    <th colspan="6" align="center"></th>
-                                  </tr>
-                                </thead>
-                                <tbody> 
-                                  @foreach($rmquestions as $row)
-                                  <tr>
-                                    <td>
-                                      <div class="form-check">
-                                        <input class="form-check-input" wire:model="rmq_replies" value="{{ $row->rmquestion_id }}" type="checkbox">
-                                        <label class="form-check-label"> {{ $row->question }}</label>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                  @endforeach                                    
-                                </tbody>
-                              </table>
+                              <div class="row">
+                                <div class="col-6">
+                                  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th colspan="1">Make New Selections</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody> 
+                                      @foreach($rmquestions as $row)
+                                      <tr>
+                                        <td>
+                                          <div class="form-check">
+                                            <input class="form-check-input" wire:model="rmq_replies" value="{{ $row->rmquestion_id }}" type="checkbox">
+                                            <label class="form-check-label"> {{ $row->question }}</label>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      @endforeach                                    
+                                    </tbody>
+                                  </table>
+                                </div>
+
+                                <div class="col-6">
+                                  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th colspan="6" align="center">Selected Earlier</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody> 
+                                      @foreach($old_replies as $row)
+                                      <tr>
+                                        <td>
+                                          <div class="form-check">
+                                            <label class="form-check-label"> {{ $rmqreplies[$row] }}</label>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      @endforeach                                    
+                                    </tbody>
+                                  </table>
+                                </div>
+
+                              </div>
+
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">

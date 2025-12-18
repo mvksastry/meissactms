@@ -28,22 +28,7 @@
                     -->
                   </ul>
                 </div>
-                  @if ($errors->any())
-                      <div class="text-danger">
-                          <ul>
-                              @foreach ($errors->all() as $error)
-                                  <li>{{ $error }}</li>
-                              @endforeach
-                          </ul>
-                      </div>
-                  @endif
 
-                  {{-- Success message --}}
-                  @if (session()->has('success'))
-                      <div class="text-success">
-                          {{ session('success') }}
-                      </div>
-                  @endif
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content p-0">
@@ -95,6 +80,25 @@
                     <div class="col-8">
                       <!-- Custom Tabs -->
                       <div class="card">
+                        @if($message_panel)
+                          @include('livewire.error-alerts-callouts')
+                        @endif
+                        @if ($errors->any())
+                            <div class="text-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        {{-- Success message --}}
+                        @if (session()->has('success'))
+                            <div class="text-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">

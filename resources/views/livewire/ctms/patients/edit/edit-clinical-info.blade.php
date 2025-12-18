@@ -36,6 +36,9 @@
                   <div class="row">
                     <div class="col-12">
                       <!-- Custom Tabs -->
+                        @if($message_panel)
+                          @include('livewire.error-alerts-callouts')
+                        @endif
                         @if ($errors->any())
                             <div class="text-danger">
                                 <ul>
@@ -102,7 +105,7 @@
                                   <tr>
                                     <td>
                                       <label>O E*</label>
-                                      <input wire:model.defer="form.oande" id="oande" type="text" class="form-control" placeholder="O E">
+                                      <input wire:model.defer="form.o_e" type="text" class="form-control" placeholder="O E">
                                     </td>
                                     <td>
                                       <label>PR*</label>
@@ -129,7 +132,7 @@
 
                                     <td>
                                       <label>P/A*</label>
-                                      <input wire:model.defer="form.panda" type="text" class="form-control" placeholder="P/A" >
+                                      <input wire:model.defer="form.p_a" type="text" class="form-control" placeholder="P/A" >
                                     </td>
                                     <td>
                                       <label>CNS*</label>
@@ -180,7 +183,7 @@
                                   <tr>
                                     <td colspan="6">
                                       <label>Laboratory Report File*</label>
-                                      <input wire:model.defer="form.lab_report_file" type="text" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="form.laboratory_report_file" type="text" class="form-control" placeholder="Report File" >
                                     </td>
                                   </tr>                                    
                                 </tbody>
@@ -191,20 +194,22 @@
                                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                   <thead>
                                     <tr>
-                                      <th colspan="3" align="center"></th>
+                                      <th colspan="2" align="center"></th>
                                     </tr>
                                   </thead>
                                   <tbody>        
                                     <tr>
-                                      <td colspan="1">
+                                      <td colspan="2">
                                       <label>Comment</label>
                                       <input wire:model="form.comment_entered_by" type="text" class="form-control" placeholder="Description">
                                       </td>
-                                      <td colspan="1">
+                                    </tr>
+                                    <tr>
+                                      <td>
                                       <label>Entered By*</label>
                                       <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Description">
                                       </td>
-                                      <td colspan="1">
+                                      <td>
                                       <label>Entry Date*</label>
                                       <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Description">
                                       </td>

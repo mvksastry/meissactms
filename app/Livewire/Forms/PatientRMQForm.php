@@ -7,10 +7,10 @@ use Livewire\Form;
  
 class PatientRMQForm extends Form
 {   
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
     public $opd_id = '';
 
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
     public $in_patient_id = '';
 
     #[Validate('nullable|date')]
@@ -18,14 +18,14 @@ class PatientRMQForm extends Form
 
 
     
-    #[Validate('numeric')]
+    #[Validate('nullable|regex:/^[0-25 ]+$/')]
     public $rmq_replies = null;
 
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
-    #[Validate('alpha')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $entered_by = '';
 
     #[Validate('nullable|date')]

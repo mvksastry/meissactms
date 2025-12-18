@@ -15,7 +15,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Edit Life Style Observations @if(!$empty_result) Date Created: {{ $ls_info->created_at }} @endif
+                  Edit Life Style Observations: Date Created: {{ $ls_info->created_at }}
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -35,6 +35,9 @@
                   <!-- Morris chart - Sales -->
                   <div class="row">
                     <div class="col-12">
+                        @if($message_panel)
+                          @include('livewire.error-alerts-callouts')
+                        @endif
                         @if ($errors->any())
                             <div class="text-danger">
                                 <ul>
@@ -54,7 +57,7 @@
                       <!-- Custom Tabs -->
                       <div class="card">
                         <div class="card-header d-flex p-0">
-                          <h3 class="card-title p-3">Information</h3>
+                          <h3 class="card-title p-3">Information: Unique ID: {{ $ls_info->patient_uuid }}</h3>
                           <ul class="nav nav-pills ml-auto p-2">
                             <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Life Style</a></li>

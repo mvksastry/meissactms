@@ -35,22 +35,6 @@
 
                   <!-- Morris chart - Sales -->
                   <div class="row">
-                    @if ($errors->any())
-                        <div class="text-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    {{-- Success message --}}
-                    @if (session()->has('success'))
-                        <div class="text-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
                     <div class="col-6">
                       <div class="card">
                         <div class="card-header d-flex p-0">
@@ -63,6 +47,24 @@
                       </div>
                     </div>
                     <div class="col-6">
+                      @if($message_panel)
+                        @include('livewire.error-alerts-callouts')
+                      @endif
+                      @if ($errors->any())
+                          <div class="text-danger">
+                              <ul>
+                                  @foreach ($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                      @endif
+                      {{-- Success message --}}
+                      @if (session()->has('success'))
+                          <div class="text-success">
+                              {{ session('success') }}
+                          </div>
+                      @endif
                       <!-- Custom Tabs -->
                       <div class="card">
                         <div class="card-header d-flex p-0">

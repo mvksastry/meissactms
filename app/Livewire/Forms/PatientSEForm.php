@@ -8,29 +8,29 @@ use Livewire\Form;
 class PatientSEForm extends Form
 {
 
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9_\- ]+$/|max:20')]
     public $opd_id = '';
 
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9_\- ]+$/|max:20')]
     public $in_patient_id = '';
 
     #[Validate('nullable|date')]
     public $admission_date = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $s1 = '';
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $l1 = '';
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $l2 = '';
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $l3 = '';
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $l4 = '';
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
-    public $l5 = '';
+    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
+    public $S1 = '';
+    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
+    public $L1 = '';
+    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
+    public $L2 = '';
+    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
+    public $L3 = '';
+    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
+    public $L4 = '';
+    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
+    public $L5 = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('regex:/^[A-Za-z0 ]+$/')]

@@ -16,31 +16,31 @@ class PatientLSForm extends Form
     #[Validate('nullable|date')]
     public $admission_date = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $cross_leg_sitting = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $standing = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $sitting = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $ls3 = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $ls4 = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $ls5 = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $ls6 = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $life_style_description = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.-_ ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('regex:/^[A-Za-z ]+$/')]

@@ -9,6 +9,9 @@ use App\Livewire\Forms\PatientForm;
 
 use App\Models\Ctms\Patient;
 
+//
+use Illuminate\Support\Facades\Log;
+
 class EditPrimaryInfo extends Component
 {
     //uuid of the patient
@@ -35,6 +38,12 @@ class EditPrimaryInfo extends Component
     public $past_complaints, $present_complaints, $past_medications, $present_medications, $addictive_substance_use;
     public $non_addictive_substance_use, $past_history, $notable_family_history, $before_problem_occupation;
     public $general_habits;
+
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+
     /*
     protected $listeners = [
     'patientSelected' = 'setPatientUuid',
@@ -159,10 +168,32 @@ class EditPrimaryInfo extends Component
 
     public function saveEditedPrimaryPatientInfo($edit, $input, $uuid)
     {
-        $updatedPrimaryInfo = Patient::where('patient_uuid', $uuid)->update($input);
+        //dd($input);
+        
         $this->message_panel = true;
-        $msg = 'New Patient ['.$input['name'].'] update successfully!';
-        $this->comSuccess = $msg;
+        $name = $input['name'];
+        try {
+            $updatedPrimaryInfo = Patient::where('patient_uuid', $uuid)->update($input);
+            if ($updatedPrimaryInfo) {        
+                $msg = 'Patient ['.$name.'] update successfull!';  
+                $this->comSuccess = $msg;
+                Log::channel('patient')->info($msg);
+            } else {
+                $msg = 'Patient ['.$name.'] could not be saved';
+                $this->sysAlertDanger = $msg;
+                Log::channel('patient')->info($msg);
+            }
+            } catch (QueryException $e) {
+                // Handles database-related errors (e.g., duplicate email)
+                $msg = 'Database error for patient ['.$name.'] while saving : '.$e->getMessage();
+                Log::channel('patient')->info($msg);
+                $this->sysAlertDanger = $msg;
+            } catch (\Exception $e) {
+                // Handles any other general exceptions
+                $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
+                Log::channel('patient')->info($msg);
+                $this->sysAlertDanger = $msg;
+            }
         //dd($updatedPrimaryInfo);
     }
 }

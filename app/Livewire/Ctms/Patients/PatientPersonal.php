@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Livewire\Forms\PatientForm;
 
 use App\Traits\TCtms\TPatientPersonalInfo;
-
 //
 use Illuminate\Support\Facades\Log;
 

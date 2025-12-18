@@ -18,22 +18,22 @@ class PatientVAScoreForm extends Form
 
     
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $intensity = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $location = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $onset = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $duration = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $variation = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $quality = '';
 
 

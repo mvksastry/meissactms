@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Livewire\Forms\PfirmannForm;
 
 use App\Models\Ctms\PfirmannGrade;
+//
+use Illuminate\Support\Facades\Log;
 
 class EditPfirmannInfo extends Component
 {
@@ -20,9 +22,15 @@ class EditPfirmannInfo extends Component
     public $uuid;
     public $pfirmg_info;
 
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+
     public function render()
     {
         $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        $this->form->entered_by = Auth::user()->name;
         $this->setMdtreData($this->pfirmg_info);
         return view('livewire.ctms.patients.edit.edit-pfirmann-info');
     }
@@ -30,30 +38,47 @@ class EditPfirmannInfo extends Component
     public function setMdtreData($pfirmg_info)
     {
         //dd($pfirmg_info);
-        $this->form->opd_id = ($pfirmg_info != null) ? $pfirmg_info->opd_id : "";
-        $this->form->in_patient_id = ($pfirmg_info != null) ? $pfirmg_info->in_patient_id : "";
-        $this->form->admission_date = ($pfirmg_info != null) ? $pfirmg_info->admission_date : null;
+        $this->form->opd_id = $pfirmg_info->opd_id;
+        $this->form->in_patient_id = $pfirmg_info->in_patient_id;
+        $this->form->admission_date = $pfirmg_info->admission_date;
 
-        $this->form->modified_pfirman_grade = ($pfirmg_info != null) ? $pfirmg_info->modified_pfirman_grade : "";
+        $this->form->modified_pfirman_grade = $pfirmg_info->modified_pfirman_grade;
 
-        $this->form->comment_entered_by = ($pfirmg_info != null) ? $pfirmg_info->comment_entered_by : "";
+        $this->form->comment_entered_by = $pfirmg_info->comment_entered_by;
         $this->form->entered_by = Auth::user()->name;
-        $this->form->entry_date = ($pfirmg_info != null) ? $pfirmg_info->entry_date : null;
+        $this->form->entry_date = $pfirmg_info->entry_date;
         //dd($this->form);
     }
 
     public function fnEditPfirmannGrade()
     {
+        $this->message_panel = false;
+        $this->validate(); 
         $this->input = $this->form->all();
         //dd($this->input);
-        $result = PfirmannGrade::updateOrcreate(
-            ['patient_uuid' => $this->uuid], $this->input
-        );
-        $result->status = 'draft';
-        $result->status_date = date('Y-m-d');
-        $result->save();
-        $result = null;
-        
-        $this->dispatch('close_pfirman_panel'); 
+        $this->message_panel = true;
+        $name = $this->uuid;
+        try {
+            $result = PfirmannGrade::where('patient_uuid', $this->uuid)->update($this->input);
+            if ($result) {        
+                $msg = 'Patient ['.$name.'] update successfull!';  
+                $this->comSuccess = $msg;
+                Log::channel('patient')->info($msg);
+            } else {
+                $msg = 'Patient ['.$name.'] could not be saved';
+                $this->sysAlertDanger = $msg;
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database error for patient ['.$name.'] while saving : '.$e->getMessage();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } 
     }
 }

@@ -10,9 +10,11 @@ use App\Livewire\Forms\PatientLSForm;
 
 use App\Models\Ctms\LifeStyle;
 
+//
+use Illuminate\Support\Facades\Log;
+
 class EditLifestyleInfo extends Component
 {
-
     //Form bindings
     public PatientLSForm $form;
 
@@ -21,17 +23,18 @@ class EditLifestyleInfo extends Component
     public $ls_info;
     public $empty_result;
 
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+
     public function render()
     {
         $this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
-        
-        if($this->ls_info == null)
-        {
-            $this->form->entered_by = Auth::user()->name;
-            $this->empty_result = true;
-        }else{
-            $this->setFormValues($this->ls_info);
-        }
+        //dd($this->ls_info);
+        $this->form->entered_by = Auth::user()->name;
+        //$this->empty_result = true;
+        $this->setFormValues($this->ls_info);
         return view('livewire.ctms.patients.edit.edit-lifestyle-info');
     }
 
@@ -57,15 +60,32 @@ class EditLifestyleInfo extends Component
     }
 
     public function fnSaveEditedLSInfo()
-    {
+    {   $this->validate();
         $this->input = $this->form->all();
         //dd($this->input);
-        $result = LifeStyle::updateOrcreate(
-            ['patient_uuid' => $this->uuid], $this->input
-        );
-        $result->status = 'draft';
-        $result->status_date = date('Y-m-d');
-        $result->save();
-        $result = null;
+        $this->message_panel = true;
+        $name = $this->uuid;
+        try {
+            $result = LifeStyle::where('patient_uuid', $this->uuid)->update($this->input);
+            if ($result) {        
+                $msg = 'Patient ['.$name.'] update successfull!';  
+                $this->comSuccess = $msg;
+                Log::channel('patient')->info($msg);
+            } else {
+                $msg = 'Patient ['.$name.'] could not be saved';
+                $this->sysAlertDanger = $msg;
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database error for patient ['.$name.'] while saving : '.$e->getMessage();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
     }
 }
