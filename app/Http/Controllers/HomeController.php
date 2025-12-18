@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        if( Auth::user()->hasAnyRole('ctms_incharge') )
+        if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
 		{
             return view('layouts.home.ctms.admin.home');
         }
