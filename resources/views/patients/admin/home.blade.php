@@ -75,7 +75,7 @@
                           <th> Action</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody>t 
                         @foreach($centers as $row)
                           <tr>
                             <td>{{ $row->name }}</td>

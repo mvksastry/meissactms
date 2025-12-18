@@ -21,6 +21,9 @@
 			@hasexactroles('ctms_incharge')
 			@include('layouts.menus.ctms.incharge')
 			@endhasexactroles	
+			@hasexactroles('director')
+			@include('layouts.menus.ctms.director')
+			@endhasexactroles
 			<!-- /.Main Sidebar Container -->
 			
 			<!-- Dynamic content -->
