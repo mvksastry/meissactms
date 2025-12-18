@@ -49,7 +49,7 @@ trait TPatientClinicalData
         $newCIInfo->bleeding_time = $input['bleeding_time'];
         $newCIInfo->prothrombin_time = $input['prothrombin_time'];
         $newCIInfo->procalcitonin = $input['procalcitonin'];
-        $newCIInfo->laboratory_report_file = $input['lab_report_file'];
+        $newCIInfo->laboratory_report_file = $input['laboratory_report_file'];
 
         //$newCIInfo->status = "draft";
         //$newCIInfo->status_date = date('Y-m-d');
