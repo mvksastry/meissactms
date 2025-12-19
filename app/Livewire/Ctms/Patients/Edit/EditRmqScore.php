@@ -7,11 +7,16 @@ use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Livewire\Forms\PatientRMQForm;
-
+//models
 use App\Models\Ctms\RMQReply;
 use App\Models\Ctms\Rmquestion;
-//
+
+//forms
+use App\Livewire\Forms\PatientRMQForm;
+
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditRmqScore extends Component

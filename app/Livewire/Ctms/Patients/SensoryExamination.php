@@ -3,10 +3,21 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+use App\Models\Ctms\Patient;
+
+//forms
 use App\Livewire\Forms\PatientSEForm;
 
+//traits
 use App\Traits\TCtms\TPatientSEData;
-use App\Models\Ctms\Patient;
+
+//logs
+use Illuminate\Support\Facades\Log;
 
 class SensoryExamination extends Component
 {
@@ -19,15 +30,14 @@ class SensoryExamination extends Component
     public PatientSEForm $form;
 
     //SE Entry scores
-    public $s1;
+    public $S1;
     //public $s2, $s3, $s4, $s5, $s6, $s7, $s8, $s9, $s10;
     //public $t08, $t09, $t10, $t11, $t12;
-    public $l1, $l2, $l3, $l4, $l5;
-
+    public $L1, $L2, $L3, $L4, $L5;
     
-
     public function mount($patient_uuid)
     {
+        
         $this->patient_uuid = $patient_uuid;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
@@ -39,19 +49,11 @@ class SensoryExamination extends Component
 
     public function fnSaveSensoryExaminationData()
     {
-        //dd("reached");
-        //$this->message_panel = true;
-        //$this->sysAlertSuccess = "Great working";
-        //$this->comSuccess = "Great working!";
-
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->savePatientSEInformation($this->input);
-
-        //dd($result); // 
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Sensory Data Entered";
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Sensory Exam data');
+        //dd($result); //
     }
 
 

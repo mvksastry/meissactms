@@ -6,7 +6,6 @@ use Livewire\Component;
 use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Livewire\WithFileUploads;
 
 //models
 use App\Models\Ctms\Patient;
@@ -19,6 +18,13 @@ use App\Models\Ctms\VAScore;
 use App\Models\Ctms\ModqScore;
 use App\Models\Ctms\RMQReply;
 
+//forms
+
+//traits
+
+//logs
+use Illuminate\Support\Facades\Log;
+use Livewire\WithFileUploads;
 
 class EditPatients extends Component
 {

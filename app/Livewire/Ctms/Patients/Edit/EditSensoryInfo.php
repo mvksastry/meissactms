@@ -7,12 +7,15 @@ use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//models
+use App\Models\Ctms\SensoryExamination;
+
+//forms
 use App\Livewire\Forms\PatientSEForm;
 
-use App\Models\Ctms\ClinicalData;
+//traits, facades
 
-use App\Models\Ctms\SensoryExamination;
-//
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditSensoryInfo extends Component

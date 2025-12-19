@@ -3,13 +3,19 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//models
 use App\Livewire\Forms\PatientForm;
 
+//forms
+
+//traits
 use App\Traits\TCtms\TPatientPersonalInfo;
-//
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class PatientPersonal extends Component
@@ -59,12 +65,11 @@ class PatientPersonal extends Component
 
     public function fnSavePrimaryInfo()
     {
-        //$this->input = $this->form->all();
-        //dd($this->input);
         $this->validate(); 
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->savePatientInformation($this->input);
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Patient Personal data');
         //dd($result);
     }
 }

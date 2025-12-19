@@ -3,23 +3,31 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+use App\Models\Ctms\Patient;
+
+//forms
 use App\Livewire\Forms\PfirmannForm;
 
+//Traits
 use App\Traits\TCtms\TPatientPfirmannData;
 
-use App\Models\Ctms\Patient;
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientModifiedPfirmannGrades extends Component
 {
     //Trait for data handling
     use TPatientPfirmannData;
-
+    //Form bindings
+    public PfirmannForm $form;
     //global patient uuid
     public $patient_uuid;
 
-    //Form bindings
-    public PfirmannForm $form;
-    
     public $modified_pfirmans_grade = null;
 
     public function render()
@@ -35,25 +43,16 @@ class PatientModifiedPfirmannGrades extends Component
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
         $this->form->admission_date = $newObj->admission_date;
-        $this->form->entered_by = $newObj->entered_by;
+        $this->form->entered_by = Auth::user()->name;
         $this->form->entry_date = date('Y-m-d');
     }
 
     public function fnSavePfirmannGrade()
     {
-        //dd("reached");
-        $this->message_panel = true;
-        $this->sysAlertSuccess = "Great working";
-        $this->comSuccess = "Great working!";
-
-        //dd($this->entered_by);
         $this->input = $this->form->all();
-        //dd($this->input); // ['title' => '...', 'content' => '...']
+        //dd($this->input); //
         $result = $this->savePfirmannGrade($this->input);
-
-        //dd($result); // ['title' => '...', 'content' => '...']
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Great working!";
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Pfirmann score data');
+        //dd($result); // 
     }
 }

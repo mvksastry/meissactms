@@ -3,13 +3,19 @@
 namespace App\Livewire\Ctms\Patients\Edit;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//models
+use App\Models\Ctms\ClinicalData;
+
+//forms
 use App\Livewire\Forms\PatientCIForm;
 
-use App\Models\Ctms\ClinicalData;
-//
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditClinicalInfo extends Component

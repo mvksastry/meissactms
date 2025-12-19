@@ -67,16 +67,16 @@
                                   <tr>
                                     <td>
                                       <label>Opd ID*</label>
-                                      </br>{{  $vascore_info->opd_id }}
+                                      </br>{{  $pfirmangrade_info->opd_id }}
                                       
                                     </td>
                                     <td>
                                       <label>In Patient ID*</label>
-                                      </br>{{  $vascore_info->opd_id }}
+                                      </br>{{  $pfirmangrade_info->in_patient_id }}
                                     </td>
                                     <td>
                                       <label>Admission Date*</label>
-                                      </br>{{  $vascore_info->opd_id }}
+                                      </br>{{  $pfirmangrade_info->admission_date }}
                                      </td>
                                   </tr>
                                 </tbody>

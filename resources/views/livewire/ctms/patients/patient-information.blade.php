@@ -101,9 +101,11 @@
               </br>
               <div class="row">
                 <!-- /.col -->
+                <!--
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnRadiographsInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                  <button type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Radiographs</button>
                 </div>
+                -->
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
                   <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>

@@ -7,10 +7,15 @@ use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//models
+use App\Models\Ctms\Mdtre;
+
+//forms
 use App\Livewire\Forms\MdtreForm;
 
-use App\Models\Ctms\Mdtre;
-//
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditMdtreInfo extends Component

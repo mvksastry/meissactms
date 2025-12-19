@@ -3,23 +3,32 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+use App\Models\Ctms\Patient;
+
+//forms
 use App\Livewire\Forms\PatientVAScoreForm;
 
 //Traits
 use App\Traits\TCtms\TVAScores;
 
-use App\Models\Ctms\Patient;
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientVisualAnalogScore extends Component
 {
     //Traits
     use TVAScores;
-
+    //Form bindings
+    public PatientVAScoreForm $form;
     //global patient uuid
     public $patient_uuid;
 
-    //Form bindings
-    public PatientVAScoreForm $form;
+
 
     //Visual Analog Scores
     public $intensity, $location, $onset, $duration, $variation, $quality;
@@ -42,24 +51,10 @@ class PatientVisualAnalogScore extends Component
 
     public function fnSaveVAscoreData()
     {
-        //dd("reached");
-        $this->message_panel = true;
-        $this->sysAlertSuccess = "Great working";
-        $this->comSuccess = "Great working!";
-
-        //dd($this->entered_by);
         $this->input = $this->form->all();
-        //dd($this->input); // ['title' => '...', 'content' => '...']
+        //dd($this->input); //
         $result = $this->saveVAScores($this->input);
-
-        //dd($result); // ['title' => '...', 'content' => '...']
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Great working!";
-
-
-
-
-
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Visual Analog score data');
+        //dd($result); //
     }
 }

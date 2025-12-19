@@ -7,10 +7,15 @@ use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//models
+use App\Models\Ctms\PfirmannGrade;
+
+//forms
 use App\Livewire\Forms\PfirmannForm;
 
-use App\Models\Ctms\PfirmannGrade;
-//
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditPfirmannInfo extends Component

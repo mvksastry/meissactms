@@ -3,17 +3,26 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+use App\Models\Ctms\Patient;
+use App\Models\Ctms\ModqScore;
+
+//forms
 use App\Livewire\Forms\ModqScoreForm;
 
 //Traits
 use App\Traits\TCtms\TPatientModqScore;
 
-use App\Models\Ctms\Patient;
-use App\Models\Ctms\ModqScore;
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientModiqScore extends Component
 {
-        //default modq arrav values
+    //default modq arrav values
     public $painIntensity = [
         0 => 'I can tolerate the pain I have without having to use pain medication.', 
         1 => 'The pain is bad, but I can manage without having to take pain medication.', 
@@ -158,20 +167,11 @@ class PatientModiqScore extends Component
 
     public function fnSaveMODQScore()
     {
-        //dd("reached");
-        $this->message_panel = true;
-        $this->sysAlertSuccess = "Great working";
-        $this->comSuccess = "Great working!";
-
-        //dd($this->entered_by);
         $this->input = $this->form->all();
-        //dd($this->input); // ['title' => '...', 'content' => '...']
+        //dd($this->input);
         $result = $this->saveMODQScore($this->input);
-
-        //dd($result); // ['title' => '...', 'content' => '...']
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Great working!";
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MODQ data');
+        //dd($result); 
     }
 
     public function updatedPainIntensity($val): void
@@ -188,8 +188,6 @@ class PatientModiqScore extends Component
         $do = $this->totalPainIndex();
     }
 
- 
-    
     public function updatedLifting($val): void
     {
         $this->liftingSelected = $val;
@@ -260,7 +258,6 @@ class PatientModiqScore extends Component
                     $this->empHomeSelected;
 
         $this->mod_score = ($this->total/($this->selectedCount*5))*100;
-
     }
 
 }

@@ -3,7 +3,21 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
-use App\Livewire\Forms\PatientForm;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+
+
+//forms
+
+
+//Traits
+
+
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientRadiography extends Component
 {

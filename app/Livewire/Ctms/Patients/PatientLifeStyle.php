@@ -6,29 +6,29 @@ use Livewire\Component;
 use Livewire\Attributes\On; 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Livewire\WithFileUploads;
 
-
-
-use App\Livewire\Forms\PatientLSForm;
-
+//models
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\LifeStyle;
 
-//traits
+//forms
+use App\Livewire\Forms\PatientLSForm;
+
+//traits-facades
 use App\Traits\TCtms\TPatientLifeStyle;
+use Livewire\WithFileUploads;
+
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientLifeStyle extends Component
 {
     //Trait binding
     use TPatientLifeStyle;
-
-    //global patient uuid
-    public $patient_uuid;
-
     //Form bindings
     public PatientLSForm $form;
-
+    //global patient uuid
+    public $patient_uuid;
     //data binding
     public $input;
 
@@ -54,15 +54,16 @@ class PatientLifeStyle extends Component
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
         $this->form->admission_date = $newObj->admission_date;
-        $this->form->entered_by = $newObj->entered_by;
+        $this->form->entered_by = Auth::user()->name;
         $this->form->entry_date = date('Y-m-d');
     }
 
     public function fnSavePatientLSInfo()
     {
         $this->input = $this->form->all();
-        //dd($this->input); // ['title' => '...', 'content' => '...']
+        //dd($this->input); 
         $result = $this->savePatientLSInformation($this->input);
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved life style data');
     }
 
 }

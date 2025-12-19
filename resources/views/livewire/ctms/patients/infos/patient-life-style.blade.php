@@ -37,7 +37,7 @@
                       <!-- Custom Tabs -->
                       <div class="card">
                         <div class="card-header d-flex p-0">
-                          <h3 class="card-title p-3">Information</h3>
+                          <h3 class="card-title p-3">Information x</h3>
                           <ul class="nav nav-pills ml-auto p-2">
                             <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Life Style</a></li>
@@ -55,37 +55,19 @@
                                 </thead>
                                 <tbody> 
                                   <tr>
-                                    <td colspan="1">
+                                    <td>
                                       <label>Opd ID*</label>
                                       </br>{{ $ls_info->opd_id }}
                                   </td>
-                                    <td colspan="1">
+                                    <td>
                                       <label>In Patient ID*</label>
                                       </br>{{ $ls_info->in_patient_id }}
                                     </td>
-                                    <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      </br>{{ $ls_info->report_date }}
-                                  </td>
-                                  </tr>
-                                  <tr>
-                                  <td colspan="1">
+                                    <td>
                                       <label>Admission Date*</label>
                                       </br>{{ $ls_info->admission_date }}
-                                  </td>
-                                    <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      </br>{{ $ls_info->discharge_date }}
                                     </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report*</label>
-                                      </br>{{ $ls_info->discharge_report }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Discharge Report File*</label>
-                                      </br>{{ $ls_info->discharge_report_file }}
-                                  </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>

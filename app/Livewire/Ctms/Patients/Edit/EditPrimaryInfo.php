@@ -4,12 +4,18 @@ namespace App\Livewire\Ctms\Patients\Edit;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
-use App\Livewire\Forms\PatientForm;
-
+//models
 use App\Models\Ctms\Patient;
 
-//
+//forms
+use App\Livewire\Forms\PatientForm;
+
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditPrimaryInfo extends Component

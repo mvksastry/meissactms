@@ -3,19 +3,23 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Livewire\Forms\PatientRMQForm;
-
 //models
 use App\Models\Ctms\Rmquestion;
+use App\Models\Ctms\Patient;
+use App\Models\Ctms\RMQReply;
+
+//forms
+use App\Livewire\Forms\PatientRMQForm;
 
 //Traits
 use App\Traits\TCtms\TPatientRMQData;
 
-use App\Models\Ctms\Patient;
-use App\Models\Ctms\RMQReply;
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientRmqScore extends Component
 {
@@ -87,22 +91,12 @@ class PatientRmqScore extends Component
 
     public function fnSaveRMQInfo()
     {
-        //dd("reached");
-        $this->message_panel = true;
-        $this->sysAlertSuccess = "Great working";
-        $this->comSuccess = "Great working!";
-
         //dd($this->rmq_replies);
-        //dd($this->entered_by);
         $this->form->rmq_replies = json_encode($this->rmq_replies);
         $this->input = $this->form->all();
-        
-        //dd($this->input); // ['title' => '...', 'content' => '...']
+        //dd($this->input); //
         $result = $this->saveRMQ($this->input);
-
-        //dd($result); // ['title' => '...', 'content' => '...']
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Great working!";
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved RMQ data');
+        //dd($result); // 
     }
 }

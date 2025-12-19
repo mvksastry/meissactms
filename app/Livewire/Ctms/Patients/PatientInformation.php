@@ -3,8 +3,9 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
-
-use Livewire\WithFileUploads;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 //models
 use App\Models\Ctms\Patient;
@@ -17,9 +18,21 @@ use App\Models\Ctms\VAScore;
 use App\Models\Ctms\ModqScore;
 use App\Models\Ctms\RMQReply;
 
+//forms
+
+//traits, classes
+use Livewire\WithFileUploads;
+
+//logs
+use Illuminate\Support\Facades\Log;
+
 class PatientInformation extends Component
 {
+    //all traits, classes injected
     use WithFileUploads;
+
+    //logged user
+    public $logged_user;
 
     //default modq arrav values
     public $painIntensity = [
@@ -163,7 +176,6 @@ class PatientInformation extends Component
 
     //active patient panel
 
-
     //data object variables
     public $patientPrimaryInfo;
     public $ls_info;
@@ -206,7 +218,6 @@ class PatientInformation extends Component
         //dd($this->patientPrimaryInfo);
         //close all other open forms
 
-        
         $this->openNewLifeStyleEntryForm = false; //2
         $this->openNewClinicalInvestigationsEntryForm = false; //3
         $this->openNewSensoryExaminationsEntryForm = false; //4

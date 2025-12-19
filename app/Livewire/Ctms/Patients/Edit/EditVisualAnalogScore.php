@@ -7,10 +7,15 @@ use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//models
+use App\Models\Ctms\VAScore;
+
+//forms
 use App\Livewire\Forms\PatientVAScoreForm;
 
-use App\Models\Ctms\VAScore;
-//
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditVisualAnalogScore extends Component

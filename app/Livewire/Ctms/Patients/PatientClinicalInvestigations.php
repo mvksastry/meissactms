@@ -3,22 +3,32 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+use App\Models\Ctms\Patient;
+
+//forms
 use App\Livewire\Forms\PatientCIForm;
 
+//traits
 use App\Traits\TCtms\TPatientClinicalData;
 
-use App\Models\Ctms\Patient;
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientClinicalInvestigations extends Component
 {
     //Trait
     use TPatientClinicalData;
 
-    //global patient uuid
-    public $patient_uuid;
-
     //Form bindings
     public PatientCIForm $form;
+
+    //global patient uuid
+    public $patient_uuid;
 
     public $discharge_report, $discharge_report_file;
 
@@ -34,9 +44,12 @@ class PatientClinicalInvestigations extends Component
     //{
      //   return view('livewire.ctms.patients.patient-clinical-investigations');
     //}
+    //logged user
+    public $logged_user;
 
     public function mount($patient_uuid)
     {
+        $this->logged_user = Auth::user()->name;
         $this->patient_uuid = $patient_uuid;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
@@ -49,17 +62,10 @@ class PatientClinicalInvestigations extends Component
 
     public function fnSaveClinicalData()
     {
-        $this->message_panel = true;
-        $this->sysAlertSuccess = "Great working";
-        $this->comSuccess = "Great working!";
-
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->savePatientCIInformation($this->input);
-
-        //dd($result); // 
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Great working!";
+        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Clinical Data for patient ['.$this->patient_uuid.']');
+        //dd($result); //
     }
 }

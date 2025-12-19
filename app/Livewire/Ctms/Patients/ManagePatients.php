@@ -6,9 +6,14 @@ use Livewire\Component;
 use Livewire\Attributes\On; 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Livewire\WithFileUploads;
 
+//models
 use App\Models\Ctms\Patient;
+
+//forms
+
+//traits
+use Livewire\WithFileUploads;
 
 //
 use Illuminate\Support\Facades\Log;
@@ -71,11 +76,13 @@ class ManagePatients extends Component
     //public variable for checking status incomplete status
     public $patient_data_status;
 
-
+    //logged user
+    public $logged_user;
 
     public function render()
     {    
         $this->entered_by = Auth::user()->name;
+        $this->logged_user = Auth::user()->name;
         $this->patient_data_status = Patient::where('status','draft')->get();
         if(count($this->patient_data_status) > 0)
         {
@@ -91,6 +98,7 @@ class ManagePatients extends Component
     }
     public function fnRedirectToEdit()
     {
+        Log::channel('patient')->info('User [ '.$this->logged_user.' ] Redirected to Edit Patients');
         $this->redirect(EditPatients::class);
     }
     //--- UI related code only ---//
@@ -129,8 +137,8 @@ class ManagePatients extends Component
         $this->resetMessagePanels();
 
         $this->messge_panel = true;
-        $this->comSuccess = "New Patient ID Created";
-        Log::channel('patient')->info('Emitted patient creation event');
+        $this->comSuccess = "New Patient ID [ '.$id.' ] Created";
+        Log::channel('patient')->info($this->comSuccess);
         //dd("event emitted and understood");
         $this->openAllOtherForms = true;
     }
@@ -148,7 +156,7 @@ class ManagePatients extends Component
         $this->openMODIQScoreEntryForm = false;
         $this->openRMQScoreEntryForm = false;
         $this->openAdverseEventsEntryForm = false;
-
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown New Patient Dashboard');
         //open the form 
         $this->openNewPatientEntryForm = true; // 1
         //dd("reached");

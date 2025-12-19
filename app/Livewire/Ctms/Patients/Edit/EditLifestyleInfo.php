@@ -3,14 +3,19 @@
 namespace App\Livewire\Ctms\Patients\Edit;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Livewire\Forms\PatientLSForm;
-
+//models
 use App\Models\Ctms\LifeStyle;
 
-//
+//forms
+use App\Livewire\Forms\PatientLSForm;
+
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditLifestyleInfo extends Component

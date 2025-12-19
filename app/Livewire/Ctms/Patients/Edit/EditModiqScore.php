@@ -7,10 +7,15 @@ use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//models
+use App\Models\Ctms\ModqScore;
+
+//forms
 use App\Livewire\Forms\ModqScoreForm;
 
-use App\Models\Ctms\ModqScore;
-//
+//traits, facades
+
+//logs
 use Illuminate\Support\Facades\Log;
 
 class EditModiqScore extends Component

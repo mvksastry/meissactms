@@ -3,24 +3,30 @@
 namespace App\Livewire\Ctms\Patients;
 
 use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+use App\Models\Ctms\Patient;
+
+//forms
 use App\Livewire\Forms\MdtreForm;
 
 //Traits
 use App\Traits\TCtms\TPatientMdtreData;
 
-use App\Traits\TCtms\TPatientLifeStyle;
-
-use App\Models\Ctms\Patient;
+//logs
+use Illuminate\Support\Facades\Log;
 
 class PatientMdtre extends Component
 {
+    //triats
     use TPatientMdtreData;
-
-    //global patient uuid
-    public $patient_uuid;
-
     //Form bindings
     public MdtreForm $form;
+    //global patient uuid
+    public $patient_uuid;
 
     //MDTRE variables
     public $hip_flexion_adduction, $knee_extension, $ankle_dorsiflexion, $decreased_patellar_reflex, $extensor_hallucis_longus; 
@@ -45,16 +51,10 @@ class PatientMdtre extends Component
 
     public function fnSaveMDTREInfo()
     {
-        //dd("reached");
-
-        //dd($this->entered_by);
         $this->input = $this->form->all();
-       //dd($this->input); // ['title' => '...', 'content' => '...']
+        //dd($this->input); //
         $result = $this->saveMDTREInformation($this->input);
-
-        //dd($result); // ['title' => '...', 'content' => '...']
-        $this->message_panel = true;
-        $this->sysAlertSuccess = $result;
-        $this->comSuccess = "Great working!";
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MDTRE data');
+        //dd($result); //
     }
 }
