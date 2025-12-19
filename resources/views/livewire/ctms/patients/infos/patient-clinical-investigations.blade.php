@@ -225,8 +225,6 @@
                                   </tr>
                                 </tbody>
                               </table>
-                              
-                              <button wire:click="fnSaveClinicalData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
                             </div>
                             <!-- /.tab-pane -->
 

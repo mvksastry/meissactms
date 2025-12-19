@@ -211,7 +211,7 @@
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment By Entered</label>
-                                      </br>{{ $vascore_info->comment_entered_by }}
+                                      </br>{{ $sensoryexam_info->comment_entered_by }}
                                     </td>
                                   </tr>
                                   <tr>                                    
@@ -227,7 +227,7 @@
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment by Verified</label>
-                                      </br>{{ $vascore_info->comment_verified_by }}
+                                      </br>{{ $sensoryexam_info->comment_verified_by }}
                                     </td>
                                   </tr>
                                   <tr>                                    
@@ -243,7 +243,7 @@
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment by Sealed Authority</label>
-                                      </br>{{ $vascore_info->comment_sealed_by }}
+                                      </br>{{ $sensoryexam_info->comment_sealed_by }}
                                     </td>
                                   </tr>
                                   <tr>                                     
@@ -258,8 +258,6 @@
                                   </tr>
                                 </tbody>
                               </table>
-
-                              
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->

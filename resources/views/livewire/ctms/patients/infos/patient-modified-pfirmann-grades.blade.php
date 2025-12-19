@@ -68,7 +68,6 @@
                                     <td>
                                       <label>Opd ID*</label>
                                       </br>{{  $pfirmangrade_info->opd_id }}
-                                      
                                     </td>
                                     <td>
                                       <label>In Patient ID*</label>
