@@ -80,6 +80,10 @@
                             <input type="text" name="description" class="form-control" />
                         </div>
                         <div class="mb-3">
+                            <label for="">Category Folder (Only alpha & underscores allowed)</label>
+                            <input type="text" name="category_folder" class="form-control" />
+                        </div>
+                        <div class="mb-3">
                             <label for="">Created By</label>
                             <input type="text" name="created_by" value="{{ Auth::user()->name }}" class="form-control" />
                         </div>

@@ -32,7 +32,7 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        if( Auth::user()->hasAnyRole('ctms_incharge') )
+        if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
 		{
             $categories = Category::where('status', 'active')->get();
             //dd($categories);
@@ -51,9 +51,11 @@ class CategoriesController extends Controller
     public function create()
     {
         //
-        if( Auth::user()->hasAnyRole('ctms_incharge') )
+        if( Auth::user()->hasAnyRole(['ctms_incharge','director']) )
 		{
-            return view('docs.categories.categoryCreateForm');
+            $categories = Category::where('status', 'active')->get();
+            //dd($categories);
+            return view('docs.categories.categoryCreateForm', ['categories'=>$categories]);
         }
     }
 
@@ -70,6 +72,7 @@ class CategoriesController extends Controller
         $newCat->name = $input['name'];
         $newCat->uuid = Str::uuid()->toString();
         $newCat->description = $input['description'];
+        $newCat->category_folder = $input['category_folder'];
         $newCat->created_by = $input['created_by'];
         $newCat->created_date = date('Y-m-d');
         $newCat->status = 'active';

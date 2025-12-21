@@ -27,6 +27,7 @@ class Category extends Model
         'uuid',
         'name',
         'description',
+        'category_folder',
         'created_by',
         'created_date',
         'status',

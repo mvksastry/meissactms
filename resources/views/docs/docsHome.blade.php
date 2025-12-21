@@ -55,62 +55,89 @@
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  \
-                    <table id="example2" class="table table-sm table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th> Name </th>
-                          <th> Category </th>
-                          <th> Description </th>
-                          <th> Location </th>
-                          <th> Capacity </th>
-                          <th> Occupied </th>
-                          <th> In-Charge </th>
-                          <th> Status</th>
-                          <th> Created</th>
-                          <th> Updated</th>
-                          <th> Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        
-                          <tr>
-                            <td> </td>
-                            <td>  </td>
-                            <td> </td>
-                            <td> </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>                          
-                            <td>
-                               
-                                <button class="btn btn-sm btn-info">Edit</button>
-                              
-                              
-                                <button class="btn btn-sm btn-danger">Inactivate</button>
-                              
-                            </td>
-                          </tr>
-                        
-                      </tbody>
-                    </table>
                   
                     <table id="example2" class="table table-sm table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td align="left">
-                            None to diplay
-                          </td>
-                        </tr>
-                      </tbody>
+                      @if(count($activeDocs) > 0)
+                        <thead>
+                          <tr>
+                            <th> Category </th>
+                            <th style="width: 16.66%"> Title / </br> Description </th>
+                            <th> Eff.Date </th>
+                            <th> Created / Date</th>
+                            <th> Approved </th>
+                            <th> Sealed </th>
+                            <th> Versions </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($activeDocs as $row)
+                            <tr>
+                              <td>
+                                @foreach($row->category as $val)
+                                {{ $val->name }} 
+                                @endforeach
+                              </td>
+
+                              <td>
+                                Title: {{ $row->title }} /</br> Desc: {{ $row->summary }}
+                              </td>
+
+                              <td>
+                                {{ $row->effective_date }}
+                              </td>    
+
+                              <td>{{ $row->created_name }} / </br>Date: {{ $row->date_created }}</td>
+                             
+                              <td> {{ $row->approved_name }} / </br>Date: {{ $row->approved_date }} </td>
+
+                              <td> {{ $row->sealed_name }} / </br>Date: {{ $row->sealed_date }} </td>
+
+                              <td> 
+                                <?php $versions = $row->doc_versions;?>
+                                <table>
+                                  <tr>
+                                    <th>V.No</th>
+                                    <th>Status</th>
+                                    <th>Pre V.no/</br>Nxt.V.no</th>
+                                    <th>Obs At/ </br>Obs By</th>
+                                    <th>Actions</th>
+                                  </tr>
+                                  <tbody>
+                                    @foreach($versions as $version)
+                                      <tr>
+                                        <td>
+                                          v{{ $version->version_number }}
+                                        </td>
+                                        <td>
+                                          <?php $sa = ["0"=>"Obsol","1"=>"Active"]; ?>
+                                          {{ $sa[$version->is_active] }}
+                                        </td>
+                                        <td>
+                                          {{ $version->supersedes_version_id }} /</br> {{ $version->superseded_by_version_id }}
+                                        </td>
+                                        <td>
+                                          {{ $version->obsolete_at }} /</br> {{ $version->obsolete_by }}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info">Edit</button>
+                                        </td>
+                                      </tr>
+                                    @endforeach
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      @else
+                        <thead>
+                          <tr>
+                            <th>None to Display</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                      @endif
                     </table>
                   
                     <!--Divider-->

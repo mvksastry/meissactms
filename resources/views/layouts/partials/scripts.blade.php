@@ -23,6 +23,15 @@
 <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+
+<!-- Summernote -->
+<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- CodeMirror -->
+<script src="{{ asset('assets/plugins/codemirror/codemirror.js') }}"></script>
+<script src="{{ asset('assets/plugins/codemirror/mode/css/css.js') }}"></script>
+<script src="{{ asset('assets/plugins/codemirror/mode/xml/xml.js') }}"></script>
+<script src="{{ asset('assets/plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
+
 <!-- Summernote -->
 <script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
@@ -33,3 +42,14 @@
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
+</script>

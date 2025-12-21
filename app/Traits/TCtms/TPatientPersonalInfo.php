@@ -24,15 +24,6 @@ use App\Models\Ctms\VAScore;
 use App\Models\Ctms\ModqScore;
 use App\Models\Ctms\RMQReply;
 
-
-
-
-
-
-
-
-
-
 //use App\Traits\Base;
 //use App\Traits\TCommon\Notes;
 //use App\Traits\TCommon\FileUploadHandler;
