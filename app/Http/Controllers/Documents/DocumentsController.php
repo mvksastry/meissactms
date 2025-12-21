@@ -56,7 +56,7 @@ class DocumentsController extends Controller
     public function create()
     {
         //
-        if( Auth::user()->hasAnyRole('ctms_incharge') )
+        if( Auth::user()->hasAnyRole(['ctms_incharge','director']) )
 		{
             $categories = Category::where('status', 'active')->get();
             return view('docs.newDocForm', ['categories' => $categories]);
@@ -68,7 +68,7 @@ class DocumentsController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        /*
+        
         $stop_file_upload = false;
         $filename = null;
         $input = $request->all();
@@ -103,13 +103,10 @@ class DocumentsController extends Controller
             $result = $this->upload_new_document($fileObj, $input);
             //dd($result);
         }
-        */
-        $result ="redirected";
+        
         return redirect()->route('documents.index')->with('success', 'File uploaded successfully!')
                      ->with('file', $result);
 
-        return back()->with('success', 'File uploaded successfully!')
-                     ->with('file', $result);
     }
 
     /**
