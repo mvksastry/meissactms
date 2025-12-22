@@ -39,7 +39,6 @@ trait TPatientPersonalInfo
 
     public function savePatientInformation($input)
     {
-
         //dd($input);
         $newPatientInfo = new Patient();
 

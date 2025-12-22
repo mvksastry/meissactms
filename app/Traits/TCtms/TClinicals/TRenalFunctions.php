@@ -12,12 +12,24 @@ use Illuminate\Support\Str;
 use File;
 
 //Models
-use App\Models\Ctms\Clinicals\MicroscopicExam;
+use App\Models\Ctms\Clinicals\RenalFunction;
 
 use Illuminate\Support\Facades\Log;
 
 trait TRenalFunctions
 {
 
+  public function saveRenalFunctionsData($input)
+  {
 
+      $newRFdata = new RenalFunction();
+
+      $newRFdata->uric_acid = $input['uric_acid'];
+      $newRFdata->uricacid_report_file = $input['uricacid_report_file'];
+      $newRFdata->uricacid_report_file_path = $input['uricacid_report_file_path'];
+
+
+      $newRFdata->save();
+
+  }
 }

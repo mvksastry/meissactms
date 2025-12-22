@@ -19,5 +19,18 @@ use Illuminate\Support\Facades\Log;
 trait TCrp
 {
 
+    public function saveCrpData($input)
+    {
+
+        $newCRPdata = new Crp();
+
+        $newCRPdata->crp = $input['crp'];
+        $newCRPdata->crp_report_file = $input['crp_report_file'];
+        $newCRPdata->crp_report_file_path = $input['crp_report_file_path'];
+
+        $newCRPdata->save();
+
+
+    }
 
 }

@@ -19,5 +19,15 @@ use Illuminate\Support\Facades\Log;
 trait TGeneralSummary
 {
 
+    public function saveGenSummaryData($input)
+    {
+
+        $newGSdata = new GeneralSummary();
+
+        $newGSdata->general_summary = $input['general_summary'];
+
+        $newGSdata->save();
+
+    }
 
 }

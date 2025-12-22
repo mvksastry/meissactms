@@ -19,5 +19,16 @@ use Illuminate\Support\Facades\Log;
 trait TElectrolytes
 {
 
+    public function saveElectrolyteData($input)
+    {
 
+        $newElecdata = new Electrolytes();
+
+        $newElecdata->sodium = $input['sodium'];
+        $newElecdata->potassium = $input['potassium'];
+        $newElecdata->chloride = $input['chloride'];
+
+        $newElecdata->save();
+
+    }
 }

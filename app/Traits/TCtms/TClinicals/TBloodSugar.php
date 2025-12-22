@@ -19,5 +19,17 @@ use Illuminate\Support\Facades\Log;
 trait TBloodSugar
 {
 
+    public function saveBloodSugarData($input)
+    {
 
+        $newBSdata = new BloodSugar();
+
+        $newBSdata->fasting = $input['fasting'];
+        $newBSdata->post_prandial = $input['post_prandial'];
+        $newBSdata->random = $input['random'];
+        $newBSdata->bs_report_file = $input['bs_report_file'];
+        $newBSdata->bs_report_file_path = $input['bs_report_file_path'];
+
+        $newBSdata->save();
+    }
 }

@@ -19,5 +19,16 @@ use Illuminate\Support\Facades\Log;
 trait TCreatinine
 {
 
+    public function saveCreatinineData($input)
+    {
 
+        $newCreatinedata = new Creatinine();
+
+        $newCreatinedata->serum_creatinine = $input['serum_creatinine'];
+        $newCreatinedata->creatine_report_file = $input['creatine_report_file'];
+        $newCreatinedata->creatine_report_file_path = $input['creatine_report_file_path'];
+
+        $newCreatinedata->save();
+
+    }
 }

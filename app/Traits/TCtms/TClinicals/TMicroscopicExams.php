@@ -19,5 +19,23 @@ use Illuminate\Support\Facades\Log;
 trait TMicroscopicExams
 {
 
+  public function saveMicroscopicExamData($input)
+  {
+
+      $newMEData = new MicroscopicExam();
+
+      
+      $newMEData->pus_cells = $input['pus_cells'];
+      $newMEData->epithelial_cells = $input['epithelial_cells'];
+      $newMEData->rbcs = $input['rbcs'];
+      $newMEData->yeast_cells = $input['yeast_cells'];
+      $newMEData->bacteria = $input['bacteria'];
+
+      $newMEData->me_report_file = $input['me_report_file'];
+      $newMEData->me_report_file_path = $input['me_report_file_path'];
+
+
+      $newMEData->save();
+  }
 
 }

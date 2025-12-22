@@ -19,5 +19,17 @@ use Illuminate\Support\Facades\Log;
 trait TIl6
 {
 
+    public function saveIl6Data($input)
+    {
+        $newIl6data = new Il6();
 
+        $newIl6data->il6 = $input['il6'];
+        $newIl6data->il6_report_file = $input['il6_report_file'];
+        $newIl6data->il6_report_file_path = $input['il6_report_file_path'];
+
+
+        $newIl6data->save();
+
+
+    }
 }
