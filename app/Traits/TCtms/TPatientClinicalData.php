@@ -25,7 +25,7 @@ trait TPatientClinicalData
         //$newCIInfo = new ClinicalData();
         $newCIInfo = ClinicalData::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
         //$newCIInfo->patient_uuid = $this->patient_uuid; 
-//dd($newCIInfo);
+        //dd($newCIInfo);
         //$newCIInfo->opd_id = $input['opd_id'];
         //$newCIInfo->in_patient_id = $input['in_patient_id'];
         //$newCIInfo->admission_date = $input['admission_date'];
