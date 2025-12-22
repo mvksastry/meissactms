@@ -54,9 +54,18 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Investigations</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Controls</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Over</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">RBI</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">LFT&Elec</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">RFT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">BS/CRP/IL6</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">PLI</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">CE</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">ME</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_10" data-toggle="tab">UR</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_11" data-toggle="tab">Misc</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_12" data-toggle="tab">Official</a></li>
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -88,102 +97,46 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
-                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                                <thead>
-                                  <tr>
-                                    <th colspan="6" align="center"></th>
-                                  </tr>
-                                </thead>
-                                <tbody> 
-                                  <tr>
-                                    <td>
-                                      <label>O E*</label>
-                                      <input wire:model.defer="form.oande" id="oande" type="text" value="null" class="form-control" placeholder="O E">
-                                    </td>
-                                    <td>
-                                      <label>PR*</label>
-                                      <input wire:model.defer="form.pr" id="pr" type="text" value="null" class="form-control" placeholder="PR">
-                                    </td>
-                                    <td>
-                                      <label>Temperature*</label>
-                                      <input wire:model.defer="form.temperature" id="temperature" type="text" value="null" class="form-control" placeholder="Temperature" >
-                                    </td>
-                                    <td>
-                                      <label>BP-Systolic*</label>
-                                      <input wire:model.defer="form.bp_systolic" id="bp_systolic" type="text" value="null" class="form-control" placeholder="BP Systolic" >
-                                    </td>
-                                    <td>
-                                      <label>BP-Diastolic*</label>
-                                      <input wire:model.defer="form.bp_diastolic" id="bp_diastolic" type="text" value="null" class="form-control" placeholder="BP Diastolic" >
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>CVS*</label>
-                                      <input wire:model.defer="form.cvs" id="cvs" type="text" value="null" class="form-control" placeholder="CVS" >
-                                    </td>
-
-                                    <td>
-                                      <label>P/A*</label>
-                                      <input wire:model.defer="form.panda" id="panda" type="text" value="null" class="form-control" placeholder="P/A" >
-                                    </td>
-                                    <td>
-                                      <label>CNS*</label>
-                                      <input wire:model.defer="form.cns" id="cns" type="text" value="null" class="form-control" placeholder="CNS" >
-                                    </td>
-                                    <td>
-                                      <label>CBC*</label>
-                                      <input wire:model.defer="form.cbc" id="cbc" type="text" value="null" class="form-control" placeholder="CBC" >
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>ESR*</label>
-                                      <input wire:model.defer="form.esr" id="esr" type="text" value="null" class="form-control" placeholder="ESR" >
-                                    </td>
-                                    <td>
-                                      <label>CRP*</label>
-                                      <input wire:model.defer="form.crp" id="crp" type="text" value="null" class="form-control" placeholder="CRP" >
-                                    </td>
-                                    <td>
-                                      <label>RFT*</label>
-                                      <input wire:model.defer="form.rft" id="rft" type="text" value="null" class="form-control" placeholder="RFT" >
-                                    </td>
-                                    <td>
-                                      <label>LFT*</label>
-                                      <input wire:model.defer="form.lft" id="lft" type="text" value="null" class="form-control" placeholder="LFT" >
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>Clotting Time*</label>
-                                      <input wire:model.defer="form.clotting_time" id="clotting_time" type="text" value="null" class="form-control" placeholder="Clotting Time" >
-                                    </td>
-                                    <td>
-                                      <label>Bleeding Time*</label>
-                                      <input wire:model.defer="form.bleeding_time" id="bleeding_time" type="text" value="null" class="form-control" placeholder="Bleeding Time" >
-                                    </td>
-                                    <td>
-                                      <label>Prothrombin time*</label>
-                                      <input wire:model.defer="form.prothrombin_time" id="prothrombin_time" type="text" value="null" class="form-control" placeholder="Prothrombin Time" >
-                                    </td>
-
-                                    <td>
-                                      <label>Procalcitonin*</label>
-                                      <input wire:model.defer="form.procalcitonin" id="procalcitonin" type="text" value="null" class="form-control" placeholder="Precalcitonin" >
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="6">
-                                      <label>Laboratory Report File*</label>
-                                      <input wire:model.defer="form.lab_report_file" id="lab_report_file" type="text" value="null" class="form-control" placeholder="Report File" >
-                                    </td>
-                                  </tr>                                    
-                                </tbody>
-                              </table>
+                              @include('livewire.ctms.patients.forms.cb-1')
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
+                              @include('livewire.ctms.patients.forms.cb-2RBI')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_4">
+                              @include('livewire.ctms.patients.forms.cb-3LFT')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_5">
+                              @include('livewire.ctms.patients.forms.cb-4RFT')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_6">
+                              @include('livewire.ctms.patients.forms.cb-5BS')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_7">
+                              @include('livewire.ctms.patients.forms.cb-6PLI')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_8">
+                              @include('livewire.ctms.patients.forms.cb-7CE')
+                            </div> 
+                            <!-- /.tab-pane -->     
+                            <div class="tab-pane" id="tab_9">
+                              @include('livewire.ctms.patients.forms.cb-8ME')
+                            </div> 
+                            <!-- /.tab-pane -->   
+                            <div class="tab-pane" id="tab_10">
+                              @include('livewire.ctms.patients.forms.cb-10UR')
+                            </div> 
+                            <!-- /.tab-pane -->     
+                            <div class="tab-pane" id="tab_11">
+                              @include('livewire.ctms.patients.forms.cb-9MISC')
+                            </div>  
+                            <!-- /.tab-pane -->                                                                                                                                                                                    
+                            <div class="tab-pane" id="tab_12">
                               @include('livewire.ctms.end-controls')
                               <button wire:click="fnSaveClinicalData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
                             </div>

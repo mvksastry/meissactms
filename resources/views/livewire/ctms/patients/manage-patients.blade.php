@@ -51,7 +51,7 @@
             @if($newPatientEntrySteps)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnShowPrimaryInfoForm()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Primary Information</button>
+                  <button wire:click="fnShowPrimaryInfoForm()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
                 </div>
                 <!-- /.col -->
                 @if($openAllOtherForms)
@@ -64,11 +64,11 @@
                   </div>
                   <!-- /.col -->
                   <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnSensoryExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Sensory Examination</button>  
+                    <button wire:click="fnSensoryExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Sensory Exams</button>  
                   </div>
                   <!-- /.col -->
                   <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnMDTRExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp M & DTR Examination</button>    
+                    <button wire:click="fnMDTRExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp M & DTR Exams</button>    
                   </div>
                 @endif
               </div>

@@ -94,7 +94,7 @@
 
                               <td> 
                                 <?php $versions = $row->doc_versions;?>
-                                <table>
+                                <table class="table table-sm table-bordered table-hover">
                                   <tr>
                                     <th>V.No</th>
                                     <th>Status</th>
@@ -120,6 +120,7 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-sm btn-info">Edit</button>
+                                            
                                         </td>
                                       </tr>
                                     @endforeach
