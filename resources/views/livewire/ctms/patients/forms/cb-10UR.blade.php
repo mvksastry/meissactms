@@ -39,14 +39,14 @@
       </tr>
       <tr>
         <td colspan="6">
-          <label>Laboratory Report File*</label>
-          <input wire:model.defer="form.ur_report_file" type="file" class="form-control" placeholder="Report File" >
+          <label>Microscopic Report File*</label>
+          <input wire:model.defer="form.me_report_file" type="file" class="form-control" placeholder="Report File" >
         </td>
       </tr>       
 
         <td colspan="6">
           <label>Microscopi Exam Lab Report File*</label>
-          <input wire:model.defer="form.ur_report_file" type="file" class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form.melr_report_file" type="file" class="form-control" placeholder="Report File" >
         </td>
       </tr>                                    
     </tbody>
