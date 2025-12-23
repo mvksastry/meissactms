@@ -26,6 +26,11 @@ trait TGeneralSummary
 
         $newGSdata->general_summary = $input['general_summary'];
 
+        //--------X Common to all tables X-------------//
+        $newGSdata->comment_entered_by = $input['comment_entered_by'];
+        $newGSdata->entered_by = $input['entered_by'];
+        $newGSdata->entry_date = $input['entry_date'];
+
         $newGSdata->save();
 
     }

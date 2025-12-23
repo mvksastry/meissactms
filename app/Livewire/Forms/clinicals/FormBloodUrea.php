@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
  
-class PliForm extends Form
+class FormBloodUrea extends Form
 {
     #[Validate('regex:/^[0-9]+$/|max:20')]
     public $opd_id = '';
@@ -18,23 +18,19 @@ class PliForm extends Form
 
     
 
+    
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $esr = '';
+    public $urea = null;
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $pt_patient = '';
+    public $blood_urea_nitrogen = null;
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $pt_control = '';
+    #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
+    public $bubun_report_file = null;
+ 
+    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/')]
+    public $bubun_report_file_path = null;
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $inr = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $isi = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $path_report_file = '';
 
 
 

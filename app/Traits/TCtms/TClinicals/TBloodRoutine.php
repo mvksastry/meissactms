@@ -23,6 +23,11 @@ trait TBloodRoutine
     {
         $newBRdata = new BloodRoutine();
 
+        //--------X Common to all tables X-------------//
+
+
+
+        //--------X Table content X-------------//
         $newBRdata->rbc = $input['rbc'];
         $newBRdata->hgb = $input['hgb'];
         $newBRdata->hct = $input['hct'];
@@ -45,7 +50,7 @@ trait TBloodRoutine
         $newBRdata->lymph_abs = $input['lymph_abs'];
         $newBRdata->lymph_percent = $input['lymph_percent'];
 
-        $newBRdata->mono_abcs = $input['mono_abcs'];
+        $newBRdata->mono_abcs = $input['mono_abs'];
         $newBRdata->mono_percent = $input['mono_percent'];
         $newBRdata->eo_abs = $input['eo_abs'];
         $newBRdata->eo_percent = $input['eo_percent'];
@@ -58,6 +63,12 @@ trait TBloodRoutine
         $newBRdata->observations = $input['observations'];
         $newBRdata->br_report_file = $input['br_report_file'];
         $newBRdata->br_report_file_path = $input['br_report_file_path'];
+
+        //--------X Common to all tables X-------------//
+        $newBRdata->comment_entered_by = $input['comment_entered_by'];
+        $newBRdata->entered_by = $input['entered_by'];
+        $newBRdata->entry_date = $input['entry_date'];
+
 
         $newBRdata->save();
     }

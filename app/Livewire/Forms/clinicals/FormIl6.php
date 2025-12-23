@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
  
-class CEForm extends Form
+class FormIl6 extends Form
 {
     #[Validate('regex:/^[0-9]+$/|max:20')]
     public $opd_id = '';
@@ -19,26 +19,13 @@ class CEForm extends Form
     
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $proteins = '';
+    public $il6 = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $sugar = '';
+    public $il6_report_file = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $ketones = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $procalcitonin = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $bile_salts = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $bile_pigments = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $ce_report_file = '';
-
+    public $il6_report_file_path = '';
 
 
     

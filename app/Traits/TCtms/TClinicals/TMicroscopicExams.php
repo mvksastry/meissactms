@@ -34,6 +34,11 @@ trait TMicroscopicExams
       $newMEData->me_report_file = $input['me_report_file'];
       $newMEData->me_report_file_path = $input['me_report_file_path'];
 
+      //--------X Common to all tables X-------------//
+      $newMEData->comment_entered_by = $input['comment_entered_by'];
+      $newMEData->entered_by = $input['entered_by'];
+      $newMEData->entry_date = $input['entry_date'];
+
 
       $newMEData->save();
   }

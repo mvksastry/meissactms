@@ -11,14 +11,14 @@ use Illuminate\Support\Str;
 
 use File;
 
-//Models
+//models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\BloodSugar;
 
 use Illuminate\Support\Facades\Log;
 
 trait TBloodSugar
 {
-
     public function saveBloodSugarData($input)
     {
 
@@ -29,6 +29,11 @@ trait TBloodSugar
         $newBSdata->random = $input['random'];
         $newBSdata->bs_report_file = $input['bs_report_file'];
         $newBSdata->bs_report_file_path = $input['bs_report_file_path'];
+
+        //--------X Common to all tables X-------------//
+        $newBSdata->comment_entered_by = $input['comment_entered_by'];
+        $newBSdata->entered_by = $input['entered_by'];
+        $newBSdata->entry_date = $input['entry_date'];
 
         $newBSdata->save();
     }

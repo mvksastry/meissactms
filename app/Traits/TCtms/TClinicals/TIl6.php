@@ -27,6 +27,10 @@ trait TIl6
         $newIl6data->il6_report_file = $input['il6_report_file'];
         $newIl6data->il6_report_file_path = $input['il6_report_file_path'];
 
+        //--------X Common to all tables X-------------//
+        $newIl6data->comment_entered_by = $input['comment_entered_by'];
+        $newIl6data->entered_by = $input['entered_by'];
+        $newIl6data->entry_date = $input['entry_date'];
 
         $newIl6data->save();
 

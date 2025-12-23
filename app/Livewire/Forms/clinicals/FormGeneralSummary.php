@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
  
-class BsCrpIl6Form extends Form
+class FormGeneralSummary extends Form
 {
     #[Validate('regex:/^[0-9]+$/|max:20')]
     public $opd_id = '';
@@ -18,29 +18,11 @@ class BsCrpIl6Form extends Form
 
     
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $fasting = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $random = '';
+    public $general_summary = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $post_prandial = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $bllodsugar_report_file = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $crp = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $crp_report_file = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $il6 = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $il6_report_file = '';
 
     
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]

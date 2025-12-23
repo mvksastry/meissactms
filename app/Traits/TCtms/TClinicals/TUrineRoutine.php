@@ -34,6 +34,12 @@ trait TUrineRoutine
 
         $newRUInfo->ur_report_file = $input['ur_report_file'];
         $newRUInfo->ur_report_file_path = $input['ur_report_file_path'];
+
+        //--------X Common to all tables X-------------//
+        $newRUInfo->comment_entered_by = $input['comment_entered_by'];
+        $newRUInfo->entered_by = $input['entered_by'];
+        $newRUInfo->entry_date = $input['entry_date'];
+
         //dd($newRUInfo);
         $newRUInfo->save();
 

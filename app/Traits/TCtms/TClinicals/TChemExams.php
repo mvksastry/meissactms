@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 
 use File;
 
-//Models
+//models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\ChemicalExam;
 
 use Illuminate\Support\Facades\Log;
@@ -33,6 +34,10 @@ trait TChemExams
         $newCEdata->ce_report_file = $input['ce_report_file'];
         $newCEdata->ce_report_file_path = $input['ce_report_file_path'];
 
+        //--------X Common to all tables X-------------//
+        $newCEdata->comment_entered_by = $input['comment_entered_by'];
+        $newCEdata->entered_by = $input['entered_by'];
+        $newCEdata->entry_date = $input['entry_date'];
 
         $newCEdata->save();
 

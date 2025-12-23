@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
  
-class LftElecForm extends Form
+class FormBloodSugar extends Form
 {
     #[Validate('regex:/^[0-9]+$/|max:20')]
     public $opd_id = '';
@@ -19,39 +19,18 @@ class LftElecForm extends Form
     
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $serum_total_protein = '';
+    public $fasting = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $serum_albumin = '';
+    public $post_prandial = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $globulin = '';
+    public $random = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $ag_ratio = '';
+    public $bllodsugar_report_file = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $total_bilirubin = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $direct_bilirubin = '';
-
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $indirect_bilirubin = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $sgot = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $sgpt = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $alkaline_phosphatase = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $lft_report_file = '';
-
+ 
 
     
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]

@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 
 use File;
 
-//Models
+//models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\Creatinine;
 
 use Illuminate\Support\Facades\Log;
@@ -27,6 +28,11 @@ trait TCreatinine
         $newCreatinedata->serum_creatinine = $input['serum_creatinine'];
         $newCreatinedata->creatine_report_file = $input['creatine_report_file'];
         $newCreatinedata->creatine_report_file_path = $input['creatine_report_file_path'];
+
+        //--------X Common to all tables X-------------//
+        $newCreatinedata->comment_entered_by = $input['comment_entered_by'];
+        $newCreatinedata->entered_by = $input['entered_by'];
+        $newCreatinedata->entry_date = $input['entry_date'];
 
         $newCreatinedata->save();
 

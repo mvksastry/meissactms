@@ -40,6 +40,11 @@ trait TLiverFunctions
         $newLFdata->lft_report_file = $input['lft_report_file'];
         $newLFdata->lft_report_file_path = $input['lft_report_file_path'];
 
+        //--------X Common to all tables X-------------//
+        $newLFdata->comment_entered_by = $input['comment_entered_by'];
+        $newLFdata->entered_by = $input['entered_by'];
+        $newLFdata->entry_date = $input['entry_date'];
+
 
         $newLFdata->save();
     }

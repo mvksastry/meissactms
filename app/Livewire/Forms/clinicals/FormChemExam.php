@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
  
-class UrForm extends Form
+class FormChemExam extends Form
 {
     #[Validate('regex:/^[0-9]+$/|max:20')]
     public $opd_id = '';
@@ -18,29 +18,28 @@ class UrForm extends Form
 
     
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
-    public $physical_exam = '';
+    #[Validate('nullable|regex:/^[0-9]+$/')]
+    public $proteins = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $quantity = '';
-
-    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
-    public $colour = '';
+    public $sugar = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $appearance = '';
+    public $ketones = '';
 
-    #[Validate('nullable|regex:/^[0-9.]+$/')]
-    public $ph = '';
+    #[Validate('nullable|regex:/^[0-9]+$/')]
+    public $procalcitonin = '';
 
-    #[Validate('nullable|regex:/^[0-9. ]+$/')]
-    public $specific_gravity = '';
+    #[Validate('nullable|regex:/^[0-9]+$/')]
+    public $bile_salts = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\- ]+$/')]
-    public $me_report_file = '';
+    #[Validate('nullable|regex:/^[0-9]+$/')]
+    public $bile_pigments = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\- ]+$/')]
-    public $melr_report_file = '';
+    #[Validate('nullable|regex:/^[0-9]+$/')]
+    public $ce_report_file = '';
+
+
 
     
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]

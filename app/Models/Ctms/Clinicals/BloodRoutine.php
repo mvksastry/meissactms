@@ -52,7 +52,7 @@ class BloodRoutine extends Model
         'lymph_abs',
         'lymph_percent',
 
-        'mono_abcs',
+        'mono_abs',
         'mono_percent',
         'eo_abs',
         'eo_percent',

@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 
 use File;
 
-//Models
+//models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\BloodUrea;
 
 use Illuminate\Support\Facades\Log;
@@ -30,6 +31,10 @@ trait TBloodUrea
         $newBUdata->bubun_report_file = $input['bubun_report_file'];
         $newBUdata->bubun_report_file_path = $input['bubun_report_file_path'];
 
+        //--------X Common to all tables X-------------//
+        $newBUdata->comment_entered_by = $input['comment_entered_by'];
+        $newBUdata->entered_by = $input['entered_by'];
+        $newBUdata->entry_date = $input['entry_date'];
 
         $newBUdata->save();
 

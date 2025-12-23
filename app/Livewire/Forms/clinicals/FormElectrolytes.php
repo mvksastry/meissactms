@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
  
-class MeForm extends Form
+class FormElectrolytes extends Form
 {
     #[Validate('regex:/^[0-9]+$/|max:20')]
     public $opd_id = '';
@@ -18,23 +18,21 @@ class MeForm extends Form
 
     
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $pus_cells = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $epithelial_cells = '';
+    public $sodium = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $rbcs = '';
+    public $potassium = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $yeast_cells = '';
+    public $chloride = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $bacteria = '';
+    public $electrolyte_report_file = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $me_report_file = '';
+    public $electrolyte_report_file_path = '';
 
 
 

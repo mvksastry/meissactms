@@ -28,6 +28,10 @@ trait TRenalFunctions
       $newRFdata->uricacid_report_file = $input['uricacid_report_file'];
       $newRFdata->uricacid_report_file_path = $input['uricacid_report_file_path'];
 
+      //--------X Common to all tables X-------------//
+      $newRFdata->comment_entered_by = $input['comment_entered_by'];
+      $newRFdata->entered_by = $input['entered_by'];
+      $newRFdata->entry_date = $input['entry_date'];
 
       $newRFdata->save();
 

@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 
 use File;
 
-//Models
+//models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\LaboratoryExam;
 
 use Illuminate\Support\Facades\Log;
@@ -33,6 +34,12 @@ trait TLaboratoryExams
         $newLEdata->esr_report_file_path = $input['esr_report_file_path'];
         $newLEdata->pt_report_file = $input['pt_report_file'];
         $newLEdata->pt_report_file_path = $input['pt_report_file_path'];
+
+        //--------X Common to all tables X-------------//
+        $newLEdata->comment_entered_by = $input['comment_entered_by'];
+        $newLEdata->entered_by = $input['entered_by'];
+        $newLEdata->entry_date = $input['entry_date'];
+
 
         $newLEdata->save();
     }

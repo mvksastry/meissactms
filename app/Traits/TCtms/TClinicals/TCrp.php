@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 
 use File;
 
-//Models
+//models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\Crp;
 
 use Illuminate\Support\Facades\Log;
@@ -27,6 +28,11 @@ trait TCrp
         $newCRPdata->crp = $input['crp'];
         $newCRPdata->crp_report_file = $input['crp_report_file'];
         $newCRPdata->crp_report_file_path = $input['crp_report_file_path'];
+
+        //--------X Common to all tables X-------------//
+        $newCRPdata->comment_entered_by = $input['comment_entered_by'];
+        $newCRPdata->entered_by = $input['entered_by'];
+        $newCRPdata->entry_date = $input['entry_date'];
 
         $newCRPdata->save();
 

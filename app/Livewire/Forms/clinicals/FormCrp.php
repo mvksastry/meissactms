@@ -5,7 +5,7 @@ namespace App\Livewire\Forms;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
  
-class RftForm extends Form
+class FormCrp extends Form
 {
     #[Validate('regex:/^[0-9]+$/|max:20')]
     public $opd_id = '';
@@ -18,29 +18,18 @@ class RftForm extends Form
 
     
 
+    
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $sr_uric_acid = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $blood_urea = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $urea = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $blood_urea_nitrogen = '';
-
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $serum_creatinine = '';
+    public $crp = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
-    public $uricacid_report_file = '';
+    public $crp_report_file = null;
+ 
+    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/')]
+    public $crp_report_file_path = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
-    public $bubun_report_file = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
-    public $creatine_report_file = '';
+
 
     
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
