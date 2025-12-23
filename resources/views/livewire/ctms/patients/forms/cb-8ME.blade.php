@@ -27,7 +27,7 @@
           <input wire:model.defer="form.bacteria" id="bp_diastolic" type="text" class="form-control" placeholder="Bacteria" >
         </td>
       </tr>
-
+      <tr>
         <td colspan="6">
           <label>Microscopi Exam Lab Report File*</label>
           <input wire:model.defer="form.me_report_file" id="lab_report_file" type="file" class="form-control" placeholder="Report File" >
