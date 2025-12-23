@@ -20,21 +20,21 @@ use Illuminate\Support\Facades\Log;
 trait TCrp
 {
 
-    public function saveCrpData($input)
+    public function saveCrpData($input, $passObj)
     {
 
-        $newCRPdata = new Crp();
+        //$passObj = new Crp();
 
-        $newCRPdata->crp = $input['crp'];
-        $newCRPdata->crp_report_file = $input['crp_report_file'];
-        $newCRPdata->crp_report_file_path = $input['crp_report_file_path'];
+        $passObj->crp = $input['crp'];
+        $passObj->crp_report_file = $input['crp_report_file'];
+        $passObj->crp_report_file_path = $input['crp_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newCRPdata->comment_entered_by = $input['comment_entered_by'];
-        $newCRPdata->entered_by = $input['entered_by'];
-        $newCRPdata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        $newCRPdata->save();
+        $passObj->save();
 
 
     }

@@ -20,21 +20,21 @@ use Illuminate\Support\Facades\Log;
 trait TCreatinine
 {
 
-    public function saveCreatinineData($input)
+    public function saveCreatinineData($input, $passObj)
     {
 
-        $newCreatinedata = new Creatinine();
+        //$passObj = new Creatinine();
 
-        $newCreatinedata->serum_creatinine = $input['serum_creatinine'];
-        $newCreatinedata->creatine_report_file = $input['creatine_report_file'];
-        $newCreatinedata->creatine_report_file_path = $input['creatine_report_file_path'];
+        $passObj->serum_creatinine = $input['serum_creatinine'];
+        $passObj->creatine_report_file = $input['creatine_report_file'];
+        $passObj->creatine_report_file_path = $input['creatine_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newCreatinedata->comment_entered_by = $input['comment_entered_by'];
-        $newCreatinedata->entered_by = $input['entered_by'];
-        $newCreatinedata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        $newCreatinedata->save();
+        $passObj->save();
 
     }
 }

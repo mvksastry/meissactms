@@ -43,7 +43,6 @@
                                 </ul>
                             </div>
                         @endif
-
                         {{-- Success message --}}
                         @if (session()->has('success'))
                             <div class="text-success">
@@ -101,7 +100,7 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                              @include('livewire.ctms.patients.forms.cb-2RBI')
+                              <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid"/>
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_4">

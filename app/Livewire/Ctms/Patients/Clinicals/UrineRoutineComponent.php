@@ -24,21 +24,29 @@ class UrineRoutineComponent extends Component
 {
     use TUrineRoutine;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
-    public FormUrineRoutine $form;
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+        
+    public FormUrineRoutine $form_n;
 
     public function render()
     {
-        return view('livewire.ctms.patients.clinicals.urine-routines-component');
+        return view('livewire.ctms.patients.clinicals.urine-routine-component');
     }
 
     public function fnRenalFunction($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_n->all();
         //dd($this->input); // 
-        $result = $this->saveUrineRoutineData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Urine Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveUrineRoutineData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Urine Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     } 
 }

@@ -24,9 +24,14 @@ class LiverFunctions extends Component
 {
     use TLiverFunctions;
 
-    public $patient_uuid;
-    
-    public FormLiverFunction $form;
+    public $patient_uuid, $passObj;
+
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+        
+    public FormLiverFunction $form_k;
 
     public function render()
     {
@@ -35,10 +40,13 @@ class LiverFunctions extends Component
 
     public function fnLiverFunction($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_k->all();
         //dd($this->input); // 
-        $result = $this->saveLiverFunctionData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Liv function Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveLiverFunctionData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Liv function Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     } 
 }

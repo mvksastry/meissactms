@@ -25,10 +25,15 @@ class ChemicalExamComponent extends Component
     //traits
     use TChemExams;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+    
     //form bindings 
-    public FormChemExam $form;
+    public FormChemExam $form_d;
 
     public function render()
     {
@@ -37,10 +42,13 @@ class ChemicalExamComponent extends Component
 
     public function fnChemExams($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_d->all();
         //dd($this->input); // 
-        $result = $this->saveChemExamData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveChemExamData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     }
 }

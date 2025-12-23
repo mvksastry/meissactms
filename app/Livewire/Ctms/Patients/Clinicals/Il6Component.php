@@ -24,9 +24,14 @@ class Il6Component extends Component
 {
     use TIl6;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
-    public FormIl6 $form;
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+    
+    public FormIl6 $form_i;
     
     public function render()
     {
@@ -35,10 +40,13 @@ class Il6Component extends Component
 
     public function fnIl6($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_i->all();
         //dd($this->input); // 
-        $result = $this->saveIl6Data($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveIl6Data($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     }
 }

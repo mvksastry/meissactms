@@ -24,9 +24,14 @@ class ElectrolyteComponent extends Component
 {
     use TElectrolytes;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
-    public FormElectrolytes $form;
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+    
+    public FormElectrolytes $form_g;
     
     public function render()
     {
@@ -35,10 +40,13 @@ class ElectrolyteComponent extends Component
 
     public function fnElectrolytes($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_g->all();
         //dd($this->input); // 
-        $result = $this->saveElectrolyteData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Electrolytes Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveElectrolyteData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     }
 }

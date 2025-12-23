@@ -19,19 +19,19 @@ use Illuminate\Support\Facades\Log;
 trait TGeneralSummary
 {
 
-    public function saveGenSummaryData($input)
+    public function saveGenSummaryData($input, $passObj)
     {
 
-        $newGSdata = new GeneralSummary();
+        //$passObj = new GeneralSummary();
 
-        $newGSdata->general_summary = $input['general_summary'];
+        $passObj->general_summary = $input['general_summary'];
 
         //--------X Common to all tables X-------------//
-        $newGSdata->comment_entered_by = $input['comment_entered_by'];
-        $newGSdata->entered_by = $input['entered_by'];
-        $newGSdata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        $newGSdata->save();
+        $passObj->save();
 
     }
 

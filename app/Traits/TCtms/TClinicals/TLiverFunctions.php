@@ -19,34 +19,34 @@ use Illuminate\Support\Facades\Log;
 trait TLiverFunctions
 {
 
-    public function saveLiverFunctionData($input)
+    public function saveLiverFunctionData($input, $passObj)
     {
 
-        $newLFdata = new LiverFunction();
+        //$passObj = new LiverFunction();
 
-        $newLFdata->serum_total_protein = $input['serum_total_protein'];
-        $newLFdata->serum_albumin = $input['serum_albumin'];
-        $newLFdata->globulin = $input['globulin'];
-        $newLFdata->ag_ratio = $input['ag_ratio'];
-        $newLFdata->total_bilirubin = $input['total_bilirubin'];
+        $passObj->serum_total_protein = $input['serum_total_protein'];
+        $passObj->serum_albumin = $input['serum_albumin'];
+        $passObj->globulin = $input['globulin'];
+        $passObj->ag_ratio = $input['ag_ratio'];
+        $passObj->total_bilirubin = $input['total_bilirubin'];
 
-        $newLFdata->direct_bilirubin = $input['direct_bilirubin'];
-        $newLFdata->indirect_bilirubin = $input['indirect_bilirubin'];
-        $newLFdata->sgot = $input['sgot'];
-        $newLFdata->sgpt = $input['sgpt'];
-        $newLFdata->alkaline_phosphatase = $input['alkaline_phosphatase'];
+        $passObj->direct_bilirubin = $input['direct_bilirubin'];
+        $passObj->indirect_bilirubin = $input['indirect_bilirubin'];
+        $passObj->sgot = $input['sgot'];
+        $passObj->sgpt = $input['sgpt'];
+        $passObj->alkaline_phosphatase = $input['alkaline_phosphatase'];
 
-        $newLFdata->observations = $input['observations'];
-        $newLFdata->lft_report_file = $input['lft_report_file'];
-        $newLFdata->lft_report_file_path = $input['lft_report_file_path'];
+        $passObj->observations = $input['observations'];
+        $passObj->lft_report_file = $input['lft_report_file'];
+        $passObj->lft_report_file_path = $input['lft_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newLFdata->comment_entered_by = $input['comment_entered_by'];
-        $newLFdata->entered_by = $input['entered_by'];
-        $newLFdata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
 
-        $newLFdata->save();
+        $passObj->save();
     }
 
 }

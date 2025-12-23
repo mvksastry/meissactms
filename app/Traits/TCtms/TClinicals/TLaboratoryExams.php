@@ -19,29 +19,29 @@ use Illuminate\Support\Facades\Log;
 
 trait TLaboratoryExams
 {
-    public function saveLaboratoryExamData($input)
+    public function saveLaboratoryExamData($input, $passObj)
     {
 
-        $newLEdata = new LaboratoryExam();
+        //$passObj = new LaboratoryExam();
 
-        $newLEdata->esr = $input['esr'];
-        $newLEdata->pt_patient = $input['pt_patient'];
-        $newLEdata->pt_control = $input['pt_control'];
-        $newLEdata->inr = $input['inr'];
-        $newLEdata->isi = $input['isi'];
+        $passObj->esr = $input['esr'];
+        $passObj->pt_patient = $input['pt_patient'];
+        $passObj->pt_control = $input['pt_control'];
+        $passObj->inr = $input['inr'];
+        $passObj->isi = $input['isi'];
 
-        $newLEdata->esr_report_file = $input['esr_report_file'];
-        $newLEdata->esr_report_file_path = $input['esr_report_file_path'];
-        $newLEdata->pt_report_file = $input['pt_report_file'];
-        $newLEdata->pt_report_file_path = $input['pt_report_file_path'];
+        $passObj->esr_report_file = $input['esr_report_file'];
+        $passObj->esr_report_file_path = $input['esr_report_file_path'];
+        $passObj->pt_report_file = $input['pt_report_file'];
+        $passObj->pt_report_file_path = $input['pt_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newLEdata->comment_entered_by = $input['comment_entered_by'];
-        $newLEdata->entered_by = $input['entered_by'];
-        $newLEdata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
 
-        $newLEdata->save();
+        $passObj->save();
     }
 
 }

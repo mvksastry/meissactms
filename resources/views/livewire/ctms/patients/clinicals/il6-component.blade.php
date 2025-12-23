@@ -1,7 +1,20 @@
 <div>
     {{-- Do your work, then step back. --}}
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
-    <table id="userIndex2" class="table table-sm table-bordered table-hover">
+  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>
+          @if($message_panel)
+            @include('livewire.error-alerts-callouts')
+          @endif
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
       <tr>
         <th colspan="6" align="center">Blood Sugar</th>

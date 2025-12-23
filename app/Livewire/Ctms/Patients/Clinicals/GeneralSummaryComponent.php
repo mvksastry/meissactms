@@ -24,9 +24,14 @@ class GeneralSummaryComponent extends Component
 {
     use TGeneralSummary;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
-    public FormGeneralSummary $form;
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+    
+    public FormGeneralSummary $form_h;
 
     public function render()
     {
@@ -35,10 +40,13 @@ class GeneralSummaryComponent extends Component
 
     public function fnGeneralSummary($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_h->all();
         //dd($this->input); // 
-        $result = $this->saveGenSummaryData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Gen Summary Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveGenSummaryData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     }
 }

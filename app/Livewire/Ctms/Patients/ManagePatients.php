@@ -84,6 +84,7 @@ class ManagePatients extends Component
         $this->entered_by = Auth::user()->name;
         $this->logged_user = Auth::user()->name;
         $this->patient_data_status = Patient::where('status','draft')->get();
+        
         if(count($this->patient_data_status) > 0)
         {
             $this->message_panel = true;

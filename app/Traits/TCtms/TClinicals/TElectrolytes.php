@@ -19,21 +19,21 @@ use Illuminate\Support\Facades\Log;
 
 trait TElectrolytes
 {
-    public function saveElectrolyteData($input)
+    public function saveElectrolyteData($input, $passObj)
     {
 
-        $newElecdata = new Electrolytes();
+        //$passObj = new Electrolytes();
 
-        $newElecdata->sodium = $input['sodium'];
-        $newElecdata->potassium = $input['potassium'];
-        $newElecdata->chloride = $input['chloride'];
+        $passObj->sodium = $input['sodium'];
+        $passObj->potassium = $input['potassium'];
+        $passObj->chloride = $input['chloride'];
 
         //--------X Common to all tables X-------------//
-        $newElecdata->comment_entered_by = $input['comment_entered_by'];
-        $newElecdata->entered_by = $input['entered_by'];
-        $newElecdata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        $newElecdata->save();
+        $passObj->save();
 
     }
 }

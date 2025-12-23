@@ -1,7 +1,20 @@
 <div>
     {{-- Be like water. --}}
   <!--Divider-->
-  <table>
+  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>
+          @if($message_panel)
+            @include('livewire.error-alerts-callouts')
+          @endif
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <tr>
       <th>
         Electrolytes

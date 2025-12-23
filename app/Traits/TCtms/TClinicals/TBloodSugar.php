@@ -19,22 +19,22 @@ use Illuminate\Support\Facades\Log;
 
 trait TBloodSugar
 {
-    public function saveBloodSugarData($input)
+    public function saveBloodSugarData($input, $passObj)
     {
 
-        $newBSdata = new BloodSugar();
+        //$passObj = new BloodSugar();
 
-        $newBSdata->fasting = $input['fasting'];
-        $newBSdata->post_prandial = $input['post_prandial'];
-        $newBSdata->random = $input['random'];
-        $newBSdata->bs_report_file = $input['bs_report_file'];
-        $newBSdata->bs_report_file_path = $input['bs_report_file_path'];
+        $passObj->fasting = $input['fasting'];
+        $passObj->post_prandial = $input['post_prandial'];
+        $passObj->random = $input['random'];
+        $passObj->bs_report_file = $input['bs_report_file'];
+        $passObj->bs_report_file_path = $input['bs_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newBSdata->comment_entered_by = $input['comment_entered_by'];
-        $newBSdata->entered_by = $input['entered_by'];
-        $newBSdata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        $newBSdata->save();
+        $passObj->save();
     }
 }

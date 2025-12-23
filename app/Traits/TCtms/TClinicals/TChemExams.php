@@ -20,26 +20,26 @@ use Illuminate\Support\Facades\Log;
 trait TChemExams
 {
 
-    public function saveChemExamData($input)
+    public function saveChemExamData($input, $passObj)
     {
 
-        $newCEdata = new ChemicalExam();
+        //$passObj = new ChemicalExam();
 
-        $newCEdata->proteins = $input['proteins'];
-        $newCEdata->sugar = $input['sugar'];
-        $newCEdata->ketones = $input['ketones'];
-        $newCEdata->procalcitonin = $input['procalcitonin'];
-        $newCEdata->bile_salts = $input['bile_salts'];
-        $newCEdata->bile_pigments = $input['bile_pigments'];
-        $newCEdata->ce_report_file = $input['ce_report_file'];
-        $newCEdata->ce_report_file_path = $input['ce_report_file_path'];
+        $passObj->proteins = $input['proteins'];
+        $passObj->sugar = $input['sugar'];
+        $passObj->ketones = $input['ketones'];
+        $passObj->procalcitonin = $input['procalcitonin'];
+        $passObj->bile_salts = $input['bile_salts'];
+        $passObj->bile_pigments = $input['bile_pigments'];
+        $passObj->ce_report_file = $input['ce_report_file'];
+        $passObj->ce_report_file_path = $input['ce_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newCEdata->comment_entered_by = $input['comment_entered_by'];
-        $newCEdata->entered_by = $input['entered_by'];
-        $newCEdata->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        $newCEdata->save();
+        $passObj->save();
 
     }
 }

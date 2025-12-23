@@ -25,10 +25,15 @@ class CreatinineComponent extends Component
     //traits
     use TCreatinine;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+    
     //models
-    public FormCreatinine $form;
+    public FormCreatinine $form_e;
 
     public function render()
     {
@@ -37,10 +42,13 @@ class CreatinineComponent extends Component
 
     public function fnCreatinine($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_e->all();
         //dd($this->input); // 
-        $result = $this->saveCreatinineData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Creatinine Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveCreatinineData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     }
 }

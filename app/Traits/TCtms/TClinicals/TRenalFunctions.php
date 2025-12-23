@@ -19,21 +19,21 @@ use Illuminate\Support\Facades\Log;
 trait TRenalFunctions
 {
 
-  public function saveRenalFunctionsData($input)
+  public function saveRenalFunctionsData($input, $passObj)
   {
 
-      $newRFdata = new RenalFunction();
+      //$passObj = new RenalFunction();
 
-      $newRFdata->uric_acid = $input['uric_acid'];
-      $newRFdata->uricacid_report_file = $input['uricacid_report_file'];
-      $newRFdata->uricacid_report_file_path = $input['uricacid_report_file_path'];
+      $passObj->uric_acid = $input['uric_acid'];
+      $passObj->uricacid_report_file = $input['uricacid_report_file'];
+      $passObj->uricacid_report_file_path = $input['uricacid_report_file_path'];
 
       //--------X Common to all tables X-------------//
-      $newRFdata->comment_entered_by = $input['comment_entered_by'];
-      $newRFdata->entered_by = $input['entered_by'];
-      $newRFdata->entry_date = $input['entry_date'];
+      $passObj->comment_entered_by = $input['comment_entered_by'];
+      $passObj->entered_by = $input['entered_by'];
+      $passObj->entry_date = $input['entry_date'];
 
-      $newRFdata->save();
+      $passObj->save();
 
   }
 }

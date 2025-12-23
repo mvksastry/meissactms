@@ -45,13 +45,14 @@ class PatientClinicalInvestigations extends Component
      //   return view('livewire.ctms.patients.patient-clinical-investigations');
     //}
     //logged user
-    public $logged_user;
+    public $logged_user, $passObj;
 
     public function mount($patient_uuid)
     {
         $this->logged_user = Auth::user()->name;
         $this->patient_uuid = $patient_uuid;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
+        $this->passObj = $newObj;
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
         $this->form->admission_date = $newObj->admission_date;

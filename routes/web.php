@@ -32,6 +32,9 @@ use App\Livewire\Ctms\Patients\ManageHealth;
 
 use App\Livewire\Ctms\Patients\PatientAdverseEvents;
 
+// Livewire - Created for testing individuals -----//
+//use App\Livewire\Ctms\TestComponent;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -75,6 +78,8 @@ Route::middleware('auth')->group(function () {
     Route::get('adverse-events', PatientAdverseEvents::class);
 
 
+    // ------- Livewire: Test Component------- //
+    //Route::get('test-component', TestComponent::class);
 });
 
 Route::group(['middleware' => ['auth']], function() {

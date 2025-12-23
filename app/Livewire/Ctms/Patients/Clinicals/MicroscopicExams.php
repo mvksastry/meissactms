@@ -24,9 +24,14 @@ class MicroscopicExams extends Component
 {
     use TMicroscopicExams;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
-    public FormMicroscopicExam $form;
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+        
+    public FormMicroscopicExam $form_l;
     
     public function render()
     {
@@ -35,10 +40,13 @@ class MicroscopicExams extends Component
 
     public function fnMicroscopicExam($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_l->all();
         //dd($this->input); // 
-        $result = $this->saveMicroscopicExamData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Microscopic Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveMicroscopicExamData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     } 
 }

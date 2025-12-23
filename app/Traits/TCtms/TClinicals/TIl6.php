@@ -19,20 +19,20 @@ use Illuminate\Support\Facades\Log;
 trait TIl6
 {
 
-    public function saveIl6Data($input)
+    public function saveIl6Data($input, $passObj)
     {
-        $newIl6data = new Il6();
+        //$passObj = new Il6();
 
-        $newIl6data->il6 = $input['il6'];
-        $newIl6data->il6_report_file = $input['il6_report_file'];
-        $newIl6data->il6_report_file_path = $input['il6_report_file_path'];
+        $passObj->il6 = $input['il6'];
+        $passObj->il6_report_file = $input['il6_report_file'];
+        $passObj->il6_report_file_path = $input['il6_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newIl6data->comment_entered_by = $input['comment_entered_by'];
-        $newIl6data->entered_by = $input['entered_by'];
-        $newIl6data->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        $newIl6data->save();
+        $passObj->save();
 
 
     }

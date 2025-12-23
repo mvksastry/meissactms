@@ -24,9 +24,14 @@ class RenalFunctionComponent extends Component
 {
     use TRenalFunctions;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
 
-    public FormRenalFunction $form;
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+        
+    public FormRenalFunction $form_m;
 
     public function render()
     {
@@ -35,10 +40,13 @@ class RenalFunctionComponent extends Component
 
     public function fnRenalFunction($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_m->all();
         //dd($this->input); // 
-        $result = $this->saveRenalFunctionsData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Renal Fn Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveRenalFunctionsData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     } 
 }

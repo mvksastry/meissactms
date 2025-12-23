@@ -19,57 +19,54 @@ use Illuminate\Support\Facades\Log;
 trait TBloodRoutine
 {
 
-    public function saveBloodRoutineData($input)
+    public function saveBloodRoutineData($input, $passObj)
     {
-        $newBRdata = new BloodRoutine();
-
+        //$newBRdata = new BloodRoutine(); // not correct as first entry results in control
+        //$passObj = BloodRoutine::where('patient_uuid', $patient_uuid)->first();
         //--------X Common to all tables X-------------//
-
-
 
         //--------X Table content X-------------//
-        $newBRdata->rbc = $input['rbc'];
-        $newBRdata->hgb = $input['hgb'];
-        $newBRdata->hct = $input['hct'];
-        $newBRdata->mcv = $input['mcv'];
-        $newBRdata->mch = $input['mch'];
+        $passObj->rbc = $input['rbc'];
+        $passObj->hgb = $input['hgb'];
+        $passObj->hct = $input['hct'];
+        $passObj->mcv = $input['mcv'];
+        $passObj->mch = $input['mch'];
 
-        $newBRdata->mchc = $input['mchc'];
-        $newBRdata->rdw_sd = $input['rdw_sd'];
-        $newBRdata->rdw_cv = $input['rdw_cv'];
-        $newBRdata->plt = $input['plt'];
-        $newBRdata->pdw = $input['pdw'];
+        $passObj->mchc = $input['mchc'];
+        $passObj->rdw_sd = $input['rdw_sd'];
+        $passObj->rdw_cv = $input['rdw_cv'];
+        $passObj->plt = $input['plt'];
+        $passObj->pdw = $input['pdw'];
 
-        $newBRdata->mpv = $input['mpv'];
-        $newBRdata->plcr = $input['plcr'];
-        $newBRdata->pct = $input['pct'];
-        $newBRdata->wbc = $input['wbc'];
+        $passObj->mpv = $input['mpv'];
+        $passObj->plcr = $input['plcr'];
+        $passObj->pct = $input['pct'];
+        $passObj->wbc = $input['wbc'];
 
-        $newBRdata->neutrophils_abs = $input['neutrophils_abs'];
-        $newBRdata->neutrophils_percent = $input['neutrophils_percent'];
-        $newBRdata->lymph_abs = $input['lymph_abs'];
-        $newBRdata->lymph_percent = $input['lymph_percent'];
+        $passObj->neutrophils_abs = $input['neutrophils_abs'];
+        $passObj->neutrophils_percent = $input['neutrophils_percent'];
+        $passObj->lymph_abs = $input['lymph_abs'];
+        $passObj->lymph_percent = $input['lymph_percent'];
 
-        $newBRdata->mono_abcs = $input['mono_abs'];
-        $newBRdata->mono_percent = $input['mono_percent'];
-        $newBRdata->eo_abs = $input['eo_abs'];
-        $newBRdata->eo_percent = $input['eo_percent'];
+        $passObj->mono_abs = $input['mono_abs'];
+        $passObj->mono_percent = $input['mono_percent'];
+        $passObj->eo_abs = $input['eo_abs'];
+        $passObj->eo_percent = $input['eo_percent'];
 
-        $newBRdata->baso_abs = $input['baso_abs'];
-        $newBRdata->baso_percent = $input['baso_percent'];
-        $newBRdata->ig_abs = $input['ig_abs'];
-        $newBRdata->ig_percent = $input['ig_percent'];
+        $passObj->baso_abs = $input['baso_abs'];
+        $passObj->baso_percent = $input['baso_percent'];
+        $passObj->ig_abs = $input['ig_abs'];
+        $passObj->ig_percent = $input['ig_percent'];
 
-        $newBRdata->observations = $input['observations'];
-        $newBRdata->br_report_file = $input['br_report_file'];
-        $newBRdata->br_report_file_path = $input['br_report_file_path'];
+        $passObj->observations = $input['observations'];
+        $passObj->br_report_file = $input['br_report_file'];
+        $passObj->br_report_file_path = $input['br_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newBRdata->comment_entered_by = $input['comment_entered_by'];
-        $newBRdata->entered_by = $input['entered_by'];
-        $newBRdata->entry_date = $input['entry_date'];
-
-
-        $newBRdata->save();
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
+        //dd($passObj);
+        $passObj->save(); //this updates single object.
     }
 }

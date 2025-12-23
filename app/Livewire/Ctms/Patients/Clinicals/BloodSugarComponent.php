@@ -24,9 +24,26 @@ class BloodSugarComponent extends Component
 {
     use TBloodSugar;
 
-    public $patient_uuid;
+    public $patient_uuid, $passObj;
     
-    public FormBloodSugar $form;
+    //Errors, Alers, Callouts
+    public $message_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+
+    public FormBloodSugar $form_b;
+
+    public function mount($patient_uuid)
+    {
+        $this->passObj = BloodSugar::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_a->opd_id = $this->passObj->opd_id;
+        $this->form_a->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_a->admission_date = $this->passObj->admission_date;
+        $this->form_a->entered_by = Auth::user()->name;
+    }
 
     public function render()
     {
@@ -35,11 +52,14 @@ class BloodSugarComponent extends Component
 
     public function fnBloodSugar($input)
     {
-        $this->input = $this->form->all();
+        $this->input = $this->form_b->all();
         //dd($this->input); // 
-        $result = $this->saveBloodSugarData($this->input);
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->patient_uuid.']');
-        //dd($result); //
+        $result = $this->saveBloodSugarData($this->input, $this->passObj);
+        $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
+        $this->message_panel = true;
+        $sysAlertWarning = false;
+        $this->comSuccess = $msg;
     }
 
 

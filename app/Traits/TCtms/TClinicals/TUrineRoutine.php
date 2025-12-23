@@ -19,29 +19,29 @@ use Illuminate\Support\Facades\Log;
 trait TUrineRoutine
 {
 
-  public function saveUrineRoutineData($input)
+  public function saveUrineRoutineData($input, $passObj)
   {
         //dd($input);
-        $newRUInfo = new UrineRoutine();
+        //$passObj = new UrineRoutine();
 
-        $newRUInfo->physical_exam = $input['physical_exam'];
-        $newRUInfo->quantity = $input['quantity'];
-        $newRUInfo->colour = $input['colour'];
-        $newRUInfo->appearance = $input['appearance'];
-        $newRUInfo->deposits = $input['deposits'];
-        $newRUInfo->ph = $input['ph'];
-        $newRUInfo->specific_gravity = $input['specific_gravity'];
+        $passObj->physical_exam = $input['physical_exam'];
+        $passObj->quantity = $input['quantity'];
+        $passObj->colour = $input['colour'];
+        $passObj->appearance = $input['appearance'];
+        $passObj->deposits = $input['deposits'];
+        $passObj->ph = $input['ph'];
+        $passObj->specific_gravity = $input['specific_gravity'];
 
-        $newRUInfo->ur_report_file = $input['ur_report_file'];
-        $newRUInfo->ur_report_file_path = $input['ur_report_file_path'];
+        $passObj->ur_report_file = $input['ur_report_file'];
+        $passObj->ur_report_file_path = $input['ur_report_file_path'];
 
         //--------X Common to all tables X-------------//
-        $newRUInfo->comment_entered_by = $input['comment_entered_by'];
-        $newRUInfo->entered_by = $input['entered_by'];
-        $newRUInfo->entry_date = $input['entry_date'];
+        $passObj->comment_entered_by = $input['comment_entered_by'];
+        $passObj->entered_by = $input['entered_by'];
+        $passObj->entry_date = $input['entry_date'];
 
-        //dd($newRUInfo);
-        $newRUInfo->save();
+        //dd($passObj);
+        $passObj->save();
 
   }
 
