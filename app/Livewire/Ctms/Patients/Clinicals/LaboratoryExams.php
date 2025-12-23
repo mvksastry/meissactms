@@ -33,13 +33,25 @@ class LaboratoryExams extends Component
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
     
     public FormLabExams $form_j;
-    
+
+    public function mount($patient_uuid)
+    {
+        $this->passObj = LaboratoryExam::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_j->opd_id = $this->passObj->opd_id;
+        $this->form_j->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_j->admission_date = $this->passObj->admission_date;
+        $this->form_j->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.laboratory-exams');
     }
 
-    public function fnLabExams($input)
+    public function fnLabExams()
     {
         $this->input = $this->form_j->all();
         //dd($this->input); // 

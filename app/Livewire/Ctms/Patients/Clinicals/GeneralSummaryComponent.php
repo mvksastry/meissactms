@@ -33,12 +33,24 @@ class GeneralSummaryComponent extends Component
     
     public FormGeneralSummary $form_h;
 
+    public function mount($patient_uuid)
+    {
+        $this->passObj = GeneralSummary::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_h->opd_id = $this->passObj->opd_id;
+        $this->form_h->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_h->admission_date = $this->passObj->admission_date;
+        $this->form_h->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.general-summary-component');
     }
 
-    public function fnGeneralSummary($input)
+    public function fnGeneralSummary()
     {
         $this->input = $this->form_h->all();
         //dd($this->input); // 

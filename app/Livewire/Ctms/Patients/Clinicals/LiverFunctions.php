@@ -33,12 +33,24 @@ class LiverFunctions extends Component
         
     public FormLiverFunction $form_k;
 
+    public function mount($patient_uuid)
+    {
+        $this->passObj = LiverFunction::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_k->opd_id = $this->passObj->opd_id;
+        $this->form_k->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_k->admission_date = $this->passObj->admission_date;
+        $this->form_k->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.liver-functions');
     }
 
-    public function fnLiverFunction($input)
+    public function fnLiverFunction()
     {
         $this->input = $this->form_k->all();
         //dd($this->input); // 

@@ -23,23 +23,39 @@
       <tr>
         <td>
           <label>CRP</label>
-          <input wire:model.defer="form.crp" type="text" class="form-control" placeholder="CRP" >
+          <input wire:model.defer="form_f.crp" type="text" class="form-control" placeholder="CRP" >
         </td>
         <td colspan="5">
           <label>CRP Report File</label>
-          <input wire:model.defer="form.crp_report_file" type="file" class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form_f.crp_report_file" type="file" class="form-control" placeholder="Report File" >
+        </td>
+      </tr>                              
+    </tbody>
+  </table>
+  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>        
+      <tr>
+        <td colspan="2">
+          <label>Comment</label>
+          <input wire:model.defer="form_f.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
         </td>
       </tr>
       <tr>
-        <td>
-          <label>IL-6</label>
-          <input wire:model.defer="form.il6" type="text" class="form-control" placeholder="IL-6" >
+        <td colspan="1">
+          <label>Entered By*</label>
+          <input wire:model="form_f.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
         </td>
-        <td colspan="5">
-          <label>IL-6 Report File*</label>
-          <input wire:model.defer="form.il6_report_file" type="file" class="form-control" placeholder="Report File" >
+        <td colspan="1">
+          <label>Entry Date*</label>
+          <input wire:model="form_f.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
         </td>
-      </tr>                               
+      </tr>
     </tbody>
   </table>
+    <button wire:click="fnCRP()" class="btn btn-success font-normal mt-3 rounded">ADD CRP DATA</button>
 </div>

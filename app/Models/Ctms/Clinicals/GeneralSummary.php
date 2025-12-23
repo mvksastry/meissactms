@@ -3,11 +3,13 @@
 namespace App\Models\Ctms\Clinicals;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Traits\HasRoles;
 
 class GeneralSummary extends Model
 {
-    //
-    //
     use HasFactory;
     use HasRoles;
 

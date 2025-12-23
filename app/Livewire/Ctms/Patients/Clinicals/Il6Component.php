@@ -32,13 +32,25 @@ class Il6Component extends Component
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
     
     public FormIl6 $form_i;
-    
+
+    public function mount($patient_uuid)
+    {
+        $this->passObj = Il6::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_i->opd_id = $this->passObj->opd_id;
+        $this->form_i->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_i->admission_date = $this->passObj->admission_date;
+        $this->form_i->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.il6-component');
     }
 
-    public function fnIl6($input)
+    public function fnIl6()
     {
         $this->input = $this->form_i->all();
         //dd($this->input); // 

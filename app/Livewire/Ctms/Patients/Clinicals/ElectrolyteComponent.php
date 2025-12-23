@@ -32,13 +32,25 @@ class ElectrolyteComponent extends Component
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
     
     public FormElectrolytes $form_g;
-    
+   
+    public function mount($patient_uuid)
+    {
+        $this->passObj = Electrolytes::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_g->opd_id = $this->passObj->opd_id;
+        $this->form_g->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_g->admission_date = $this->passObj->admission_date;
+        $this->form_g->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.electrolyte-component');
     }
 
-    public function fnElectrolytes($input)
+    public function fnElectrolytes()
     {
         $this->input = $this->form_g->all();
         //dd($this->input); // 

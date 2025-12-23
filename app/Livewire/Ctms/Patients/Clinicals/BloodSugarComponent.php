@@ -39,10 +39,10 @@ class BloodSugarComponent extends Component
         //dd($this->passObj);
         $this->patient_uuid = $patient_uuid;
         // Initialize the main form (which initializes the sub-form)
-        $this->form_a->opd_id = $this->passObj->opd_id;
-        $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-        $this->form_a->admission_date = $this->passObj->admission_date;
-        $this->form_a->entered_by = Auth::user()->name;
+        $this->form_b->opd_id = $this->passObj->opd_id;
+        $this->form_b->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_b->admission_date = $this->passObj->admission_date;
+        $this->form_b->entered_by = Auth::user()->name;
     }
 
     public function render()
@@ -50,7 +50,7 @@ class BloodSugarComponent extends Component
         return view('livewire.ctms.patients.clinicals.blood-sugar-component');
     }
 
-    public function fnBloodSugar($input)
+    public function fnBloodSugar()
     {
         $this->input = $this->form_b->all();
         //dd($this->input); // 
@@ -61,6 +61,4 @@ class BloodSugarComponent extends Component
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
-
-
 }

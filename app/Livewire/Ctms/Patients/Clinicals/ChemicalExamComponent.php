@@ -35,12 +35,24 @@ class ChemicalExamComponent extends Component
     //form bindings 
     public FormChemExam $form_d;
 
+    public function mount($patient_uuid)
+    {
+        $this->passObj = ChemicalExam::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_d->opd_id = $this->passObj->opd_id;
+        $this->form_d->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_d->admission_date = $this->passObj->admission_date;
+        $this->form_d->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.chemical-exam-component');
     }
 
-    public function fnChemExams($input)
+    public function fnChemExams()
     {
         $this->input = $this->form_d->all();
         //dd($this->input); // 

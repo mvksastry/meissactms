@@ -33,12 +33,24 @@ class UrineRoutineComponent extends Component
         
     public FormUrineRoutine $form_n;
 
+    public function mount($patient_uuid)
+    {
+        $this->passObj = UrineRoutine::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_n->opd_id = $this->passObj->opd_id;
+        $this->form_n->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_n->admission_date = $this->passObj->admission_date;
+        $this->form_n->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.urine-routine-component');
     }
 
-    public function fnRenalFunction($input)
+    public function fnUrineRoutine()
     {
         $this->input = $this->form_n->all();
         //dd($this->input); // 

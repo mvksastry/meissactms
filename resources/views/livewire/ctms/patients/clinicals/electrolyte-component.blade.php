@@ -24,23 +24,49 @@
       <tr>
         <td>
           <label>Sodium</label>
-          <input wire:model.defer="form.sodium" id="crp" type="text" value="null" class="form-control" placeholder="CRP" >
+          <input wire:model.defer="form_g.sodium" id="crp" type="text" value="null" class="form-control" placeholder="CRP" >
         </td>
         <td>
           <label>Potassium</label>
-          <input wire:model.defer="form.potassium" id="rft" type="text" value="null" class="form-control" placeholder="RFT" >
+          <input wire:model.defer="form_g.potassium" id="rft" type="text" value="null" class="form-control" placeholder="RFT" >
         </td>
         <td>
           <label>Chloride</label>
-          <input wire:model.defer="form.chloride" id="lft" type="text" value="null" class="form-control" placeholder="LFT" >
+          <input wire:model.defer="form_g.chloride" id="lft" type="text" value="null" class="form-control" placeholder="LFT" >
         </td>
       </tr>
       <tr>
         <td colspan="6">
           <label>Electrolyte Report File*</label>
-          <input wire:model.defer="form.electro_report_file" type="file" value="null" class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form_g.electro_report_file" type="file" value="null" class="form-control" placeholder="Report File" >
         </td>
       </tr>                                    
     </tbody>
   </table>
+  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>        
+      <tr>
+        <td colspan="2">
+          <label>Comment</label>
+          <input wire:model.defer="form_g.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <label>Entered By*</label>
+          <input wire:model="form_g.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+        </td>
+        <td colspan="1">
+          <label>Entry Date*</label>
+          <input wire:model="form_g.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    <button wire:click="fnElectrolytes()" class="btn btn-success font-normal mt-3 rounded">ADD ELECTROLYTES</button>
 </div>

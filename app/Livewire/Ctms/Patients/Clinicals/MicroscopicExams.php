@@ -32,13 +32,25 @@ class MicroscopicExams extends Component
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
         
     public FormMicroscopicExam $form_l;
-    
-    public function render()
+
+    public function mount($patient_uuid)
     {
-        return view('livewire.ctms.patients.clinicals.microscopic-examinatons');
+        $this->passObj = MicroscopicExam::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_l->opd_id = $this->passObj->opd_id;
+        $this->form_l->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_l->admission_date = $this->passObj->admission_date;
+        $this->form_l->entered_by = Auth::user()->name;
     }
 
-    public function fnMicroscopicExam($input)
+    public function render()
+    {
+        return view('livewire.ctms.patients.clinicals.microscopic-exams');
+    }
+
+    public function fnMicroscopicExam()
     {
         $this->input = $this->form_l->all();
         //dd($this->input); // 

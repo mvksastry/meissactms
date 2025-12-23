@@ -33,12 +33,24 @@ class CrpComponent extends Component
     
     public FormCrp $form_f;
 
+    public function mount($patient_uuid)
+    {
+        $this->passObj = Crp::where('patient_uuid', $patient_uuid)->first();
+        //dd($this->passObj);
+        $this->patient_uuid = $patient_uuid;
+        // Initialize the main form (which initializes the sub-form)
+        $this->form_f->opd_id = $this->passObj->opd_id;
+        $this->form_f->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_f->admission_date = $this->passObj->admission_date;
+        $this->form_f->entered_by = Auth::user()->name;
+    }
+
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.crp-component');
     }
 
-    public function fnCRP($input)
+    public function fnCRP()
     {
         $this->input = $this->form_f->all();
         //dd($this->input); // 

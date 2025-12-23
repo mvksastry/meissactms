@@ -23,43 +23,49 @@
       <tr>
         <td>
           <label>Fasting</label>
-          <input wire:model.defer="form.fasting" type="text" class="form-control" placeholder="Fasting">
+          <input wire:model.defer="form_b.fasting" type="text" class="form-control" placeholder="Fasting">
         </td>
         <td>
           <label>Random</label>
-          <input wire:model.defer="form.random" type="text" class="form-control" placeholder="Random">
+          <input wire:model.defer="form_b.random" type="text" class="form-control" placeholder="Random">
         </td>
         <td>
           <label>Post-Prandial</label>
-          <input wire:model.defer="form.post_prandial" type="text" class="form-control" placeholder="Post Prandial" >
+          <input wire:model.defer="form_b.post_prandial" type="text" class="form-control" placeholder="Post Prandial" >
         </td>
       </tr>
       <tr>
         <td colspan="6">
           <label>Blood Sugar Report File*</label>
-          <input wire:model.defer="form.bllodsugar_report_file" type="file" class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form_b.bllodsugar_report_file" type="file" class="form-control" placeholder="Report File" >
         </td>
       </tr>     
+    </tbody>
+  </table>
+   <table id="userIndex2" class="table table-sm table-bordered table-hover">
+    <thead>
       <tr>
-        <td>
-          <label>CRP</label>
-          <input wire:model.defer="form.crp" type="text" class="form-control" placeholder="CRP" >
-        </td>
-        <td colspan="5">
-          <label>CRP Report File</label>
-          <input wire:model.defer="form.crp_report_file" type="file" class="form-control" placeholder="Report File" >
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>        
+      <tr>
+        <td colspan="2">
+          <label>Comment</label>
+          <input wire:model.defer="form_b.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
         </td>
       </tr>
       <tr>
-        <td>
-          <label>IL-6</label>
-          <input wire:model.defer="form.il6" type="text" class="form-control" placeholder="IL-6" >
+        <td colspan="1">
+          <label>Entered By*</label>
+          <input wire:model="form_b.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
         </td>
-        <td colspan="5">
-          <label>IL-6 Report File*</label>
-          <input wire:model.defer="form.il6_report_file" type="file" class="form-control" placeholder="Report File" >
+        <td colspan="1">
+          <label>Entry Date*</label>
+          <input wire:model="form_b.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
         </td>
-      </tr>                               
+      </tr>
     </tbody>
   </table>
+  <button wire:click="fnBloodSugar()" class="btn btn-success font-normal mt-3 rounded">ADD BLOOD SUGAR DATA</button>
 </div>

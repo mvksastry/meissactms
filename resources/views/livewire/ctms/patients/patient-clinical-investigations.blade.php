@@ -100,39 +100,44 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                              <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid"/>
+                              <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid" />
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_4">
-                              @include('livewire.ctms.patients.forms.cb-3LFT')
+                              <livewire:ctms.patients.clinicals.liver-functions :patient_uuid="$patient_uuid" />
+                              <livewire:ctms.patients.clinicals.electrolyte-component :patient_uuid="$patient_uuid" />
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_5">
-                              @include('livewire.ctms.patients.forms.cb-4RFT')
+                              <livewire:ctms.patients.clinicals.renal-function-component :patient_uuid="$patient_uuid" />
+                              <livewire:ctms.patients.clinicals.blood-urea-component :patient_uuid="$patient_uuid" />
+                              <livewire:ctms.patients.clinicals.creatinine-component :patient_uuid="$patient_uuid" />
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_6">
-                              @include('livewire.ctms.patients.forms.cb-5BS')
+                              <livewire:ctms.patients.clinicals.blood-sugar-component :patient_uuid="$patient_uuid" />
+                              <livewire:ctms.patients.clinicals.crp-component :patient_uuid="$patient_uuid" />
+                              <livewire:ctms.patients.clinicals.il6-component :patient_uuid="$patient_uuid" />
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_7">
-                              @include('livewire.ctms.patients.forms.cb-6PLI')
+                              <livewire:ctms.patients.clinicals.laboratory-exams :patient_uuid="$patient_uuid" />                  
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_8">
-                              @include('livewire.ctms.patients.forms.cb-7CE')
+                              <livewire:ctms.patients.clinicals.chemical-exam-component :patient_uuid="$patient_uuid" />
                             </div> 
                             <!-- /.tab-pane -->     
                             <div class="tab-pane" id="tab_9">
-                              @include('livewire.ctms.patients.forms.cb-8ME')
+                              <livewire:ctms.patients.clinicals.microscopic-exams :patient_uuid="$patient_uuid" />                           
                             </div> 
                             <!-- /.tab-pane -->   
                             <div class="tab-pane" id="tab_10">
-                              @include('livewire.ctms.patients.forms.cb-10UR')
+                              <livewire:ctms.patients.clinicals.urine-routine-component :patient_uuid="$patient_uuid" />                
                             </div> 
                             <!-- /.tab-pane -->     
                             <div class="tab-pane" id="tab_11">
-                              @include('livewire.ctms.patients.forms.cb-9MISC')
+                              <livewire:ctms.patients.clinicals.general-summary-component :patient_uuid="$patient_uuid" />                          
                             </div>  
                             <!-- /.tab-pane -->                                                                                                                                                                                    
                             <div class="tab-pane" id="tab_12">
