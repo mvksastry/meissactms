@@ -24,19 +24,19 @@ trait TLiverFunctions
 
         //$passObj = new LiverFunction();
 
-        $passObj->serum_total_protein = $input['serum_total_protein'];
-        $passObj->serum_albumin = $input['serum_albumin'];
-        $passObj->globulin = $input['globulin'];
-        $passObj->ag_ratio = $input['ag_ratio'];
-        $passObj->total_bilirubin = $input['total_bilirubin'];
+        $passObj->serum_total_protein = intval($input['serum_total_protein']);
+        $passObj->serum_albumin = intval($input['serum_albumin']);
+        $passObj->globulin = intval($input['globulin']);
+        $passObj->ag_ratio = intval($input['ag_ratio']);
+        $passObj->total_bilirubin = intval($input['total_bilirubin']);
 
-        $passObj->direct_bilirubin = $input['direct_bilirubin'];
-        $passObj->indirect_bilirubin = $input['indirect_bilirubin'];
-        $passObj->sgot = $input['sgot'];
-        $passObj->sgpt = $input['sgpt'];
-        $passObj->alkaline_phosphatase = $input['alkaline_phosphatase'];
+        $passObj->direct_bilirubin = intval($input['direct_bilirubin']);
+        $passObj->indirect_bilirubin = intval($input['indirect_bilirubin']);
+        $passObj->sgot = intval($input['sgot']);
+        $passObj->sgpt = intval($input['sgpt']);
+        $passObj->alkaline_phosphatase = intval($input['alkaline_phosphatase']);
 
-        $passObj->observations = $input['observations'];
+        $passObj->observations = null;
         $passObj->lft_report_file = $input['lft_report_file'];
         $passObj->lft_report_file_path = $input['lft_report_file_path'];
 

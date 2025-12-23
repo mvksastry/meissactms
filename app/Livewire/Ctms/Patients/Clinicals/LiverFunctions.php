@@ -35,7 +35,7 @@ class LiverFunctions extends Component
 
     public function mount($patient_uuid)
     {
-        $this->passObj = LiverFunction::where('patient_uuid', $patient_uuid)->first();
+        $this->passObj = LiverFunction::where('patient_uuid', $patient_uuid)->where('status', 'draft')->first();
         //dd($this->passObj);
         $this->patient_uuid = $patient_uuid;
         // Initialize the main form (which initializes the sub-form)

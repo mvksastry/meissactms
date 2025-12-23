@@ -24,9 +24,9 @@ trait TElectrolytes
 
         //$passObj = new Electrolytes();
 
-        $passObj->sodium = $input['sodium'];
-        $passObj->potassium = $input['potassium'];
-        $passObj->chloride = $input['chloride'];
+        $passObj->sodium = intval($input['sodium']);
+        $passObj->potassium = intval($input['potassium']);
+        $passObj->chloride = intval($input['chloride']);
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];
