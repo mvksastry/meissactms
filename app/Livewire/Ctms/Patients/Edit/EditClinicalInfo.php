@@ -27,20 +27,20 @@ use App\Models\Ctms\Clinicals\UrineRoutine;
 
 //forms
 use App\Livewire\Forms\PatientCIForm;
-use App\Livewire\Forms\Clinicals\FormBloodRoutine;
-use App\Livewire\Forms\Clinicals\FormBloodSugar;
-use App\Livewire\Forms\Clinicals\FormBloodUrea;
-use App\Livewire\Forms\Clinicals\FormChemExam;
-use App\Livewire\Forms\Clinicals\FormCreatinine;
-use App\Livewire\Forms\Clinicals\FormCrp;
-use App\Livewire\Forms\Clinicals\FormElectrolytes;
-use App\Livewire\Forms\Clinicals\FormGeneralSummary;
-use App\Livewire\Forms\Clinicals\FormIl6;
-use App\Livewire\Forms\Clinicals\FormLabExams;
-use App\Livewire\Forms\Clinicals\FormLiverFunction;
-use App\Livewire\Forms\Clinicals\FormMicroscopicExam;
-use App\Livewire\Forms\Clinicals\FormRenalFunction;
-use App\Livewire\Forms\Clinicals\FormUrineRoutine;
+use App\Livewire\Forms\clinicals\FormBloodRoutine;
+use App\Livewire\Forms\clinicals\FormBloodSugar;
+use App\Livewire\Forms\clinicals\FormBloodUrea;
+use App\Livewire\Forms\clinicals\FormChemExam;
+use App\Livewire\Forms\clinicals\FormCreatinine;
+use App\Livewire\Forms\clinicals\FormCrp;
+use App\Livewire\Forms\clinicals\FormElectrolytes;
+use App\Livewire\Forms\clinicals\FormGeneralSummary;
+use App\Livewire\Forms\clinicals\FormIl6;
+use App\Livewire\Forms\clinicals\FormLabExams;
+use App\Livewire\Forms\clinicals\FormLiverFunction;
+use App\Livewire\Forms\clinicals\FormMicroscopicExam;
+use App\Livewire\Forms\clinicals\FormRenalFunction;
+use App\Livewire\Forms\clinicals\FormUrineRoutine;
 
 //traits, facades
 
@@ -222,6 +222,8 @@ class EditClinicalInfo extends Component
         $this->form_a->comment_entered_by = $c1Obj->comment_entered_by;
         $this->form_a->entered_by = $c1Obj->entered_by;
         $this->form_a->entry_date = $c1Obj->entry_date;
+
+        //($this->form_a);
     }
 
     //blood sugar
