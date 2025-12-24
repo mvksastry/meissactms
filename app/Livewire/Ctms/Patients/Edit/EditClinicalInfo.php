@@ -81,65 +81,65 @@ class EditClinicalInfo extends Component
     {
         $this->clinical_info = ClinicalData::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
         //dd($this->clinical_info);
-        $this->form->entered_by = Auth::user()->name;
+        //$this->form->entered_by = Auth::user()->name;
         $this->setClinicalDataForm($this->clinical_info);
 
         //now set for all other parameters
         $this->c1Obj = BloodRoutine::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
         //dd($this->uuid, $this->c1Obj);
-        $this->form_a->entered_by = Auth::user()->name;
+        //$this->form_a->entered_by = Auth::user()->name;
         $this->setC1ObjData($this->c1Obj);
 
         $this->c2Obj = BloodSugar::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_b->entered_by = Auth::user()->name;
+        //$this->form_b->entered_by = Auth::user()->name;
         $this->setC2ObjData($this->c2Obj);
 
         $this->c3Obj = BloodUrea::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_c->entered_by = Auth::user()->name;
+        //$this->form_c->entered_by = Auth::user()->name;
         $this->setC3ObjData($this->c3Obj);
 
         $this->c4Obj = ChemicalExam::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_d->entered_by = Auth::user()->name;
+        //$this->form_d->entered_by = Auth::user()->name;
         $this->setC4ObjData($this->c4Obj);
 
         $this->c5Obj = Creatinine::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_e->entered_by = Auth::user()->name;
+        //$this->form_e->entered_by = Auth::user()->name;
         $this->setC5ObjData($this->c5Obj);
 
         $this->c6Obj = Crp::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_f->entered_by = Auth::user()->name;
+        //$this->form_f->entered_by = Auth::user()->name;
         $this->setC6ObjData($this->c6Obj);
 
         $this->c7Obj = Electrolytes::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_g->entered_by = Auth::user()->name;
+        //$this->form_g->entered_by = Auth::user()->name;
         $this->setC7ObjData($this->c7Obj);
 
         $this->c8Obj = GeneralSummary::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_h->entered_by = Auth::user()->name;
+        //$this->form_h->entered_by = Auth::user()->name;
         $this->setC8ObjData($this->c8Obj);
 
         $this->c9Obj = Il6::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_i->entered_by = Auth::user()->name;
+        //$this->form_i->entered_by = Auth::user()->name;
         $this->setC9ObjData($this->c9Obj);
 
         $this->c10Obj = LaboratoryExam::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_j->entered_by = Auth::user()->name;
+        //$this->form_j->entered_by = Auth::user()->name;
         $this->setC10ObjData($this->c10Obj);
 
         $this->c11Obj = LiverFunction::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_k->entered_by = Auth::user()->name;
+        //$this->form_k->entered_by = Auth::user()->name;
         $this->setC11ObjData($this->c11Obj);
 
         $this->c12Obj = MicroscopicExam::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_l->entered_by = Auth::user()->name;
+        //$this->form_l->entered_by = Auth::user()->name;
         $this->setC12ObjData($this->c12Obj);
 
         $this->c13Obj = RenalFunction::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_m->entered_by = Auth::user()->name;
+        //$this->form_m->entered_by = Auth::user()->name;
         $this->setC13ObjData($this->c13Obj);
 
         $this->c14Obj = UrineRoutine::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        $this->form_n->entered_by = Auth::user()->name;
+        //$this->form_n->entered_by = Auth::user()->name;
         $this->setC14ObjData($this->c14Obj);
 
         return view('livewire.ctms.patients.edit.edit-clinical-info');
