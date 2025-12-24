@@ -1,6 +1,6 @@
 <div>
-    {{-- The Master doesn't talk, he acts. --}}
- {{-- In work, do what you enjoy. --}}
+  {{-- The Master doesn't talk, he acts. --}}
+  {{-- In work, do what you enjoy. --}}
   {{-- The whole world belongs to you. --}}
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -36,42 +36,52 @@
             <!-- /.col-12 -->
             <!-- /.col-12 -->
             <div class="row">
+              @if(count($draftPatients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                <thead>
-                    <tr>
-                    <th>Center</th>
-                    <th>Clinic</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Status</th>
-                    <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody> 
-                  @foreach($draftPatients as $row)
-                    <tr>
-                      <td>
-                          {{ $row->center_id }}
-                      </td>
-                      <td>
-                          {{ $row->ctarm_id }}
-                      </td>
-                      <td>
-                          {{ $row->name }}
-                      </td>
-                      <td>
-                          {{ $row->gender }}
-                      </td>
-                      <td>
-                          {{ ucfirst($row->status) }}
-                      </td>
-                      <td>
-                          <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
-                      </td>
-                    </tr>
-                  @endforeach
-                </tbody>
+                  <thead>
+                      <tr>
+                        <th>Center</th>
+                        <th>Clinic</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                      </tr>
+                  </thead>
+                  <tbody> 
+                    @foreach($draftPatients as $row)
+                      <tr>
+                        <td>
+                            {{ $row->center_id }}
+                        </td>
+                        <td>
+                            {{ $row->ctarm_id }}
+                        </td>
+                        <td>
+                            {{ $row->name }}
+                        </td>
+                        <td>
+                            {{ $row->gender }}
+                        </td>
+                        <td>
+                            {{ ucfirst($row->status) }}
+                        </td>
+                        <td>
+                            <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
+                        </td>
+                      </tr>
+                    @endforeach
+                  </tbody>
                 </table>
+              @else 
+                <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                  <thead>
+                      <tr>
+                      <th>No Information to display</th>
+                      </tr>
+                  </thead>
+                </table>
+              @endif
             </div>
             <!-- /.row -->
             <!--Divider-->
