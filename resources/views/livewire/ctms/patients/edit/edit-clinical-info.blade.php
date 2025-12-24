@@ -61,7 +61,6 @@
                           <ul class="nav nav-pills ml-auto p-2">
                             <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Cryptic</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">BR</a></li>
-
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">LFT&Elec</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">RFT</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">BS/CRP/IL6</a></li>
@@ -70,7 +69,6 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">ME</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">UR</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_10" data-toggle="tab">GS</a></li>
-
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">

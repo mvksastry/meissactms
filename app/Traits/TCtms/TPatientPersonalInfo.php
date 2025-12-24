@@ -39,8 +39,7 @@ use App\Models\Ctms\Clinicals\MicroscopicExam;
 use App\Models\Ctms\Clinicals\RenalFunction;
 use App\Models\Ctms\Clinicals\UrineRoutine;
 
-
-//use App\Traits\Base;
+//traits
 //use App\Traits\TCommon\Notes;
 //use App\Traits\TCommon\FileUploadHandler;
 //use App\Traits\TElab\ResearchProjectPermission;
@@ -57,15 +56,16 @@ trait TPatientPersonalInfo
     {
         //dd($input);
         $newPatientInfo = new Patient();
-
-        //$newPatientInfo->patient_id =  $input['inpatient_id']; 
+ 
         $newPatientInfo->patient_uuid = Str::uuid()->toString(); 
-        $newPatientInfo->center_id =  $input['center_id'];
 
+        $newPatientInfo->center_id =  $input['center_id'];
         $newPatientInfo->ctarm_id =  $input['ctarm_id'];
+        //controls
         $newPatientInfo->opd_id =  $input['opd_id'];
         $newPatientInfo->in_patient_id =  $input['in_patient_id'];
         $newPatientInfo->admission_date =  $input['admission_date'];
+        //personal info
         $newPatientInfo->name =  $input['name'];
         $newPatientInfo->nick_name =  $input['nick_name'];
         $newPatientInfo->alias_name =  $input['alias_name'];
@@ -140,234 +140,25 @@ trait TPatientPersonalInfo
         $newPatientInfo->entered_by = $input['entered_by'];
         $newPatientInfo->entry_date = date('Y-m-d');
 
-        //$newPatientInfo->verified_by = $input['verified_by'];
-        //$newPatientInfo->verified_date = $input['verified_date'];
-        //$newPatientInfo->sealed_by = $input['entry_sealed_by'];
-        //$newPatientInfo->sealed_date = $input['entry_sealed_date'];
-        //dd($newPatientInfo);
-
+        //dd($newPatientInfo);        
         try {
             $this->message_panel = true;
             $name = $newPatientInfo->name;
             $result = $newPatientInfo->save();
             //$name = "New Patient Name"; //for testing
-            //$result = true; //for testing
-            // Attempt to save the user
+            //$result = true;             //for testing
+            //Attempt to save the user
             $this->dispatch('resetPanelsForNewMessages');
             
             if ($result) { 
-                         
+                
                 $msg = 'New Patient ['.$name.'] saved successfully!';
                 $this->comSuccess = $msg;
                 Log::channel('patient')->info($msg);
                 //set global patient uuid
                 $this->patient_uuid = $newPatientInfo->patient_uuid; 
-                //$this->opd_id = $input['opd_id'];
-                //$this->in_patient_id =  $input['in_patient_id'];
-                //$this->admission_date =  $input['admission_date'];
-
-                //make entries in all relevant tables.
-                $newLS = new LifeStyle();
-                $newLS->patient_uuid = $this->patient_uuid;
-                $newLS->opd_id =  $input['opd_id'];
-                $newLS->in_patient_id =  $input['in_patient_id'];
-                $newLS->admission_date =  $input['admission_date'];
-                $newLS->status = 'draft';
-                $newLS->status_date = date('Y-m-d');
-                $newLS->save();
-
-                $newCD = new ClinicalData();
-                $newCD->opd_id =  $input['opd_id'];
-                $newCD->in_patient_id =  $input['in_patient_id'];
-                $newCD->admission_date =  $input['admission_date'];
-                $newCD->patient_uuid = $this->patient_uuid;
-                $newCD->status = 'draft';
-                $newCD->status_date = date('Y-m-d');
-                $newCD->save();
-
-                $newSE = new SensoryExamination();
-                $newSE->patient_uuid = $this->patient_uuid;
-                $newSE->opd_id =  $input['opd_id'];
-                $newSE->in_patient_id =  $input['in_patient_id'];
-                $newSE->admission_date =  $input['admission_date'];
-                $newSE->status = 'draft';
-                $newSE->status_date = date('Y-m-d');
-                $newSE->save();
-
-                $newMDT = new Mdtre();
-                $newMDT->patient_uuid = $this->patient_uuid;
-                $newMDT->opd_id =  $input['opd_id'];
-                $newMDT->in_patient_id =  $input['in_patient_id'];
-                $newMDT->admission_date =  $input['admission_date'];
-                $newMDT->status = 'draft';
-                $newMDT->status_date = date('Y-m-d');
-                $newMDT->save();
-
-                $newPfg = new PfirmannGrade();
-                $newPfg->patient_uuid = $this->patient_uuid;
-                $newPfg->opd_id =  $input['opd_id'];
-                $newPfg->in_patient_id =  $input['in_patient_id'];
-                $newPfg->admission_date =  $input['admission_date'];
-                $newPfg->status = 'draft';
-                $newPfg->status_date = date('Y-m-d');
-                $newPfg->save();
-
-                $newVasc = new VAScore();
-                $newVasc->patient_uuid = $this->patient_uuid;
-                $newVasc->opd_id =  $input['opd_id'];
-                $newVasc->in_patient_id =  $input['in_patient_id'];
-                $newVasc->admission_date =  $input['admission_date'];
-                $newVasc->status = 'draft';
-                $newVasc->status_date = date('Y-m-d');
-                $newVasc->save();
-
-                $newModq = new ModqScore();
-                $newModq->patient_uuid = $this->patient_uuid;
-                $newModq->opd_id =  $input['opd_id'];
-                $newModq->in_patient_id =  $input['in_patient_id'];
-                $newModq->admission_date =  $input['admission_date'];              
-                $newModq->status = 'draft';
-                $newModq->status_date = date('Y-m-d');
-                $newModq->save();
-
-                $newRMQ = new RMQReply();
-                $newRMQ->patient_uuid = $this->patient_uuid;
-                $newRMQ->opd_id =  $input['opd_id'];
-                $newRMQ->in_patient_id =  $input['in_patient_id'];
-                $newRMQ->admission_date =  $input['admission_date']; 
-                $newRMQ->status = 'draft';
-                $newRMQ->status_date = date('Y-m-d');
-                $newRMQ->save();
-
-                //-- complete rest of the --//
-
-                $an1 = new BloodRoutine();
-                $an1->patient_uuid = $this->patient_uuid;
-                $an1->opd_id =  $input['opd_id'];
-                $an1->in_patient_id =  $input['in_patient_id'];
-                $an1->admission_date =  $input['admission_date']; 
-                $an1->status = 'draft';
-                $an1->status_date = date('Y-m-d');
-                $an1->save();
-
-                $an2 = new BloodSugar();
-                $an2->patient_uuid = $this->patient_uuid;
-                $an2->opd_id =  $input['opd_id'];
-                $an2->in_patient_id =  $input['in_patient_id'];
-                $an2->admission_date =  $input['admission_date']; 
-                $an2->status = 'draft';
-                $an2->status_date = date('Y-m-d');
-                $an2->save();
-
-
-                $an3 = new BloodUrea();
-                $an3->patient_uuid = $this->patient_uuid;
-                $an3->opd_id =  $input['opd_id'];
-                $an3->in_patient_id =  $input['in_patient_id'];
-                $an3->admission_date =  $input['admission_date']; 
-                $an3->status = 'draft';
-                $an3->status_date = date('Y-m-d');
-                $an3->save();
-
-                $an4 = new ChemicalExam();
-                $an4->patient_uuid = $this->patient_uuid;
-                $an4->opd_id =  $input['opd_id'];
-                $an4->in_patient_id =  $input['in_patient_id'];
-                $an4->admission_date =  $input['admission_date']; 
-                $an4->status = 'draft';
-                $an4->status_date = date('Y-m-d');
-                $an4->save();
-
-                $an5 = new Creatinine();
-                $an5->patient_uuid = $this->patient_uuid;
-                $an5->opd_id =  $input['opd_id'];
-                $an5->in_patient_id =  $input['in_patient_id'];
-                $an5->admission_date =  $input['admission_date']; 
-                $an5->status = 'draft';
-                $an5->status_date = date('Y-m-d');
-                $an5->save();
-
-                $an6 = new Crp();
-                $an6->patient_uuid = $this->patient_uuid;
-                $an6->opd_id =  $input['opd_id'];
-                $an6->in_patient_id =  $input['in_patient_id'];
-                $an6->admission_date =  $input['admission_date']; 
-                $an6->status = 'draft';
-                $an6->status_date = date('Y-m-d');
-                $an6->save();
-
-                $an7 = new Electrolytes();
-                $an7->patient_uuid = $this->patient_uuid;
-                $an7->opd_id =  $input['opd_id'];
-                $an7->in_patient_id =  $input['in_patient_id'];
-                $an7->admission_date =  $input['admission_date']; 
-                $an7->status = 'draft';
-                $an7->status_date = date('Y-m-d');
-                $an7->save();
-
-                $an8 = new GeneralSummary();
-                $an8->patient_uuid = $this->patient_uuid;
-                $an8->opd_id =  $input['opd_id'];
-                $an8->in_patient_id =  $input['in_patient_id'];
-                $an8->admission_date =  $input['admission_date']; 
-                $an8->status = 'draft';
-                $an8->status_date = date('Y-m-d');
-                $an8->save();
-
-                $an9 = new Il6();
-                $an9->patient_uuid = $this->patient_uuid;
-                $an9->opd_id =  $input['opd_id'];
-                $an9->in_patient_id =  $input['in_patient_id'];
-                $an9->admission_date =  $input['admission_date']; 
-                $an9->status = 'draft';
-                $an9->status_date = date('Y-m-d');
-                $an9->save();
-
-                $an10 = new LaboratoryExam();
-                $an10->patient_uuid = $this->patient_uuid;
-                $an10->opd_id =  $input['opd_id'];
-                $an10->in_patient_id =  $input['in_patient_id'];
-                $an10->admission_date =  $input['admission_date']; 
-                $an10->status = 'draft';
-                $an10->status_date = date('Y-m-d');
-                $an10->save();
-
-                $an11 = new LiverFunction();
-                $an11->patient_uuid = $this->patient_uuid;
-                $an11->opd_id =  $input['opd_id'];
-                $an11->in_patient_id =  $input['in_patient_id'];
-                $an11->admission_date =  $input['admission_date']; 
-                $an11->status = 'draft';
-                $an11->status_date = date('Y-m-d');
-                $an11->save();
-
-                $an12 = new MicroscopicExam();
-                $an12->patient_uuid = $this->patient_uuid;
-                $an12->opd_id =  $input['opd_id'];
-                $an12->in_patient_id =  $input['in_patient_id'];
-                $an12->admission_date =  $input['admission_date']; 
-                $an12->status = 'draft';
-                $an12->status_date = date('Y-m-d');
-                $an12->save();
-
-                $an13 = new RenalFunction();
-                $an13->patient_uuid = $this->patient_uuid;
-                $an13->opd_id =  $input['opd_id'];
-                $an13->in_patient_id =  $input['in_patient_id'];
-                $an13->admission_date =  $input['admission_date']; 
-                $an13->status = 'draft';
-                $an13->status_date = date('Y-m-d');
-                $an13->save();
-
-                $an14 = new UrineRoutine();
-                $an14->patient_uuid = $this->patient_uuid;
-                $an14->opd_id =  $input['opd_id'];
-                $an14->in_patient_id =  $input['in_patient_id'];
-                $an14->admission_date =  $input['admission_date']; 
-                $an14->status = 'draft';
-                $an14->status_date = date('Y-m-d');
-                $an14->save();
-
+                //make entries through trait in all patient models
+                $setResult = $this->setDbEntriesPatientModels($this->patient_uuid, $input);
                 //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
                 $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
                 return $result;

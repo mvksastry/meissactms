@@ -14,6 +14,7 @@ use App\Livewire\Forms\PatientForm;
 
 //traits
 use App\Traits\TCtms\TPatientPersonalInfo;
+use App\Traits\TCtms\TDbEntries;
 
 //logs
 use Illuminate\Support\Facades\Log;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Log;
 class PatientPersonal extends Component
 {
     use TPatientPersonalInfo;
+    use TDbEntries;
 
     //Form bindings
     public PatientForm $form;

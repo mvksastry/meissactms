@@ -48,28 +48,28 @@
                     </tr>
                 </thead>
                 <tbody> 
-                    @foreach($draftPatients as $row)
-                        <tr>
-                            <td>
-                                {{ $row->center_id }}
-                            </td>
-                            <td>
-                                {{ $row->ctarm_id }}
-                            </td>
-                            <td>
-                                {{ $row->name }}
-                            </td>
-                            <td>
-                                {{ $row->gender }}
-                            </td>
-                            <td>
-                                {{ ucfirst($row->status) }}
-                            </td>
-                            <td>
-                                <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
-                            </td>
-                        </tr>
-                    @endforeach
+                  @foreach($draftPatients as $row)
+                    <tr>
+                      <td>
+                          {{ $row->center_id }}
+                      </td>
+                      <td>
+                          {{ $row->ctarm_id }}
+                      </td>
+                      <td>
+                          {{ $row->name }}
+                      </td>
+                      <td>
+                          {{ $row->gender }}
+                      </td>
+                      <td>
+                          {{ ucfirst($row->status) }}
+                      </td>
+                      <td>
+                          <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
+                      </td>
+                    </tr>
+                  @endforeach
                 </tbody>
                 </table>
             </div>
