@@ -166,14 +166,6 @@ trait TPatientPersonalInfo
                 //$this->in_patient_id =  $input['in_patient_id'];
                 //$this->admission_date =  $input['admission_date'];
 
-                //$this->form_header['patient_uuid'] = $newPatientInfo->patient_uuid;
-                //$this->form_header['opd_id'] = $input['opd_id'];
-                //$this->form_header['in_patient_id'] = $input['in_patient_id'];
-                //$this->form_header['admission_date'] = $input['admission_date'];
-                //$this->form_header['entered_by'] = Auth::user()->name;
-                //$this->form_header = json_encode($this->form_header);
-                //$this->dispatch('newFormHeadersGenerated', $this->patient_uuid);
-
                 //make entries in all relevant tables.
                 $newLS = new LifeStyle();
                 $newLS->patient_uuid = $this->patient_uuid;
@@ -375,7 +367,6 @@ trait TPatientPersonalInfo
                 $an14->status = 'draft';
                 $an14->status_date = date('Y-m-d');
                 $an14->save();
-
 
                 //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
                 $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);

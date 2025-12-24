@@ -113,7 +113,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
+                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Vis. Analog Score</button>  
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">

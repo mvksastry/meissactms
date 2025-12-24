@@ -40,9 +40,11 @@
               <div class="col-sm-4 col-md-2">
                 <button wire:click="fnNewPatientEntrySteps()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp New Patient</button>
               </div>
-              <div class="col-sm-4 col-md-2">
-                <button wire:click="fnRedirectToEdit()" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Edit Patients</button>
-              </div>
+              @if($edit_button)
+                <div class="col-sm-4 col-md-2">
+                  <button wire:click="fnRedirectToEdit()" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Edit Patients</button>
+                </div>
+              @endif
             </div>
             <!-- /.row -->
             <!--Divider-->
