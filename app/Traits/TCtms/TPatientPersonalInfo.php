@@ -55,6 +55,11 @@ trait TPatientPersonalInfo
     public function savePatientInformation($input)
     {
         //dd($input);
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+
         $newPatientInfo = new Patient();
  
         $newPatientInfo->patient_uuid = Str::uuid()->toString(); 
