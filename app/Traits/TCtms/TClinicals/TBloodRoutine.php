@@ -24,7 +24,10 @@ trait TBloodRoutine
         //$newBRdata = new BloodRoutine(); // not correct as first entry results in control
         //$passObj = BloodRoutine::where('patient_uuid', $patient_uuid)->first();
         //--------X Common to all tables X-------------//
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
         //--------X Table content X-------------//
         $passObj->rbc = $input['rbc'];
         $passObj->hgb = $input['hgb'];

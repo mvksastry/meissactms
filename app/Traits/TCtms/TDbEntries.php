@@ -46,7 +46,7 @@ trait TDbEntries
 
   public function setDbEntriesPatientModels($uuid, $input)
   {
-      dd($uuid, $input);
+      //dd($uuid, $input);
       //make entries in all relevant tables.
       $newLS = new LifeStyle();
       $newLS->patient_uuid = $uuid;
@@ -58,10 +58,10 @@ trait TDbEntries
       $newLS->save();
 
       $newCD = new ClinicalData();
+      $newCD->patient_uuid = $uuid;
       $newCD->opd_id =  $input['opd_id'];
       $newCD->in_patient_id =  $input['in_patient_id'];
       $newCD->admission_date =  $input['admission_date'];
-      $newCD->patient_uuid = $uuid;
       $newCD->status = 'draft';
       $newCD->status_date = date('Y-m-d');
       $newCD->save();

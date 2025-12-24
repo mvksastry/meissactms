@@ -23,7 +23,11 @@ trait TLiverFunctions
     {
 
         //$passObj = new LiverFunction();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->serum_total_protein = intval($input['serum_total_protein']);
         $passObj->serum_albumin = intval($input['serum_albumin']);
         $passObj->globulin = intval($input['globulin']);

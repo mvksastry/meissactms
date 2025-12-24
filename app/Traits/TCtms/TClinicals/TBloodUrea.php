@@ -24,7 +24,11 @@ trait TBloodUrea
     {
 
         //$passObj = new BloodUrea();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->urea = $input['urea'];
         $passObj->blood_urea_nitrogen = $input['blood_urea_nitrogen'];
         $passObj->bubun_report_file = $input['bubun_report_file'];

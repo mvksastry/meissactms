@@ -23,17 +23,23 @@ trait TLaboratoryExams
     {
 
         //$passObj = new LaboratoryExam();
+       // dd($input);
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input); // array_map should walk through $array
 
+        //dd($input);
         $passObj->esr = $input['esr'];
         $passObj->pt_patient = $input['pt_patient'];
         $passObj->pt_control = $input['pt_control'];
         $passObj->inr = $input['inr'];
         $passObj->isi = $input['isi'];
 
-        $passObj->esr_report_file = $input['esr_report_file'];
-        $passObj->esr_report_file_path = $input['esr_report_file_path'];
-        $passObj->pt_report_file = $input['pt_report_file'];
-        $passObj->pt_report_file_path = $input['pt_report_file_path'];
+        $passObj->esr_report_file = null;
+        $passObj->esr_report_file_path = null;
+        $passObj->pt_report_file = null;
+        $passObj->pt_report_file_path = null;
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

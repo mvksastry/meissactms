@@ -24,7 +24,11 @@ trait TCreatinine
     {
 
         //$passObj = new Creatinine();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->serum_creatinine = $input['serum_creatinine'];
         $passObj->creatine_report_file = $input['creatine_report_file'];
         $passObj->creatine_report_file_path = $input['creatine_report_file_path'];

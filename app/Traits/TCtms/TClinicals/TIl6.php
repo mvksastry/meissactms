@@ -22,7 +22,11 @@ trait TIl6
     public function saveIl6Data($input, $passObj)
     {
         //$passObj = new Il6();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->il6 = $input['il6'];
         $passObj->il6_report_file = $input['il6_report_file'];
         $passObj->il6_report_file_path = $input['il6_report_file_path'];

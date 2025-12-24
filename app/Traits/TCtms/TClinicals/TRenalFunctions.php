@@ -23,8 +23,12 @@ trait TRenalFunctions
   {
 
       //$passObj = new RenalFunction();
+      $input = array_map(function($value) 
+      {
+          return $value === "" ? NULL : $value;
+      }, $input);
 
-      $passObj->uric_acid = $input['uric_acid'];
+      $passObj->uric_acid = $input['sr_uric_acid'];
       $passObj->uricacid_report_file = $input['uricacid_report_file'];
       $passObj->uricacid_report_file_path = $input['uricacid_report_file_path'];
 

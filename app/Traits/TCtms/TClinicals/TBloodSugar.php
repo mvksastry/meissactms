@@ -23,12 +23,16 @@ trait TBloodSugar
     {
 
         //$passObj = new BloodSugar();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->fasting = $input['fasting'];
         $passObj->post_prandial = $input['post_prandial'];
         $passObj->random = $input['random'];
-        $passObj->bs_report_file = $input['bs_report_file'];
-        $passObj->bs_report_file_path = $input['bs_report_file_path'];
+        $passObj->bs_report_file = $input['bllodsugar_report_file'];
+        $passObj->bs_report_file_path = null;
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

@@ -23,7 +23,12 @@ trait TMicroscopicExams
   {
 
       //$passObj = new MicroscopicExam();
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
 
+//dd($input);
       $passObj->pus_cells = $input['pus_cells'];
       $passObj->epithelial_cells = $input['epithelial_cells'];
       $passObj->rbcs = $input['rbcs'];
@@ -31,7 +36,7 @@ trait TMicroscopicExams
       $passObj->bacteria = $input['bacteria'];
 
       $passObj->me_report_file = $input['me_report_file'];
-      $passObj->me_report_file_path = $input['me_report_file_path'];
+      $passObj->me_report_file_path = null;
 
       //--------X Common to all tables X-------------//
       $passObj->comment_entered_by = $input['comment_entered_by'];

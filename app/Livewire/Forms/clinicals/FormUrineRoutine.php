@@ -30,6 +30,9 @@ class FormUrineRoutine extends Form
     #[Validate('nullable|regex:/^[0-9]+$/')]
     public $appearance = '';
 
+    #[Validate('nullable|regex:/^[0-9]+$/')]
+    public $deposits = '';
+
     #[Validate('nullable|regex:/^[0-9.]+$/')]
     public $ph = '';
 

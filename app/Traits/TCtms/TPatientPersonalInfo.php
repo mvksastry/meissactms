@@ -151,7 +151,6 @@ trait TPatientPersonalInfo
             $this->dispatch('resetPanelsForNewMessages');
             
             if ($result) { 
-                
                 $msg = 'New Patient ['.$name.'] saved successfully!';
                 $this->comSuccess = $msg;
                 Log::channel('patient')->info($msg);

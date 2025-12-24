@@ -23,7 +23,11 @@ trait TElectrolytes
     {
 
         //$passObj = new Electrolytes();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->sodium = intval($input['sodium']);
         $passObj->potassium = intval($input['potassium']);
         $passObj->chloride = intval($input['chloride']);

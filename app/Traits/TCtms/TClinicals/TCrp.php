@@ -24,7 +24,11 @@ trait TCrp
     {
 
         //$passObj = new Crp();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->crp = $input['crp'];
         $passObj->crp_report_file = $input['crp_report_file'];
         $passObj->crp_report_file_path = $input['crp_report_file_path'];

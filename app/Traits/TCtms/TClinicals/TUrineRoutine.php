@@ -23,7 +23,11 @@ trait TUrineRoutine
   {
         //dd($input);
         //$passObj = new UrineRoutine();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+//dd($input);
         $passObj->physical_exam = $input['physical_exam'];
         $passObj->quantity = $input['quantity'];
         $passObj->colour = $input['colour'];
@@ -32,8 +36,8 @@ trait TUrineRoutine
         $passObj->ph = $input['ph'];
         $passObj->specific_gravity = $input['specific_gravity'];
 
-        $passObj->ur_report_file = $input['ur_report_file'];
-        $passObj->ur_report_file_path = $input['ur_report_file_path'];
+        $passObj->ur_report_file = $input['me_report_file'];
+        $passObj->ur_report_file_path = null;
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

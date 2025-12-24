@@ -23,7 +23,11 @@ trait TGeneralSummary
     {
 
         //$passObj = new GeneralSummary();
-
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input);
+        
         $passObj->general_summary = $input['general_summary'];
 
         //--------X Common to all tables X-------------//

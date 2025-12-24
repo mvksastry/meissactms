@@ -23,8 +23,12 @@ trait TChemExams
     public function saveChemExamData($input, $passObj)
     {
 
-        //$passObj = new ChemicalExam();
-
+        //$passObj = new ChemicalExam()       // dd($input);
+        $input = array_map(function($value) 
+        {
+            return $value === "" ? NULL : $value;
+        }, $input); // array_map should walk through $array;
+//dd($input);
         $passObj->proteins = $input['proteins'];
         $passObj->sugar = $input['sugar'];
         $passObj->ketones = $input['ketones'];
@@ -32,7 +36,7 @@ trait TChemExams
         $passObj->bile_salts = $input['bile_salts'];
         $passObj->bile_pigments = $input['bile_pigments'];
         $passObj->ce_report_file = $input['ce_report_file'];
-        $passObj->ce_report_file_path = $input['ce_report_file_path'];
+        $passObj->ce_report_file_path = null;
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];
