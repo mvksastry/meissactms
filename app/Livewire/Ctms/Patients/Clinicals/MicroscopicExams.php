@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\MicroscopicExam;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormMicroscopicExam;
+use App\Livewire\Forms\clinicals\FormMicroscopicExam;
 
 //traits
 use App\Traits\TCtms\TClinicals\TMicroscopicExams;

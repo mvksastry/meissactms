@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\GeneralSummary;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormGeneralSummary;
+use App\Livewire\Forms\clinicals\FormGeneralSummary;
 
 //traits
 use App\Traits\TCtms\TClinicals\TGeneralSummary;

@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\LiverFunction;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormLiverFunction;
+use App\Livewire\Forms\clinicals\FormLiverFunction;
 
 //traits
 use App\Traits\TCtms\TClinicals\TLiverFunctions;

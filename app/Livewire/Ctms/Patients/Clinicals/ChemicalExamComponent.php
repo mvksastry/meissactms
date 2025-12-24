@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 //models
 use App\Models\Ctms\Patient;
-use App\Models\Ctms\Clinicals\ChemicalExam;
+use App\Models\Ctms\clinicals\ChemicalExam;
 
 //forms
 use App\Livewire\Forms\Clinicals\FormChemExam;

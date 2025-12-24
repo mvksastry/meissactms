@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\BloodUrea;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormBloodUrea;
+use App\Livewire\Forms\clinicals\FormBloodUrea;
 
 //traits
 use App\Traits\TCtms\TClinicals\TBloodUrea;

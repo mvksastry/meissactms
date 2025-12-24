@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\BloodSugar;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormBloodSugar;
+use App\Livewire\Forms\clinicals\FormBloodSugar;
 
 //traits
 use App\Traits\TCtms\TClinicals\TBloodSugar;

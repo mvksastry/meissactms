@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\RenalFunction;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormRenalFunction;
+use App\Livewire\Forms\clinicals\FormRenalFunction;
 
 //traits
 use App\Traits\TCtms\TClinicals\TRenalFunctions;

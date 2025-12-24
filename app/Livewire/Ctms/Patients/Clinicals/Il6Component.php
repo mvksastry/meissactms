@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\Il6;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormIl6;
+use App\Livewire\Forms\clinicals\FormIl6;
 
 //traits
 use App\Traits\TCtms\TClinicals\TIl6;

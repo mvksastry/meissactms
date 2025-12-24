@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\Crp;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormCrp;
+use App\Livewire\Forms\clinicals\FormCrp;
 
 //traits
 use App\Traits\TCtms\TClinicals\TCrp;

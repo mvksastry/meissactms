@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\LaboratoryExam;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormLabExams;
+use App\Livewire\Forms\clinicals\FormLabExams;
 
 //traits
 use App\Traits\TCtms\TClinicals\TLaboratoryExams;

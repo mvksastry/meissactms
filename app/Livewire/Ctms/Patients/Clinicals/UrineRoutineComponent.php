@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\UrineRoutine;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormUrineRoutine;
+use App\Livewire\Forms\clinicals\FormUrineRoutine;
 
 //traits
 use App\Traits\TCtms\TClinicals\TUrineRoutine;

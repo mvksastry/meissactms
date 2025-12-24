@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\Creatinine;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormCreatinine;
+use App\Livewire\Forms\clinicals\FormCreatinine;
 
 //traits
 use App\Traits\TCtms\TClinicals\TCreatinine;

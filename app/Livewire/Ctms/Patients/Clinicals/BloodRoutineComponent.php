@@ -12,7 +12,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\BloodRoutine;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormBloodRoutine;
+use App\Livewire\Forms\clinicals\FormBloodRoutine;
 
 //traits
 use App\Traits\TCtms\TClinicals\TBloodRoutine;
