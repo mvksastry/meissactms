@@ -80,7 +80,7 @@
             @if($patientInfoButtons)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Primary Information</button>
+                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">

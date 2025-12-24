@@ -16,7 +16,7 @@
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
       <tr>
-        <th colspan="6" align="center">Blood Sugar</th>
+        <th colspan="6" align="center">CRP Test</th>
       </tr>
     </thead>
     <tbody>     
