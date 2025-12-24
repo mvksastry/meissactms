@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 //models
 use App\Models\Ctms\Patient;
-use App\Models\Ctms\clinicals\Electrolytes;
+use App\Models\Ctms\Clinicals\Electrolytes;
 
 //forms
-use App\Livewire\Forms\Clinicals\FormElectrolytes;
+use App\Livewire\Forms\clinicals\FormElectrolytes;
 
 //traits
 use App\Traits\TCtms\TClinicals\TElectrolytes;
