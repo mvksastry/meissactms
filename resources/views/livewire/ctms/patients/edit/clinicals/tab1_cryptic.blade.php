@@ -1,4 +1,4 @@
-<table id="userIndex2" class="table table-sm table-bordered table-hover">
+  <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
       <tr>
         <th colspan="4" align="center"> Paitient ID: {{ $uuid }}</th>

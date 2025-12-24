@@ -165,7 +165,6 @@
     @endif
 
     @if($openRadiographsEntryForm)
-        
         @include('livewire.ctms.patients.edit.patient-radiography')
     @endif
 

@@ -18,6 +18,21 @@ use App\Models\Ctms\VAScore;
 use App\Models\Ctms\ModqScore;
 use App\Models\Ctms\RMQReply;
 
+use App\Models\Ctms\Clinicals\BloodRoutine;
+use App\Models\Ctms\Clinicals\BloodSugar;
+use App\Models\Ctms\Clinicals\BloodUrea;
+use App\Models\Ctms\Clinicals\ChemicalExam;
+use App\Models\Ctms\Clinicals\Creatinine;
+use App\Models\Ctms\Clinicals\Crp;
+use App\Models\Ctms\Clinicals\Electrolytes;
+use App\Models\Ctms\Clinicals\GeneralSummary;
+use App\Models\Ctms\Clinicals\Il6;
+use App\Models\Ctms\Clinicals\LaboratoryExam;
+use App\Models\Ctms\Clinicals\LiverFunction;
+use App\Models\Ctms\Clinicals\MicroscopicExam;
+use App\Models\Ctms\Clinicals\RenalFunction;
+use App\Models\Ctms\Clinicals\UrineRoutine;
+
 //forms
 
 //traits, classes
@@ -179,7 +194,8 @@ class PatientInformation extends Component
     //data object variables
     public $patientPrimaryInfo;
     public $ls_info;
-    public $clinical_info;
+    public $clinical_info, $ci1Obj, $ci2Obj, $ci3Obj, $ci4Obj, $ci5Obj, $ci6Obj, $ci7Obj;
+    public $ci8Obj, $ci9Obj, $ci10Obj, $ci11Obj, $ci12Obj, $ci13Obj, $ci14Obj;
     public $sensoryexam_info;
     public $mdtre_info;
     public $pfirmangrade_info;
@@ -267,6 +283,22 @@ class PatientInformation extends Component
         $this->clinical_info = ClinicalData::where('patient_uuid', $id)->first();
         $this->cardTittle = "Clinical Data";
         $this->date_created = $this->clinical_info->created_at;
+
+        //now set for all other parameters
+        $this->ci1Obj  = BloodRoutine::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci2Obj  = BloodSugar::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci3Obj  = BloodUrea::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci4Obj  = ChemicalExam::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci5Obj  = Creatinine::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci6Obj  = Crp::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci7Obj  = Electrolytes::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci8Obj  = GeneralSummary::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci9Obj  = Il6::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci10Obj = LaboratoryExam::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci11Obj = LiverFunction::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci12Obj = MicroscopicExam::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci13Obj = RenalFunction::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci14Obj = UrineRoutine::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
 
         //close all other open forms
         $this->openNewPatientEntryForm = false; //1

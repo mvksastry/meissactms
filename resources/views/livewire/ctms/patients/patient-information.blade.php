@@ -79,7 +79,7 @@
             @if($patientInfoButtons)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Primary Information</button>
+                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
@@ -91,11 +91,11 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Sensory Examination</button>  
+                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Sensory Exams</button>  
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp M & DTR Examination</button>    
+                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp M & DTR Exams</button>    
                 </div>
               </div>
               </br>
@@ -112,7 +112,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
+                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Vis Analog Score</button>  
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
@@ -182,13 +182,6 @@
     @if($openRMQScoreEntryForm)
         @include('livewire.ctms.patients.infos.patient-rmq-score')
     @endif
-
-
-
-
-
-
-
 
     <!-- /.content -->
   </div>
