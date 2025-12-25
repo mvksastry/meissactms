@@ -80,7 +80,7 @@ trait Base
 	{
 		return $this->infrastructureFolder().config('elab.folders.reports');
 	}
-
+	*/
 	public function daysBetween($start, $end)
 	{
 		$start = new \DateTime($start);
@@ -126,65 +126,65 @@ trait Base
 	public function monthsBetweenTwoDates($startDate, $endDate)
 	{
 
-        $ts1 = strtotime($startDate);
-        $ts2 = strtotime($endDate);
-        
-        $year1 = date('Y', $ts1);
-        $year2 = date('Y', $ts2);
-        
-        $month1 = date('m', $ts1);
-        $month2 = date('m', $ts2);
+		$ts1 = strtotime($startDate);
+		$ts2 = strtotime($endDate);
+		
+		$year1 = date('Y', $ts1);
+		$year2 = date('Y', $ts2);
+		
+		$month1 = date('m', $ts1);
+		$month2 = date('m', $ts2);
 
-        $diff = (($year2 - $year1) * 12) + ($month2 - $month1);
-        
-        return $diff;
+		$diff = (($year2 - $year1) * 12) + ($month2 - $month1);
+		
+		return $diff;
 	}
 
 	public function weekDaysBetweenTwoDates($startDate, $endDate)
 	{
-  		// input start and end date
-  		//$startDate = "01-01-2018";
-  		//$endDate = "01-01-2019";
+		// input start and end date
+		//$startDate = "01-01-2018";
+		//$endDate = "01-01-2019";
 
-  		$resultDays = array('Monday' => 0,
-  			'Tuesday' => 0,
-  			'Wednesday' => 0,
-  			'Thursday' => 0,
-  			'Friday' => 0,
-  			'Saturday' => 0,
-  			'Sunday' => 0);
+		$resultDays = array('Monday' => 0,
+			'Tuesday' => 0,
+			'Wednesday' => 0,
+			'Thursday' => 0,
+			'Friday' => 0,
+			'Saturday' => 0,
+			'Sunday' => 0);
 
-  		// change string to date time object
-  		$startDate = new DateTime($startDate);
-  		$endDate = new DateTime($endDate);
+		// change string to date time object
+		$startDate = new DateTime($startDate);
+		$endDate = new DateTime($endDate);
 
-  		// iterate over start to end date
-  		while($startDate <= $endDate )
-  		{
-          // find the timestamp value of start date
-          $timestamp = strtotime($startDate->format('d-m-Y'));
+		// iterate over start to end date
+		while($startDate <= $endDate )
+		{
+				// find the timestamp value of start date
+				$timestamp = strtotime($startDate->format('d-m-Y'));
 
-          // find out the day for timestamp and increase particular day
-          $weekDay = date('l', $timestamp);
-          $resultDays[$weekDay] = $resultDays[$weekDay] + 1;
+				// find out the day for timestamp and increase particular day
+				$weekDay = date('l', $timestamp);
+				$resultDays[$weekDay] = $resultDays[$weekDay] + 1;
 
-          // increase startDate by 1
-          $startDate->modify('+1 day');
-  		}
-  		return $resultDays;
+				// increase startDate by 1
+				$startDate->modify('+1 day');
+		}
+		return $resultDays;
 	}
 
-    public function currentYearStartDate($start_date)
-    {
-       $today = date("Y-m-d");
-       $start_date_val = strtotime($start_date);
-       $cur_date_val = strtotime($today);
-       $diff_time =  $cur_date_val -  $start_date_val;
-       $diff_years = floor(($diff_time/86400)/364);
-       $var = "+".$diff_years." year";
-       $cur_year_start = date('Y-m-d', strtotime(  $var, strtotime($start_date)));
-       return $cur_year_start;
-    }
+	public function currentYearStartDate($start_date)
+	{
+			$today = date("Y-m-d");
+			$start_date_val = strtotime($start_date);
+			$cur_date_val = strtotime($today);
+			$diff_time =  $cur_date_val -  $start_date_val;
+			$diff_years = floor(($diff_time/86400)/364);
+			$var = "+".$diff_years." year";
+			$cur_year_start = date('Y-m-d', strtotime(  $var, strtotime($start_date)));
+			return $cur_year_start;
+	}
 
 	//All folder checks and makigs here
 
@@ -219,24 +219,24 @@ trait Base
 
 		switch ($role) {
 
-			case "pisg":
-				return "institution/pi";
+			case "director":
+				return "institution/director";
             break;    
-			case "investigator":
-				return "institution/team";
+			case "ctms_incharge":
+				return "institution/ctms_incharge";
             break;  
 			case "admin":
-				return "institution/office";
+				return "institution/admin";
             break;
 			default:
 				return "institution/misc";
 		}
 	}
 
-	public function researcherFolder($id)
-	{
-		return Researcher::where('researcher_id', $id)->pluck('folder')->first();
-	}
+	//public function researcherFolder($id)
+	//{
+	//	return Researcher::where('researcher_id', $id)->pluck('folder')->first();
+	//}
 
 	public function generateCode($length)
     {
@@ -267,6 +267,6 @@ trait Base
 		$year = $yeara.'_'.($yearb + 1);
 		return $year;
 	}
-    */
+  
 
 }

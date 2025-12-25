@@ -2,7 +2,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ count($pwas) }}</h3>
 
                 <p>Total Active</p>
               </div>
@@ -17,14 +17,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{ count($pwds) }}<sup style="font-size: 20px"></sup></h3>
 
-                <p>Under Process</p>
+                <p>Draft Status</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">For info <i class="fas fa-arrow-circle-up"></i></a>
+              <a href="/edit-patients" class="small-box-footer">For info <i class="fas fa-arrow-circle-up"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -47,7 +47,7 @@
             <!-- small box -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{ count($pwes) }}</h3>
 
                 <p>Exited</p>
               </div>

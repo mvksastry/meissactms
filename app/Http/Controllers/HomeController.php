@@ -13,13 +13,19 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
-//use App\Traits\Base;
+//Traits
+use App\Traits\Base;
+use App\Traits\TCtms\TDashboard;
 
 class HomeController extends Controller
 {
     //
-    //use Base;
-	use HasRoles;
+    use HasRoles;
+
+    use Base;
+    use TDashboard;
+
+
 
     /**
      * Show the application dashboard.
@@ -30,7 +36,17 @@ class HomeController extends Controller
     {   
         if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
 		{
-            return view('layouts.home.ctms.admin.home');
+            $all_centers = $this->getAllCenters();
+            $all_clinics = $this->getAllClinics();
+            $pwds = $this->getPatientDataDraftStatus();
+            $pwas = $this->getPatientDataActiveStatus();
+            //dd($pwds);
+            return view('layouts.home.ctms.admin.home')->with([
+                'all_centers' => $all_centers,
+                'all_clinics' => $all_clinics,
+                'pwds' => $pwds,
+                'pwas' => $pwas
+            ]);
         }
 
         if( Auth::user()->hasAnyRole('researcher') )

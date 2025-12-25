@@ -18,9 +18,16 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\Ctms\Center;
 use App\Models\Ctms\Clinic;
 
+//Traits
+use App\Traits\Base;
+use App\Traits\TCtms\TDashboard;
+
 class PatientsController extends Controller
 {
     use HasRoles;
+
+    use Base;
+    use TDashboard;
 
     /**
      * Display a listing of the resource.
@@ -29,8 +36,17 @@ class PatientsController extends Controller
     {
         //
         if( Auth::user()->hasAnyRole(['ctms_incharge','director']) )
-		{   $centers = Center::all();
-            return view('patients.admin.home')->with('centers', $centers);;
+		{   $all_centers = $this->getAllCenters();
+            $pwds = $this->getPatientDataDraftStatus();
+            $pwas = $this->getPatientDataActiveStatus();
+            $pwes = $this->getPatientDataExitedStatus();
+            return view('patients.admin.home')->with([
+
+                'all_centers' => $all_centers,
+                'pwds' => $pwds,
+                'pwas' => $pwas,
+                'pwes' => $pwes
+            ]);;
         }
 
         if( Auth::user()->hasAnyRole('researcher') )
