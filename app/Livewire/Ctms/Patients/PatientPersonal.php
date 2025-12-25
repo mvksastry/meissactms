@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 //models
-use App\Livewire\Forms\PatientForm;
 
 //forms
+use App\Livewire\Forms\PatientForm;
 
 //traits
 use App\Traits\TCtms\TPatientPersonalInfo;
@@ -23,6 +23,7 @@ class PatientPersonal extends Component
 {
     use TPatientPersonalInfo;
     use TDbEntries;
+    //use NewPatientCreated;
 
     //Form bindings
     public PatientForm $form;
