@@ -81,6 +81,47 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'loggedin' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/login_success.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 30),
+            'replace_placeholders' => true,
+        ],
+
+        'logout' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/logout.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 30),
+            'replace_placeholders' => true,
+        ],
+
+        'authenticated' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/authenticated.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 30),
+            'replace_placeholders' => true,
+        ],  
+        
+        'failed' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/failed_logins.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 30),
+            'replace_placeholders' => true,
+        ], 
+
+        'lockout' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/lockouts.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 30),
+            'replace_placeholders' => true,
+        ], 
+
+
         'patient' => [
             'driver' => 'daily',
             'path' => storage_path('logs/patients.log'),
