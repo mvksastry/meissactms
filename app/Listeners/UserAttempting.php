@@ -29,7 +29,7 @@ class UserAttempting
     {
         Log::channel('authenticated')->info('User with ID attempting', [
             //'gurard' => $guard,
-           // 'email' => $event->user->email,
+            $event->credentials['email'],
             'time' => now()->toDateTimeString(),
         ]);
     }
