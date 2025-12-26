@@ -241,25 +241,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/patients" class="nav-link">
+                <a href="/manage-health" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Health Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/manage-patients" class="nav-link">
+                <a href="/manage-health" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Health Update</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/edit-patients" class="nav-link">
+                <a href="/manage-health" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Edit Update</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/patient-information" class="nav-link">
+                <a href="/manage-health" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Review Health</p>
                 </a>

@@ -7,7 +7,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 //use App\Http\Controllers\DownloadController;
 
-
 //use App\Http\Controllers\RolesController;
 //use App\Http\Controllers\UsersController;
 
@@ -23,13 +22,15 @@ use App\Http\Controllers\Ctms\PatientsController;
 use App\Http\Controllers\Ctms\EnrollmentsController;
 use App\Http\Controllers\Ctms\HealthInformationController;
 
-
 // Livewire - Patient management
 use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
 use App\Livewire\Ctms\Patients\PatientInformation;
-use App\Livewire\Ctms\Patients\ManageHealth;
 
+// Livewire - Health management
+use App\Livewire\Health\ManageHealth;
+
+// Livewire - Adverse Events
 use App\Livewire\Ctms\Patients\PatientAdverseEvents;
 
 // Livewire - Created for testing individuals -----//
@@ -72,6 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::get('manage-patients', ManagePatients::class);
     Route::get('edit-patients', EditPatients::class)->name('edit-patients');
     Route::get('patient-information', PatientInformation::class);
+
+    // ------- Livewire: Components All Roles------- //
     Route::get('manage-health', ManageHealth::class);
 
     // ------- Livewire: Components All Roles------- //
