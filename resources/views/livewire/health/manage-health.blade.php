@@ -102,93 +102,108 @@
             <hr class="border-b-2 border-warning my-2 mx-2">
             <!--Divider-->
             @if($healthInfoButtons)
-              <div class="row">
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnHLifeStyle()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Life Style</button>
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnHClinicInvest()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Clinical</button>
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnHSensoryExam()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Sensory Exams</button>  
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnHMDTRExam()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp M & DTR Exams</button>    
-                  </div>
-              </div>
-              </br>
-              <div class="row">
-                <!-- /.col -->
-                <!--
-                <div class="col-sm-3 col-md-2">
-                <button  type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6" style="background-color: #adb5bd;">
+                        <h5 class="m-2"> Investigations : </h5>
+                        <div class="row">
+                            <div class="col-sm">
+                                <button wire:click="fnHLifeStyle()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Life Style</button>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                                <button wire:click="fnHClinicInvest()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Clinical</button>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                                <button wire:click="fnHSensoryExam()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Sensory</button>  
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                                <button wire:click="fnHMDTRExam()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp M & DTR</button>    
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="col-sm-6 col-md-6" style="background-color: #a0f1d8;">
+                        <h5 class="m-2"> Clinical Investigations : </h5>
+                        <div class="row">
+                            <div class="col-sm">
+                            <button wire:click="fnBlodRoutine()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Blood Rout</button>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnLLftElect()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp LFT/Elect</button>  
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnRenFunct()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Ren Fnct</button>  
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnBsCrpIl6()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp BS-CRP-IL6</button>    
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                -->
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                <button wire:click="fnHMPfGrade()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6" style="background-color: #adb5bd;">
+                        <hr class="border-b-2 border-warning my-2 mx-2">
+                        <div class="row">
+                            <!-- /.col -->
+                            <!--
+                            <div class="col-sm-3 col-md-2">
+                            <button  type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                            </div>
+                            -->
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnHMPfGrade()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Pfirmann’s</button>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnHVAScore()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp VA Score</button>  
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnHMODIQScore()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp MODQ Score</button>  
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnHRMQScore()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
+                            </div>
+                        </div>
+                    </div>
+                        <!-- /.col -->
+                        <!--Divider-->
+                        
+                        <!--Divider-->
+                        
+                    <div class="col-sm-6 col-md-6" style="background-color: #a0f1d8;">
+                        <hr class="border-b-2 border-warning my-2 mx-2">
+                        <div class="row">
+                            <div class="col-sm">
+                            <button wire:click="fnPathLab()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp PLI</button>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnChemExam()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Chem Exam </button>  
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnMicroExam()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Micro E </button>  
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm">
+                            <button wire:click="fnUrineRoutine()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Urine Rout</button>    
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                <button wire:click="fnHVAScore()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                <button wire:click="fnHMODIQScore()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp MODQ Score</button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                <button wire:click="fnHRMQScore()" type="button" class="btn btn-block btn-info"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
-                </div>
-                <!-- /.col -->
-              </div>
-              <!--Divider-->
-              <hr class="border-b-2 border-warning my-2 mx-2">
-              <!--Divider-->
-              <h5 class="m-2"> Clinical Investigations : </h5>
-              <div class="row">
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHMPfGrade()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp Blood Routine</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHVAScore()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp LFT - Elect</button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHMODIQScore()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp RFT</button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHRMQScore()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp BS-CRP-IL6</button>    
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHMPfGrade()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp PLI</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHVAScore()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp CE </button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHMODIQScore()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp ME </button>  
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2 m-2">
-                <button wire:click="fnHRMQScore()" type="button" class="btn btn-sm btn-block btn-info"><i class="ion ion-person"></i>&nbsp Urine Routine</button>    
-                </div>
-              </div>
             @endif
-              <!--Divider-->
-              <hr class="border-b-2 border-warning my-2 mx-2">
-              <!--/ Divider-->
-              <!--/ Divider-->
-              </br>
+            <!--Divider-->
+            <hr class="border-b-2 border-warning my-2 mx-2">
+            <!--/ Divider-->
+            <!--/ Divider-->
+            </br>
           </div>
           <!-- /.card-body -->
         </div>
@@ -201,45 +216,59 @@
     @if($p1)
       <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" />
     @endif
-    
     @if($p2)
       <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" />
     @endif
-
     @if($p3)
       <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" />
     @endif
-
     @if($p4)
       <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" />
     @endif
-
     @if($p5)
       <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" />
     @endif
-
     @if($p6)
       <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" />
     @endif
-
     @if($p7) 
       <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" />
     @endif
-    
     @if($p8)
       <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" />
     @endif
+
     @if($p9)
       <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" />
     @endif
 
-
-
-
-
-
-
-
+    @if($p10)
+      <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid" />
+    @endif
+    @if($p11)
+      <livewire:ctms.patients.clinicals.liver-functions :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.clinicals.electrolyte-component :patient_uuid="$patient_uuid" />
+    @endif
+    @if($p12)
+      <livewire:ctms.patients.clinicals.renal-function-component :patient_uuid="$patient_uuid" />
+    @endif
+    @if($p13)
+      <livewire:ctms.patients.clinicals.blood-sugar-component :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.clinicals.crp-component :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.clinicals.il6-component :patient_uuid="$patient_uuid" />
+    @endif
+    @if($p14)
+      <livewire:ctms.patients.clinicals.laboratory-exams :patient_uuid="$patient_uuid" />
+    @endif
+    @if($p15)
+      <livewire:ctms.patients.clinicals.chemical-exam-component :patient_uuid="$patient_uuid" />
+    @endif
+    @if($p16)
+      <livewire:ctms.patients.clinicals.microscopic-exams :patient_uuid="$patient_uuid" />
+    @endif
+    @if($p17)
+      <livewire:ctms.patients.clinicals.urine-routine-component :patient_uuid="$patient_uuid" />
+    @endif
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
