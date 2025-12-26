@@ -62,343 +62,107 @@ class ManageHealth extends Component
     // --- Panel - p1 --- //
     public function fnHLifeStyle()
     {
+        $this->fnCloseAllPanels();
         $this->p1  = true;  //
-        $this->p2  = false;
-        $this->p3  = false;
-        $this->p4  = false;
-        $this->p5  = false;
-        $this->p6  = false;
-        $this->p7  = false;
-        $this->p8  = false;
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p2 --- //
     public function fnHClinicInvest()
     {
-        $this->p1  = false;
+        $this->fnCloseAllPanels();
         $this->p2  = true;  //
-        $this->p3  = false;
-        $this->p4  = false;
-        $this->p5  = false;
-        $this->p6  = false;
-        $this->p7  = false;
-        $this->p8  = false;
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p3 --- //
     public function fnHSensoryExam()
     {
-        $this->p1  = false;
-        $this->p2  = false;
+        $this->fnCloseAllPanels();
         $this->p3  = true; //
-        $this->p4  = false;
-        $this->p5  = false;
-        $this->p6  = false;
-        $this->p7  = false;
-        $this->p8  = false;
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p4 --- //
     public function fnHMDTRExam()
     {
-        $this->p1  = false;
-        $this->p2  = false;
-        $this->p3  = false;
+        $this->fnCloseAllPanels();
         $this->p4  = true; //
-        $this->p5  = false;
-        $this->p6  = false;
-        $this->p7  = false;
-        $this->p8  = false;
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p5 --- //
     public function fnHMPfGrade()
     {
-        $this->p1  = false;
-        $this->p2  = false;
-        $this->p3  = false;
-        $this->p4  = false;
+        $this->fnCloseAllPanels();
         $this->p5  = true; //
-        $this->p6  = false;
-        $this->p7  = false;
-        $this->p8  = false;
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p6 --- //
     public function fnHVAScore()
     {
-        $this->p1  = false;
-        $this->p2  = false;
-        $this->p3  = false;
-        $this->p4  = false;
-        $this->p5  = false;
+        $this->fnCloseAllPanels();
         $this->p6  = true; //
-        $this->p7  = false;
-        $this->p8  = false;
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p7 --- //
     public function fnHMODIQScore()
     {
-        $this->p1  = false;
-        $this->p2  = false;
-        $this->p3  = false;
-        $this->p4  = false;
-        $this->p5  = false;
-        $this->p6  = false;
+        $this->fnCloseAllPanels();
         $this->p7  = true; //
-        $this->p8  = false;
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p8 --- //
     public function fnHRMQScore()
     {
-        $this->p1  = false;
-        $this->p2  = false;
-        $this->p3  = false;
-        $this->p4  = false;
-        $this->p5  = false;
-        $this->p6  = false;
-        $this->p7  = false;
+        $this->fnCloseAllPanels();
         $this->p8  = true; //
-        $this->p9  = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p9 --- //
     public function fnHImages()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-
+        $this->fnCloseAllPanels();
         $this->p9 = true; //
-
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p10 --- //
     public function fnBlodRoutine()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
+        $this->fnCloseAllPanels();
         $this->p10 = true; //
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p11 --- //
     public function fnLLftElect()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
-        $this->p10 = false;
+        $this->fnCloseAllPanels();
         $this->p11 = true;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p12 --- //
     public function fnRenFunct()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
-        $this->p10 = false;
-        $this->p11 = false;
+        $this->fnCloseAllPanels();
         $this->p12 = true;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p13 --- //
     public function fnBsCrpIl6()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
+        $this->fnCloseAllPanels();
         $this->p13 = true;
-        $this->p14 = false;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p14 --- //
     public function fnPathLab()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
+        $this->fnCloseAllPanels();
         $this->p14 = true;
-        $this->p15 = false;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p15 --- //
     public function fnChemExam()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
+        $this->fnCloseAllPanels();
         $this->p15 = true;
-        $this->p16 = false;
-        $this->p17 = false;
     }
     // --- Panel - p16 --- //
     public function fnMicroExam()
     {
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
-        $this->p10 = false;
-        $this->p11 = false;
-        $this->p12 = false;
-        $this->p13 = false;
-        $this->p14 = false;
-        $this->p15 = false;
+        $this->fnCloseAllPanels();
         $this->p16 = true;
-        $this->p17 = false;
     }
     // --- Panel - p17 --- //
     public function fnUrineRoutine()
+    {
+        $this->fnCloseAllPanels();
+        $this->p17 = true;
+    }
+
+    public function fnCloseAllPanels()
     {
         $this->p1 = false;
         $this->p2 = false;
@@ -416,10 +180,8 @@ class ManageHealth extends Component
         $this->p14 = false;
         $this->p15 = false;
         $this->p16 = false;
-        $this->p17 = true;
+        $this->p17 = false;
     }
-
-
 
 
 
