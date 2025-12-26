@@ -1,5 +1,5 @@
 <div>
-    {{-- Do your work, then step back. --}}
+  {{-- Do your work, then step back. --}}
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
       <tr>

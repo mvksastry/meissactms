@@ -60,6 +60,8 @@
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
+
+
                           <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
@@ -146,7 +148,9 @@
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->
-                          </div>
+                          </div><!-- ./End of Tab div -->
+
+
                           
                         </div><!-- /.card-body -->
                       </div>

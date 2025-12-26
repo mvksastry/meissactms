@@ -44,9 +44,6 @@ class ManageHealth extends Component
     public $p16 = false;
     public $p17 = false;
     
-
-
-
     //---------------------------------------------------------------//
     public function render()
     {
@@ -256,7 +253,16 @@ class ManageHealth extends Component
     // --- Panel - p10 --- //
     public function fnBlodRoutine()
     {
-        $this->p10 = true;
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
+        $this->p10 = true; //
         $this->p11 = false;
         $this->p12 = false;
         $this->p13 = false;
@@ -268,6 +274,15 @@ class ManageHealth extends Component
     // --- Panel - p11 --- //
     public function fnLLftElect()
     {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
         $this->p10 = false;
         $this->p11 = true;
         $this->p12 = false;
@@ -280,6 +295,15 @@ class ManageHealth extends Component
     // --- Panel - p12 --- //
     public function fnRenFunct()
     {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
         $this->p10 = false;
         $this->p11 = false;
         $this->p12 = true;
@@ -292,6 +316,15 @@ class ManageHealth extends Component
     // --- Panel - p13 --- //
     public function fnBsCrpIl6()
     {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
         $this->p10 = false;
         $this->p11 = false;
         $this->p12 = false;
@@ -304,6 +337,15 @@ class ManageHealth extends Component
     // --- Panel - p14 --- //
     public function fnPathLab()
     {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
         $this->p10 = false;
         $this->p11 = false;
         $this->p12 = false;
@@ -316,6 +358,15 @@ class ManageHealth extends Component
     // --- Panel - p15 --- //
     public function fnChemExam()
     {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
         $this->p10 = false;
         $this->p11 = false;
         $this->p12 = false;
@@ -328,6 +379,15 @@ class ManageHealth extends Component
     // --- Panel - p16 --- //
     public function fnMicroExam()
     {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
         $this->p10 = false;
         $this->p11 = false;
         $this->p12 = false;
@@ -340,6 +400,15 @@ class ManageHealth extends Component
     // --- Panel - p17 --- //
     public function fnUrineRoutine()
     {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
         $this->p10 = false;
         $this->p11 = false;
         $this->p12 = false;
