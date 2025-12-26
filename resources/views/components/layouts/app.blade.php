@@ -39,12 +39,21 @@
 			@include('layouts.partials.csidebar')
 			<!-- /.control-sidebar -->
 			
-
 		</div>
 		<!-- scripts -->
-    
+
 		@include('layouts.partials.scripts')
-      
+
+		<script>
+			document.addEventListener('livewire:init', () => {
+			console.log("DOM is fully loaded");
+
+			Livewire.on('uuid-selected', () => {
+							//alert('message');
+							$('#exampleModal').modal('show');
+					});
+			});
+		</script>
 		<!-- /.scripts -->
 	</body>
 </html>

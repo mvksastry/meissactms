@@ -249,6 +249,24 @@ class EditPatients extends Component
         $this->patientInfoButtons = true;
     }
 
+    
+    //-- pop up modal opening and responding --//
+    public function selectedUuidPatient($id)
+    {
+        //dd($id);
+        $this->patient_uuid = $id;
+        //dd($this->patient_uuid);
+        $this->dispatch('uuid-selected', patient_uuid: $id );
+        //$this->patientInfoButtons = true;
+    }    
+    
+    public function respondToSaveChanges()
+    {
+        dd("reached");
+    }
+    //-- pop up modal opening and responding --//
+
+
     //respective forms
     public function fnShowPrimaryInfo($id)
     {

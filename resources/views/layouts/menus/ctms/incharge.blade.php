@@ -27,7 +27,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="/home" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -131,7 +131,6 @@
             </ul>
           </li>
 
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -195,6 +194,97 @@
               -->
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Patient Management
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/patients" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Patient Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/manage-patients" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Enrollment</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/edit-patients" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Edit Patient</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/patient-information" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Patient Details</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Health Management
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/patients" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Health Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/manage-patients" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Health Update</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/edit-patients" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Edit Update</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/patient-information" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Review Health</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Adverse Events
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/adverse-events" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Adverse Events</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -232,6 +322,7 @@
               -->
             </ul>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -262,55 +353,6 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Patient Management
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/patients" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Patient Dashboard</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/manage-patients" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Enrollment</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/edit-patients" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Edit Patient</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="/patient-information" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Patient Details</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/manage-health" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Health</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/adverse-events" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Adverse Events</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
           <!--
           <li class="nav-item">
             <a href="#" class="nav-link">

@@ -69,6 +69,9 @@
                         <td>
                             <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
                         </td>
+                        <td>
+                            <button wire:click="selectedUuidPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp UUID Details</button>
+                        </td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -194,14 +197,29 @@
         @livewire('ctms.patients.edit.edit-rmq-score', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-
-
-
-
-
-
-
-    <!-- /.content -->
+   <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {{ $patient_uuid }}
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button wire:click="respondToSaveChanges()" type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </div>
