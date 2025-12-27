@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-6">
                       <!-- Custom Tabs -->
-                        @if($message_panel)
+                        @if($msg_panel)
                           @include('livewire.error-alerts-callouts')
                         @endif
                         @if ($errors->any())

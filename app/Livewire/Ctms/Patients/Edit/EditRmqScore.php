@@ -61,7 +61,7 @@ class EditRmqScore extends Component
     public $old_replies;
 
     //Errors, Alers, Callouts
-    public $message_panel = false;
+    public $msg_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 

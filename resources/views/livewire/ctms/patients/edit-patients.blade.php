@@ -158,23 +158,23 @@
 
     <!-- Main content -->
     @if($openNewPatientEntryForm)
-        @livewire('ctms.patients.edit.edit-primary-info', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-primary-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openNewLifeStyleEntryForm)
-        @livewire('ctms.patients.edit.edit-lifestyle-info', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-lifestyle-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
     
     @if($openNewClinicalInvestigationsEntryForm)
-        @livewire('ctms.patients.edit.edit-clinical-info', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-clinical-info', ['entry'=>$entry,  'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openNewSensoryExaminationsEntryForm)
-        @livewire('ctms.patients.edit.edit-sensory-info', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-sensory-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openMDTREExaminationsEntryForm)
-        @livewire('ctms.patients.edit.edit-mdtre-info', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-mdtre-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openRadiographsEntryForm)
@@ -182,19 +182,19 @@
     @endif
 
     @if($openModifiedPfirmannGradesEntryForm)
-        @livewire('ctms.patients.edit.edit-pfirmann-info', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-pfirmann-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openVisualAnalogScore)
-        @livewire('ctms.patients.edit.edit-visual-analog-score', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-visual-analog-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($openMODIQScoreEntryForm) 
-        @livewire('ctms.patients.edit.edit-modiq-score', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-modiq-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
     
     @if($openRMQScoreEntryForm)
-        @livewire('ctms.patients.edit.edit-rmq-score', ['uuid' => $patient_uuid], key($patient_uuid))
+        @livewire('ctms.patients.edit.edit-rmq-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
    <!-- /.content -->

@@ -28,7 +28,7 @@ class BloodRoutineComponent extends Component
     public $patient_uuid, $passObj, $entry=null;
 
     //Errors, Alers, Callouts
-    public $message_panel = false;
+    public $msg_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 

@@ -80,7 +80,7 @@
                     <div class="col-8">
                       <!-- Custom Tabs -->
                       <div class="card">
-                        @if($message_panel)
+                        @if($msg_panel)
                           @include('livewire.error-alerts-callouts')
                         @endif
                         @if ($errors->any())

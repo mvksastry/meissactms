@@ -32,7 +32,7 @@
             </h3>
           </div>
           <div class="card-body">
-            @if($message_panel)
+            @if($msg_panel)
               @include('livewire.error-alerts-callouts')
             @endif
             <!-- /.col-12 -->

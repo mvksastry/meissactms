@@ -27,7 +27,7 @@ class ManagePatients extends Component
     public $openAllOtherForms = false;
 
     //new paitent global uuid
-    public $patient_uuid;
+    public $patient_uuid, $entry="update";
 
     //panel definitions
     public $newPatientEntrySteps = false;
@@ -35,8 +35,9 @@ class ManagePatients extends Component
 
 
     //Errors, Alers, Callouts
-    public $message_panel = false;
+    public $sys_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
     //state of panel on or off

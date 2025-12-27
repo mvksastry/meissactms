@@ -196,6 +196,8 @@ class EditPatients extends Component
     public $created_at;
     public $empty_result;
 
+    public $entry="update";
+
     //---listeners from child component---//
     #[On('close_se_panel')] 
     public function close_se_panel()

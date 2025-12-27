@@ -13,7 +13,7 @@ class ManageHealth extends Component
 {
     use WithFileUploads;
     //default panels
-    public $message_panel = false;
+    public $msg_panel = false;
     public $edit_button = false;
 
     //active patient panel
@@ -45,7 +45,7 @@ class ManageHealth extends Component
     public $p17 = false;
 
     public $entry = "insert";
-
+    public $form_heading = "";
     //---------------------------------------------------------------//
     public function render()
     {
@@ -65,102 +65,119 @@ class ManageHealth extends Component
     public function fnHLifeStyle()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Life Style";
         $this->p1  = true;  //
     }
     // --- Panel - p2 --- //
     public function fnHClinicInvest()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Cryptic Clinical";
         $this->p2  = true;  //
     }
     // --- Panel - p3 --- //
     public function fnHSensoryExam()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Sensory Examination";
         $this->p3  = true; //
     }
     // --- Panel - p4 --- //
     public function fnHMDTRExam()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "M & DTR Examination";
         $this->p4  = true; //
     }
     // --- Panel - p5 --- //
     public function fnHMPfGrade()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Pfirmann's";
         $this->p5  = true; //
     }
     // --- Panel - p6 --- //
     public function fnHVAScore()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Visual Analog";
         $this->p6  = true; //
     }
     // --- Panel - p7 --- //
     public function fnHMODIQScore()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "MODQ Score";
         $this->p7  = true; //
     }
     // --- Panel - p8 --- //
     public function fnHRMQScore()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "RM Questionare";
         $this->p8  = true; //
     }
     // --- Panel - p9 --- //
     public function fnHImages()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Images";
         $this->p9 = true; //
     }
     // --- Panel - p10 --- //
     public function fnBlodRoutine()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Blood Routine";
         $this->p10 = true; //
     }
     // --- Panel - p11 --- //
     public function fnLLftElect()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Liver - Electrolyte";
         $this->p11 = true;
     }
     // --- Panel - p12 --- //
     public function fnRenFunct()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Renal Function";
         $this->p12 = true;
     }
     // --- Panel - p13 --- //
     public function fnBsCrpIl6()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Blood Sugar - CRP - Il6 Test";
         $this->p13 = true;
     }
     // --- Panel - p14 --- //
     public function fnPathLab()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Pathology ";
         $this->p14 = true;
     }
     // --- Panel - p15 --- //
     public function fnChemExam()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Chemical Examination";
         $this->p15 = true;
     }
     // --- Panel - p16 --- //
     public function fnMicroExam()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Microscopic";
         $this->p16 = true;
     }
     // --- Panel - p17 --- //
     public function fnUrineRoutine()
     {
         $this->fnCloseAllPanels();
+        $this->form_heading = "Urine Routine";
         $this->p17 = true;
     }
 

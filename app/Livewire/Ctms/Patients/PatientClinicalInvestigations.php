@@ -28,7 +28,7 @@ class PatientClinicalInvestigations extends Component
     public PatientCIForm $form;
 
     //global patient uuid
-    public $patient_uuid;
+    public $patient_uuid, $entry="";
 
     public $discharge_report, $discharge_report_file;
 
@@ -47,20 +47,23 @@ class PatientClinicalInvestigations extends Component
     //logged user
     public $logged_user, $passObj;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $entry)
     {
-        $this->logged_user = Auth::user()->name;
+        //dd($patient_uuid, $entry);
         $this->patient_uuid = $patient_uuid;
-        $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
-        $this->passObj = $newObj;
-        $this->form->opd_id = $newObj->opd_id;
-        $this->form->in_patient_id = $newObj->in_patient_id;
-        $this->form->admission_date = $newObj->admission_date;
-        $this->form->entered_by = $newObj->entered_by;
+        $passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
+        $this->form->opd_id = $passObj->opd_id;
+        $this->form->in_patient_id = $passObj->in_patient_id;
+        $this->form->admission_date = $passObj->admission_date;
+        $this->form->entered_by = $passObj->entered_by;
         $this->form->entry_date = date('Y-m-d');
-        //dd($newObj, $this->form);
+        //dd($passObj, $this->form);
     }
 
+    public function loadFormData()
+    {
+
+    }
     public function fnSaveClinicalData()
     {
         $this->input = $this->form->all();

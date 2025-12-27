@@ -24,10 +24,10 @@ class LiverFunctions extends Component
 {
     use TLiverFunctions;
 
-    public $patient_uuid, $passObj;
+    public $patient_uuid, $passObj, $entry=null;
 
     //Errors, Alers, Callouts
-    public $message_panel = false;
+    public $msg_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
         
@@ -45,10 +45,10 @@ class LiverFunctions extends Component
     {
         if($this->entry === "insert")
         {
-            $this->passObj = new LaboratoryExam();
+            $this->passObj = new LiverFunction();
         }
         else {
-            $this->passObj = LaboratoryExam::where('patient_uuid', $patient_uuid)->first();
+            $this->passObj = LiverFunction::where('patient_uuid', $patient_uuid)->first();
             $this->form_a->opd_id = $this->passObj->opd_id;
             $this->form_a->in_patient_id = $this->passObj->in_patient_id;
             $this->form_a->admission_date = $this->passObj->admission_date;

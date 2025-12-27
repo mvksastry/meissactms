@@ -38,7 +38,7 @@ class PatientLifeStyle extends Component
     public $opd_id, $in_patient_id, $admission_date;
 
     //Errors, Alers, Callouts
-    public $message_panel = false;
+    public $msg_panel = false;
     public $sysAlertSuccess = null, $sysAlertWarning = null, $sysAlertInfo = null, $sysAlertDanger = null;
     public $comDanger = null, $comWarning = null, $comInfo = null, $comSuccess = null;
 

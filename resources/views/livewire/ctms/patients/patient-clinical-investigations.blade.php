@@ -99,51 +99,54 @@
                               @include('livewire.ctms.patients.forms.cb-1')
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_3">
-                              <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid" />
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_4">
-                              <livewire:ctms.patients.clinicals.liver-functions :patient_uuid="$patient_uuid" />
-                              <livewire:ctms.patients.clinicals.electrolyte-component :patient_uuid="$patient_uuid" />
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_5">
-                              <livewire:ctms.patients.clinicals.renal-function-component :patient_uuid="$patient_uuid" />
-                              <livewire:ctms.patients.clinicals.blood-urea-component :patient_uuid="$patient_uuid" />
-                              <livewire:ctms.patients.clinicals.creatinine-component :patient_uuid="$patient_uuid" />
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_6">
-                              <livewire:ctms.patients.clinicals.blood-sugar-component :patient_uuid="$patient_uuid" />
-                              <livewire:ctms.patients.clinicals.crp-component :patient_uuid="$patient_uuid" />
-                              <livewire:ctms.patients.clinicals.il6-component :patient_uuid="$patient_uuid" />
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_7">
-                              <livewire:ctms.patients.clinicals.laboratory-exams :patient_uuid="$patient_uuid" />                  
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_8">
-                              <livewire:ctms.patients.clinicals.chemical-exam-component :patient_uuid="$patient_uuid" />
-                            </div> 
-                            <!-- /.tab-pane -->     
-                            <div class="tab-pane" id="tab_9">
-                              <livewire:ctms.patients.clinicals.microscopic-exams :patient_uuid="$patient_uuid" />                           
-                            </div> 
-                            <!-- /.tab-pane -->   
-                            <div class="tab-pane" id="tab_10">
-                              <livewire:ctms.patients.clinicals.urine-routine-component :patient_uuid="$patient_uuid" />                
-                            </div> 
-                            <!-- /.tab-pane -->     
-                            <div class="tab-pane" id="tab_11">
-                              <livewire:ctms.patients.clinicals.general-summary-component :patient_uuid="$patient_uuid" />                          
-                            </div>  
-                            <!-- /.tab-pane -->                                                                                                                                                                                    
-                            <div class="tab-pane" id="tab_12">
-                              @include('livewire.ctms.end-controls')
-                              <button wire:click="fnSaveClinicalData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
-                            </div>
+                            @if($entry == "update")
+                              <div class="tab-pane" id="tab_3">
+                                <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid" />
+                              </div>
+                              <!-- /.tab-pane -->
+                              <div class="tab-pane" id="tab_4">
+                                <livewire:ctms.patients.clinicals.liver-functions :patient_uuid="$patient_uuid" />
+                                <livewire:ctms.patients.clinicals.electrolyte-component :patient_uuid="$patient_uuid" />
+                              </div>
+                              <!-- /.tab-pane -->
+                              <div class="tab-pane" id="tab_5">
+                                <livewire:ctms.patients.clinicals.renal-function-component :patient_uuid="$patient_uuid" />
+                                <livewire:ctms.patients.clinicals.blood-urea-component :patient_uuid="$patient_uuid" />
+                                <livewire:ctms.patients.clinicals.creatinine-component :patient_uuid="$patient_uuid" />
+                              </div>
+                              <!-- /.tab-pane -->
+                              <div class="tab-pane" id="tab_6">
+                                <livewire:ctms.patients.clinicals.blood-sugar-component :patient_uuid="$patient_uuid" />
+                                <livewire:ctms.patients.clinicals.crp-component :patient_uuid="$patient_uuid" />
+                                <livewire:ctms.patients.clinicals.il6-component :patient_uuid="$patient_uuid" />
+                              </div>
+                              <!-- /.tab-pane -->
+                              <div class="tab-pane" id="tab_7">
+                                <livewire:ctms.patients.clinicals.laboratory-exams :patient_uuid="$patient_uuid" />                  
+                              </div>
+                              <!-- /.tab-pane -->
+                              <div class="tab-pane" id="tab_8">
+                                <livewire:ctms.patients.clinicals.chemical-exam-component :patient_uuid="$patient_uuid" />
+                              </div> 
+                              <!-- /.tab-pane -->     
+                              <div class="tab-pane" id="tab_9">
+                                <livewire:ctms.patients.clinicals.microscopic-exams :patient_uuid="$patient_uuid" />                           
+                              </div> 
+                              <!-- /.tab-pane -->   
+                              <div class="tab-pane" id="tab_10">
+                                <livewire:ctms.patients.clinicals.urine-routine-component :patient_uuid="$patient_uuid" />                
+                              </div> 
+                              <!-- /.tab-pane -->     
+                              <div class="tab-pane" id="tab_11">
+                                <livewire:ctms.patients.clinicals.general-summary-component :patient_uuid="$patient_uuid" />                          
+                              </div>  
+                            @endif
+                              <!-- /.tab-pane -->                                                                                                                                                                                    
+                              <div class="tab-pane" id="tab_12">
+                                @include('livewire.ctms.end-controls')
+                                <button wire:click="fnSaveClinicalData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
+                              </div>
+
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->

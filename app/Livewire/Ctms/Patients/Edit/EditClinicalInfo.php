@@ -73,7 +73,7 @@ class EditClinicalInfo extends Component
     public $c8Obj,$c9Obj,$c10Obj,$c11Obj,$c12Obj,$c13Obj,$c14Obj;
 
     //Errors, Alers, Callouts
-    public $message_panel = false;
+    public $msg_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 

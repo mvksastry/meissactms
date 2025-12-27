@@ -31,7 +31,7 @@
             </h3>
           </div>
           <div class="card-body">
-            @if($message_panel)
+            @if($msg_panel)
               @include('livewire.error-alerts-callouts')
             @endif
             <!-- /.col-12 -->
@@ -120,43 +120,43 @@
 
     <!-- Main content -->
     @if($openNewPatientEntryForm)
-      <livewire:ctms.patients.patient-personal :entered_by="$entered_by" />
+      <livewire:ctms.patients.patient-personal :entered_by="$entered_by" :entry="$entry" />
     @endif
 
     @if($openNewLifeStyleEntryForm)
-      <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     
     @if($openNewClinicalInvestigationsEntryForm)
-      <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($openNewSensoryExaminationsEntryForm)
-      <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($openMDTREExaminationsEntryForm)
-      <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($openRadiographsEntryForm)
-      <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($openModifiedPfirmannGradesEntryForm)
-      <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($openVisualAnalogScore)
-      <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($openMODIQScoreEntryForm) 
-      <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     
     @if($openRMQScoreEntryForm)
-      <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
 

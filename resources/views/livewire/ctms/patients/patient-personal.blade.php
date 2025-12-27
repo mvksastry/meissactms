@@ -30,7 +30,7 @@
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content p-0">
-                  @if($message_panel)
+                  @if($msg_panel)
                     @include('livewire.error-alerts-callouts')
                   @endif
                   <!--Divider-->

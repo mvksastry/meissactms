@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Observations
+                  Follow-up Observations
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -52,7 +52,6 @@
                         @endif
                       <div class="card">
                         <div class="card-header d-flex p-0">
-                          <h3 class="card-title p-3">Information</h3>
-
+                          <h3 class="card-title p-3">Follow-up {{ $form_heading }} Information</h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
