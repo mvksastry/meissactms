@@ -157,43 +157,43 @@
     </section>
 
     <!-- Main content -->
-    @if($openNewPatientEntryForm)
+    @if($p1)
         @livewire('ctms.patients.edit.edit-primary-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($openNewLifeStyleEntryForm)
+    @if($p2)
         @livewire('ctms.patients.edit.edit-lifestyle-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
     
-    @if($openNewClinicalInvestigationsEntryForm)
+    @if($p3)
         @livewire('ctms.patients.edit.edit-clinical-info', ['entry'=>$entry,  'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($openNewSensoryExaminationsEntryForm)
+    @if($p4)
         @livewire('ctms.patients.edit.edit-sensory-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($openMDTREExaminationsEntryForm)
+    @if($p5)
         @livewire('ctms.patients.edit.edit-mdtre-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($openRadiographsEntryForm)
+    @if($p6)
         @include('livewire.ctms.patients.edit.patient-radiography')
     @endif
 
-    @if($openModifiedPfirmannGradesEntryForm)
+    @if($p7)
         @livewire('ctms.patients.edit.edit-pfirmann-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($openVisualAnalogScore)
+    @if($p8)
         @livewire('ctms.patients.edit.edit-visual-analog-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($openMODIQScoreEntryForm) 
+    @if($p9) 
         @livewire('ctms.patients.edit.edit-modiq-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
     
-    @if($openRMQScoreEntryForm)
+    @if($p10)
         @livewire('ctms.patients.edit.edit-rmq-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 

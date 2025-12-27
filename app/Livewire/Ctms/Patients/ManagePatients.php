@@ -44,18 +44,17 @@ class ManagePatients extends Component
     public $stateOfNewPatientEntrySteps = "off";
 
     //Form openings
-    public $openNewPatientEntryForm = false;
-    public $openNewLifeStyleEntryForm = false;
-    public $openNewClinicalInvestigationsEntryForm = false;
-    public $openNewSensoryExaminationsEntryForm = false;
-    public $openMDTREExaminationsEntryForm = false;
-    public $openRadiographsEntryForm = false;
+    public $p1 = false;
+    public $p2 = false;
+    public $p3 = false;
+    public $p4 = false;
+    public $p5 = false;
+    public $p6 = false;
 
-    public $openModifiedPfirmannGradesEntryForm = false;
-    public $openVisualAnalogScore = false;
-    public $openMODIQScoreEntryForm = false;
-    public $openRMQScoreEntryForm = false;
-    public $openAdverseEventsEntryForm = false;
+    public $p7 = false;
+    public $p8 = false;
+    public $p9 = false;
+    public $p10 = false;
     
     //variables
     public $aadhar_id, $pan_num, $other_id, $report_dateope, $dicharge_rep_file;
@@ -89,7 +88,7 @@ class ManagePatients extends Component
         if(count($this->patient_data_status) > 0)
         {
             $this->msg_panel = true;
-            $sysAlertWarning = true;
+            $sysAlertWarning = false;
             $this->comWarning = "Draft' status Patients Found: Wish To Complete?";
             //show button for edit test it
             $this->edit_button = true;
@@ -149,110 +148,44 @@ class ManagePatients extends Component
     //respective forms
     public function fnShowPrimaryInfoForm()
     {
-        //close all other open forms
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; // 5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
+        $this->fnResetAllVisiblePanels();
+        $this->p1 = true;
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown New Patient Dashboard');
-        //open the form 
-        $this->openNewPatientEntryForm = true; // 1
-        //dd("reached");
     }
 
     public function fnLifeStyle()
     {
-        $this->openNewLifeStyleEntryForm = false;
-        //close all other open forms
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewClinicalInvestigationsEntryForm = false; //3
-        $this->openNewSensoryExaminationsEntryForm = false; //4
-        $this->openMDTREExaminationsEntryForm = false; //5
-        $this->openRadiographsEntryForm = false; // 6
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-        //open the form 
-        $this->openNewLifeStyleEntryForm = true;
-        //dd("reached");
+        $this->fnResetAllVisiblePanels();
+        $this->p2 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Life Style Dashboard');
     }
 
     public function fnClinicalInvestigations()
     {
-        //close all other open forms
-        $this->openNewPatientEntryForm = false; //1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-        //open the form 
-        //dd("reached");
-        $this->openNewClinicalInvestigationsEntryForm = true; //2
+        $this->fnResetAllVisiblePanels();
+        $this->p3 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Clinical Invest Dashboard');
     }
 
     public function fnSensoryExaminations()
     {
-        //close all other open forms
-        $this->openNewPatientEntryForm = false; //1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        //open the form 
-        //dd("reached");
-        $this->openNewSensoryExaminationsEntryForm = true; //3
+        $this->fnResetAllVisiblePanels();
+        $this->p4 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Sensory Exam Dashboard');
     }
 
     public function fnMDTRExaminations()
     {
-        //dd("reached");
-        $this->openNewPatientEntryForm = false; //1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openMDTREExaminationsEntryForm = true; //5
+        $this->fnResetAllVisiblePanels();
+        $this->p5 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Sensory Exam Dashboard');
     }
 
     public function fnRadiographs()
     {
-        //dd("reached");
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openRadiographsEntryForm = true; //5
+        $this->fnResetAllVisiblePanels();
+        $this->p6 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Radiograph Dashboard');
     }
 
 
@@ -295,102 +228,44 @@ class ManagePatients extends Component
 
     public function fnModifiedPfirmannGrades()
     {
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        //dd("MPGrades reached");
-        $this->openModifiedPfirmannGradesEntryForm = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p7 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Pfirmann Dashboard');
     }
 
     public function fnVisualAnalogScore()
     {
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openVisualAnalogScore = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p8 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown VA Score Dashboard');
     }
 
     public function fnMODIQScore()
     {
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openMODIQScoreEntryForm = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p9 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown MODQ Score Dashboard');
     }
 
     public function fnRMQScore()
     {
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openRMQScoreEntryForm = true;
-    }
-
-    public function fnAdverseEvents()
-    {
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        
-        $this->openAdverseEventsEntryForm = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p10 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown RMQ Score Dashboard');
     }
 
     public function fnResetAllVisiblePanels()
     {
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
+        $this->p10 = false;
     }
 
     //--- UI related code ends here ---//

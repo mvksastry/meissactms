@@ -99,9 +99,12 @@
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
                               <?php //decode the earlier json 
-                                if($rmq_reply != null)
+                                if($rmq_reply->rmq_replies != null)
                                 {
                                   $old_replies = json_decode($rmq_reply->rmq_replies);
+                                }
+                                else {
+                                  $old_replies = [];
                                 }
                                  //dd($old_replies);
                               ?>
@@ -136,15 +139,25 @@
                                       </tr>
                                     </thead>
                                     <tbody> 
-                                      @foreach($old_replies as $row)
+                                      @if(count($old_replies))
+                                        @foreach($old_replies as $row)
+                                        <tr>
+                                          <td>
+                                            <div class="form-check">
+                                              <label class="form-check-label"> {{ $rmqreplies[$row] }}</label>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        @endforeach   
+                                      @else
                                       <tr>
                                         <td>
                                           <div class="form-check">
-                                            <label class="form-check-label"> {{ $rmqreplies[$row] }}</label>
+                                            <label class="form-check-label">No Replies Found</label>
                                           </div>
                                         </td>
                                       </tr>
-                                      @endforeach                                    
+                                      @endif                                 
                                     </tbody>
                                   </table>
                                 </div>

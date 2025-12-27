@@ -83,14 +83,26 @@
                                 </thead>
                                 <tbody> 
                                   <?php
-                                    $replies_rmq = json_decode($rmq_replies->rmq_replies);
+                                    if($rmq_replies->rmq_replies != null)
+                                    {
+                                      $replies_rmq = json_decode($rmq_replies->rmq_replies);
+                                    }
+                                    else{
+                                      $replies_rmq = [];
+                                    }
                                   ?>
                                   @foreach($replies_rmq as $row)
                                   <tr>
                                     <td>
+                                      @if(count($replies_rmq) > 0)
                                       <div class="form-check">
                                         {{  $row }} -- {{ $rmqreplies[$row] }}
                                       </div>
+                                      @else
+                                        <div class="form-check">
+                                          No Replies Found
+                                        </div>
+                                      @endif
                                     </td>
                                   </tr>
                                   @endforeach                                    

@@ -176,18 +176,17 @@ class PatientInformation extends Component
     public $panel_primary_info = false;
     public $panel_life_style = false;
 
-    public $openNewPatientEntryForm = false;
-    public $openNewLifeStyleEntryForm = false;
-    public $openNewClinicalInvestigationsEntryForm = false;
-    public $openNewSensoryExaminationsEntryForm = false;
-    public $openMDTREExaminationsEntryForm = false;
-    public $openRadiographsEntryForm = false;
+    public $p1 = false;
+    public $p2 = false;
+    public $p3 = false;
+    public $p4 = false;
+    public $p5 = false;
+    public $p6 = false;
 
-    public $openModifiedPfirmannGradesEntryForm = false;
-    public $openVisualAnalogScore = false;
-    public $openMODIQScoreEntryForm = false;
-    public $openRMQScoreEntryForm = false;
-    public $openAdverseEventsEntryForm = false;
+    public $p7 = false;
+    public $p8 = false;
+    public $p9 = false;
+    public $p10 = false;
 
     //active patient panel
 
@@ -227,55 +226,24 @@ class PatientInformation extends Component
         //respective forms
     public function fnShowPrimaryInfo($id)
     {
-        //dd($id);
         $this->patientPrimaryInfo = Patient::where('patient_uuid', $id)->first();
         $this->cardTittle = "Patient Primary Information";
         $this->date_created = $this->patientPrimaryInfo->created_at;
         //dd($this->patientPrimaryInfo);
         //close all other open forms
-
-        $this->openNewLifeStyleEntryForm = false; //2
-        $this->openNewClinicalInvestigationsEntryForm = false; //3
-        $this->openNewSensoryExaminationsEntryForm = false; //4
-        $this->openMDTREExaminationsEntryForm = false; //5
-        $this->openRadiographsEntryForm = false; // 6
-        $this->openModifiedPfirmannGradesEntryForm = false; //7
-        $this->openVisualAnalogScore = false; //8
-        $this->openMODIQScoreEntryForm = false; //9
-        $this->openRMQScoreEntryForm = false; //10
-        $this->openAdverseEventsEntryForm = false;
-
-        //open the form 
-        $this->openNewPatientEntryForm = true;
-        //$this->panel_primary_info = true; // 1
-        //dd("reached");
+        $this->fnResetAllVisiblePanels();
+        $this->p1 = true;
     }
 
     public function fnLifeStyleData($id)
     {
-        //close all other open forms
-        //dd($id);
         $this->ls_info = LifeStyle::where('patient_uuid', $id)->first();
         $this->cardTittle = "Life Style Observations";
         $this->date_created = $this->ls_info->created_at;
         //dd($this->patientPrimaryInfo);
-        //close all other open forms
-        //$this->panel_primary_info = false; 
-        $this->openNewPatientEntryForm = false; // 1
-
-        $this->openNewClinicalInvestigationsEntryForm = false; //3
-        $this->openNewSensoryExaminationsEntryForm = false; //4
-        $this->openMDTREExaminationsEntryForm = false; //5
-        $this->openRadiographsEntryForm = false; // 6
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-        //open the form 
-        //$this->panel_life_style = true;
-        $this->openNewLifeStyleEntryForm = true;
-        //dd("reached");
+        //close all other open forms 
+        $this->fnResetAllVisiblePanels();
+        $this->p2 = true;
     }
 
     public function fnClinicalInfo($id)
@@ -299,21 +267,9 @@ class PatientInformation extends Component
         $this->ci12Obj = MicroscopicExam::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
         $this->ci13Obj = RenalFunction::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
         $this->ci14Obj = UrineRoutine::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-
         //close all other open forms
-        $this->openNewPatientEntryForm = false; //1
-        $this->openNewLifeStyleEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-        //open the form 
-        //dd("reached");
-        $this->openNewClinicalInvestigationsEntryForm = true; //2
+        $this->fnResetAllVisiblePanels();
+        $this->p3 = true;
     }
 
     public function fnSensoryExamInfo($id)
@@ -321,22 +277,8 @@ class PatientInformation extends Component
         $this->sensoryexam_info = SensoryExamination::where('patient_uuid', $id)->first();
         $this->cardTittle = "Clinical Data";
         $this->date_created = $this->sensoryexam_info->created_at;
-
-        //close all other open forms
-        $this->openNewPatientEntryForm = false; //1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        //open the form 
-        //dd("reached");
-        $this->openNewSensoryExaminationsEntryForm = true; //3
+        $this->fnResetAllVisiblePanels();
+        $this->p4 = true;
     }
 
     public function fnMDTRExamInfo($id)
@@ -346,35 +288,15 @@ class PatientInformation extends Component
         $this->date_created = $this->mdtre_info->created_at;
 
         //dd("reached");
-        $this->openNewPatientEntryForm = false; //1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openMDTREExaminationsEntryForm = true; //5
+        $this->fnResetAllVisiblePanels();
+        $this->p5 = true;
     }
 
     public function fnRadiographsInfo($id)
     {
         //dd("reached");
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openRadiographsEntryForm = true; //5
+        $this->fnResetAllVisiblePanels();
+        $this->p6 = true;
     }
 
     public function fnModifiedPfirmannInfo($id)
@@ -384,20 +306,8 @@ class PatientInformation extends Component
         $this->cardTittle = "Clinical Data";
         $this->date_created = $this->pfirmangrade_info;
 
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        //dd("MPGrades reached");
-        $this->openModifiedPfirmannGradesEntryForm = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p7 = true;
     }
 
     public function fnVisualAnalogInfo($id)
@@ -407,19 +317,8 @@ class PatientInformation extends Component
         $this->cardTittle = "Clinical Data";
         $this->date_created = $this->vascore_info;
 
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openVisualAnalogScore = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p8 = true;
     }
 
     public function fnMODIQInfo($id)
@@ -429,19 +328,8 @@ class PatientInformation extends Component
         $this->cardTittle = "Clinical Data";
         $this->date_created = $this->modq_info->created_at;
 
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openMODIQScoreEntryForm = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p9 = true;
     }
 
     
@@ -451,33 +339,21 @@ class PatientInformation extends Component
         //dd($this->rmq_replies);
         $this->date_created = $this->rmq_replies->created_at;
 
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        
-        $this->openAdverseEventsEntryForm = false;
-
-        $this->openRMQScoreEntryForm = true;
+        $this->fnResetAllVisiblePanels();
+        $this->p10 = true;
     }
 
-    public function fnResetAllVisiblePanels($id)
+    public function fnResetAllVisiblePanels()
     {
-        $this->openNewPatientEntryForm = false; // 1
-        $this->openNewLifeStyleEntryForm = false;
-        $this->openNewClinicalInvestigationsEntryForm = false; //2
-        $this->openNewSensoryExaminationsEntryForm = false; //3
-        $this->openMDTREExaminationsEntryForm = false; //4
-        $this->openRadiographsEntryForm = false; //5
-        $this->openModifiedPfirmannGradesEntryForm = false;
-        $this->openVisualAnalogScore = false;
-        $this->openMODIQScoreEntryForm = false;
-        $this->openRMQScoreEntryForm = false;
-        $this->openAdverseEventsEntryForm = false;
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
+        $this->p10 = false;
     }
 }

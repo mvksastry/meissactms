@@ -143,43 +143,43 @@
     </section>
 
     <!-- Main content -->
-    @if($openNewPatientEntryForm)
+    @if($p1)
         @include('livewire.ctms.patients.infos.primary-info')
     @endif
 
-    @if($openNewLifeStyleEntryForm)
+    @if($p2)
         @include('livewire.ctms.patients.infos.patient-life-style')
     @endif
     
-    @if($openNewClinicalInvestigationsEntryForm)
+    @if($p3)
         @include('livewire.ctms.patients.infos.patient-clinical-investigations')
     @endif
 
-    @if($openNewSensoryExaminationsEntryForm)
+    @if($p4)
         @include('livewire.ctms.patients.infos.sensory-examination')
     @endif
 
-    @if($openMDTREExaminationsEntryForm)
+    @if($p5)
         @include('livewire.ctms.patients.infos.patient-mdtre')
     @endif
 
-    @if($openRadiographsEntryForm)
+    @if($p6)
         @include('livewire.ctms.patients.infos.patient-radiography')
     @endif
 
-    @if($openModifiedPfirmannGradesEntryForm)
+    @if($p7)
         @include('livewire.ctms.patients.infos.patient-modified-pfirmann-grades')
     @endif
 
-    @if($openVisualAnalogScore)
+    @if($p8)
         @include('livewire.ctms.patients.infos.patient-visual-analog-score')
     @endif
 
-    @if($openMODIQScoreEntryForm) 
+    @if($p9) 
         @include('livewire.ctms.patients.infos.patient-modiq-score')
     @endif
     
-    @if($openRMQScoreEntryForm)
+    @if($p10)
         @include('livewire.ctms.patients.infos.patient-rmq-score')
     @endif
 

@@ -122,43 +122,43 @@
     </section>
 
     <!-- Main content -->
-    @if($openNewPatientEntryForm)
+    @if($p1)
       <livewire:ctms.patients.patient-personal :entered_by="$entered_by" :entry="$entry" />
     @endif
 
-    @if($openNewLifeStyleEntryForm)
+    @if($p2)
       <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     
-    @if($openNewClinicalInvestigationsEntryForm)
+    @if($p3)
       <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
-    @if($openNewSensoryExaminationsEntryForm)
+    @if($p4)
       <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
-    @if($openMDTREExaminationsEntryForm)
+    @if($p5)
       <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
-    @if($openRadiographsEntryForm)
+    @if($p6)
       <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
-    @if($openModifiedPfirmannGradesEntryForm)
+    @if($p7)
       <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
-    @if($openVisualAnalogScore)
+    @if($p8)
       <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
-    @if($openMODIQScoreEntryForm) 
+    @if($p9) 
       <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     
-    @if($openRMQScoreEntryForm)
+    @if($p10)
       <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
