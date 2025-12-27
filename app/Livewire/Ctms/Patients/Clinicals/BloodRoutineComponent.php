@@ -25,7 +25,7 @@ class BloodRoutineComponent extends Component
     //traits
     use TBloodRoutine;
 
-    public $patient_uuid, $passObj;
+    public $patient_uuid, $passObj, $entry="update";
 
     //Errors, Alers, Callouts
     public $message_panel = false;

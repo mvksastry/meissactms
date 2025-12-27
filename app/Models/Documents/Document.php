@@ -26,7 +26,7 @@ class Document extends Model
     protected $fillable = [
         'document_id',
         'document_uuid',
-        'category_id',
+        'doc_category_id',
         'title',
         'summary',
         'tags',
@@ -46,7 +46,7 @@ class Document extends Model
 
     public function category()
     {
-      return $this->hasMany(Category::class, 'category_id', 'category_id');
+      return $this->hasMany(DocumentCategory::class, 'doc_category_id', 'doc_category_id');
     }
 
     public function doc_versions()

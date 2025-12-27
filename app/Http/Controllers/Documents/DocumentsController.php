@@ -19,7 +19,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 //Import created models
-use App\Models\Documents\Category;
+use App\Models\Documents\DocumentCategory;
 use App\Models\Documents\Document;
 use App\Models\Documents\DocumentVersion;
 
@@ -58,7 +58,7 @@ class DocumentsController extends Controller
         //
         if( Auth::user()->hasAnyRole(['ctms_incharge','director']) )
 		{
-            $categories = Category::where('status', 'active')->get();
+            $categories = DocumentCategory::where('status', 'active')->get();
             return view('docs.newDocForm', ['categories' => $categories]);
         }
     }
@@ -82,7 +82,7 @@ class DocumentsController extends Controller
 
         $request->validate([
             
-            'category_id' => 'required|regex:/^[A-Za-z0-9_]+$/',
+            'doc_category_id' => 'required|regex:/^[A-Za-z0-9_]+$/',
             //'confidentiality' => 'required|regex:/^[0-9]+$/',
             'open_status' =>     'required|regex:/^[0-9]+$/',
             'department' =>      'required|regex:/^[A-Za-z0-9 ]+$/',

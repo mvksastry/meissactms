@@ -43,7 +43,9 @@ class ManageHealth extends Component
     public $p15 = false;
     public $p16 = false;
     public $p17 = false;
-    
+
+    public $entry = "insert";
+
     //---------------------------------------------------------------//
     public function render()
     {

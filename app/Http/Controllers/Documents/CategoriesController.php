@@ -19,7 +19,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 //Import created models
 use App\Models\User;
-use App\Models\Documents\Category;
+use App\Models\Documents\DocumentCategory;
 
 
 class CategoriesController extends Controller
@@ -34,7 +34,7 @@ class CategoriesController extends Controller
         //
         if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
 		{
-            $categories = Category::where('status', 'active')->get();
+            $categories = DocumentCategory::where('status', 'active')->get();
             //dd($categories);
             return view('docs.categories.categoryHome', ['categories'=>$categories]);
         }
@@ -53,7 +53,7 @@ class CategoriesController extends Controller
         //
         if( Auth::user()->hasAnyRole(['ctms_incharge','director']) )
 		{
-            $categories = Category::where('status', 'active')->get();
+            $categories = DocumentCategory::where('status', 'active')->get();
             //dd($categories);
             return view('docs.categories.categoryCreateForm', ['categories'=>$categories]);
         }
@@ -68,7 +68,7 @@ class CategoriesController extends Controller
         //
         $input = $request->all();
         //dd($input);
-        $newCat = new Category();
+        $newCat = new DocumentCategory();
         $newCat->name = $input['name'];
         $newCat->uuid = Str::uuid()->toString();
         $newCat->description = $input['description'];

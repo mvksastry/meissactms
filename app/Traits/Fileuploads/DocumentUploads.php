@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 //Import created models
-use App\Models\Documents\Category;
+use App\Models\Documents\DocumentCategory;
 use App\Models\Documents\Document;
 use App\Models\Documents\DocumentVersion;
 
@@ -29,7 +29,7 @@ trait DocumentUploads
       $base_path = "app/public/";
       $company = "skls/";
       //category folder here
-      $cat_info = Category::where('category_id', $input['category_id'])->first();
+      $cat_info = DocumentCategory::where('category_id', $input['doc_category_id'])->first();
       $category_folder = $cat_info->category_folder;
 
       $folder_path = $company.$input['department'].'/'.$category_folder.'/'.$year.'/';
@@ -47,7 +47,7 @@ trait DocumentUploads
       //now create objects for db insertion
       $nDoc = new Document();
       $nDoc->document_uuid = Str::uuid()->toString(); 
-      $nDoc->category_id = $input['category_id'];
+      $nDoc->doc_category_id = $input['doc_category_id'];
       $nDoc->title = $input['title'];
       $nDoc->summary = $input['description'];
       $nDoc->tags = $input['tags'];

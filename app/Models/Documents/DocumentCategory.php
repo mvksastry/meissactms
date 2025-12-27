@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
-class Category extends Model
+class DocumentCategory extends Model
 {
+    //
     //
     use HasFactory;
     use HasRoles;
 
-    protected $table = 'categories';
+    protected $table = 'document_categories';
 
-    protected $primaryKey = 'category_id';
+    protected $primaryKey = 'doc_category_id';
 
     /**
       * The attributes that are mass assignable.
@@ -28,7 +29,6 @@ class Category extends Model
         'name',
         'description',
         'category_folder',
-        'created_by',
         'created_date',
         'status',
         'notes',

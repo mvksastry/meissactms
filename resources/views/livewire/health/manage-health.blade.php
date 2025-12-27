@@ -214,75 +214,75 @@
 
     <!-- Main content -->
     @if($p1)
-      <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     @if($p2)
-      <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     @if($p3)
-      <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     @if($p4)
-      <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     @if($p5)
-      <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     @if($p6)
-      <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     @if($p7) 
-      <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
     @if($p8)
-      <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($p9)
-      <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" />
+      <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($p10)
         @include('livewire.health.common-top')
-            <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')
     @endif
     @if($p11)
         @include('livewire.health.common-top')
-            <livewire:ctms.patients.clinicals.liver-functions :patient_uuid="$patient_uuid" />
-            <livewire:ctms.patients.clinicals.electrolyte-component :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.liver-functions :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.clinicals.electrolyte-component :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')
     @endif
     @if($p12)
         @include('livewire.health.common-top')
-            <livewire:ctms.patients.clinicals.renal-function-component :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.renal-function-component :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')      
     @endif
     @if($p13)
         @include('livewire.health.common-top')    
-            <livewire:ctms.patients.clinicals.blood-sugar-component :patient_uuid="$patient_uuid" />
-            <livewire:ctms.patients.clinicals.crp-component :patient_uuid="$patient_uuid" />
-            <livewire:ctms.patients.clinicals.il6-component :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.blood-sugar-component :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.clinicals.crp-component :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.clinicals.il6-component :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')      
     @endif
     @if($p14)
         @include('livewire.health.common-top') 
-            <livewire:ctms.patients.clinicals.laboratory-exams :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.laboratory-exams :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')
     @endif
     @if($p15)
         @include('livewire.health.common-top')
-            <livewire:ctms.patients.clinicals.chemical-exam-component :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.chemical-exam-component :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')
     @endif
     @if($p16)
         @include('livewire.health.common-top') 
-            <livewire:ctms.patients.clinicals.microscopic-exams :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.microscopic-exams :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')      
     @endif
     @if($p17)
         @include('livewire.health.common-top') 
-            <livewire:ctms.patients.clinicals.urine-routine-component :patient_uuid="$patient_uuid" />
+            <livewire:ctms.patients.clinicals.urine-routine-component :patient_uuid="$patient_uuid" :entry="$entry" />
         @include('livewire.health.common-bottom')
     @endif
     <!-- /.content -->
