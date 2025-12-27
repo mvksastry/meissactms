@@ -35,14 +35,24 @@ class BloodUreaComponent extends Component
 
     public function mount($patient_uuid)
     {
-        $this->passObj = BloodUrea::where('patient_uuid', $patient_uuid)->first();
-        //dd($this->passObj);
         $this->patient_uuid = $patient_uuid;
         // Initialize the main form (which initializes the sub-form)
-        $this->form_c->opd_id = $this->passObj->opd_id;
-        $this->form_c->in_patient_id = $this->passObj->in_patient_id;
-        $this->form_c->admission_date = $this->passObj->admission_date;
+        $this->loadFormData();
         $this->form_c->entered_by = Auth::user()->name;
+    }
+
+    public function loadFormData()
+    {
+        if($this->entry === "insert")
+        {
+            $this->passObj = new BloodUrea();
+        }
+        else {
+            $this->passObj = BloodUrea::where('patient_uuid', $patient_uuid)->first();
+            $this->form_a->opd_id = $this->passObj->opd_id;
+            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
+            $this->form_a->admission_date = $this->passObj->admission_date;
+        }
     }
 
     public function render()

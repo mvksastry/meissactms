@@ -1,5 +1,5 @@
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card card-default">
         <div class="card-header">
           <h3 class="card-title">
@@ -43,8 +43,9 @@
       <!-- /.card -->
     </div>
     <!-- /.col -->
-
-    <div class="col-md-6">
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <div class="card card-default">
         <div class="card-header">
           <h3 class="card-title">
@@ -63,21 +64,18 @@
           @if($comInfo)
           <div class="callout callout-info">
             <h5>For Information</h5>
-
             <p>{{ $comInfo }}</p>
           </div>
           @endif
           @if($comWarning)
           <div class="callout callout-warning">
             <h5>Warning!</h5>
-
             <p>{{ $comWarning }}</p>
           </div>
           @endif
           @if($comSuccess)
           <div class="callout callout-success">
             <h5>Success!</h5>
-
             <p>{{ $comSuccess }}</p>
           </div>
           @endif

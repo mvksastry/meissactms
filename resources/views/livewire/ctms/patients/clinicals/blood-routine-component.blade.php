@@ -2,24 +2,19 @@
   {{-- Do your work, then step back. --}}
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
+    </thead>
+    <tbody>
       <tr>
-        <th>
+        <td>
           @if($message_panel)
             @include('livewire.error-alerts-callouts')
           @endif
-        </th>
+        </td>
       </tr>
-    </thead>
-    <tbody>
     </tbody>
   </table>
 
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
-    <thead>
-      <tr>
-        <th colspan="3" align="center"></th>
-      </tr>
-    </thead>
     <tbody> 
       <tr>
         <td>
@@ -39,11 +34,6 @@
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
-    <thead>
-      <tr>
-        <th colspan="6" align="center"></th>
-      </tr>
-    </thead>
     <tbody> 
       <tr>
         <td>
@@ -180,10 +170,6 @@
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
     <tbody>        
       <tr>
         <td colspan="2">

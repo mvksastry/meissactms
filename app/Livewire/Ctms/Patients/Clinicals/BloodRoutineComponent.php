@@ -25,7 +25,7 @@ class BloodRoutineComponent extends Component
     //traits
     use TBloodRoutine;
 
-    public $patient_uuid, $passObj, $entry="update";
+    public $patient_uuid, $passObj, $entry=null;
 
     //Errors, Alers, Callouts
     public $message_panel = false;
@@ -37,16 +37,26 @@ class BloodRoutineComponent extends Component
 
     public function mount($patient_uuid)
     {
-        $this->passObj = BloodRoutine::where('patient_uuid', $patient_uuid)->first();
-        //dd($this->passObj);
         $this->patient_uuid = $patient_uuid;
         // Initialize the main form (which initializes the sub-form)
-        $this->form_a->opd_id = $this->passObj->opd_id;
-        $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-        $this->form_a->admission_date = $this->passObj->admission_date;
+        $this->loadFormData();
         $this->form_a->entered_by = Auth::user()->name;
     }
 
+    public function loadFormData()
+    {
+        if($this->entry === "insert")
+        {
+            $this->passObj = new BloodRoutine();
+        }
+        else {
+            $this->passObj = BloodRoutine::where('patient_uuid', $patient_uuid)->first();
+            $this->form_a->opd_id = $this->passObj->opd_id;
+            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
+            $this->form_a->admission_date = $this->passObj->admission_date;
+        }
+    }
+    
     public function render()
     {
         return view('livewire.ctms.patients.clinicals.blood-routine-component');
@@ -54,7 +64,7 @@ class BloodRoutineComponent extends Component
 
     public function fnBloodRoutine()
     {
-        //dd("reached");
+        //dd($this->patient_uuid, $this->entry);
         $this->input = $this->form_a->all();
         //dd($this->patient_uuid, $this->form_a->opd_id, $this->input); // 
         $result = $this->saveBloodRoutineData($this->input, $this->passObj);
