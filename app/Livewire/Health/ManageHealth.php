@@ -13,6 +13,7 @@ class ManageHealth extends Component
 {
     use WithFileUploads;
     //default panels
+    public $sys_panel = false;
     public $msg_panel = false;
     public $edit_button = false;
 

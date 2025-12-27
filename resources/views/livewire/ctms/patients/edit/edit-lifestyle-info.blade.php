@@ -35,6 +35,9 @@
                   <!-- Morris chart - Sales -->
                   <div class="row">
                     <div class="col-12">
+                        @if($sys_panel)
+                          @include('livewire.error-alerts-callouts')
+                        @endif
                         @if($msg_panel)
                           @include('livewire.error-alerts-callouts')
                         @endif

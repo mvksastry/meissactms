@@ -32,8 +32,9 @@ class PatientPersonal extends Component
     public $input;
 
         //Errors, Alers, Callouts
-    public $msg_panel = false;
+    public $sys_panel = false;
     public $sysAlertSuccess = null, $sysAlertWarning = null, $sysAlertInfo = null, $sysAlertDanger = null;
+    public $msg_panel = false;
     public $comDanger = null, $comWarning = null, $comInfo = null, $comSuccess = null;
     //primary information 
     public $patient_id, $patient_uuid; 

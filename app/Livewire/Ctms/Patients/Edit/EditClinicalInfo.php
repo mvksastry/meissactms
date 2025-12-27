@@ -73,8 +73,9 @@ class EditClinicalInfo extends Component
     public $c8Obj,$c9Obj,$c10Obj,$c11Obj,$c12Obj,$c13Obj,$c14Obj;
 
     //Errors, Alers, Callouts
-    public $msg_panel = false;
+    public $sys_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
     public function render()
@@ -481,12 +482,12 @@ class EditClinicalInfo extends Component
 
 
     public function fnSaveEditedClinicalData()
-    {   $this->message_panel = false;
+    {   $this->msg_panel = false;
         $this->validate(); 
         $this->input = $this->form->all();
 
         //dd($this->input);       
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $name = $this->uuid;
         try {
             $result = ClinicalData::where('patient_uuid', $this->uuid)->update($this->input);
@@ -513,26 +514,26 @@ class EditClinicalInfo extends Component
     }
 
     public function fnBloodRoutine()
-    {   $this->message_panel = false;
+    {   $this->msg_panel = false;
         //dd("reached blood routine");
         $this->input = $this->form_a->all();
         //dd($this->uuid, $this->form_a->opd_id, $this->input); // 
         $result = BloodRoutine::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Blood Routine Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
 
     public function fnBloodSugar()
-    {   $this->message_panel = false;
+    {   $this->msg_panel = false;
         $this->input = $this->form_b->all();
         //dd($this->input); // 
         $result = BloodSugar::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -544,7 +545,7 @@ class EditClinicalInfo extends Component
         $result = BloodUrea::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Blood Urea Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -556,7 +557,7 @@ class EditClinicalInfo extends Component
         $result = ChemicalExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -568,7 +569,7 @@ class EditClinicalInfo extends Component
         $result = Creatinine::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -580,7 +581,7 @@ class EditClinicalInfo extends Component
         $result = Crp::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved CRP Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -592,7 +593,7 @@ class EditClinicalInfo extends Component
         $result = Electrolytes::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -604,7 +605,7 @@ class EditClinicalInfo extends Component
         $result = GeneralSummary::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -616,7 +617,7 @@ class EditClinicalInfo extends Component
         $result = Il6::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -628,7 +629,7 @@ class EditClinicalInfo extends Component
         $result = LaboratoryExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -640,7 +641,7 @@ class EditClinicalInfo extends Component
         $result = LiverFunction::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Liv function Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     } 
@@ -652,7 +653,7 @@ class EditClinicalInfo extends Component
         $result = MicroscopicExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     } 
@@ -664,7 +665,7 @@ class EditClinicalInfo extends Component
         $result = RenalFunction::where('patient_uuid', $this->uuid)->update($this->input); 
         $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }
@@ -676,7 +677,7 @@ class EditClinicalInfo extends Component
         $result = UrineRoutine::where('patient_uuid', $this->uuid)->update($this->input); 
         $msg = 'User ['.Auth::user()->name.'] saved Urine Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     } 

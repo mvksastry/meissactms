@@ -47,6 +47,9 @@
                       </div>
                     </div>
                     <div class="col-6">
+                      @if($sys_panel)
+                        @include('livewire.error-alerts-callouts')
+                      @endif
                       @if($msg_panel)
                         @include('livewire.error-alerts-callouts')
                       @endif

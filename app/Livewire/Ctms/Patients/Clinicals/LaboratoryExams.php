@@ -28,8 +28,9 @@ class LaboratoryExams extends Component
     public $patient_uuid, $passObj, $entry=null;
 
     //Errors, Alers, Callouts
-    public $msg_panel = false;
+    public $sys_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
     
     public FormLabExams $form_j;
@@ -68,7 +69,7 @@ class LaboratoryExams extends Component
         $result = $this->saveLaboratoryExamData($this->input, $this->passObj);
         $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     }    

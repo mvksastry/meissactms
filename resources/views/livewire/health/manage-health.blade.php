@@ -32,6 +32,9 @@
             </h3>
           </div>
           <div class="card-body">
+            @if($sys_panel)
+                @include('livewire.error-alerts-callouts')
+            @endif
             @if($msg_panel)
               @include('livewire.error-alerts-callouts')
             @endif

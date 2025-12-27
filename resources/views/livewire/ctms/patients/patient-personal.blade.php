@@ -30,6 +30,9 @@
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content p-0">
+                  @if($sys_panel)
+                    @include('livewire.error-alerts-callouts')
+                  @endif
                   @if($msg_panel)
                     @include('livewire.error-alerts-callouts')
                   @endif

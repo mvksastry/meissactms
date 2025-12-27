@@ -4,6 +4,9 @@
     <thead>
       <tr>
         <th>
+          @if($sys_panel)
+            @include('livewire.error-alerts-callouts')
+          @endif
           @if($msg_panel)
             @include('livewire.error-alerts-callouts')
           @endif

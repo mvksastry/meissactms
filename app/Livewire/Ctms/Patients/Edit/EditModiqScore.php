@@ -143,8 +143,9 @@ class EditModiqScore extends Component
     public $modq_obj;
 
     //Errors, Alers, Callouts
-    public $msg_panel = false;
+    public $sys_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
     public function render()
@@ -278,7 +279,7 @@ class EditModiqScore extends Component
 
     public function fnEditModqScoreData()
     {
-        $this->message_panel = false;
+        $this->msg_panel = false;
         $this->validate(); 
         //$this->form->total = $this->total;
         //$this->form->modq_score = $this->modq_score;
@@ -287,7 +288,7 @@ class EditModiqScore extends Component
         $this->input['modq_score'] = $this->modq_score;
         //dd($this->input, $this->form);
         //dd($this->uuid, $this->input);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $name = $this->uuid;
         try {
             $result = ModqScore::where('patient_uuid', $this->uuid)->update($this->input);

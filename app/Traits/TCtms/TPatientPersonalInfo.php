@@ -147,7 +147,7 @@ trait TPatientPersonalInfo
 
         //dd($newPatientInfo);        
         try {
-            $this->message_panel = true;
+            $this->msg_panel = true;
             $name = $newPatientInfo->name;
             $result = $newPatientInfo->save();
             //$name = "New Patient Name"; //for testing

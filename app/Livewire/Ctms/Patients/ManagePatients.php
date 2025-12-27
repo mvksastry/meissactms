@@ -88,7 +88,7 @@ class ManagePatients extends Component
         
         if(count($this->patient_data_status) > 0)
         {
-            $this->message_panel = true;
+            $this->msg_panel = true;
             $sysAlertWarning = true;
             $this->comWarning = "Draft' status Patients Found: Wish To Complete?";
             //show button for edit test it
@@ -119,8 +119,9 @@ class ManagePatients extends Component
     #[On('resetPanelsForNewMessages')] 
     public function resetMessagePanels()
     {
-        $this->message_panel = false;
-
+        $this->msg_panel = false;
+        $this->sys_panel = false;
+        
         $this->sysAlertInfo = false;
         $this->sysAlertSuccess = false;
         $this->sysAlertWarning = false;

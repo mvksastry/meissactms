@@ -6,6 +6,9 @@
     <tbody>
       <tr>
         <td>
+          @if($sys_panel)
+            @include('livewire.error-alerts-callouts')
+          @endif
           @if($msg_panel)
             @include('livewire.error-alerts-callouts')
           @endif

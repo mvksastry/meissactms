@@ -46,8 +46,9 @@ class EditPrimaryInfo extends Component
     public $general_habits;
 
     //Errors, Alers, Callouts
-    public $msg_panel = false;
+    public $sys_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
     /*
@@ -176,7 +177,7 @@ class EditPrimaryInfo extends Component
     {
         //dd($input);
         
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $name = $input['name'];
         try {
             $updatedPrimaryInfo = Patient::where('patient_uuid', $uuid)->update($input);

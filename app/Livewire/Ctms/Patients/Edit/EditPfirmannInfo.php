@@ -28,8 +28,9 @@ class EditPfirmannInfo extends Component
     public $pfirmg_info;
 
     //Errors, Alers, Callouts
-    public $msg_panel = false;
+    public $sys_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
     public function render()
@@ -57,11 +58,11 @@ class EditPfirmannInfo extends Component
 
     public function fnEditPfirmannGrade()
     {
-        $this->message_panel = false;
+        $this->msg_panel = false;
         $this->validate(); 
         $this->input = $this->form->all();
         //dd($this->input);
-        $this->message_panel = true;
+        $this->msg_panel = true;
         $name = $this->uuid;
         try {
             $result = PfirmannGrade::where('patient_uuid', $this->uuid)->update($this->input);
