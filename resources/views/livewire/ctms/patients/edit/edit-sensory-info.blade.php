@@ -60,10 +60,10 @@
                     <div class="col-6">
                       <!-- Custom Tabs -->
                         @if($sys_panel)
-                          @include('livewire.error-alerts-callouts')
+                          @include('livewire.eac_sys_panel')
                         @endif
                         @if($msg_panel)
-                          @include('livewire.error-alerts-callouts')
+                          @include('livewire.eac_msg_panel')
                         @endif
                         @if ($errors->any())
                             <div class="text-danger">

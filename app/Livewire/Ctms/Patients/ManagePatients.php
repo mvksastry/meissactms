@@ -138,7 +138,7 @@ class ManagePatients extends Component
         $this->patient_uuid = $id;
         $this->resetMessagePanels();
 
-        $this->messge_panel = true;
+        $this->msg_panel = true;
         $this->comSuccess = "New Patient ID [ '.$id.' ] Created";
         Log::channel('patient')->info($this->comSuccess);
         //dd("event emitted and understood");
