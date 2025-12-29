@@ -14,7 +14,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="/home">Home: Inventory</a></li>
+                <li class="breadcrumb-item"><a href="/manage-inventory">Home: Inventory</a></li>
                 <li class="breadcrumb-item active">Update Consumption</li>
               </ol>
             </div><!-- /.col -->
@@ -369,10 +369,9 @@
       });
     </script>
     <script>
-    $(document).ready(function() {
-        $('#example2').DataTable();
-    });
+      $(document).ready(function() {
+          $('#example2').DataTable();
+      });
     </script>
-
 
 </div>

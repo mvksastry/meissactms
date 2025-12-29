@@ -23,7 +23,6 @@ use Carbon\Carbon;
 use Illuminate\Log\Logger;
 use Log;
 
-
 class UpdateConsumption extends Component
 {
 

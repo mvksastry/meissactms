@@ -70,15 +70,15 @@ class AddToInventory extends Component
 
     public function render()
     {
-        $this->packMarkCode = $this->generateCode(6);
-		$this->categories = Categories::all();
-		$this->repositories = Repository::all();
-		$this->units = Units::all();
-		$this->suppliers = Supplier::all();
-		$this->allActiveResProjects = $this->allCtmsActivities();
-		$this->panel_title = "Add To Inventory";
-		Log::channel('activity')->info("[ ".Auth::user()->name.' ] Displayed inventory form');
-		return view('livewire.inventory.add-to-inventory');
+      $this->packMarkCode = $this->generateCode(6);
+			$this->categories = Categories::all();
+			$this->repositories = Repository::all();
+			$this->units = Units::all();
+			$this->suppliers = Supplier::all();
+			$this->allActiveResProjects = $this->allCtmsActivities();
+			$this->panel_title = "Add To Inventory";
+			Log::channel('activity')->info("[ ".Auth::user()->name.' ] Displayed inventory form');
+			return view('livewire.inventory.add-to-inventory');
     }
 
 	public function postProductInfo()
@@ -258,7 +258,7 @@ class AddToInventory extends Component
 		$this->viewFineChemForm = false;
 	}
 
-    private function resetInventoryForm()
+  private function resetInventoryForm()
 	{
 		//$this->panel_title = "Select Action";
 		$this->form->category_id = null;
