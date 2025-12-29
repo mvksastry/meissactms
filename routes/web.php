@@ -33,6 +33,36 @@ use App\Livewire\Health\ManageHealth;
 // Livewire - Adverse Events
 use App\Livewire\Ctms\Patients\PatientAdverseEvents;
 
+
+
+//-- Livewire: Inventory, Samples and Reagents --//   
+use App\Livewire\Inventory\AddInventoryCategory;
+use App\Livewire\Inventory\AddToInventory;
+use App\Livewire\Inventory\BulkImportInventory;
+use App\Livewire\Inventory\ManageInventory;
+use App\Livewire\Inventory\ReviewReplinishment;
+use App\Livewire\Inventory\UpdateConsumption;
+use App\Livewire\Inventory\ReviewConsumption;
+
+use App\Livewire\Samples\AddRepository;
+use App\Livewire\Samples\AddToSamples;
+use App\Livewire\Samples\BulkImportSamples;
+use App\Livewire\Samples\ResearchSamples;
+use App\Livewire\Samples\UpdateSampleUsage;
+
+use App\Livewire\Reagents\MakeNewReagent;
+use App\Livewire\Reagents\ManageReagents;
+use App\Livewire\Reagents\RemakeReagent;
+use App\Livewire\Reagents\UpdateReagentUsage;
+
+use App\Livewire\General\LogBook;
+use App\Livewire\General\ManageTasks;
+//use App\Livewire\General\ManageLabfiles;
+
+
+
+
+
 // Livewire - Created for testing individuals -----//
 //use App\Livewire\Ctms\TestComponent;
 
@@ -79,6 +109,34 @@ Route::middleware('auth')->group(function () {
 
     // ------- Livewire: Components All Roles------- //
     Route::get('adverse-events', PatientAdverseEvents::class);
+
+
+    // ------- Livewire: Components All Roles------- //
+    Route::get('/add-inventory-category', App\Livewire\Inventory\AddInventoryCategory::class);
+    Route::get('/add-to-inventory',       App\Livewire\Inventory\AddToInventory::class);
+    Route::get('/bulk-import-inventory',  App\Livewire\Inventory\BulkImportInventory::class);
+    Route::get('/manage-inventory',       App\Livewire\Inventory\ManageInventory::class);
+    Route::get('/review-replinishment',   App\Livewire\Inventory\ReviewReplinishment::class);
+    Route::get('/update-consumption',     App\Livewire\Inventory\UpdateConsumption::class);
+    Route::get('/review-consumption',     App\Livewire\Inventory\ReviewConsumption::class);
+    
+    
+    Route::get('/add-repository',         App\Livewire\Samples\AddRepository::class);
+    Route::get('/add-to-samples',         App\Livewire\Samples\AddToSamples::class);
+    Route::get('/bulk-import-samples',    App\Livewire\Samples\BulkImportSamples::class);
+    Route::get('/research-samples',       App\Livewire\Samples\ResearchSamples::class);
+    Route::get('/update-sample-usage',    App\Livewire\Samples\UpdateSampleUsage::class);
+    
+    
+    Route::get('/make-new-reagent',      App\Livewire\Reagents\MakeNewReagent::class);
+    Route::get('/manage-reagents',       App\Livewire\Reagents\ManageReagents::class);
+    Route::get('/remake-reagent',        App\Livewire\Reagents\RemakeReagent::class);
+    Route::get('/update-reagent-usage',  App\Livewire\Reagents\UpdateReagentUsage::class);
+
+    Route::get('/log-book',              App\Livewire\General\LogBook::class);
+    Route::get('/manage-tasks',          App\Livewire\General\ManageTasks::class);
+
+    //Route::get('/manage-labfiles',       App\Livewire\Documents\ManageLabfiles::class);
 
 
     // ------- Livewire: Test Component------- //
