@@ -32,6 +32,7 @@ use App\Traits\Base;
 use App\Traits\FileUploadHandler;
 use Livewire\WithFileUploads;
 
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class ManageInventory extends Component
 {
@@ -87,6 +88,7 @@ class ManageInventory extends Component
 	public function render()
 	{		
 			$this->categories = Categories::all();
+			LivewireAlert::title('Inventory Reached!')->success()->show();
 			//Log::channel('ctms')->info("[ ".Auth::user()->name." ] displayed consumption form");
 			return view('livewire.inventory.manage-inventory');
 	}
