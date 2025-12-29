@@ -353,6 +353,64 @@
             </ul>
           </li>
 
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Inventory
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/manage-inventory" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Inventory</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Samples
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/manage-samples" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Samples</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Reagents
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/manage-reagents" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage Reagents</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          
           <!--
           <li class="nav-item">
             <a href="#" class="nav-link">

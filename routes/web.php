@@ -44,6 +44,7 @@ use App\Livewire\Inventory\ReviewReplinishment;
 use App\Livewire\Inventory\UpdateConsumption;
 use App\Livewire\Inventory\ReviewConsumption;
 
+use App\Livewire\Samples\ManageSamples;
 use App\Livewire\Samples\AddRepository;
 use App\Livewire\Samples\AddToSamples;
 use App\Livewire\Samples\BulkImportSamples;
@@ -121,6 +122,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/review-consumption',     App\Livewire\Inventory\ReviewConsumption::class);
     
     
+    Route::get('/manage-samples',         App\Livewire\Samples\ManageSamples::class);
     Route::get('/add-repository',         App\Livewire\Samples\AddRepository::class);
     Route::get('/add-to-samples',         App\Livewire\Samples\AddToSamples::class);
     Route::get('/bulk-import-samples',    App\Livewire\Samples\BulkImportSamples::class);
