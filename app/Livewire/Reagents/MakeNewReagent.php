@@ -179,7 +179,7 @@ class MakeNewReagent extends Component
 		$newReagent->notes  = $this->note_remark;
 		$newReagent->save();
 		
-		Log::channel('activity')->info('[ '.tenant('id')." ] [ ".Auth::user()->name.' ] saved new reagent with id [ '.$newReagent->nick_name.' ]'); 
+		//Log::channel('activity')->info('[ '.tenant('id')." ] [ ".Auth::user()->name.' ] saved new reagent with id [ '.$newReagent->nick_name.' ]'); 
 		
 		//now using the inputs array process the usage information
 		//especially the quantity left in products 
