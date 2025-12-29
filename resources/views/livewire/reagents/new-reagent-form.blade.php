@@ -1,9 +1,8 @@
-<div class="p-2 mt-3 bg-grey-200 border border-gray-800 rounded shadow">
-		<table class="w-full p-5 text-gray-700">
+<div class="p-2 mt-3 border rounded shadow">
+		<table id="userIndex2" class="table table-sm table-bordered table-hover">
 			<thead>
 				<tr>
-					<th align="center">
-					</th>
+					<th colspan="4">Part1: Controls</th>
 				</tr>
 			</thead>
 			<tbody> 
@@ -27,13 +26,11 @@
 				<tr>
 					<td colspan="2">
 					  <label class="form-class" for="sampdesc">Name*</label>
-					  <input placeholder="Name" class="form-control" 
-					  wire:model.defer="reagent_name">
+					  <input placeholder="Name" class="form-control" wire:model.defer="reagent_name">
 					</td>
 					<td colspan="2">
 					  <label>Nickname*</label>
-					  <input placeholder="Nickname" class="form-control" 
-					  wire:model.defer="reagent_nickname">
+					  <input placeholder="Nickname" class="form-control" wire:model.defer="reagent_nickname">
 					</td>
 				</tr>
 				<tr>
@@ -57,8 +54,8 @@
 			</tbody>
 		</table>
 	</div>	
-	<div class="p-2 mt-3 bg-grey-200 border border-gray-800 rounded shadow">	
-		<table class="w-full p-5 text-gray-700">
+	<div class="p-2 mt-3 border rounded shadow">
+		<table id="userIndex2" class="table table-sm table-bordered table-hover">
 			<thead>
 			</thead>
 			<tbody>	
@@ -66,7 +63,7 @@
 					<td colspan="4">
 						<label>
             </br>
-							Ingradients*  (Select from inventory panel)
+							Part 2: Ingradients*  (Select from inventory panel)
 						</label>
 					</td>
 				</tr>	
@@ -74,10 +71,11 @@
 		</table>
 		
 		@if($searchResultBox1)
-			<div class="p-2 bg-grey-200 border border-gray-800 rounded shadow">
-				<table class="text-gray-900 text-sm font-normal pt-3 pb-2 mb-2">
+			<div class="p-2 mt-3 border rounded shadow">
+				<table id="userIndex2" class="table table-sm table-bordered table-hover">
 					<thead>
 						<tr>
+              Part 2: Slected Items*  (Select from inventory panel)
 						</tr>
 					</thead>
 					<tbody>
@@ -125,7 +123,7 @@
 			</div>
 		@endif
 
-		<table class="w-full p-5 text-gray-700">
+		<table id="userIndex3" class="table table-sm table-bordered table-hover">
 			<thead>
 			</thead>
 			<tbody>		
@@ -136,7 +134,7 @@
 					  <input class="form-control" placeholder="Number only" wire:model="quantity_made" type="text">
 					</td>
 					<td>
-						<label class="block text-gray-900 text-sm font-bold font-normal mb-2" for="bulkcode">Unit Desc</label>
+						<label>Unit Desc</label>
 						<div class="relative h-8 w-full min-w-[200px]">
 							<select wire:model="units_desc" class="form-control">
 								<option value="-1">Select</option>
@@ -147,23 +145,22 @@
 						</div>
 					</td>
 					<td>
-					  <label class="block text-gray-900 text-sm font-normal font-bold mb-2" for="type">Expiry Date*</label>
+					  <label>Expiry Date*</label>
 					  <input class="form-control" id="description" wire:model="expirty_date" type="date">
 					</td>											
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<div class="p-2 mt-3 bg-grey-200 border border-gray-800 rounded shadow">
-		<table class="w-full p-5 text-gray-700">
+
+	<div class="p-2 mt-3 border rounded shadow">
+		<table id="userIndex2" class="table table-sm table-bordered table-hover">
 			<thead>
 			</thead>
 			<tbody>			
 				<tr>
 					<td colspan="4"> 
-						<label>
-							Storage Information*
-						</label>
+						<label>Part 4: Storage Information*</label>
 					</td>
 				</tr>
 				
@@ -171,8 +168,7 @@
 					<td colspan="2">
 						<label>Container*</label>
 						<div class="relative h-8 w-72 min-w-[200px]">
-							<select wire:model="container_id" 
-								class="form-control">
+							<select wire:model="container_id" class="form-control">
 								<option value="-1">Select</option>
                 @if(count($repositories) > 0)
                   @foreach($repositories as $row)
@@ -200,8 +196,8 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="p-2 mt-3 bg-grey-200 border border-gray-800 rounded shadow">
-		<table class="w-full p-5 text-gray-700">
+	<div class="p-2 mt-3 border rounded shadow">
+		<table id="userIndex2" class="table table-sm table-bordered table-hover">
 			<thead>
 			</thead>
 			<tbody>			
@@ -212,17 +208,19 @@
 						</label>   
 					</td>
 				</tr>
-					<td colspan="2">
-						<div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
-							<input wire:model="openrestriced" value="1" class="form-control" type="radio"/>
-							<label>Open</label>
-						</div>
+        <tr>
+					<td>
+            <div class="form-check">
+							<input wire:model="openrestriced" value="1" class="form-check-input" type="radio"/>
+               <label>Open</label>
+            </div>
+							
 					</td>
-					<td colspan="2">
-						<div class="mb-[0.125rem] block min-h-[1.5rem] pl-[1.5rem]">
-							  <input wire:model="openrestriced" value="0" class="form-control" type="radio"/>
+					<td>
+            <div class="form-check">
+							<input wire:model="openrestriced" value="0" class="form-check-input" type="radio"/>
 							<label>Restricted</label>
-						</div>
+            </div>
 					</td>
 				</tr>
 				
@@ -235,7 +233,7 @@
 			</tbody>
 		</table>
 	</div>
-	<table class="w-full p-5 text-gray-700">
+	<table id="userIndex2" class="table table-sm table-bordered table-hover">
 		<thead>
 			<tr>
 				<th align="center">
@@ -247,7 +245,7 @@
 				 <td colspan="3" class="text-sm text-gray-900">
 					</br>
 					@hasanyrole('ctms_incharge|director')
-					<button wire:click="postReagentInfo()" class="bg-green-800 w-22 hover:bg-blue-800 text-white font-normal py-2 px-4 mx-3  rounded">Post Reagent</button>
+					  <button wire:click="postReagentInfo()" class="btn btn-success text-white font-normal mx-3 mb-3 rounded">Post Reagent</button>
 					@endhasanyrole
 				 </td>
 			</tr>
