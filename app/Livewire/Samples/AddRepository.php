@@ -18,7 +18,7 @@ use App\Models\Inventory\Exptsample;
 use App\Traits\Base;
 
 //Validation of product form
-use App\Livewire\Forms\Samples\RepositoryForm;
+use App\Livewire\Forms\Inventory\RepositoryForm;
 
 // Log trails recorder
 use Carbon\Carbon;
