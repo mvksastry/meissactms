@@ -9,7 +9,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">For info <i class="fas fa-arrow-circle-up"></i></a>
+              <a href="{{route('ctms-users.create') }}" class="small-box-footer">For info <i class="fas fa-arrow-circle-up"></i></a>
             </div>
           </div>
           <!-- ./col -->

@@ -30,6 +30,11 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
+          @if(session('success'))
+              <div class="mx-2 alert alert-success">
+                  {{ session('success') }}
+              </div>
+          @endif
           <!-- Left col -->
           <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
