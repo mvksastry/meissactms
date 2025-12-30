@@ -2,44 +2,44 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ count($all_centers) }}</h3>
+                <h3>{{ count($permissions) }}</h3>
 
-                <p>Centers</p>
+                <p>Create </p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="/centers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">For info <i class="fas fa-arrow-circle-up"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>{{ count($pwds) }}<sup style="font-size: 20px"></sup></h3>
+                <h3>--<sup style="font-size: 20px"></sup></h3>
 
-                <p>Patients</p>
+                <p>Assign Permission</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="/patients" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="centers/create" class="small-box-footer">No info <i class="fas fa-solid fa-exclamation"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>{{ count($all_clinics) }}</h3>
+                <h3>--</h3>
 
-                <p>Clinics</p>
+                <p>Assign To Role</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="/clinics" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">No info <i class="fas fa-solid fa-exclamation"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -47,14 +47,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>0</h3>
+                <h3>---</h3>
 
-                <p>Adverse Events</p>
+                <p>Inactivate</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">For info <i class="fas fa-arrow-circle-up"></i></a>
             </div>
           </div>
           <!-- ./col -->

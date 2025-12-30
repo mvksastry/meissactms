@@ -22,6 +22,11 @@ use App\Http\Controllers\Ctms\PatientsController;
 use App\Http\Controllers\Ctms\EnrollmentsController;
 use App\Http\Controllers\Ctms\HealthInformationController;
 
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\PermissionsController;
+//------------------------------------------------------//
+
 // Livewire - Patient management
 use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
@@ -140,6 +145,10 @@ Route::middleware('auth')->group(function () {
 
     //Route::get('/manage-labfiles',       App\Livewire\Documents\ManageLabfiles::class);
 
+    // ------- Livewire: User Administration ------- //
+    Route::resource('ctms-users', UsersController::class);
+    Route::resource('user-roles', RolesController::class);
+    Route::resource('user-permissions', PermissionsController::class);
 
     // ------- Livewire: Test Component------- //
     //Route::get('test-component', TestComponent::class);
