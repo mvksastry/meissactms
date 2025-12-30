@@ -14,6 +14,7 @@ use File;
 //Models
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\Center;
+use App\Models\Common\Chat;
 use App\Models\Ctms\Clinic;
 
 use Illuminate\Support\Facades\Log;
@@ -43,5 +44,10 @@ trait TDashboard
     public function getPatientDataExitedStatus()
     {
         return Patient::where('status', 'exited')->get();
+    }
+
+    public function getAllUnseenChats()
+    {
+        return Chat::with('user')->where('is_seen', 0)->get();
     }
 }

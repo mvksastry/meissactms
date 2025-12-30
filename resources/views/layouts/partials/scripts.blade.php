@@ -39,17 +39,22 @@
 <!-- AdminLTE App -->
 <script src="{{asset('assets/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('assets/dist/js/demo.js')}}"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.17/index.global.min.js''></script>
+
 <script>
   $(function () {
     // Summernote
     $('#summernote').summernote()
     // CodeMirror
-    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-      mode: "htmlmixed",
-      theme: "monokai"
-    });
-  })
+    const input = document.getElementById("codeMirrorDemo");
+    if (input) {
+      const input  = CodeMirror.fromTextArea(input, { 
+        mode: "htmlmixed", 
+        theme: "monokai"
+      });
+    } 
+  });
 </script>

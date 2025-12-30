@@ -5,6 +5,20 @@ namespace App\Models\Common {
   /**
    * App\Models\Common\Chat
    *
+   * @property \Illuminate\Support\Carbon $updated_at
+   * @property \Illuminate\Support\Carbon $created_at
+   * @property bool|null $is_seen
+   * @property string|null $message
+   * @property int $user_id
+   * @property string|null $uuid
+   * @property int $chat_id
+   * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat whereChatId($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat whereUuid($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat whereUserId($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat whereMessage($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat whereIsSeen($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat whereCreatedAt($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat whereUpdatedAt($value)
    * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat newModelQuery()
    * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat newQuery()
    * @method static \Illuminate\Database\Eloquent\Builder<Chat>|Chat query()
@@ -300,6 +314,32 @@ namespace App\Models\Common {
   /**
    * App\Models\Common\Event
    *
+   * @property \Illuminate\Support\Carbon $updated_at
+   * @property \Illuminate\Support\Carbon $created_at
+   * @property string|null $created_by
+   * @property string $priority
+   * @property mixed $resource_id
+   * @property string $end_min
+   * @property string $end_hour
+   * @property string $start_min
+   * @property string $start_hour
+   * @property string|null $start_date
+   * @property string|null $description
+   * @property string|null $title
+   * @property int $id
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereId($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereTitle($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereDescription($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereStartDate($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereStartHour($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereStartMin($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereEndHour($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereEndMin($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereResourceId($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event wherePriority($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereCreatedBy($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereCreatedAt($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event whereUpdatedAt($value)
    * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event newModelQuery()
    * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event newQuery()
    * @method static \Illuminate\Database\Eloquent\Builder<Event>|Event query()

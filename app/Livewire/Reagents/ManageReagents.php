@@ -29,11 +29,11 @@ use Carbon\Carbon;
 use Illuminate\Log\Logger;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
-
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class ManageReagents extends Component
 {
     public function render()
-    {
+    {   LivewireAlert::title('Home of Reagents!')->success()->show();
         return view('livewire.reagents.manage-reagents');
     }
 }

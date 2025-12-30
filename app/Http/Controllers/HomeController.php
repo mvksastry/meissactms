@@ -25,8 +25,6 @@ class HomeController extends Controller
     use Base;
     use TDashboard;
 
-
-
     /**
      * Show the application dashboard.
      *
@@ -36,6 +34,7 @@ class HomeController extends Controller
     {   
         if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
 		{
+            $chats = $this->getAllUnseenChats();
             $all_centers = $this->getAllCenters();
             $all_clinics = $this->getAllClinics();
             $pwds = $this->getPatientDataDraftStatus();
@@ -45,7 +44,8 @@ class HomeController extends Controller
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
                 'pwds' => $pwds,
-                'pwas' => $pwas
+                'pwas' => $pwas,
+                'chats' => $chats
             ]);
         }
 
