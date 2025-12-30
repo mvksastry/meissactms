@@ -52,6 +52,9 @@ class UsersController extends Controller
                 'roles' => $roles
             ]);
         }
+        else {
+          return view('norole.no-role-home');
+        }
     }
 
     /**
@@ -91,7 +94,7 @@ class UsersController extends Controller
             return redirect()->route('ctms-users.index');
         }
         else {
-          return view('norole.noroleHome');
+          return view('norole.no-role-home');
         }
     }
 

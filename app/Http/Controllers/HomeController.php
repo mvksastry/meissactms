@@ -49,10 +49,7 @@ class HomeController extends Controller
             ]);
         }
 
-        if( Auth::user()->hasAnyRole('researcher') )
-		{
-            return view('home');
-        }
+        return view('norole.no-role-home');
     }
 
     public function no_subscription()

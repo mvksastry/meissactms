@@ -26,7 +26,11 @@
 			@include('layouts.menus.ctms.director')
 			@endhasexactroles
 			<!-- /.Main Sidebar Container -->
-			
+
+			@hasanyrole(["", 'null'])
+			@include('layouts.menus.no-role-menu')
+			@endhasanyrole
+
 			<!-- Dynamic content -->
 			@yield('content')  		
 			<!-- /.Dynamic content -->
