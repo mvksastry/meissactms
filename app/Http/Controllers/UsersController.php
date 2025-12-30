@@ -20,8 +20,7 @@ use Carbon\Carbon;
 use Illuminate\Log\Logger;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
+
 
 // Models
 use App\Models\User;
@@ -29,12 +28,14 @@ use App\Models\User;
 //traits
 use App\Traits\Base;
 use App\Traits\FileUploadHandler;
+use App\Traits\TUsers\TUserHandler;
 
 class UsersController extends Controller
 {
     use HasRoles;
     use Base;
     use FileUploadHandler;
+    use TUserHandler;
 
     /**
      * Display a listing of the resource.
@@ -81,38 +82,13 @@ class UsersController extends Controller
                 'end_date' => ['required', 'after:start_date'],
                 'role' => ['required', 'string', 'max:30'],
             ])->validate();
-    
-            $newUser['folder'] = $this->generateCode(15); //added by ks
-  
-            //$newUser['password'] = $this->generateCode(10);
-            $newUser['password'] = "secret1234"; //should be loggable
-            $newUser['uuid'] = Str::uuid()->toString();
-            
-            $newUserResult = User::create([
-                'uuid'        => $newUser['uuid'],
-                'name'        => $newUser['name'],
-                'email'       => $newUser['email'],
-                'password'    => Hash::make($newUser['password']),
-                'folder'      => $newUser['folder'],
-                'role'        => $newUser['role'],
-                'uuid'        => $newUser['uuid'],
-                'start_date'  => $newUser['start_date'],
-                'expiry_date' => $newUser['end_date'],
-            ]);
-            
-            //dd($newUser, $newUserResult);
-            // now assign Role
-            //$newUserResult->assignRole('manager');
-    
-            //now send mail to the newly registered user using registered event
-            //event(new Registered($newUserResult));
-    
-            //$users = $this->activeUsers();
-            //dd($users);
-           
-            // Flash a success message
-          $request->session()->flash('success', 'User created successfully!');
-          return redirect()->route('ctms-users.index');
+
+            $ak = $this->setNewUser($newUser);
+            foreach($ak as $key => $value)
+            {
+                $request->session()->flash($key, $value);
+            }
+            return redirect()->route('ctms-users.index');
         }
         else {
           return view('norole.noroleHome');

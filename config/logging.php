@@ -73,6 +73,14 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'users' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/user_handler.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => env('LOG_DAILY_DAYS', 30),
+            'replace_placeholders' => true,
+        ],
+
         'info' => [
             'driver' => 'daily',
             'path' => storage_path('logs/info_general.log'),

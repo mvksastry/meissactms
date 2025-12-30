@@ -35,6 +35,16 @@
                   {{ session('success') }}
               </div>
           @endif
+          @if(session('error'))
+              <div class="mx-2 alert alert-danger">
+                  {{ session('error') }}
+              </div>
+          @endif
+          @if(session('info'))
+              <div class="mx-2 alert alert-info">
+                  {{ session('info') }}
+              </div>
+          @endif
           <!-- Left col -->
           <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
