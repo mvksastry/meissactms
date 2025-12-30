@@ -101,10 +101,10 @@
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->created_at)) }} </td>
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->updated_at)) }} </td>                          
                             <td>
-                              <a href="{{ route('ctms-users.show',[$row->id]) }}"> 
+                              <a href="{{ route('ctms-users.show',[$row->uuid]) }}"> 
                                 <button class="btn btn-sm btn-info">Edit</button>
                               </a>
-                              <a href="{{ route('ctms-users.edit',[$row->id]) }}"> 
+                              <a href="{{ route('ctms-users.edit',[$row->uuid]) }}"> 
                                 <button class="btn btn-sm btn-danger">Inactivate</button>
                               </a>
                             </td>
