@@ -74,12 +74,7 @@
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->created_at)) }} </td>
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->updated_at)) }} </td>                          
                             <td>
-                              <a href="{{ route('user-permissions.show',[$row->id]) }}"> 
-                                <button class="btn btn-sm btn-info">Edit</button>
-                              </a>
-                              <a href="{{ route('user-permissions.edit',[$row->id]) }}"> 
-                                <button class="btn btn-sm btn-danger">Inactivate</button>
-                              </a>
+                              --
                             </td>
                           </tr>
                         @endforeach

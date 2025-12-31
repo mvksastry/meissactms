@@ -9,17 +9,17 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">For info <i class="fas fa-arrow-circle-up"></i></a>
+              <a href="#" class="small-box-footer">No Access <i class="fas fa-arrow-circle-up"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-secondary">
+            <div class="small-box bg-info">
               <div class="inner">
                 <h3>--<sup style="font-size: 20px"></sup></h3>
 
-                <p>Assign Role</p>
+                <p>Assign To User</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -30,7 +30,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-secondary">
+            <div class="small-box bg-info">
               <div class="inner">
                 <h3>--</h3>
 
@@ -49,7 +49,7 @@
               <div class="inner">
                 <h3>---</h3>
 
-                <p>Inactivate</p>
+                <p>Revoke</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

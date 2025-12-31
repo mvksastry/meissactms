@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard : {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h1>
+            <h1 class="m-0">Roles : {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -74,12 +74,7 @@
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->created_at)) }} </td>
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->updated_at)) }} </td>                          
                             <td>
-                              <a href="{{ route('user-roles.show',[$row->id]) }}"> 
-                                <button class="btn btn-sm btn-info">Edit</button>
-                              </a>
-                              <a href="{{ route('user-roles.edit',[$row->id]) }}"> 
-                                <button class="btn btn-sm btn-danger">Inactivate</button>
-                              </a>
+                              --
                             </td>
                           </tr>
                         @endforeach

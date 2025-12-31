@@ -47,9 +47,8 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>---</h3>
-
-                <p>Inactivate</p>
+                <h3>{{ count($exited) }}</h3>
+                <p>Inactivated</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

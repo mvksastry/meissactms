@@ -76,6 +76,7 @@
                         <tr>
                           <th> Name </th>
                           <th> Email </th>
+                          <th> Roles </th>
                           <th> Verified On </th>
                           
                           <th> Start Date </th>
@@ -92,6 +93,9 @@
                           <tr>
                             <td> {{ $row->name }} </td>
                             <td> {{ $row->email }} </td>
+                            <td>
+                                {{ $row->roles }}
+                            </td>
                             <td> {{ date('d-m-Y', strtotime($row->email_verified_at)) }} </td>
                             
                             <td> {{ $row->start_date }} </td>

@@ -24,6 +24,7 @@ use Livewire\WithPagination;
 
 // Models
 use App\Models\User;
+use App\Models\ExitedUsers;
 
 //traits
 use App\Traits\Base;
@@ -46,12 +47,16 @@ class UsersController extends Controller
     {
         if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
 		{
-            $users = User::all();
+            //$users = User::all();
+            $users = $this->getAllRolesForUsers();
+            //dd($users);
             $roles = Role::all();
+            $exited = ExitedUsers::all();
             //dd($users, $roles);
             return view('urp.users.users-home')->with([
                 'users' => $users,
-                'roles' => $roles
+                'roles' => $roles,
+                'exited' => $exited
             ]);
         }
         else {
@@ -79,7 +84,7 @@ class UsersController extends Controller
         if( Auth::user()->hasAnyRole('ctms_incharge|director') )
         {
       		$newUser = $request->all();
-           
+            //dd($newUser);
             Validator::make($newUser, [
                 'name' => ['required', 'string', 'max:55'],
                 'email' => ['required', 'string', 'email', 'max:55', 'unique:users'],
