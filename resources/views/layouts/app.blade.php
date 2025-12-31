@@ -27,9 +27,13 @@
 			@endhasexactroles
 			<!-- /.Main Sidebar Container -->
 
-			@hasanyrole(["", 'null'])
+			@hasexactroles('guest')
 			@include('layouts.menus.no-role-menu')
-			@endhasanyrole
+			@endhasexactroles
+
+			@hasexactroles('ctms_guest')
+			@include('layouts.menus.no-role-menu')
+			@endhasexactroles
 
 			<!-- Dynamic content -->
 			@yield('content')  		

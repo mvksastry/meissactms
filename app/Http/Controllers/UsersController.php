@@ -53,7 +53,7 @@ class UsersController extends Controller
             ]);
         }
         else {
-          return view('norole.no-role-home');
+          return view('layouts.errors.404');
         }
     }
 
