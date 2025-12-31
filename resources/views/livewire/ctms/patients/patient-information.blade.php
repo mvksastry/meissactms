@@ -147,7 +147,7 @@
 
     <!-- Main content -->
     @if($TimelinePatient)
-      <livewire:patients.patient-timeline :patient_uuid="$patient_uuid" />
+      <livewire:patients.patient-timeline :patient_uuid="$patient_uuid" key="{{ now() }}" />
     @endif
     @if($p1)
         @include('livewire.ctms.patients.infos.primary-info')
