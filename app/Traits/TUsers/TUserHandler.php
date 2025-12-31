@@ -63,7 +63,7 @@ trait TUserHandler
                 // 1. Get all exising roles
                 // 2. Remove all roles or sync roles
                 //    Synching means keep current roles and add new roles, else remove old add new.
-                $current_roles = $newUser->getRoleNames(); // Returns a collection
+                //$current_roles = $newUser->getRoleNames(); // Returns a collection
                 $newUser->assignRole($input['role']);
                 //
                 $key = 'success';

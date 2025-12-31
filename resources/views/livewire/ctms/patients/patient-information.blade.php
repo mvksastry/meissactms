@@ -67,6 +67,9 @@
                             <td>
                                 <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
                             </td>
+                            <td>
+                                <button wire:click="getPatientTimeline('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Timeline</button>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -143,6 +146,9 @@
     </section>
 
     <!-- Main content -->
+    @if($TimelinePatient)
+      <livewire:patients.patient-timeline :patient_uuid="$patient_uuid" />
+    @endif
     @if($p1)
         @include('livewire.ctms.patients.infos.primary-info')
     @endif

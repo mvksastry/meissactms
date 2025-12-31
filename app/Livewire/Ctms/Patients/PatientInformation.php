@@ -17,6 +17,7 @@ use App\Models\Ctms\PfirmannGrade;
 use App\Models\Ctms\VAScore;
 use App\Models\Ctms\ModqScore;
 use App\Models\Ctms\RMQReply;
+use App\Models\Ctms\PatientEpoch;
 
 use App\Models\Ctms\Clinicals\BloodRoutine;
 use App\Models\Ctms\Clinicals\BloodSugar;
@@ -171,6 +172,7 @@ class PatientInformation extends Component
     ];
     //default panels
     public $patientInfoButtons = false;
+    public $TimelinePatient = false;
 
     //Form openings
     public $panel_primary_info = false;
@@ -205,6 +207,7 @@ class PatientInformation extends Component
     //common to all
     public $activePatients;
     public $patient_uuid;
+    public $ptEpoch;
     public $cardTittle;
     public $date_created;
     public $VAScore;
@@ -221,6 +224,17 @@ class PatientInformation extends Component
         $this->patient_uuid = $id;
         //dd($this->patient_uuid);
         $this->patientInfoButtons = true;
+        $this->TimelinePatient = false;
+    }
+
+    public function getPatientTimeline($id)
+    {
+        $this->patient_uuid = $id;
+        //dd($this->patient_uuid);
+        //$this->ptEpoch = PatientEpoch::where('patient_uuid', $this->patient_uuid)->where('status', 'active')->get();
+        //dd($this->ptEpoch);
+        $this->patientInfoButtons = false;
+        $this->TimelinePatient = true;
     }
 
         //respective forms
