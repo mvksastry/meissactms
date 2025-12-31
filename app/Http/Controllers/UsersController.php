@@ -30,6 +30,8 @@ use App\Traits\Base;
 use App\Traits\FileUploadHandler;
 use App\Traits\TUsers\TUserHandler;
 
+//use SweetAlert2\Laravel\Swal;
+
 class UsersController extends Controller
 {
     use HasRoles;
@@ -94,7 +96,7 @@ class UsersController extends Controller
             return redirect()->route('ctms-users.index');
         }
         else {
-          return view('norole.no-role-home');
+          return view('layouts.errors.404');
         }
     }
 
@@ -112,6 +114,10 @@ class UsersController extends Controller
     public function edit(string $id)
     {
         //
+        //dd($id);
+        $edit_user = User::where('uuid', $id)->first();
+        //dd($edit_user);
+        return view('urp.users.edit-user-form')->with(['edit_user'=>$edit_user]);
     }
 
     /**
@@ -120,6 +126,39 @@ class UsersController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'password' => 'nullable|string|min:8|max:20',
+            'end_date' => 'required|date'
+        ]);
+
+        $data = [
+            'password' => $request->password,
+            'expiry_date' => $request->end_date,
+        ];
+
+        if(!empty($request->password)){
+            $data += [
+                'password' => Hash::make($request->password),
+            ];
+        }
+        else {
+            unset($data['password']);
+        }
+
+        $user = User::where('uuid', $id)->first();
+
+        $result = $user->update($data);
+        
+        if($result > 0)
+        {
+            $request->session()->flash('success', 'User Update Successful');
+        }
+        else{
+            $request->session()->flash('error', 'User update Failed.');
+        }
+
+        return redirect()->route('ctms-users.index');
+
     }
 
     /**
@@ -127,6 +166,12 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::where('uuid', $id)->first();
+        $result = $this->setUserInactivation($user);
+        //dd($result);
+        //now delete the current user from user's table
+        $user->delete();
+        session()->flash('success', 'User Inactivation Successful');
+        return redirect()->route('ctms-users.index');
     }
 }

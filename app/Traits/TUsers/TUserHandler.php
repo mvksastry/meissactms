@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\ExitedUsers;
 
 //use File;
 use App\Traits\Base;
@@ -70,6 +71,40 @@ trait TUserHandler
             return $ak;      
         }
                 // Flash a success message
+  }
+
+  public function setUserInactivation($user)
+  {
+        $inactUser = new ExitedUsers();
+
+        $inactUser->exited_user_id = $user->id;
+        $inactUser->name = $user->name;
+        $inactUser->uuid = $user->uuid;
+        $inactUser->email = $user->email ;
+        $inactUser->email_verified_at = $user->email_verified_at;
+
+        $inactUser->team_id = $user->team_id;
+        $inactUser->profile_photo_path = $user->profile_photo_path;
+        $inactUser->folder = $user->folder;
+        $inactUser->start_date = $user->start_date;
+        $inactUser->date_exited = date('Y-m-d');
+        $inactUser->first_login = $user->first_login;
+
+        $inactUser->exit_authorized_by = Auth::user()->name;
+        $inactUser->date_authorized = date('Y-m-d');
+
+        $inactUser->reactivation_requested_by = null;
+        $inactUser->reactivation_request_date = null;
+        
+        $inactUser->reactivation_approved_by = null;
+        $inactUser->reactivation_approved_date = null;
+
+
+        $inactUser->created_at = date('Y-m-d H:i:s');
+        $inactUser->updated_at = date('Y-m-d H:i:s');
+        //dd($inactUser);
+        $inactUser->save();
+
   }
 
 }

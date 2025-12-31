@@ -52,7 +52,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Active Centers
+                  Active Users
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -81,7 +81,7 @@
                           <th> Start Date </th>
                           <th> Expires On </th>
                           <th> First Log in </th>
-                          <th> Status</th>
+                          
                           <th> Created</th>
                           <th> Updated</th>
                           <th> Action</th>
@@ -92,21 +92,24 @@
                           <tr>
                             <td> {{ $row->name }} </td>
                             <td> {{ $row->email }} </td>
-                            <td> {{ $row->email_verified_at }} </td>
+                            <td> {{ date('d-m-Y', strtotime($row->email_verified_at)) }} </td>
                             
                             <td> {{ $row->start_date }} </td>
                             <td> {{ $row->expiry_date }} </td>
                             <td> {{ $row->first_login }} </td>
-                            <td> </td>
+                          
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->created_at)) }} </td>
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->updated_at)) }} </td>                          
                             <td>
-                              <a href="{{ route('ctms-users.show',[$row->uuid]) }}"> 
+                              <a href="{{ route('ctms-users.edit',[$row->uuid]) }}"> 
                                 <button class="btn btn-sm btn-info">Edit</button>
                               </a>
-                              <a href="{{ route('ctms-users.edit',[$row->uuid]) }}"> 
+                              <form method="POST" action="{{ route('ctms-users.destroy', $row->uuid) }}">
+                                @csrf
+                                @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Inactivate</button>
-                              </a>
+                              </form>
+
                             </td>
                           </tr>
                         @endforeach
