@@ -12,6 +12,7 @@ class PatientTimeline extends Component
     //
     public $patient_uuid;
     public $ptEpoch;
+    public $oldestDate;
 
     public function mount($patient_uuid)
     {
@@ -23,15 +24,16 @@ class PatientTimeline extends Component
 
     public function render()
     {
-        //$this->ptEpoch = PatientEpoch::where('patient_uuid', $patienti_uuid)->where('status', 'active')->get();
-        //dd("reached",$this->ptEpoch);
-        //$this->setEpochPatient($patient_uuid);
         return view('livewire.patients.patient-timeline');
     }
 
     public function setEpochPatient($patient_uuid)
     {
-        $this->ptEpoch = PatientEpoch::where('patient_uuid', $this->patient_uuid)->where('status', 'active')->get();
+        $this->ptEpoch = PatientEpoch::where('patient_uuid', $this->patient_uuid)
+                                    ->where('status', 'active')
+                                    ->orderBy('created_at', 'desc')
+                                    ->get();
+        $this->oldestDate = PatientEpoch::where('patient_uuid', $this->patient_uuid)->min('created_at');
         //dd($this->ptEpoch);
     }
 }

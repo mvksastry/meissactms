@@ -81,7 +81,7 @@
                                             @endforeach
                                             <!-- timeline time label -->
                                             <div class="time-label">
-                                                <span class="bg-red">{{ date('d-m-Y', strtotime($row->event_date)) }}</span>
+                                                <span class="bg-red">{{ date('d-m-Y', strtotime($oldestDate)) }}</span>
                                             </div>
                                             <!-- /.timeline-label -->      
                                             <div>
