@@ -13,6 +13,8 @@ use Illuminate\Support\Str;
 use File;
 
 //Models
+use App\Models\Ctms\PatientEpoch;
+
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\LifeStyle;
 use App\Models\Ctms\ClinicalData;
@@ -54,6 +56,9 @@ trait TPatientPersonalInfo
 
     public function savePatientInformation($input)
     {
+        //event for time line definition
+        $event = "New Patient Entrollment";
+
         //dd($input);
         $input = array_map(function($value) 
         {
@@ -165,6 +170,10 @@ trait TPatientPersonalInfo
                 $setResult = $this->setDbEntriesPatientModels($this->patient_uuid, $input);
                 //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
                 $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
+
+                //timeline entry
+                $tl_msg = $input['comment_entered_by'];
+                $set = $this->savePatientTimeline($this->patient_uuid, $name, $event, $tl_msg);
                 return $result;
             } else {
                 $msg = 'New Patient ['.$name.'] could not be saved';

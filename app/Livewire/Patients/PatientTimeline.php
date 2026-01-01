@@ -34,6 +34,6 @@ class PatientTimeline extends Component
                                     ->orderBy('created_at', 'desc')
                                     ->get();
         $this->oldestDate = PatientEpoch::where('patient_uuid', $this->patient_uuid)->min('created_at');
-        //dd($this->ptEpoch);
+        //dd($this->oldestDate);
     }
 }
