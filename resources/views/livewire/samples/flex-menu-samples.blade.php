@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/add-repository" wire:navigate>
+      <a href="/add-repository">
       <i class="far fa-envelope"></i>
       </a>
     </span>
@@ -18,7 +18,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/add-to-samples" wire:navigate>
+      <a href="/add-to-samples">
       <i class="far fa-envelope"></i>
       </a>
     </span>
@@ -36,7 +36,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-success">
-      <a href="/update-sample-usage" wire:navigate>
+      <a href="/update-sample-usage">
         <i class="far fa-flag"></i>
       </a>
     </span>
@@ -54,7 +54,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/bulk-import-samples" wire:navigate>
+      <a href="/bulk-import-samples">
       <i class="far fa-envelope"></i>
       </a>
     </span>
@@ -71,7 +71,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-warning">
-      <a href="/review-consumption" wire:navigate>
+      <a href="/review-consumption">
         <i class="far fa-copy"></i>
       </a>     
     </span>
@@ -89,7 +89,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-danger">
-      <a href="/review-replinishment" wire:navigate>
+      <a href="/review-replinishment">
         <i class="far fa-star"></i>
       </a>    
     </span>

@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/make-new-reagent" wire:navigate>
+      <a href="/make-new-reagent">
       <i class="far fa-envelope"></i>
       </a>
     </span>
@@ -18,7 +18,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/remake-reagent" wire:navigate>
+      <a href="/remake-reagent">
       <i class="far fa-envelope"></i>
       </a>
     </span>
@@ -35,7 +35,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-success">
-      <a href="/update-reagent-usage" wire:navigate>
+      <a href="/update-reagent-usage">
         <i class="far fa-flag"></i>
       </a>
     </span>
@@ -70,7 +70,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-warning">
-      <a href="#" wire:navigate>
+      <a href="#">
         <i class="far fa-copy"></i>
       </a>     
     </span>
@@ -88,7 +88,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-danger">
-      <a href="#" wire:navigate>
+      <a href="#">
         <i class="far fa-star"></i>
       </a>    
     </span>

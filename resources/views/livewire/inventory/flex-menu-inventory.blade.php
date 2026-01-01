@@ -1,7 +1,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/add-inventory-category" wire:navigate>
+      <a href="/add-inventory-category">
       <i class="far fa-envelope"></i>
       </a>
     </span>
@@ -17,7 +17,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/add-to-inventory" wire:navigate>
+      <a href="/add-to-inventory">
       <i class="far fa-envelope"></i>
       </a>
     </span>
@@ -34,7 +34,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-success">
-      <a href="/update-consumption" wire:navigate>
+      <a href="/update-consumption">
         <i class="far fa-flag"></i>
       </a>
     </span>
@@ -51,7 +51,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-warning">
-      <a href="/review-consumption" wire:navigate>
+      <a href="/review-consumption">
         <i class="far fa-copy"></i>
       </a>     
     </span>
@@ -68,7 +68,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-danger">
-      <a href="/review-replinishment" wire:navigate>
+      <a href="/review-replinishment">
         <i class="far fa-star"></i>
       </a>    
     </span>
