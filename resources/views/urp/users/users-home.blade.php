@@ -71,7 +71,7 @@
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
                   @if(count($users) > 0)
-                    <table id="example2" class="table table-sm table-bordered table-hover">
+                    <table id="type2" class="table table-sm table-bordered table-hover">
                       <thead>
                         <tr>
                           <th> Name </th>
