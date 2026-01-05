@@ -131,6 +131,30 @@
                         <input wire:model="goal.progress_percent" class="form-control" type="number">
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <label>Status: &nbsp;&nbsp;</label>(<code>Check One</code>)
+                        </br>
+                        <div class="form-group">
+                            <div class="form-check">
+                              <input wire:model="goal.goal_status" class="form-check-input" value="not_started" type="radio" name="radio1">
+                              <label class="form-check-label">Not Started</label>
+                            </div>
+                          <div class="form-check">
+                            <input wire:model="goal.goal_status" class="form-check-input" value="in_progress" type="radio" name="radio1">
+                            <label class="form-check-label">In Progress</label>
+                          </div>
+                          <div class="form-check">
+                            <input wire:model="goal.goal_status" class="form-check-input" value="completed" type="radio" name="radio1">
+                            <label class="form-check-label">Completed</label>
+                          </div>
+                          <div class="form-check">
+                            <input wire:model="goal.goal_status" class="form-check-input" value="on_hold" type="radio" name="radio1">
+                            <label class="form-check-label">On Hold</label>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>             
                 <div class="col-sm-4 col-md-2">

@@ -37,7 +37,7 @@ class GoalProgressLogs extends Component
 
     public $goal = [];
 
-    public $goalId, $goal_title = null, $progress_percent;
+    public $goalId, $goal_title = null, $goal_status, $progress_percent;
 
     public function render()
     {
@@ -59,18 +59,23 @@ class GoalProgressLogs extends Component
         {
             if($row->goal_id == $goal_id)
             {
-                
+                $this->goal['goal_status'] = $row->status;
                 $this->goal_title = $row->title;
             }
         }
-        $this->goal = [];
+        //$this->goal = [];
         $this->goalProgressUpdatePanel = true;
     }
 
     public function fnSaveGoalProgress()
     {
-        //dd($this->goal);
+        //first check if progress not equal to zero, 
+        // then status should be in_progress.
         $maxProgress = GoalProgress::where('goal_id', $this->goalId)->max('progress');
+
+        //as a rule first update goal progress table then update goals table. Ideally
+        //we should remove progress column in goal_progress_logs table.
+
         //dd($maxProgress);
         $nUGP = new GoalProgress();
         $nUGP->goal_id = $this->goalId;
@@ -83,17 +88,18 @@ class GoalProgressLogs extends Component
         else {
             $nUGP->progress = (float)$this->goal['progress_percent'];
         }
-
         //dd($nUGP);
         $nUGP->save();
+
         //now update the goal table
         $nUG = Goals::where('goal_id', $this->goalId)->first();
         //make sure, if goal progress percent less than already entered
-        if( (float)$this->goal['progress_percent'] > (float)$nUG->progress )
-        {
-            $nUG->progress = (float)$this->goal['progress_percent'];
-            $nUG->save();
-        }
+        $nUG->status = $this->goal['goal_status'];
+        $nUG->progress = (float)$this->goal['progress_percent'];
+
+        //dd($nUGP, $nUG);
+        $nUG->save();
+    
         $this->goal = [];
         $this->goalProgressUpdatePanel = false;
     }
