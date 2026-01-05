@@ -65,7 +65,7 @@
                                                 <div>
                                                     <i class="fas fa-envelope bg-blue"></i>
                                                     <div class="timeline-item">
-                                                    <span class="time"><i class="fas fa-clock"></i> {{ date('H:i', strtotime($row->event_date)) }}</span>
+                                                    <span class="time"><i class="fas fa-clock"></i> {{ $row->et }}</span>
                                                     <h3 class="timeline-header"><a href="#">{{ $row->event_author }}</a> {{ $row->event }}</h3>
 
                                                     <div class="timeline-body">

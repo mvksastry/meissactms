@@ -68,6 +68,44 @@
             </a>
           </li>
           -->
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Project Management
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">3</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/goal-divisions" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Divisions</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/project-goals" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Annual Goals</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/employee-annual-goals" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Individual Goals</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/update-goal-progress" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Goal Progress</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

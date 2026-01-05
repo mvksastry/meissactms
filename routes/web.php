@@ -27,6 +27,14 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionsController;
 //------------------------------------------------------//
 
+
+// Livewire - Project management
+use App\Livewire\Projects\GoalDivisions;
+use App\Livewire\Projects\GoalCategories;
+use App\Livewire\Projects\ProjectGoals;
+use App\Livewire\Projects\EmployeeAnnualGoals;
+use App\Livewire\Projects\GoalProgressLogs;
+
 // Livewire - Patient management
 use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
@@ -104,6 +112,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('health-information', HealthInformationController::class);
 
 
+    // ------- Livewire: Components All Roles------- //
+    Route::get('goal-divisions', GoalDivisions::class);
+    Route::get('goal-categories', GoalCategories::class);
+    Route::get('project-goals', ProjectGoals::class);
+    Route::get('employee-annual-goals', EmployeeAnnualGoals::class);
+    Route::get('update-goal-progress', GoalProgressLogs::class);
 
     // ------- Livewire: Components All Roles------- //
     Route::get('manage-patients', ManagePatients::class);
