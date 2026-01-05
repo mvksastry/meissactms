@@ -158,7 +158,7 @@
                   </tbody>
                 </table>             
                 <div class="col-sm-4 col-md-2">
-                    <button wire:click="fnSaveGoalProgress()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Save Goal</button>
+                    <button wire:click="fnSaveGoalProgress()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Update Progess</button>
                 </div>
             @endif
             </div>
