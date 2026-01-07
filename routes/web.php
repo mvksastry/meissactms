@@ -74,11 +74,14 @@ use App\Livewire\General\ManageTasks;
 //use App\Livewire\General\ManageLabfiles;
 
 // ------- Livewire: QMS Administration ------- //
-use App\Livewire\Qms\NC\NonConformityIncidences;
+use App\Livewire\Qms\NC\NcHome;
+//use App\Livewire\Qms\NC\NonConformityIncidences;
 
-use App\Livewire\Qms\CAPA\CapaIncidences;
+use App\Livewire\Qms\CAPA\CapaHome;
+//use App\Livewire\Qms\CAPA\CapaIncidences;
 
-use App\Livewire\Qms\RCA\RootCauseResolution;
+use App\Livewire\Qms\RCA\RootCauseHome;
+//use App\Livewire\Qms\RCA\RootCauseResolution;
 
 // Livewire - Created for testing individuals -----//
 //use App\Livewire\Ctms\TestComponent;
@@ -165,13 +168,16 @@ Route::middleware('auth')->group(function () {
     // ------- Livewire: QMS Administration ------- //
 
     // ------- Livewire: QMS_NC Administration ------- //
-    Route::get('/non-conformity-management', App\Livewire\Qms\NC\NonConformityIncidences::class);
+    Route::get('/non-conformity-home', App\Livewire\Qms\NC\NcHome::class);
+    //Route::get('/non-conformity-management', App\Livewire\Qms\NC\NonConformityIncidences::class);
 
     // ------- Livewire: QMS-CAPA Administration ------- //
-    Route::get('/capa-scrutinites', App\Livewire\Qms\CAPA\CapaIncidences::class);
+    Route::get('/capa-home', App\Livewire\Qms\CAPA\CapaHome::class);
+    //Route::get('/capa-scrutinites', App\Livewire\Qms\CAPA\CapaIncidences::class);
 
     // ------- Livewire: QMS-Actions Administration ------- //
-    Route::get('/root-cause-resolution', App\Livewire\Qms\RCA\RootCauseResolution::class);
+    Route::get('/root-cause-home', App\Livewire\Qms\RCA\RcaHome::class);
+    //Route::get('/root-cause-resolution', App\Livewire\Qms\RCA\RootCauseResolution::class);
 
     // ------- Livewire: User Administration ------- //
     Route::resource('ctms-users', UsersController::class);

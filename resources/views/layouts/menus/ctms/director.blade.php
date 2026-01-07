@@ -273,33 +273,31 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                Health Management
+                QMS
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/manage-health" class="nav-link">
+                <a href="/non-conformity-home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Health Dashboard</p>
+                  <p>Non Conformity</p>
                 </a>
               </li>
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/manage-health" class="nav-link">
+                <a href="/capa-home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Health Update</p>
+                  <p>CAPA Home</p>
                 </a>
               </li>
+            </ul>
+            <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/manage-health" class="nav-link">
+                <a href="/root-cause-home" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Edit Update</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/manage-health" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Review Health</p>
+                  <p>RCA Home</p>
                 </a>
               </li>
             </ul>

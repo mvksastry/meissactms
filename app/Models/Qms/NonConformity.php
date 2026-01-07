@@ -26,7 +26,7 @@ class NonConformity extends Model
     protected $fillable = [
       'nc_uuid',
       'origin_of_nc',
-      'raised_how',
+      'division_reported',
       'raised_by',
       'raised_role',
       'raised_at',

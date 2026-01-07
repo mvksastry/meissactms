@@ -25,13 +25,8 @@ class NCAuditTrail extends Model
       */
     protected $fillable = [
       'record_type',
-      'record_id',
       'nc_id',
-      'nc_uuid',
       'action',
-      'performed_by',
-      'role_performed',
-      'performed_at',
       'old_value',
       'new_value'
     ];
