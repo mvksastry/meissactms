@@ -36,4 +36,29 @@ class NonConformity extends Model
       'requires_capa',
       'linked_capa_id'
     ];
+
+    public function acks()
+    {
+        return $this->hasMany(NCAcks::class, 'nc_id', 'nc_id');
+    }
+
+    public function history()
+    {
+        return $this->hasMany(NCStatusHistory::class, 'nc_id', 'nc_id');
+    }
+
+    public function review()
+    {
+        return $this->hasMany(NCReview::class, 'nc_id', 'nc_id');
+    }
+
+    public function communs()
+    {
+        return $this->hasMany(NCComms::class, 'nc_id', 'nc_id');
+    }
+
+    public function audits()
+    {
+        return $this->hasMany(NCAuditTrail::class, 'nc_id', 'nc_id');
+    }
 }

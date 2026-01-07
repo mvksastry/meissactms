@@ -28,18 +28,24 @@ class NcHome extends Component
     Public $p1 = false, $p2 = false, $p3 = false, $p4 = false, $p5 = false, $p6 =  false;
 
     //component variables
-    public $nc_id = null, $entry = null;
+    public $nc_id = null, $entry = null, $activeNcs;
+    public $nc_acks, $nc_auditLogs, $nc_communs, $nc_review, $nc_history;
 
     //panel openings
     public $openAllOtherForms = false;
     public $newNCEntrySteps = false;
     public $edit_button = false;
+    public $allNcPanels = false;
 
     //dashboard variables
     public $open_ncs = null;
 
     public function render()
     {
+        $this->activeNcs = NonConformity::with('acks')->with('history')->with('review')
+                                            ->with('communs')->with('audits')
+                                            ->where('current_status', "open")->get();
+        //dd($this->activeNcs);
         return view('livewire.qms.n-c.nc-home');
     }
 
@@ -72,6 +78,16 @@ class NcHome extends Component
         $this->comSuccess = false;
         $this->comDanger = false;
         $this->comWarning = false;
+    }
+
+    public function fnNCDetails($nc_id)
+    {
+        $this->nc_acks = NCAcks::where('nc_id', $nc_id)->get();
+        $this->nc_communs = NCComms::where('nc_id', $nc_id)->get();
+        $this->nc_review = NCReview::where('nc_id', $nc_id)->get();
+        $this->nc_history =  NCStatusHistory::where('nc_id', $nc_id)->get();
+        $this->nc_auditLogs = NCAuditTrail::where('nc_id', $nc_id)->get();
+        $this->allNcPanels = true;
     }
     
 }

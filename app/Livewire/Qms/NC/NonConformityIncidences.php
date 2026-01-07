@@ -66,7 +66,7 @@ class NonConformityIncidences extends Component
     public function fnSaveNewNC()
     {
         
-        /*
+        
         //dd($this->nc);
         $nNc = new NonConformity();
 
@@ -103,7 +103,7 @@ class NonConformityIncidences extends Component
         //nullify all objects
         $this->resetNcFormFields();
 
-        */
+        
         //now dispatch an event to NcHome and close the panel
         $this->msg_panel = true;
         $msg = "New Non Conformity Generated";
