@@ -73,9 +73,12 @@ use App\Livewire\General\LogBook;
 use App\Livewire\General\ManageTasks;
 //use App\Livewire\General\ManageLabfiles;
 
+// ------- Livewire: QMS Administration ------- //
+use App\Livewire\Qms\NC\NonConformityIncidences;
 
+use App\Livewire\Qms\CAPA\CapaIncidences;
 
-
+use App\Livewire\Qms\RCA\RootCauseResolution;
 
 // Livewire - Created for testing individuals -----//
 //use App\Livewire\Ctms\TestComponent;
@@ -158,6 +161,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/manage-tasks',          App\Livewire\General\ManageTasks::class);
 
     //Route::get('/manage-labfiles',       App\Livewire\Documents\ManageLabfiles::class);
+
+    // ------- Livewire: QMS Administration ------- //
+
+    // ------- Livewire: QMS_NC Administration ------- //
+    Route::get('/non-conformity-management', App\Livewire\Qms\NC\NonConformityIncidences::class);
+
+    // ------- Livewire: QMS-CAPA Administration ------- //
+    Route::get('/capa-scrutinites', App\Livewire\Qms\CAPA\CapaIncidences::class);
+
+    // ------- Livewire: QMS-Actions Administration ------- //
+    Route::get('/root-cause-resolution', App\Livewire\Qms\RCA\RootCauseResolution::class);
 
     // ------- Livewire: User Administration ------- //
     Route::resource('ctms-users', UsersController::class);
