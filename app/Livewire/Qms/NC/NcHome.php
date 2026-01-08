@@ -30,6 +30,7 @@ class NcHome extends Component
     //component variables
     public $nc_id = null, $entry = null, $activeNcs;
     public $nc_acks, $nc_auditLogs, $nc_communs, $nc_review, $nc_history;
+    public $ncAck = [];
 
     //panel openings
     public $openAllOtherForms = false;
@@ -82,11 +83,13 @@ class NcHome extends Component
 
     public function fnNCDetails($nc_id)
     {
-        $this->nc_acks = NCAcks::where('nc_id', $nc_id)->get();
-        $this->nc_communs = NCComms::where('nc_id', $nc_id)->get();
-        $this->nc_review = NCReview::where('nc_id', $nc_id)->get();
-        $this->nc_history =  NCStatusHistory::where('nc_id', $nc_id)->get();
-        $this->nc_auditLogs = NCAuditTrail::where('nc_id', $nc_id)->get();
+        $this->nc_id = $nc_id;
+        
+        //$this->nc_communs = NCComms::where('nc_id', $nc_id)->get();
+        //$this->nc_review = NCReview::where('nc_id', $nc_id)->get();
+        //$this->nc_history =  NCStatusHistory::where('nc_id', $nc_id)->get();
+        //$this->nc_auditLogs = NCAuditTrail::where('nc_id', $nc_id)->get();
+        //dd($this->nc_acks, $this->nc_communs, $this->nc_review, $this->nc_history, $this->nc_auditLogs);
         $this->allNcPanels = true;
     }
     

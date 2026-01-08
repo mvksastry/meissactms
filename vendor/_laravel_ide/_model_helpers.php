@@ -21002,10 +21002,8 @@ namespace App\Models\Qms {
      *
      * @property \Illuminate\Support\Carbon $updated_at
      * @property \Illuminate\Support\Carbon $created_at
-     * @property string $entered_role
-     * @property string $entered_by
      * @property string|null $remarks
-     * @property string $ack_at
+     * @property string $role_entered
      * @property string $ack_by
      * @property mixed $nc_id
      * @property int $nc_ack_id
@@ -21016,10 +21014,8 @@ namespace App\Models\Qms {
      * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereNcAckId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereNcId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereAckBy($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereAckAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereRoleEntered($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereRemarks($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereEnteredBy($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereEnteredRole($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAcks>|NCAcks newModelQuery()
@@ -21325,13 +21321,8 @@ namespace App\Models\Qms {
      * @property \Illuminate\Support\Carbon $created_at
      * @property string|null $new_value
      * @property string|null $old_value
-     * @property string $performed_at
-     * @property string $role_performed
-     * @property string $performed_by
      * @property string|null $action
-     * @property string $nc_uuid
      * @property mixed $nc_id
-     * @property mixed $record_id
      * @property string|null $record_type
      * @property int $nc_audit_trail_id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles
@@ -21340,13 +21331,8 @@ namespace App\Models\Qms {
      * @property-read int|null $permissions_count
      * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereNcAuditTrailId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereRecordType($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereRecordId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereNcId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereNcUuid($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereAction($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail wherePerformedBy($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereRolePerformed($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail wherePerformedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereOldValue($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereNewValue($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NCAuditTrail>|NCAuditTrail whereCreatedAt($value)
@@ -22627,10 +22613,20 @@ namespace App\Models\Qms {
      * @property string $raised_at
      * @property string $raised_role
      * @property string $raised_by
-     * @property string $raised_how
+     * @property string|null $division_reported
      * @property string $origin_of_nc
      * @property string $nc_uuid
      * @property int $nc_id
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Qms\NCAcks> $acks
+     * @property-read int|null $acks_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Qms\NCStatusHistory> $history
+     * @property-read int|null $history_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Qms\NCReview> $review
+     * @property-read int|null $review_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Qms\NCComms> $communs
+     * @property-read int|null $communs_count
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Qms\NCAuditTrail> $audits
+     * @property-read int|null $audits_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles
      * @property-read int|null $roles_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
@@ -22638,7 +22634,7 @@ namespace App\Models\Qms {
      * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereNcId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereNcUuid($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereOriginOfNc($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereRaisedHow($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereDivisionReported($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereRaisedBy($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereRaisedRole($value)
      * @method static \Illuminate\Database\Eloquent\Builder<NonConformity>|NonConformity whereRaisedAt($value)

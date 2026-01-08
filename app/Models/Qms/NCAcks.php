@@ -26,9 +26,7 @@ class NCAcks extends Model
     protected $fillable = [
       'nc_id',
       'ack_by',
-      'ack_at',
-      'remarks',
-      'entered_by',
-      'entered_role'
+      'role_entered',
+      'remarks'
     ];
 }
