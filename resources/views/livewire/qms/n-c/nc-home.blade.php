@@ -107,15 +107,25 @@
             @if($allNcPanels)
 
               <livewire:qms.n-c.nc-acknowledges :nc_id="$nc_id" />
-
+              <!--Divider-->
+              <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
               <livewire:qms.n-c.nc-communications :nc_id="$nc_id" />
-
+              <!--Divider-->
+              <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
               <livewire:qms.n-c.nc-reviews :nc_id="$nc_id" />
-
+              <!--Divider-->
+              <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
               <livewire:qms.n-c.nc-status-history-logs :nc_id="$nc_id" />
-
+              <!--Divider-->
+              <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
               <livewire:qms.n-c.nc-audit-logs :nc_id="$nc_id" />
-
+              <!--Divider-->
+              <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
               <div class="row">
                 <!-- /.col -->
                 <!-- /.col -->
