@@ -42,10 +42,6 @@ class DrugUsage extends Component
     public function render()
     {
         $this->drug_details = DrugDetails::where('patient_uuid', $this->patient_uuid)->get();
-        if(count($this->drug_details) > 0)
-        {
-            $this->fnNewDetailEntry();
-        }
         return view('livewire.ctms.patients.clinicals.drug-usage');
     }
 

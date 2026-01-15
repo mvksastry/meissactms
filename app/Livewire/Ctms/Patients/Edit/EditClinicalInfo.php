@@ -16,6 +16,8 @@ use App\Models\Ctms\Clinicals\BloodUrea;
 use App\Models\Ctms\Clinicals\ChemicalExam;
 use App\Models\Ctms\Clinicals\Creatinine;
 use App\Models\Ctms\Clinicals\Crp;
+use App\Models\Ctms\Clinicals\DrugCategory;
+use App\Models\Ctms\Clinicals\DrugDetails;
 use App\Models\Ctms\Clinicals\Electrolytes;
 use App\Models\Ctms\Clinicals\GeneralSummary;
 use App\Models\Ctms\Clinicals\Il6;
@@ -71,6 +73,11 @@ class EditClinicalInfo extends Component
     public $clinical_info = null;
     public $c1Obj,$c2Obj,$c3Obj,$c4Obj,$c5Obj,$c6Obj,$c7Obj;
     public $c8Obj,$c9Obj,$c10Obj,$c11Obj,$c12Obj,$c13Obj,$c14Obj;
+    public $c15Obj;
+
+    //specific to drug usage, many entries hence better to declare here
+    public $drug_details = [], $dCats = null, $ddet = [], $p1=false, $p2=false, $p3=false;
+    public $nDDetForm = [];
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -142,6 +149,10 @@ class EditClinicalInfo extends Component
         $this->c14Obj = UrineRoutine::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
         //$this->form_n->entered_by = Auth::user()->name;
         $this->setC14ObjData($this->c14Obj);
+
+        //many entries here, first should not be used, use get();
+        $this->c15Obj = DrugDetails::where('status', 'draft')->where('patient_uuid', $this->uuid)->get(); 
+        $this->setC15ObjData($this->c15Obj);        
 
         return view('livewire.ctms.patients.edit.edit-clinical-info');
     }
@@ -480,6 +491,32 @@ class EditClinicalInfo extends Component
         $this->form_n->entry_date = $c14Obj->entry_date;
     }
 
+    public function setC15ObjData($c15Obj)
+    {
+        $this->drug_details = [];
+        $this->dCats = DrugCategory::all();
+        $this->p3 = true;
+        foreach($c15Obj as $key => $row)
+        {
+            $this->nDDetForm[$key]['patient_uuid'] = $row->patient_uuid;
+            $this->nDDetForm[$key]['drug_detail_id'] = $row->drug_detail_id;
+            $this->nDDetForm[$key]['entered_by'] = Auth::user()->name;
+
+            $this->nDDetForm[$key]['opd_id'] = $row->opd_id;
+            $this->nDDetForm[$key]['in_patient_id'] = $row->in_patient_id;
+            $this->nDDetForm[$key]['admission_date'] = $row->admission_date;
+            $this->nDDetForm[$key]['category_id'] = $row->category_id;
+            $this->nDDetForm[$key]['drug_name'] = $row->drug_name;
+            $this->nDDetForm[$key]['brand'] = $row->brand;
+            $this->nDDetForm[$key]['drug_class'] = $row->drug_class;
+            $this->nDDetForm[$key]['generic_name'] = $row->generic_name;
+            $this->nDDetForm[$key]['single_dose'] = $row->single_dose;
+            $this->nDDetForm[$key]['frequency'] = $row->frequency;
+            $this->nDDetForm[$key]['total_daily_dose'] = $row->total_daily_dose;
+            $this->nDDetForm[$key]['last_week_adherance'] = $row->last_week_adherance;
+            $this->nDDetForm[$key]['comment_entered_by'] = $row->comment_entered_by;
+        }
+    }
 
     public function fnSaveEditedClinicalData()
     {   $this->msg_panel = false;
@@ -681,5 +718,23 @@ class EditClinicalInfo extends Component
         $sysAlertWarning = false;
         $this->comSuccess = $msg;
     } 
+
+    public function fnEditDrugDetail()
+    {
+        $input = $this->nDDetForm;
+        //dd($input);
+        foreach($input as $row)
+        {
+            $drug_detail_id = $row['drug_detail_id'];
+            $result = DrugDetails::where('drug_detail_id', $drug_detail_id)->update($row); 
+            $msg = 'User ['.Auth::user()->name.'] edited Drug Detail Data ['.$this->uuid.']';
+            Log::channel('patient')->info($msg);
+            $this->msg_panel = true;
+            $sysAlertWarning = false;
+            $this->comSuccess = $msg;
+        }
+        $this->nDDetForm = [];
+        //$this->p3 = false;
+    }
 
 }
