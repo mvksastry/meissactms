@@ -64,6 +64,7 @@ class PatientClinicalInvestigations extends Component
     {
 
     }
+    
     public function fnSaveClinicalData()
     {
         $this->input = $this->form->all();

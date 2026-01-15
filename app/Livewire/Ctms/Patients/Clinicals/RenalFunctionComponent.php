@@ -49,10 +49,10 @@ class RenalFunctionComponent extends Component
             $this->passObj = new RenalFunction();
         }
         else {
-            $this->passObj = RenalFunction::where('patient_uuid', $patient_uuid)->first();
-            $this->form_a->opd_id = $this->passObj->opd_id;
-            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_a->admission_date = $this->passObj->admission_date;
+            $this->passObj = RenalFunction::where('patient_uuid', $this->patient_uuid)->first();
+            $this->form_m->opd_id = $this->passObj->opd_id;
+            $this->form_m->in_patient_id = $this->passObj->in_patient_id;
+            $this->form_m->admission_date = $this->passObj->admission_date;
         }
     }
 

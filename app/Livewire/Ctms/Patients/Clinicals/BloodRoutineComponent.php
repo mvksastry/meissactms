@@ -51,7 +51,7 @@ class BloodRoutineComponent extends Component
             $this->passObj = new BloodRoutine();
         }
         else {
-            $this->passObj = BloodRoutine::where('patient_uuid', $patient_uuid)->first();
+            $this->passObj = BloodRoutine::where('patient_uuid', $this->patient_uuid)->first();
             $this->form_a->opd_id = $this->passObj->opd_id;
             $this->form_a->in_patient_id = $this->passObj->in_patient_id;
             $this->form_a->admission_date = $this->passObj->admission_date;

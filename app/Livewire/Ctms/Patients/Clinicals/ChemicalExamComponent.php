@@ -51,10 +51,10 @@ class ChemicalExamComponent extends Component
             $this->passObj = new ChemicalExam();
         }
         else {
-            $this->passObj = ChemicalExam::where('patient_uuid', $patient_uuid)->first();
-            $this->form_a->opd_id = $this->passObj->opd_id;
-            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_a->admission_date = $this->passObj->admission_date;
+            $this->passObj = ChemicalExam::where('patient_uuid', $this->patient_uuid)->first();
+            $this->form_d->opd_id = $this->passObj->opd_id;
+            $this->form_d->in_patient_id = $this->passObj->in_patient_id;
+            $this->form_d->admission_date = $this->passObj->admission_date;
         }
     }
 

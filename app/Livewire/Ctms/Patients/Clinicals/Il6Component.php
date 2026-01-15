@@ -49,10 +49,10 @@ class Il6Component extends Component
             $this->passObj = new Il6();
         }
         else {
-            $this->passObj = Il6::where('patient_uuid', $patient_uuid)->first();
-            $this->form_a->opd_id = $this->passObj->opd_id;
-            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_a->admission_date = $this->passObj->admission_date;
+            $this->passObj = Il6::where('patient_uuid', $this->patient_uuid)->first();
+            $this->form_i->opd_id = $this->passObj->opd_id;
+            $this->form_i->in_patient_id = $this->passObj->in_patient_id;
+            $this->form_i->admission_date = $this->passObj->admission_date;
         }
     }
 

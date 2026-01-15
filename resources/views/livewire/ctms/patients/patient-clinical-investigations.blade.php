@@ -64,7 +64,8 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">ME</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_10" data-toggle="tab">UR</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_11" data-toggle="tab">Misc</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_12" data-toggle="tab">Official</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_12" data-toggle="tab">Drugs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_13" data-toggle="tab">Official</a></li>
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -140,9 +141,13 @@
                               <div class="tab-pane" id="tab_11">
                                 <livewire:ctms.patients.clinicals.general-summary-component :patient_uuid="$patient_uuid" />                          
                               </div>  
+                              <!-- /.tab-pane -->     
+                              <div class="tab-pane" id="tab_12">
+                                <livewire:ctms.patients.clinicals.drug-usage :patient_uuid="$patient_uuid" />                          
+                              </div> 
                             @endif
                               <!-- /.tab-pane -->                                                                                                                                                                                    
-                              <div class="tab-pane" id="tab_12">
+                              <div class="tab-pane" id="tab_13">
                                 @include('livewire.ctms.end-controls')
                                 <button wire:click="fnSaveClinicalData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
                               </div>

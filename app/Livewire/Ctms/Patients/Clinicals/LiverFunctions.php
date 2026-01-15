@@ -49,10 +49,10 @@ class LiverFunctions extends Component
             $this->passObj = new LiverFunction();
         }
         else {
-            $this->passObj = LiverFunction::where('patient_uuid', $patient_uuid)->first();
-            $this->form_a->opd_id = $this->passObj->opd_id;
-            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_a->admission_date = $this->passObj->admission_date;
+            $this->passObj = LiverFunction::where('patient_uuid', $this->patient_uuid)->first();
+            $this->form_k->opd_id = $this->passObj->opd_id;
+            $this->form_k->in_patient_id = $this->passObj->in_patient_id;
+            $this->form_k->admission_date = $this->passObj->admission_date;
         }
     }
 

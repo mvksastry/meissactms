@@ -71,7 +71,8 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">CE</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">ME</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">UR</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_10" data-toggle="tab">GS</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_10" data-toggle="tab">Drugs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_11" data-toggle="tab">GS</a></li>
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -115,6 +116,10 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_10">
+                              @include('livewire.ctms.patients.clinicals.drug-usage')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_11">
                               @include('livewire.ctms.patients.clinicals.general-summary-component')
                             </div>
                             <!-- /.tab-pane -->

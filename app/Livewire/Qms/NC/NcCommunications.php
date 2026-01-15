@@ -22,7 +22,7 @@ class NcCommunications extends Component
     public function mount($nc_id)
     {
         $this->nc_id = $nc_id;
-        $this->ncComs['ack_by'] = Auth::user()->name;
+        $this->ncComs['posted_by'] = Auth::user()->name;
         //$this->entry = $entry;
         $this->setAckComponent();
     }

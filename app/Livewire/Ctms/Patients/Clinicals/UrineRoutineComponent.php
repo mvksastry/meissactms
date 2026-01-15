@@ -49,10 +49,10 @@ class UrineRoutineComponent extends Component
             $this->passObj = new UrineRoutine();
         }
         else {
-            $this->passObj = UrineRoutine::where('patient_uuid', $patient_uuid)->first();
-            $this->form_a->opd_id = $this->passObj->opd_id;
-            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_a->admission_date = $this->passObj->admission_date;
+            $this->passObj = UrineRoutine::where('patient_uuid', $this->patient_uuid)->first();
+            $this->form_n->opd_id = $this->passObj->opd_id;
+            $this->form_n->in_patient_id = $this->passObj->in_patient_id;
+            $this->form_n->admission_date = $this->passObj->admission_date;
         }
     }
 
