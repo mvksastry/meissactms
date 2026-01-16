@@ -22,20 +22,38 @@ class NcCommunications extends Component
     public function mount($nc_id)
     {
         $this->nc_id = $nc_id;
-        $this->ncComs['posted_by'] = Auth::user()->name;
+        $this->ncComs['entered_by'] = Auth::user()->name;
         //$this->entry = $entry;
-        $this->setAckComponent();
+        $this->setComComponent();
     }
 
-    public function setAckComponent()
+    public function setComComponent()
     {
-
         $this->nc_communs = NCComms::where('nc_id', $this->nc_id)->get();
-
     }
 
     public function render()
     {
         return view('livewire.qms.n-c.nc-communications');
     }
+
+    public function fnNCCommunications()
+    {
+        //dd("for posting reached");
+        $input = $this->ncComs;
+        //dd($input);
+        $nEntCom = new NCComms();
+        $nEntCom->nc_id = $this->nc_id;
+        $nEntCom->message_type = $input['message_type'];
+        $nEntCom->message = $input['message'];
+        $nEntCom->entered_by = $input['entered_by'];
+        $nEntCom->entered_role = Auth::user()->roles->pluck('name')[0] ?? '';
+        $nEntCom->visible_to = $input['visible_to'];
+        //dd($nEntCom);
+        $nEntCom->save();
+        //empty form
+        $this->ncComs = [];
+        $this->setComComponent();
+    }
+
 }

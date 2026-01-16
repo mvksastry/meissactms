@@ -1,7 +1,8 @@
 <div>
     {{-- Stop trying to control. --}}
+    <div class="bg-success disabled color-palette"><span class="mx-3">Acknowledgements</span></div>
     <div class="row">
-        Acknowledgements
+        
         <?php $op1 = $nc_acks->isEmpty(); //dd($op1);?>
         @if(!$op1)
             <table id="userIndex2" class="table table-sm table-bordered table-hover">

@@ -1,7 +1,9 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
+    <div class="bg-purple disabled color-palette"><span class="mx-3">Audit Logs</span></div>
             <div class="row">
-              Audit Logs
+              
+              
               <?php $op5 = $nc_auditLogs->isEmpty(); //dd($op3);?>
               @if(!$op5)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">

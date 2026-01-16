@@ -1,7 +1,9 @@
 <div>
     {{-- Success is as dangerous as failure. --}}
+    <div class="bg-gray-dark disabled color-palette"><span class="mx-3">Status History</span></div>
             <div class="row">
-              Status History
+              
+              
               <?php $op4 = $nc_history->isEmpty(); //dd($op3);?>
               @if(!$op4)
               <table id="userIndex2" class="table table-sm table-bordered table-hover">

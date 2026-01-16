@@ -1,7 +1,8 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-            <div class="row">
-              Reviews
+    <div class="bg-danger disabled color-palette"><span class="mx-3">Reviews</span></div>        
+    <div class="row">
+              
               <?php $op3 = $nc_review->isEmpty(); //dd($op3);?>
               @if( !$op3 )
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">

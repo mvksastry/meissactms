@@ -28,7 +28,7 @@ class NCComms extends Model
       'message_type',
       'message',
       'entered_by',
-      'entered-role',
+      'entered_role',
       'visible_to'
     ];
 }

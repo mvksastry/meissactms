@@ -1,29 +1,28 @@
 <div>
-  Communications
+  <div class="bg-info disabled color-palette"><span class="mx-3">Communications</span></div>
+  
   <?php $op2 = $nc_communs->isEmpty(); //dd($op2); ?>
   @if(!$op2 )
     <table id="userIndex2" class="table table-sm table-bordered table-hover">
       <thead>
         <tr>
-            <th>message_type</th>
-            <th>message</th>
-            <th>entered_by</th>
-            <th>entered-role</th>
-            <th>visible_to</th>
-            <th>created_at</th> 
-            <th>updated_at</th>                      
+            <th>Message Type</th>
+            <th>Message</th>
+            <th>Entered By</th>
+            <th>Entered Role</th>
+            <th>Visible To</th>
+            <th>Time Stamps</th>                     
         </tr>
       </thead>
       <tbody> 
         @foreach($nc_communs as $row)
           <tr>
-              <td>{{ $row->message_type }}</td>
+              <td>{{ ucfirst($row->message_type) }}</td>
               <td>{{ $row->message }}</td>
               <td>{{ $row->entered_by }}</td>
-              <td>{{ $row->entered-role }}</td>
-              <td>{{ $row->visible_to }}</td>
-              <td>{{ $row->created_at }}</td>
-              <td>{{ $row->updated_at}}</td>
+              <td>{{ ucfirst($row->entered_role) }}</td>
+              <td>{{ ucfirst($row->visible_to) }}</td>
+              <td>Created At: {{ $row->created_at }} </br> Updated At: {{ $row->updated_at}}</td>
           </tr>  
         @endforeach                                  
       </tbody>
@@ -54,7 +53,7 @@
         <td>
             <div class="">
               <label for="">Message Type</label>
-              <select class="custom-select rounded-0" name="category_id" id="exampleSelectRounded0">
+              <select class="custom-select rounded-0" wire:model="ncComs.message_type" id="exampleSelectRounded0">
                 <option value="-1">Select</option>
                 <option value="first_reply">First Reply</option>
                 <option value="follow-up">Follow-up</option>
@@ -67,22 +66,32 @@
         </td>
         <td>
           <label>Posted By*</label>
-          <input wire:model="ncComs.posted_by" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Remarks">
+          <input wire:model="ncComs.entered_by" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Remarks">
         </td>
         <td>
-          <label>Visible To*</label>
-          <input wire:model="ncComs.visible_to" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Visible To">
+          <div class="">
+              <label for="">Visible To</label>
+              <select class="custom-select rounded-0" wire:model="ncComs.visible_to" id="exampleSelectRounded0">
+                <option value="-1">Select</option>
+                <option value="qa">QA</option>
+                <option value="qc">QC</option>
+                <option value="all">ALL</option>
+              </select>
+              @error('ncComs.visible_to')
+                <span class="text-danger">{{ $message }}</span>
+              @enderror
+          </div> 
         </td>
       </tr>
       <tr>
         <td colspan="3">
           <label>Message*</label>
-          <input wire:model="ncComs.msg_author" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Remarks">
+          <input wire:model="ncComs.message" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Remarks">
         </td>
       </tr>
       <tr>
         <td width="25%">
-          <button wire:click="fnAckNCevent()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Post Communication</button>
+          <button wire:click="fnNCCommunications()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Post Communication</button>
         </td>
       </tr>
     </tbody>
