@@ -7,7 +7,7 @@
       <thead>
         <tr>
             <th>Message Type</th>
-            <th>Message</th>
+            <th width="45%">Message</th>
             <th>Entered By</th>
             <th>Entered Role</th>
             <th>Visible To</th>
@@ -65,7 +65,7 @@
             </div>        
         </td>
         <td>
-          <label>Posted By*</label>
+          <label>Posted By</label>
           <input wire:model="ncComs.entered_by" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Remarks">
         </td>
         <td>

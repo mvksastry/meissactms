@@ -57,7 +57,7 @@ class PatientPersonal extends Component
     public $form_header;
 
     public function mount($entered_by)
-    {
+    {   
         $this->form->entered_by = $entered_by;
         $this->form->entry_date = date('Y-m-d');
     }
@@ -75,5 +75,6 @@ class PatientPersonal extends Component
         $result = $this->savePatientInformation($this->input);
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Patient Personal data');
         //dd($result);
+
     }
 }

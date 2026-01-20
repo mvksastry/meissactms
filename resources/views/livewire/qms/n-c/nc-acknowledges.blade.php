@@ -1,15 +1,14 @@
 <div>
     {{-- Stop trying to control. --}}
     <div class="bg-success disabled color-palette"><span class="mx-3">Acknowledgements</span></div>
-    <div class="row">
         
         <?php $op1 = $nc_acks->isEmpty(); //dd($op1);?>
         @if(!$op1)
             <table id="userIndex2" class="table table-sm table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>ack_by</th>
-                    <th>remarks</th>
+                    <th>Ack By</th>
+                    <th>Remarks</th>
                     <th>Role </th>
                     <th>Time Stamps</th>                 
                 </tr>
@@ -17,9 +16,9 @@
                 <tbody> 
                 @foreach($nc_acks as $row)
                     <tr>
-                        <td>{{ $row->ack_by }}</td>
-                        <td>{{ $row->remarks }}</td>                        
-                        <td>{{ $row->role_entered }}</td>
+                        <td>{{ ucfirst($row->ack_by) }}</td>
+                        <td>{{ ucfirst($row->remarks) }}</td>                        
+                        <td>{{ ucfirst($row->role_entered) }}</td>
                         <td>Created At: {{ $row->created_at }} </br> Updated At: {{ $row->updated_at }}</td>
                     </tr>  
                 @endforeach                                  
@@ -56,5 +55,4 @@
                 </tbody>
             </table>
         @endif
-    </div>
 </div>

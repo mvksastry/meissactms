@@ -25,6 +25,7 @@ class ManagePatients extends Component
     //form status
     public $form_status = null;
     public $openAllOtherForms = false;
+    public $showPrimaryInfo = true;
 
     //new paitent global uuid
     public $patient_uuid, $entry="update";
@@ -97,6 +98,7 @@ class ManagePatients extends Component
         }       
         return view('livewire.ctms.patients.manage-patients');
     }
+
     public function fnRedirectToEdit()
     {
         Log::channel('patient')->info('User [ '.$this->logged_user.' ] Redirected to Edit Patients');
@@ -142,6 +144,7 @@ class ManagePatients extends Component
         $this->comSuccess = "New Patient ID [ '.$id.' ] Created";
         Log::channel('patient')->info($this->comSuccess);
         //dd("event emitted and understood");
+        $this->showPrimaryInfo = false;
         $this->openAllOtherForms = true;
     }
 
@@ -151,6 +154,13 @@ class ManagePatients extends Component
         $this->fnResetAllVisiblePanels();
         $this->p1 = true;
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown New Patient Dashboard');
+    }
+
+    public function fnShowPrimaryInfoMesage()
+    {
+        $this->msg_panel = true;
+        $this->comWarning= "Patient Primary Info cannot be re-entered, Use Edit option";
+        Log::channel('patient')->info($this->comWarning);
     }
 
     public function fnLifeStyle()
@@ -269,8 +279,6 @@ class ManagePatients extends Component
     }
 
     //--- UI related code ends here ---//
-
-
 
 
 

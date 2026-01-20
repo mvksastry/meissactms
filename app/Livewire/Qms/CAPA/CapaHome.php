@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 //models
+use App\Models\Qms\Capas;
 use App\Models\Qms\NCAcks;
 use App\Models\Qms\NCAuditTrail;
 use App\Models\Qms\NCComms;
@@ -28,16 +29,18 @@ class CapaHome extends Component
     Public $p1 = false, $p2 = false, $p3 = false, $p4 = false, $p5 = false, $p6 =  false;
 
     //dashboard variables
-    public $open_ncs = null;
+    public $open_ncs = null, $actCapas;
 
     public function render()
     {
+        $this->actCapas = Capas::all();
+        //dd($this->actCapas);
         return view('livewire.qms.c-a-p-a.capa-home');
     }
 
     public function fnNewCAPA()
     {
-        //dd("reached nc home");
+        dd("reached capa home");
         $this->nc_id = null;
         $this->entry = "new";
         $this->p1 = true;

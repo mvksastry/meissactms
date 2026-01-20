@@ -65,25 +65,26 @@
               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                 <thead>
                   <tr>
-                      <th>origin_of_nc</th>
-                      <th>division_reported</th>
-                      <th>raised_by</th>
-                      <th>raised_role</th>
-                      <th>assigned_division</th>
-                      <th>description</th> 
-                      <th>current_status</th>                      
+                      <th>Origin Nc</th>
+                      <th>Division Reported</th>
+                      <th>Raised By</th>
+                      <th>Raised Role</th>
+                      <th>Assigned Div</th>
+                      <th>Description</th> 
+                      <th>Current Status</th>     
+                      <th>Action</th>                  
                   </tr>
                 </thead>
                 <tbody> 
                   @foreach($activeNcs as $row)
                     <tr>
-                        <td>{{ $row->origin_of_nc }}</td>
-                        <td>{{ $row->division_reported }}</td>
-                        <td>{{ $row->raised_by }}</td>
-                        <td>{{ $row->raised_role }}</td>
-                        <td>{{ $row->assigned_division }}</td>
+                        <td>{{ ucfirst($row->origin_of_nc) }}</td>
+                        <td>{{ ucfirst($row->division_reported) }}</td>
+                        <td>{{ ucfirst($row->raised_by) }}</td>
+                        <td>{{ ucfirst($row->raised_role) }}</td>
+                        <td>{{ ucfirst($row->assigned_division) }}</td>
                         <td>{{ $row->description }}</td>
-                        <td>{{ $row->current_status }}</td>
+                        <td>{{ ucfirst($row->current_status) }}</td>
                         <td>
                             <button wire:click="fnNCDetails('{{ $row->nc_id }}')" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp NC Details</button>
                         </td>

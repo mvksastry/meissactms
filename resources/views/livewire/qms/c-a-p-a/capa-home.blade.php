@@ -58,38 +58,40 @@
             <div class="row">
               <label class="form-class" for="sampdesc">List of Actionable CA & PA</label>
               </br>
-              
+              @if(count($actCapas) > 0)
               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                 <thead>
                   <tr>
-                      <th>origin_of_nc</th>
-                      <th>division_reported</th>
-                      <th>raised_by</th>
-                      <th>raised_role</th>
-                      <th>assigned_division</th>
-                      <th>description</th> 
-                      <th>current_status</th>  
-                      <th>Actions</th>                      
+                    <th>CAPA Type</th>
+                    <th>Ref No</th>
+                    <th>Description</th>
+                    <th>Root Cause</th>
+                    <th>Action Plan</th>
+                    <th>Target Date</br>Closure Date</th> 
+                    <th>CAPA Status</th> 
+                    <th>Time Stamps</th> 
+                    <th>Actions</th>                      
                   </tr>
                 </thead>
                 <tbody> 
-                  
+                  @foreach($actCapas as $row)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <button wire:click="fnCAPADetails()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp CA PA Details</button>
-                        </td>
-                    </tr>  
-                                                   
+                      <td>{{ $row->capa_type }}</td>
+                      <td>{{ $row->reference_no }}</td>
+                      <td>{{ $row->issue_description }}</td>
+                      <td>{{ $row->root_cause }}</td>
+                      <td>{{ $row->action_plan }}</td>
+                      <td>{{ $row->reported_by }} </br> {{ $row->responsible_user_id }}</td>
+                      <td>Target Dt: {{ $row->target_date }}</br> Closer Dt: {{ $row->closer_date }}</td> 
+                      <td>Created At: {{ $row->created_at }}</br>Updated At: {{ $row->updated_at }}</td>  
+                      <td>
+                          <button wire:click="fnCAPADetails()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp CA PA Details</button>
+                      </td>
+                    </tr>    
+                  @endforeach                          
                 </tbody>
               </table>
-              
+              @else
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                     <tbody>
                     <tr>
@@ -99,8 +101,11 @@
                     </tr>
                     </tbody>
                 </table>
-          
-             
+              @endif
+            </div>
+
+            <div class="row">
+
             </div>
 
           </div>

@@ -1,8 +1,7 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="bg-purple disabled color-palette"><span class="mx-3">Audit Logs</span></div>
-            <div class="row">
-              
+             
               
               <?php $op5 = $nc_auditLogs->isEmpty(); //dd($op3);?>
               @if(!$op5)
@@ -39,5 +38,4 @@
                   </tbody>
                 </table>
               @endif
-            </div>
 </div>

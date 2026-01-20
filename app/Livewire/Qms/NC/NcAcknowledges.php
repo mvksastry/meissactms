@@ -54,7 +54,7 @@ class NcAcknowledges extends Component
         //dd($ackNc);
         $ackNc->save();
 
-        /*
+        
         $nNcSH = new NCStatusHistory();
         $nNcSH->nc_id = $nNc->nc_id;
         $nNcSH->from_status = "new";
@@ -62,7 +62,7 @@ class NcAcknowledges extends Component
         $nNcSH->changed_by = $nNc->raised_by;
         $nNcSH->change_reason = "Fresh Entry";
         $nNcSH->save();
-        */
+        
 
         $nNcAT = new NCAuditTrail();
         $nNcAT->record_type = "Insert";

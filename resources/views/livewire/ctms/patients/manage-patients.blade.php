@@ -55,9 +55,15 @@
             <!--Divider-->
             @if($newPatientEntrySteps)
               <div class="row">
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnShowPrimaryInfoForm()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
-                </div>
+                @if($showPrimaryInfo)
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnShowPrimaryInfoForm()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
+                  </div>
+                @else
+                  <div class="col-sm-3 col-md-2">
+                    <button wire:click="fnShowPrimaryInfoMesage()" type="button" class="btn btn-block btn-secondary"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
+                  </div>
+                @endif
                 <!-- /.col -->
                 @if($openAllOtherForms)
                   <div class="col-sm-3 col-md-2">

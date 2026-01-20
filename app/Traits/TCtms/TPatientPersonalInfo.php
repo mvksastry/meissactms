@@ -45,7 +45,8 @@ use App\Models\Ctms\Clinicals\UrineRoutine;
 //use App\Traits\TCommon\Notes;
 //use App\Traits\TCommon\FileUploadHandler;
 //use App\Traits\TElab\ResearchProjectPermission;
-//
+use App\Traits\TCtms\TPatientTimeline;
+
 use Illuminate\Support\Facades\Log;
 
 trait TPatientPersonalInfo
@@ -53,6 +54,7 @@ trait TPatientPersonalInfo
     //use Base;
     //use Notes;
     //use FileUploadHandler;
+    use TPatientTimeline;
 
     public function savePatientInformation($input)
     {
@@ -65,10 +67,16 @@ trait TPatientPersonalInfo
             return $value === "" ? NULL : $value;
         }, $input);
 
-        $newPatientInfo = new Patient();
- 
-        $newPatientInfo->patient_uuid = Str::uuid()->toString(); 
-
+        if($this->patient_uuid == null)
+        {
+            $newPatientInfo = new Patient();
+            $newPatientInfo->patient_uuid = Str::uuid()->toString(); 
+        }
+        else {
+            $newPatientInfo = Patient::where('patient_uuid', $this->patient_uuid)->first();
+            //dd($this->patient_uuid);
+        }
+        
         $newPatientInfo->center_id =  $input['center_id'];
         $newPatientInfo->ctarm_id =  $input['ctarm_id'];
         //controls
@@ -161,20 +169,25 @@ trait TPatientPersonalInfo
             $this->dispatch('resetPanelsForNewMessages');
             
             if ($result) { 
+
                 $msg = 'New Patient ['.$name.'] saved successfully!';
                 $this->comSuccess = $msg;
                 Log::channel('patient')->info($msg);
                 //set global patient uuid
-                $this->patient_uuid = $newPatientInfo->patient_uuid; 
-                //make entries through trait in all patient models
-                $setResult = $this->setDbEntriesPatientModels($this->patient_uuid, $input);
-                //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
-                $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
 
-                //timeline entry
-                $tl_msg = $input['comment_entered_by'];
-                $set = $this->savePatientTimeline($this->patient_uuid, $name, $event, $tl_msg);
+                if($this->patient_uuid == null)
+                {
+                    $this->patient_uuid = $newPatientInfo->patient_uuid; 
+                    //make entries through trait in all patient models
+                    $setResult = $this->setDbEntriesPatientModels($this->patient_uuid, $input);
+                    //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
+                    $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
+                    //timeline entry
+                    $tl_msg = $input['comment_entered_by'];
+                    $set = $this->savePatientTimeline($this->patient_uuid, $name, $event, $tl_msg);
+                }
                 return $result;
+
             } else {
                 $msg = 'New Patient ['.$name.'] could not be saved';
                 $this->sysAlertDanger = $msg;
