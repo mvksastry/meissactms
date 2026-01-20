@@ -142,7 +142,7 @@
                                   <tr>
                                     <td>
                                       <label>S1*</label>
-                                      <input wire:model.defer="form.s1" id="s1" type="text" value="null" class="form-control" placeholder="S1">
+                                      <input wire:model.defer="form.S1" type="text" value="null" class="form-control" placeholder="S1">
                                     </td>
                                     <!--
                                     <td>
@@ -215,24 +215,24 @@
                                   <tr>
                                     <td>
                                       <label>L1*</label>
-                                      <input wire:model.defer="form.l1" id="l1" type="text" value="null" class="form-control" placeholder="L1" >
+                                      <input wire:model.defer="form.L1" type="text" value="null" class="form-control" placeholder="L1" >
                                     </td>
                                     <td>
                                       <label>L2*</label>
-                                      <input wire:model.defer="form.l2" id="l2" type="text" value="null" class="form-control" placeholder="L2" >
+                                      <input wire:model.defer="form.L2" type="text" value="null" class="form-control" placeholder="L2" >
                                     </td>
                                     <td>
                                       <label>L3*</label>
-                                      <input wire:model.defer="form.l3" id="l3" type="text" value="null" class="form-control" placeholder="L3" >
+                                      <input wire:model.defer="form.L3" type="text" value="null" class="form-control" placeholder="L3" >
                                     </td>
 
                                     <td>
                                       <label>L4*</label>
-                                      <input wire:model.defer="form.l4" id="l4" type="text" value="null" class="form-control" placeholder="L4" >
+                                      <input wire:model.defer="form.L4" type="text" value="null" class="form-control" placeholder="L4" >
                                     </td>
                                     <td>
                                       <label>L5*</label>
-                                      <input wire:model.defer="form.l5" id="l5" type="text" value="null" class="form-control" placeholder="L5" >
+                                      <input wire:model.defer="form.L5" type="text" value="null" class="form-control" placeholder="L5" >
                                     </td>
                                   </tr>                                    
                                 </tbody>

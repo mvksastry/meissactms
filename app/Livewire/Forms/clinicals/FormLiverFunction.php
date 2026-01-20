@@ -1,6 +1,6 @@
 <?php
  
-namespace App\Livewire\Forms\Clinicals;
+namespace App\Livewire\Forms\clinicals;
  
 use Livewire\Attributes\Validate;
 use Livewire\Form;
