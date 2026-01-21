@@ -77,13 +77,16 @@ class EditClinicalInfo extends Component
 
     //specific to drug usage, many entries hence better to declare here
     public $drug_details = [], $dCats = null, $ddet = [], $p1=false, $p2=false, $p3=false;
-    public $nDDetForm = [];
+    public $nDDetForm = [], $NnDDetForm = [], $ncDCat = [], $drug_categories =[];
+
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
     public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
     public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+
+    //variables
 
     public function render()
     {
@@ -153,6 +156,9 @@ class EditClinicalInfo extends Component
         //many entries here, first should not be used, use get();
         $this->c15Obj = DrugDetails::where('status', 'draft')->where('patient_uuid', $this->uuid)->get(); 
         $this->setC15ObjData($this->c15Obj);        
+
+        //dd("reached entry place");
+        $this->drug_categories = DrugCategory::all();
 
         return view('livewire.ctms.patients.edit.edit-clinical-info');
     }
@@ -709,6 +715,7 @@ class EditClinicalInfo extends Component
 
     public function fnUrineRoutine()
     {
+        dd("urine routine entry?");
         $this->input = $this->form_n->all();
         //dd($this->input); // 
         $result = UrineRoutine::where('patient_uuid', $this->uuid)->update($this->input); 
@@ -735,6 +742,54 @@ class EditClinicalInfo extends Component
         }
         $this->nDDetForm = [];
         //$this->p3 = false;
+    }
+
+    public function fnNewDetailEntry()
+    {
+        //dd("reached entry place");
+        //$this->drug_categories = DrugCategory::all();
+    }
+
+    public function fnAddNewDrugDetail()
+    {
+        dd("new drug entry reached");
+        $input = $this->NnDDetForm;
+        //dd($input, $this->patient_uuid);
+        $nDDet = new DrugDetails();
+        $nDDet->patient_uuid = $this->patient_uuid;
+        $nDDet->opd_id = $input['opd_id'];
+        $nDDet->in_patient_id = $input['in_patient_id'];
+        $nDDet->admission_date = $input['admission_date'];
+        $nDDet->category_id = $input['cat_id'];
+        $nDDet->drug_name = $input['name'];
+        $nDDet->brand = $input['brand'];
+
+        $nDDet->drug_class = $input['class'];
+        $nDDet->generic_name = $input['generic_name'];
+        $nDDet->single_dose = $input['single_dose'];
+        $nDDet->frequency = $input['frequency'];
+        $nDDet->total_daily_dose = $input['tdd'];
+        $nDDet->last_week_adherance = $input['lwa'];
+        $nDDet->status = 'draft';
+        $nDDet->status_date = date('Y-m-d');
+        $nDDet->comment_entered_by = $input['comment_entered_by'];
+        $nDDet->entered_by = Auth::user()->name;
+        $nDDet->entry_date = date('Y-m-d');
+
+        $nDDet->comment_verified_by = null;
+        $nDDet->verified_by = null;
+        $nDDet->verified_date = null;
+        $nDDet->comment_cro = null;
+        $nDDet->cro_approval = null;
+        $nDDet->cro_approval_date = null;
+        $nDDet->comment_sealed_by = null;
+        $nDDet->sealed_by = null;
+        $nDDet->sealed_date = null;
+        //dd($nDDet);
+        $nDDet->save();
+        $this->drug_details = DrugDetails::where('patient_uuid', $this->patient_uuid)->get();
+        $input = [];
+        $this->nDDetForm = [];
     }
 
 }

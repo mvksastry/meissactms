@@ -94,5 +94,5 @@
       </tr>
     </tbody>
   </table>
-  <button wire:click="fnUrineRoutine()" class="btn btn-success font-normal mt-3 rounded">ADD BLOOD ROUTINE</button>
+  <button wire:click="fnUrineRoutine()" class="btn btn-success font-normal mt-3 rounded">ADD URINE ROUTINE</button>
 </div>

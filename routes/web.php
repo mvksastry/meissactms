@@ -40,6 +40,9 @@ use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
 use App\Livewire\Ctms\Patients\PatientInformation;
 
+// Livewire - Administration related
+use App\Livewire\Ctms\Patients\Clinicals\DrugCategories;
+
 // Livewire - Health management
 use App\Livewire\Health\ManageHealth;
 
@@ -129,6 +132,7 @@ Route::middleware('auth')->group(function () {
     Route::get('manage-patients', ManagePatients::class);
     Route::get('edit-patients', EditPatients::class)->name('edit-patients');
     Route::get('patient-information', PatientInformation::class);
+    Route::get('drug-categories', DrugCategories::class);
 
     // ------- Livewire: Components All Roles------- //
     Route::get('manage-health', ManageHealth::class);

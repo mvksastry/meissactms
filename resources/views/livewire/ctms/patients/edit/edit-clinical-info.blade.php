@@ -116,7 +116,7 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_10">
-                              @include('livewire.ctms.patients.clinicals.drug-usage')
+                              @include('livewire.ctms.patients.clinicals.edit-drug-usage-details')
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_11">
