@@ -30,11 +30,13 @@ class SensoryExamination extends Component
     public PatientSEForm $form;
 
     //SE Entry scores
-    public $S1;
-    //public $s2, $s3, $s4, $s5, $s6, $s7, $s8, $s9, $s10;
-    //public $t08, $t09, $t10, $t11, $t12;
-    public $L1, $L2, $L3, $L4, $L5;
+  
+    public $lL1, $lL2, $lL3, $lL4, $lL5;
+    public $lS1;
     
+    public $rL1, $rL2, $rL3, $rL4, $rL5;
+    public $rS1;
+
     public function mount($patient_uuid)
     {
         

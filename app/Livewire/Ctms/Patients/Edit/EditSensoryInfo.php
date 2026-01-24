@@ -49,12 +49,20 @@ class EditSensoryInfo extends Component
         $this->form->in_patient_id = $se_info->in_patient_id;
         $this->form->admission_date = $se_info->admission_date;
 
-        $this->form->S1 = $se_info->S1;
-        $this->form->L1 = $se_info->L1;
-        $this->form->L2 = $se_info->L2;
-        $this->form->L3 = $se_info->L3;
-        $this->form->L4 = $se_info->L4;
-        $this->form->L5 = $se_info->L5;
+        
+        $this->form->lL1 = $se_info->lL1;
+        $this->form->lL2 = $se_info->lL2;
+        $this->form->lL3 = $se_info->lL3;
+        $this->form->lL4 = $se_info->lL4;
+        $this->form->lL5 = $se_info->lL5;
+        $this->form->lS1 = $se_info->lS1;
+
+        $this->form->rL1 = $se_info->rL1;
+        $this->form->rL2 = $se_info->rL2;
+        $this->form->rL3 = $se_info->rL3;
+        $this->form->rL4 = $se_info->rL4;
+        $this->form->rL5 = $se_info->rL5;
+        $this->form->rS1 = $se_info->rS1;
 
         $this->form->comment_entered_by = $se_info->comment_entered_by;
         $this->form->entered_by = $se_info->entered_by;

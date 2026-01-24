@@ -24,29 +24,24 @@ trait TPatientSEData
     //$newSEInfo = new SensoryExamination();
     $newSEInfo = SensoryExamination::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
     //$newSEInfo->patient_uuid = $this->patient_uuid; 
+ 
+    $newSEInfo->lL1 = $input['lL1'];
+    $newSEInfo->lL2 = $input['lL2'];
+    $newSEInfo->lL3 = $input['lL3'];
+    $newSEInfo->lL4 = $input['lL4'];
+    $newSEInfo->lL5 = $input['lL5'];
+    $newSEInfo->lS1 = $input['lS1'];
 
-    //dd($newSEInfo);
-    //$newSEInfo->opd_id = $input['opd_id'];
-    //$newSEInfo->in_patient_id = $input['in_patient_id'];
-    //$newSEInfo->admission_date = $input['admission_date'];
-
-    $newSEInfo->S1 = $input['S1'];
-    $newSEInfo->L1 = $input['L1'];
-    $newSEInfo->L2 = $input['L2'];
-    $newSEInfo->L3 = $input['L3'];
-    $newSEInfo->L4 = $input['L4'];
-    $newSEInfo->L5 = $input['L5'];
-
-    //$newSEInfo->status = "draft";
-    //$newSEInfo->status_date = date('Y-m-d');
+    $newSEInfo->rL1 = $input['rL1'];
+    $newSEInfo->rL2 = $input['rL2'];
+    $newSEInfo->rL3 = $input['rL3'];
+    $newSEInfo->rL4 = $input['rL4'];
+    $newSEInfo->rL5 = $input['rL5'];
+    $newSEInfo->rS1 = $input['rS1'];
 
     $newSEInfo->comment_entered_by = $input['comment_entered_by'];
     $newSEInfo->entered_by = $input['entered_by'];
     $newSEInfo->entry_date = $input['entry_date'];
-    //$newSEInfo->verified_by = $input['verified_by'];
-    //$newSEInfo->verified_date = $input['verified_date'];
-    //$newSEInfo->sealed_by = $input['entry_sealed_by'];
-    //$newSEInfo->sealed_date = $input['entry_sealed_date'];
     //dd($newSEInfo);
     $result = $newSEInfo->save();
     return $result;

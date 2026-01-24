@@ -101,100 +101,77 @@
                                 </thead>
                                 <tbody> 
                                   <tr>
-                                    <td>
-                                      <label>S1*</label>
-                                      </br>{{ $sensoryexam_info->S1 }}
-                                    </td>
-                                    <!--
-                                    <td>
-                                      <label>S2*</label>
-                                      <input wire:model.defer="form.s2" id="s2" type="text" value="null" class="form-control" placeholder="S2">
-                                    </td>
-                                    <td>
-                                      <label>S3*</label>
-                                      <input wire:model.defer="form.s3" id="s3" type="text" value="null" class="form-control" placeholder="S3" >
-                                    </td>
-                                    <td>
-                                      <label>S4*</label>
-                                      <input wire:model.defer="form.s4" id="s4" type="text" value="null" class="form-control" placeholder="S4" >
-                                    </td>
-                                    <td>
-                                      <label>S5*</label>
-                                      <input wire:model.defer="form.s5" id="s5" type="text" value="null" class="form-control" placeholder="S5" >
-                                    </td>
-                                    -->
-                                  </tr>
-                                  <!--
-                                  <tr>
-                                    <td>
-                                      <label>S6*</label>
-                                      <input wire:model.defer="form.s6" id="s6" type="text" value="null" class="form-control" placeholder="S6" >
-                                    </td>
-                                    
-                                    <td>
-                                      <label>S7*</label>
-                                      <input wire:model.defer="form.s7" id="s7" type="text" value="null" class="form-control" placeholder="S7" >
-                                    </td>
-                                    <td>
-                                      <label>S8*</label>
-                                      <input wire:model.defer="form.s8" id="s8" type="text" value="null" class="form-control" placeholder="S8" >
-                                    </td>
-                                    <td>
-                                      <label>S9*</label>
-                                      <input wire:model.defer="form.s9" id="s9" type="text" value="null" class="form-control" placeholder="S9" >
-                                    </td>
-                                    <td>
-                                      <label>S10*</label>
-                                      <input wire:model.defer="form.s10" id="s10" type="text" value="null" class="form-control" placeholder="S10" >
+                                    <td colspan="5">
+                                      <label>Left</label>
                                     </td>
                                   </tr>
-                                  -->
-                                  <!--
-                                  <tr>
-                                    <td>
-                                      <label>T08*</label>
-                                      <input wire:model.defer="form.t08" id="t08" type="text" value="null" class="form-control" placeholder="T08" >
-                                    </td>
-                                    <td>
-                                      <label>T09*</label>
-                                      <input wire:model.defer="form.t09" id="t09" type="text" value="null" class="form-control" placeholder="T09" >
-                                    </td>
-                                    <td>
-                                      <label>T10*</label>
-                                      <input wire:model.defer="form.t10" id="t10" type="text" value="null" class="form-control" placeholder="T10" >
-                                    </td>
-                                    <td>
-                                      <label>T11*</label>
-                                      <input wire:model.defer="form.t11" id="t11" type="text" value="null" class="form-control" placeholder="T11" >
-                                    </td>
-                                    <td>
-                                      <label>T12*</label>
-                                      <input wire:model.defer="form.t12" id="t12" type="text" value="null" class="form-control" placeholder="T12" >
-                                    </td>
-                                  </tr>
-                                  -->
                                   <tr>
                                     <td>
                                       <label>L1*</label>
-                                      </br>{{ $sensoryexam_info->L1 }}
+                                      </br>{{ $sensoryexam_info->lL1 }}
                                      </td>
                                     <td>
                                       <label>L2*</label>
-                                      </br>{{ $sensoryexam_info->L2 }}
+                                      </br>{{ $sensoryexam_info->lL2 }}
                                     </td>
                                     <td>
                                       <label>L3*</label>
-                                      </br>{{ $sensoryexam_info->L3 }}
+                                      </br>{{ $sensoryexam_info->lL3 }}
                                     </td>
                                     <td>
                                       <label>L4*</label>
-                                      </br>{{ $sensoryexam_info->L4 }}
+                                      </br>{{ $sensoryexam_info->lL4 }}
                                     </td>
                                     <td>
                                       <label>L5*</label>
-                                      </br>{{ $sensoryexam_info->L5 }}
+                                      </br>{{ $sensoryexam_info->lL5 }}
                                      </td>
-                                  </tr>                                    
+                                    <tr>
+                                      <td>
+                                        <label>S1*</label>
+                                        </br>{{ $sensoryexam_info->lS1 }}
+                                      </td>
+                                    </tr>
+                                  </tr>    
+                                  <tr>
+                                    <td colspan="5">
+                                      <label>Right</label>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>S1*</label>
+                                      </br>{{ $sensoryexam_info->rS1 }}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>L1*</label>
+                                      </br>{{ $sensoryexam_info->rL1 }}
+                                     </td>
+                                    <td>
+                                      <label>L2*</label>
+                                      </br>{{ $sensoryexam_info->rL2 }}
+                                    </td>
+                                    <td>
+                                      <label>L3*</label>
+                                      </br>{{ $sensoryexam_info->rL3 }}
+                                    </td>
+                                    <td>
+                                      <label>L4*</label>
+                                      </br>{{ $sensoryexam_info->rL4 }}
+                                    </td>
+                                    <td>
+                                      <label>L5*</label>
+                                      </br>{{ $sensoryexam_info->rL5 }}
+                                     </td>
+                                    <tr>
+                                      <td>
+                                        <label>S1*</label>
+                                        </br>{{ $sensoryexam_info->rS1 }}
+                                      </td>
+                                    </tr>
+                                  </tr>                                 
                                 </tbody>
                               </table>
                             </div>

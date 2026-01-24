@@ -17,18 +17,31 @@ class PatientSEForm extends Form
     #[Validate('nullable|date')]
     public $admission_date = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
-    public $S1 = '';
-    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
-    public $L1 = '';
-    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
-    public $L2 = '';
-    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
-    public $L3 = '';
-    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
-    public $L4 = '';
-    #[Validate('regex:/^[A-Za-z0-9,.\- ]+$/')]
-    public $L5 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $lL1 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $lL2 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $lL3 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $lL4 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $lL5 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $lS1 = '';
+
+    #[Validate('regex:/^[0-2]+$/')]
+    public $rL1 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $rL2 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $rL3 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $rL4 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $rL5 = '';
+    #[Validate('regex:/^[0-2]+$/')]
+    public $rS1 = '';
 
     #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $comment_entered_by = '';

@@ -25,13 +25,21 @@ class SensoryExamination extends Model
         'in_patient_id',
         'admission_date', 
 
-        'S1',
-        'L1',
-        'L2',
-        'L3',
-        'L4',
-        'L5',
-        
+   
+        'lL1',
+        'lL2',
+        'lL3',
+        'lL4',
+        'lL5',
+        'lS1',
+
+        'rL1',
+        'rL2',
+        'rL3',
+        'rL4',
+        'rL5',
+        'rS1',
+
         'status',
         'status_date',
 
