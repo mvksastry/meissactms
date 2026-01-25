@@ -85,7 +85,7 @@ class EditRmqScore extends Component
 
         $this->form->comment_entered_by = ($rmq_reply != null) ? $rmq_reply->comment_entered_by : "";
         $this->form->entered_by = Auth::user()->name;
-        $this->form->entry_date = ($rmq_reply != null) ? $rmq_reply->entry_date : null;
+        $this->form->entry_date = date('Y-m-d');
         //dd($this->form);
     }
 

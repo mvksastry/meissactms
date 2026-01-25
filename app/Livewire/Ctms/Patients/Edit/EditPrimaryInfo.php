@@ -169,8 +169,8 @@ class EditPrimaryInfo extends Component
         $this->form->status = $this->patientPrimaryInfo->status;
         $this->form->status_date = $this->patientPrimaryInfo->status_date;
         $this->form->comment_entered_by = $this->patientPrimaryInfo->comment_entered_by;
-        $this->form->entered_by = $this->patientPrimaryInfo->entered_by;
-        $this->form->entry_date = $this->patientPrimaryInfo->entry_date;
+        $this->form->entered_by = Auth::user()->name;
+        $this->form->entry_date = date('Y-m-d');
     }
 
     public function saveEditedPrimaryPatientInfo($edit, $input, $uuid)

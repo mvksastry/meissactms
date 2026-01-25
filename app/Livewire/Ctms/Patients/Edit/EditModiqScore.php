@@ -174,8 +174,8 @@ class EditModiqScore extends Component
         $this->empoloyment_home_making = $modq_obj->employment_home_making;
         */
         $this->form->comment_entered_by = $modq_obj->comment_entered_by;
-        $this->form->entered_by = $modq_obj->entered_by;
-        $this->form->entry_date = $modq_obj->entry_date;
+        $this->form->entered_by = Auth::user()->name;
+        $this->form->entry_date = date('Y-m-d');
         //dd($this->form);
     }
 

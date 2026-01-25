@@ -52,7 +52,7 @@ class EditPfirmannInfo extends Component
 
         $this->form->comment_entered_by = $pfirmg_info->comment_entered_by;
         $this->form->entered_by = Auth::user()->name;
-        $this->form->entry_date = $pfirmg_info->entry_date;
+        $this->form->entry_date = date('Y-m-d');
         //dd($this->form);
     }
 

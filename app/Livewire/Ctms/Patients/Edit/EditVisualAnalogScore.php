@@ -56,8 +56,8 @@ class EditVisualAnalogScore extends Component
         $this->form->quality = $vascore->quality;
 
         $this->form->comment_entered_by = $vascore->comment_entered_by;
-        $this->form->entered_by = $vascore->entered_by;
-        $this->form->entry_date = $vascore->entry_date;
+        $this->form->entered_by = Auth::user()->name;
+        $this->form->entry_date = date('Y-m-d');
         //dd($this->form);
     }
 

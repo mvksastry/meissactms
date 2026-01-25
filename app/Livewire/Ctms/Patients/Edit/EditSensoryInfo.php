@@ -65,8 +65,8 @@ class EditSensoryInfo extends Component
         $this->form->rS1 = $se_info->rS1;
 
         $this->form->comment_entered_by = $se_info->comment_entered_by;
-        $this->form->entered_by = $se_info->entered_by;
-        $this->form->entry_date = $se_info->entry_date;
+        $this->form->entered_by = Auth::user()->name;
+        $this->form->entry_date = date('Y-m-d');
         //dd($this->form);
     }
 

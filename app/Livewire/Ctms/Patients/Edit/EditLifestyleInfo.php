@@ -61,8 +61,8 @@ class EditLifestyleInfo extends Component
         $this->form->status = $ls_info->status;
         $this->form->status_date = $ls_info->status_date;
         $this->form->comment_entered_by = $ls_info->comment_entered_by;
-        $this->form->entered_by = $ls_info->entered_by;
-        $this->form->entry_date = $ls_info->entry_date;
+        $this->form->entered_by = Auth::user()->name;
+        $this->form->entry_date = date('Y-m-d');
     }
 
     public function fnSaveEditedLSInfo()
