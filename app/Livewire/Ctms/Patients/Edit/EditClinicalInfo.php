@@ -754,7 +754,7 @@ class EditClinicalInfo extends Component
     {
         //dd("new drug entry reached");
         $input = $this->NnDDetForm;
-        //dd($input, $this->patient_uuid);
+        //dd($input, $this->uuid);
         $nDDet = new DrugDetails();
         $nDDet->patient_uuid = $this->uuid;
         $nDDet->opd_id = $input['opd_id'];
@@ -787,7 +787,7 @@ class EditClinicalInfo extends Component
         $nDDet->sealed_date = null;
         //dd($nDDet);
         $nDDet->save();
-        $this->drug_details = DrugDetails::where('patient_uuid', $this->patient_uuid)->get();
+        $this->drug_details = DrugDetails::where('patient_uuid', $this->uuid)->get();
         $input = [];
         $this->nDDetForm = [];
     }
