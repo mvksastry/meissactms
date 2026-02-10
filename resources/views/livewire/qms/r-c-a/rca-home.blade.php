@@ -81,7 +81,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>
-                                            <button wire:click="fnCAPADetails()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp RCA Details</button>
+                                            
                                         </td>
                                     </tr>  
                                                                 

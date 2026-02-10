@@ -596,7 +596,7 @@ class EditClinicalInfo extends Component
     public function fnChemExams()
     {
         $this->input = $this->form_d->all();
-        //dd($this->input); // 
+        dd($this->input); // 
         $result = ChemicalExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);

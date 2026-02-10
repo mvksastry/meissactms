@@ -21,7 +21,7 @@ class FormIl6 extends Form
     #[Validate('nullable|regex:/^[0-9]+$/')]
     public $il6 = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $il6_report_file = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]

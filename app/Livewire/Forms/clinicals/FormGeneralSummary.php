@@ -19,7 +19,7 @@ class FormGeneralSummary extends Form
     
 
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $general_summary = '';
 
 

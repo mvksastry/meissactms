@@ -18,22 +18,22 @@ class FormLabExams extends Form
 
     
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $esr = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $pt_patient = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $pt_control = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $inr = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $isi = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $pt_report_file = '';
 
 

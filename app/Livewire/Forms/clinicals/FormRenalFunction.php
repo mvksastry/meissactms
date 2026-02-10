@@ -19,7 +19,7 @@ class FormRenalFunction extends Form
     
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $sr_uric_acid = '';
+    public $uric_acid = '';
 
     #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
     public $uricacid_report_file = '';

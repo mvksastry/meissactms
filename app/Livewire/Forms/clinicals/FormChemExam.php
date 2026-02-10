@@ -18,31 +18,31 @@ class FormChemExam extends Form
 
     
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $proteins = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $sugar = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $ketones = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $procalcitonin = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $bile_salts = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $bile_pigments = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $ce_report_file = '';
 
 
 
     
-    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z. ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
