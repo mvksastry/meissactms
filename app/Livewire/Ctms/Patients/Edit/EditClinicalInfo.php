@@ -529,7 +529,7 @@ class EditClinicalInfo extends Component
         $this->validate(); 
         $this->input = $this->form->all();
 
-        dd($this->input);       
+        //dd($this->input);       
         $this->msg_panel = true;
         $name = $this->uuid;
         try {
@@ -715,7 +715,7 @@ class EditClinicalInfo extends Component
 
     public function fnUrineRoutine()
     {
-        dd("urine routine entry?");
+        //dd("urine routine entry?");
         $this->input = $this->form_n->all();
         //dd($this->input); // 
         $result = UrineRoutine::where('patient_uuid', $this->uuid)->update($this->input); 
@@ -752,7 +752,7 @@ class EditClinicalInfo extends Component
 
     public function fnAddNewDrugDetail()
     {
-        dd("new drug entry reached");
+        //dd("new drug entry reached");
         $input = $this->NnDDetForm;
         //dd($input, $this->patient_uuid);
         $nDDet = new DrugDetails();
