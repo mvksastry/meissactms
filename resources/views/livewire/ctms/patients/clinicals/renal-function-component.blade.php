@@ -26,7 +26,7 @@
       <tr>
         <td>
           <label>Sr.Uric Acd</label>
-          <input wire:model.defer="form_m.sr_uric_acid" type="text" class="form-control" placeholder="Uric Acid">
+          <input wire:model.defer="form_m.uric_acid" type="text" class="form-control" placeholder="Uric Acid">
         </td>
 
       </tr>

@@ -34,7 +34,7 @@ class FormLabExams extends Form
     public $isi = '';
 
     #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $path_report_file = '';
+    public $pt_report_file = '';
 
 
 

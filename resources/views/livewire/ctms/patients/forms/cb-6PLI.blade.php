@@ -28,7 +28,7 @@
         </td>
         <td colspan="6">
           <label>Report File</label>
-          <input wire:model.defer="form.path_report_file" type="file" class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form.pt_report_file" type="file" class="form-control" placeholder="Report File" >
         </td>
       </tr>                                  
     </tbody>
