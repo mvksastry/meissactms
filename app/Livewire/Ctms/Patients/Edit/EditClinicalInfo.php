@@ -756,7 +756,7 @@ class EditClinicalInfo extends Component
         $input = $this->NnDDetForm;
         //dd($input, $this->patient_uuid);
         $nDDet = new DrugDetails();
-        $nDDet->patient_uuid = $this->patient_uuid;
+        $nDDet->patient_uuid = $this->uuid;
         $nDDet->opd_id = $input['opd_id'];
         $nDDet->in_patient_id = $input['in_patient_id'];
         $nDDet->admission_date = $input['admission_date'];
