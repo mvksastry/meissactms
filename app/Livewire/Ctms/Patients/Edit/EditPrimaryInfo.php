@@ -51,19 +51,6 @@ class EditPrimaryInfo extends Component
     public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
-    /*
-    protected $listeners = [
-    'patientSelected' = 'setPatientUuid',
-    ];
-     #[On('patientSelected')] 
-    public function setPatientUuid($uuid)
-    {
-        //dd("listening");
-        $this->patientPrimaryInfo = Patient::where('status', $uuid)->get();
-        //dd($uuid);
-        $this->uuid = $uuid;
-    }
-    */
     public function mount($uuid)
     {
         $this->uuid = $uuid;
@@ -85,9 +72,10 @@ class EditPrimaryInfo extends Component
     public function fnSaveEditPrimaryInfo()
     {
         $this->input = $this->form->all();
+        //dd($this->input); // 
         $edit = 'edit';
         $result = $this->saveEditedPrimaryPatientInfo($edit, $this->input, $this->uuid);
-        //dd($this->input); // 
+        
         //dd("reaching edit");
     }
 
@@ -110,7 +98,7 @@ class EditPrimaryInfo extends Component
         $this->form->present_occupation = $this->patientPrimaryInfo->present_occupation;
         $this->form->primary_phone_number = $this->patientPrimaryInfo->primary_phone_number;
         $this->form->alternate_phone_number = $this->patientPrimaryInfo->alternate_phone_number;
-        $this->form->address = $this->patientPrimaryInfo->land_mark;
+        $this->form->address = $this->patientPrimaryInfo->address;
         $this->form->land_mark = $this->patientPrimaryInfo->land_mark;
         $this->form->taluka_haveli = $this->patientPrimaryInfo->taluka_haveli;
         $this->form->state = $this->patientPrimaryInfo->state;
@@ -174,9 +162,7 @@ class EditPrimaryInfo extends Component
     }
 
     public function saveEditedPrimaryPatientInfo($edit, $input, $uuid)
-    {
-        //dd($input);
-        
+    {       
         $this->msg_panel = true;
         $name = $input['name'];
         try {
@@ -201,6 +187,5 @@ class EditPrimaryInfo extends Component
                 Log::channel('patient')->info($msg);
                 $this->sysAlertDanger = $msg;
             }
-        //dd($updatedPrimaryInfo);
     }
 }

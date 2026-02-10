@@ -6494,12 +6494,18 @@ namespace App\Models\Ctms {
    * @property string|null $comment_entered_by
    * @property string|null $status_date
    * @property string|null $status
-   * @property string|null $L5
-   * @property string|null $L4
-   * @property string|null $L3
-   * @property string|null $L2
-   * @property string|null $L1
-   * @property string|null $S1
+   * @property string|null $rS1
+   * @property string|null $rL5
+   * @property string|null $rL4
+   * @property string|null $rL3
+   * @property string|null $rL2
+   * @property string|null $rL1
+   * @property string|null $lS1
+   * @property string|null $lL5
+   * @property string|null $lL4
+   * @property string|null $lL3
+   * @property string|null $lL2
+   * @property string|null $lL1
    * @property string|null $admission_date
    * @property string|null $in_patient_id
    * @property string|null $opd_id
@@ -6514,12 +6520,18 @@ namespace App\Models\Ctms {
    * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereOpdId($value)
    * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereInPatientId($value)
    * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereAdmissionDate($value)
-   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereS1($value)
-   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereL1($value)
-   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereL2($value)
-   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereL3($value)
-   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereL4($value)
-   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereL5($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereLl1($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereLl2($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereLl3($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereLl4($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereLl5($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereLs1($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereRl1($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereRl2($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereRl3($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereRl4($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereRl5($value)
+   * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereRs1($value)
    * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereStatus($value)
    * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereStatusDate($value)
    * @method static \Illuminate\Database\Eloquent\Builder<SensoryExamination>|SensoryExamination whereCommentEnteredBy($value)

@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Form 1: Clinical Evaluation – Modified Oswestry Disability Questionnaire
+                  Form 1: Clinical Evaluation - Modified Oswestry Disability Questionnaire
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -71,448 +71,440 @@
                             <div class="tab-pane active" id="tab_1">
                               <div class="row">
                                 <div class="col-6">
-                                      <div class="form-group">
-                                        <label>Pain Intensity</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="0" id="pain_intensity" name="pain_intensity">
-                                          <label class="form-check-label">I can tolerate the pain I have without having to use pain medication.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="1" id="pain_intensity" name="pain_intensity">
-                                          <label class="form-check-label">The pain is bad, but I can manage without having to take pain medication.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="2" id="pain_intensity" name="pain_intensity">
-                                          <label class="form-check-label">Pain medication provides me with complete relief from pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="3" id="pain_intensity" name="pain_intensity">
-                                          <label class="form-check-label">Pain medication provides me with moderate relief from pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="4" id="pain_intensity" name="pain_intensity">
-                                          <label class="form-check-label">Pain medication provides me with little relief from pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="5" id="pain_intensity" name="pain_intensity">
-                                          <label class="form-check-label">Pain medication has no effect on my pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked:{{ $painIntensitySelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Pain Intensity</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="0" id="pain_intensity" name="pain_intensity">
+                                      <label class="form-check-label">I can tolerate the pain I have without having to use pain medication.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="1" id="pain_intensity" name="pain_intensity">
+                                      <label class="form-check-label">The pain is bad, but I can manage without having to take pain medication.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="2" id="pain_intensity" name="pain_intensity">
+                                      <label class="form-check-label">Pain medication provides me with complete relief from pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="3" id="pain_intensity" name="pain_intensity">
+                                      <label class="form-check-label">Pain medication provides me with moderate relief from pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="4" id="pain_intensity" name="pain_intensity">
+                                      <label class="form-check-label">Pain medication provides me with little relief from pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="pain_intensity" class="form-check-input" type="radio" value="5" id="pain_intensity" name="pain_intensity">
+                                      <label class="form-check-label">Pain medication has no effect on my pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked:{{ $painIntensitySelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Personal Care (eg. Washing, Dressing )</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="personal_care" class="form-check-input" type="radio" value="0" id="personal_care" name="personal_care">
-                                          <label class="form-check-label">I can take care of myself normally without causing increased pain</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="personal_care" class="form-check-input" type="radio" value="1" id="personal_care" name="personal_care">
-                                          <label class="form-check-label">I can take care of myself normally, but it increases my pain</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="personal_care" class="form-check-input" type="radio" value="2" id="personal_care" name="personal_care">
-                                          <label class="form-check-label">It is painful to take care of myself, and I am slow and careful.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="personal_care" class="form-check-input" type="radio" value="3" id="personal_care" name="personal_care">
-                                          <label class="form-check-label">I need help, but I am able to manage most of my personal care.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="personal_care" class="form-check-input" type="radio" value="4" id="personal_care" name="personal_care">
-                                          <label class="form-check-label">I need help every day in most aspects of my care.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="personal_care" class="form-check-input" type="radio" value="5" id="personal_care" name="personal_care">
-                                          <label class="form-check-label">I do not get dressed, I wash with difficulty, and I stay in bed.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $personalCareSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Personal Care (eg. Washing, Dressing )</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="personal_care" class="form-check-input" type="radio" value="0" id="personal_care" name="personal_care">
+                                      <label class="form-check-label">I can take care of myself normally without causing increased pain</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="personal_care" class="form-check-input" type="radio" value="1" id="personal_care" name="personal_care">
+                                      <label class="form-check-label">I can take care of myself normally, but it increases my pain</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="personal_care" class="form-check-input" type="radio" value="2" id="personal_care" name="personal_care">
+                                      <label class="form-check-label">It is painful to take care of myself, and I am slow and careful.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="personal_care" class="form-check-input" type="radio" value="3" id="personal_care" name="personal_care">
+                                      <label class="form-check-label">I need help, but I am able to manage most of my personal care.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="personal_care" class="form-check-input" type="radio" value="4" id="personal_care" name="personal_care">
+                                      <label class="form-check-label">I need help every day in most aspects of my care.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="personal_care" class="form-check-input" type="radio" value="5" id="personal_care" name="personal_care">
+                                      <label class="form-check-label">I do not get dressed, I wash with difficulty, and I stay in bed.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $personalCareSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Lifting</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="lifting" class="form-check-input" type="radio" value="0" id="lifting" name="lifting">
-                                          <label class="form-check-label">I can lift heavy weights without increased pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="lifting" class="form-check-input" type="radio" value="1" id="lifting" name="lifting">
-                                          <label class="form-check-label">I can life heavy weights, but it causes increased pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="lifting" class="form-check-input" type="radio" value="2" id="lifting" name="lifting">
-                                          <label class="form-check-label">Pain prevents me from lifting heavy weights off the floor, but I can manage if the weights are conveniently positioned (e.g. on a table)
-        .</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="lifting" class="form-check-input" type="radio" value="3" id="lifting" name="lifting">
-                                          <label class="form-check-label">Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned.
-        .</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="lifting" class="form-check-input" type="radio" value="4" id="lifting" name="lifting">
-                                          <label class="form-check-label">I can lift only very light weights.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="lifting" class="form-check-input" type="radio" value="5" id="lifting" name="lifting">
-                                          <label class="form-check-label">I cannot lift or carry anything at all.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $liftingSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Lifting</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="lifting" class="form-check-input" type="radio" value="0" id="lifting" name="lifting">
+                                      <label class="form-check-label">I can lift heavy weights without increased pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="lifting" class="form-check-input" type="radio" value="1" id="lifting" name="lifting">
+                                      <label class="form-check-label">I can life heavy weights, but it causes increased pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="lifting" class="form-check-input" type="radio" value="2" id="lifting" name="lifting">
+                                      <label class="form-check-label">Pain prevents me from lifting heavy weights off the floor, but I can manage if the weights are conveniently positioned (e.g. on a table)
+    .</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="lifting" class="form-check-input" type="radio" value="3" id="lifting" name="lifting">
+                                      <label class="form-check-label">Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned.
+    .</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="lifting" class="form-check-input" type="radio" value="4" id="lifting" name="lifting">
+                                      <label class="form-check-label">I can lift only very light weights.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="lifting" class="form-check-input" type="radio" value="5" id="lifting" name="lifting">
+                                      <label class="form-check-label">I cannot lift or carry anything at all.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $liftingSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Walking</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="walking" class="form-check-input" type="radio" value="0" id="walking" name="walking">
-                                          <label class="form-check-label">Pain does not prevent me from walking any distance.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="walking" class="form-check-input" type="radio" value="1" id="walking" name="walking">
-                                          <label class="form-check-label">Pain prevents me from walking more than 1 mile.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="walking" class="form-check-input" type="radio" value="2" id="walking" name="walking">
-                                          <label class="form-check-label">Pain prevents me from walking more than 1/2 (half) mile.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="walking" class="form-check-input" type="radio" value="3" id="walking" name="walking">
-                                          <label class="form-check-label">Pain prevents me from walking more than 1/4 (quarter) mile.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="walking" class="form-check-input" type="radio" value="4" id="walking" name="walking">
-                                          <label class="form-check-label">I can walk only with crutches or a cane.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="walking" class="form-check-input" type="radio" value="5" id="walking" name="walking">
-                                          <label class="form-check-label">I am in bed most of the time and have to crawl to the toilet.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $walkingSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Walking</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="walking" class="form-check-input" type="radio" value="0" id="walking" name="walking">
+                                      <label class="form-check-label">Pain does not prevent me from walking any distance.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="walking" class="form-check-input" type="radio" value="1" id="walking" name="walking">
+                                      <label class="form-check-label">Pain prevents me from walking more than 1 mile.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="walking" class="form-check-input" type="radio" value="2" id="walking" name="walking">
+                                      <label class="form-check-label">Pain prevents me from walking more than 1/2 (half) mile.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="walking" class="form-check-input" type="radio" value="3" id="walking" name="walking">
+                                      <label class="form-check-label">Pain prevents me from walking more than 1/4 (quarter) mile.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="walking" class="form-check-input" type="radio" value="4" id="walking" name="walking">
+                                      <label class="form-check-label">I can walk only with crutches or a cane.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="walking" class="form-check-input" type="radio" value="5" id="walking" name="walking">
+                                      <label class="form-check-label">I am in bed most of the time and have to crawl to the toilet.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $walkingSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Sitting</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="sitting" class="form-check-input" type="radio" value="0" id="sitting" name="sitting">
-                                          <label class="form-check-label">I can sit in any chair as long as I like.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sitting" class="form-check-input" type="radio" value="1" id="sitting" name="sitting">
-                                          <label class="form-check-label">I can only sit in my favourite chair as long as I like.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sitting" class="form-check-input" type="radio" value="2" id="sitting" name="sitting">
-                                          <label class="form-check-label">Pain prevents me from sitting for more than 1 hour.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sitting" class="form-check-input" type="radio" value="3" id="sitting" name="sitting">
-                                          <label class="form-check-label">Pain prevents me from sitting for more than 1/2 hour..</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sitting" class="form-check-input" type="radio" value="4" id="sitting" name="sitting">
-                                          <label class="form-check-label">Pain prevents me from sitting for more than 10 minutes.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sitting" class="form-check-input" type="radio" value="5" id="sitting" name="sitting">
-                                          <label class="form-check-label">Pain prevents me from sitting at all.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $sittingSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Sitting</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="sitting" class="form-check-input" type="radio" value="0" id="sitting" name="sitting">
+                                      <label class="form-check-label">I can sit in any chair as long as I like.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sitting" class="form-check-input" type="radio" value="1" id="sitting" name="sitting">
+                                      <label class="form-check-label">I can only sit in my favourite chair as long as I like.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sitting" class="form-check-input" type="radio" value="2" id="sitting" name="sitting">
+                                      <label class="form-check-label">Pain prevents me from sitting for more than 1 hour.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sitting" class="form-check-input" type="radio" value="3" id="sitting" name="sitting">
+                                      <label class="form-check-label">Pain prevents me from sitting for more than 1/2 hour..</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sitting" class="form-check-input" type="radio" value="4" id="sitting" name="sitting">
+                                      <label class="form-check-label">Pain prevents me from sitting for more than 10 minutes.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sitting" class="form-check-input" type="radio" value="5" id="sitting" name="sitting">
+                                      <label class="form-check-label">Pain prevents me from sitting at all.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $sittingSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Standing</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="standing" class="form-check-input" type="radio" value="0" id="standing" name="standing">
-                                          <label class="form-check-label">I can stand as long as I want without increased pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="standing" class="form-check-input" type="radio" value="1" id="standing" name="standing">
-                                          <label class="form-check-label">I can stand as long as I want, but it increases my pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="standing" class="form-check-input" type="radio" value="2" id="standing" name="standing">
-                                          <label class="form-check-label">Pain prevents me from standing for more than 1 hour.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="standing" class="form-check-input" type="radio" value="3" id="standing" name="standing">
-                                          <label class="form-check-label">Pain prevents me from standing for more than 1/2 hour.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="standing" class="form-check-input" type="radio" value="4" id="standing" name="standing">
-                                          <label class="form-check-label">Pain prevents me from standing for more than 10 minutes.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="standing" class="form-check-input" type="radio" value="5" id="standing" name="standing">
-                                          <label class="form-check-label">Pain prevents me from standing at all.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $standingSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Standing</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="standing" class="form-check-input" type="radio" value="0" id="standing" name="standing">
+                                      <label class="form-check-label">I can stand as long as I want without increased pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="standing" class="form-check-input" type="radio" value="1" id="standing" name="standing">
+                                      <label class="form-check-label">I can stand as long as I want, but it increases my pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="standing" class="form-check-input" type="radio" value="2" id="standing" name="standing">
+                                      <label class="form-check-label">Pain prevents me from standing for more than 1 hour.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="standing" class="form-check-input" type="radio" value="3" id="standing" name="standing">
+                                      <label class="form-check-label">Pain prevents me from standing for more than 1/2 hour.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="standing" class="form-check-input" type="radio" value="4" id="standing" name="standing">
+                                      <label class="form-check-label">Pain prevents me from standing for more than 10 minutes.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="standing" class="form-check-input" type="radio" value="5" id="standing" name="standing">
+                                      <label class="form-check-label">Pain prevents me from standing at all.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $standingSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Sleeping</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="sleeping" class="form-check-input" type="radio" value="0" id="sleeping" name="sleeping">
-                                          <label class="form-check-label">Pain does not prevent me from sleeping well.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sleeping" class="form-check-input" type="radio" value="1" id="sleeping" name="sleeping">
-                                          <label class="form-check-label">I can sleep well only by using pain medication.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sleeping" class="form-check-input" type="radio" value="2" id="sleeping" name="sleeping">
-                                          <label class="form-check-label">Even when I take medication, I sleep less than 6 hours.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sleeping" class="form-check-input" type="radio" value="3" id="sleeping" name="sleeping">
-                                          <label class="form-check-label">Even when I take medication, I sleep less than 4 hours.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sleeping" class="form-check-input" type="radio" value="4" id="sleeping" name="sleeping">
-                                          <label class="form-check-label">Even when I take medication, I sleep less than 2 hours.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="sleeping" class="form-check-input" type="radio" value="5" id="sleeping" name="sleeping">
-                                          <label class="form-check-label">Pain prevents me from sleeping at all.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $sleepingSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Sleeping</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="sleeping" class="form-check-input" type="radio" value="0" id="sleeping" name="sleeping">
+                                      <label class="form-check-label">Pain does not prevent me from sleeping well.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sleeping" class="form-check-input" type="radio" value="1" id="sleeping" name="sleeping">
+                                      <label class="form-check-label">I can sleep well only by using pain medication.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sleeping" class="form-check-input" type="radio" value="2" id="sleeping" name="sleeping">
+                                      <label class="form-check-label">Even when I take medication, I sleep less than 6 hours.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sleeping" class="form-check-input" type="radio" value="3" id="sleeping" name="sleeping">
+                                      <label class="form-check-label">Even when I take medication, I sleep less than 4 hours.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sleeping" class="form-check-input" type="radio" value="4" id="sleeping" name="sleeping">
+                                      <label class="form-check-label">Even when I take medication, I sleep less than 2 hours.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="sleeping" class="form-check-input" type="radio" value="5" id="sleeping" name="sleeping">
+                                      <label class="form-check-label">Pain prevents me from sleeping at all.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $sleepingSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Social Life</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="social_life" class="form-check-input" type="radio" value="0" id="social_life" name="social_life">
-                                          <label class="form-check-label">My social life is normal and does not increase my pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="social_life" class="form-check-input" type="radio" value="1" id="social_life" name="social_life">
-                                          <label class="form-check-label">My social life is normal, but it increases my level of pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="social_life" class="form-check-input" type="radio" value="2" id="social_life" name="social_life">
-                                          <label class="form-check-label">Pain prevents me from participating in more energetic activities (e.g. sport, dancing).</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="social_life" class="form-check-input" type="radio" value="3" id="social_life" name="social_life">
-                                          <label class="form-check-label">Pain prevents me from going out very often.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="social_life" class="form-check-input" type="radio" value="4" id="social_life" name="social_life">
-                                          <label class="form-check-label">Pain has restricted my social life to my home.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="social_life" class="form-check-input" type="radio" value="5" id="social_life" name="social_life">
-                                          <label class="form-check-label">I have hardly any social life because of my pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $socialLifeSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Social Life</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="social_life" class="form-check-input" type="radio" value="0" id="social_life" name="social_life">
+                                      <label class="form-check-label">My social life is normal and does not increase my pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="social_life" class="form-check-input" type="radio" value="1" id="social_life" name="social_life">
+                                      <label class="form-check-label">My social life is normal, but it increases my level of pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="social_life" class="form-check-input" type="radio" value="2" id="social_life" name="social_life">
+                                      <label class="form-check-label">Pain prevents me from participating in more energetic activities (e.g. sport, dancing).</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="social_life" class="form-check-input" type="radio" value="3" id="social_life" name="social_life">
+                                      <label class="form-check-label">Pain prevents me from going out very often.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="social_life" class="form-check-input" type="radio" value="4" id="social_life" name="social_life">
+                                      <label class="form-check-label">Pain has restricted my social life to my home.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="social_life" class="form-check-input" type="radio" value="5" id="social_life" name="social_life">
+                                      <label class="form-check-label">I have hardly any social life because of my pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $socialLifeSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Travelling</label>
-                                        <div class="form-check">
-                                          <input wire:model.live="travelling" class="form-check-input" type="radio" value="0" id="travelling" name="travelling">
-                                          <label class="form-check-label">I can travel anywhere without increased pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="travelling" class="form-check-input" type="radio" value="1" id="travelling" name="travelling">
-                                          <label class="form-check-label">I can travel anywhere, but it increases my pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="travelling" class="form-check-input" type="radio" value="2" id="travelling" name="travelling">
-                                          <label class="form-check-label">My pain restricts my travel over 2 hours..</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="travelling" class="form-check-input" type="radio" value="3" id="travelling" name="travelling">
-                                          <label class="form-check-label">My pain restricts my travel over 1 hours.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="travelling" class="form-check-input" type="radio" value="4" id="travelling" name="travelling">
-                                          <label class="form-check-label">My pain restricts my travel to short necessary journeys under 1/2 hours.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input  wire:model.live="travelling" class="form-check-input" type="radio" value="5" id="travelling" name="travelling">
-                                          <label class="form-check-label">My pain prevents all travel except for visits to the physician/therapist or hospital.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $travelSelected }}</label>
-                                        </div>
-                                      </div>
+                                  <div class="form-group">
+                                    <label>Travelling</label>
+                                    <div class="form-check">
+                                      <input wire:model.live="travelling" class="form-check-input" type="radio" value="0" id="travelling" name="travelling">
+                                      <label class="form-check-label">I can travel anywhere without increased pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="travelling" class="form-check-input" type="radio" value="1" id="travelling" name="travelling">
+                                      <label class="form-check-label">I can travel anywhere, but it increases my pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="travelling" class="form-check-input" type="radio" value="2" id="travelling" name="travelling">
+                                      <label class="form-check-label">My pain restricts my travel over 2 hours..</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="travelling" class="form-check-input" type="radio" value="3" id="travelling" name="travelling">
+                                      <label class="form-check-label">My pain restricts my travel over 1 hours.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="travelling" class="form-check-input" type="radio" value="4" id="travelling" name="travelling">
+                                      <label class="form-check-label">My pain restricts my travel to short necessary journeys under 1/2 hours.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input  wire:model.live="travelling" class="form-check-input" type="radio" value="5" id="travelling" name="travelling">
+                                      <label class="form-check-label">My pain prevents all travel except for visits to the physician/therapist or hospital.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $travelSelected }}</label>
+                                    </div>
+                                  </div>
 
-                                      <div class="form-group">
-                                        <label>Employment & Home Making</label>
-                                        <div class="form-check">
-                                          <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="0" id="emp_home" name="emp_home">
-                                          <label class="form-check-label">My normal homemaking/job activities do not cause pain.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="1" id="emp_home" name="emp_home">
-                                          <label class="form-check-label">My normal homemaking/job activities increase my pain, but i can still perform all that is required of me.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="2" id="emp_home" name="emp_home">
-                                          <label class="form-check-label">I can perform most of my homemaking/job duties, but pain prevents me from
-        performing more physically stressful activities(e.g. lifting, vacuuming).</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="3" id="emp_home" name="emp_home">
-                                          <label class="form-check-label">Pain prevents me from doing anything but light duties.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="4" id="emp_home" name="emp_home">
-                                          <label class="form-check-label">Pain prevents me from doing even light duties.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input wire:model.live="emp_home" class="form-check-input" type="radio" value="5" id="emp_home" name="emp_home">
-                                          <label class="form-check-label">Pain prevents me from performing any job or homemaking chores.</label>
-                                        </div>
-                                        <div class="form-check">
-                                          <label class="form-check-label">Checked: {{ $empHomeSelected }}</label>
-                                        </div>
-                                      </div>
-
-
-
-
+                                  <div class="form-group">
+                                    <label>Employment & Home Making</label>
+                                    <div class="form-check">
+                                      <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="0" id="emp_home" name="emp_home">
+                                      <label class="form-check-label">My normal homemaking/job activities do not cause pain.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="1" id="emp_home" name="emp_home">
+                                      <label class="form-check-label">My normal homemaking/job activities increase my pain, but i can still perform all that is required of me.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="2" id="emp_home" name="emp_home">
+                                      <label class="form-check-label">I can perform most of my homemaking/job duties, but pain prevents me from
+    performing more physically stressful activities(e.g. lifting, vacuuming).</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="3" id="emp_home" name="emp_home">
+                                      <label class="form-check-label">Pain prevents me from doing anything but light duties.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input  wire:model.live="emp_home" class="form-check-input" type="radio" value="4" id="emp_home" name="emp_home">
+                                      <label class="form-check-label">Pain prevents me from doing even light duties.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input wire:model.live="emp_home" class="form-check-input" type="radio" value="5" id="emp_home" name="emp_home">
+                                      <label class="form-check-label">Pain prevents me from performing any job or homemaking chores.</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">Checked: {{ $empHomeSelected }}</label>
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="col-6">
+
+                                <div class="col-6">                                     
+                                  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th colspan="2">Current Values</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>        
+                                      <tr>
+                                        <td>
+                                          Pain Intensity
+                                        </td>
+                                        <td>
+                                          {{  ($modq_entered->pain_intensity != null) ? $painIntensity[$modq_entered->pain_intensity] : null }}
+                                        </td>
+                                      </tr>
+                                      
+                                      <tr>
+                                        <td>
+                                          Personal Care</label>
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->personal_care != null) ? $persCare[$modq_entered->personal_care] : null }}
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          Lifting
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->lifting != null) ? $modq_lifting[$modq_entered->lifting] : null }}
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          Walking
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->walking != null) ? $modq_walking[$modq_entered->walking] : null }}
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          Sitting
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->sitting != null) ? $modq_sitting[$modq_entered->sitting] : null}}
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          Standing
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->standing != null) ? $modq_standing[$modq_entered->standing] : null }}
+                                        </td>
+                                      </tr>
+
+                                      <tr>
+                                        <td>
+                                          Sleeping
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->sleeping !=null) ? $modq_sleeping[$modq_entered->sleeping] : null }}
+                                        </td>
+                                      </tr>
 
 
-                                                                              
-                                      <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                                        <thead>
-                                          <tr>
-                                            <th colspan="2">Current Values</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>        
-                                          <tr>
-                                            <td>
-                                              Pain Intensity
-                                            </td>
-                                            <td>
-                                              {{  ($modq_entered->pain_intensity != null) ? $painIntensity[$modq_entered->pain_intensity] : null }}
-                                            </td>
-                                          </tr>
-                                          
-                                          <tr>
-                                            <td>
-                                              Personal Care</label>
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->personal_care != null) ? $persCare[$modq_entered->personal_care] : null }}
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <td>
-                                              Lifting
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->lifting != null) ? $modq_lifting[$modq_entered->lifting] : null }}
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <td>
-                                              Walking
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->walking != null) ? $modq_walking[$modq_entered->walking] : null }}
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <td>
-                                              Sitting
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->sitting != null) ? $modq_sitting[$modq_entered->sitting] : null}}
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <td>
-                                              Standing
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->standing != null) ? $modq_standing[$modq_entered->standing] : null }}
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <td>
-                                              Sleeping
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->sleeping !=null) ? $modq_sleeping[$modq_entered->sleeping] : null }}
-                                            </td>
-                                          </tr>
+                                      <tr>
+                                        <td>
+                                          Social Life
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->social_life != null) ? $modq_sociallife[$modq_entered->social_life] : null }}
+                                        </td>
+                                      </tr>
 
 
-                                          <tr>
-                                            <td>
-                                              Social Life
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->social_life != null) ? $modq_sociallife[$modq_entered->social_life] : null }}
-                                            </td>
-                                          </tr>
+                                      <tr>
+                                        <td>
+                                          Travelling
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->travelling != null) ? $modq_travelling[$modq_entered->travelling] : null}}
+                                        </td>
+                                      </tr>
 
 
-                                          <tr>
-                                            <td>
-                                              Travelling
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->travelling != null) ? $modq_travelling[$modq_entered->travelling] : null}}
-                                            </td>
-                                          </tr>
+                                      <tr>
+                                        <td>
+                                          Emp & Home Mkg
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->employment_home_making != null) ? $modq_emphome[$modq_entered->employment_home_making] : null}}
+                                        </td>
+                                      </tr>
 
+                                      <tr>
+                                        <td>
+                                          Total Score
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->total != null) ? $modq_entered->total : null}}
+                                        </td>
+                                      </tr>
 
-                                          <tr>
-                                            <td>
-                                              Emp & Home Mkg
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->employment_home_making != null) ? $modq_emphome[$modq_entered->employment_home_making] : null}}
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <td>
-                                              Total Score
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->total != null) ? $modq_entered->total : null}}
-                                            </td>
-                                          </tr>
-
-                                          <tr>
-                                            <td>
-                                              In %
-                                            </td>
-                                            <td>
-                                              {{ ($modq_entered->modq_score != null) ? $modq_entered->modq_score : null}}
-                                            </td>
-                                          </tr>
-                                        </tbody>
-
-                                      </table>
-                                  
+                                      <tr>
+                                        <td>
+                                          In %
+                                        </td>
+                                        <td>
+                                          {{ ($modq_entered->modq_score != null) ? $modq_entered->modq_score : null}}
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </div>
                               </div>
                             </div>
@@ -630,9 +622,8 @@
                                   </tr>                         
                                 </tbody>
                               </table>
-
-
                             </div> 
+
                             <div class="tab-pane" id="tab_3">
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>

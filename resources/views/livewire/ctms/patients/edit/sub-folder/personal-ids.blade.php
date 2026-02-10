@@ -91,3 +91,5 @@
       </tr>                                  
     </tbody>
   </table>
+
+  <button wire:click="fnSaveEditPrimaryInfo()" class="btn btn-warning font-normal mt-3 rounded">EDIT PRIMARY INFO</button>

@@ -529,7 +529,7 @@ class EditClinicalInfo extends Component
         $this->validate(); 
         $this->input = $this->form->all();
 
-        //dd($this->input);       
+        dd($this->input);       
         $this->msg_panel = true;
         $name = $this->uuid;
         try {

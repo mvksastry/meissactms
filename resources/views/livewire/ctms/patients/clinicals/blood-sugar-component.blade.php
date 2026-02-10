@@ -40,7 +40,7 @@
       <tr>
         <td colspan="6">
           <label>Blood Sugar Report File*</label>
-          <input wire:model.defer="form_b.bllodsugar_report_file" type="file" class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form_b.bs_report_file" type="file" class="form-control" placeholder="Report File" >
         </td>
       </tr>     
     </tbody>
