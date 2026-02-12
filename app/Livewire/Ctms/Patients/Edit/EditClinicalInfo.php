@@ -86,7 +86,17 @@ class EditClinicalInfo extends Component
     public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
+    //Drug detail edit panels
+    public $edit_dd_panel = false;
+    public $new_dd_panel = false;
+
     //variables
+    public $tab, $activeTab = 'tab_1'; // default tab
+
+    public function setActiveTab($tab)
+    {
+        $this->activeTab = $tab;
+    }
 
     public function render()
     {
@@ -153,9 +163,9 @@ class EditClinicalInfo extends Component
         //$this->form_n->entered_by = Auth::user()->name;
         $this->setC14ObjData($this->c14Obj);
 
-        //many entries here, first should not be used, use get();
-        $this->c15Obj = DrugDetails::where('status', 'draft')->where('patient_uuid', $this->uuid)->get(); 
-        $this->setC15ObjData($this->c15Obj);        
+        //many entries here use first, for drug entries, first should not be used, use get();
+        $this->drug_details = DrugDetails::where('patient_uuid', $this->uuid)->get();
+        //dd($this->drug_details);
 
         //dd("reached entry place");
         $this->drug_categories = DrugCategory::all();
@@ -741,13 +751,8 @@ class EditClinicalInfo extends Component
             $this->comSuccess = $msg;
         }
         $this->nDDetForm = [];
+        $this->edit_dd_panel = false;
         //$this->p3 = false;
-    }
-
-    public function fnNewDetailEntry()
-    {
-        //dd("reached entry place");
-        //$this->drug_categories = DrugCategory::all();
     }
 
     public function fnAddNewDrugDetail()
@@ -792,4 +797,31 @@ class EditClinicalInfo extends Component
         $this->nDDetForm = [];
     }
 
+    public function fnOpenEditDrugDetailPanel()
+    {
+        $this->edit_dd_panel = true;
+    }
+
+    public function fnNewDetailEntry()
+    {
+        $this->new_dd_panel = true;
+    }
+
+    public function fnEditDrugDetailEntry($drug_detail_id)
+    {
+        //dd($drug_detail_id);
+        $this->c15Obj = null;
+        $this->c15Obj = DrugDetails::where('status', 'draft')
+                                        ->where('patient_uuid', $this->uuid)
+                                        ->where('drug_detail_id', $drug_detail_id)
+                                        ->get(); 
+        $this->setC15ObjData($this->c15Obj); 
+
+        $this->fnOpenEditDrugDetailPanel();
+    }
+
+    public function fnDeleteDrugDetailEntry($drug_detail_id)
+    {
+        //dd($drug_detail_id);
+    }
 }

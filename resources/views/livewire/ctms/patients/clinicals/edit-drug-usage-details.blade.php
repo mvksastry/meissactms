@@ -1,10 +1,5 @@
 <div>
     {{-- Because she competes with no one, no one can compete with her. --}}
-    {{-- In work, do what you enjoy. --}}
-    {{-- The whole world belongs to you. --}}
-    <!-- Content Wrapper. Contains page content -->
-    <!-- COLOR PALETTE -->
-
         <div class="card card-default color-palette-box">
           <div class="card-header">
             <h3 class="card-title">
@@ -39,26 +34,27 @@
                     <thead>
                       <tr>
                           <th>Cat ID</th>
-                          <th>Name</th>
-                          <th>Brand</th>
-                          <th>Class</th>
-                          <th>Generic Name</th>
-                          <th>Single Dose</th>
+                          <th>Name</br>Brand</br>Class</th>
+                          <th>Generic </br> Name</th>
+                          <th>Single </br> Dose</th>
                           <th>Frequency</th> 
-                          <th>Total Daily Dose</th>                      
+                          <th>Total </br>Daily </br>Dose</th>      
+                          <th>Actions</th>                 
                       </tr>
                     </thead>
                     <tbody> 
                       @foreach($drug_details as $row)
                         <tr>
                             <td>{{ $row->category_id }}</td>
-                            <td>{{ $row->drug_name  }}</td>
-                            <td>{{ $row->brand }}</td>
-                            <td>{{ $row->drug_class }}</td>
+                            <td>Name: {{ $row->drug_name }}</br>Brand: {{ $row->brand }}</br>Class: {{ $row->drug_class }}</td>
                             <td>{{ $row->generic_name }}</td>
                             <td>{{ $row->single_dose }}</td>
                             <td>{{ $row->frequency }}</td>
                             <td>{{ $row->total_daily_dose }}</td>
+                            <td>
+                              <button wire:click="fnEditDrugDetailEntry('{{ $row->drug_detail_id }}')" type="button" class="btn btn-primary">EDIT</button>
+                              <button wire:click="fnDeleteDrugDetailEntry('{{ $row->drug_detail_id }}')" type="button" class="btn btn-danger">DELETE</button>
+                            </td>
                         </tr>  
                       @endforeach                         
                     </tbody>
@@ -78,7 +74,7 @@
 
             <hr class="border-b-2 border-warning my-2 mx-2">
 
-            
+            @if($edit_dd_panel)
               @if(count($c15Obj) > 0)  
                 <div class="row">
                   <label class="form-class" for="sampdesc">Edit Drug Details</label>
@@ -198,9 +194,9 @@
                     </div>
                 </div>
               @endif
-          
+            @endif
 
-            
+            @if($new_dd_panel))
               <div class="row">
                 <label class="form-class" for="sampdesc">New Drug Detail</label>
                 </br>
@@ -299,7 +295,7 @@
                     <button wire:click="fnAddNewDrugDetail()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp ADD DRUG DETAIL</button>
                   </div>
               </div>
-          
+            @endif
 
 
           </div>
