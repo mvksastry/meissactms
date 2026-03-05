@@ -56,11 +56,11 @@ class NcAcknowledges extends Component
 
         
         $nNcSH = new NCStatusHistory();
-        $nNcSH->nc_id = $nNc->nc_id;
+        $nNcSH->nc_id = $this->nc_id;
         $nNcSH->from_status = "new";
-        $nNcSH->to_status = $nNc->current_status;
-        $nNcSH->changed_by = $nNc->raised_by;
-        $nNcSH->change_reason = "Fresh Entry";
+        $nNcSH->to_status = "Acknowledged";
+        $nNcSH->changed_by = $ackNc->ack_by;
+        $nNcSH->change_reason = "Acknowledged";
         $nNcSH->save();
         
 
