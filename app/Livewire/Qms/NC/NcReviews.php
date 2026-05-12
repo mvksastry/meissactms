@@ -66,23 +66,25 @@ class NcReviews extends Component
 
         if($input['capa_required'] == "yes")
         {
-            $issueDesc = NonConformity::where('nc_id', $this->nc_id)->value('description');
+            $ncInfo = NonConformity::where('nc_id', $this->nc_id)->first();
 
             $autoCaPa = new Capas();
 
             $autoCaPa->capa_uuid  = Str::uuid()->toString();
-            $autoCaPa->capa_type  = null;
+            $autoCapa->capa_origin = $ncInfo->origin_of_nc;
+            $autoCaPa->capa_type  = "both";
             $autoCaPa->reference_no  = null; // if non NC mediated this will have value
             $autoCaPa->nc_id  = $this->nc_id;
-            $autoCaPa->issue_description  = $issueDesc;
-            $autoCaPa->root_cause  = null;
-            $autoCaPa->action_plan  = null;
+            $autoCaPa->issue_description  = $ncInfo->description;
+            $autoCaPa->root_cause  = "Due";
+            $autoCaPa->action_plan  = "Due";
+            $autoCaPa->division_reported = $ncInfo->division_reported;
             $autoCaPa->reported_by  = Auth::user()->name;
             $autoCaPa->responsible_user_id  = null;
             $autoCaPa->target_date  = date('Y-m-d', strtotime('+7 days'));
             $autoCaPa->closure_date  = date('Y-m-d', strtotime('+15 days'));
             $autoCaPa->capa_status  = 'open';
-            dd($autoCaPa);
+            //dd($autoCaPa);
             $autoCaPa->save();
         }
 

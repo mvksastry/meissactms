@@ -106,7 +106,6 @@
               @endif
             </div>
             @if($allNcPanels)
-
               <livewire:qms.n-c.nc-acknowledges :nc_id="$nc_id" />
               <!--Divider-->
               <hr class="border-b-2 border-warning my-2 mx-2">
@@ -129,13 +128,9 @@
               <!--/ Divider-->
               <div class="row">
                 <!-- /.col -->
-                <!-- /.col -->
               </div>
-
               <!--Divider-->
               <hr class="border-b-2 border-warning my-2 mx-2">
-              <!--/ Divider-->
-
               <!--/ Divider-->
               </br>
             @endif

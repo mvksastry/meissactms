@@ -25,6 +25,10 @@
 			@hasexactroles('director')
 			@include('layouts.menus.ctms.director')
 			@endhasexactroles
+
+			@hasexactroles('clinical_dataentry')
+			@include('layouts.menus.ctms.cde_operator')
+			@endhasexactroles
 			<!-- /.Main Sidebar Container -->
 
 			@hasexactroles('guest')

@@ -9,9 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+
+// Models
+use App\Models\User;
 
 //Traits
 use App\Traits\Base;
@@ -80,6 +84,23 @@ class HomeController extends Controller
 
 
         if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
+		{
+            $chats = $this->getAllUnseenChats();
+            $all_centers = $this->getAllCenters();
+            $all_clinics = $this->getAllClinics();
+            $pwds = $this->getPatientDataDraftStatus();
+            $pwas = $this->getPatientDataActiveStatus();
+            //dd($pwds);
+            return view('layouts.home.ctms.admin.home')->with([
+                'all_centers' => $all_centers,
+                'all_clinics' => $all_clinics,
+                'pwds' => $pwds,
+                'pwas' => $pwas,
+                'chats' => $chats
+            ]);
+        }
+
+        if( Auth::user()->hasAnyRole(['clinical_dataentry']) )
 		{
             $chats = $this->getAllUnseenChats();
             $all_centers = $this->getAllCenters();

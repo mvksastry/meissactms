@@ -38,4 +38,39 @@ class Capas extends Model
       'closure_date',
       'capa_status'
     ];
+
+    public function capa_review()
+    {
+        return $this->hasMany(CapaReview::class, 'nc_id', 'nc_id');
+    }
+
+    public function capa_docs()
+    {
+        return $this->hasMany(CapaDocs::class, 'nc_id', 'nc_id');
+    }
+
+    public function action_eff_check()
+    {
+        return $this->hasMany(ActionEffectiveCheck::class, 'nc_id', 'nc_id');
+    }    
+
+    public function rca_details()
+    {
+        return $this->hasMany(RootCauseAnalysis::class, 'nc_id', 'nc_id');
+    } 
+
+    public function capa_status_history()
+    {
+        return $this->hasMany(CapaStatusHistory::class, 'nc_id', 'nc_id');
+    }
+
+    public function corrective_action()
+    {
+        return $this->hasMany(CorrectiveAction::class, 'nc_id', 'nc_id');
+    }
+
+    public function preventive_action()
+    {
+        return $this->hasMany(PreventiveAction::class, 'nc_id', 'nc_id');
+    }
 }

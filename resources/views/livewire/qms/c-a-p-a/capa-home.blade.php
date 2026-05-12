@@ -65,9 +65,10 @@
                     <th>CAPA Type</th>
                     <th>Ref No</th>
                     <th>Description</th>
-                    <th>Root Cause</th>
-                    <th>Action Plan</th>
+                    <th>Root Cause / Action Plan</th>
+                    
                     <th>Target Date</br>Closure Date</th> 
+                    <th>Reported By</th>
                     <th>CAPA Status</th> 
                     <th>Time Stamps</th> 
                     <th>Actions</th>                      
@@ -79,10 +80,10 @@
                       <td>{{ $row->capa_type }}</td>
                       <td>{{ $row->reference_no }}</td>
                       <td>{{ $row->issue_description }}</td>
-                      <td>{{ $row->root_cause }}</td>
-                      <td>{{ $row->action_plan }}</td>
-                      <td>{{ $row->reported_by }} </br> {{ $row->responsible_user_id }}</td>
-                      <td>Target Dt: {{ $row->target_date }}</br> Closer Dt: {{ $row->closer_date }}</td> 
+                      <td>RC: {{ $row->root_cause }} </br>AP: {{ $row->action_plan }}</td>
+                      <td>Target Dt: {{ $row->target_date }}</br> Closure Dt: {{ $row->closure_date }}</td>
+                      <td>Rep By: {{ $row->reported_by }} </br> Resp: {{ $row->responsible_user_id }}</td>
+                      <td>{{  $row->capa_status }}</td>
                       <td>Created At: {{ $row->created_at }}</br>Updated At: {{ $row->updated_at }}</td>  
                       <td>
                           <button wire:click="fnCAPADetails()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp CA PA Details</button>
@@ -117,7 +118,30 @@
     </section>
 
     <!-- Main content -->
+    <!-- Main content -->
+    @if($p1)
+      <livewire:qms.c-a-p-a.capa-incidences :entry="$entry" />
+    @endif
 
+    @if($p2)
+      <livewire:qms.n-c.nc-acknowledges :nc_id="$nc_id" :entry="$entry" />
+    @endif
+
+    @if($p3)
+      <livewire:qms.n-c.nc-comms :nc_id="$nc_id" :entry="$entry" />
+    @endif
+    
+    @if($p4)
+      <livewire:qms.n-c.nc-reviews :nc_id="$nc_id" :entry="$entry" />
+    @endif
+
+    @if($p5)
+      <livewire:qms.n-c.nc-status-history-logs :nc_id="$nc_id" :entry="$entry" />
+    @endif
+
+    @if($p6)
+      <livewire:qms.n-c.nc-audit-logs :nc_id="$nc_id" :entry="$entry" />
+    @endif
 
     <!-- /.content -->
   </div>
