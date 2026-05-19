@@ -25,7 +25,19 @@
 			@hasexactroles('director')
 			@include('layouts.menus.ctms.director')
 			@endhasexactroles			
-			
+
+			@hasexactroles('clinical_manager')
+			@include('layouts.menus.ctms.clinical_manager')
+			@endhasexactroles
+
+			@hasexactroles('senior_resident')
+			@include('layouts.menus.ctms.senior_resident')
+			@endhasexactroles
+
+			@hasexactroles('junior_resident')
+			@include('layouts.menus.ctms.junior_resident')
+			@endhasexactroles
+
 			@hasexactroles('clinical_dataentry')
 			@include('layouts.menus.ctms.cde_operator')
 			@endhasexactroles

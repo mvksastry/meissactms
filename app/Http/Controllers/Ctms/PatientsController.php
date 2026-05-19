@@ -35,7 +35,7 @@ class PatientsController extends Controller
     public function index()
     {
         //
-        if( Auth::user()->hasAnyRole(['ctms_incharge','director', 'clinical_dataentry']) )
+        if( Auth::user()->hasAnyRole(['ctms_incharge','director', 'clinical_manager','clinical_dataentry']) )
 		{   $all_centers = $this->getAllCenters();
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();

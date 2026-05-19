@@ -76,13 +76,6 @@ class HomeController extends Controller
         //$personalTasks = $this->personalTasks();
         //$kbCards = Kanbancards::where('posted_by', Auth::user()->name)->get();
 
-
-
-
-
-
-
-
         if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
 		{
             $chats = $this->getAllUnseenChats();
@@ -100,6 +93,57 @@ class HomeController extends Controller
             ]);
         }
 
+        if( Auth::user()->hasAnyRole(['clinical_manager']) )
+		{
+            $chats = $this->getAllUnseenChats();
+            $all_centers = $this->getAllCenters();
+            $all_clinics = $this->getAllClinics();
+            $pwds = $this->getPatientDataDraftStatus();
+            $pwas = $this->getPatientDataActiveStatus();
+            //dd($pwds);
+            return view('layouts.home.ctms.clinicalmanager.home')->with([
+                'all_centers' => $all_centers,
+                'all_clinics' => $all_clinics,
+                'pwds' => $pwds,
+                'pwas' => $pwas,
+                'chats' => $chats
+            ]);
+        }
+
+        if( Auth::user()->hasAnyRole(['senior_resident']) )
+		{
+            $chats = $this->getAllUnseenChats();
+            $all_centers = $this->getAllCenters();
+            $all_clinics = $this->getAllClinics();
+            $pwds = $this->getPatientDataDraftStatus();
+            $pwas = $this->getPatientDataActiveStatus();
+            //dd($pwds);
+            return view('layouts.home.ctms.srresident.home')->with([
+                'all_centers' => $all_centers,
+                'all_clinics' => $all_clinics,
+                'pwds' => $pwds,
+                'pwas' => $pwas,
+                'chats' => $chats
+            ]);
+        }
+
+        if( Auth::user()->hasAnyRole(['junior_resident']) )
+		{
+            $chats = $this->getAllUnseenChats();
+            $all_centers = $this->getAllCenters();
+            $all_clinics = $this->getAllClinics();
+            $pwds = $this->getPatientDataDraftStatus();
+            $pwas = $this->getPatientDataActiveStatus();
+            //dd($pwds);
+            return view('layouts.home.ctms.jrresident.home')->with([
+                'all_centers' => $all_centers,
+                'all_clinics' => $all_clinics,
+                'pwds' => $pwds,
+                'pwas' => $pwas,
+                'chats' => $chats
+            ]);
+        }
+
         if( Auth::user()->hasAnyRole(['clinical_dataentry']) )
 		{
             $chats = $this->getAllUnseenChats();
@@ -108,7 +152,7 @@ class HomeController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
-            return view('layouts.home.ctms.admin.home')->with([
+            return view('layouts.home.ctms.cde.home')->with([
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
                 'pwds' => $pwds,
