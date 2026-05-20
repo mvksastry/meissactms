@@ -173,6 +173,7 @@ class PatientInformation extends Component
     //default panels
     public $patientInfoButtons = false;
     public $TimelinePatient = false;
+    public $PatientStatusPanel = false;
 
     //Form openings
     public $panel_primary_info = false;
@@ -225,6 +226,7 @@ class PatientInformation extends Component
         //dd($this->patient_uuid);
         $this->patientInfoButtons = true;
         $this->TimelinePatient = false;
+        $this->PatientStatusPanel = false;
     }
 
     public function getPatientTimeline($id)
@@ -235,6 +237,15 @@ class PatientInformation extends Component
         //dd($this->ptEpoch);
         $this->patientInfoButtons = false;
         $this->TimelinePatient = true;
+        $this->PatientStatusPanel = false;
+    }
+
+    public function getCurrentPatientStatus($id)
+    {   $this->patient_uuid = $id;
+        //dd("reached");
+        $this->patientInfoButtons = false;
+        $this->TimelinePatient = false;
+        $this->PatientStatusPanel = true;
     }
 
         //respective forms

@@ -96,7 +96,8 @@
                                     <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody>        
+                                <tbody>      
+                                  @hasrole('junior_resident')  
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment By Entered</label>
@@ -105,14 +106,26 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Entered By*</label>
+                                      <label>Cleared By*</label>
                                       </br>{{ $patientPrimaryInfo->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Date Cleared*</label>
                                       </br>{{ $patientPrimaryInfo->entry_date }}
                                     </td>
                                   </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Clear Patient Data*</label>
+                                      </br>{{ $patientPrimaryInfo->entry_sealed_by }}
+                                      <div class="col-sm-6 col-md-6">
+                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Clear Patient Data</button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  @endhasrole
+
+                                  @hasrole('senior_resident')
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment By Verified</label>
@@ -130,21 +143,56 @@
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td colspan="2">
-                                      <label>Comment By Sealed Authority</label>
-                                      </br>{{ $patientPrimaryInfo->comment_sealed_by }}
+                                    <td>
+                                      <label>Verified Patient Data*</label>
+                                      </br>{{ $patientPrimaryInfo->entry_sealed_by }}
+                                      <div class="col-sm-6 col-md-6">
+                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Verify Patient Data</button>
+                                      </div>
                                     </td>
                                   </tr>
+                                  @endhasrole
+
+                                  @hasrole('clinical_manager')
                                   <tr>
                                     <td>
-                                      <label>Entry Sealed By*</label>
+                                      <label>Seal Patient Data*</label>
                                       </br>{{ $patientPrimaryInfo->entry_sealed_by }}
+                                      <div class="col-sm-6 col-md-6">
+                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Seal Entry</button>
+                                      </div>
                                     </td>
                                     <td colspan="2">
                                       <label>Sealed Date*</label>
                                       </br>{{ $patientPrimaryInfo->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  <tr>
+                                    <td>
+                                      <label>Approve Patient Data*</label>
+                                      </br>{{ $patientPrimaryInfo->entry_sealed_by }}
+                                      <div class="col-sm-6 col-md-6">
+                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Approve Patient Data</button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  @endhasrole
+
+                                  @hasrole('ctms_incharge')
+                                  <tr>
+                                    <td>
+                                      <label>Seal Patient Data*</label>
+                                      </br>{{ $patientPrimaryInfo->entry_sealed_by }}
+                                      <div class="col-sm-6 col-md-6">
+                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Seal Entry</button>
+                                      </div>
+                                    </td>
+                                    <td colspan="2">
+                                      <label>Sealed Date*</label>
+                                      </br>{{ $patientPrimaryInfo->entry_sealed_date }}
+                                    </td>
+                                  </tr>
+                                  @endhasrole
                                 </tbody>
                               </table>
                               

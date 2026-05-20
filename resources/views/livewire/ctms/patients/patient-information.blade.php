@@ -70,6 +70,36 @@
                             <td>
                                 <button wire:click="getPatientTimeline('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Timeline</button>
                             </td>
+
+                            @hasanyrole(['junior_resident','clinical_dataentry'])
+                              <td>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient</button>
+                              </td>
+                            @endhasanyrole
+
+                            @hasrole('senior_resident')
+                              <td>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Verified Patient</button>
+                              </td>
+                            @endhasanyrole
+
+                            @hasrole('clinical_manager')
+                              <td>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient</button>
+                              </td>
+                            @endhasanyrole
+
+                            @hasrole('ctms_incharge')
+                              <td>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient</button>
+                              </td>
+                            @endhasanyrole
+
+                            @hasrole('director')
+                              <td>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Post Notes</button>
+                              </td>
+                            @endhasanyrole
                         </tr>
                     @endforeach
                 </tbody>
@@ -187,6 +217,10 @@
     
     @if($p10)
         @include('livewire.ctms.patients.infos.patient-rmq-score')
+    @endif
+
+    @if($PatientStatusPanel)
+      <livewire:patients.patient-status-update :patient_uuid="$patient_uuid" key="{{ now() }}" />
     @endif
 
     <!-- /.content -->
