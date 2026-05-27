@@ -109,6 +109,10 @@ class Patient extends Model
         'verified_by',
         'verified_date',
 
+        'comment_approved_by',
+        'approved_by',
+        'approved_date',
+
         'comment_cro',
         'cro_approval',
         'cro_approval_date',

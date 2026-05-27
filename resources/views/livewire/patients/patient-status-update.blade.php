@@ -408,42 +408,95 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <label>Comment</label>
-                                <input wire:model="status_comment" id="status_comment" type="text" class="form-control" placeholder="Status Update Comment">
-                            </td>
+
                         </tr>
-                        <tr>
+                        
                             @hasanyrole(['junior_resident','clinical_dataentry'])
-                              <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient</button>
-                              </td>
+                            <tr>
+                                <td>
+                                    <label>status</label>
+                                    <input wire:model="updated_status" disabled placeholder="Cleared">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Comment</label>
+                                    <input wire:model="status_comment" id="status_comment" type="text" class="form-control" placeholder="Status Update Comment">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button wire:click="setNewPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient</button>
+                                </td>
+                            </tr>
                             @endhasanyrole
 
                             @hasrole('senior_resident')
-                              <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Verified Patient</button>
-                              </td>
+                            <tr>
+                                <td>
+                                    <label>status</label>
+                                    <input wire:model="updated_status" disabled placeholder="Cleared">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Comment</label>
+                                    <input wire:model="status_comment" id="status_comment" type="text" class="form-control" placeholder="Status Update Comment">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button wire:click="setNewPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Verified Patient</button>
+                                </td>
+                            </tr>
                             @endhasanyrole
 
                             @hasrole('clinical_manager')
-                              <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient</button>
-                              </td>
+                            <tr>
+                                <td>
+                                    <label>status</label>
+                                    <input wire:model="updated_status" disabled placeholder="Approbved">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Comment</label>
+                                    <input wire:model="status_comment" id="status_comment" type="text" class="form-control" placeholder="Status Update Comment">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button wire:click="setNewPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient</button>
+                                </td>
+                            </tr>
                             @endhasanyrole
 
                             @hasrole('ctms_incharge')
-                              <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient</button>
-                              </td>
+                            <tr>
+                                <td>
+                                    <label>status</label>
+                                    <input wire:model="updated_status" disabled placeholder="Sealed">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Comment</label>
+                                    <input wire:model="status_comment" id="status_comment" type="text" class="form-control" placeholder="Status Update Comment">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button wire:click="setNewPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient</button>
+                                </td>
+                            </tr>
                             @endhasanyrole
 
                             @hasrole('director')
                               <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Post Notes</button>
+                                  <button wire:click="setNewPatientStatus('{{ $patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Post Notes</button>
                               </td>
                             @endhasanyrole
-                        </tr>
+
 
                     </tbody>
                 </table>

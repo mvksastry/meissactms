@@ -36,12 +36,24 @@ use App\Models\Ctms\Clinicals\UrineRoutine;
 
 use App\Traits\Base;
 use App\Traits\TCtms\TPatientStatus;
+use App\Traits\TCtms\TPatientTimeline;
+use App\Traits\TCtms\TDBStatusUpdates;
 
 class PatientStatusUpdate extends Component
 {
     //
     use Base;
     use TPatientStatus;
+    use TPatientTimeline;
+    use TDBStatusUpdates;
+
+    public $status_array = [
+                        'clinical_dataentry'=>'verified',
+                        'junior_resident'=>'verified',
+                        'senior_resident'=>'verified',
+                        'clinical_manager'=>'approved',
+                        'ctms_incharge'=>'sealed'
+                        ];
 
     public $patient_uuid;
     public $status_comment;
@@ -88,8 +100,61 @@ class PatientStatusUpdate extends Component
         $this->pcs['mes'] = MicroscopicExam::where('patient_uuid', $patient_uuid)->first();
         $this->pcs['rft'] = RenalFunction::where('patient_uuid', $patient_uuid)->first();
         $this->pcs['ure'] = UrineRoutine::where('patient_uuid', $patient_uuid)->first();
-        
 
         //dd($this->pcs);
+    }
+
+    public function setNewPatientStatus($patient_uuid)
+    {
+        $role = Auth::user()->roles->pluck('name')[0] ?? '' ;
+        $input['status_comment'] = $this->status_comment;
+
+        switch ($role) {
+
+            case 'clinical_dataentry':
+                $input['status_by'] = Auth::user()->name;
+                $input['status'] = 'verified';
+                $input['date_updated'] = date('Y-m-d');
+            break;
+
+            case 'junior_resident':
+                $input['status_by'] = Auth::user()->name;
+                $input['status'] = 'verified';
+                $input['date_updated'] = date('Y-m-d');
+            break;
+
+            case 'senior_resident':
+                $input['status_by'] = Auth::user()->name;
+                $input['status'] = 'verified';
+                $input['date_updated'] = date('Y-m-d');
+            break;
+
+            //take note of this role
+
+            case 'clinical_manager':
+                $input['status_by'] = Auth::user()->name;
+                $input['status'] = 'approved';
+                $input['date_updated'] = date('Y-m-d');
+            break;
+
+            //take note of this role
+
+            case 'ctms_incharge':
+                $input['status_by'] = Auth::user()->name;
+                $input['status'] = 'sealed';
+                $input['date_updated'] = date('Y-m-d');
+            break;  
+
+            default:
+                $input['status'] = 'draft';
+        }
+
+        $result = $this->setUpdatedPatientDataStatus($patient_uuid, $input);
+
+        if($result)
+        {
+            $this->dispatch('closeStatusPanel');
+        }
+        //dd($result);       
     }
 }

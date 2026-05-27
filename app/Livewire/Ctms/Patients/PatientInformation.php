@@ -215,7 +215,35 @@ class PatientInformation extends Component
 
     public function render()
     {
-        $this->activePatients = Patient::all();
+        if( Auth::user()->hasAnyRole(['clinical_dataentry', 'junior_resident']) )
+		{
+            $this->activePatients = Patient::where('status', 'draft')->get();
+            $this->activePatients->search_status = "draft";
+        }
+
+        if( Auth::user()->hasAnyRole(['senior_resident']) )
+		{
+            $this->activePatients = Patient::where('status', 'draft')->get();
+            $this->activePatients->search_status = "draft";
+        }
+
+        if( Auth::user()->hasAnyRole(['clinical_manager']) )
+		{
+            $this->activePatients = Patient::where('status', 'verified')->get();
+            $this->activePatients->search_status = "verified";
+        }
+
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+		{
+            $this->activePatients = Patient::whereIn('status', ['approved','sealed'])->get();
+            $this->activePatients->search_status = "approved/sealed";
+        }
+
+        if( Auth::user()->hasAnyRole(['director']) )
+		{
+            $this->activePatients = Patient::all();
+        }
+
         //dd($this->activePatients);
         return view('livewire.ctms.patients.patient-information');
     }
@@ -248,6 +276,11 @@ class PatientInformation extends Component
         $this->PatientStatusPanel = true;
     }
 
+    #[On('closeStatusPanel')] 
+    public function fnCloseStatusPanel()
+    {
+        $this->PatientStatusPanel = false;
+    }
         //respective forms
     public function fnShowPrimaryInfo($id)
     {

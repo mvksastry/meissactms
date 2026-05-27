@@ -35,18 +35,19 @@
             <!-- /.col-12 -->
             <!-- /.col-12 -->
             <div class="row">
+              @if(count($activePatients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                <thead>
-                    <tr>
-                    <th>Center</th>
-                    <th>Clinic</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Status</th>
-                    <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody> 
+                  <thead>
+                      <tr>
+                      <th>Center</th>
+                      <th>Clinic</th>
+                      <th>Name</th>
+                      <th>Gender</th>
+                      <th>Status</th>
+                      <th>Details</th>
+                      </tr>
+                  </thead>
+                  <tbody> 
                     @foreach($activePatients as $row)
                         <tr>
                             <td>
@@ -72,27 +73,50 @@
                             </td>
 
                             @hasanyrole(['junior_resident','clinical_dataentry'])
-                              <td>
+                              @if( $row->status == 'draft')
+                                <td>
                                   <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient</button>
-                              </td>
+                                </td>
+                              @else
+                                  Nothing to Clear
+                              @endif
                             @endhasanyrole
 
                             @hasrole('senior_resident')
-                              <td>
+                               @if( $row->status == 'draft')
+                                <td>
                                   <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Verified Patient</button>
-                              </td>
+                                </td>
+                              @else
+                                <td>
+                                  Nothing to Clear
+                                </td>
+                              @endif
+
                             @endhasanyrole
 
                             @hasrole('clinical_manager')
-                              <td>
+                              @if( $row->status == 'verified')
+                                <td>
                                   <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient</button>
-                              </td>
+                                </td>
+                              @else
+                                <td>
+                                  Nothing to Approve
+                                </td>
+                              @endif
                             @endhasanyrole
 
                             @hasrole('ctms_incharge')
-                              <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient</button>
-                              </td>
+                              @if($row->status == 'approved')
+                                <td>
+                                    <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient</button>
+                                </td>
+                              @else
+                                <td>
+                                  Nothing to Seal
+                                </td>
+                              @endif
                             @endhasanyrole
 
                             @hasrole('director')
@@ -102,8 +126,19 @@
                             @endhasanyrole
                         </tr>
                     @endforeach
-                </tbody>
+                  </tbody>
                 </table>
+                @else
+                  <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                    <thead>
+                        <tr>
+                          <th>Patients with Desired status: "{{ ucfirst($activePatients->search_status) }}" Not Found</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                    </tbody>
+                  </table>
+                @endif
             </div>
             <!-- /.row -->
             <!--Divider-->
