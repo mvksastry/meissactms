@@ -75,7 +75,7 @@
                             @hasanyrole(['junior_resident','clinical_dataentry'])
                               @if( $row->status == 'draft')
                                 <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient</button>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient Data</button>
                                 </td>
                               @else
                                   Nothing to Clear
@@ -85,7 +85,7 @@
                             @hasrole('senior_resident')
                                @if( $row->status == 'draft')
                                 <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Verified Patient</button>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Confirm Patient Data</button>
                                 </td>
                               @else
                                 <td>
@@ -98,7 +98,7 @@
                             @hasrole('clinical_manager')
                               @if( $row->status == 'verified')
                                 <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient</button>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient Data</button>
                                 </td>
                               @else
                                 <td>
@@ -110,7 +110,7 @@
                             @hasrole('ctms_incharge')
                               @if($row->status == 'approved')
                                 <td>
-                                    <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient</button>
+                                    <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient Data</button>
                                 </td>
                               @else
                                 <td>
