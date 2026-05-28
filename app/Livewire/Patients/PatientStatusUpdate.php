@@ -153,6 +153,14 @@ class PatientStatusUpdate extends Component
 
         if($result)
         {
+            // update timelines
+            //now update timeline
+            $patient = Patient::where('patient_uuid', $patient_uuid)->first();
+            $name = $patient->name;
+            $event = "Change of Data Status";
+            $tl_msg = "Status Changed to ".$patient->status;
+            $updateTimeline = $this->savePatientTimeline($patient_uuid, $name, $event, $tl_msg);
+
             $this->dispatch('closeStatusPanel');
         }
         //dd($result);       

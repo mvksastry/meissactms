@@ -80,7 +80,7 @@ trait TDbStatusUpdates
         }
         //dd($statusUpdate);
         $result = $statusUpdate->save();
-
+        
         return $result;
 
 
