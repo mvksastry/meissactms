@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 
+//Uuid import class
+use Illuminate\Support\Str;
+
 use File;
 use Illuminate\Support\Facades\Storage;
 
@@ -86,13 +89,23 @@ class EditPatientReports extends Component
     public function render()
     {
         //dd($this->uuid);
-        $this->current_files = ClinicalReports::where('patient_uuid', $this->uuid)->get();
-        //dd($this->current_files);
+        $this->current_files = ClinicalReports::where('patient_uuid', $this->uuid)
+                                                ->where('report_status', 'valid')
+                                                ->get();
+       // dd($this->current_files);
         //$this->form->entered_by = Auth::user()->name;
         return view('livewire.ctms.patients.edit.edit-patient-reports');
     }
 
+    public function fnDownloadReport($id)
+    {
+        dd($id);
+    }
 
+    public function fileUuid()
+    {
+        $uuid = Str::uuid()->toString();
+    }
 
     public function fnUploadPrimaryInfos()
     {
