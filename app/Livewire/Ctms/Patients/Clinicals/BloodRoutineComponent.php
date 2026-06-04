@@ -16,6 +16,7 @@ use App\Livewire\Forms\clinicals\FormBloodRoutine;
 
 //traits
 use App\Traits\TCtms\TClinicals\TBloodRoutine;
+use App\Traits\TCtms\TClinicalReportUploads;
 
 //logs
 use Illuminate\Support\Facades\Log;
@@ -24,6 +25,7 @@ class BloodRoutineComponent extends Component
 {
     //traits
     use TBloodRoutine;
+    use TClinicalReportUploads;
 
     public $patient_uuid, $passObj, $entry=null;
 

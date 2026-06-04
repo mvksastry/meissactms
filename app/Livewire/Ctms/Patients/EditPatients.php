@@ -340,7 +340,12 @@ class EditPatients extends Component
         $this->p10 = true;
     }
 
-
+    public function fnPatientReportUploads($id)
+    {
+        //dd($id);
+        $this->closeAllPanels();
+        $this->p6 = true;
+    }
 
     public function closeAllPanels()
     {

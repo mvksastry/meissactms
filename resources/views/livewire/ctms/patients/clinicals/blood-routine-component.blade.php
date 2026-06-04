@@ -166,7 +166,7 @@
       <tr>
         <td colspan="6">
           <label>Laboratory Report File*</label>
-          <input wire:model.defer="form_a.lab_report_file" type="text"  class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form_a.lab_report_file" type="file"  class="form-control" placeholder="Report File" >
         </td>
       </tr>                                    
     </tbody>

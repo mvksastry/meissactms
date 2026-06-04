@@ -115,11 +115,11 @@
               </br>
               <div class="row">
                 <!-- /.col -->
-                <!--
+              
                 <div class="col-sm-3 col-md-2">
-                  <button  type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                  <button  wire:click="fnPatientReportUploads('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Reports</button>
                 </div>
-                -->
+              
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
                   <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
@@ -178,7 +178,7 @@
     @endif
 
     @if($p6)
-        @include('livewire.ctms.patients.edit.patient-radiography')
+        @livewire('ctms.patients.edit.edit-patient-reports', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if($p7)
