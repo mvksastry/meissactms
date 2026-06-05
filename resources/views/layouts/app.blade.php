@@ -18,12 +18,16 @@
 			@include('layouts.menus.sysadmin.admin')
 			@endhasexactroles
 
+			@hasexactroles('director')
+			@include('layouts.menus.ctms.director')
+			@endhasexactroles
+
 			@hasexactroles('ctms_incharge')
 			@include('layouts.menus.ctms.incharge')
 			@endhasexactroles	
 			
-			@hasexactroles('director')
-			@include('layouts.menus.ctms.director')
+			@hasexactroles('cro')
+			@include('layouts.menus.ctms.cro')
 			@endhasexactroles
 
 			@hasexactroles('clinical_manager')

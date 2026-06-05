@@ -239,6 +239,12 @@ class PatientInformation extends Component
             $this->activePatients->search_status = "approved/sealed";
         }
 
+        if( Auth::user()->hasAnyRole(['cro']) )
+		{
+            $this->activePatients = Patient::where('status', 'sealed')->get();
+            $this->activePatients->search_status = "sealed";
+        }
+
         if( Auth::user()->hasAnyRole(['director']) )
 		{
             $this->activePatients = Patient::all();

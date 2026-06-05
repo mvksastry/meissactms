@@ -49,6 +49,20 @@ class PatientsController extends Controller
             ]);;
         }
 
+        if( Auth::user()->hasAnyRole(['cro']) )
+		{   $all_centers = $this->getAllCenters();
+            $pwds = $this->getPatientDataDraftStatus();
+            $pwas = $this->getPatientDataActiveStatus();
+            $pwes = $this->getPatientDataExitedStatus();
+            return view('patients.cro.home')->with([
+
+                'all_centers' => $all_centers,
+                'pwds' => $pwds,
+                'pwas' => $pwas,
+                'pwes' => $pwes
+            ]);;
+        }
+
         if( Auth::user()->hasAnyRole('researcher') )
 		{
             return view('home');
