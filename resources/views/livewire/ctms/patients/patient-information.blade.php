@@ -169,11 +169,10 @@
               </br>
               <div class="row">
                 <!-- /.col -->
-                <!--
                 <div class="col-sm-3 col-md-2">
-                  <button type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                  <button wire:click="fnClinicalReports('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Reports</button>
                 </div>
-                -->
+                
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
                   <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>

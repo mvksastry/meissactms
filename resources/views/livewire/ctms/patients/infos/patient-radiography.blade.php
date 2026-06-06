@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Radiographs
+                  Clinical Reports
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -93,31 +93,11 @@
                         <div class="card-body">
                           <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                              @if($uploadImage)
-                                <div class="form-group">
-                                  <label for="exampleInputFile">File input</label>
-                                  <div class="input-group">
-                                    <div class="custom-file">
-                                      <input type="file" class="custom-file-input" wire:model="imageInputFile" id="imageInputFile">
-                                      <label class="custom-file-label" for="imageInputFile">Choose {{ $image_category }} file</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                      <button wire:click="uploadSelectedImage()" class="input-group-text">Upload</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              @endif
-                                @if ($imageInputFile)
-                                    Image Preview:
-                                    <img src="{{ $imageInputFile->temporaryUrl() }}" class="img-fluid" alt="Responsive image" style="opacity: .8">
-                                @endif
+
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_2">
-                              <livewire:ctms.end-controls />
-                              <button wire:click="fnSavePrimaryInfo()" class="btn btn-success text-white font-normal mt-3 rounded">ADD PRIMARY INFO</button>
-                            </div>
+
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->

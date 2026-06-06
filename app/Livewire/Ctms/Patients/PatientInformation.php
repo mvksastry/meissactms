@@ -356,7 +356,7 @@ class PatientInformation extends Component
         $this->p5 = true;
     }
 
-    public function fnRadiographsInfo($id)
+    public function fnClinicalReports($id)
     {
         //dd("reached");
         $this->fnResetAllVisiblePanels();
