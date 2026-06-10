@@ -34,6 +34,8 @@ use App\Models\Ctms\Clinicals\MicroscopicExam;
 use App\Models\Ctms\Clinicals\RenalFunction;
 use App\Models\Ctms\Clinicals\UrineRoutine;
 
+use App\Models\Ctms\ClinicalReports;
+
 //forms
 
 //traits, classes
@@ -213,6 +215,8 @@ class PatientInformation extends Component
     public $date_created;
     public $VAScore;
 
+    public $current_files;
+
     public function render()
     {
         if( Auth::user()->hasAnyRole(['clinical_dataentry', 'junior_resident']) )
@@ -359,6 +363,11 @@ class PatientInformation extends Component
     public function fnClinicalReports($id)
     {
         //dd("reached");
+        //dd($this->uuid);
+        $this->current_files = ClinicalReports::where('patient_uuid', $id)
+                                                ->where('report_status', 'valid')
+                                                ->get();
+        //dd($this->current_files);
         $this->fnResetAllVisiblePanels();
         $this->p6 = true;
     }
