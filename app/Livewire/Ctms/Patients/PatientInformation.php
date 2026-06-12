@@ -19,6 +19,7 @@ use App\Models\Ctms\ModqScore;
 use App\Models\Ctms\RMQReply;
 use App\Models\Ctms\PatientEpoch;
 
+
 use App\Models\Ctms\Clinicals\BloodRoutine;
 use App\Models\Ctms\Clinicals\BloodSugar;
 use App\Models\Ctms\Clinicals\BloodUrea;
@@ -43,6 +44,8 @@ use Livewire\WithFileUploads;
 
 //logs
 use Illuminate\Support\Facades\Log;
+
+use Illuminate\Support\Facades\Storage;
 
 class PatientInformation extends Component
 {
@@ -428,5 +431,15 @@ class PatientInformation extends Component
         $this->p8 = false;
         $this->p9 = false;
         $this->p10 = false;
+    }
+
+    public function fnDownloadReport($clinicalreport_id)
+    {
+        $rep_file = ClinicalReports::where('clinicalreport_id', $clinicalreport_id)->first();
+        //dd("reached", $rep_file);
+        $file_path = "app/public/".$rep_file->file_path.$rep_file->file_name;
+        //return Storage::disk('public')->download(storage_path($file_path), $rep_file->file_name);
+        //return Storage::disk('public')->path($file_path)->download($rep_file->file_name);
+        return response()->download(storage_path($file_path));
     }
 }
