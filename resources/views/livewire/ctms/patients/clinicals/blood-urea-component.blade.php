@@ -32,13 +32,7 @@
           <label>Blood Urea Nitrogen</label>
           <input wire:model.defer="form_c.blood_urea_nitrogen" type="text" class="form-control" placeholder="Blood Urea Nitrogen" >
         </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>BU & BUN Report File*</label>
-          <input wire:model.defer="form_c.bubun_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
-      </tr>  
+      </tr> 
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">

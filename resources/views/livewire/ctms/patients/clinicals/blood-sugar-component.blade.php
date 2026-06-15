@@ -36,12 +36,6 @@
           <label>Post-Prandial</label>
           <input wire:model.defer="form_b.post_prandial" type="text" class="form-control" placeholder="Post Prandial" >
         </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Blood Sugar Report File*</label>
-          <input wire:model.defer="form_b.bs_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
       </tr>     
     </tbody>
   </table>

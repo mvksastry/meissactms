@@ -60,13 +60,7 @@
           <label>Microscopic Report File*</label>
           <input wire:model.defer="form_n.me_report_file" type="file" class="form-control" placeholder="Report File" >
         </td>
-      </tr>       
-
-        <td colspan="6">
-          <label>Microscopi Exam Lab Report File*</label>
-          <input wire:model.defer="form_n.melr_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
-      </tr>                                    
+      </tr>                                          
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">

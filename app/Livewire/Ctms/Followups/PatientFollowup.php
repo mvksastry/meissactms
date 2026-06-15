@@ -1,0 +1,416 @@
+<?php
+
+namespace App\Livewire\Ctms\Followups;
+
+use Livewire\Component;
+use Livewire\Attributes\On; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+//models
+use App\Models\Ctms\Patient;
+use App\Models\Ctms\LifeStyle;
+use App\Models\Ctms\ClinicalData;
+use App\Models\Ctms\SensoryExamination;
+use App\Models\Ctms\Mdtre;
+use App\Models\Ctms\PfirmannGrade;
+use App\Models\Ctms\VAScore;
+use App\Models\Ctms\ModqScore;
+use App\Models\Ctms\RMQReply;
+
+//forms
+
+//traits
+
+//logs
+use Illuminate\Support\Facades\Log;
+use Livewire\WithFileUploads;
+//forms
+
+
+class PatientFollowup extends Component
+{
+
+    use WithFileUploads;
+
+    //default modq arrav values
+    public $painIntensity = [
+        0 => 'I can tolerate the pain I have without having to use pain medication.', 
+        1 => 'The pain is bad, but I can manage without having to take pain medication.', 
+        2 => 'Pain medication provides me with complete relief from pain.', 
+        3 => 'Pain medication provides me with moderate relief from pain.', 
+        4 => 'Pain medication has no effect on my pain.', 
+        5 => 'Pain medication has no effect on my pain.'
+    ];
+
+    public $persCare = [
+        0 => 'I can take care of myself normally without causing increased pain',
+        1 => 'I can take care of myself normally, but it increases my pain',
+        2 => 'It is painful to take care of myself, and I am slow and careful.',
+        3 => 'I need help, but I am able to manage most of my personal care.',
+        4 => 'I need help every day in most aspects of my care.',
+        5 => 'I do not get dressed, I wash with difficulty, and I stay in bed.'
+    ];
+
+    public $modq_lifting = [
+        0 => 'I can lift heavy weights without increased pain.',
+        1 => 'I can life heavy weights, but it causes increased pain.',
+        2 => 'Pain prevents me from lifting heavy weights off the floor, but I can manage if the weights are conveniently positioned (e.g. on a table).',
+        3 => 'Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned.',
+        4 => 'I can lift only very light weights.',
+        5 => 'I cannot lift or carry anything at all.'
+    ];
+
+    public $modq_walking = [
+        0 => 'Pain does not prevent me from walking any distance.',
+        1 => 'Pain prevents me from walking more than 1 mile.',
+        2 => 'Pain prevents me from walking more than 1/2 (half) mile.',
+        3 => 'Pain prevents me from walking more than 1/4 (quarter) mile.',
+        4 => 'I can walk only with crutches or a cane.',
+        5 => 'I am in bed most of the time and have to crawl to the toilet.'
+    ];
+
+    public $modq_sitting = [
+        0 => 'I can sit in any chair as long as I like.',
+        1 => 'I can only sit in my favourite chair as long as I like.',
+        2 => 'Pain prevents me from sitting for more than 1 hour.',
+        3 => 'Pain prevents me from sitting for more than 1/2 hour.',
+        4 => 'Pain prevents me from sitting for more than 10 minutes.',
+        5 => 'Pain prevents me from sitting at all.'
+    ];
+
+    public $modq_standing = [
+        0 => 'I can stand as long as I want without increased pain.',
+        1 => 'I can stand as long as I want, but it increases my pain.',
+        2 => 'Pain prevents me from standing for more than 1 hour.',
+        3 => 'Pain prevents me from standing for more than 1/2 hour.',
+        4 => 'Pain prevents me from standing for more than 10 minutes.',
+        5 => 'Pain prevents me from standing at all.',
+    ];
+
+
+    public $modq_sleeping = [
+        0 => 'Pain does not prevent me from sleeping well.',
+        1 => 'I can sleep well only by using pain medication.',
+        2 => 'Even when I take medication, I sleep less than 6 hours.',
+        3 => 'Even when I take medication, I sleep less than 4 hours.',
+        4 => 'Even when I take medication, I sleep less than 2 hours.',
+        5 => 'Pain prevents me from sleeping at all.',
+    ];
+
+    public $modq_sociallife = [
+        0 => 'My social life is normal and does not increase my pain.',
+        1 => 'My social life is normal, but it increases my level of pain.',
+        2 => 'Pain prevents me from participating in more energetic activities (e.g. sport, dancing).',
+        3 => 'Pain prevents me from going out very often.',
+        4 => 'Pain has restricted my social life to my home.',
+        5 => 'I have hardly any social life because of my pain.',
+    ];   
+
+
+    public $modq_travelling = [
+        0 => 'I can travel anywhere without increased pain.',
+        1 => 'I can travel anywhere, but it increases my pain.',
+        2 => 'My pain restricts my travel over 2 hours.',
+        3 => 'My pain restricts my travel over 1 hours.',
+        4 => 'My pain restricts my travel to short necessary journeys under 1/2 hours.',
+        5 => 'My pain prevents all travel except for visits to the physician/therapist or hospital.',
+    ]; 
+
+
+    public $modq_emphome = [
+        0 => 'My normal homemaking/job activities do not cause pain.',
+        1 => 'My normal homemaking/job activities increase my pain, but i can still perform all that is required of me.',
+        2 => 'I can perform most of my homemaking/job duties, but pain prevents me from performing more physically stressful activities(e.g. lifting, vacuuming).',
+        3 => 'Pain prevents me from doing anything but light duties.',
+        4 => 'Pain prevents me from doing even light duties.',
+        5 => 'Pain prevents me from performing any job or homemaking chores.',
+    ]; 
+
+    public $rmqreplies = [
+        1 => "I stay at home most of the time because of my back.",
+        2 => "I change position frequently to try to get my back comfortable.",
+        3 => "I walk more slowly than usual because of my back. ", 
+        4 => "Because of my back, I am not doing any jobs that I usually do around the house.", 
+        5 => "Because of my back, I use a handrail to get upstairs. ", 
+        6 => "Because of my back, I lie down to rest more often.  ", 
+        7 => "Because of my back, I have to hold on to something to get out of an easy chair.", 
+        8 => "Because of my back, I try to get other people to do things for me.", 
+        9 => "I get dressed more slowly than usual because of my back.", 
+        10 => "I only stand up for short periods of time because of my back.", 
+        11 => "Because of my back, I try not to bend or kneel down.  ", 
+        12 => "I find it difficult to get out of a chair because of my back.", 
+        13 => "My back is painful almost all of the time.", 
+        14 => "I find it difficult to turn over in bed because of my back.", 
+        15 => "My appetite is not very good because of my back.", 
+        16 => "I have trouble putting on my socks (or stockings) because of the pain in my back.", 
+        17 => "I can only walk short distances because of my back pain.", 
+        18 => "I sleep less well because of my back.", 
+        19 => "Because of my back pain, I get dressed with the help of someone else.", 
+        20 => "I sit down for most of the day because of my back.", 
+        21 => "I avoid heavy jobs around the house because of my back.", 
+        22 => "Because of back pain, I am more irritable and bad tempered with people than usual.", 
+        23 => "Because of my back, I go upstairs more slowly than usual.", 
+        24 => "I stay in bed most of the time because of my back.",
+    ];
+    //default panels
+    //default panels
+    public $patientInfoButtons = false;
+
+    //form status
+    public $form_status = null;
+    public $openAllOtherForms = false;
+    public $showPrimaryInfo = true;
+
+    //new paitent global uuid
+    public $patient_uuid, $entry="update";
+
+    //panel definitions
+    public $newPatientEntrySteps = false;
+    public $newClinicalInvestigationsEntrySteps = false;
+
+    //Errors, Alers, Callouts
+    public $sys_panel = false;
+    public $sysAlertSuccess = false, $sysAlertWarning = false, $sysAlertInfo = false, $sysAlertDanger = false;
+    public $msg_panel = false;
+    public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
+
+    //state of panel on or off
+    public $stateOfNewPatientEntrySteps = "off";
+
+    //Form openings
+    public $p1 = false;
+    public $p2 = false;
+    public $p3 = false;
+    public $p4 = false;
+    public $p5 = false;
+    public $p6 = false;
+
+    public $p7 = false;
+    public $p8 = false;
+    public $p9 = false;
+    public $p10 = false;
+    
+    //variables
+    public $aadhar_id, $pan_num, $other_id, $report_dateope, $dicharge_rep_file;
+    public $opd_id, $ipd_id, $admission_date, $form_header;
+
+    //data object variables
+    public $id;
+    public $patientPrimaryInfo;
+    public $ls_infox;
+    public $clinical_info;
+    public $sensoryexam_info;
+    public $mdtre_info;
+    public $pfirmangrade_info;
+    public $vascore_info;
+    public $modq_info;
+    public $rmq_replies;
+
+    //common to all
+    public $draftPatients;
+
+    public $cardTittle;
+    public $date_created;
+    public $VAScore;
+
+    // important
+    public $created_at;
+    public $empty_result;
+
+    public $follow_up = true;
+    public $data_type;
+
+    //edit route if user wants
+    public $edit_button = false;
+
+    //image upload related
+    public $image_category = null;
+    public $uploadImage = false;
+    public $imageInputFile;
+
+    //login credentials
+    public $entered_by;
+
+    //modals and callouts.
+
+    //public variable for checking status incomplete status
+    public $patient_data_status;
+
+    //logged user
+    public $logged_user;
+
+    public function render()
+    {
+        $this->entered_by = Auth::user()->name;
+        $this->logged_user = Auth::user()->name;
+        $this->patient_data_status = Patient::where('status','draft')->get();
+        $this->draftPatients = Patient::where('status','draft')->get();
+        return view('livewire.ctms.followups.patient-followup');
+    }
+
+    public function selectedPatient($id)
+    {
+        //dd($id);
+        $this->patient_uuid = $id;
+        $this->data_type = "follow_up";
+        //dd($this->patient_uuid);
+        $this->patientInfoButtons = true;
+    }
+
+    /*
+    public function fnRedirectToEdit()
+    {
+        Log::channel('patient')->info('User [ '.$this->logged_user.' ] Redirected to Edit Patients');
+        $this->redirect(EditPatients::class);
+    }
+    
+    //--- UI related code only ---//
+
+    //main panel opening only
+    public function fnNewPatientEntrySteps()
+    {
+        //reset and show
+        $this->form_status = "new";
+        $this->newPatientEntrySteps = false;
+
+        //show now.
+        $this->newPatientEntrySteps = true;
+    }
+    */
+
+    #[On('resetPanelsForNewMessages')] 
+    public function resetMessagePanels()
+    {
+        $this->msg_panel = false;
+        $this->sys_panel = false;
+        
+        $this->sysAlertInfo = false;
+        $this->sysAlertSuccess = false;
+        $this->sysAlertWarning = false;
+        $this->sysAlertDanger = false;
+
+        $this->comInfo = false;
+        $this->comSuccess = false;
+        $this->comDanger = false;
+        $this->comWarning = false;
+    }
+
+    /*
+    #[On('newPatientUuidGenerated')] 
+    public function setPatientUuid($id)
+    {
+        $this->patient_uuid = $id;
+        $this->resetMessagePanels();
+
+        $this->msg_panel = true;
+        $this->comSuccess = "New Patient ID [ '.$id.' ] Created";
+        Log::channel('patient')->info($this->comSuccess);
+        //dd("event emitted and understood");
+        $this->showPrimaryInfo = false;
+        $this->openAllOtherForms = true;
+    }
+    */
+
+    /*
+    //respective forms
+    public function fnShowPrimaryInfoForm()
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p1 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown New Patient Dashboard');
+    }
+
+    public function fnShowPrimaryInfoMesage()
+    {
+        $this->msg_panel = true;
+        $this->comWarning= "Patient Primary Info cannot be re-entered, Use Edit option";
+        Log::channel('patient')->info($this->comWarning);
+    }
+    */
+
+
+    public function fnFULifeStyleData($patient_uuid)
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p2 = true;
+        //dd($patient_uuid);
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Life Style Follow-up Dashboard');
+    }
+
+    public function fnFUClinicalInfo($patient_uuid)
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p3 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Clinical Invest Dashboard');
+    }
+
+    public function fnFUSensoryExamInfo($patient_uuid)
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p4 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Sensory Exam Dashboard');
+    }
+
+    public function fnFUMDTRExamInfo($patient_uuid)
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p5 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Sensory Exam Dashboard');
+    }
+
+
+
+
+    public function fnFUPatientReportUploads($patient_uuid)
+    {
+        dd("image upload reached");
+    }
+
+    public function fnFUModifiedPfirmannInfo($patient_uuid)
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p7 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Pfirmann Dashboard');
+    }
+
+    public function fnFUVisualAnalogInfo($patient_uuid)
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p8 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown VA Score Dashboard');
+    }
+
+    public function fnFUMODIQInfo($patient_uuid)
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p9 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown MODQ Score Dashboard');
+    }
+
+    public function fnFURMQInfo($patient_uuid) 
+    {
+        $this->fnResetAllVisiblePanels();
+        $this->p10 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown RMQ Score Dashboard');
+    }
+
+    public function fnResetAllVisiblePanels()
+    {
+        $this->p1 = false;
+        $this->p2 = false;
+        $this->p3 = false;
+        $this->p4 = false;
+        $this->p5 = false;
+        $this->p6 = false;
+        $this->p7 = false;
+        $this->p8 = false;
+        $this->p9 = false;
+        $this->p10 = false;
+    }
+
+    //--- UI related code ends here ---//
+
+
+
+
+}

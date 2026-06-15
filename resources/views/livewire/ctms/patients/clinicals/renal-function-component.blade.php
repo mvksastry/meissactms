@@ -29,13 +29,7 @@
           <input wire:model.defer="form_m.uric_acid" type="text" class="form-control" placeholder="Uric Acid">
         </td>
 
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Uric Acid Report File*</label>
-          <input wire:model.defer="form_m.uricacid_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
-      </tr>       
+      </tr>      
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">

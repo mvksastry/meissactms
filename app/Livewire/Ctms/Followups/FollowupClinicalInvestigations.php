@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Ctms\Patients;
+namespace App\Livewire\Ctms\Followups;
 
 use Livewire\Component;
 use Livewire\Attributes\On; 
@@ -19,9 +19,9 @@ use App\Traits\TCtms\TPatientClinicalData;
 //logs
 use Illuminate\Support\Facades\Log;
 
-class PatientClinicalInvestigations extends Component
+class FollowupClinicalInvestigations extends Component
 {
-    //Trait
+   //Trait
     use TPatientClinicalData;
 
     //Form bindings
@@ -49,7 +49,7 @@ class PatientClinicalInvestigations extends Component
 
     public function mount($patient_uuid)
     {
-        //dd($patient_uuid, $entry);
+        //dd($patient_uuid);
         $this->patient_uuid = $patient_uuid;
         $passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $passObj->opd_id;
@@ -60,11 +60,6 @@ class PatientClinicalInvestigations extends Component
         //dd($passObj, $this->form);
     }
 
-    public function loadFormData()
-    {
-
-    }
-    
     public function fnSaveClinicalData()
     {
         $this->input = $this->form->all();

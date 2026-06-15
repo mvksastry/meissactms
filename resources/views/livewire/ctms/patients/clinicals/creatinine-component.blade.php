@@ -28,12 +28,6 @@
           <label>Serum Creatinine</label>
           <input wire:model.defer="form_e.serum_creatinine" type="text" class="form-control" placeholder="Serum Creatinine" >
         </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Creatinine Report File</label>
-          <input wire:model.defer="form_e.creatine_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
       </tr> 
     </tbody>
   </table>

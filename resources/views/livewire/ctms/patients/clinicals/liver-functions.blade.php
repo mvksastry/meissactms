@@ -70,12 +70,6 @@
           <input wire:model.defer="form_k.alkaline_phosphatase" type="text" value="null" class="form-control" placeholder="Alkaline Phos" >
         </td>
       </tr>
-      <tr>
-        <td colspan="6">
-          <label>Liver Report File*</label>
-          <input wire:model.defer="form_k.lft_report_file" type="file" value="null" class="form-control" placeholder="Report File" >
-        </td>
-      </tr>
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">

@@ -44,10 +44,6 @@
           <label>ISI</label>
           <input wire:model.defer="form_j.isi" type="text" class="form-control" placeholder="ISI" >
         </td>
-        <td colspan="6">
-          <label>Report File</label>
-          <input wire:model.defer="form_j.path_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
       </tr>                                  
     </tbody>
   </table>

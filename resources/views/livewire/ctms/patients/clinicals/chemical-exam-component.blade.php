@@ -50,13 +50,7 @@
           <label>Bile Pigments</label>
           <input wire:model.defer="form_d.bile_pigments" type="text" class="form-control" placeholder="Bile Pigments" >
         </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <label>Chemical Examination Report File*</label>
-          <input wire:model.defer="form_d.ce_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
-      </tr>                                    
+      </tr>                                   
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">

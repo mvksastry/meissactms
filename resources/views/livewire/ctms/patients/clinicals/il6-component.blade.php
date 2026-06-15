@@ -29,10 +29,6 @@
           <label>IL-6</label>
           <input wire:model.defer="form_i.il6" type="text" class="form-control" placeholder="IL-6" >
         </td>
-        <td colspan="5">
-          <label>IL-6 Report File*</label>
-          <input wire:model.defer="form_i.il6_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
       </tr>                               
     </tbody>
   </table>

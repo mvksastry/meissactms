@@ -28,10 +28,6 @@
           <label>CRP</label>
           <input wire:model.defer="form_f.crp" type="text" class="form-control" placeholder="CRP" >
         </td>
-        <td colspan="5">
-          <label>CRP Report File</label>
-          <input wire:model.defer="form_f.crp_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
       </tr>                              
     </tbody>
   </table>
