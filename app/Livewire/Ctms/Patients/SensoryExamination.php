@@ -58,6 +58,4 @@ class SensoryExamination extends Component
         //dd($result); //
     }
 
-
-
 }
