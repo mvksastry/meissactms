@@ -126,6 +126,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 1;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->primaryinfos->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -199,6 +200,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 3;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->lifestyle->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -274,6 +276,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 31;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->blood_routine->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -333,6 +336,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 32;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->blood_sugar->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -391,6 +395,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 33;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->blood_urea->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -450,6 +455,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 34;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->chem_exams->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -510,6 +516,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 35;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->creatinine->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -573,6 +580,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 36;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->crp->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -632,6 +640,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 37;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->electrolytes->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -691,6 +700,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 38;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->il6->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -751,6 +761,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 39;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->lab_exams->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -812,6 +823,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 40;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->liver_function->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -874,6 +886,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 41;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->microscopic_exam->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -935,6 +948,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 42;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->renal_function->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -993,6 +1007,7 @@ class EditPatientReports extends Component
             //    'blood_routine' => 'file|max:2048', // max 2MB
             //]);
             $input['file_code'] = 43;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->urine_routine->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1067,6 +1082,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 4;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->lifestyle->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1140,6 +1156,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 5;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->mdtre->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1212,6 +1229,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 6;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->pfirmanscore->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1285,6 +1303,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 7;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->vascore->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1358,6 +1377,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 8;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->modqscore->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1430,6 +1450,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 9;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->rmqscore->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1502,6 +1523,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 10;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->miscoff1->getClientOriginalExtension();
             $input['file_path'] = $file_path;
@@ -1562,6 +1584,7 @@ class EditPatientReports extends Component
             //]);
             
             $input['file_code'] = 1;
+            $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->miscoff2->getClientOriginalExtension();
             $input['file_path'] = $file_path;
