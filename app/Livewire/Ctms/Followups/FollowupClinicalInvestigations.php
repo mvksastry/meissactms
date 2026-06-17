@@ -58,6 +58,7 @@ class FollowupClinicalInvestigations extends Component
         $this->form->entered_by = $passObj->entered_by;
         $this->form->entry_date = date('Y-m-d');
         //dd($passObj, $this->form);
+       
     }
 
     public function fnSaveClinicalData()

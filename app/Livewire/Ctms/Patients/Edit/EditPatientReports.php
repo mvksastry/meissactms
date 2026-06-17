@@ -1643,11 +1643,6 @@ class EditPatientReports extends Component
 
 
 
-
-
-
-
-
     public function getOldFileInfo($code)
     {
         return $oldfile = ClinicalReports::where('patient_uuid',$this->uuid)

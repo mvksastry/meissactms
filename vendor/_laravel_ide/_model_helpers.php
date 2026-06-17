@@ -3177,6 +3177,7 @@ namespace App\Models\Ctms {
      * @property string|null $tags
      * @property string $report_description
      * @property string $report_category
+     * @property string|null $file_uuid
      * @property int|null $file_code
      * @property string $patient_uuid
      * @property int $clinicalreport_id
@@ -3187,6 +3188,7 @@ namespace App\Models\Ctms {
      * @method static \Illuminate\Database\Eloquent\Builder<ClinicalReports>|ClinicalReports whereClinicalreportId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ClinicalReports>|ClinicalReports wherePatientUuid($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ClinicalReports>|ClinicalReports whereFileCode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ClinicalReports>|ClinicalReports whereFileUuid($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ClinicalReports>|ClinicalReports whereReportCategory($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ClinicalReports>|ClinicalReports whereReportDescription($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ClinicalReports>|ClinicalReports whereTags($value)

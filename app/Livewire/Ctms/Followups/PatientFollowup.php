@@ -342,6 +342,7 @@ class PatientFollowup extends Component
         $this->fnResetAllVisiblePanels();
         $this->p3 = true;
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Clinical Invest Dashboard');
+        $this->dispatch('renderChart');
     }
 
     public function fnFUSensoryExamInfo($patient_uuid)
@@ -358,12 +359,12 @@ class PatientFollowup extends Component
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Sensory Exam Dashboard');
     }
 
-
-
-
     public function fnFUPatientReportUploads($patient_uuid)
     {
-        dd("image upload reached");
+        $this->fnResetAllVisiblePanels();
+        $this->p6 = true;
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Shown File Report Dashboard');
+        //dd("image upload reached");
     }
 
     public function fnFUModifiedPfirmannInfo($patient_uuid)

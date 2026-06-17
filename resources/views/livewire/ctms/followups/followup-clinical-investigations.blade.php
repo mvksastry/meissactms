@@ -165,6 +165,10 @@
                   </div>
                   <!--Divider-->
                   <hr class="border-b-2 border-warning my-2 mx-2">
+                  <!-- BAR CHART -->
+                  <livewire:charts.clinical-data-chart />
+                  <!-- /.card -->
+                  <hr class="border-b-2 border-warning my-2 mx-2">
                   <!--Divider-->
                 </div>
               </div><!-- /.card-body -->
@@ -174,3 +178,5 @@
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
+
+<!-- ChartJS -->
