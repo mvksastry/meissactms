@@ -46,7 +46,7 @@
     <div class="col-3">
       <div class="card card-success">
         <div class="card-header">
-          <h3 class="card-title">Basophils </h3>
+          <h3 class="card-title">CRP - Date </h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
               <i class="fas fa-minus"></i>
@@ -183,20 +183,51 @@
     });
 
     const ctxBaso = document.getElementById('basoChart');
+    const labels = ['2025-06-12', '2025-09-12', '2025-12-14', '2026-12-17', 
+                  '2026-01-29', '2026-03-02', '2026-06-22'];
+    const crpDatedata = [1.4, 2.93, 3.3, 3.4, 4.4, 2.4, 1.9];
+
+    const dataPoints1 = [
+        { x: '2025-06-12', y: 1.4 },        
+        { x: '2025-09-12', y: 2.93 },
+        { x: '2025-12-14', y: 3.3 },
+        { x: '2026-12-17', y: 3.4 },
+        { x: '2026-01-29', y: 4.4 },
+        { x: '2026-03-02', y: 2.4 },
+        { x: '2026-06-22', y: 1.9 }
+    ];
+
+    const dataPoints2 = [
+        { x: '2025-06-12', y: 2.4 },        
+        { x: '2025-09-12', y: 1.93 },
+        { x: '2025-12-14', y: 5.3 },
+        { x: '2026-12-17', y: 5.4 },
+        { x: '2026-01-29', y: 2.2 },
+        { x: '2026-03-02', y: 1.4 },
+        { x: '2026-06-22', y: 0.9 }
+    ];
+
 
     new Chart(ctxBaso, {
-        type: 'scatter',
-        //labels: ['Hb', 'WBC', 'RBC', 'Baso', 'Neutrophils', 'Eisono'],
+        type: 'line',
+        
+        
         data: {
-          datasets: [{
-            label: 'Clinical Parameters',
-            data: [
-                {x: '0', y: 0}, 
-                {x: 'Baso', y: 2}, 
-                {x: 'Baso', y: 3}],
+          
+          datasets: [
+            {
+            label: labels,
+            data: dataPoints1,
             borderColor: 'rgb(0, 99, 132)',
             backgroundColor: 'rgb(255, 99, 132)',
-          }]
+            },
+            {
+            label: labels,
+            data: dataPoints2,
+            borderColor: 'rgb(0, 176, 132)',
+            backgroundColor: 'rgb(255, 140, 132)',
+            }
+          ],
         },
         options: {
           responsive: true,
@@ -206,14 +237,10 @@
             },
             title: {
               display: true,
-              text: 'Basophils'
+              text: 'CRP'
             }
           },
         scales: {
-                  x: {
-            type: 'category',
-            position: 'bottom'
-            },
             y: {
             beginAtZero: true
             }
@@ -228,8 +255,9 @@
         type: 'scatter',
         //labels: ['Hb', 'WBC', 'RBC', 'Baso', 'Neutrophils', 'Eisono'],
         data: {
-          datasets: [{
-            label: 'CRP',
+          datasets: [
+            {
+            label: 'P1',
             data: [
                 {x: '1', y: 1.4}, 
                 {x: '1', y: 2.93},
@@ -237,10 +265,28 @@
                 {x: '1', y: 3.4},
                 {x: '1', y: 4.4},
                 {x: '1', y: 2.4},
-                {x: '1', y: 1.9}],
+                {x: '1', y: 1.9}
+              ],
             borderColor: 'rgb(0, 99, 132)',
             backgroundColor: 'rgb(255, 99, 132)',
-          }]
+          },
+          {
+            label: 'P2',
+            data: [
+                {x: '2', y: 2.4}, 
+                {x: '2', y: 1.93},
+                {x: '2', y: 5.3},
+                {x: '2', y: 5.4},
+                {x: '2', y: 2.2},
+                {x: '2', y: 1.4},
+                {x: '2', y: 0.9}
+              ],
+            borderColor: 'rgb(0, 176, 132)',
+            backgroundColor: 'rgb(255, 140, 132)',
+          }
+        
+        
+        ]
         },
         options: {
           responsive: true,
@@ -256,7 +302,7 @@
         scales: {
                   x: {
             min: 0,
-            max: 2,
+            max: 4,
             type: 'linear',
             position: 'bottom'
             },
