@@ -25,7 +25,7 @@
     <div class="col-3">
       <div class="card card-success">
         <div class="card-header">
-          <h3 class="card-title">Eisonophils </h3>
+          <h3 class="card-title">CRP Days </h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
               <i class="fas fa-minus"></i>
@@ -106,7 +106,7 @@
           datasets: [{
             label: 'Hemoglobin',
             data: [
-                {x: '0', y: 0}, 
+                
                 {x: 'Hb', y: 13}, 
                 {x: 'Hb', y: 16},
                 {x: 'Hb', y: 15},
@@ -142,22 +142,44 @@
       }
     });
 
-
+////////////////////////////////////////////////////////////
+<?php
+$crpvals = $chartData;
+$xlabels = json_encode($crpvals['labels']);
+$ydata = json_encode($crpvals['datasets'][0]['data']);
+$crpvals = json_encode($yaxis);
+//dd($crpvals, $xlabels, $ydata, $yaxis);
+?>
     const ctxEiso = document.getElementById('eisoChart');
+    const xaxis = <?php echo $xlabels; ?>;
+    const crpx  = <?php echo $ydata; ?>;
+    const crpc  = <?php echo $crpvals; ?>;
+    
+    /*
+                    for (var i in crpx) {
+                        crpd.push(crpx[i]);
+                       
+                    }
+  */
+  //console.log(xaxis);
+  //console.log(crpx);
 
-    new Chart(ctxEiso, {
-        type: 'scatter',
-        //labels: ['Hb', 'WBC', 'RBC', 'Baso', 'Neutrophils', 'Eisono'],
+
+      new Chart(ctxEiso, {
+        type: 'line',
+        
         data: {
-          datasets: [{
-            label: 'Clinical Parameters',
-            data: [
-                {x: '0', y: 0}, 
-                {x: 'Eiso', y: 16}, 
-                {x: 'Eiso', y: 23}],
-            borderColor: 'rgb(0, 99, 132)',
-            backgroundColor: 'rgb(255, 99, 132)',
-          }]
+          labels: xaxis,
+
+          datasets: [
+            {
+              
+              label: 'CRP',
+              data: crpc,
+              borderColor: 'rgb(0, 99, 132)',
+              backgroundColor: 'rgb(255, 99, 132)',
+            }
+          ]
         },
         options: {
           responsive: true,
@@ -167,12 +189,16 @@
             },
             title: {
               display: true,
-              text: 'Eisonophils'
+              text: 'CRP - Days'
             }
           },
         scales: {
-                  x: {
-            type: 'category',
+            x: {
+            display: true,
+            title: {
+              display: true,
+              text: 'Days'
+            },
             position: 'bottom'
             },
             y: {
@@ -181,7 +207,10 @@
         }
       }
     });
+    
+      
 
+/////////////////////////////////////////////////////////////////
     const ctxBaso = document.getElementById('basoChart');
     const labels = ['2025-06-12', '2025-09-12', '2025-12-14', '2026-12-17', 
                   '2026-01-29', '2026-03-02', '2026-06-22'];
@@ -210,8 +239,6 @@
 
     new Chart(ctxBaso, {
         type: 'line',
-        
-        
         data: {
           
           datasets: [
