@@ -202,7 +202,20 @@ $crpvals = json_encode($yaxis);
             position: 'bottom'
             },
             y: {
-            beginAtZero: true
+            beginAtZero: true,
+              title: {
+                display: true,
+                text: 'CRP-mg/L',
+                color: '#191',
+                font: {
+                  family: 'Times',
+                  size: 14,
+                  style: 'normal',
+                  lineHeight: 1.2
+                }
+              }
+
+
             }
         }
       }
