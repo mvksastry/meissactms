@@ -70,8 +70,10 @@ class EditPatientReports extends Component
     ];
 
     //uuid of the patient
-    public $uuid;
+    public $uuid, $file_uuid;
     public $current_files;
+
+    public $includedReps = [], $all_in_one_file;
 
     public $blood_routine, $blood_sugar, $blood_urea;
     public $chem_exams, $creatinine, $electrolytes, $il6, $lab_exams, $liver_function; 
@@ -104,7 +106,8 @@ class EditPatientReports extends Component
 
     public function fileUuid()
     {
-        $uuid = Str::uuid()->toString();
+        $this->file_uuid = Str::uuid()->toString();
+        return $this->file_uuid;
     }
 
     public function fnUploadPrimaryInfos()
@@ -267,6 +270,32 @@ class EditPatientReports extends Component
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
+
+        
+
+        if($this->all_in_one_file) {
+
+            //dd($this->includedReps);
+            //dd($this->all_in_one_file);
+
+            $input['file_uuid'] = $this->fileUuid();
+            $input['file_name'] = $this->generateCode(12).'.'.$this->all_in_one_file->getClientOriginalExtension();
+            $input['file_path'] = $file_path;
+
+            //first upload the file and then make an entry
+            //looks like first time insertion go ahead.
+            $path = $this->all_in_one_file->storeAs($file_path, $input['file_name'], 'public');
+            //dd($input);
+            foreach($this->includedReps as $val)
+            {
+                $input['file_code'] = $val;
+                $input['report_description'] = $this->file_codex[$input['file_code']];
+                $newFile = ClinicalReports::insert($input);
+            }
+            
+            $this->all_in_one_file = null;
+            $this->iter1++;
+        }
 
         // Check if $file is a Livewire temporary uploaded file
         if ($this->blood_routine) {

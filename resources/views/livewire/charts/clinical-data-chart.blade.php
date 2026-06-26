@@ -281,8 +281,27 @@ $crpvals = json_encode($yaxis);
             }
           },
         scales: {
+            x: {
+            display: true,
+            title: {
+              display: true,
+              text: 'Date'
+            },
+            position: 'bottom'
+            },
             y: {
-            beginAtZero: true
+            beginAtZero: true,
+              title: {
+                display: true,
+                text: 'CRP-mg/L',
+                color: '#191',
+                font: {
+                  family: 'Times',
+                  size: 14,
+                  style: 'normal',
+                  lineHeight: 1.2
+                }
+              }
             }
         }
       }
@@ -322,7 +341,7 @@ $crpvals = json_encode($yaxis);
                 {x: '2', y: 0.9}
               ],
             borderColor: 'rgb(0, 176, 132)',
-            backgroundColor: 'rgb(255, 140, 132)',
+            backgroundColor: 'rgb(0, 0, 0)',
           }
         
         
@@ -347,7 +366,20 @@ $crpvals = json_encode($yaxis);
             position: 'bottom'
             },
             y: {
-            beginAtZero: true
+            beginAtZero: true,
+              title: {
+                display: true,
+                text: 'CRP-mg/L',
+                color: '#191',
+                font: {
+                  family: 'Times',
+                  size: 14,
+                  style: 'normal',
+                  lineHeight: 1.2
+                }
+              }
+
+
             }
         }
       }
