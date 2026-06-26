@@ -202,25 +202,35 @@
                                   <tr>
                                     <td>
                                       <div class="checkbox-container">
-                                        <label><input wire:model.defer="includedReps" value="31" type="checkbox">Blood Routine</label>
-                                        <label><input wire:model.defer="includedReps" value="32" type="checkbox"> Blood Sugar</label>
-                                        <label><input wire:model.defer="includedReps" value="33" type="checkbox"> Blood Urea</label>
-                                        <label><input wire:model.defer="includedReps" value="34" type="checkbox"> Chem Exams</label>
-                                        <label><input wire:model.defer="includedReps" value="35" type="checkbox"> Creatinine</label>
-                                        <label><input wire:model.defer="includedReps" value="36" type="checkbox"> CRP</label>
-                                        <label><input wire:model.defer="includedReps" value="37" type="checkbox"> Electrolytes</label>
+                                        <label class="p-2"><input checked="{{ $state }}"" wire:model.defer="includedReps" value="31" type="checkbox">Blood Routine</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="32" type="checkbox"> Blood Sugar</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="33" type="checkbox"> Blood Urea</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="34" type="checkbox"> Chem Exams</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="35" type="checkbox"> Creatinine</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="36" type="checkbox"> CRP</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="37" type="checkbox"> Electrolytes</label>
                                       </div>                          
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <div class="checkbox-container">
-                                        <label><input wire:model.defer="includedReps" value="38" type="checkbox"> IL6</label>
-                                        <label><input wire:model.defer="includedReps" value="39" type="checkbox">Lab Exams</label>
-                                        <label><input wire:model.defer="includedReps" value="40" type="checkbox"> LFT</label>
-                                        <label><input wire:model.defer="includedReps" value="41" type="checkbox"> Mic Invest</label>
-                                        <label><input wire:model.defer="includedReps" value="42" type="checkbox"> RFT</label>
-                                        <label><input wire:model.defer="includedReps" value="43" type="checkbox"> Urine Routine</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="38" type="checkbox"> IL6</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="39" type="checkbox">Lab Exams</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="40" type="checkbox"> LFT</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="41" type="checkbox"> Mic Invest</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="42" type="checkbox"> RFT</label>
+                                        <label class="p-2"><input wire:model.defer="includedReps" value="43" type="checkbox"> Urine Routine</label>
+                                      </div>                          
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <div class="checkbox-container">
+                                        <label class="p-2"><input wire:model.live="checkedall" type="checkbox"> Check All</label>    
+                                        @if($state)                                  
+                                          <label class="p-2"><input wire:model.live="uncheckall" type="checkbox"> Uncheck All</label> 
+                                        @endif
                                       </div>                          
                                     </td>
                                   </tr>

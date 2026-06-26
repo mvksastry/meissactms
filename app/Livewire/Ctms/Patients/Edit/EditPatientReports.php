@@ -71,12 +71,12 @@ class EditPatientReports extends Component
 
     //uuid of the patient
     public $uuid, $file_uuid;
-    public $current_files;
+    public $current_files, $checkedall, $uncheckall, $state = false;
 
     public $includedReps = [], $all_in_one_file;
 
     public $blood_routine, $blood_sugar, $blood_urea;
-    public $chem_exams, $creatinine, $electrolytes, $il6, $lab_exams, $liver_function; 
+    public $chem_exams, $creatinine, $electrolytes, $crp, $il6, $lab_exams, $liver_function; 
     public $microscopic_exam, $renal_function, $urine_routine;
 
     public $iter1;
@@ -258,7 +258,34 @@ class EditPatientReports extends Component
     }
 
 
+    public function updatedCheckedall($value) 
+    {
+        //$this->includedReps = array_slice($this->file_codex, 12);
+        if($this->checkedall)
+        {
+            $this->state = true;
+            
+            $codex = array_slice($this->file_codex, 12, null, true);
+            //dd($codex);
+            foreach($codex as $key => $value)
+            {
+                    //$codes[] = $key;
+                    $this->includedReps[] = $key;
+                    
+            }
+        }
+        else {
+            $this->state = false;
+            $this->includedReps = [];
+        }
+        //dd("checked all", $this->includedReps);
+    }
 
+    public function updatedUncheckall($value)
+    {
+        $this->includedReps = [];
+        $this->state = false;
+    }
 
     public function fnUploadClinicalReports()
     {
@@ -292,7 +319,7 @@ class EditPatientReports extends Component
                 $input['report_description'] = $this->file_codex[$input['file_code']];
                 $newFile = ClinicalReports::insert($input);
             }
-            
+
             $this->all_in_one_file = null;
             $this->iter1++;
         }

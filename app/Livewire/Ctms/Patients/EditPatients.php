@@ -150,6 +150,7 @@ class EditPatients extends Component
         23 => "Because of my back, I go upstairs more slowly than usual.", 
         24 => "I stay in bed most of the time because of my back.",
     ];
+
     //default panels
     public $patientInfoButtons = false;
 
