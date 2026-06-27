@@ -101,7 +101,13 @@ class EditPatientReports extends Component
 
     public function fnDownloadReport($id)
     {
-        dd($id);
+        //dd($id);
+        $rep_file = ClinicalReports::where('clinicalreport_id', $id)->first();
+        //dd("reached", $rep_file);
+        $file_path = "app/public/".$rep_file->file_path.$rep_file->file_name;
+        //return Storage::disk('public')->download(storage_path($file_path), $rep_file->file_name);
+        //return Storage::disk('public')->path($file_path)->download($rep_file->file_name);
+        return response()->download(storage_path($file_path));
     }
 
     public function fileUuid()
