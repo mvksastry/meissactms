@@ -37,7 +37,7 @@
                       <!-- Custom Tabs -->
                       <div class="card">
                         <div class="card-header d-flex p-0">
-                          <h3 class="card-title p-3">Information x</h3>
+                          <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
                             <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Life Style</a></li>
@@ -56,15 +56,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       </br>{{ $ls_info->opd_id }}
                                   </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       </br>{{ $ls_info->in_patient_id }}
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       </br>{{ $ls_info->admission_date }}
                                     </td>
                                   </tr> 
@@ -82,27 +82,27 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Cross Leg Sitting*</label>
+                                      <label>Cross Leg Sitting</label>
                                       </br>{{ $ls_info->cross_leg_sitting }}
                                     </td>
                                     <td>
-                                      <label>Standing*</label>
+                                      <label>Standing</label>
                                       </br>{{ $ls_info->standing }}
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       </br>{{ $ls_info->ls3 }}
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       </br>{{ $ls_info->ls4 }}
                                   </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       </br>{{ $ls_info->ls5 }}
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       </br>{{ $ls_info->ls6 }}
                                     </td>
                                   </tr>
@@ -135,11 +135,11 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $ls_info->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Entry Date</label>
                                       </br>{{ $ls_info->entry_date }}
                                     </td>
                                   </tr>
@@ -151,11 +151,11 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Verified By*</label>
+                                      <label>Verified By</label>
                                       </br>{{ $ls_info->verified_by }}
                                     </td>
                                     <td>
-                                      <label>Verified Date*</label>
+                                      <label>Verified Date</label>
                                       </br>{{ $ls_info->verified_date }}
                                     </td>
                                   </tr>
@@ -167,11 +167,11 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Entry Sealed By*</label>
+                                      <label>Entry Sealed By</label>
                                       </br>{{ $ls_info->entry_sealed_by }}
                                     </td>
                                     <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                      <label>Sealed Date</label>
                                       </br>{{ $ls_info->entry_sealed_date }}
                                     </td>
                                   </tr>

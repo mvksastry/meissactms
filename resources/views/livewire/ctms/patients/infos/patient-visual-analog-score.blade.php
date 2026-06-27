@@ -82,16 +82,16 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       </br>{{  $vascore_info->opd_id }}
                                       
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       </br>{{  $vascore_info->opd_id }}
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       </br>{{  $vascore_info->opd_id }}
                                      </td>
                                   </tr>
@@ -149,33 +149,33 @@
                                 <tbody>        
                                   <tr>
                                     <td colspan="2">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $vascore_info->comment_entered_by }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $vascore_info->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Entry Date</label>
                                       </br>{{ $vascore_info->entry_date }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="2">
-                                      <label>Verified By Verified</label>
+                                      <label>Verified By Comment</label>
                                       </br>{{ $vascore_info->comment_verified_by }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Verified By*</label>
+                                      <label>Verified By</label>
                                       </br>{{ $vascore_info->verified_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Verified Date*</label>
+                                      <label>Verified Date</label>
                                       </br>{{ $vascore_info->verified_date }}
                                     </td>
                                   </tr>
@@ -187,11 +187,11 @@
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entry Sealed By*</label>
+                                      <label>Entry Sealed By</label>
                                       </br>{{ $vascore_info->entry_sealed_by }}
                                     </td>
                                     <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                      <label>Sealed Date</label>
                                       </br>{{ $vascore_info->entry_sealed_date }}
                                     </td>
                                   </tr>

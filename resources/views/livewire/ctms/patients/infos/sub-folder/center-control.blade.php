@@ -7,28 +7,28 @@
     <tbody> 
       <tr>
         <td colspan="1">
-          <label>Center*</label>
+          <label>Center</label>
         </br>
             {{ $patientPrimaryInfo->center_id }}
         </td>
         <td colspan="1">
-          <label>Select Arm*</label>
+          <label>Select Arm</label>
           </br>
           {{ $patientPrimaryInfo->ctarm_id }}
         </td>
         <td colspan="1">
-          <label>Opd ID*</label>
+          <label>Opd ID</label>
           </br>
           {{ $patientPrimaryInfo->opd_id }}
           
         </td>
         <td colspan="1">
-          <label>In Patient ID*</label>
+          <label>In Patient ID</label>
           </br>
           {{ $patientPrimaryInfo->in_patient_id }}
         </td>
         <td colspan="1">
-          <label>Admission Date*</label>
+          <label>Admission Date</label>
           </br>
           {{ $patientPrimaryInfo->admission_date }}
         </td>

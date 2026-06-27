@@ -66,15 +66,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       </br>{{  $pfirmangrade_info->opd_id }}
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       </br>{{  $pfirmangrade_info->in_patient_id }}
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       </br>{{  $pfirmangrade_info->admission_date }}
                                      </td>
                                   </tr>
@@ -92,7 +92,7 @@
                                 <tbody>        
                                   <tr>
                                     <td>
-                                      <label>Modified Pfirmann Grade (see Image on left as guide)*</label>
+                                      <label>Modified Pfirmann Grade (see Image on left as guide)</label>
                                       </br>{{ $pfirmangrade_info->modified_pfirman_grade }}
                                     </td>
                                   </tr>
@@ -112,17 +112,17 @@
                                 <tbody>        
                                   <tr>
                                     <td colspan="2">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $pfirmangrade_info->comment_entered_by }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $pfirmangrade_info->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Entry Date</label>
                                       </br>{{ $pfirmangrade_info->entry_date }}
                                     </td>
                                   </tr>
@@ -134,11 +134,11 @@
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Verified By*</label>
+                                      <label>Verified By</label>
                                       </br>{{ $pfirmangrade_info->verified_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Verified Date*</label>
+                                      <label>Verified Date</label>
                                       </br>{{ $pfirmangrade_info->verified_date }}
                                     </td>
                                   </tr>
@@ -150,11 +150,11 @@
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entry Sealed By*</label>
+                                      <label>Entry Sealed By</label>
                                       </br>{{ $pfirmangrade_info->entry_sealed_by }}
                                     </td>
                                     <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                      <label>Sealed Date</label>
                                       </br>{{ $pfirmangrade_info->entry_sealed_date }}
                                     </td>
                                   </tr>

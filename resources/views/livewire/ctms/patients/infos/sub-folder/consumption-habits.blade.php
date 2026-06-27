@@ -7,25 +7,25 @@
     <tbody>        
       <tr>
         <td colspan="1">
-          <label>Consumption Non Tobacco Gutka Pan*</label>
+          <label>Consumption Non Tobacco Gutka Pan</label>
           </br>{{ $patientPrimaryInfo->consumption_non_tgp }}
         </td>
         <td colspan="1">
-          <label>Tobacco*</label>
+          <label>Tobacco</label>
           </br>{{ $patientPrimaryInfo->consumption_tobacco }}
         </td>
         <td colspan="1">
-          <label>Gutka*</label>
+          <label>Gutka</label>
           </br>{{ $patientPrimaryInfo->consumption_gutka }}
         </td>
       </tr>
       <tr>
         <td colspan="1">
-          <label>Pan / Masala*</label>
+          <label>Pan / Masala</label>
           </br>{{ $patientPrimaryInfo->consumption_pan }}
         </td>
         <td colspan="2">
-          <label>Any Other*</label>
+          <label>Any Other</label>
           </br>{{ $patientPrimaryInfo->anyother_habbits }}
         </td>
       </tr>

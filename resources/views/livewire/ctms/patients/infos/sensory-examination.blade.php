@@ -32,7 +32,7 @@
                     <div class="col-6">
                       <div class="card">
                         <div class="card-header d-flex p-0">
-                          <h3 class="card-title p-3">Guide Image x</h3>
+                          <h3 class="card-title p-3">Guide Image</h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <table id="userIndex2" class="table table-sm table-bordered table-hover">
@@ -75,15 +75,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       </br>{{  $sensoryexam_info->opd_id }}
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       </br>{{  $sensoryexam_info->opd_id }}
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       </br>{{  $sensoryexam_info->opd_id }}
                                      </td>
                                   </tr>
@@ -107,28 +107,28 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>L1*</label>
+                                      <label>L1</label>
                                       </br>{{ $sensoryexam_info->lL1 }}
                                      </td>
                                     <td>
-                                      <label>L2*</label>
+                                      <label>L2</label>
                                       </br>{{ $sensoryexam_info->lL2 }}
                                     </td>
                                     <td>
-                                      <label>L3*</label>
+                                      <label>L3</label>
                                       </br>{{ $sensoryexam_info->lL3 }}
                                     </td>
                                     <td>
-                                      <label>L4*</label>
+                                      <label>L4</label>
                                       </br>{{ $sensoryexam_info->lL4 }}
                                     </td>
                                     <td>
-                                      <label>L5*</label>
+                                      <label>L5</label>
                                       </br>{{ $sensoryexam_info->lL5 }}
                                      </td>
                                     <tr>
                                       <td>
-                                        <label>S1*</label>
+                                        <label>S1</label>
                                         </br>{{ $sensoryexam_info->lS1 }}
                                       </td>
                                     </tr>
@@ -140,34 +140,34 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>S1*</label>
+                                      <label>S1</label>
                                       </br>{{ $sensoryexam_info->rS1 }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>L1*</label>
+                                      <label>L1</label>
                                       </br>{{ $sensoryexam_info->rL1 }}
                                      </td>
                                     <td>
-                                      <label>L2*</label>
+                                      <label>L2</label>
                                       </br>{{ $sensoryexam_info->rL2 }}
                                     </td>
                                     <td>
-                                      <label>L3*</label>
+                                      <label>L3</label>
                                       </br>{{ $sensoryexam_info->rL3 }}
                                     </td>
                                     <td>
-                                      <label>L4*</label>
+                                      <label>L4</label>
                                       </br>{{ $sensoryexam_info->rL4 }}
                                     </td>
                                     <td>
-                                      <label>L5*</label>
+                                      <label>L5</label>
                                       </br>{{ $sensoryexam_info->rL5 }}
                                      </td>
                                     <tr>
                                       <td>
-                                        <label>S1*</label>
+                                        <label>S1</label>
                                         </br>{{ $sensoryexam_info->rS1 }}
                                       </td>
                                     </tr>
@@ -193,11 +193,11 @@
                                   </tr>
                                   <tr>                                    
                                     <td colspan="1">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $sensoryexam_info->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Entry Date</label>
                                       </br>{{ $sensoryexam_info->entry_date }}
                                     </td>
                                   </tr>
@@ -209,11 +209,11 @@
                                   </tr>
                                   <tr>                                    
                                     <td colspan="1">
-                                      <label>Verified By*</label>
+                                      <label>Verified By</label>
                                       </br>{{ $sensoryexam_info->verified_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Verified Date*</label>
+                                      <label>Verified Date</label>
                                       </br>{{ $sensoryexam_info->verified_date }}
                                     </td>
                                   </tr>
@@ -225,11 +225,11 @@
                                   </tr>
                                   <tr>                                     
                                     <td colspan="1">
-                                      <label>Entry Sealed By*</label>
+                                      <label>Entry Sealed By</label>
                                       </br>{{ $sensoryexam_info->entry_sealed_by }}
                                     </td>
                                     <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                      <label>Sealed Date</label>
                                       </br>{{ $sensoryexam_info->entry_sealed_date }}
                                     </td>
                                   </tr>

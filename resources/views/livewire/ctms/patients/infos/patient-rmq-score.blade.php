@@ -55,17 +55,17 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                     </br>
                                       {{ $rmq_replies->opd_id }}
                                     </td>
                                     <td colspan="1">
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       </br>
                                       {{ $rmq_replies->in_patient_id }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       </br>
                                       {{ $rmq_replies->admission_date }}
                                     </td>
@@ -126,27 +126,27 @@
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $rmq_replies->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Entry Date</label>
                                       </br>{{ $rmq_replies->entry_date }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="2">
-                                      <label>Verified By Verified</label>
+                                      <label>Verified By Comment</label>
                                       </br>{{ $rmq_replies->comment_verified_by }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Verified By*</label>
+                                      <label>Verified By</label>
                                       </br>{{ $rmq_replies->verified_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Verified Date*</label>
+                                      <label>Verified Date</label>
                                       </br>{{ $rmq_replies->verified_date }}
                                     </td>
                                   </tr>
@@ -158,11 +158,11 @@
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entry Sealed By*</label>
+                                      <label>Entry Sealed By</label>
                                       </br>{{ $rmq_replies->entry_sealed_by }}
                                     </td>
                                     <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                      <label>Sealed Date</label>
                                       </br>{{ $rmq_replies->entry_sealed_date }}
                                     </td>
                                   </tr>

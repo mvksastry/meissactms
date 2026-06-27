@@ -166,19 +166,19 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                     </br>
                                       {{ $modq_info->opd_id }}
                                       
                                     </td>
                                     <td colspan="1">
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       </br>
                                       {{ $modq_info->in_patient_id }}
                           
                                     </td>
                                     <td colspan="1">
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       </br>
                                       {{ $modq_info->admission_date }}
                                     </td>
@@ -204,11 +204,11 @@
                                   </tr>
                                   <tr>                                    
                                     <td colspan="1">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $modq_info->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Entry Date</label>
                                       </br>{{ $modq_info->entry_date }}
                                     </td>
                                   </tr>
@@ -220,11 +220,11 @@
                                   </tr>
                                   <tr>                                    
                                     <td colspan="1">
-                                      <label>Verified By*</label>
+                                      <label>Verified By</label>
                                       </br>{{ $modq_info->verified_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Verified Date*</label>
+                                      <label>Verified Date</label>
                                       </br>{{ $modq_info->verified_date }}
                                     </td>
                                   </tr>
@@ -236,11 +236,11 @@
                                   </tr>
                                   <tr>                                     
                                     <td colspan="1">
-                                      <label>Entry Sealed By*</label>
+                                      <label>Entry Sealed By</label>
                                       </br>{{ $modq_info->entry_sealed_by }}
                                     </td>
                                     <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                      <label>Sealed Date</label>
                                       </br>{{ $modq_info->entry_sealed_date }}
                                     </td>
                                   </tr>

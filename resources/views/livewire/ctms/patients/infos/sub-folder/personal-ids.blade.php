@@ -7,93 +7,93 @@
     <tbody> 
       <tr>
         <td colspan="1">
-          <label>Aadhar ID*</label>
+          <label>Aadhar ID</label>
           </br>
           {{ $patientPrimaryInfo->aadhar_id }}
         </td>
         <td colspan="1">
-          <label>PAN*</label>
+          <label>PAN</label>
           </br>
           {{ $patientPrimaryInfo->pan_num }}
         </td>
         <td colspan="1">
-          <label>Other ID*</label>
+          <label>Other ID</label>
           </br>
           {{ $patientPrimaryInfo->other_id }}
         </td>
         <td colspan="1">
-          <label>Occupation*</label>
+          <label>Occupation</label>
           </br>
           {{ $patientPrimaryInfo->aadhar_id }}
         </td>
       </tr>  
       <tr>
         <td colspan="4"> 
-          <label>Patient Primary Information*</label>
+          <label>Patient Primary Information</label>
         </td>
       </tr>
       <tr>
         <td colspan="1">
-          <label>Name*</label>
+          <label>Name</label>
           </br>
           {{ $patientPrimaryInfo->name }}
         </td>
         <td colspan="1">
-          <label>Nick Name*</label>
+          <label>Nick Name</label>
           </br>
           {{ $patientPrimaryInfo->nic_name }}
         </td>
         <td colspan="1">
-          <label>Alias Name*</label>
+          <label>Alias Name</label>
           </br>
           {{ $patientPrimaryInfo->alias_name }}
         </td>
         <td colspan="1">
-          <label>Gender*</label>
+          <label>Gender</label>
           </br>
           {{ $patientPrimaryInfo->gender }}
         </td>
       </tr>
       <tr>
         <td colspan="1">
-          <label>Date of Birth*</label>
+          <label>Date of Birth</label>
           </br>
           {{ $patientPrimaryInfo->date_of_birth }}
         </td>
         <td colspan="1">
-          <label>Age*</label>
+          <label>Age</label>
           </br>
           {{ $patientPrimaryInfo->age }}
        </td>
         <td colspan="1">
-          <label>Primary Phone*</label>
+          <label>Primary Phone</label>
           </br>
           {{ $patientPrimaryInfo->primary_phone_number }}
         </td>
         <td colspan="1">
-          <label>Alternate Phone*</label>
+          <label>Alternate Phone</label>
           </br>
           {{ $patientPrimaryInfo->alternate_phone_number }}
         </td>
       </tr>
       <tr>
         <td colspan="1">
-          <label>Address*</label>
+          <label>Address</label>
           </br>
           {{ $patientPrimaryInfo->address }}
         </td>
         <td colspan="1">
-          <label>Land Mark*</label>
+          <label>Land Mark</label>
           </br>
           {{ $patientPrimaryInfo->land_mark }}
         </td>
         <td colspan="1">
-          <label>Taluka/Haveli*</label>
+          <label>Taluka/Haveli</label>
           </br>
           {{ $patientPrimaryInfo->taluka_haveli }}
         </td>
         <td colspan="1">
-          <label>State*</label>
+          <label>State</label>
           </br>
           {{ $patientPrimaryInfo->state }}
         </td>

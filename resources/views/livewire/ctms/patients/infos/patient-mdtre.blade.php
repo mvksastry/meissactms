@@ -101,16 +101,16 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       </br>{{  $mdtre_info->opd_id }}
                                       
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       </br>{{  $mdtre_info->opd_id }}
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       </br>{{  $mdtre_info->opd_id }}
                                      </td>
                                   </tr>
@@ -128,40 +128,40 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Hip Flexion Adduction *</label>
+                                      <label>Hip Flexion Adduction </label>
                                       </br>{{ $mdtre_info->hip_flex_adduction }}
                                     </td>
                                     <td>
-                                      <label>Knee Extension *</label>
+                                      <label>Knee Extension </label>
                                       </br>{{ $mdtre_info->knee_extension }}
                                     </td>
                                     <td>
-                                      <label>Ankle dorsiflexion*</label>
+                                      <label>Ankle dorsiflexion</label>
                                       </br>{{ $mdtre_info->ankle_dorsiflexion }}
                                      </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Decreased Patellar Reflex*</label>
+                                      <label>Decreased Patellar Reflex</label>
                                       </br>{{ $mdtre_info->decreased_patellar_reflex }}
                                     </td>
                                     <td>
-                                      <label>Extensor Hallucis longus*</label>
+                                      <label>Extensor Hallucis longus</label>
                                       </br>{{ $mdtre_info->extensor_hallucis_longus }}
                                     </td>
 
                                     <td>
-                                      <label>Hip Abduction*</label>
+                                      <label>Hip Abduction</label>
                                       </br>{{ $mdtre_info->hip_abduction }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Ankle plantar flexion*</label>
+                                      <label>Ankle plantar flexion</label>
                                       </br>{{ $mdtre_info->ankle_plantar_flexion }}
                                     </td>
                                     <td>
-                                      <label>Decreased Achilles Tendon Reflex *</label>
+                                      <label>Decreased Achilles Tendon Reflex </label>
                                       </br>{{ $mdtre_info->dec_achilles_tendon_reflex }}
                                     </td>
                                     <td></td>
@@ -180,17 +180,17 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Straight leg raise*</label>
+                                      <label>Straight leg raise</label>
                                       </br>{{ $mdtre_info->straight_leg_raise }}
                                     </td>
                                     <td>
-                                      <label>Contralateral SLR*</label>
+                                      <label>Contralateral SLR</label>
                                       </br>{{ $mdtre_info->contralateral_slr }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Femoral nerve stretch test*</label>
+                                      <label>Femoral nerve stretch test</label>
                                       </br>{{ $mdtre_info->femoral_nerve_stretch_test }}
                                     </td>
                                   </tr>
@@ -207,15 +207,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Trendelenburg gait*</label>
+                                      <label>Trendelenburg gait</label>
                                       </br>{{ $mdtre_info->trendelenburg_gait }}
                                    </td>
                                     <td>
-                                      <label>Antalgic gait *</label>
+                                      <label>Antalgic gait </label>
                                       </br>{{ $mdtre_info->antalgic_gait }}
                                      </td>
                                     <td>
-                                      <label>List*</label>
+                                      <label>List</label>
                                       </br>{{ $mdtre_info->list }}
                                     </td>
                                   </tr>                                   
@@ -234,17 +234,17 @@
                                 <tbody>        
                                   <tr>
                                     <td colspan="2">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $mdtre_info->comment_entered_by }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entered By*</label>
+                                      <label>Entered By</label>
                                       </br>{{ $mdtre_info->entered_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Entry Date*</label>
+                                      <label>Entry Date</label>
                                       </br>{{ $mdtre_info->entry_date }}
                                     </td>
                                   </tr>
@@ -256,11 +256,11 @@
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Verified By*</label>
+                                      <label>Verified By</label>
                                       </br>{{ $mdtre_info->verified_by }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Verified Date*</label>
+                                      <label>Verified Date</label>
                                       </br>{{ $mdtre_info->verified_date }}
                                     </td>
                                   </tr>
@@ -272,11 +272,11 @@
                                   </tr>
                                   <tr>
                                     <td colspan="1">
-                                      <label>Entry Sealed By*</label>
+                                      <label>Entry Sealed By</label>
                                       </br>{{ $mdtre_info->entry_sealed_by }}
                                     </td>
                                     <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                      <label>Sealed Date</label>
                                       </br>{{ $mdtre_info->entry_sealed_date }}
                                     </td>
                                   </tr>

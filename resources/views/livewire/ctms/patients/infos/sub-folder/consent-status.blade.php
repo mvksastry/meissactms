@@ -7,29 +7,29 @@
       <tbody>        
         <tr>
           <td colspan="2">
-            <label>Consent Status*</label>
+            <label>Consent Status</label>
             </br>{{ $patientPrimaryInfo->consent_status }}
           </td>
           <td colspan="2">
-            <label>Consent Date*</label>
+            <label>Consent Date</label>
             </br>{{ $patientPrimaryInfo->consent_date }}
          </td>
           <td colspan="2">
-            <label>Consent Audio/Video*</label>
+            <label>Consent Audio/Video</label>
             </br>{{ $patientPrimaryInfo->consent_av }}
           </td>
         </tr>
         <tr>
           <td colspan="2">
-            <label>Consent Approval Date*</label>
+            <label>Consent Approval Date</label>
             </br>{{ $patientPrimaryInfo->consent_approval_date }}
           </td>
           <td colspan="2">
-            <label>Consent Approval Reference*</label>
+            <label>Consent Approval Reference</label>
             </br>{{ $patientPrimaryInfo->consent_approval_reference }}
           </td>
           <td colspan="2">
-            <label>Consent Approval File*</label>
+            <label>Consent Approval File</label>
             </br>{{ $patientPrimaryInfo->consent_approval_file }}
           </td>
         </tr>
