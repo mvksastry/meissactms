@@ -26,22 +26,16 @@
     <tbody>
       <tr>
         <td>
-          <label>Sodium</label>
+          <label>Sodium (mEq/L)</label>
           <input wire:model.defer="form_g.sodium" id="crp" type="text" value="null" class="form-control" placeholder="CRP" >
         </td>
         <td>
-          <label>Potassium</label>
+          <label>Potassium (mEq/L)</label>
           <input wire:model.defer="form_g.potassium" id="rft" type="text" value="null" class="form-control" placeholder="RFT" >
         </td>
         <td>
-          <label>Chloride</label>
+          <label>Chloride (mEq/L)</label>
           <input wire:model.defer="form_g.chloride" id="lft" type="text" value="null" class="form-control" placeholder="LFT" >
-        </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Electrolyte Report File*</label>
-          <input wire:model.defer="form_g.electro_report_file" type="file" value="null" class="form-control" placeholder="Report File" >
         </td>
       </tr>                                    
     </tbody>

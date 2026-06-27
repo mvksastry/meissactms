@@ -26,7 +26,7 @@
     <tbody>   
       <tr>
         <td>
-          <label>IL-6</label>
+          <label>IL-6 (pg/ml)</label>
           <input wire:model.defer="form_i.il6" type="text" class="form-control" placeholder="IL-6" >
         </td>
       </tr>                               

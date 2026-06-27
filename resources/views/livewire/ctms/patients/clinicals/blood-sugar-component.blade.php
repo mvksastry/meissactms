@@ -25,15 +25,15 @@
     <tbody> 
       <tr>
         <td>
-          <label>Fasting</label>
+          <label>Fasting (mg/dL)</label>
           <input wire:model.defer="form_b.fasting" type="text" class="form-control" placeholder="Fasting">
         </td>
         <td>
-          <label>Random</label>
+          <label>Random (mg/dL)</label>
           <input wire:model.defer="form_b.random" type="text" class="form-control" placeholder="Random">
         </td>
         <td>
-          <label>Post-Prandial</label>
+          <label>Post-Prandial (mg/dL)</label>
           <input wire:model.defer="form_b.post_prandial" type="text" class="form-control" placeholder="Post Prandial" >
         </td>
       </tr>     

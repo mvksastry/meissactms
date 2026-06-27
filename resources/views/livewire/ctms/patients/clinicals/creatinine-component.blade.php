@@ -25,7 +25,7 @@
     <tbody> 
       <tr>
         <td>
-          <label>Serum Creatinine</label>
+          <label>Serum Creatinine (mg/dL)</label>
           <input wire:model.defer="form_e.serum_creatinine" type="text" class="form-control" placeholder="Serum Creatinine" >
         </td>
       </tr> 

@@ -25,11 +25,11 @@
     <tbody> 
       <tr>
         <td>
-          <label>Urea</label>
+          <label>Urea (mg/dL)</label>
           <input wire:model.defer="form_c.urea" type="text" class="form-control" placeholder="Urea" >
         </td>
         <td>
-          <label>Blood Urea Nitrogen</label>
+          <label>Blood Urea Nitrogen (mg/dL)</label>
           <input wire:model.defer="form_c.blood_urea_nitrogen" type="text" class="form-control" placeholder="Blood Urea Nitrogen" >
         </td>
       </tr> 

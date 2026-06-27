@@ -25,29 +25,29 @@
     <tbody> 
       <tr>
         <td>
-          <label>Proteins</label>
+          <label>Proteins (Present/Absent)</label>
           <input wire:model.defer="form_d.proteins" type="text" class="form-control" placeholder="Proteins" >
         </td>
         <td>
-          <label>Sugar</label>
+          <label>Sugar (Present/Absent)</label>
           <input wire:model.defer="form_d.sugar" type="text" class="form-control" placeholder="Sugar" >
         </td>
         <td>
-          <label>Ketones</label>
+          <label>Ketones (Present/Absent)</label>
           <input wire:model.defer="form_d.ketones" type="text" class="form-control" placeholder="Ketones" >
         </td>
       </tr>
       <tr>
         <td>
-          <label>Procalcitonin*</label>
+          <label>Procalcitonin (Present/Absent)</label>
           <input wire:model.defer="form_d.procalcitonin" type="text" class="form-control" placeholder="Precalcitonin" >
         </td>
         <td>
-          <label>Bile salts</label>
+          <label>Bile salts (Present/Absent)</label>
           <input wire:model.defer="form_d.bile_salts" type="text" class="form-control" placeholder="Bile Salts" >
         </td>
         <td>
-          <label>Bile Pigments</label>
+          <label>Bile Pigments (Present/Absent)</label>
           <input wire:model.defer="form_d.bile_pigments" type="text" class="form-control" placeholder="Bile Pigments" >
         </td>
       </tr>                                   

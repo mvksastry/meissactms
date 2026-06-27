@@ -25,23 +25,23 @@
     <tbody> 
       <tr>
         <td>
-          <label>Pus Cells</label>
+          <label>Pus Cells ( /hpf)</label>
           <input wire:model.defer="form_l.pus_cells" id="oande" type="text" class="form-control" placeholder="Pus Cells">
         </td>
         <td>
-          <label>Epithelial Cells</label>
+          <label>Epithelial Cells ( /hpf)</label>
           <input wire:model.defer="form_l.epithelial_cells" id="pr" type="text" class="form-control" placeholder="Epothelian Cells">
         </td>
         <td>
-          <label>RBCs</label>
+          <label>RBCs ( /hpf)</label>
           <input wire:model.defer="form_l.rbcs" id="temperature" type="text" class="form-control" placeholder="RBC" >
         </td>
         <td>
-          <label>Yeast Cells</label>
+          <label>Yeast Cells ( /hpf)</label>
           <input wire:model.defer="form_l.yeast_cells" id="bp_systolic" type="text" class="form-control" placeholder="Yeast Cells" >
         </td>
         <td>
-          <label>Bacteria</label>
+          <label>Bacteria (Present/Absent)</label>
           <input wire:model.defer="form_l.bacteria" id="bp_diastolic" type="text" class="form-control" placeholder="Bacteria" >
         </td>
       </tr>                                    

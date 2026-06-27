@@ -25,7 +25,7 @@
     <tbody>     
       <tr>
         <td>
-          <label>CRP</label>
+          <label>CRP (mg/L)</label>
           <input wire:model.defer="form_f.crp" type="text" class="form-control" placeholder="CRP" >
         </td>
       </tr>                              

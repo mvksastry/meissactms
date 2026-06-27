@@ -25,23 +25,23 @@
     <tbody> 
       <tr>
         <td>
-          <label>ESR</label>
+          <label>ESR (mm/Hr)</label>
           <input wire:model.defer="form_j.esr" type="text" class="form-control" placeholder="ESR">
         </td>
         <td>
-          <label>PT - Patient</label>
+          <label>PT - Patient (sec)</label>
           <input wire:model.defer="form_j.pt_patient" type="text" class="form-control" placeholder="PT - Patient">
         </td>
         <td>
-          <label>PT - Control</label>
+          <label>PT - Control (sec)</label>
           <input wire:model.defer="form_j.pt_control" type="text" class="form-control" placeholder="PT - Control" >
         </td>
         <td>
-          <label>INR</label>
+          <label>INR (Number)</label>
           <input wire:model.defer="form_j.inr" type="text" class="form-control" placeholder="INR" >
         </td>
         <td>
-          <label>ISI</label>
+          <label>ISI (Number)</label>
           <input wire:model.defer="form_j.isi" type="text" class="form-control" placeholder="ISI" >
         </td>
       </tr>                                  

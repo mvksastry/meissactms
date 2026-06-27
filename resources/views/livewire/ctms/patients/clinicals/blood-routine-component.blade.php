@@ -40,33 +40,33 @@
     <tbody> 
       <tr>
         <td>
-          <label>RBC</label>
+          <label>RBC (10^6 / &#181 l)</label>
           <input wire:model.defer="form_a.rbc" type="text"  class="form-control" placeholder="RBC">
         </td>
         <td>
-          <label>HGB</label>
+          <label>HGB (g/dL)</label>
           <input wire:model.defer="form_a.hgb" type="text"  class="form-control" placeholder="HGB">
         </td>
         <td>
-          <label>HCT</label>
+          <label>HCT (%)</label>
           <input wire:model.defer="form_a.hct" type="text"  class="form-control" placeholder="HCT" >
         </td>
         <td>
-          <label>MCV</label>
+          <label>MCV (fL)</label>
           <input wire:model.defer="form_a.mcv" type="text"  class="form-control" placeholder="MCV" >
         </td>
         <td>
-          <label>MCH</label>
+          <label>MCH (pg)</label>
           <input wire:model.defer="form_a.mch" type="text"  class="form-control" placeholder="MCH" >
         </td>
         <td>
-          <label>MCHC</label>
+          <label>MCHC (g/dL)</label>
           <input wire:model.defer="form_a.mchc" type="text"  class="form-control" placeholder="MCHC" >
         </td>
       </tr>
       <tr>
         <td>
-          <label>RDW-SD</label>
+          <label>RDW-SD (fL)</label>
           <input wire:model.defer="form_a.rdw_sd" type="text"  class="form-control" placeholder="RDW-SD" >
         </td>
         <td>
@@ -74,36 +74,36 @@
           <input wire:model.defer="form_a.rdw_cs" type="text"  class="form-control" placeholder="RDW-CV" >
         </td>
         <td>
-          <label>PLT</label>
+          <label>PLT (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.plt" type="text"  class="form-control" placeholder="PLT" >
         </td>
         <td>
-          <label>PDW</label>
+          <label>PDW (fL)</label>
           <input wire:model.defer="form_a.pdw" type="text"  class="form-control" placeholder="PDW" >
         </td>
         <td>
-          <label>MPV</label>
+          <label>MPV (fL)</label>
           <input wire:model.defer="form_a.mpv" type="text"  class="form-control" placeholder="MPV" >
         </td>
         <td>
-          <label>P-LCR</label>
+          <label>P-LCR (%)</label>
           <input wire:model.defer="form_a.plcr" type="text"  class="form-control" placeholder="P-LCR" >
         </td>
       </tr>
       <tr>
         <td>
-          <label>pct</label>
+          <label>PCT (%)</label>
           <input wire:model.defer="form_a.pct" type="text"  class="form-control" placeholder="pct" >
         </td>
         <td>
-          <label>WBC</label>
+          <label>WBC (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.wbc" type="text"  class="form-control" placeholder="WBC" >
         </td>
       </tr>
 
       <tr>
         <td>
-          <label>Neut(Abs)</label>
+          <label>Neut(Abs) (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.neutrophils_abs" type="text"  class="form-control" placeholder="Neut(Abs)" >
         </td>
         <td>
@@ -111,7 +111,7 @@
           <input wire:model.defer="form_a.neutrophils_percent" type="text"  class="form-control" placeholder="Neut(%)" >
         </td>
         <td>
-          <label>Lymph(Abs)</label>
+          <label>Lymph(Abs) (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.lymph_abs" type="text"  class="form-control" placeholder="Lymph(Abs)" >
         </td>
         <td>
@@ -119,7 +119,7 @@
           <input wire:model.defer="form_a.lymph_percent" type="text"  class="form-control" placeholder="Lymph(%)" >
         </td>
         <td>
-          <label>Mono(Abs)</label>
+          <label>Mono(Abs) (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.mono_abs" type="text"  class="form-control" placeholder="Mono(Abs)" >
         </td>
         <td>
@@ -130,7 +130,7 @@
 
       <tr>
         <td>
-          <label>EO(Abs)</label>
+          <label>EO(Abs) (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.eo_abs" type="text"  class="form-control" placeholder="EO(Abs)" >
         </td>
 
@@ -139,7 +139,7 @@
           <input wire:model.defer="form_a.eo_percent" type="text"  class="form-control" placeholder="EO(%)" >
         </td>
         <td>
-          <label>BASO(Abs)</label>
+          <label>BASO(Abs) (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.baso_abs" type="text"  class="form-control" placeholder="BASO(Abs)" >
         </td>
         <td>
@@ -147,7 +147,7 @@
           <input wire:model.defer="form_a.baso_percent" type="text"  class="form-control" placeholder="BASO(%)" >
         </td>
         <td>
-          <label>IG(Abs)</label>
+          <label>IG(Abs) (10^3 / &#181 L)</label>
           <input wire:model.defer="form_a.ig_abs" type="text"  class="form-control" placeholder="Ig(Abs)" >
         </td>
         <td>

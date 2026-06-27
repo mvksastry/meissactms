@@ -29,7 +29,7 @@
           <input wire:model.defer="form_n.physical_exam" type="text" class="form-control" placeholder="P/A" >
         </td>
         <td>
-          <label>Quantity</label>
+          <label>Quantity (ml)</label>
           <input wire:model.defer="form_n.quantity" type="text" class="form-control" placeholder="CNS" >
         </td>
         <td>
@@ -43,24 +43,18 @@
           <input wire:model.defer="form_n.appearance" type="text" class="form-control" placeholder="ESR" >
         </td>
         <td>
-          <label>Dposits</label>
+          <label>Dposits (Present/Absent)</label>
           <input wire:model.defer="form_n.deposits" type="text" class="form-control" placeholder="CRP" >
         </td>
         <td>
-          <label>pH</label>
+          <label>pH (Number)</label>
           <input wire:model.defer="form_n.ph" type="text" class="form-control" placeholder="RFT" >
         </td>
         <td>
-          <label>Specific Gravity</label>
+          <label>Specific Gravity (Number)</label>
           <input wire:model.defer="form_n.specific_gravity" type="text" class="form-control" placeholder="LFT" >
         </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Microscopic Report File*</label>
-          <input wire:model.defer="form_n.me_report_file" type="file" class="form-control" placeholder="Report File" >
-        </td>
-      </tr>                                          
+      </tr>                                         
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">

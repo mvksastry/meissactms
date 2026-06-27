@@ -72,7 +72,7 @@
                             <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_8' ? 'active' : '' }}" href="#tab_8" wire:click.prevent="setActiveTab('tab_8')" data-toggle="tab">ME</a></li>
                             <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_9' ? 'active' : '' }}" href="#tab_9" wire:click.prevent="setActiveTab('tab_9')" data-toggle="tab">UR</a></li>
                             <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_10' ? 'active' : '' }}" href="#tab_10" wire:click.prevent="setActiveTab('tab_10')" data-toggle="tab">Drugs</a></li>
-                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_11' ? 'active' : '' }}" href="#tab_11" wire:click.prevent="setActiveTab('tab_10')" data-toggle="tab">GS</a></li>
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_11' ? 'active' : '' }}" href="#tab_11" wire:click.prevent="setActiveTab('tab_11')" data-toggle="tab">GS</a></li>
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">

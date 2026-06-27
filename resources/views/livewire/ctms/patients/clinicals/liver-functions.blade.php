@@ -25,15 +25,15 @@
     <tbody> 
       <tr>
         <td>
-          <label>Serum Total protein</label>
+          <label>Serum Total protein (g/dL)</label>
           <input wire:model.defer="form_k.serum_total_protein" type="text" value="null" class="form-control" placeholder="Total Protein">
         </td>
         <td>
-          <label>Serum Albumin</label>
+          <label>Serum Albumin (g/dL)</label>
           <input wire:model.defer="form_k.serum_albumin" type="text" value="null" class="form-control" placeholder="Serum Albumin">
         </td>
         <td>
-          <label>Globulin</label>
+          <label>Globulin (g/dL)</label>
           <input wire:model.defer="form_k.globulin" type="text" value="null" class="form-control" placeholder="Globulin" >
         </td>
         <td>
@@ -43,30 +43,30 @@
       </tr>
       <tr>
         <td>
-          <label>Total Bilirubin</label>
+          <label>Total Bilirubin (mg/dL)</label>
           <input wire:model.defer="form_k.total_bilirubin" type="text" value="null" class="form-control" placeholder="Total Bilirubin" >
         </td>
         <td>
-          <label>Direct Bilirubin</label>
+          <label>Direct Bilirubin (mg/dL)</label>
           <input wire:model.defer="form_k.direct_bilirubin" type="text" value="null" class="form-control" placeholder="Dir Bilirubin" >
         </td>
 
         <td>
-          <label>Indirect Bilirubin</label>
+          <label>Indirect Bilirubin (mg/dL)</label>
           <input wire:model.defer="form_k.indirect_bilirubin" type="text" value="null" class="form-control" placeholder="Ind Bilirubin" >
         </td>
       </tr>
       <tr>
         <td>
-          <label>S.G.O.T</label>
+          <label>S.G.O.T (U/L)</label>
           <input wire:model.defer="form_k.sgot" type="text" value="null" class="form-control" placeholder="SGOT" >
         </td>
         <td>
-          <label>S.G.P.T</label>
+          <label>S.G.P.T (U/L)</label>
           <input wire:model.defer="form_k.sgpt" type="text" value="null" class="form-control" placeholder="SGPT" >
         </td>
         <td>
-          <label>Alkaline Phosphatase</label>
+          <label>Alkaline Phosphatase (U/L)</label>
           <input wire:model.defer="form_k.alkaline_phosphatase" type="text" value="null" class="form-control" placeholder="Alkaline Phos" >
         </td>
       </tr>
