@@ -23,6 +23,7 @@ class Products extends Model
 		'pack_mark_code',
 		'category_id', 
 		'resproject_id',
+		'grade',
 		'catalog_id',
 		'name',      
 		'pack_size', 

@@ -9,7 +9,7 @@
   </thead>
   <tbody> 
     <tr>
-      <td colspan="2">
+      <td colspan="1">
         <label>Category*</label>
           <select wire:model="form.category_id" class="form-control">
           <option value="-1">Select</option>
@@ -22,10 +22,23 @@
           @enderror
       </td>
 
+      <td colspan="1">
+        <label>Grade*</label>
+          <select wire:model="form.grade" class="form-control">
+          <option value="-1">Select</option>
+            <option value="CT">Clinical Trial</option>
+            <option value="RG">Research Grade</option>
+          </select>
+          @error('form.grade')
+              <span class="text-danger">{{ $message }}</span>
+          @enderror
+      </td>
+
       <td colspan="2">
-        <label>Select Project*</label>
+        <label>Select Patient*</label>
         <select wire:model="form.resproj_id" class="form-control">
           <option value="-1">Select</option>
+          <option value="0">General</option>
           @foreach($allActiveResProjects as $aarp)
           <option value="{{ $aarp->resproject_id }}">{{ $aarp->title }}</option>
           @endforeach

@@ -61,7 +61,7 @@ class AddToInventory extends Component
 	public $allActiveResProjects;
 
 	//Fine chem form variables
-	public $packMarkCode, $resproj_id, $category_id, $catalog_number, $item_desc;
+	public $packMarkCode, $resproj_id, $grade, $category_id, $catalog_number, $item_desc;
 	public $source_desc, $pack_size, $unit_desc, $number_packs;
 	public $container_id, $rack_shelf, $box_sack, $location_code, $note_remark;
 	public $batchCode, $dateMFD, $dateExpiry, $vialCost, $costCurrency;
@@ -95,6 +95,7 @@ class AddToInventory extends Component
 				[
 					'category_id'    => 'required|numeric',
 					'resproj_id'     => 'required|numeric',
+					'grade'          => 'required|alpha',
 					'catalog_number' => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
 					'item_desc'      => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
 
@@ -203,7 +204,8 @@ class AddToInventory extends Component
 				$nprod = new Products();
 				$nprod->pack_mark_code = $this->generateCode(6);
 				$nprod->category_id = $this->form->category_id;
-				$nprod->resproject_id = $this->form->resproj_id; //
+				$nprod->resproject_id = $this->form->resproj_id; // in CTMS it is patient id.
+				$nprod->grade = $this->form->grade;
 				$nprod->catalog_id = $this->form->catalog_number;
 				$nprod->name = $this->form->item_desc;
 				
@@ -263,6 +265,7 @@ class AddToInventory extends Component
 		//$this->panel_title = "Select Action";
 		$this->form->category_id = null;
 		$this->form->resproj_id = null;
+		$this->form->grade = null;
 		$this->form->catalog_number = null;
 		$this->form->item_desc = null;
 		$this->form->pack_size = null;

@@ -65,7 +65,7 @@ class UpdateConsumption extends Component
         return view('livewire.inventory.update-consumption');
     }
 
-    public function selectedFineChem($param)
+  public function selectedFineChem($param)
 	{
 		//dd($params);
 		$this->sampCode = $param;
