@@ -49,7 +49,7 @@ class CentersController extends Controller
     {
         //
         
-        $user = User::all();
+        //$user = User::all();
         return view('centers.createForm');
     }
 
@@ -85,6 +85,7 @@ class CentersController extends Controller
     public function show(string $id)
     {
         //
+        dd($id);
     }
 
     /**
@@ -93,6 +94,9 @@ class CentersController extends Controller
     public function edit(string $id)
     {
         //
+        $center = Center::where('uuid', $id)->where('status','active')->first();
+        //dd($center);
+        return view('centers.editForm', ['center' => $center]);
     }
 
     /**
@@ -101,6 +105,25 @@ class CentersController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $input = $request->all();
+        //dd($id, $input);
+        $center = Center::where('uuid', $id)->where('status','active')->first();
+        
+        $center->name = $input['name'];
+        $center->uuid = Str::uuid()->toString();
+        $center->category = $input['category'];
+        $center->description = $input['description'];
+        $center->location = $input['location'];
+        $center->total_size = $input['total_size'];
+        $center->total_count = $input['total_count'];
+        $center->incharge_name = $input['incharge_name'];
+        $center->status = 'active';
+        $center->notes = $input['notes'];
+        //dd($center);
+        $center->save();
+        return redirect()->route('centers.index')
+                        ->with('success','Center Info updated successfully');
+        //return view('centers.index');
     }
 
     /**

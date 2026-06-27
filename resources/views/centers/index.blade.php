@@ -59,7 +59,7 @@
                     <table id="example2" class="table table-sm table-bordered table-hover">
                       <thead>
                         <tr>
-                          <th> Name </th>
+                          <th> Center Name </th>
                           <th> Category </th>
                           <th> Description </th>
                           <th> Location </th>
@@ -67,6 +67,7 @@
                           <th> Occupied </th>
                           <th> In-Charge </th>
                           <th> Status</th>
+                          <th> Notes </th>
                           <th> Created</th>
                           <th> Updated</th>
                           <th> Action</th>
@@ -83,16 +84,16 @@
                             <td> {{ $row->total_count }} </td>
                             <td> {{ $row->incharge_name }} </td>
                             <td> {{ ucfirst($row->status) }} </td>
+                            <td> {{ ucfirst($row->notes) }} </td>
                             <td> {{ date('d-m-Y H:i:s', strtotime($row->created_at)) }} </td>
-                            <td> {{ date('d-m-Y H:i:s', strtotime($row->updated_at)) }} </td>                          
-                            <td>
-                              <a href="{{ route('centers.show',[$row->uuid]) }}"> 
-                                <button class="btn btn-sm btn-info">Edit</button>
-                              </a>
-                              <a href="{{ route('centers.edit',[$row->uuid]) }}"> 
-                                <button class="btn btn-sm btn-danger">Inactivate</button>
-                              </a>
-                            </td>
+                            <td> {{ date('d-m-Y H:i:s', strtotime($row->updated_at)) }} </td>     
+                            @hasrole('ctms_admin')         
+                              <td>
+                                <a href="{{ route('centers.edit',[$row->uuid]) }}"> 
+                                  <button class="btn btn-sm btn-info">Edit</button>
+                                </a>
+                              </td>
+                            @endhasrole
                           </tr>
                         @endforeach
                       </tbody>

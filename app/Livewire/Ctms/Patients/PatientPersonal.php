@@ -38,7 +38,7 @@ class PatientPersonal extends Component
     public $comDanger = null, $comWarning = null, $comInfo = null, $comSuccess = null;
     //primary information 
     public $patient_id, $patient_uuid; 
-    public $center_id, $ctarm_id, $opd_id, $in_patient_id, $admission_date;
+    public $center_id, $ctarm_id, $opd_id, $in_patient_id, $subject_id, $admission_date;
     public $name, $nick_name, $alias_name, $gender, $date_of_birth, $age, $primary_phone_number, $alternate_phone_number;
     public $emergency_contact_name, $emergency_contact_phone, $alternate_contact_name, $alternate_contact_phone;
     public $height, $height_unit="centimeters", $weight, $weight_unit="kg", $bmi;

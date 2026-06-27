@@ -82,6 +82,7 @@ trait TPatientPersonalInfo
         //controls
         $newPatientInfo->opd_id =  $input['opd_id'];
         $newPatientInfo->in_patient_id =  $input['in_patient_id'];
+        $newPatientInfo->subject_id =  $input['subject_id'];
         $newPatientInfo->admission_date =  $input['admission_date'];
         //personal info
         $newPatientInfo->name =  $input['name'];

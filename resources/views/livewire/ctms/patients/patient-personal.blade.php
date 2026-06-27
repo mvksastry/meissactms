@@ -12,7 +12,7 @@
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
+                  <i class="fas fa-chart-pie mr-1"></i>git 
                   Patient Primary Information
                 </h3>
                 <div class="card-tools">

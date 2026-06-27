@@ -13,6 +13,9 @@ class PatientSEForm extends Form
 
     #[Validate('regex:/^[A-Za-z0-9_\- ]+$/|max:20')]
     public $in_patient_id = '';
+    
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
+    public $subject_id = '';
 
     #[Validate('nullable|date')]
     public $admission_date = null;

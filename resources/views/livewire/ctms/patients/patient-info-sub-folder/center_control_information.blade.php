@@ -22,15 +22,19 @@
         </td>
         <td colspan="1">
           <label>Opd ID*</label>
-          <input wire:model="form.opd_id" class="form-control" id="opd_id" wire:model="form.opd_id" type="text">
+          <input wire:model="form.opd_id" class="form-control" placeholder="Out Patient ID" id="opd_id" wire:model="form.opd_id" type="text">
         </td>
         <td colspan="1">
           <label>In Patient ID*</label>
           <input wire:model="form.inpatient_id" placeholder="In Patient ID" class="form-control" wire:model.defer="form.in_patient_id" id="in_patient_id">
         </td>
         <td colspan="1">
-          <label>Admission Date*</label>
+          <label>OPD/IPD/Record Date*</label>
           <input wire:model="form.admission_date" class="form-control" id="admission_date" wire:model="form.admission_date" type="date">
+        </td>
+        <td colspan="1">
+          <label>Subject ID*</label>
+          <input wire:model="form.subject_id" class="form-control" id="subject_id" wire:model="form.subject_id" type="text">
         </td>
       </tr>
     </tbody>

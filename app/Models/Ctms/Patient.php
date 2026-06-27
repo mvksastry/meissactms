@@ -28,6 +28,7 @@ class Patient extends Model
         'ctarm_id',
         'opd_id', 
         'in_patient_id',
+        'subject_id',
         'admission_date', 
         'aadhar_id',
         'pan_num',

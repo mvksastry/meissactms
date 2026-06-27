@@ -19,6 +19,9 @@ class PatientForm extends Form
     #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
     public $in_patient_id = '';
 
+    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
+    public $subject_id = '';
+
     #[Validate('nullable|date')]
     public $admission_date = null;
 
@@ -46,7 +49,7 @@ class PatientForm extends Form
     #[Validate('required|alpha')]
     public $gender = '';
 
-    #[Validate('nullable|date')]
+    #[Validate('required|date')]
     public $date_of_birth = null;
 
     #[Validate('required|numeric')]
