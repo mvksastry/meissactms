@@ -79,6 +79,8 @@
       </section>
     </div>
   </main>
+</div>
+@script
   <script type="text/javascript">
     $(document).ready(function () {
       window.addEventListener('swal:confirm', function(msgx){ 
@@ -199,5 +201,4 @@
       });
     });
   </script>
-
-</div>
+@endscript

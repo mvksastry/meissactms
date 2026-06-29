@@ -243,9 +243,9 @@
       </section>
     </div>
   </main>
-
-
-    <script type="text/javascript">
+</div>
+@script
+    <script>
       $(document).ready(function () {
         window.addEventListener('swal:confirm', function(msgx){ 
           let title = JSON.stringify(msgx.detail);
@@ -373,5 +373,4 @@
           $('#example2').DataTable();
       });
     </script>
-
-</div>
+@endscript

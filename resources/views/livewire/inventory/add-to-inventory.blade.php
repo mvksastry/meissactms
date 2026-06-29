@@ -52,7 +52,7 @@
                         <div class="p-1">
                             <div class="table-responsive" id="revenue-chart2" style="position: relative;">
                                                 
-                            @include('livewire.inventory.new-fine-chem-form')
+                                @include('livewire.inventory.new-fine-chem-form')
                             
                             </div>
                         </div>
@@ -78,7 +78,9 @@
         </section>
         </div>
     </main>
-    <script type="text/javascript">
+</div>
+    @script
+    <script>
         $(document).ready(function () {
         window.addEventListener('swal:confirm', function(msgx){ 
             let title = JSON.stringify(msgx.detail);
@@ -196,7 +198,7 @@
             "responsive": true,
             });
         });
+
         });
     </script>
-
-</div>
+    @endscript

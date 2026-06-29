@@ -41,8 +41,8 @@ class AddToInventory extends Component
 	public ProductForm $form;
 
 	//Trait classes
-    use Base;
-    use TActivityQueries;
+  use Base;
+  use TActivityQueries;
 
     //swal messages
 	public $msgx;
@@ -68,28 +68,29 @@ class AddToInventory extends Component
 
 	public $viewFineChemForm = true;
 
-    public function render()
-    {
-      $this->packMarkCode = $this->generateCode(6);
-			$this->categories = Categories::all();
-			$this->repositories = Repository::all();
-			$this->units = Units::all();
-			$this->suppliers = Supplier::all();
-			$this->allActiveResProjects = $this->allCtmsActivities();
-			$this->panel_title = "Add To Inventory";
-			Log::channel('activity')->info("[ ".Auth::user()->name.' ] Displayed inventory form');
-			return view('livewire.inventory.add-to-inventory');
-    }
+	public function render()
+	{
+		//$this->packMarkCode = $this->generateCode(6);
+		$this->categories = Categories::all();
+		$this->repositories = Repository::all();
+		$this->units = Units::all();
+		$this->suppliers = Supplier::all();
+		$this->allActiveResProjects = $this->allCtmsActivities();
+		//$this->panel_title = "Add To Inventory x";
+		Log::channel('activity')->info("[ ".Auth::user()->name.' ] Displayed inventory form');
+		return view('livewire.inventory.add-to-inventory');
+	}
 
 	public function postProductInfo()
 	{
+		//dd("reached");
 		//dump all validations
 		if($this->form->number_packs != null )
 		{
 			for($i = 0; $i < $this->form->number_packs; $i++)
 			{	
 				$this->validate();
-				/*
+				
 				//implement validations here
 				$validatedData = $this->validate(
 				[
@@ -199,7 +200,7 @@ class AddToInventory extends Component
 
 					'note_remark'    => 'Notes',
 				]);
-				*/
+				
 
 				$nprod = new Products();
 				$nprod->pack_mark_code = $this->generateCode(6);
@@ -257,7 +258,7 @@ class AddToInventory extends Component
 		}
 		//$this->alert('success', 'Inventory Updated'); 
 		
-		$this->viewFineChemForm = false;
+		//$this->viewFineChemForm = false;
 	}
 
   private function resetInventoryForm()

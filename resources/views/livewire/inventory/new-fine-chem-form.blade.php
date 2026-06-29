@@ -28,6 +28,7 @@
           <option value="-1">Select</option>
             <option value="CT">Clinical Trial</option>
             <option value="RG">Research Grade</option>
+            <option value="MG">Misc. Grade</option>
           </select>
           @error('form.grade')
               <span class="text-danger">{{ $message }}</span>
@@ -35,7 +36,7 @@
       </td>
 
       <td colspan="2">
-        <label>Select Patient*</label>
+        <label>Activity (General or Patient Linked)*</label>
         <select wire:model="form.resproj_id" class="form-control">
           <option value="-1">Select</option>
           <option value="0">General</option>

@@ -1,91 +1,93 @@
 <div>
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-  <main>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper px-2">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 mb-3">Home: Inventory</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="/home">Home: Projects</a></li>
-                <li class="breadcrumb-item active">Inventory</li>
-              </ol>
-            </div><!-- /.col -->
+    <main>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper px-2">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0 mb-3">Home: Inventory</h1>
+              </div><!-- /.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="/home">Home: Projects</a></li>
+                  <li class="breadcrumb-item active">Inventory</li>
+                </ol>
+              </div><!-- /.col -->
 
-              @include('livewire.inventory.flex-menu-inventory')            
+                @include('livewire.inventory.flex-menu-inventory')            
 
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </div>
+        
 
-      <!-- Main content -->
-      <section id="top1" class="content">
-        <div class="container-fluid">
-          <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            <section id="top2" class="col-lg-12 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <div class="card card-primary card-outline">
-                <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="fas fa-chart-pie mr-1"></i>
-                    Inventory Home
-                  </h3>
-                  <div class="card-tools">
-                    <ul class="nav nav-pills ml-auto">
-                      <li class="nav-item"></li>
-                      <li class="nav-item"></li>
-                    </ul>
-                  </div>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                  <div class="tab-content p-0">
-                    <!-- Morris chart - Sales -->
-                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative;">
-                      <div class="p-1">
-                        <div class="table-responsive" id="revenue-chart2" style="position: relative;">
-                                              
-                          @if($viewFineChemForm)
-                            @include('livewire.inventory.new-fine-chem-form')
-                          @endif
-                
-                          @if($viewConsumptionForm)
-                            @include('livewire.inventory.new-consumption-form')
-                          @endif
-                          
+        <!-- Main content -->
+        <section id="top1" class="content">
+          <div class="container-fluid">
+            <!-- Main row -->
+            <div class="row">
+              <!-- Left col -->
+              <section id="top2" class="col-lg-12 connectedSortable">
+                <!-- Custom tabs (Charts with tabs)-->
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fas fa-chart-pie mr-1"></i>
+                      Inventory Home
+                    </h3>
+                    <div class="card-tools">
+                      <ul class="nav nav-pills ml-auto">
+                        <li class="nav-item"></li>
+                        <li class="nav-item"></li>
+                      </ul>
+                    </div>
+                  </div><!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="tab-content p-0">
+                      <!-- Morris chart - Sales -->
+                      <div class="chart tab-pane active" id="revenue-chart" style="position: relative;">
+                        <div class="p-1">
+                          <div class="table-responsive" id="revenue-chart2" style="position: relative;">
+                                                
+                            @if($viewFineChemForm)
+                              @include('livewire.inventory.new-fine-chem-form')
+                            @endif
+                  
+                            @if($viewConsumptionForm)
+                              @include('livewire.inventory.new-consumption-form')
+                            @endif
+                            
+                          </div>
+                        </div>
+                        <!--Divider-->
+                        <hr class="border-b-2 my-1 mx-1">
+                        <!--Divider-->
+                        <div class="p-1">      
+                                    
                         </div>
                       </div>
-                      <!--Divider-->
-                      <hr class="border-b-2 my-1 mx-1">
-                      <!--Divider-->
-                      <div class="p-1">      
-                                  
-                      </div>
                     </div>
-                  </div>
-                </div> <!-- /. card body end -->
-              </div>
-            </section>
-          </div><!-- /.row (main row) -->
-          <!-- Main row -->
-          <div class="row">
-            <!-- All Bottoms for show/hide based on status -->
+                  </div> <!-- /. card body end -->
+                </div>
+              </section>
+            </div><!-- /.row (main row) -->
+            <!-- Main row -->
+            <div class="row">
+              <!-- All Bottoms for show/hide based on status -->
 
-            <!-- /All Bottoms for show/hide based on status -->
-          </div><!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-      </section>
-    </div>
-  </main>
-  <script type="text/javascript">
+              <!-- /All Bottoms for show/hide based on status -->
+            </div><!-- /.row (main row) -->
+          </div><!-- /.container-fluid -->
+        </section>
+      </div>
+    </main>
+  </div>
+  @script
+  <script>
     $(document).ready(function () {
       window.addEventListener('swal:confirm', function(msgx){ 
         let title = JSON.stringify(msgx.detail);
@@ -205,5 +207,6 @@
       });
     });
   </script>
+  @endscript
 
-</div>
+

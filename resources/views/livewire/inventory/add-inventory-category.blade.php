@@ -113,7 +113,9 @@
       </section>
     </div>
   </main>
-  <script type="text/javascript">
+</div>
+  @script
+  <script>
     $(document).ready(function () {
       window.addEventListener('swal:confirm', function(msgx){ 
         let title = JSON.stringify(msgx.detail);
@@ -233,5 +235,6 @@
       });
     });
   </script>
+  @endscript
 
-</div>
+

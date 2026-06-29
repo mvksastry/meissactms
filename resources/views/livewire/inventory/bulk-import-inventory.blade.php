@@ -1,8 +1,7 @@
 <div>
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
-{{-- Care about people's approval and you will be their prisoner. --}}
-        {{-- Care about people's approval and you will be their prisoner. --}}
- {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+    {{-- Care about people's approval and you will be their prisoner. --}}
+    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
  <main>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper px-2">
@@ -81,7 +80,9 @@
       </section>
     </div>
   </main>
-  <script type="text/javascript">
+</div>
+@script
+  <script>
     $(document).ready(function () {
       window.addEventListener('swal:confirm', function(msgx){ 
         let title = JSON.stringify(msgx.detail);
@@ -201,5 +202,4 @@
       });
     });
   </script>
-
-</div>
+@endscript

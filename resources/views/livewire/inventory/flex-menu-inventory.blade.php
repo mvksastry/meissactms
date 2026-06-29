@@ -7,7 +7,7 @@
     </span>
     <div class="info-box-content">
       <span class="info-box-text">ADD CATEGORY</span>
-      <span class="info-box-number">{{ count($categories) }}</span>
+      <span class="info-box-number">Current: {{ count($categories) }}</span>
     </div>
     <!-- /.info-box-content -->
   </div>

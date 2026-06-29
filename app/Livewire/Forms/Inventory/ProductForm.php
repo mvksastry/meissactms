@@ -8,6 +8,9 @@ use Livewire\Form;
 class ProductForm extends Form
 {
     //
+    #[Validate('required|alpha')]
+    public $grade;
+
     #[Validate('required|numeric')]
     public $resproj_id;
 
