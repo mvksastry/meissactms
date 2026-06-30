@@ -41,7 +41,7 @@ use App\Models\Ctms\Clinicals\UrineRoutine;
 //
 use Illuminate\Support\Facades\Log;
 
-trait TDbStatusUpdates
+trait TDBStatusUpdates
 {
 
 

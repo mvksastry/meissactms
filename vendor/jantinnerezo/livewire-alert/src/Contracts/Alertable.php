@@ -60,7 +60,38 @@ interface Alertable
 
     public function imageAlt(string $alt): self;
 
+    public function timerProgressBar(bool $show = true): self;
+
     public function asConfirm(): self;
+
+    public function asToast(): self;
+
+    public function asLoading(?string $title = null): self;
+
+    /** @param array<string, string> $classes */
+    public function customClass(array $classes): self;
+
+    public function reverseButtons(bool $reverse = true): self;
+
+    public function withTextInput(?string $label = null, ?string $placeholder = null, ?string $value = null): self;
+
+    public function withEmailInput(?string $label = null, ?string $placeholder = null, ?string $value = null): self;
+
+    public function withPasswordInput(?string $label = null, ?string $placeholder = null): self;
+
+    public function withNumberInput(?string $label = null, ?string $placeholder = null, ?string $value = null): self;
+
+    public function withTextareaInput(?string $label = null, ?string $placeholder = null, ?string $value = null): self;
+
+    /** @param array<string, string> $options */
+    public function withSelectInput(array $options = [], ?string $label = null, ?string $value = null): self;
+
+    /** @param array<string, string> $options */
+    public function withRadioInput(array $options = [], ?string $label = null, ?string $value = null): self;
+
+    public function withCheckboxInput(?string $label = null, bool $checked = false): self;
+
+    public function withFileInput(?string $label = null): self;
 
     /**
      * @param string $action
@@ -96,4 +127,11 @@ interface Alertable
     public function getEvents(): array;
 
     public function show(): void;
+
+    public function close(): void;
+
+    /**
+     * @param array<string, mixed>|null $options
+     */
+    public function update(?array $options = null): void;
 }

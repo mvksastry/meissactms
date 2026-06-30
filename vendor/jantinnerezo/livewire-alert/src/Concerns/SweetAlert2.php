@@ -30,28 +30,82 @@ trait SweetAlert2
                 options[option] = eval(options[option])
             }
 
+            if (typeof Swal === 'undefined') {
+                console.error('[livewire-alert] SweetAlert2 is not loaded. Make sure to include it before using livewire-alert.')
+                return
+            }
+
             const alert = await Swal.fire(options)
 
             if (alert.isConfirmed && {$events}.hasOwnProperty('isConfirmed')) {
-                \$wire.call({$events}.isConfirmed.action, {
+                \$wire[{$events}.isConfirmed.action]({
                     ...{$events}.isConfirmed.data || {},
                     value: alert.value
                 })
             }
-            
+
             if (alert.isDenied && {$events}.hasOwnProperty('isDenied')) {
-                \$wire.call({$events}.isDenied.action, {
+                \$wire[{$events}.isDenied.action]({
                     ...{$events}.isDenied.data || {},
                     value: alert.value
                 })
             }
 
             if (alert.isDismissed && {$events}.hasOwnProperty('isDismissed')) {
-                \$wire.call({$events}.isDismissed.action, {
+                \$wire[{$events}.isDismissed.action]({
                     ...{$events}.isDismissed.data || {},
                     value: alert.value
                 })
             }
+        JS;
+
+        $this->component->js($js);
+    }
+
+    protected function dismiss(): void
+    {
+        $js = <<<'JS'
+            if (typeof Swal === 'undefined') {
+                console.error('[livewire-alert] SweetAlert2 is not loaded. Make sure to include it before using livewire-alert.')
+                return
+            }
+
+            Swal.close()
+        JS;
+
+        $this->component->js($js);
+    }
+
+    /**
+     * @param array<string, mixed> $options
+     */
+    protected function mutate(array $options): void
+    {
+        $options = json_encode($options);
+        $callbacks = json_encode(Option::callbacks());
+
+        $js = <<<JS
+            if (typeof Swal === 'undefined') {
+                console.error('[livewire-alert] SweetAlert2 is not loaded. Make sure to include it before using livewire-alert.')
+                return
+            }
+
+            if (!Swal.isVisible()) {
+                console.warn('[livewire-alert] update() called but no alert is open.')
+                return
+            }
+
+            const options = {$options}
+
+            for (const option in options) {
+                if (!{$callbacks}.includes(option)) {
+                    continue
+                }
+
+                options[option] = eval(options[option])
+            }
+
+            Swal.update(options)
         JS;
 
         $this->component->js($js);
