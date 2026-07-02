@@ -45,6 +45,10 @@ class Products extends Model
 		'open_storage', 
 		'enteredby_id',
 		'date_entered',
+
+		'office_review', //newly added for easy import of data
+    'off_rev_date',  //date done
+		
 		'notes',
 	];
 	

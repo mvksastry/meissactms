@@ -10,11 +10,35 @@ class TemporaryInventoryEntries extends DataTableComponent
 {
     protected $model = Tempproduct::class;
 
-    public $tempproduct_id, $id;
+    public $tempproduct_id, $id, $coafiles = [];
 
     public function configure(): void
     {
         $this->setPrimaryKey('temp_product_id');
+        // Set TH (header) width
+        $this->setThAttributes(function (Column $column) {
+            if ($column->isField('product_file')) {
+                return [
+                    'default' => false, // do NOT keep default classes
+                    'style'   => 'width:50px; min-width:120px;',
+                ];
+            }
+
+            return [];
+        });
+
+        // Set TD (body cells)
+        $this->setTdAttributes(function (Column $column, $row, $colIndex, $rowIndex) {
+        if ($column->isField('product_file')) {
+            return [
+                'default' => false,
+                'style'   => 'width:100px; min-width:100px;',
+            ];
+        }
+
+        return [];
+        });
+        
     }
 
     public function columns(): array
@@ -25,6 +49,11 @@ class TemporaryInventoryEntries extends DataTableComponent
                 '<button wire:click="viewDetails('.$row->temp_product_id.')">View</button>'
             )
             ->html(),
+            
+            // Custom upload field column
+            Column::make('Cleared', "product_file")
+                ->view('livewire.inventory.inputs.clearcheckbox'), // custom view
+            
             Column::make("Temp product id", "temp_product_id")
                 ->sortable(),
             Column::make("Pack mark code", "pack_mark_code")
@@ -59,14 +88,18 @@ class TemporaryInventoryEntries extends DataTableComponent
                 ->sortable(),
             Column::make("Supplier id", "supplier_id")
                 ->sortable(),
+            /*
             Column::make("Status open unopened", "status_open_unopened")
                 ->sortable(),
             Column::make("Status date", "status_date")
                 ->sortable(),
+            */
+            /*
             Column::make("Quantity left", "quantity_left")
                 ->sortable(),
             Column::make("Full empty", "full_empty")
                 ->sortable(),
+            */
             Column::make("Storage container id", "storage_container_id")
                 ->sortable(),
             Column::make("Shelf rack id", "shelf_rack_id")
@@ -75,22 +108,30 @@ class TemporaryInventoryEntries extends DataTableComponent
                 ->sortable(),
             Column::make("Box position id", "box_position_id")
                 ->sortable(),
+            /*
             Column::make("Open storage", "open_storage")
                 ->sortable(),
+            
             Column::make("Enteredby id", "enteredby_id")
                 ->sortable(),
             Column::make("Date entered", "date_entered")
                 ->sortable(),
+            
             Column::make("Product file", "product_file")
                 ->sortable(),
+            */
+            /*
             Column::make("Product file path", "product_file_path")
                 ->sortable(),
+            */
             Column::make("Notes", "notes")
                 ->sortable(),
+            /*
             Column::make("Created at", "created_at")
                 ->sortable(),
             Column::make("Updated at", "updated_at")
                 ->sortable(),
+            */
         ];
     }
 
@@ -113,4 +154,5 @@ class TemporaryInventoryEntries extends DataTableComponent
         $this->dispatch('tempproduct-selected', tempproduct_id: $this->tempproduct_id );
         //$this->patientInfoButtons = true;
     } 
+
 }

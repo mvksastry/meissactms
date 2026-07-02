@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Traits\Base;
 // Models
 use App\Models\Inventory\Products;
-use App\Models\Inventory\Tempproduct;
+//use App\Models\Inventory\Tempproduct;
 
 class BulkInventoryImport implements ToCollection, WithHeadingRow
 {
@@ -93,11 +93,11 @@ class BulkInventoryImport implements ToCollection, WithHeadingRow
             $this->ne['open_storage']         = $row['open_storage'];
             $this->ne['enteredby_id']         = $row['enteredby_id'];
             $this->ne['date_entered']         = date('Y-m-d');
-            //$this->ne['product_file']       = $row['product_file'];
-            //$this->ne['product_file_path']  = $row['product_file_path'];
+            $this->ne['office_review']        = 'draft';
+            $this->ne['off_rev_date']         = date('Y-m-d');
             $this->ne['notes']                = $row['notes'];
             //dd($this->ne);
-            $result =  Tempproduct::create($this->ne);
+            $result =  Products::create($this->ne);
 
             /*
             $xne = new Tempproduct();

@@ -82,10 +82,15 @@ class BulkImportInventory extends Component
     public function render()
     {
         $this->categories = Categories::all();
-        $this->nex = Tempproduct::all();
+        $this->nex = Tempproduct::where('office_review', 'draft')->get();
         if(count($this->nex) > 0)
         {
             //set form object values
+            $this->dispatch('swal:warning', [
+                'type' => 'warning',  
+                'message' => 'Unfinished Inventory Found!', 
+                'text' => 'Inventory Not Yet Finalized Found.'
+            ]);
             $this->finalizePanel = true;
         }
         return view('livewire.inventory.bulk-import-inventory');
@@ -114,6 +119,7 @@ class BulkImportInventory extends Component
             //$check = true;
             if($check)
             {
+                LivewireAlert::title('The File is valid')->success()->show();
                 //first store the file
                 $code8 = $this->generateCode(8);
                 $fileName = $code8."_".Auth::user()->id.".".$oExt;
@@ -130,7 +136,8 @@ class BulkImportInventory extends Component
                 //Now open panel for finalization of the data entered.
             }
             else {
-                $this->alert('danger', 'File type must be .xls or .xlsx only');
+            LivewireAlert::title('File Must be .xls or .xlsx')->warning()->show();
+
                 //$this->irqMessage = "File type must be .xls or .xlsx only";
                 //dd($this->irqMessage);
             }
@@ -162,12 +169,15 @@ class BulkImportInventory extends Component
         $this->dispatch('tempproduct-details', ['pObj' => $this->pObj] );
         //session()->flash('info', $message);
     }
+
     public function setTempProductObject($tempproduct_id)
     {
         //preset model select boxes
         $this->units = Units::all();
         //dd("reached");
-        $this->pObj = Tempproduct::where('temp_product_id', $tempproduct_id)->first();
+        $this->pObj = Tempproduct::where('temp_product_id', $tempproduct_id)
+                                    ->where('office_review', 'draft')
+                                    ->first();
         $this->form['pack_mark_code'] = $this->pObj->pack_mark_code;
         $this->form['category_id'] = $this->pObj->category_id;
         $this->form['resproject_id'] = $this->pObj->resproject_id;
@@ -193,6 +203,7 @@ class BulkImportInventory extends Component
         $this->form['box_id'] = $this->pObj->box_id;
         $this->form['box_position_id'] = $this->pObj->box_position_id;
         $this->form['notes'] = $this->pObj->notes;
+        LivewireAlert::title('Item Details Fetched')->success()->show();
     }
 
     public function updateProductInfo()
@@ -201,163 +212,178 @@ class BulkImportInventory extends Component
         $input = $this->form;
         dd($this->form);
 
-        //$this->validate();
-        
-        /*
-        //implement validations here
-        $validatedData = $this->validate(
-        [
-            'category_id'    => 'required|numeric',
-            'resproj_id'     => 'required|numeric',
-            'grade'          => 'required|alpha',
-            'catalog_number' => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
-            'item_desc'      => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+        //first enter data as we need product id to store the file
+        if($this->form->num_packs != null )
+		{
+			for($i = 0; $i < $this->form->num_packs; $i++)
+			{	
+                /*
+                $this->validate();
+                
+                //implement validations here
+                $validatedData = $this->validate(
+                [
+                    'category_id'    => 'required|numeric',
+                    'resproject_id'     => 'required|numeric',
+                    'grade'          => 'required|alpha',
+                    'catalog_id' => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+                    'name'      => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
 
-            'pack_size'      => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
-            'unit_desc'      => 'required|numeric',
-            'number_packs'   => 'required|numeric',
+                    'pack_size'      => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+                    'unit_id'      => 'required|numeric',
+                    'num_packs'   => 'required|numeric',
 
-            'dateMFD'        => 'nullable|date',
-            'batchCode'      => 'nullable|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+                    'mfd_date'        => 'nullable|date',
+                    'batch_code'      => 'nullable|string|regex:/^[A-Za-z0-9-,_. ]+$/',
 
-            'vialCost'       => 'required|regex:/^[0-9.]+$/',
-            'costCurrency'   => 'required|alpha',
+                    'vial_cost'       => 'required|regex:/^[0-9.]+$/',
+                    'item_currency'   => 'required|alpha',
 
-            'dateExpiry'     => 'nullable|date',
+                    'expiry_date'     => 'nullable|date',
 
-            'source_desc'    => 'required|numeric',
-            'pack_size'      => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+                    'vendor_id'    => 'required|numeric',
+                    'pack_size'      => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
 
-            'container_id'   => 'required|numeric',
-            'rack_shelf'     => 'required|numeric',
-            'box_sack'       => 'required|numeric',
-            'location_code'  => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+                    'storage_container_id'   => 'required|numeric',
+                    'shelf_rack_id'     => 'required|numeric',
+                    'box_id'       => 'required|numeric',
+                    'box_position_id'  => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
 
-            'note_remark'    => 'nullable|string|regex:/^[A-Za-z0-9-,_. ]+$/',
-        ],
-        [
-            'category_id.required'          => 'The :attribute required',
-            'category_id.category_id'       => 'The :attribute must be numeric input only',
+                    'notes'    => 'nullable|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+                ],
+                [
+                    'category_id.required'          => 'The :attribute required',
+                    'category_id.category_id'       => 'The :attribute must be numeric input only',
 
-            'resproj_id.required'           => 'The :attribute required',
-            'resproj_id.resproj_id'         => 'The :attribute must be numeric input only',
+                    'resproject_id.required'           => 'The :attribute required',
+                    'resproject_id.resproject_id'         => 'The :attribute must be numeric input only',
 
-            'catalog_number.required'       => 'The :attribute required',
-            'catalog_number.catalog_number' => 'The :attribute must be alpha, numeric input only',
+                    'catalog_id.required'       => 'The :attribute required',
+                    'catalog_id.catalog_id' => 'The :attribute must be alpha, numeric input only',
 
-            'item_desc.required'            => 'The :attribute required',
-            'item_desc.item_desc'           => 'The :attribute must be alpha, numeric input only',
+                    'name.required'            => 'The :attribute required',
+                    'name.name'           => 'The :attribute must be alpha, numeric input only',
 
-            'pack_size.required'            => 'The :attribute required',
-            'pack_size.pack_size'           => 'The :attribute must be numeric input only',
+                    'pack_size.required'            => 'The :attribute required',
+                    'pack_size.pack_size'           => 'The :attribute must be numeric input only',
 
-            'unit_desc.required'            => 'The :attribute required',
-            'unit_desc.unit_desc'           => 'The :attribute must be selected',
+                    'unit_id.required'            => 'The :attribute required',
+                    'unit_id.unit_id'           => 'The :attribute must be selected',
 
-            'number_packs.required'         => 'The :attribute required',
-            'number_packs.number_packs'     => 'The :attribute must be numeric input only',
+                    'num_packs.required'         => 'The :attribute required',
+                    'num_packs.num_packs'     => 'The :attribute must be numeric input only',
 
-            'dateMFD.dateMFD'               => 'The :attribute must be Date only',
+                    'mfd_date.mfd_date'               => 'The :attribute must be Date only',
 
-            'batchCode.batchCode'           => 'The :attribute must be alpha, numeric input only',
+                    'batch_Code.batch_Code'           => 'The :attribute must be alpha, numeric input only',
 
-            'vialCost.required'             => 'The :attribute required',
-            'vialCost.vialCost'             => 'The :attribute must be numbers, decimal allowed',
+                    'vial_cost.required'             => 'The :attribute required',
+                    'vial_cost.vial_cost'             => 'The :attribute must be numbers, decimal allowed',
 
-            'costCurrency.required'         => 'The :attribute required',
-            'costCurrency.costCurrency'     => 'The :attribute must be selected',
+                    'item_currency.required'         => 'The :attribute required',
+                    'item_currency.item_currency'     => 'The :attribute must be selected',
 
-            'dateExpiry.dateExpiry'         => 'The :attribute must be Date',
+                    'expiry_date.expiry_date'         => 'The :attribute must be Date',
 
-            'source_desc.required'          => 'The :attribute required',
-            'source_desc.source_desc'       => 'The :attribute must be selected',
+                    'supplier_id.required'          => 'The :attribute required',
+                    'supplier_id.supplier_id'       => 'The :attribute must be selected',
 
-            'container_id.required'         => 'The :attribute required',
-            'container_id.container_id'     => 'The :attribute must be selected',
+                    'storage_container_id.required'         => 'The :attribute required',
+                    'storage_container_id.storage_container_id'     => 'The :attribute must be selected',
 
-            'rack_shelf.required'           => 'The :attribute required',
-            'rack_shelf.rack_shelf'         => 'The :attribute must be selected',
+                    'shelf_rack_id.required'           => 'The :attribute required',
+                    'shelf_rack_id.shelf_rack_id'         => 'The :attribute must be selected',
 
-            'box_sack.required'             => 'The :attribute required',
-            'box_sack.box_sack'             => 'The :attribute must be selected',
+                    'box_id.required'             => 'The :attribute required',
+                    'box_id.box_id'             => 'The :attribute must be selected',
 
-            'location_code.location_code'   => 'The :attribute must be alpha, numeric characters only',
+                    'box_position_id.box_position_id'   => 'The :attribute must be alpha, numeric characters only',
 
-            'note_remark.note_remark'       => 'The :attribute must be alpha, numeric characters only',
-        ],
-        [
-            'category_id'    => 'Category ID',
-            'resproj_id'     => 'Research Project',
-            'catalog_number' => 'Catalog Number',
-            'item_desc'      => 'Item Description',
+                    'notes.notes'       => 'The :attribute must be alpha, numeric characters only',
+                ],
+                [
+                    'category_id'    => 'Category ID',
+                    'resproject_id'     => 'Patient Link',
+                    'catalog_id' => 'Catalog Number',
+                    'name'      => 'Item Description',
 
-            'pack_size'      => 'Pack Size',
-            'unit_desc'      => 'Units',
-            'number_packs'   => 'Number of Packs',
+                    'pack_size'      => 'Pack Size',
+                    'unit_id'      => 'Units',
+                    'num_packs'   => 'Number of Packs',
 
-            'dateMFD'        => 'Mfd Date',
-            'batchCode'      => 'Batch Code',
+                    'mgd_dateD'        => 'Mfd Date',
+                    'batch_code'      => 'Batch Code',
 
-            'vialCost'       => 'Cost',
-            'costCurrency'   => 'Currency',
+                    'vial_cost'       => 'Cost',
+                    'item_currency'   => 'Currency',
 
-            'dateExpiry'     => 'Expiry Date',
+                    'expiry_date'     => 'Expiry Date',
 
-            'source_desc'    => 'Supplier',
-            'pack_size'      => 'Pack Size',
+                    'supplier_id'    => 'Supplier',
+                    'pack_size'      => 'Pack Size',
 
-            'container_id'   => 'Container',
-            'rack_shelf'     => 'Rack-Shelf',
-            'box_sack'       => 'Box-Sack',
-            'location_code'  => 'Location Details',
+                    'storage_container_id'   => 'Container',
+                    'shelf_rack_id'     => 'Rack-Shelf',
+                    'box_id'       => 'Box-Sack',
+                    'box_position_id'  => 'Location Details',
 
-            'note_remark'    => 'Notes',
-        ]);
-        */
+                    'notes'    => 'Notes',
+                ]);
+                */
 
-        $nprod = new Tempproduct();
-        $nprod->pack_mark_code = $this->form->pack_mark_code;
-        $nprod->category_id = $this->form->category_id;
-        $nprod->resproject_id = $this->form->resproj_id; // in CTMS it is patient id.
-        $nprod->grade = $this->form->grade;
-        $nprod->catalog_id = $this->form->catalog_number;
-        $nprod->name = $this->form->item_desc;
-        
-        $nprod->pack_size = $this->form->pack_size;
-        $nprod->unit_id = $this->form->unit_desc;
-        $nprod->num_packs = $this->form->number_packs;
-        
-        $nprod->mfd_date = $this->form->dateMFD;
-        $nprod->batch_code = $this->form->batchCode;
-        
-        $nprod->vial_cost = $this->form->vialCost;
-        $nprod->item_currency = $this->form->costCurrency;
-        
-        $nprod->expiry_date = $this->form->dateExpiry;
-        
-        $nprod->supplier_id = $this->form->source_desc;
-        $nprod->status_open_unopened = 1; // 1 is unopened, 0 is opened
-        $nprod->status_date = date('Y-m-d');
-        $nprod->quantity_left = $this->form->pack_size;
-        $nprod->full_empty = 1;  // 1 is full , 0 is empty
-        
-        $nprod->storage_container_id = $this->form->container_id;
-        $nprod->shelf_rack_id = $this->form->rack_shelf;
-        $nprod->box_id = $this->form->box_sack;
-        $nprod->box_position_id = $this->form->location_code;
+                $nprod = new Tempproduct();
+                $nprod->pack_mark_code = $this->form->pack_mark_code;
+                $nprod->category_id = $this->form->category_id;
+                $nprod->resproject_id = $this->form->resproj_id; // in CTMS it is patient id.
+                $nprod->grade = $this->form->grade;
+                $nprod->catalog_id = $this->form->catalog_number;
+                $nprod->name = $this->form->item_desc;
+                
+                $nprod->pack_size = $this->form->pack_size;
+                $nprod->unit_id = $this->form->unit_desc;
+                $nprod->num_packs = $this->form->number_packs;
+                
+                $nprod->mfd_date = $this->form->dateMFD;
+                $nprod->batch_code = $this->form->batchCode;
+                
+                $nprod->vial_cost = $this->form->vialCost;
+                $nprod->item_currency = $this->form->costCurrency;
+                
+                $nprod->expiry_date = $this->form->dateExpiry;
+                
+                $nprod->supplier_id = $this->form->source_desc;
+                $nprod->status_open_unopened = 1; // 1 is unopened, 0 is opened
+                $nprod->status_date = date('Y-m-d');
+                $nprod->quantity_left = $this->form->pack_size;
+                $nprod->full_empty = 1;  // 1 is full , 0 is empty
+                
+                $nprod->storage_container_id = $this->form->container_id;
+                $nprod->shelf_rack_id = $this->form->rack_shelf;
+                $nprod->box_id = $this->form->box_sack;
+                $nprod->box_position_id = $this->form->location_code;
 
-        if($this->form->box_sack == null || $this->form->location_code == null)
-        {
-            $nprod->open_storage = 1;  // 1 is kept in open
-        }else {
-            $nprod->open_storage = 0;  // 0 is in a box or some enclosed
+                if($this->form->box_sack == null || $this->form->location_code == null)
+                {
+                    $nprod->open_storage = 1;  // 1 is kept in open
+                }else {
+                    $nprod->open_storage = 0;  // 0 is in a box or some enclosed
+                }
+                
+                $nprod->enteredby_id = Auth::id();
+                $nprod->date_entered = date('Y-m-d');
+                $nprod->notes = $this->form->note_remark;
+                dd($this->form->number_packs, $nprod);
+                $nprod->save();
+            }
         }
-        
-        $nprod->enteredby_id = Auth::id();
-        $nprod->date_entered = date('Y-m-d');
-        $nprod->notes = $this->form->note_remark;
-        //dd($this->form->number_packs, $nprod);
-        $nprod->save();
+
+        //After product id generated, complete the file upload .
+
+
+
+
+
+
 
 
     }
@@ -371,12 +397,17 @@ class BulkImportInventory extends Component
 
     public function uploadCoAFile()
     {
+        //get pack mark code of the tempproduct_id
+        $pmc_temp = Tempproduct::where('temp_product_id', $this->tempproduct_id)->pluck('pack_mark_code');
+        
+        $product_id = Product::max('product_id');
+
         //dd("upload CoA file", $this->tempproduct_id);
         $bpath = "app/public";
         $def_file_path = "skls/inventory/";
 
         $file_path = $this->def_file_path.'/coas/valid/';
-        $input['product_id'] = $this->tempproduct_id;
+        $input['product_id'] = $product_id;
         $input['file_code'] = 222;
         $input['file_uuid'] = $this->fileUuid();
 

@@ -45,6 +45,10 @@ class Tempproduct extends Model
         'open_storage',
         'enteredby_id',
         'date_entered',
+
+        'office_review', //newly added for easy import of data
+        'off_rev_date',  //date done
+
         'product_file',
         'product_file_path',
         'notes'
