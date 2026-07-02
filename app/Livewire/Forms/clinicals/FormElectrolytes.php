@@ -19,13 +19,13 @@ class FormElectrolytes extends Form
     
 
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $sodium = null;
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $potassium = null;
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $chloride = null;
 
     #[Validate('nullable|regex:/^[0-9]+$/')]

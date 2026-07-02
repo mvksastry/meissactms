@@ -19,10 +19,10 @@ class FormBloodUrea extends Form
     
 
     
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $urea = null;
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $blood_urea_nitrogen = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]

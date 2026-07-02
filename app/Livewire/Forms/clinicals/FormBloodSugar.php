@@ -18,13 +18,13 @@ class FormBloodSugar extends Form
 
     
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $fasting = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $post_prandial = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $random = '';
 
     #[Validate('nullable|regex:/^[a-zA-Z0-9_]+$/')]

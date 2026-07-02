@@ -19,7 +19,7 @@ class FormCreatinine extends Form
     
 
     
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $serum_creatinine = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]

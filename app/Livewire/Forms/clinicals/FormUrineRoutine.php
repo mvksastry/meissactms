@@ -21,22 +21,22 @@ class FormUrineRoutine extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
     public $physical_exam = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $quantity = '';
 
     #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
     public $colour = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
     public $appearance = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
     public $deposits = '';
 
-    #[Validate('nullable|regex:/^[0-9.]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $ph = '';
 
-    #[Validate('nullable|regex:/^[0-9. ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $specific_gravity = '';
 
     #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]

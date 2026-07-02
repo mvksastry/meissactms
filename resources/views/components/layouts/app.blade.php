@@ -69,10 +69,15 @@
 			document.addEventListener('livewire:init', () => {
 			console.log("DOM is fully loaded");
 
-			Livewire.on('uuid-selected', () => {
-							//alert('message');
-							$('#exampleModal').modal('show');
-					});
+				Livewire.on('uuid-selected', () => {
+								//alert('message');
+								$('#exampleModal').modal('show');
+						});
+				Livewire.on('tempproduct-details', () => {
+								//alert('message');
+								$('#exampleModal2').modal('show');
+						});
+
 			});
 		</script>
 		<!-- /.scripts -->
