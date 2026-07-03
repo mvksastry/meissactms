@@ -11,6 +11,7 @@ class TemporaryInventoryEntries extends DataTableComponent
     protected $model = Tempproduct::class;
 
     public $tempproduct_id, $id, $coafiles = [];
+    //public $cleared = [];
 
     public function configure(): void
     {
@@ -49,11 +50,11 @@ class TemporaryInventoryEntries extends DataTableComponent
                 '<button wire:click="viewDetails('.$row->temp_product_id.')">View</button>'
             )
             ->html(),
-            
+            /*
             // Custom upload field column
             Column::make('Cleared', "product_file")
                 ->view('livewire.inventory.inputs.clearcheckbox'), // custom view
-            
+            */
             Column::make("Temp product id", "temp_product_id")
                 ->sortable(),
             Column::make("Pack mark code", "pack_mark_code")

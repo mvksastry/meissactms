@@ -248,6 +248,20 @@
               </div>
               <div class="modal-body">
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                  <tr>
+                    <th colspan="6">
+                      <!-- Validation Errors -->
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $err)
+                                        <li>{{ $err }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </th>
+                  </tr>
                   <tbody> 
                     <tr>
                       <td>
@@ -375,12 +389,12 @@
                           @enderror
                       </td>
                       <td>
-                        <label  for="bulkcode">Currency</label>
-                        <select wire:model="form.item_currency" type="text" class="form-control">
-                          <option value="-1">Select</option>            
-                          @foreach($currency as $key => $row)
-                          <option value="{{ $key }}" {{ $key == $pObj->unit_id ? 'selected="selected"' : '' }}>{{ $row }}</option>   
-                          @endforeach
+                        <label for="bulkcode">Currency</label>
+                        <select wire:model="form.item_currency" type="select" class="custom-select rounded-0">
+                          <option value="-1">Select</option> 
+                          @foreach($currencies as $row)
+                          <option value="{{ $row->currency_id }}">{{ $row->description }}</option>
+                          @endforeach           
                         </select>
                         @error('form.item_currency')
                             <span class="text-danger">{{ $message }}</span>
@@ -479,7 +493,7 @@
               </div>
               <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button wire:click="uploadCoAFile()" class="btn btn-info text-white font-normal rounded">Upload FIle</button>
+                <!-- button wire:click="uploadCoAFile()" class="btn btn-info text-white font-normal rounded">Upload FIle</button> -->
                 <button wire:click="updateProductInfo()" type="button" class="btn btn-primary">Save changes</button>
               </div>
             @endif
@@ -530,6 +544,12 @@
         });
         */
       });
+
+      window.addEventListener('closeProductModal', function(msg){ 
+        //alert("reached");
+        $('#exampleModal2').modal('hide'); 
+      }); 
+    
 
       window.addEventListener('swal:warning', function(msgx1){ 
         let title = JSON.stringify(msgx1.detail);
