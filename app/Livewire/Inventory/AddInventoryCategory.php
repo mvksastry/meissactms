@@ -36,45 +36,45 @@ class AddInventoryCategory extends Component
         return view('livewire.inventory.add-inventory-category');
     }
 
-    public function postNewCategoryInfo()
-	{
-		$validatedData = $this->validate(
-		[
-			'newCategory' => 'required|alpha_num',
-			'newCatDesc'	 => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
-		],
-		[
-			'newCategory.required'	=> 'The :attribute required',
-			'newCategory.newCategory'	=> 'The :attribute must alpha numeric characters only',
+		public function postNewCategoryInfo()
+		{
+			$validatedData = $this->validate(
+			[
+				'newCategory' => 'required|alpha_num',
+				'newCatDesc'	 => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+			],
+			[
+				'newCategory.required'	=> 'The :attribute required',
+				'newCategory.newCategory'	=> 'The :attribute must alpha numeric characters only',
+				
+				'newCatDesc.required'	=> 'The :attribute required',
+				'newCatDesc.newCatDesc'	=> 'The :attribute must alpha numeric characters only',
+			],
+			[
+				'newCategory' => 'New Category',
+				'newCatDesc'  => 'New Category Description'
+			]);
 			
-			'newCatDesc.required'	=> 'The :attribute required',
-			'newCatDesc.newCatDesc'	=> 'The :attribute must alpha numeric characters only',
-		],
-		[
-			'newCategory' => 'New Category',
-			'newCatDesc'  => 'New Category Description'
-		]);
-		
-		$newCat = new Categories();
-		$newCat->name = $this->newCategory;
-		$newCat->description = $this->newCatDesc;
-		//dd($newCat);
-		$newCat->save();
-		//$this->alert('success', 'New Category Created');
-		
-		Log::channel('activity')->info("[ ".Auth::user()->name.' ] saved new inventory category');
-		
-		$newCat = null;
-		$this->categories = Categories::all();
-		$this->resetNewCategoryForm();
-	}
+			$newCat = new Categories();
+			$newCat->name = $this->newCategory;
+			$newCat->description = $this->newCatDesc;
+			//dd($newCat);
+			$newCat->save();
+			//$this->alert('success', 'New Category Created');
+			
+			Log::channel('activity')->info("[ ".Auth::user()->name.' ] saved new inventory category');
+			
+			$newCat = null;
+			$this->categories = Categories::all();
+			$this->resetNewCategoryForm();
+		}
 
-    public function resetNewCategoryForm()
-	{
-		$this->newCategory = null;
-		$this->newCatDesc = null;
-		
-		Log::channel('activity')->info("[ ".Auth::user()->name.' ] reset Inventory New category info form');
-	}
+		public function resetNewCategoryForm()
+		{
+			$this->newCategory = null;
+			$this->newCatDesc = null;
+			
+			Log::channel('activity')->info("[ ".Auth::user()->name.' ] reset Inventory New category info form');
+		}
 
 }
