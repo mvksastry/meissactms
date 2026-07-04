@@ -215,10 +215,17 @@
     </tr>
     
     <tr>
-      <td colspan="4">
+      <td colspan="2">
         <label>Notes, If any</label>
         <input type="text" placeholder="Sample remarks, if any" class="form-control" wire:model.defer="form.note_remark">
           @error('form.note_remark')
+              <span class="text-danger">{{ $message }}</span>
+          @enderror
+      </td>
+      <td colspan="2">
+        <label>Upload CoA File</label>
+        <input wire:model.defer="product_coa" type="file"  class="form-control" placeholder="Report File" > 
+          @error('product_coa')
               <span class="text-danger">{{ $message }}</span>
           @enderror
       </td>

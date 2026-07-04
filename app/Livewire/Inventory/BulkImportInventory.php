@@ -184,24 +184,15 @@ class BulkImportInventory extends Component
         //$result = Tempproducts::truncate();
         if($result)
         {
-            LivewireAlert::title('All Entries Deleted')
-                        ->success()
-                        ->asToast()
-                        ->show();
+            LivewireAlert::title('All Entries Deleted')->success()->asToast()->show();
         }else{
-            LivewireAlert::title('Deletion Failed: Check with admin')
-                        ->error()
-                        ->asToast()
-                        ->show();
+            LivewireAlert::title('Deletion Failed: Check with admin')->error()->asToast()->show();
         }
     }
 
     public function fnKeepAllEntries()
     {
-        LivewireAlert::title('Abandoned Deletion')
-        ->info()
-        ->asToast()
-        ->show();
+        LivewireAlert::title('Abandoned Deletion')->info()->asToast()->show();
     }
 
     public function fetchProductDetails($tempproduct_id)
@@ -297,6 +288,7 @@ class BulkImportInventory extends Component
                     'notes'                     => 'nullable|string|regex:/^[A-Za-z0-9-,_. ]+$/',
                 ],
                 [
+                    'product_coa.product_coa'                   => 'The :attribute a .pdf file',
                     'category_id.required'                      => 'The :attribute required',
                     'category_id.category_id'                   => 'The :attribute must be numeric input only',
 
@@ -347,6 +339,7 @@ class BulkImportInventory extends Component
                     'notes.notes'                               => 'The :attribute must be alpha, numeric characters only',
                 ],
                 [
+                    'product_coa'          => 'CoA File', 
                     'category_id'          => 'Category ID',
                     'resproject_id'        => 'Patient Link',
                     'catalog_id'           => 'Catalog Number',
@@ -420,29 +413,34 @@ class BulkImportInventory extends Component
                 $nprod->save();
                 LivewireAlert::title('Product Saved to DB')->info()->asToast()->show();
             }
+
+            //After product id generated, complete the file upload .
+            if ($this->product_coa) 
+            {
+                LivewireAlert::title('File Being saved...')->info()->asToast()->show();
+                $result = $this->uploadCoAFile();
+            }
+            //now modify the product id in coA table --Very import
+            $nCoadet = COAs::where('product_id', $this->tempproduct_id)->first();
+            $nCoadet->product_id = $nprod->getKey();
+            $nCoadet->save();
+            LivewireAlert::title('CoA DB Updated')->info()->asToast()->show();
+
+            //neutralize the ids selected
+            $this->dispatch('closeProductModal');
+            $result = Tempproduct::where('temp_product_id', $this->tempproduct_id)->delete();
+            LivewireAlert::title('Product Removed from Temporary DB')->info()->asToast()->show();
+            $this->nex = Tempproduct::all();
+
+            $this->pObj = null;
+            $this->tempproduct_id = null;
+            LivewireAlert::title('New Product Entry Successful')->info()->success()->show();
+
+        } else {
+            LivewireAlert::title('Number of Packs Empty')->warning()->asToast()->show();
         }
 
-        //After product id generated, complete the file upload .
-        if ($this->product_coa) 
-        {
-            LivewireAlert::title('File Being saved...')->info()->asToast()->show();
-            $result = $this->uploadCoAFile();
-        }
-        //now modify the product id in coA table --Very import
-        $nCoadet = COAs::where('product_id', $this->tempproduct_id)->first();
-        $nCoadet->product_id = $nprod->getKey();
-        $nCoadet->save();
-        LivewireAlert::title('CoA DB Updated')->info()->asToast()->show();
 
-        //neutralize the ids selected
-        $this->dispatch('closeProductModal');
-        $result = Tempproduct::where('temp_product_id', $this->tempproduct_id)->delete();
-        LivewireAlert::title('Product Removed from Temporary DB')->info()->asToast()->show();
-
-
-        $this->pObj = null;
-        $this->tempproduct_id = null;
-        LivewireAlert::title('New Product Entry Successful')->info()->success()->show();
     }
 
     public function uploadCoAFile()
