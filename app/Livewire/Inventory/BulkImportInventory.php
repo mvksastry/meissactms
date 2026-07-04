@@ -49,7 +49,7 @@ class BulkImportInventory extends Component
     use WithFileUploads;
 
     //swal messages
-	public $message;
+	public $message, $msgx;
 
     //flex muneu contents
     public $categories;
@@ -87,7 +87,8 @@ class BulkImportInventory extends Component
     ];
 
     protected $listeners = [
-        'productSelected' => 'fetchProductDetails'
+        'productSelected' => 'fetchProductDetails',
+        'groupDelete' => 'fnMassDeleteEntries'
     ];
 
     public function render()
@@ -166,7 +167,41 @@ class BulkImportInventory extends Component
 
     public function deleteBulkEntries()
     {
-        dd("deletion code reached");
+        //set form object values
+        //$this->dispatch('swal:confirm', $this->msgx);
+        
+        LivewireAlert::title('Proceed with this Irreversible action?')
+        ->asConfirm()
+        ->onConfirm('fnMassDeleteEntries')
+        ->onDeny('fnKeepAllEntries')
+        ->show();
+    }
+
+
+    public function fnMassDeleteEntries()
+    {
+        $result = true;
+        //$result = Tempproducts::truncate();
+        if($result)
+        {
+            LivewireAlert::title('All Entries Deleted')
+                        ->success()
+                        ->asToast()
+                        ->show();
+        }else{
+            LivewireAlert::title('Deletion Failed: Check with admin')
+                        ->error()
+                        ->asToast()
+                        ->show();
+        }
+    }
+
+    public function fnKeepAllEntries()
+    {
+        LivewireAlert::title('Abandoned Deletion')
+        ->info()
+        ->asToast()
+        ->show();
     }
 
     public function fetchProductDetails($tempproduct_id)
@@ -215,7 +250,7 @@ class BulkImportInventory extends Component
         $this->form['box_id'] = $this->pObj->box_id;
         $this->form['box_position_id'] = $this->pObj->box_position_id;
         $this->form['notes'] = $this->pObj->notes;
-        LivewireAlert::title('Item Details Fetched')->success()->show();
+        LivewireAlert::title('Item Details Fetched')->success()->asToast()->show();
     }
 
     public function updateProductInfo()
@@ -223,16 +258,17 @@ class BulkImportInventory extends Component
         //dd("update product info button", $this->tempproduct_id);
         $input = $this->form;
         //dd($input);
-        $this->message = "Processing...";
+        LivewireAlert::title('Processing...')->info()->asToast()->show();
         //first enter data as we need product id to store the file
         if($input['num_packs'] != null )
-		{
-			for($i = 0; $i < $input['num_packs']; $i++)
-			{	
+        {
+            for($i = 0; $i < $input['num_packs']; $i++)
+            {	
                 //$this->validate();
                 //implement validations here
                 $validatedData = $this->validate(
                 [
+                    'product_coa'               => 'nullable|file|mimes:pdf|max:2048',
                     'form.category_id'          => 'required|numeric',
                     'form.resproject_id'        => 'required|numeric',
                     'form.grade'                => 'required|alpha',
@@ -337,7 +373,7 @@ class BulkImportInventory extends Component
 
                     'notes'                => 'Notes',
                 ]);
-                
+                LivewireAlert::title('Validations Successful')->info()->asToast()->show();
                 
                 $nprod = new Products();
                 $nprod->pack_mark_code = $input['pack_mark_code'];
@@ -382,116 +418,97 @@ class BulkImportInventory extends Component
                 $nprod->notes = $input['notes'];
                 //dd($input['num_packs'], $nprod);
                 $nprod->save();
+                LivewireAlert::title('Product Saved to DB')->info()->asToast()->show();
             }
         }
 
         //After product id generated, complete the file upload .
-
-        if ($this->product_coa) {
+        if ($this->product_coa) 
+        {
+            LivewireAlert::title('File Being saved...')->info()->asToast()->show();
             $result = $this->uploadCoAFile();
         }
         //now modify the product id in coA table --Very import
         $nCoadet = COAs::where('product_id', $this->tempproduct_id)->first();
         $nCoadet->product_id = $nprod->getKey();
         $nCoadet->save();
+        LivewireAlert::title('CoA DB Updated')->info()->asToast()->show();
 
         //neutralize the ids selected
         $this->dispatch('closeProductModal');
         $result = Tempproduct::where('temp_product_id', $this->tempproduct_id)->delete();
+        LivewireAlert::title('Product Removed from Temporary DB')->info()->asToast()->show();
+
+
         $this->pObj = null;
         $this->tempproduct_id = null;
-
-    }
-
-
-    public function fileUuid()
-    {
-        $this->file_uuid = Str::uuid()->toString();
-        return $this->file_uuid;
+        LivewireAlert::title('New Product Entry Successful')->info()->success()->show();
     }
 
     public function uploadCoAFile()
     {
-        //get pack mark code of the tempproduct_id
-        //$pmc_temp = Tempproduct::where('temp_product_id', $this->tempproduct_id)->pluck('pack_mark_code');
-        
-        //$product_id = Product::max('product_id');
-
-        //dd("upload CoA file", $this->tempproduct_id);
         $bpath = "app/public";
         $def_file_path = "skls/inventory/";
 
         $file_path = $def_file_path.'coas/valid/';
         $file_input['product_id'] = $this->tempproduct_id;
         $file_input['file_code'] = 222;
-        $file_input['file_uuid'] = $this->fileUuid();
+        $file_input['file_uuid'] = Str::uuid()->toString();
 
         $file_input['coa_status'] = 'valid';
         $file_input['uploaded_by'] = Auth::user()->id;
         $file_input['date_created'] = date('Y-m-d');
 
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->product_coa) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
-            $file_input['file_name'] = $this->generateCode(12).'.'.$this->product_coa->getClientOriginalExtension();
-            $file_input['file_path'] = $file_path;
-            //dd($input);
+        $file_input['file_name'] = $this->generateCode(12).'.'.$this->product_coa->getClientOriginalExtension();
+        $file_input['file_path'] = $file_path;
+        //dd($input);
 
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($this->tempproduct_id, $file_input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/inventory/coas/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/inventory/coas/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->product_coa->storeAs($file_path, $file_input['file_name'], 'public' );
-                //now make database entry             
-            } else {
-                //looks like first time insertion go ahead.
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($this->tempproduct_id, $file_input['file_code']);
+        
+        if($oldfile){
+            $ttpath = "app/public/skls/inventory/coas/archieve/";
+            $t_path = storage_path($ttpath);
+            $pathTest = File::isDirectory($t_path);
+            //dd($pathTest);
+            if (!$pathTest) {
+                mkdir($t_path, $mode = 0775, $recursive = true);
+                //dd("dir created");
             }
-            //now since we have taken care o fthe old file, now save it.
-            $path = $this->product_coa->storeAs($file_path, $file_input['file_name'], 'public');
-            //now enter into the db table.
-            $newCoa = new COAs();
+            // set destination directory for moving the file
+            $to_path = "skls/inventory/coas/archieve/";
+            //move that file unwanted directory
+            File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
             
-            $newCoa->product_id = $this->tempproduct_id;
-            $newCoa->file_code = $file_input['file_code'];
-            $newCoa->file_uuid = $this->fileUuid();
-            $newCoa->file_name = $file_input['file_name'];
-            $newCoa->file_path = $file_input['file_path'];
-            $newCoa->coa_status = 'valid';
-            $newCoa->uploaded_by = Auth::user()->id;
-            $newCoa->date_created = date('Y-m-d');
-            $newCoa->save();
-            $this->iter1++;
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully");
-        } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
-        }
+            //after moving get the path and update database of that file.
+            $oldfile->file_path = $to_path;
+            //after moving set the status to invalid
+            $oldfile->report_status = 'invalid';
+            //now save the file.
+            $oldfile->save();
+            LivewireAlert::title('Old File Moved...')->info()->asToast()->show();
+            //now put new file in directory
+            //$path = $this->product_coa->storeAs($file_path, $file_input['file_name'], 'public' );
+            //now make database entry             
+        } 
+
+        //now since we have taken care o fthe old file, now save it.
+        $path = $this->product_coa->storeAs($file_path, $file_input['file_name'], 'public');
+        LivewireAlert::title('New File Uploaded...')->info()->asToast()->show();
+        //now enter into the db table.
+        $newCoa = new COAs();
+        $newCoa->product_id = $this->tempproduct_id;
+        $newCoa->file_code = $file_input['file_code'];
+        $newCoa->file_uuid = $this->fileUuid();
+        $newCoa->file_name = $file_input['file_name'];
+        $newCoa->file_path = $file_input['file_path'];
+        $newCoa->coa_status = 'valid';
+        $newCoa->uploaded_by = Auth::user()->id;
+        $newCoa->date_created = date('Y-m-d');
+        $newCoa->save();
+        $this->iter1++;
+        //dd($input, $oldfile);
+        LivewireAlert::title('New File Data Saved...')->info()->asToast()->show();
     }
 
     public function getOldFileInfo($tempproduct_id, $code)
