@@ -407,6 +407,40 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                EHub - ELab
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/activities-home" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>EHub - Dashboard</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/activities-home" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Activities Home</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/production-hub" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Production Hub</p>
+                </a>
+              </li>
+            </ul>
+
+          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">

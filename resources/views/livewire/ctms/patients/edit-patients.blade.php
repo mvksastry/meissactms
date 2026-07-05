@@ -69,9 +69,11 @@
                         <td>
                             <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
                         </td>
+                        <!--
                         <td>
                             <button wire:click="selectedUuidPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp UUID Details</button>
                         </td>
+                        -->
                       </tr>
                     @endforeach
                   </tbody>

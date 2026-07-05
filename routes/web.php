@@ -45,12 +45,15 @@ use App\Livewire\Ctms\Followups\PatientFollowup;
 use App\Livewire\Ctms\Patients\Clinicals\DrugCategories;
 
 // Livewire - Health management
-use App\Livewire\Health\ManageHealth;
+
 
 // Livewire - Adverse Events
 use App\Livewire\Ctms\Patients\PatientAdverseEvents;
 
-
+//-- Livewire: Elab related --// 
+use App\Livewire\EHub\EhubHome;
+use App\Livewire\EHub\ProductionHome;
+use App\Livewire\EHub\ActivitiesHome;
 
 //-- Livewire: Inventory, Samples and Reagents --//   
 use App\Livewire\Inventory\AddInventoryCategory;
@@ -137,11 +140,16 @@ Route::middleware('auth')->group(function () {
     Route::get('drug-categories', DrugCategories::class);
 
     // ------- Livewire: Components All Roles------- //
-    Route::get('manage-health', ManageHealth::class);
+
 
     // ------- Livewire: Components All Roles------- //
     Route::get('adverse-events', PatientAdverseEvents::class);
 
+
+    // ------- Livewire: EHub(ELAb) related Components All Roles------- //
+    Route::get('/ehub-home',              App\Livewire\EHub\EhubHome::class);
+    Route::get('/production-hub',         App\Livewire\EHub\ProductionHub::class);
+    Route::get('/activities-home',        App\Livewire\EHub\ActivitiesHome::class);
 
     // ------- Livewire: Components All Roles------- //
     Route::get('/add-inventory-category', App\Livewire\Inventory\AddInventoryCategory::class);
