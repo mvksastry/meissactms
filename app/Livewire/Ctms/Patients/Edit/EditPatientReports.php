@@ -77,11 +77,16 @@ class EditPatientReports extends Component
 
     public $includedReps = [], $all_in_one_file;
 
+    public $primaryinfos, $lifestyle, $sensoryexam, $mdtre, $pfirmanscore, $vascore, $modqscore;
+    public $rmqscore, $miscoff1, $miscoff2;
+
     public $blood_routine, $blood_sugar, $blood_urea;
     public $chem_exams, $creatinine, $electrolytes, $crp, $il6, $lab_exams, $liver_function; 
     public $microscopic_exam, $renal_function, $urine_routine;
 
     public $iter1;
+
+    public $file_count = 0, $misc_file_count = 0;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -180,9 +185,11 @@ class EditPatientReports extends Component
             $this->primaryinfos = null;
             $this->iter1++;
             //dd($input, $oldfile);
-            LivewireAlert::title('Primary Infos saved...')->info()->asToast()->show();
+            LivewireAlert::title('Primary Info Data File saved...')->info()->asToast()->show();
             //session()->flash('message', "File uploaded successfully: {$file_path}");
-        } 
+        } else {
+            LivewireAlert::title('Primary Info Data File Not Found...')->warning()->asToast()->show();
+        }
     }
 
 
@@ -245,9 +252,11 @@ class EditPatientReports extends Component
             $newFile = ClinicalReports::insert($input);
             $this->lifestyle = null;
             $this->iter1++;
-            LivewireAlert::title('Life Style Infos saved...')->info()->asToast()->show();
+            LivewireAlert::title('Life Style Data File saved...')->info()->asToast()->show();
             //session()->flash('message', "File uploaded successfully: {$file_path}");
-        } 
+        } else {
+            LivewireAlert::title('Life Style Data Not Found...')->warning()->asToast()->show();
+        }
     }
 
     public function updatedCheckedall($value) 
@@ -284,6 +293,7 @@ class EditPatientReports extends Component
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
+        // File #1
         if($this->all_in_one_file) 
         {
             $validatedData = $this->validate(
@@ -314,8 +324,11 @@ class EditPatientReports extends Component
             LivewireAlert::title('All in One File Saved...')->info()->asToast()->show();
             $this->all_in_one_file = null;
             $this->iter1++;
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #2
         // Check if $file is a Livewire temporary uploaded file
         if ($this->blood_routine) 
         {
@@ -370,8 +383,11 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Blood Routine File Saved...')->info()->asToast()->show();
-        } 
+        } else {
+            $this->file_count = $this->file_count + 1;
+        }
 
+        // File #3
         if ($this->blood_sugar)
         {
             $validatedData = $this->validate(
@@ -424,8 +440,11 @@ class EditPatientReports extends Component
             //dd($input, $oldfile);
             LivewireAlert::title('Blood Routine File Saved...')->info()->asToast()->show();
             //session()->flash('message', "File uploaded successfully: {$file_path}");
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #4
         if ($this->blood_urea) 
         {
             $validatedData = $this->validate(
@@ -480,9 +499,11 @@ class EditPatientReports extends Component
             //dd($input, $oldfile);
             LivewireAlert::title('Blood Urea File Saved...')->info()->asToast()->show();
             session()->flash('message', "File uploaded successfully: {$file_path}");
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
         
- 
+        // File #5
         if ($this->chem_exams) 
         {
             $validatedData = $this->validate(
@@ -536,9 +557,11 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Chem Exams File Saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
         }       
 
-
+        // File #6
         if ($this->creatinine) 
         {
             $validatedData = $this->validate(
@@ -591,8 +614,11 @@ class EditPatientReports extends Component
             $this->creatinine = null;
             $this->iter1++;
             LivewireAlert::title('Creatinine Data File Saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #7
         if ($this->crp) 
         {
             $validatedData = $this->validate(
@@ -647,8 +673,11 @@ class EditPatientReports extends Component
             //dd($input, $oldfile);
             LivewireAlert::title('CRP Data File Saved...')->info()->asToast()->show();
             //session()->flash('message', "File uploaded successfully: {$file_path}");
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #8
         if ($this->electrolytes) 
         {
             // Validate file
@@ -703,8 +732,11 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('CRP Data File Saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #9
         if ($this->il6) 
         {
             $validatedData = $this->validate(
@@ -758,9 +790,11 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('IL6 Data File Saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
-
+        // File #10
         if ($this->lab_exams) 
         {
             $validatedData = $this->validate(
@@ -814,8 +848,11 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Lab Exams Data File Saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #11
         if ($this->liver_function) 
         {
             $validatedData = $this->validate(
@@ -870,8 +907,11 @@ class EditPatientReports extends Component
             //dd($input, $oldfile);
             LivewireAlert::title('Liver Function Data File Saved...')->info()->asToast()->show();
             //session()->flash('message', "File uploaded successfully: {$file_path}");
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #12
         if ($this->microscopic_exam) 
         {
             $validatedData = $this->validate(
@@ -925,8 +965,11 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Microscopic Exam Data File Saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #13
         if ($this->renal_function) 
         {
             $validatedData = $this->validate(
@@ -980,8 +1023,11 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Renal Function Data File saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
         }
 
+        // File #14
         if ($this->urine_routine) 
         {
             $validatedData = $this->validate(
@@ -1035,6 +1081,13 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Urine Routine Data File saved...')->info()->asToast()->show();
+        } else {
+            $this->file_count = $this->file_count + 1;
+        }
+
+        if($this->file_count == 14)
+        {
+            LivewireAlert::title('Files Not Found...')->warning()->asToast()->show();
         }
     }
 
@@ -1102,6 +1155,8 @@ class EditPatientReports extends Component
             $this->lifestyle = null;
             $this->iter1++;
             LivewireAlert::title('Urine Routine Data File saved...')->info()->asToast()->show();
+        } else {
+            LivewireAlert::title('Urine Routine Data File Not Found...')->warning()->asToast()->show();
         }
     }
 
@@ -1169,6 +1224,8 @@ class EditPatientReports extends Component
             $this->mdtre = null;
             $this->iter1++;
             LivewireAlert::title('MDTRE Data File saved...')->info()->asToast()->show();
+        } else {
+            LivewireAlert::title('MDTRE Data File Not Found...')->warning()->asToast()->show();
         }
     }
 
@@ -1236,6 +1293,8 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Pfirman Score Data File saved...')->info()->asToast()->show();
+        } else {
+            LivewireAlert::title('Pfirman Score File Not Found...')->warning()->asToast()->show();
         }
     }
 
@@ -1303,6 +1362,8 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('VA Score Data File saved...')->info()->asToast()->show();
+        } else {
+            LivewireAlert::title('VA Score File Not Found...')->warning()->asToast()->show();
         }
     }
 
@@ -1371,6 +1432,8 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('MODQ Score Data File saved...')->info()->asToast()->show();
+        } else {
+            LivewireAlert::title('MODQ File Not Found...')->warning()->asToast()->show();
         }
     }
 
@@ -1445,6 +1508,8 @@ class EditPatientReports extends Component
             $this->rmqscore = null;
             $this->iter1++;
             LivewireAlert::title('RMQ Score Data File saved...')->info()->asToast()->show();
+        } else {
+            LivewireAlert::title('RMQ File Not Found...')->warning()->asToast()->show();
         }
     }
 
@@ -1512,6 +1577,8 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Misc Off-1 Data File saved...')->info()->asToast()->show();
+        } else {
+            $this->misc_file_count = $this->misc_file_count + 1;
         }
 
         // Check if $file is a Livewire temporary uploaded file
@@ -1568,6 +1635,13 @@ class EditPatientReports extends Component
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Misc Off-1 Data File saved...')->info()->asToast()->show();
+        } else {
+            $this->misc_file_count = $this->misc_file_count + 1;
+        }
+
+        if( $this->misc_file_count == 2)
+        {
+            LivewireAlert::title('Misc Off Data Files Not Foundsaved...')->warning()->asToast()->show();
         }
     }
 
