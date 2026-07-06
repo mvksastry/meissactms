@@ -28,6 +28,8 @@ use App\Traits\Base;
 
 //logs
 use Illuminate\Support\Facades\Log;
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class FollowupReportFiles extends Component
 {
@@ -73,11 +75,17 @@ class FollowupReportFiles extends Component
     public $uuid;
     public $current_files;
 
+    public $fu_number;
+    public $primaryinfos, $lifestyle, $sensoryexam, $mdtre, $pfirmanscore;
+    public $vascore, $modqscore, $rmqscore, $miscoff1, $miscoff2;
+
     public $blood_routine, $blood_sugar, $blood_urea;
-    public $chem_exams, $creatinine, $electrolytes, $il6, $lab_exams, $liver_function; 
+    public $chem_exams, $creatinine, $electrolytes, $crp, $il6, $lab_exams, $liver_function; 
     public $microscopic_exam, $renal_function, $urine_routine;
 
     public $iter1;
+
+    public $file_count = 0, $misc_file_count = 0;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -112,18 +120,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/followups';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->primaryinfos) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->primaryinfos) 
+        {
+            $validatedData = $this->validate(
+            [
+                'primaryinfos'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'primaryinfos.primaryinfos' => 'The :attribute a .pdf file'
+            ],
+            [
+                'primaryinfos'            => 'Primary Infos'
+            ]);
             
             $input['file_code'] = 1;
             $input['file_uuid'] = $this->fileUuid();
@@ -155,47 +170,44 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->primaryinfos->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->primaryinfos->storeAs($file_path, $input['file_name'], 'public');
+                $oldfile->save();                
             }
-
-            
+            //looks like first time insertion go ahead.
+            $path = $this->primaryinfos->storeAs($file_path, $input['file_name'], 'public');
             $newFile = ClinicalReports::insert($input);
             $this->primaryinfos = null;
             $this->iter1++;
             //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            LivewireAlert::title('Primary Info File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('Primary Info File Not Present, Must be .pdf')->warning()->show();
         }
     }
 
 
     public function fnUploadlifestyleInfos()
     {
-
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->lifestyle) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->lifestyle) 
+        {
+            $validatedData = $this->validate(
+            [
+                'lifestyle'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'lifestyle.lifestyle' => 'The :attribute a .pdf file'
+            ],
+            [
+                'lifestyle'            => 'Life Style'
+            ]);
             
             $input['file_code'] = 3;
             $input['file_uuid'] = $this->fileUuid();
@@ -227,28 +239,18 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->lifestyle->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->lifestyle = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->lifestyle->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->lifestyle = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
+            //looks like first time insertion go ahead.
+            $path = $this->lifestyle->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->lifestyle = null;
+            $this->iter1++;
             //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            LivewireAlert::title('Life Style File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('File Not Present, Must be .pdf')->warning()->show();
         }
     }
 
@@ -260,18 +262,26 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
+        //File #1
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->blood_routine) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->blood_routine) 
+        {
+            $validatedData = $this->validate(
+            [
+                'blood_routine'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'blood_routine.blood_routine' => 'The :attribute a .pdf file'
+            ],
+            [
+                'blood_routine'            => 'Blood Routine'
+            ]);
             
             $input['file_code'] = 31;
             $input['file_uuid'] = $this->fileUuid();
@@ -303,35 +313,33 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->blood_routine->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->blood_routine = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->blood_routine->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->blood_routine = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
+            //looks like first time insertion go ahead.
+            $path = $this->blood_routine->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->blood_routine = null;
+            $this->iter1++;
             //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            LivewireAlert::title('Blood Routine File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            $this->file_count = $this->file_count + 1;
         }
 
-        if ($this->blood_sugar) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        //File #2
+        if ($this->blood_sugar) 
+        {
+            $validatedData = $this->validate(
+            [
+                'blood_sugar'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'blood_sugar.blood_sugar' => 'The :attribute a .pdf file'
+            ],
+            [
+                'blood_sugar'            => 'Blood Sugar'
+            ]);
             
             $input['file_code'] = 32;
             $input['file_uuid'] = $this->fileUuid();
@@ -363,34 +371,32 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->blood_sugar->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->blood_routine = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->blood_sugar->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->blood_sugar = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
-        }else {
+            //looks like first time insertion go ahead.
+            $path = $this->blood_sugar->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->blood_sugar = null;
+            $this->iter1++;
+            LivewireAlert::title('Blood Sugar File Saved')->success()->asToast()->show();
+        }else {
+            $this->file_count = $this->file_count + 1;
         }
 
-        if ($this->blood_urea) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        //File #3
+        if ($this->blood_urea) 
+        {
+            $validatedData = $this->validate(
+            [
+                'blood_urea'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'blood_urea.blood_urea' => 'The :attribute a .pdf file'
+            ],
+            [
+                'blood_urea'            => 'Blood Urea'
+            ]);
             
             $input['file_code'] = 33;
             $input['file_uuid'] = $this->fileUuid();
@@ -422,35 +428,32 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->blood_urea->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->blood_urea = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->blood_urea->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->blood_urea = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
-        }else {
+            //looks like first time insertion go ahead.
+            $path = $this->blood_urea->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->blood_urea = null;
+            $this->iter1++;
+            LivewireAlert::title('Blood Urea File Saved')->success()->asToast()->show();
+        }else {
+            $this->file_count = $this->file_count + 1;
         }
         
- 
-        if ($this->chem_exams) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        //File #4
+        if ($this->chem_exams) 
+        {
+            $validatedData = $this->validate(
+            [
+                'chem_exams'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'chem_exams.chem_exams' => 'The :attribute a .pdf file'
+            ],
+            [
+                'chem_exams'            => 'Chem Exams'
+            ]);
             
             $input['file_code'] = 34;
             $input['file_uuid'] = $this->fileUuid();
@@ -491,27 +494,31 @@ class FollowupReportFiles extends Component
                 $this->chem_exams = null;
                 $this->iter1++;
                 //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->chem_exams->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->chem_exams = null;
-                $this->iter1++;
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->chem_exams->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->chem_exams = null;
+            $this->iter1++;
+            LivewireAlert::title('Chem Exam File Saved')->success()->asToast()->show();
         }else {
-
+            $this->file_count = $this->file_count + 1;
         }        
 
-
-        if ($this->creatinine) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        //File #5
+        if ($this->creatinine) 
+        {
+            $validatedData = $this->validate(
+            [
+                'creatinine'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'creatinine.creatinine' => 'The :attribute a .pdf file'
+            ],
+            [
+                'creatinine'            => 'Creatinine'
+            ]);
             
             $input['file_code'] = 35;
             $input['file_uuid'] = $this->fileUuid();
@@ -543,39 +550,35 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->creatinine->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->creatinine = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->creatinine->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->creatinine = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->creatinine->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->creatinine = null;
+            $this->iter1++;
+            LivewireAlert::title('Creatinine File Saved')->success()->asToast()->show();
         }else {
-
+            $this->file_count = $this->file_count + 1;
         }
 
 
 
+        //File #6
+        if ($this->crp) 
+        {
 
-        if ($this->crp) {
-
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+            $validatedData = $this->validate(
+            [
+                'crp'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'crp.crp' => 'The :attribute a .pdf file'
+            ],
+            [
+                'crp'            => 'CRP'
+            ]);
             
             $input['file_code'] = 36;
             $input['file_uuid'] = $this->fileUuid();
@@ -607,35 +610,33 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->crp->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->crp = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->crp->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->crp = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
-        }else {
+            //looks like first time insertion go ahead.
+            $path = $this->crp->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->crp = null;
+            $this->iter1++;
+            LivewireAlert::title('CRP File Saved')->success()->asToast()->show();
+        }else {
+            $this->file_count = $this->file_count + 1;
         }
 
-        if ($this->electrolytes) {
+        //File #7
+        if ($this->electrolytes) 
+        {
 
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+            $validatedData = $this->validate(
+            [
+                'electrolytes'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'electrolytes.electrolytes' => 'The :attribute a .pdf file'
+            ],
+            [
+                'electrolytes'            => 'Electrolytes'
+            ]);
             
             $input['file_code'] = 37;
             $input['file_uuid'] = $this->fileUuid();
@@ -667,35 +668,33 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->electrolytes->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->electrolytes = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->electrolytes->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->electrolytes = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
-        }else {
+            //looks like first time insertion go ahead.
+            $path = $this->electrolytes->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->electrolytes = null;
+            $this->iter1++;
+            LivewireAlert::title('Electrolyte File Saved')->success()->asToast()->show();
+        }else {
+            $this->file_count = $this->file_count + 1;
         }
 
-        if ($this->il6) {
+        //File #8
+        if ($this->il6) 
+        {
 
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+            $validatedData = $this->validate(
+            [
+                'il6'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'il6.il6' => 'The :attribute a .pdf file'
+            ],
+            [
+                'il6'            => 'IL-6'
+            ]);
             
             $input['file_code'] = 38;
             $input['file_uuid'] = $this->fileUuid();
@@ -727,36 +726,32 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->il6->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->il6 = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->il6->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->il6 = null;
-                $this->iter1++;
+                $oldfile->save();              
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
-        }else {
+            //looks like first time insertion go ahead.
+            $path = $this->il6->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->il6 = null;
+            $this->iter1++;
+            LivewireAlert::title('IL-6 File Saved')->success()->asToast()->show();
+        }else {
+            $this->file_count = $this->file_count + 1;
         }
 
-
-        if ($this->lab_exams) {
-
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        //File #9
+        if ($this->lab_exams) 
+        {
+            $validatedData = $this->validate(
+            [
+                'lab_exams'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'lab_exams.lab_exams' => 'The :attribute a .pdf file'
+            ],
+            [
+                'lab_exams'            => 'Lab Exams'
+            ]);
             
             $input['file_code'] = 39;
             $input['file_uuid'] = $this->fileUuid();
@@ -788,37 +783,34 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->lab_exams->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->lab_exams = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->electrolytes->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->lab_exams = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
-        }else {
+            //looks like first time insertion go ahead.
+            $path = $this->lab_exams->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->lab_exams = null;
+            $this->iter1++;
+            LivewireAlert::title('Lab Exam File saved')->success()->asToast()->show();
+        }else {
+            $this->file_count = $this->file_count + 1;
         }
 
 
 
-
-        if ($this->liver_function) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        //File #10
+        if ($this->liver_function) 
+        {
+            $validatedData = $this->validate(
+            [
+                'liver_function'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'liver_function.liver_function' => 'The :attribute a .pdf file'
+            ],
+            [
+                'liver_function'            => 'Liver Function'
+            ]);
             
             $input['file_code'] = 40;
             $input['file_uuid'] = $this->fileUuid();
@@ -850,39 +842,35 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->liver_function->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->liver_function = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->liver_function->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->liver_function = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->liver_function->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->liver_function = null;
+            $this->iter1++;
+            LivewireAlert::title('Liver Function File Saved')->success()->asToast()->show();
         }else {
-
+            $this->file_count = $this->file_count + 1;
         }
 
 
         
+        //File #11
+        if ($this->microscopic_exam) 
+        {
+            $validatedData = $this->validate(
+            [
+                'microscopic_exam'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'microscopic_exam.microscopic_exam' => 'The :attribute a .pdf file'
+            ],
+            [
+                'microscopic_exam'            => 'Microscopi Exam'
+            ]);
 
-        if ($this->microscopic_exam) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
-            
             $input['file_code'] = 41;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
@@ -922,29 +910,33 @@ class FollowupReportFiles extends Component
                 $this->microscopic_exam = null;
                 $this->iter1++;
                 //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->microscopic_exam->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->microscopic_exam = null;
-                $this->iter1++;
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->microscopic_exam->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->microscopic_exam = null;
+            $this->iter1++;
+            LivewireAlert::title('Microscopic Exam File Saved')->success()->asToast()->show();
         }else {
-
+            $this->file_count = $this->file_count + 1;
         }
 
 
+        //File #12
+        if ($this->renal_function) 
+        {
+            $validatedData = $this->validate(
+            [
+                'renal_function'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'renal_function.renal_function' => 'The :attribute a .pdf file'
+            ],
+            [
+                'renal_function'            => 'Renal Function'
+            ]);
 
-        if ($this->renal_function) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
-            
             $input['file_code'] = 42;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
@@ -975,35 +967,33 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->renal_function->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->renal_function = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->renal_function->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->renal_function = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->renal_function->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->renal_function = null;
+            $this->iter1++;
+            LivewireAlert::title('Renal Function File saved')->success()->asToast()->show();
         }else {
-
+            $this->file_count = $this->file_count + 1;
         }
 
-        if ($this->urine_routine) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        //File #13
+        if ($this->urine_routine) 
+        {
+            $validatedData = $this->validate(
+            [
+                'urine_routine'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'urine_routine.urine_routine' => 'The :attribute a .pdf file'
+            ],
+            [
+                'urine_routine'            => 'Urine Routine'
+            ]);
+
             $input['file_code'] = 43;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
@@ -1034,28 +1024,21 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->urine_routine->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->urine_routine = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->urine_routine->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->urine_routine = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->urine_routine->storeAs($file_path, $input['file_name'], 'public');
 
+            $newFile = ClinicalReports::insert($input);
+            $this->urine_routine = null;
+            $this->iter1++;
+            LivewireAlert::title('Urine Routine File saved')->success()->asToast()->show();
         }else {
+            $this->file_count = $this->file_count + 1;
+        }
 
+        if($this->file_count == 13){
+            LivewireAlert::title('Urine Routine File Not Found/Attached')->warning()->show();
         }
 
     }
@@ -1066,18 +1049,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->sensoryexam) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->sensoryexam) 
+        {
+            $validatedData = $this->validate(
+            [
+                'sensoryexam'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'sensoryexam.sensoryexam' => 'The :attribute a .pdf file'
+            ],
+            [
+                'sensoryexam'            => 'Sensory Exam'
+            ]);
             
             $input['file_code'] = 4;
             $input['file_uuid'] = $this->fileUuid();
@@ -1109,28 +1099,17 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->lifestyle->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->lifestyle = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->lifestyle->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->lifestyle = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->sensoryexam->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->sensoryexam = null;
+            $this->iter1++;
+            LivewireAlert::title('Sensory Info File saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('Sensory Report File(s) Not Found/Attached')->warning()->show();
         }
     }
 
@@ -1140,18 +1119,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->mdtre) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->mdtre) 
+        {
+            $validatedData = $this->validate(
+            [
+                'mdtre'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'mdtre.mdtre' => 'The :attribute a .pdf file'
+            ],
+            [
+                'mdtre'            => 'M&DTRE Score'
+            ]);
             
             $input['file_code'] = 5;
             $input['file_uuid'] = $this->fileUuid();
@@ -1183,28 +1169,17 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->mdtre->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->mdtre = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->lifestyle->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->mdtre = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->mdtre->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->mdtre = null;
+            $this->iter1++;
+            LivewireAlert::title('M & DTR File saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('M&DTR Report File(s) Not Found/Attached')->warning()->show();
         }
     }
 
@@ -1213,18 +1188,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->pfirmanscore) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->pfirmanscore) 
+        {
+            $validatedData = $this->validate(
+            [
+                'pfirmanscore'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'pfirmanscore.pfirmanscore' => 'The :attribute a .pdf file'
+            ],
+            [
+                'pfirmanscore'            => 'Pfirman Score'
+            ]);
             
             $input['file_code'] = 6;
             $input['file_uuid'] = $this->fileUuid();
@@ -1256,28 +1238,17 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->pfirmanscore->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->pfirmanscore = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->pfirmanscore->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->pfirmanscore = null;
-                $this->iter1++;
+                $oldfile->save();               
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->pfirmanscore->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->pfirmanscore = null;
+            $this->iter1++;
+            LivewireAlert::title('Pfirmann Score File saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('Pfirmans Report File(s) Not Found/Attached')->warning()->show();
         }
     }
 
@@ -1287,18 +1258,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->vascore) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->vascore) 
+        {
+            $validatedData = $this->validate(
+            [
+                'vascore'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'vascore.vascore' => 'The :attribute a .pdf file'
+            ],
+            [
+                'vascore'            => 'VA Score'
+            ]);
             
             $input['file_code'] = 7;
             $input['file_uuid'] = $this->fileUuid();
@@ -1330,28 +1308,17 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->vascore->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->vascore = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->vascore->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->vascore = null;
-                $this->iter1++;
+                $oldfile->save();              
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->vascore->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->vascore = null;
+            $this->iter1++;
+            LivewireAlert::title('VA Score File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('VA Score File(s) Not Found/Attached')->warning()->show();
         }
     }
 
@@ -1361,18 +1328,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->modqscore) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->modqscore) 
+        {
+            $validatedData = $this->validate(
+            [
+                'modqscore'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'modqscore.modqscore' => 'The :attribute a .pdf file'
+            ],
+            [
+                'modqscore'            => 'MODQ Score'
+            ]);
             
             $input['file_code'] = 8;
             $input['file_uuid'] = $this->fileUuid();
@@ -1404,28 +1378,17 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->modqscore->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->modqscore = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->modqscore->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->modqscore = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->modqscore->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->modqscore = null;
+            $this->iter1++;
+            LivewireAlert::title('MODQ Score File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('MODQ Score File(s) Not Found/Attached')->warning()->show();
         }
     }
 
@@ -1434,18 +1397,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->rmqscore) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->rmqscore) 
+        {
+            $validatedData = $this->validate(
+            [
+                'rmqscore'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'rmqscore.rmqscore' => 'The :attribute a .pdf file'
+            ],
+            [
+                'rmqscore'            => 'Misc Off2'
+            ]);
             
             $input['file_code'] = 9;
             $input['file_uuid'] = $this->fileUuid();
@@ -1486,19 +1456,16 @@ class FollowupReportFiles extends Component
                 $this->rmqscore = null;
                 $this->iter1++;
                 //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->rmqscore->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->rmqscore = null;
-                $this->iter1++;
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->rmqscore->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->rmqscore = null;
+            $this->iter1++;
+            LivewireAlert::title('R M Q Score File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            LivewireAlert::title('R M Q Score File(s) Not Found/Attached')->warning()->show();
         }
     }
 
@@ -1507,18 +1474,25 @@ class FollowupReportFiles extends Component
 
         $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
         $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'enrollment';
+        $input['report_category'] = 'followup-'.$this->fu_number;
         $input['tags'] = null;
         $input['report_status'] = 'valid';
         $input['uploaded_by'] = Auth::user()->id;
         $input['date_created'] = date('Y-m-d');
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->miscoff1) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->miscoff1) 
+        {
+            $validatedData = $this->validate(
+            [
+                'miscoff1'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'miscoff1.miscoff1' => 'The :attribute a .pdf file'
+            ],
+            [
+                'miscoff1'            => 'Misc Off2'
+            ]);
             
             $input['file_code'] = 10;
             $input['file_uuid'] = $this->fileUuid();
@@ -1550,36 +1524,32 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->miscoff1->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->miscoff1 = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->miscoff1->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->miscoff1 = null;
-                $this->iter1++;
+                $oldfile->save();              
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->miscoff1->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->miscoff1 = null;
+            $this->iter1++;
+            LivewireAlert::title('Misc Off-1 File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            $this->misc_file_count = $this->misc_file_count + 1;
         }
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->miscoff2) {
-            // Validate file
-            //$this->validate([
-            //    'blood_routine' => 'file|max:2048', // max 2MB
-            //]);
+        if ($this->miscoff2) 
+        {
+            $validatedData = $this->validate(
+            [
+                'miscoff2'            => 'nullable|file|mimes:pdf|max:2048',
+            ],
+            [
+                'miscoff2.miscoff2' => 'The :attribute a .pdf file'
+            ],
+            [
+                'miscoff2'            => 'Misc Off2'
+            ]);
             
             $input['file_code'] = 1;
             $input['file_uuid'] = $this->fileUuid();
@@ -1611,35 +1581,25 @@ class FollowupReportFiles extends Component
                 //after moving set the status to invalid
                 $oldfile->report_status = 'invalid';
                 //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->miscoff2->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->miscoff2 = null;
-                $this->iter1++;
-                //                
-            } else {
-                //looks like first time insertion go ahead.
-                $path = $this->miscoff2->storeAs($file_path, $input['file_name'], 'public');
-
-                $newFile = ClinicalReports::insert($input);
-                $this->miscoff2 = null;
-                $this->iter1++;
+                $oldfile->save();                
             }
-            //dd($input, $oldfile);
-            session()->flash('message', "File uploaded successfully: {$file_path}");
+            //looks like first time insertion go ahead.
+            $path = $this->miscoff2->storeAs($file_path, $input['file_name'], 'public');
+
+            $newFile = ClinicalReports::insert($input);
+            $this->miscoff2 = null;
+            $this->iter1++;
+            LivewireAlert::title('Misc Off-2 File Saved')->success()->asToast()->show();
         } else {
-            dd("file not selected");
-            //session()->flash('error', 'No valid file uploaded.');
+            $this->misc_file_count = $this->misc_file_count + 1;
         }
 
-
+        if($this->misc_file_count == 2)
+        {
+            LivewireAlert::title('Misc 1 / 2 File(s) Not Found/Attached')->warning()->show();
+        }
 
     }
-
-
 
     public function getOldFileInfo($code)
     {

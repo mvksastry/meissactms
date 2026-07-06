@@ -1586,7 +1586,7 @@ class EditPatientReports extends Component
         {
             $validatedData = $this->validate(
             [
-                'miscoff2'            => 'nullable|file|mimes:pdf|max:2t s048',
+                'miscoff2'            => 'nullable|file|mimes:pdf|max:2048',
             ],
             [
                 'miscoff2.miscoff2' => 'The :attribute a .pdf file'
