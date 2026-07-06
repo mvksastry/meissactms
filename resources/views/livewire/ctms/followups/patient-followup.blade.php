@@ -87,8 +87,18 @@
               @endif
             </div>
             <!-- /.col-12 -->
-
-            
+            <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
+              @if($fuselection)
+              <div class="card-header d-flex p-0">
+                  <h3 class="card-title p-3">Follow-up Selection</h3>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                  <div wire:ignore class="tab-content">
+                    @include('livewire.ctms.followups.followupnumber')
+                  </div>
+              </div>
+              @endif
             @if($patientInfoButtons)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
@@ -141,9 +151,7 @@
                 -->
               </div>
               <!--Divider-->
-              <hr class="border-b-2 border-warning my-2 mx-2">
-              <!--/ Divider-->
-
+             
               <!--/ Divider-->
               </br>
             @endif

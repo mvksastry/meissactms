@@ -21,10 +21,35 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Ctms\ClinicalReports;
 
 //forms
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Bloodroutine;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Bloodsugar;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Bloodurea;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Chemexam;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Creatinine;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Crp;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Electrolytes;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Il6;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Labexams;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Lifestyle;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Liverfunction;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Mdtrexam;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Microscopicexam;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Miscoff1;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Miscoff2;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\MODQscore;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Pfirmanscore;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Primaryinfos;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Renalfunction;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\RMQscore;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Sensoryexam;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\Urineroutine;
+use App\Livewire\Forms\Ctms\Forms\Fileuploads\VAScore;
+
 //use App\Livewire\Forms\MdtreForm;
 
 //traits, facades
 use App\Traits\Base;
+use App\Traits\Fileuploads\TOldFileMove;
 
 //logs
 use Illuminate\Support\Facades\Log;
@@ -36,12 +61,43 @@ class FollowupReportFiles extends Component
     use Base;
     //use File;
     use WithFileUploads;
+    use TOldFileMove;
+
 
     //Form bindings
-    //public UploadForm $form;
+    public Primaryinfos      $form_a;
+    public Lifestyle         $form_b;
+
+    public Allinoneclinicals $form_c;
+
+    public BloodRoutine      $form_x;
+    public Bloodsugar        $form_d;
+    public Bloodurea         $form_e;
+    public Chemexam          $form_f;
+    public Creatinine        $form_g;
+    public Crp               $form_h;
+    public Electrolytes      $form_i;
+    public Il6               $form_j;
+    public Labexams          $form_k;
+    public Liverfunction     $form_l;
+    public Microscopicexam   $form_m;
+    public Renalfunction     $form_p;
+    public Urineroutine      $form_q;
+    
+    public Mdtreexam         $form_r;
+    public MODQscore         $form_s;
+    public Pfirmanscore      $form_t;
+    public RMQscore          $form_u;
+    public Sensoryexam       $form_v;
+    public VAScore           $form_w;
+
+    public Miscoff1          $form_n;
+    public Miscoff2          $form_o;
+
 
     public $bpath = "app/public";
     public $def_file_path = "skls/patients/";
+    public $input = [];
 
     public $file_codex = [
         0 => 'Default',
@@ -72,8 +128,9 @@ class FollowupReportFiles extends Component
     ];
 
     //uuid of the patient
-    public $uuid;
+    public $uuid, $patient_uuid;
     public $current_files;
+    public $data_type;
 
     public $fu_number;
     public $primaryinfos, $lifestyle, $sensoryexam, $mdtre, $pfirmanscore;
@@ -100,8 +157,7 @@ class FollowupReportFiles extends Component
                                                 ->where('report_status', 'valid')
                                                 ->get();
         // dd($this->current_files);
-        //$this->form->entered_by = Auth::user()->name;
-
+        $this->setFileBaseInfos();
         return view('livewire.ctms.followups.followup-report-files');
     }
 
@@ -110,216 +166,98 @@ class FollowupReportFiles extends Component
         dd($id);
     }
 
-    public function fileUuid()
+    public function setFileBaseInfos()
     {
-        $uuid = Str::uuid()->toString();
+        $this->input['file_path'] = $this->def_file_path.$this->patient_uuid.'/clinicals/valid/followups';
+        $this->input['patient_uuid'] = $this->patient_uuid;
+        $this->input['report_category'] = 'follow-up-'.$this->data_type;
+        $this->input['tags'] = null;
+        $this->input['report_status'] = 'valid';
+        $this->input['uploaded_by'] = Auth::user()->id;
+        $this->input['date_created'] = date('Y-m-d');
     }
 
     public function fnUploadPrimaryInfos()
     {
+        $this->form_a->validate();
 
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/followups';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
-
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->primaryinfos) 
+        $input['file_code'] = 1;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_a->primaryinfos->getClientOriginalExtension();
+        //merge base input and this
+        $input = array_merge($input, $this->input);
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code'], $input['report_category']);
+        if($oldfile)
         {
-            $validatedData = $this->validate(
-            [
-                'primaryinfos'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'primaryinfos.primaryinfos' => 'The :attribute a .pdf file'
-            ],
-            [
-                'primaryinfos'            => 'Primary Infos'
-            ]);
-            
-            $input['file_code'] = 1;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->primaryinfos->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->primaryinfos->storeAs($file_path, $input['file_name'], 'public');
-            $newFile = ClinicalReports::insert($input);
-            $this->primaryinfos = null;
-            $this->iter1++;
-            //dd($input, $oldfile);
-            LivewireAlert::title('Primary Info File Saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('Primary Info File Not Present, Must be .pdf')->warning()->show();
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input);               
         }
+        //looks like first time insertion go ahead.
+        $path = $this->form_a->primaryinfos->storeAs($input['file_path'], $input['file_name'], 'public');
+        $newFile = ClinicalReports::insert($input);
+        $this->form_a->primaryinfos = null;
+        $this->iter1++;
+        //dd($input, $oldfile);
+        LivewireAlert::title('Primary Info File Saved')->success()->asToast()->show();
     }
 
-
+    //represents form_b
     public function fnUploadlifestyleInfos()
     {
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
+        $this->form_b->validate();
 
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->lifestyle) 
+        $input['file_code'] = 3;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_b->lifestyle->getClientOriginalExtension();
+        //dd($input);
+        $input = array_merge($input, $this->input);
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code'], $input['report_category']);
+        if($oldfile)
         {
-            $validatedData = $this->validate(
-            [
-                'lifestyle'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'lifestyle.lifestyle' => 'The :attribute a .pdf file'
-            ],
-            [
-                'lifestyle'            => 'Life Style'
-            ]);
-            
-            $input['file_code'] = 3;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->lifestyle->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->lifestyle->storeAs($file_path, $input['file_name'], 'public');
-
-            $newFile = ClinicalReports::insert($input);
-            $this->lifestyle = null;
-            $this->iter1++;
-            //dd($input, $oldfile);
-            LivewireAlert::title('Life Style File Saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('File Not Present, Must be .pdf')->warning()->show();
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input);               
         }
+        //looks like first time insertion go ahead.
+        $path = $this->form_b->lifestyle->storeAs($file_path, $input['file_name'], 'public');
+        $newFile = ClinicalReports::insert($input);
+        $this->form_b->lifestyle = null;
+        $this->iter1++;
+        //dd($input, $oldfile);
+        LivewireAlert::title('Life Style File Saved')->success()->asToast()->show();
     }
 
-
-
+    public function fnUploadAllInOneFile()
+    {
+        $this->form_c->validate();
+    }
 
     public function fnUploadClinicalReports()
-    {
-
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
-
-        //File #1
+    {   //File #1
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->blood_routine) 
+        if ($this->form_x->blood_routine) 
         {
-            $validatedData = $this->validate(
-            [
-                'blood_routine'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'blood_routine.blood_routine' => 'The :attribute a .pdf file'
-            ],
-            [
-                'blood_routine'            => 'Blood Routine'
-            ]);
-            
+            $this->form_x->validate();
+
             $input['file_code'] = 31;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->blood_routine->getClientOriginalExtension();
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_x->blood_routine->getClientOriginalExtension();
             $input['file_path'] = $file_path;
             //dd($input);
-
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);                 
             }
             //looks like first time insertion go ahead.
-            $path = $this->blood_routine->storeAs($file_path, $input['file_name'], 'public');
-
+            $path = $this->form_x->blood_routine->storeAs($file_path, $input['file_name'], 'public');
             $newFile = ClinicalReports::insert($input);
-            $this->blood_routine = null;
+            $this->form_x->blood_routine = null;
             $this->iter1++;
             //dd($input, $oldfile);
             LivewireAlert::title('Blood Routine File Saved')->success()->asToast()->show();
@@ -327,236 +265,113 @@ class FollowupReportFiles extends Component
             $this->file_count = $this->file_count + 1;
         }
 
-        //File #2
-        if ($this->blood_sugar) 
+  
+        //File #2 form_d
+        if ($this->form_d->blood_sugar) 
         {
-            $validatedData = $this->validate(
-            [
-                'blood_sugar'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'blood_sugar.blood_sugar' => 'The :attribute a .pdf file'
-            ],
-            [
-                'blood_sugar'            => 'Blood Sugar'
-            ]);
-            
+            $this->form_d->validate();
+
             $input['file_code'] = 32;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->blood_sugar->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_d->blood_sugar->getClientOriginalExtension();
             //dd($input);
-
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);                  
             }
             //looks like first time insertion go ahead.
-            $path = $this->blood_sugar->storeAs($file_path, $input['file_name'], 'public');
-
+            $path = $this->form_d->blood_sugar->storeAs($file_path, $input['file_name'], 'public');
             $newFile = ClinicalReports::insert($input);
-            $this->blood_sugar = null;
+            $this->form_d->blood_sugar = null;
             $this->iter1++;
             LivewireAlert::title('Blood Sugar File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
 
+  
         //File #3
-        if ($this->blood_urea) 
+        if ($this->form_e->blood_urea) 
         {
-            $validatedData = $this->validate(
-            [
-                'blood_urea'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'blood_urea.blood_urea' => 'The :attribute a .pdf file'
-            ],
-            [
-                'blood_urea'            => 'Blood Urea'
-            ]);
+            $this->form_e->validate();
             
             $input['file_code'] = 33;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->blood_urea->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_e->blood_urea->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);               
             }
             //looks like first time insertion go ahead.
-            $path = $this->blood_urea->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_e->blood_urea->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->blood_urea = null;
+            $this->form_e->blood_urea = null;
             $this->iter1++;
             LivewireAlert::title('Blood Urea File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
-        
+
         //File #4
-        if ($this->chem_exams) 
+        if ($this->form_f->chem_exams) 
         {
-            $validatedData = $this->validate(
-            [
-                'chem_exams'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'chem_exams.chem_exams' => 'The :attribute a .pdf file'
-            ],
-            [
-                'chem_exams'            => 'Chem Exams'
-            ]);
+            $this->form_f->validate();
             
             $input['file_code'] = 34;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->chem_exams->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_f->chem_exams->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->chem_exams->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->chem_exams = null;
-                $this->iter1++;
-                //                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);              
             }
             //looks like first time insertion go ahead.
-            $path = $this->chem_exams->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_f->chem_exams->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->chem_exams = null;
+            $this->form_f->chem_exams = null;
             $this->iter1++;
             LivewireAlert::title('Chem Exam File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }        
-
+ 
+   
         //File #5
-        if ($this->creatinine) 
-        {
-            $validatedData = $this->validate(
-            [
-                'creatinine'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'creatinine.creatinine' => 'The :attribute a .pdf file'
-            ],
-            [
-                'creatinine'            => 'Creatinine'
-            ]);
+        if ($this->form_g->creatinine) 
+        {   
+            $this->form_g->validate();
             
             $input['file_code'] = 35;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->creatinine->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_g->creatinine->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);                 
             }
             //looks like first time insertion go ahead.
-            $path = $this->creatinine->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_g->creatinine->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->creatinine = null;
+            $this->form_g->creatinine = null;
             $this->iter1++;
             LivewireAlert::title('Creatinine File Saved')->success()->asToast()->show();
         }else {
@@ -564,473 +379,231 @@ class FollowupReportFiles extends Component
         }
 
 
-
         //File #6
-        if ($this->crp) 
+        if ($this->form_h->crp) 
         {
+            $this->form_h->validate();
 
-            $validatedData = $this->validate(
-            [
-                'crp'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'crp.crp' => 'The :attribute a .pdf file'
-            ],
-            [
-                'crp'            => 'CRP'
-            ]);
-            
             $input['file_code'] = 36;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->crp->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_h->crp->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);               
             }
             //looks like first time insertion go ahead.
-            $path = $this->crp->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_h->crp->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->crp = null;
+            $this->form_h->crp = null;
             $this->iter1++;
             LivewireAlert::title('CRP File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
 
-        //File #7
-        if ($this->electrolytes) 
-        {
 
-            $validatedData = $this->validate(
-            [
-                'electrolytes'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'electrolytes.electrolytes' => 'The :attribute a .pdf file'
-            ],
-            [
-                'electrolytes'            => 'Electrolytes'
-            ]);
+        //File #7
+        if ($this->form_i->electrolytes) 
+        {
+            $this->form_i->validate();
             
             $input['file_code'] = 37;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->electrolytes->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_i->electrolytes->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);                
             }
             //looks like first time insertion go ahead.
-            $path = $this->electrolytes->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_i->electrolytes->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->electrolytes = null;
+            $this->form_i->electrolytes = null;
             $this->iter1++;
             LivewireAlert::title('Electrolyte File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
 
-        //File #8
-        if ($this->il6) 
-        {
 
-            $validatedData = $this->validate(
-            [
-                'il6'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'il6.il6' => 'The :attribute a .pdf file'
-            ],
-            [
-                'il6'            => 'IL-6'
-            ]);
+        //File #8
+        if ($this->form_j->il6) 
+        {
+            $this->form_j->validate();
             
             $input['file_code'] = 38;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->il6->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_j->il6->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();              
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);               
             }
             //looks like first time insertion go ahead.
-            $path = $this->il6->storeAs($file_path, $input['file_name'], 'public');
-
+            $path = $this->form_j->il6->storeAs($file_path, $input['file_name'], 'public');
             $newFile = ClinicalReports::insert($input);
-            $this->il6 = null;
+            $this->form_j->il6 = null;
             $this->iter1++;
             LivewireAlert::title('IL-6 File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
 
+
         //File #9
-        if ($this->lab_exams) 
+        if ($this->form_k->lab_exams) 
         {
-            $validatedData = $this->validate(
-            [
-                'lab_exams'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'lab_exams.lab_exams' => 'The :attribute a .pdf file'
-            ],
-            [
-                'lab_exams'            => 'Lab Exams'
-            ]);
+            $this->form_k->validate();
             
             $input['file_code'] = 39;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->lab_exams->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_k->lab_exams->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);               
             }
             //looks like first time insertion go ahead.
-            $path = $this->lab_exams->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_k->lab_exams->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->lab_exams = null;
+            $this->form_k->lab_exams = null;
             $this->iter1++;
             LivewireAlert::title('Lab Exam File saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
 
-
-
         //File #10
-        if ($this->liver_function) 
+        if ($this->form_l->liver_function) 
         {
-            $validatedData = $this->validate(
-            [
-                'liver_function'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'liver_function.liver_function' => 'The :attribute a .pdf file'
-            ],
-            [
-                'liver_function'            => 'Liver Function'
-            ]);
-            
+            $this->form_l->validate(); 
+
             $input['file_code'] = 40;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->liver_function->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_l->liver_function->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
 
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);               
             }
             //looks like first time insertion go ahead.
-            $path = $this->liver_function->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_l->liver_function->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->liver_function = null;
+            $this->form_l->liver_function = null;
             $this->iter1++;
             LivewireAlert::title('Liver Function File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
-
-
         
         //File #11
-        if ($this->microscopic_exam) 
+        if ($this->form_m->microscopic_exam) 
         {
-            $validatedData = $this->validate(
-            [
-                'microscopic_exam'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'microscopic_exam.microscopic_exam' => 'The :attribute a .pdf file'
-            ],
-            [
-                'microscopic_exam'            => 'Microscopi Exam'
-            ]);
+            $this->form_m->validate();
 
             $input['file_code'] = 41;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->microscopic_exam->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_m->microscopic_exam->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
 
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->microscopic_exam->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->microscopic_exam = null;
-                $this->iter1++;
-                //                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
             }
             //looks like first time insertion go ahead.
-            $path = $this->microscopic_exam->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_m->microscopic_exam->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->microscopic_exam = null;
+            $this->form_m->microscopic_exam = null;
             $this->iter1++;
             LivewireAlert::title('Microscopic Exam File Saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
 
-
         //File #12
-        if ($this->renal_function) 
+        if ($this->form_p->renal_function) 
         {
-            $validatedData = $this->validate(
-            [
-                'renal_function'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'renal_function.renal_function' => 'The :attribute a .pdf file'
-            ],
-            [
-                'renal_function'            => 'Renal Function'
-            ]);
+            $this->form_p->validate();
 
             $input['file_code'] = 42;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->renal_function->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_p->renal_function->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
 
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
+            if($oldfile)
+            {
+               $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
             }
             //looks like first time insertion go ahead.
-            $path = $this->renal_function->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_p->renal_function->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->renal_function = null;
+            $this->form_p->renal_function = null;
             $this->iter1++;
             LivewireAlert::title('Renal Function File saved')->success()->asToast()->show();
         }else {
             $this->file_count = $this->file_count + 1;
         }
 
+
         //File #13
-        if ($this->urine_routine) 
+        if ($this->form_q->urine_routine) 
         {
-            $validatedData = $this->validate(
-            [
-                'urine_routine'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'urine_routine.urine_routine' => 'The :attribute a .pdf file'
-            ],
-            [
-                'urine_routine'            => 'Urine Routine'
-            ]);
+            $this->form_q->validate();
 
             $input['file_code'] = 43;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->urine_routine->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_q->urine_routine->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
 
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
+            if($oldfile)
+            {
+               $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
             }
             //looks like first time insertion go ahead.
-            $path = $this->urine_routine->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_q->urine_routine->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->urine_routine = null;
+            $this->form_q->urine_routine = null;
             $this->iter1++;
             LivewireAlert::title('Urine Routine File saved')->success()->asToast()->show();
         }else {
@@ -1042,495 +615,187 @@ class FollowupReportFiles extends Component
         }
 
     }
-
-
-    public function fnUploadSensoryExams()
-    {
-
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
-
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->sensoryexam) 
-        {
-            $validatedData = $this->validate(
-            [
-                'sensoryexam'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'sensoryexam.sensoryexam' => 'The :attribute a .pdf file'
-            ],
-            [
-                'sensoryexam'            => 'Sensory Exam'
-            ]);
-            
-            $input['file_code'] = 4;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->lifestyle->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->sensoryexam->storeAs($file_path, $input['file_name'], 'public');
-
-            $newFile = ClinicalReports::insert($input);
-            $this->sensoryexam = null;
-            $this->iter1++;
-            LivewireAlert::title('Sensory Info File saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('Sensory Report File(s) Not Found/Attached')->warning()->show();
-        }
-    }
-
-
+    
     public function fnUploadMDTREInfo()
     {
+        $this->form_r->validate();
 
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
+        $input['file_code'] = 5;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_r->mdtre->getClientOriginalExtension();
+        $input = array_merge($input, $this->input);
 
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->mdtre) 
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code']);
+        
+        if($oldfile)
         {
-            $validatedData = $this->validate(
-            [
-                'mdtre'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'mdtre.mdtre' => 'The :attribute a .pdf file'
-            ],
-            [
-                'mdtre'            => 'M&DTRE Score'
-            ]);
-            
-            $input['file_code'] = 5;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->mdtre->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->mdtre->storeAs($file_path, $input['file_name'], 'public');
-
-            $newFile = ClinicalReports::insert($input);
-            $this->mdtre = null;
-            $this->iter1++;
-            LivewireAlert::title('M & DTR File saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('M&DTR Report File(s) Not Found/Attached')->warning()->show();
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
         }
+        //looks like first time insertion go ahead.
+        $path = $this->form_r->mdtre->storeAs($file_path, $input['file_name'], 'public');
+
+        $newFile = ClinicalReports::insert($input);
+        $this->form_r->mdtre = null;
+        $this->iter1++;
+        LivewireAlert::title('M & DTR File saved')->success()->asToast()->show();
+    }
+
+    public function fnUploadMODQScore()
+    {
+        $this->form_s->validate();
+
+        $input['file_code'] = 8;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_s->modqscore->getClientOriginalExtension();
+        $input = array_merge($input, $this->input);
+
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code']);
+        
+        if($oldfile)
+        {
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
+        }
+        //looks like first time insertion go ahead.
+        $path = $this->form_s->modqscore->storeAs($file_path, $input['file_name'], 'public');
+
+        $newFile = ClinicalReports::insert($input);
+        $this->form_s->modqscore = null;
+        $this->iter1++;
+        LivewireAlert::title('MODQ Score File Saved')->success()->asToast()->show();
     }
 
     public function fnUploadPfirmanScore()
     {
+        $this->form_t->validate();
 
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
+        $input['file_code'] = 6;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_t->pfirmanscore->getClientOriginalExtension();
+        $input = array_merge($input, $this->input);
 
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->pfirmanscore) 
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code']);
+        
+        if($oldfile)
         {
-            $validatedData = $this->validate(
-            [
-                'pfirmanscore'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'pfirmanscore.pfirmanscore' => 'The :attribute a .pdf file'
-            ],
-            [
-                'pfirmanscore'            => 'Pfirman Score'
-            ]);
-            
-            $input['file_code'] = 6;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->pfirmanscore->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();               
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->pfirmanscore->storeAs($file_path, $input['file_name'], 'public');
-
-            $newFile = ClinicalReports::insert($input);
-            $this->pfirmanscore = null;
-            $this->iter1++;
-            LivewireAlert::title('Pfirmann Score File saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('Pfirmans Report File(s) Not Found/Attached')->warning()->show();
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
         }
-    }
+        //looks like first time insertion go ahead.
+        $path = $this->form_t->pfirmanscore->storeAs($file_path, $input['file_name'], 'public');
 
-
-    public function fnUploadVAScore()
-    {
-
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
-
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->vascore) 
-        {
-            $validatedData = $this->validate(
-            [
-                'vascore'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'vascore.vascore' => 'The :attribute a .pdf file'
-            ],
-            [
-                'vascore'            => 'VA Score'
-            ]);
-            
-            $input['file_code'] = 7;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->vascore->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();              
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->vascore->storeAs($file_path, $input['file_name'], 'public');
-
-            $newFile = ClinicalReports::insert($input);
-            $this->vascore = null;
-            $this->iter1++;
-            LivewireAlert::title('VA Score File Saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('VA Score File(s) Not Found/Attached')->warning()->show();
-        }
-    }
-
-
-    public function fnUploadMODQScore()
-    {
-
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
-
-        // Check if $file is a Livewire temporary uploaded file
-        if ($this->modqscore) 
-        {
-            $validatedData = $this->validate(
-            [
-                'modqscore'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'modqscore.modqscore' => 'The :attribute a .pdf file'
-            ],
-            [
-                'modqscore'            => 'MODQ Score'
-            ]);
-            
-            $input['file_code'] = 8;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->modqscore->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->modqscore->storeAs($file_path, $input['file_name'], 'public');
-
-            $newFile = ClinicalReports::insert($input);
-            $this->modqscore = null;
-            $this->iter1++;
-            LivewireAlert::title('MODQ Score File Saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('MODQ Score File(s) Not Found/Attached')->warning()->show();
-        }
+        $newFile = ClinicalReports::insert($input);
+        $this->form_t->pfirmanscore = null;
+        $this->iter1++;
+        LivewireAlert::title('Pfirmann Score File saved')->success()->asToast()->show();
     }
 
     public function fnUploadRMQScore()
     {
-
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
-
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->rmqscore) 
+        $this->form_u->validate();
+
+        $input['file_code'] = 9;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_u->rmqscore->getClientOriginalExtension();
+        $input = array_merge($input, $this->input);
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code']);
+        
+        if($oldfile)
         {
-            $validatedData = $this->validate(
-            [
-                'rmqscore'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'rmqscore.rmqscore' => 'The :attribute a .pdf file'
-            ],
-            [
-                'rmqscore'            => 'Misc Off2'
-            ]);
-            
-            $input['file_code'] = 9;
-            $input['file_uuid'] = $this->fileUuid();
-            $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->rmqscore->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
-
-            //now check if file exists
-            $oldfile = $this->getOldFileInfo($input['file_code']);
-            
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();
-
-                //now put new file in directory
-                $path = $this->rmqscore->storeAs($file_path, $input['file_name'], 'public' );
-                //now make database entry
-                $newFile = ClinicalReports::insert($input);
-                $this->rmqscore = null;
-                $this->iter1++;
-                //                
-            }
-            //looks like first time insertion go ahead.
-            $path = $this->rmqscore->storeAs($file_path, $input['file_name'], 'public');
-
-            $newFile = ClinicalReports::insert($input);
-            $this->rmqscore = null;
-            $this->iter1++;
-            LivewireAlert::title('R M Q Score File Saved')->success()->asToast()->show();
-        } else {
-            LivewireAlert::title('R M Q Score File(s) Not Found/Attached')->warning()->show();
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
         }
+        //looks like first time insertion go ahead.
+        $path = $this->form_u->rmqscore->storeAs($file_path, $input['file_name'], 'public');
+
+        $newFile = ClinicalReports::insert($input);
+        $this->form_u->rmqscore = null;
+        $this->iter1++;
+        LivewireAlert::title('R M Q Score File Saved')->success()->asToast()->show();
+    }
+
+    public function fnUploadSensoryExams()
+    {
+        $this->form_v->validate();
+
+        $input['file_code'] = 4;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_v->lifestyle->getClientOriginalExtension();
+        $input = array_merge($input, $this->input);
+
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code']);
+        
+        if($oldfile)
+        {
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
+        }
+        //looks like first time insertion go ahead.
+        $path = $this->form_v->sensoryexam->storeAs($file_path, $input['file_name'], 'public');
+
+        $newFile = ClinicalReports::insert($input);
+        $this->form_v->sensoryexam = null;
+        $this->iter1++;
+        LivewireAlert::title('Sensory Info File saved')->success()->asToast()->show();
+    }
+
+    public function fnUploadVAScore()
+    {
+        $this->form_w->validate();
+
+        $input['file_code'] = 7;
+        $input['file_uuid'] = $this->fileUuid();
+        $input['report_description'] = $this->file_codex[$input['file_code']];
+        $input['file_name'] = $this->generateCode(12).'.'.$this->form_w->vascore->getClientOriginalExtension();
+        $input = array_merge($input, $this->input);
+
+        //now check if file exists
+        $oldfile = $this->getOldFileInfo($input['file_code']);
+        
+        if($oldfile)
+        {
+            $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
+        }
+        //looks like first time insertion go ahead.
+        $path = $this->form_w->vascore->storeAs($file_path, $input['file_name'], 'public');
+
+        $newFile = ClinicalReports::insert($input);
+        $this->form_w->vascore = null;
+        $this->iter1++;
+        LivewireAlert::title('VA Score File Saved')->success()->asToast()->show();
     }
 
     public function fnUploadMiscFiles()
     {
-
-        $file_path = $this->def_file_path.$this->uuid.'/clinicals/valid/';
-        $input['patient_uuid'] = $this->uuid;
-        $input['report_category'] = 'followup-'.$this->fu_number;
-        $input['tags'] = null;
-        $input['report_status'] = 'valid';
-        $input['uploaded_by'] = Auth::user()->id;
-        $input['date_created'] = date('Y-m-d');
-
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->miscoff1) 
+        if ($this->form_n->miscoff1) 
         {
-            $validatedData = $this->validate(
-            [
-                'miscoff1'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'miscoff1.miscoff1' => 'The :attribute a .pdf file'
-            ],
-            [
-                'miscoff1'            => 'Misc Off2'
-            ]);
-            
+            $this->form_i->validate();
             $input['file_code'] = 10;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->miscoff1->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_n->miscoff1->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
 
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();              
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
             }
             //looks like first time insertion go ahead.
-            $path = $this->miscoff1->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_n->miscoff1->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->miscoff1 = null;
+            $this->form_n->miscoff1 = null;
             $this->iter1++;
             LivewireAlert::title('Misc Off-1 File Saved')->success()->asToast()->show();
         } else {
@@ -1538,56 +803,27 @@ class FollowupReportFiles extends Component
         }
 
         // Check if $file is a Livewire temporary uploaded file
-        if ($this->miscoff2) 
-        {
-            $validatedData = $this->validate(
-            [
-                'miscoff2'            => 'nullable|file|mimes:pdf|max:2048',
-            ],
-            [
-                'miscoff2.miscoff2' => 'The :attribute a .pdf file'
-            ],
-            [
-                'miscoff2'            => 'Misc Off2'
-            ]);
-            
+        if ($this->form_o->miscoff2) 
+        {            
+            $this->form_i->validate();
             $input['file_code'] = 1;
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
-            $input['file_name'] = $this->generateCode(12).'.'.$this->miscoff2->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
-            //dd($input);
+            $input['file_name'] = $this->generateCode(12).'.'.$this->form_o->miscoff2->getClientOriginalExtension();
+            $input = array_merge($input, $this->input);
 
             //now check if file exists
             $oldfile = $this->getOldFileInfo($input['file_code']);
             
-            if($oldfile){
-
-                $ttpath = "app/public/skls/patients/".$this->uuid."/clinicals/archieve/";
-                $t_path = storage_path($ttpath);
-                $pathTest = File::isDirectory($t_path);
-                //dd($pathTest);
-                if (!$pathTest) {
-                    mkdir($t_path, $mode = 0775, $recursive = true);
-                    //dd("dir created");
-                }
-                // set destination directory for moving the file
-                $to_path = "skls/patients/".$this->uuid."/clinicals/archieve/";
-                //move that file unwanted directory
-                File::move(storage_path("app/public/".$oldfile->file_path.$oldfile->file_name), storage_path("app/public/".$to_path.$oldfile->file_name));
-                
-                //after moving get the path and update database of that file.
-                $oldfile->file_path = $to_path;
-                //after moving set the status to invalid
-                $oldfile->report_status = 'invalid';
-                //now save the file.
-                $oldfile->save();                
+            if($oldfile)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input); 
             }
             //looks like first time insertion go ahead.
-            $path = $this->miscoff2->storeAs($file_path, $input['file_name'], 'public');
+            $path = $this->form_o->miscoff2->storeAs($file_path, $input['file_name'], 'public');
 
             $newFile = ClinicalReports::insert($input);
-            $this->miscoff2 = null;
+            $this->form_o->miscoff2 = null;
             $this->iter1++;
             LivewireAlert::title('Misc Off-2 File Saved')->success()->asToast()->show();
         } else {
@@ -1601,10 +837,11 @@ class FollowupReportFiles extends Component
 
     }
 
-    public function getOldFileInfo($code)
+    public function getOldFileInfo($code1, $code2)
     {
-        return $oldfile = ClinicalReports::where('patient_uuid',$this->uuid)
-                                    ->where('file_code', $code)
+        return $oldfile = ClinicalReports::where('patient_uuid',$this->patient_uuid)
+                                    ->where('file_code', $code1)
+                                    ->where('report_category', $code2)
                                     ->where('report_status', 'valid')
                                     ->first();
     }

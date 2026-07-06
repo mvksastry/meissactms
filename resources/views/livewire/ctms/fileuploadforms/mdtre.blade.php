@@ -8,7 +8,7 @@
     <tr>
       <td>
         <label>M & DTR Files</label>
-        <input wire:model.defer="mdtre" type="file" class="form-control" placeholder="Report File" >
+        <input wire:model.defer="form_r.mdtre" type="file" class="form-control" placeholder="Report File" >
         </br>@error('mdtre') <span class="error">{{ $message }}</span> @enderror 
       </td>
     </tr> 

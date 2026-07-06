@@ -28,7 +28,7 @@ class FollowupClinicalInvestigations extends Component
     public PatientCIForm $form;
 
     //global patient uuid
-    public $patient_uuid, $entry="";
+    public $patient_uuid, $data_type, $entry="";
 
     public $discharge_report, $discharge_report_file;
 
@@ -47,10 +47,11 @@ class FollowupClinicalInvestigations extends Component
     //logged user
     public $logged_user, $passObj;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         //dd($patient_uuid);
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         $passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $passObj->opd_id;
         $this->form->in_patient_id = $passObj->in_patient_id;
@@ -101,7 +102,7 @@ class FollowupClinicalInvestigations extends Component
         $newCIInfo->procalcitonin = $input['procalcitonin'];
         $newCIInfo->laboratory_report_file = $input['laboratory_report_file'];
 
-        $newCIInfo->status = "follow-up";
+        $newCIInfo->status = "follow-up-".$this->data_type;
         $newCIInfo->status_date = date('Y-m-d');
 
         $newCIInfo->comment_entered_by = $input['comment_entered_by'];

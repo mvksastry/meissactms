@@ -8,4 +8,6 @@ use Livewire\Form;
 class Miscoff2 extends Form
 {
     //
+    #[Validate('nullable|file|mimes:pdf|max:2048')]
+    public $miscoff2;
 }

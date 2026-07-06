@@ -27,12 +27,14 @@ class FollowupModifiedPfirmanns extends Component
     public PfirmannForm $form;
     //global patient uuid
     public $patient_uuid;
+    public $data_type;
 
     public $modified_pfirmans_grade = null;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
 
         $this->form->opd_id = $newObj->opd_id;
@@ -65,7 +67,7 @@ class FollowupModifiedPfirmanns extends Component
 
         $nPfirmannScore->modified_pfirman_grade = $input['modified_pfirman_grade'];
 
-        $nPfirmannScore->status = "follow-up";
+        $nPfirmannScore->status = "follow-up-".$this->data_type;
         $nPfirmannScore->status_date = date('Y-m-d');
 
         $nPfirmannScore->comment_entered_by = $input['comment_entered_by'];

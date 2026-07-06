@@ -8,4 +8,6 @@ use Livewire\Form;
 class RMQscore extends Form
 {
     //
+    #[Validate('nullable|file|mimes:pdf|max:2048')]
+    public $rmqscore;
 }

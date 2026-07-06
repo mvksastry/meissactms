@@ -8,7 +8,7 @@
       <tr>
           <td>
               <label>Primary Infos</label>
-              <input wire:model.defer="primaryinfos" type="file"  class="form-control" placeholder="Report File" >  
+              <input wire:model.defer="form_a.primaryinfos" type="file"  class="form-control" placeholder="Report File" >  
               </br>@error('primaryinfos') <span class="error">{{ $message }}</span> @enderror                                 
           </td>
       </tr>

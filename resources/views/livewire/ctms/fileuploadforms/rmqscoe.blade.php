@@ -8,7 +8,7 @@
     <tr>
       <td>
         <label>RMQ Score File</label>
-        <input wire:model.defer="rmqscore" type="file" class="form-control" placeholder="Report File" >
+        <input wire:model.defer="form_u.rmqscore" type="file" class="form-control" placeholder="Report File" >
         </br>@error('rmqscore') <span class="error">{{ $message }}</span> @enderror 
       </td>
     </tr>  

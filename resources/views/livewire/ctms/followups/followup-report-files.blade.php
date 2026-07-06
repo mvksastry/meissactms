@@ -134,7 +134,6 @@
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <div wire:ignore class="tab-content">
-                            @include('livewire.ctms.followups.followupnumber')
 
                             <div class="tab-pane" id="tab_1">
                               @include('livewire.ctms.fileuploadforms.primaryinfos')

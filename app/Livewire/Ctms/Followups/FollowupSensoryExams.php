@@ -6,6 +6,9 @@ use Livewire\Component;
 
 class FollowupSensoryExams extends Component
 {
+    public $patient_uuid;
+    public $data_type;
+    
     public function render()
     {
         return view('livewire.ctms.followups.followup-sensory-exams');
@@ -46,7 +49,7 @@ class FollowupSensoryExams extends Component
         $newSEInfo->rL5 = $input['rL5'];
         $newSEInfo->rS1 = $input['rS1'];
 
-        $newSEInfo->status = "follow-up";
+        $newSEInfo->status = "follow-up-".$this->data_type;
         $newSEInfo->status_date = date('Y-m-d');
 
         $newSEInfo->comment_entered_by = $input['comment_entered_by'];

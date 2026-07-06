@@ -8,7 +8,7 @@
     <tr>
       <td>
         <label>Pfirman's Score</label>
-        <input wire:model.defer="pfirmanscore" type="file" class="form-control" placeholder="Report File" >
+        <input wire:model.defer="form_t.pfirmanscore" type="file" class="form-control" placeholder="Report File" >
         </br>@error('pfirmanscore') <span class="error">{{ $message }}</span> @enderror 
       </td>
     </tr> 

@@ -120,6 +120,7 @@ class FollowupModiqScores extends Component
 
     //global patient uuid
     public $patient_uuid;
+    public $data_type;
 
     //Form bindings
     public ModqScoreForm $form;
@@ -138,10 +139,10 @@ class FollowupModiqScores extends Component
 
     public $show_entered_values = false, $modq_entered;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
-
+         $this->data_type = $data_type;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
@@ -279,7 +280,7 @@ class FollowupModiqScores extends Component
       $nModqScore->total = $this->total;
       $nModqScore->modq_score = $this->mod_score;
 
-      $nModqScore->status = "follow-up";
+      $nModqScore->status = "follow-up-".$this->data_type;
       $nModqScore->status_date = date('Y-m-d');
 
       $nModqScore->comment_entered_by = $input['comment_entered_by'];

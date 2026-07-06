@@ -29,6 +29,8 @@ class FollowupLifeStyle extends Component
     public PatientLSForm $form;
     //global patient uuid
     public $patient_uuid;
+    public $data_type;
+
     //data binding
     public $input;
 
@@ -47,10 +49,10 @@ class FollowupLifeStyle extends Component
 
     public $newObj;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
-
+        $this->data_type = $data_type;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
@@ -89,7 +91,7 @@ class FollowupLifeStyle extends Component
         $newLSinfo->ls6 = $input['ls6'];
         $newLSinfo->life_style_description = $input['life_style_description'];
 
-        $newLSinfo->status = "follow-up";
+        $newLSinfo->status = "follow-up-".$this->data_type;
         $newLSinfo->status_date = date('Y-m-d');
 
         $newLSinfo->comment_entered_by = $input['comment_entered_by'];

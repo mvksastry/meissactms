@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\Log;
 use Livewire\WithFileUploads;
 //forms
 
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class PatientFollowup extends Component
 {
@@ -236,6 +238,9 @@ class PatientFollowup extends Component
     //public variable for checking status incomplete status
     public $patient_data_status;
 
+    public $fu_number;
+    public $fuselection = false;
+
     //logged user
     public $logged_user;
 
@@ -252,10 +257,22 @@ class PatientFollowup extends Component
     {
         //dd($id);
         $this->patient_uuid = $id;
-        $this->data_type = "follow_up";
-        //dd($this->patient_uuid);
-        $this->patientInfoButtons = true;
+        $this->fuselection = true;
+        LivewireAlert::title('Select Followup')->info()->asToast()->show();
     }
+
+    public function updatedFuNumber()
+    {
+        if( intval($this->fu_number) == null || intval($this->fu_number) >= 5 )
+        {
+            LivewireAlert::title('Select Followup')->warning()->asToast()->show();
+        }
+        else {
+            $this->data_type = $this->fu_number;
+            $this->patientInfoButtons = true;
+        }
+    }
+
 
     /*
     public function fnRedirectToEdit()

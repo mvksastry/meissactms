@@ -27,13 +27,16 @@ class FollowupVisualAnalogs extends Component
     public PatientVAScoreForm $form;
     //global patient uuid
     public $patient_uuid;
+    public $data_type;
 
     //Visual Analog Scores
     public $intensity, $location, $onset, $duration, $variation, $quality;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
+
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
@@ -68,7 +71,7 @@ class FollowupVisualAnalogs extends Component
         $nVAScores->variation = $input['variation'];
         $nVAScores->quality = $input['quality'];
 
-        $nVAScores->status = "follow-up";
+        $nVAScores->status = "follow-up-".$this->data_type;
         $nVAScores->status_date = date('Y-m-d');
 
         $nVAScores->comment_entered_by = $input['comment_entered_by'];

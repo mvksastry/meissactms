@@ -8,7 +8,7 @@
     <tr>
       <td>
         <label>MODQ Score File</label>
-        <input wire:model.defer="modqscore" type="file" class="form-control" placeholder="Report File" >
+        <input wire:model.defer="form_s.modqscore" type="file" class="form-control" placeholder="Report File" >
         </br>@error('modqscore') <span class="error">{{ $message }}</span> @enderror 
       </td>
     </tr> 

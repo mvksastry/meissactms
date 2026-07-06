@@ -8,7 +8,7 @@
     <tr>
       <td>
         <label>Visual & Analog Score File</label>
-        <input wire:model.defer="vascore" type="file" class="form-control" placeholder="Report File" >
+        <input wire:model.defer="form_w.vascore" type="file" class="form-control" placeholder="Report File" >
         </br>@error('vascore') <span class="error">{{ $message }}</span> @enderror 
       </td>
     </tr>  

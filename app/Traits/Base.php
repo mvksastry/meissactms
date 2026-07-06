@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+//Uuid import class
+use Illuminate\Support\Str;
+
 use DateTime;
 
 trait Base
@@ -18,6 +21,12 @@ trait Base
 	public function currentYear()
 	{
 		return date('Y');
+	}
+
+	public function fileUuid()
+	{
+			$uuid = Str::uuid()->toString();
+			return $uuid;
 	}
 
   /*
