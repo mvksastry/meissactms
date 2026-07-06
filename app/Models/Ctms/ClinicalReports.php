@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
+use App\Models\User;
 
 class ClinicalReports extends Model
 {
@@ -39,5 +40,10 @@ class ClinicalReports extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function user()
+    {
+    return $this->hasOne(User::class, 'id', 'uploaded_by');
+    }
 
 }

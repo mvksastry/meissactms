@@ -153,17 +153,23 @@ class FollowupReportFiles extends Component
     public function render()
     {
         //dd($this->uuid);
-        $this->current_files = ClinicalReports::where('patient_uuid', $this->uuid)
+        $this->current_files = ClinicalReports::with('user')->where('patient_uuid', $this->patient_uuid)
                                                 ->where('report_status', 'valid')
                                                 ->get();
-        // dd($this->current_files);
+        //dd($this->current_files);
         $this->setFileBaseInfos();
         return view('livewire.ctms.followups.followup-report-files');
     }
 
     public function fnDownloadReport($id)
     {
-        dd($id);
+        //dd($id);
+        $rep_file = ClinicalReports::where('clinicalreport_id', $id)->first();
+        //dd("reached", $rep_file);
+        $file_path = "app/public/".$rep_file->file_path."/".$rep_file->file_name;
+        //return Storage::disk('public')->download(storage_path($file_path), $rep_file->file_name);
+        //return Storage::disk('public')->path($file_path)->download($rep_file->file_name);
+        return response()->download(storage_path($file_path));
     }
 
     public function setFileBaseInfos()
