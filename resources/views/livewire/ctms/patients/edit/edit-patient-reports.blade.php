@@ -47,6 +47,7 @@
                                   <tr>
                                     <th align="center">Rep Desc</th>
                                     <th align="center">Rep Status</th>
+                                    <th align="center">Rep Category</th>
                                     <th align="center">Uploaded By</th>
                                     <th align="center">Uploaded On</th>
                                     <th align="center">Updated On</th>
@@ -63,7 +64,10 @@
                                           {{ ucfirst($curfile->report_status) }}
                                       </td>
                                       <td>
-                                          {{ $curfile->uploaded_by }}
+                                          {{ ucfirst($curfile->report_category) }}
+                                      </td>
+                                      <td>
+                                          {{ $curfile->user->name }}
                                       </td>
                                       <td>
                                           {{ date('d-m-Y', strtotime($curfile->date_created)) }}

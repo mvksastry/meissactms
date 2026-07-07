@@ -136,11 +136,16 @@ class FollowupReportFiles extends Component
     public $primaryinfos, $lifestyle, $sensoryexam, $mdtre, $pfirmanscore;
     public $vascore, $modqscore, $rmqscore, $miscoff1, $miscoff2;
 
+    public $checkedall, $uncheckall, $state = false;
+    public $includedReps = [], $all_in_one_file;
+
     public $blood_routine, $blood_sugar, $blood_urea;
     public $chem_exams, $creatinine, $electrolytes, $crp, $il6, $lab_exams, $liver_function; 
     public $microscopic_exam, $renal_function, $urine_routine;
 
     public $iter1;
+
+
 
     public $file_count = 0, $misc_file_count = 0;
 
@@ -239,8 +244,64 @@ class FollowupReportFiles extends Component
         $this->form_c->validate();
     }
 
+
+    public function updatedCheckedall($value) 
+    {
+        if($this->checkedall)
+        {
+            $this->state = true;
+            $codex = array_slice($this->file_codex, 12, null, true);
+            //dd($codex);
+            foreach($codex as $key => $value)
+            {
+                $this->includedReps[] = $key;
+            }
+        }
+        else {
+            $this->state = false;
+            $this->includedReps = [];
+        }
+    }
+
+    public function updatedUncheckall($value)
+    {
+        $this->includedReps = [];
+        $this->state = false;
+    }
+
+
     public function fnUploadClinicalReports()
-    {   //File #1
+    {   
+        // File #1
+        if($this->form_c->all_in_one_file) 
+        {
+            $this->form_c->validate();
+
+            $input['file_uuid'] = $this->fileUuid();
+            $input['file_name'] = $this->generateCode(12).'.'.$this->all_in_one_file->getClientOriginalExtension();
+            $input['file_path'] = $file_path;
+            $input = array_merge($input, $this->input);
+            //first upload the file and then make an entry
+            //looks like first time insertion go ahead.
+            $path = $this->form_c->all_in_one_file->storeAs($file_path, $input['file_name'], 'public');
+            //dd($input);
+            foreach($this->includedReps as $val)
+            {
+                $input['file_code'] = $val;
+                $input['report_description'] = $this->file_codex[$input['file_code']];
+                $newFile = ClinicalReports::insert($input);
+            }
+            LivewireAlert::title('All in One File Saved...')->info()->asToast()->show();
+            $this->form_c->all_in_one_file = null;
+            $this->iter1++;
+        } else {
+            $this->file_count = $this->file_count + 1;
+        }
+    
+    
+    
+    
+    //File #1
         // Check if $file is a Livewire temporary uploaded file
         if ($this->form_x->blood_routine) 
         {
@@ -250,7 +311,6 @@ class FollowupReportFiles extends Component
             $input['file_uuid'] = $this->fileUuid();
             $input['report_description'] = $this->file_codex[$input['file_code']];
             $input['file_name'] = $this->generateCode(12).'.'.$this->form_x->blood_routine->getClientOriginalExtension();
-            $input['file_path'] = $file_path;
             //dd($input);
             $input = array_merge($input, $this->input);
             //now check if file exists
@@ -616,7 +676,7 @@ class FollowupReportFiles extends Component
             $this->file_count = $this->file_count + 1;
         }
 
-        if($this->file_count == 13){
+        if($this->file_count >= 13){
             LivewireAlert::title('Urine Routine File Not Found/Attached')->warning()->show();
         }
 

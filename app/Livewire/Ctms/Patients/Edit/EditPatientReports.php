@@ -98,7 +98,7 @@ class EditPatientReports extends Component
     public function render()
     {
         //dd($this->uuid);
-        $this->current_files = ClinicalReports::where('patient_uuid', $this->uuid)
+        $this->current_files = ClinicalReports::with('user')->where('patient_uuid', $this->uuid)
                                                 ->where('report_status', 'valid')
                                                 ->get();
        // dd($this->current_files);

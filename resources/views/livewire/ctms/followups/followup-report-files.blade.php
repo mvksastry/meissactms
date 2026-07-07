@@ -46,8 +46,8 @@
                                 <thead>
                                   <tr>
                                     <th align="center">Rep Desc</th>
-                                    <th align="center">Rep Category</th>
                                     <th align="center">Rep Status</th>
+                                    <th align="center">Rep Category</th>
                                     <th align="center">Uploaded By</th>
                                     <th align="center">Uploaded On</th>
                                     <th align="center">Updated On</th>
@@ -61,10 +61,10 @@
                                           {{ $curfile->report_description }}
                                       </td>
                                       <td>
-                                          {{ ucfirst($curfile->report_category) }}
+                                          {{ ucfirst($curfile->report_status) }}
                                       </td>
                                       <td>
-                                          {{ ucfirst($curfile->report_status) }}
+                                          {{ ucfirst($curfile->report_category) }}
                                       </td>
                                       <td>
                                           {{ $curfile->user->name }}
