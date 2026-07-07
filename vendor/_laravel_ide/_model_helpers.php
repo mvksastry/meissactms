@@ -3181,6 +3181,7 @@ namespace App\Models\Ctms {
      * @property int|null $file_code
      * @property string $patient_uuid
      * @property int $clinicalreport_id
+     * @property-read \App\Models\User $user
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles
      * @property-read int|null $roles_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
