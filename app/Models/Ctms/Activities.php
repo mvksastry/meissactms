@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
+use App\Models\User;
+
 class Activities extends Model
 {
     //
@@ -60,4 +62,13 @@ class Activities extends Model
         'updated_at',       
     ];
 
+    public function incharge()
+	{
+		return $this->hasOne(User::class, 'id', 'incharge_id');
+	}
+
+    public function leader()
+	{
+		return $this->hasOne(User::class, 'id', 'leader_id');
+	}
 }

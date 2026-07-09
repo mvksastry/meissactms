@@ -26,7 +26,7 @@ class CtmsActivities extends Component
 
     public function render()
     {
-        $this->activities = Activities::where('status','active')->get();
+        $this->activities = Activities::with('incharge')->with('leader')->where('status','active')->get();
 
         return view('livewire.egov.ctms-activities');
     }

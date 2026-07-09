@@ -60,7 +60,7 @@
                                       <th>Leader</th>
                                       <th>Code</th>
                                       <th>Desc</th>
-                                      <th>Status </br> Date</th>
+                                      <th>Status /</br> Date</th>
                                       <th>Budget</th>
                                     </tr>
                                 </thead>
@@ -68,10 +68,10 @@
                                   @foreach($activities as $row)
                                     <tr>
                                       <td>
-                                          {{ $row->incharge_id }}
+                                          {{ $row->incharge->name }}
                                       </td>
                                       <td>
-                                          {{ $row->leader_id }}
+                                          {{ $row->leader->name }}
                                       </td>
                                       <td>
                                           {{ $row->code }}
