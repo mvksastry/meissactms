@@ -210,7 +210,7 @@ class AddToInventory extends Component
 				$nprod = new Products();
 				$nprod->pack_mark_code = $this->generateCode(6);
 				$nprod->category_id = $this->form->category_id;
-				$nprod->resproject_id = $this->form->resproj_id; // in CTMS it is patient id.
+				$nprod->resproject_id = $this->form->resproj_id; // in CTMS it is ctms activity id.
 				$nprod->grade = $this->form->grade;
 				$nprod->catalog_id = $this->form->catalog_number;
 				$nprod->name = $this->form->item_desc;

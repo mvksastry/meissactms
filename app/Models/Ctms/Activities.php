@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
-class CtmsActivities extends Model
+class Activities extends Model
 {
     //
     use HasFactory;
@@ -21,7 +21,8 @@ class CtmsActivities extends Model
     protected $fillable = [
         'uuid',
         'incharge_id',
-        'pi_id',
+        'leader_id',
+        'patient_id',
         'name',
         'description',
         'start_date',
@@ -33,13 +34,15 @@ class CtmsActivities extends Model
         'budget_consumable',
         'budget_contigency',
         'comments',
-        'research_project_file',
-        'sanction_letter_file',
-        'project_file_path',
+        'activity_file',
+        'sanction_file',
+        'activity_file_path',
         'sanction_file_path',
 
         'status',
         'status_date',
+
+        'notes',
 
         'comment_entered_by',
         'entered_by',

@@ -36,12 +36,12 @@
       </td>
 
       <td colspan="2">
-        <label>Activity (General or Patient Linked)*</label>
+        <label>Link To CTMS Activity*</label>
         <select wire:model="form.resproj_id" class="form-control">
           <option value="-1">Select</option>
           <option value="0">General</option>
-          @foreach($allActiveResProjects as $aarp)
-          <option value="{{ $aarp->resproject_id }}">{{ $aarp->title }}</option>
+          @foreach($allCtmsActivities as $aarp)
+          <option value="{{ $aarp->ctms_activity_id }}">{{ $aarp->name }}</option>
           @endforeach
         </select>
         @error('form.resproj_id')
@@ -72,6 +72,7 @@
           @enderror
       </td>
     </tr>
+
     <tr>
       <td>
         <label>Vendor</label>
@@ -133,7 +134,6 @@
               <span class="text-danger">{{ $message }}</span>
           @enderror
       </td>
-      
       
       <td>
         <label  for="bulkcode">Currency</label>

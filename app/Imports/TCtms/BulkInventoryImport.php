@@ -67,7 +67,8 @@ class BulkInventoryImport implements ToCollection, WithHeadingRow
             //dd($row);           
             $this->ne['pack_mark_code']       = $this->generateCode(6);
             $this->ne['category_id']          = $row['category_id'];
-            $this->ne['resproject_id']        = $row['resproject_id'];
+            //aka ctms_activity_id in next verstion change it if needed
+            $this->ne['resproject_id']        = $row['resproject_id']; 
             $this->ne['grade']                = $row['grade'];
             $this->ne['catalog_id']           = $row['catalog_id'];
             $this->ne['name']                 = $row['name'];
