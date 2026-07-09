@@ -23,6 +23,9 @@ use Carbon\Carbon;
 use Illuminate\Log\Logger;
 use Log;
 
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
+
 class UpdateConsumption extends Component
 {
 
@@ -60,16 +63,14 @@ class UpdateConsumption extends Component
                                         ->with('units')
                                         ->with('vendor')
                                         ->get();		 
-		$msg = "Product Update Displayed";
-		$this->dispatch('swal:confirm', ['title' => $msg]);
         return view('livewire.inventory.update-consumption');
     }
 
   public function selectedFineChem($param)
 	{
-		//dd($params);
+		//dd($param);
 		$this->sampCode = $param;
-		
+		LivewireAlert::title('Sample Code '.$param.' Selected')->info()->asToast()->show();
 		$res = Products::with('categories')
                             ->with('units')
                             ->with('vendor')
@@ -99,7 +100,7 @@ class UpdateConsumption extends Component
 		$this->viewConsumptionForm = true;
 		$this->showConsumptionUpdate = true;
 		$this->dispatch('productdataTableInit');
-        //Log::channel('activity')->info('[ '.tenant('id')." ] [ ".Auth::user()->name.' ] selected item id [ '.$param.' ]');
+    Log::channel('activity')->info('User [ '.Auth::user()->name.' ] selected item id [ '.$param.' ]');
 	}
 
     public function postConsumptionInfo()
@@ -121,7 +122,7 @@ class UpdateConsumption extends Component
 		$newConsumption->save();
 		//$this->alert('success', 'Consumption Information Updated'); 
 		
-		//Log::channel('activity')->info('[ '.tenant('id')." ] [ ".Auth::user()->name.' ] saved consumption for pack mark code [ '.$this->sampCode.' ]');
+		Log::channel('activity')->info('User ['.Auth::user()->name. '] saved consumption for pack mark code [ '.$this->sampCode.' ]');
 		
 		//now reduce the quantity in products table
 		$cProd = Products::where('pack_mark_code', $this->sampCode)->first();
@@ -144,10 +145,12 @@ class UpdateConsumption extends Component
 		$cProd->quantity_left = $final;
 		//dd($newConsumption, $final, $cProd);
 		$cProd->save();
-        $msg = "Consumption Update Success";
-		$this->dispatch('swal:confirm', ['title' => $msg]); 
+		LivewireAlert::title('Consumption Update Success '.$param.' Selected')->info()->asToast()->show();
+    
+		//$msg = "Consumption Update Success";
+		//$this->dispatch('swal:confirm', ['title' => $msg]); 
         
-		//Log::channel('activity')->info('[ '.tenant('id')." ] [ ".Auth::user()->name.' ] updated quantity consumed for pack mark code [ '.$this->sampCode.' ]');
+		Log::channel('activity')->info('User [ '.Auth::user()->name.' ] updated quantity consumed for pack mark code [ '.$this->sampCode.' ]');
 		
 		//now clear the form
 		$this->resetConsumptionDetail();
@@ -173,6 +176,6 @@ class UpdateConsumption extends Component
 		$this->notes_ifany = null;
 		$this->showConsumptionUpdate = false;
 		
-		//Log::channel('activity')->info('[ '.tenant('id')." ] [ ".Auth::user()->name.' ] Consumption form reset');
+		Log::channel('activity')->info('User [ '.Auth::user()->name.' ] Consumption form reset');
 	}
 }
