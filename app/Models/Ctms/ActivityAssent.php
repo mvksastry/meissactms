@@ -34,12 +34,12 @@ class ActivityAssent extends Model
 
 	public function CtmsActivities()
     {
-      return $this->hasOne(CtmsActivity::class, 'ctms_activity_id', 'ctms_activity_id');
+      return $this->hasOne(Activities::class, 'ctms_activity_id', 'ctms_activity_id');
     }
 	
 	public function activities()
     {
-      return $this->hasMany(CtmsActivities::class, 'ctms_acitivity_id', 'ctms_acitivity_id');
+      return $this->hasMany(Activities::class, 'ctms_acitivity_id', 'ctms_acitivity_id');
     }
 
 }

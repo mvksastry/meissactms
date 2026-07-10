@@ -59,7 +59,7 @@ class AddToInventory extends Component
 	public $panel_title = "Select Action";
 
 	//project info
-	public $allActiveResProjects;
+	public $allActiveResProjects, $allActivities;
 
 	//Fine chem form variables
 	public $packMarkCode, $resproj_id, $grade, $category_id, $catalog_number, $item_desc;
@@ -76,7 +76,7 @@ class AddToInventory extends Component
 		$this->repositories = Repository::all();
 		$this->units = Units::all();
 		$this->suppliers = Supplier::all();
-		$this->allActiveResProjects = $this->allCtmsActivities();
+		$this->allActivities = $this->allCtmsActivities();
 		//$this->panel_title = "Add To Inventory x";
 		Log::channel('activity')->info("[ ".Auth::user()->name.' ] Displayed inventory form');
 		return view('livewire.inventory.add-to-inventory');

@@ -40,8 +40,8 @@
         <select wire:model="form.resproj_id" class="form-control">
           <option value="-1">Select</option>
           <option value="0">General</option>
-          @foreach($allCtmsActivities as $aarp)
-          <option value="{{ $aarp->ctms_activity_id }}">{{ $aarp->name }}</option>
+          @foreach($allActivities as $row)
+          <option value="{{ $row->ctms_activity_id }}">{{ $row->name }}</option>
           @endforeach
         </select>
         @error('form.resproj_id')
