@@ -55,19 +55,34 @@
                         <div class="table-responsive" id="revenue-chart2" style="position: relative;">
                           <table id="example2" class="table table-sm table-bordered table-hover">
                             <thead>
+                              @hasrole('ctms_admin')
                               <tr>
-                                <th colspan="28">
+                                <th>
+                                  <label class="ml-3">
+                                  Step-0 Instruction: Use the Excel template provided and fill all the columns as desired
+                                  </label>
+                                    </br>
+                                    <input type="file" class="form-control ml-3" placeholder="Upload File" wire:model.defer="uploadExceltemplate">
+                                    @error('uploadExceltemplate') <span class="text-danger error">{{ $message }}</span>@enderror
+                                  <button wire:click="uploadBulkTemplate()" class="btn btn-success text-white font-normal py-2 px-4 mx-3  rounded">Upload Excel Template</button>
+                                </th>
+                              </tr>
+                              @endhasrole
+                            </thead>
+                            <tbody>     
+                              <tr>
+                                <td>
                                   <label class="ml-3">
                                   Step-1 Instruction: Use the Excel template provided and fill all the columns as desired
                                   </label>
-                                </br>
+                                  </br>
                                   <button wire:click="downloadBulkTemplate()" class="btn btn-success text-white font-normal py-2 px-4 mx-3  rounded">Download Template</button>
-                                </th>
+                                </td>
                               </tr>
-                            </thead>
-                            <tbody>     
+
+
                                 <tr>
-                                  <td colspan="28">
+                                  <td>
                                     <label class="ml-3">
                                         Step-2 Select Excel File for Upload* 
                                     </label>
@@ -77,7 +92,7 @@
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td colspan="28">
+                                  <td>
                                     <label class="ml-3">
                                         Step-3 Upload the File* 
                                     </label>

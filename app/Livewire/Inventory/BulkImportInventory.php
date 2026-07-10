@@ -38,6 +38,8 @@ use App\Models\Inventory\Consumption;
 use App\Models\Inventory\COAs;
 use App\Models\Inventory\Currency;
 
+use App\Models\Inventory\Template;
+
 //Validation of product form
 //use App\Livewire\Forms\Inventory\ProductForm;
 //traits
@@ -68,7 +70,7 @@ class BulkImportInventory extends Component
             $notes;
 
     //file
-    public $inventoryExcel, $product_coa;
+    public $inventoryExcel, $product_coa, $uploadExceltemplate;
 
     //
     //panels
@@ -109,9 +111,73 @@ class BulkImportInventory extends Component
         return view('livewire.inventory.bulk-import-inventory');
     }
 
+    public function uploadBulkTemplate()
+    {
+        if($this->uploadExceltemplate)
+        {
+            $oExt = $this->uploadExceltemplate->getClientOriginalExtension();
+            $year = date('Y');
+            $allowedExtension = ['xls', 'xlsx'];
+            //for testing, in reality, pass on the user's folder name fromm DB.
+            $destPath = "/skls/inventory/templates/";
+            
+            $code8 = $this->generateCode(8);
+            $fileName = $code8.".".$oExt;
+
+            $check=in_array($oExt, $allowedExtension);
+            //$check = true;
+            if($check)
+            {
+                //now check if file exists
+                $oldfile = Template::where('template_code', 1010)->where('status', 'active')->first();
+
+                if($oldfile)
+                {
+                    $oldfile->status = 'inactive';
+                    $oldfile->save();
+                } 
+
+                $result = $this->uploadExceltemplate->storeAs($destPath, $fileName, 'public');
+
+                $newt = new Template();
+
+                $newt->template_code = 1010;
+                $newt->file_uuid = $this->fileUuid();
+                $newt->template = 'inventory';
+                $newt->file_name = $fileName;
+                $newt->file_path = $destPath;
+                $newt->status = 'active';
+                $newt->uploaded_by = Auth::user()->id;
+                $xres = $newt->save();
+            
+                if($xres)
+                {
+                    LivewireAlert::title('Inventory Template File saved...')->success()->asToast()->show();
+                } else {
+                    LivewireAlert::title('Inventory Template File NOT saved...')->warning()->asToast()->show();
+                }
+                $this->uploadExceltemplate = null;
+            }
+            else {
+                LivewireAlert::title('The Excel File Not attached or Not An Excel File')->warning()->show();
+            }
+        }
+        else {
+            LivewireAlert::title('The Excel File Not attached or Not An Excel File')->warning()->show();
+        }
+
+    }
+
     public function downloadBulkTemplate()
     {
         //dd("reached download template");
+        //dd($id);
+        $rep_file = Template::where('template_code', 1010)->where('status', 'active')->first();
+        //dd("reached", $rep_file);
+        $file_path = "app/public/".$rep_file->file_path.$rep_file->file_name;
+        //return Storage::disk('public')->download(storage_path($file_path), $rep_file->file_name);
+        //return Storage::disk('public')->path($file_path)->download($rep_file->file_name);
+        return response()->download(storage_path($file_path));
     }
 
     public function processBulkInventoryUpload()
