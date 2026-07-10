@@ -67,7 +67,7 @@
                                   <button wire:click="uploadBulkTemplate()" class="btn btn-success text-white font-normal py-2 px-4 mx-3  rounded">Upload Excel Template</button>
                                 </th>
                               </tr>
-                              @endhasrole
+                              @endhasanyrole
                             </thead>
                             <tbody>     
                               <tr>
