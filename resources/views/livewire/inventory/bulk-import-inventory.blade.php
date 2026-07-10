@@ -55,7 +55,7 @@
                         <div class="table-responsive" id="revenue-chart2" style="position: relative;">
                           <table id="example2" class="table table-sm table-bordered table-hover">
                             <thead>
-                              @hasrole('ctms_admin')
+                              @hasanyrole('ctms_admin|director')
                               <tr>
                                 <th>
                                   <label class="ml-3">
