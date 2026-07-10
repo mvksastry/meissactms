@@ -51,11 +51,8 @@
                   <div class="tab-content p-0">
                     <!-- Morris chart - Sales -->
                     <div class="chart tab-pane active" id="revenue-chart" style="position: relative;">
-                      <div class="p-1">
-                        <div class="table-responsive" id="revenue-chart2" style="position: relative;">
-                                              
-                          
-                        </div>
+                      <div class="p-1">                                              
+                          <livewire:inventory.datatables.replinishment-review theme="bootstrap-4" />
                       </div>
                       <!--Divider-->
                       <hr class="border-b-2 my-1 mx-1">

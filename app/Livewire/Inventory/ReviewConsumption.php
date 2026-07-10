@@ -17,7 +17,7 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\Inventory\Categories;
 use App\Models\Inventory\Consumption;
 use App\Models\Inventory\Products;
-use App\Models\Ctms\CtmsActivities;
+use App\Models\Ctms\Activities;
 use App\Models\User;
 
 // Log trails recorder
@@ -48,7 +48,8 @@ class ReviewConsumption extends Component
     {
         $this->categories = Categories::all();
         $this->users = User::where('id','<>', 1)->get();
-        $this->ctmsActivities = CtmsActivities::where('status', 'active')->get();
+        $this->ctmsActivities = Activities::where('status', 'active')->get();
+        //dd($this->ctmsActivities);
         $this->date_to = date('Y-m-d');
         $this->date_from = date('Y-m-d', strtotime('-30 days'));
 

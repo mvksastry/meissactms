@@ -86,7 +86,8 @@
                                     <select wire:model="resproject_id" class="form-control">
                                         <option value="">Select</option>
                                         @foreach($ctmsActivities as $activity)
-                                        <option value="{{ $project->ctms_activity_id }}">{{ $activity->name }}</option>
+                                        <?php $resx = implode(' ', array_slice(explode(' ', $activity->description), 0, 5)); ?>
+                                        <option value="{{ $activity->ctms_activity_id }}">{{ $resx }}</option>
                                         @endforeach
                                     </select>
                                     </div>
@@ -122,6 +123,7 @@
                         </div>
                       </div>
                       <!--Divider-->
+                      <livewire:inventory.datatables.consumption-review theme="bootstrap-4" />
                       <hr class="border-b-2 my-1 mx-1">
                       <!--Divider-->
                       <div class="p-1">      
