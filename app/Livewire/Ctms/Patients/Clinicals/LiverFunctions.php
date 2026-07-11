@@ -64,7 +64,7 @@ class LiverFunctions extends Component
     public function fnLiverFunction()
     {
         $this->input = $this->form_k->all();
-        //dd($this->input); // 
+       // dd($this->input); // 
         $result = $this->saveLiverFunctionData($this->input, $this->passObj);
         $msg = 'User ['.Auth::user()->name.'] saved Liv function Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);

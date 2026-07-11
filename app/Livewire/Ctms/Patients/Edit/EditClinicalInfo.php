@@ -249,9 +249,9 @@ class EditClinicalInfo extends Component
         $this->form_a->br_report_file_path = $c1Obj->br_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_a->comment_entered_by = $c1Obj->comment_entered_by;
-        $this->form_a->entered_by = $c1Obj->entered_by;
-        $this->form_a->entry_date = $c1Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
 
         //($this->form_a);
     }
@@ -270,9 +270,9 @@ class EditClinicalInfo extends Component
         $this->form_b->bs_report_file_path = $c2Obj->bs_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_b->comment_entered_by = $c2Obj->comment_entered_by;
-        $this->form_b->entered_by = $c2Obj->entered_by;
-        $this->form_b->entry_date = $c2Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     //blood urea
@@ -288,9 +288,9 @@ class EditClinicalInfo extends Component
         $this->form_c->bubun_report_file_path = $c3Obj->bubun_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_c->comment_entered_by = $c3Obj->comment_entered_by;
-        $this->form_c->entered_by = $c3Obj->entered_by;
-        $this->form_c->entry_date = $c3Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
    //Chem exam
@@ -310,9 +310,9 @@ class EditClinicalInfo extends Component
         $this->form_d->ce_report_file_path = $c4Obj->ce_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_d->comment_entered_by = $c4Obj->comment_entered_by;
-        $this->form_d->entered_by = $c4Obj->entered_by;
-        $this->form_d->entry_date = $c4Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
    //Creatinine
@@ -327,9 +327,9 @@ class EditClinicalInfo extends Component
         $this->form_e->creatine_report_file_path = $c5Obj->creatine_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_e->comment_entered_by = $c5Obj->comment_entered_by;
-        $this->form_e->entered_by = $c5Obj->entered_by;
-        $this->form_e->entry_date = $c5Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     //Crp
@@ -344,9 +344,9 @@ class EditClinicalInfo extends Component
         $this->form_f->crp_report_file_path = $c6Obj->crp_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_f->comment_entered_by = $c6Obj->comment_entered_by;
-        $this->form_f->entered_by = $c6Obj->entered_by;
-        $this->form_f->entry_date = $c6Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     //Crp
@@ -361,9 +361,9 @@ class EditClinicalInfo extends Component
         $this->form_g->chloride = intval($c7Obj->chloride);
 
         //--------X Common to all tables X-------------//
-        $this->form_g->comment_entered_by = $c7Obj->comment_entered_by;
-        $this->form_g->entered_by = $c7Obj->entered_by;
-        $this->form_g->entry_date = $c7Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     //gen summary
@@ -376,9 +376,9 @@ class EditClinicalInfo extends Component
         $this->form_h->general_summary = $c8Obj->general_summary;
 
         //--------X Common to all tables X-------------//
-        $this->form_h->comment_entered_by = $c8Obj->comment_entered_by;
-        $this->form_h->entered_by = $c8Obj->entered_by;
-        $this->form_h->entry_date = $c8Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     public function setC9ObjData($c9Obj)
@@ -392,9 +392,9 @@ class EditClinicalInfo extends Component
         $this->form_i->il6_report_file_path = $c9Obj->il6_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_i->comment_entered_by = $c9Obj->comment_entered_by;
-        $this->form_i->entered_by = $c9Obj->entered_by;
-        $this->form_i->entry_date = $c9Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     public function setC10ObjData($c10Obj)
@@ -416,9 +416,9 @@ class EditClinicalInfo extends Component
         $this->form_j->pt_report_file_path = $c10Obj->pt_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_j->comment_entered_by = $c10Obj->comment_entered_by;
-        $this->form_j->entered_by = $c10Obj->entered_by;
-        $this->form_j->entry_date = $c10Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     public function setC11ObjData($c11Obj)
@@ -445,8 +445,8 @@ class EditClinicalInfo extends Component
 
         //--------X Common to all tables X-------------//
         $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
-        $this->form_k->entered_by = $c11Obj->entered_by;
-        $this->form_k->entry_date = $c11Obj->entry_date;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     public function setC12ObjData($c12Obj)
@@ -465,9 +465,9 @@ class EditClinicalInfo extends Component
         $this->form_l->me_report_file_path = $c12Obj->me_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_l->comment_entered_by = $c12Obj->comment_entered_by;
-        $this->form_l->entered_by = $c12Obj->entered_by;
-        $this->form_l->entry_date = $c12Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     public function setC13ObjData($c13Obj)
@@ -481,9 +481,9 @@ class EditClinicalInfo extends Component
         $this->form_m->uricacid_report_file_path = $c13Obj->uricacid_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_m->comment_entered_by = $c13Obj->comment_entered_by;
-        $this->form_m->entered_by = $c13Obj->entered_by;
-        $this->form_m->entry_date = $c13Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     public function setC14ObjData($c14Obj)
@@ -504,9 +504,9 @@ class EditClinicalInfo extends Component
         $this->form_n->ur_report_file_path = $c14Obj->ur_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_n->comment_entered_by = $c14Obj->comment_entered_by;
-        $this->form_n->entered_by = $c14Obj->entered_by;
-        $this->form_n->entry_date = $c14Obj->entry_date;
+        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->entered_by = Auth::user()->name;
+        $this->form_k->entry_date = date('Y-m-d');
     }
 
     public function setC15ObjData($c15Obj)
@@ -581,9 +581,9 @@ class EditClinicalInfo extends Component
         LivewireAlert::title('Blood Routine Data Updated')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Routine Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnBloodSugar()
@@ -594,9 +594,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Blood Sugar Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnBloodUrea()
@@ -607,22 +607,22 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Blood Urea Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Blood Urea Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnChemExams()
     {
         $this->input = $this->form_d->all();
-        dd($this->input); // 
+        //dd($this->input); // 
         $result = ChemicalExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Chemical Exams Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnCreatinine()
@@ -633,9 +633,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Creatinine Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnCRP()
@@ -646,9 +646,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved CRP Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('CRP Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnElectrolytes()
@@ -659,9 +659,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Electrolyte Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnGeneralSummary()
@@ -672,9 +672,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Gen Summary Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnIl6()
@@ -685,9 +685,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Il6 Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnLabExams()
@@ -698,9 +698,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Lab Exam Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 
     public function fnLiverFunction()
@@ -711,9 +711,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Liv function Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('LFT Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     } 
 
     public function fnMicroscopicExam()
@@ -724,9 +724,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Microscopi Exam Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     } 
 
     public function fnRenalFunction()
@@ -737,9 +737,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('RFT Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        ///$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }
 
     public function fnUrineRoutine()
@@ -751,9 +751,9 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Urine Data ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Urine Routine Data Updated')->success()->asToast()->show();
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     } 
 
     public function fnEditDrugDetail()
@@ -767,9 +767,9 @@ class EditClinicalInfo extends Component
             $msg = 'User ['.Auth::user()->name.'] edited Drug Detail Data ['.$this->uuid.']';
             Log::channel('patient')->info($msg);
             LivewireAlert::title('Drug Detail Data Edited')->success()->asToast()->show();
-            $this->msg_panel = true;
-            $sysAlertWarning = false;
-            $this->comSuccess = $msg;
+            //$this->msg_panel = true;
+            //$sysAlertWarning = false;
+            //$this->comSuccess = $msg;
         }
         $this->nDDetForm = [];
         $this->edit_dd_panel = false;

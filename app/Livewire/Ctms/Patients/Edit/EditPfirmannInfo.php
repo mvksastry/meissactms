@@ -71,7 +71,7 @@ class EditPfirmannInfo extends Component
             if ($result) {        
                 $msg = 'Patient ['.$name.'] update successfull!';  
                 LivewireAlert::title('Patient PFirmanns info updated')->success()->asToast()->show();
-                $this->comSuccess = $msg;
+                //$this->comSuccess = $msg;
                 Log::channel('patient')->info($msg);
             } else {
                 $msg = 'Patient ['.$name.'] could not be saved';

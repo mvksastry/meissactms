@@ -25,6 +25,7 @@ use App\Models\Ctms\ClinicalReports;
 
 //traits, facades
 use App\Traits\Base;
+use App\Traits\Fileuploads\TOldFileMove;
 
 //logs
 use Illuminate\Support\Facades\Log;
@@ -36,6 +37,7 @@ class EditPatientReports extends Component
     use Base;
     //use File;
     use WithFileUploads;
+    use TOldFileMove;
 
     //Form bindings
     //public UploadForm $form;
@@ -296,6 +298,8 @@ class EditPatientReports extends Component
         // File #1
         if($this->all_in_one_file) 
         {
+            $fileMoveFlag = true;
+
             $validatedData = $this->validate(
             [
                 'all_in_one_file'              => 'nullable|file|mimes:pdf|max:6048',
@@ -319,8 +323,20 @@ class EditPatientReports extends Component
             {
                 $input['file_code'] = $val;
                 $input['report_description'] = $this->file_codex[$input['file_code']];
+
+                $oldFile = $this->getOldFileInfo($input['file_code']);
+                $oldfile->report_status = 'invalid';
+                $of_name = $oldFile->file_name;
+                $oldfile->save();
+
                 $newFile = ClinicalReports::insert($input);
             }
+            /*
+            if($fileMoveFlag)
+            {
+                $result = $this->fnMoveOldFileToArchieve($oldfile, $input);
+            }
+            */
             LivewireAlert::title('All in One File Saved...')->info()->asToast()->show();
             $this->all_in_one_file = null;
             $this->iter1++;

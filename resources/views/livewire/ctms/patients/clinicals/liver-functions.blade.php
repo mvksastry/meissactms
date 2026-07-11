@@ -82,17 +82,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_k.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_k.comment_entered_by" id="comment_entered_by" type="text" class="form-control" placeholder="Description">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_k.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_k.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_k.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_k.entry_date" id="entry_date" type="date" class="form-control" placeholder="Description">
         </td>
       </tr>
     </tbody>
