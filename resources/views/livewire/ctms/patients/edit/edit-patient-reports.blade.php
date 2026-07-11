@@ -248,6 +248,14 @@
                                       </br>@error('all_in_one_file') <span class="text-danger error">{{ $message }}</span>@enderror                                 
                                     </td>
                                   </tr>
+
+                                  <tr>
+                                    <td>
+                                      <label class="text-danger"> OR </label>                                    
+                                    </td>
+                                  </tr>
+
+
                                   <tr>
                                     <td>
                                       <label>Blood Routine</label>
