@@ -276,6 +276,20 @@ trait Base
 		$year = $yeara.'_'.($yearb + 1);
 		return $year;
 	}
+
+	public function getAgeFromDoB($dob)
+	{
+		// Define the date of birth
+		$birthDate = new DateTime($dob);
+
+		// Get the current date
+		$currentDate = new DateTime('now');
+
+		// Calculate the difference
+		$ageDifference = $currentDate->diff($birthDate);
+
+		return $ageDifference->y;
+	}
   
 
 }

@@ -30,12 +30,7 @@
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content p-0">
-                  @if($sys_panel)
-                    @include('livewire.eac_sys_panel')
-                  @endif
-                  @if($msg_panel)
-                    @include('livewire.eac_msg_panel')
-                  @endif
+
                   <!--Divider-->
                   <hr class="border-b-2 border-warning my-2 mx-2">
                   <!-- Morris chart - Sales -->

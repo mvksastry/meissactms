@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Livewire\Forms\PatientForm;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientPersonalInfo;
 use App\Traits\TCtms\TDbEntries;
 //Livewire Alerts
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Log;
 
 class PatientPersonal extends Component
 {
+    use Base;
     use TPatientPersonalInfo;
     use TDbEntries;
     //use NewPatientCreated;
@@ -72,6 +74,7 @@ class PatientPersonal extends Component
     {
         $this->validate(); 
         $this->input = $this->form->all();
+        //$this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
         //dd($this->input); // 
         $result = $this->savePatientInformation($this->input);
         LivewireAlert::title('Primary Info saved...')->info()->asToast()->show();
