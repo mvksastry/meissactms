@@ -17,7 +17,7 @@ class FormBloodRoutine extends Form
     public $admission_date = null;
 
     
-    #[Validate('date')]
+    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
     public $rbc = null;
                       
     #[Validate('regex:/^-?\d+(\.\d+)?$/')]

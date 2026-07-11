@@ -46,7 +46,7 @@ class HomeController extends Controller
 		{
 		    $msg = "Your Account Expired on [ ".date('d-m-Y', strtotime(Auth::user()->expiry_date))." ] Contact Service Provider";
  			//return  view('norole.noroleHome');
- 			Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] account expired');
+ 			//Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] account expired');
  			return  view('layouts.errors.account_expired')->with('msg', $msg);
 		}
 		
