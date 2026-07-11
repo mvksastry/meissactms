@@ -71,7 +71,7 @@
         </td>
         <td>
           <label>RDW-CV</label>
-          <input wire:model.defer="form_a.rdw_cs" type="text"  class="form-control" placeholder="RDW-CV" >
+          <input wire:model.defer="form_a.rdw_cv" type="text"  class="form-control" placeholder="RDW-CV" >
         </td>
         <td>
           <label>PLT (10^3 / &#181 L)</label>
