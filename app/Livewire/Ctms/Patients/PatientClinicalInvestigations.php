@@ -15,7 +15,8 @@ use App\Livewire\Forms\PatientCIForm;
 
 //traits
 use App\Traits\TCtms\TPatientClinicalData;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -70,6 +71,7 @@ class PatientClinicalInvestigations extends Component
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->savePatientCIInformation($this->input);
+        LivewireAlert::title('Clinical Investigation Data Saved')->success()->asToast()->show();
         Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Clinical Data for patient ['.$this->patient_uuid.']');
         //dd($result); //
     }

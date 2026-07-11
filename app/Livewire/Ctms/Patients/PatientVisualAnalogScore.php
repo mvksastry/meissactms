@@ -15,7 +15,8 @@ use App\Livewire\Forms\PatientVAScoreForm;
 
 //Traits
 use App\Traits\TCtms\TVAScores;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -54,6 +55,7 @@ class PatientVisualAnalogScore extends Component
         $this->input = $this->form->all();
         //dd($this->input); //
         $result = $this->saveVAScores($this->input);
+        LivewireAlert::title('Visual Analog Score Data Saved')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Visual Analog score data');
         //dd($result); //
     }

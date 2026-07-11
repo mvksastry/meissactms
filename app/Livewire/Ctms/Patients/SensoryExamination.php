@@ -15,7 +15,8 @@ use App\Livewire\Forms\PatientSEForm;
 
 //traits
 use App\Traits\TCtms\TPatientSEData;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -54,6 +55,7 @@ class SensoryExamination extends Component
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->savePatientSEInformation($this->input);
+        LivewireAlert::title('Sensory Information saved...')->info()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Sensory Exam data');
         //dd($result); //
     }

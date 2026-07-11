@@ -5,6 +5,9 @@ namespace App\Livewire\Ctms\Patients;
 use Livewire\Component;
 use App\Livewire\Forms\PatientForm;
 
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
+
 class PatientAdverseEvents extends Component
 {
     //Form bindings

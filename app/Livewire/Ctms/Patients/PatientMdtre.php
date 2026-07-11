@@ -15,7 +15,8 @@ use App\Livewire\Forms\MdtreForm;
 
 //Traits
 use App\Traits\TCtms\TPatientMdtreData;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -54,6 +55,7 @@ class PatientMdtre extends Component
         $this->input = $this->form->all();
         //dd($this->input); //
         $result = $this->saveMDTREInformation($this->input);
+        LivewireAlert::title('MDTRE Score Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MDTRE data');
         //dd($result); //
     }

@@ -17,7 +17,8 @@ use App\Livewire\Forms\PatientRMQForm;
 
 //Traits
 use App\Traits\TCtms\TPatientRMQData;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -96,6 +97,7 @@ class PatientRmqScore extends Component
         $this->input = $this->form->all();
         //dd($this->input); //
         $result = $this->saveRMQ($this->input);
+        LivewireAlert::title('RMQ Score Data Saved')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved RMQ data');
         //dd($result); // 
     }

@@ -14,7 +14,8 @@ use App\Models\Ctms\Patient;
 
 //traits
 use Livewire\WithFileUploads;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //
 use Illuminate\Support\Facades\Log;
 

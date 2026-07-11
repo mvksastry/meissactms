@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 
 //Traits
 
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 

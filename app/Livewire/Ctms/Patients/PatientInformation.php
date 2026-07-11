@@ -41,7 +41,8 @@ use App\Models\Ctms\ClinicalReports;
 
 //traits, classes
 use Livewire\WithFileUploads;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 

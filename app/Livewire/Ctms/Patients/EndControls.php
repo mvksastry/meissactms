@@ -10,7 +10,8 @@ use Livewire\WithFileUploads;
 
 use App\Models\Ctms\Patient;
 
-   
+   //Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class EndControls extends Component
 {

@@ -16,7 +16,8 @@ use App\Livewire\Forms\ModqScoreForm;
 
 //Traits
 use App\Traits\TCtms\TPatientModqScore;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -170,6 +171,7 @@ class PatientModiqScore extends Component
         $this->input = $this->form->all();
         //dd($this->input);
         $result = $this->saveMODQScore($this->input);
+        LivewireAlert::title('MODIQ Score Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MODQ data');
         //dd($result); 
     }

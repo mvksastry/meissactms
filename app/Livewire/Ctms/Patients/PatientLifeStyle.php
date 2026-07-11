@@ -13,7 +13,8 @@ use App\Models\Ctms\LifeStyle;
 
 //forms
 use App\Livewire\Forms\PatientLSForm;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //traits-facades
 use App\Traits\TCtms\TPatientLifeStyle;
 use Livewire\WithFileUploads;
@@ -64,6 +65,7 @@ class PatientLifeStyle extends Component
         $this->input = $this->form->all();
         //dd($this->input); 
         $result = $this->savePatientLSInformation($this->input);
+        LivewireAlert::title('Patient Life Style Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved life style data');
     }
 

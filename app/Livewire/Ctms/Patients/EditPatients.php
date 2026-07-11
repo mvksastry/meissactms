@@ -22,8 +22,12 @@ use App\Models\Ctms\RMQReply;
 
 //traits
 
+
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
+//uploads
 use Livewire\WithFileUploads;
 
 class EditPatients extends Component
