@@ -127,31 +127,33 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Intensity</label>
-                                      </br>{{  $vascore_info->intensity }}
+                                      <label>Visual Analog Scale</label>
+                                      </br>{{  $vascore_info->intensityvas_scale }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Location</label>
-                                      </br>{{  $vascore_info->location }}
+                                      <label>"Faces" Pain Rating Scale</label>
+                                      </br>{{  $vascore_info->pfr_scale }}
                                    </td>
                                     <td colspan="1">
-                                      <label>Onset</label>
+                                      <label>---</label>
                                       </br>{{  $vascore_info->onset }}
                                     </td>
                                   </tr>
+                                  <!--
                                   <tr>
                                     <td colspan="1">
                                       <label>Duration</label>
-                                      </br>{{  $vascore_info->duration }}
+                                      </br>
                                     </td>
                                     <td colspan="1">
                                       <label>Variation</label>
-                                      </br>{{  $vascore_info->variation }}
+                                      </br>
                                    </td>
                                     <td colspan="1">
                                       <label>Quality</label>
-                                      </br>{{  $vascore_info->quality }}
+                                      </br>
                                     </td>
+                                    -->
                                   </tr>
                                 </tbody>
                               </table>

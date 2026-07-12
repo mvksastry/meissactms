@@ -109,32 +109,34 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Intensity</label>
-                                      </br>{{  $vascore_info->intensity }}
+                                      <label>Visual Analog Scale</label>
+                                      </br>{{  $vascore_info->vas_scale }}
                                     </td>
                                     <td colspan="1">
-                                      <label>Location</label>
-                                      </br>{{  $vascore_info->location }}
+                                      <label>"Faces" Pain Rating Scale</label>
+                                      </br>{{  $vascore_info->pfr_scale }}
                                    </td>
                                     <td colspan="1">
-                                      <label>Onset</label>
-                                      </br>{{  $vascore_info->onset }}
+                                      <label>---</label>
+                                      </br>
                                     </td>
                                   </tr>
+                                  <!--
                                   <tr>
                                     <td colspan="1">
-                                      <label>Duration</label>
-                                      </br>{{  $vascore_info->duration }}
+                                      <label>---</label>
+                                      </br>
                                     </td>
                                     <td colspan="1">
-                                      <label>Variation</label>
-                                      </br>{{  $vascore_info->variation }}
+                                      <label>---</label>
+                                      </br>
                                    </td>
                                     <td colspan="1">
-                                      <label>Quality</label>
-                                      </br>{{  $vascore_info->quality }}
+                                      <label>---</label>
+                                      </br>
                                     </td>
                                   </tr>
+                                  -->
                                 </tbody>
                               </table>
                             </div>

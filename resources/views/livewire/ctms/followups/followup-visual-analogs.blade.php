@@ -127,32 +127,34 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Intensity</label>
+                                      <label>Visual Analog Scale</label>
+                                      <input wire:model="form.vas_scale" id="variation" type="text" class="form-control" placeholder="Visual Analog Scale">
+                                    </td>
+                                    <td colspan="1">
+                                      <label>"Faces" Pain Rating Scale</label>
+                                      <input wire:model="form.pfr_scale" id="quality" type="text" class="form-control" placeholder="Faces Pain Rating Scale">
+                                    </td>
+                                    <td colspan="1">
+                                      <label>---</label>
+                                      <input wire:model="form.duration" id="duration" type="text" class="form-control" placeholder="Duration">
+                                    </td>
+                                  </tr>
+                                  <!--
+                                  <tr>
+                                    <td colspan="1">
+                                      <label>---</label>
                                       <input wire:model="form.intensity" id="intensity" type="text" class="form-control" placeholder="Intensity">
                                     </td>
                                     <td colspan="1">
-                                      <label>Location</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.location" id="location" type="text" class="form-control" placeholder="Location">
                                     </td>
                                     <td colspan="1">
-                                      <label>Onset</label>
+                                      <label>---</label>
                                       <input wire:model="form.onset" id="onset" type="text" class="form-control" placeholder="Onset">
                                     </td>
                                   </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Duration</label>
-                                      <input wire:model="form.duration" id="duration" type="text" class="form-control" placeholder="Duration">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Variation</label>
-                                      <input wire:model="form.variation" id="variation" type="text" class="form-control" placeholder="Variation">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Quality</label>
-                                      <input wire:model="form.quality" id="quality" type="text" class="form-control" placeholder="Quality">
-                                    </td>
-                                  </tr>
+                                  -->
                                 </tbody>
                               </table>
                             </div>

@@ -131,6 +131,21 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
+                                      <label>Visual Analog Scale</label>
+                                      <input wire:model="form.vas_scale" type="text" class="form-control" placeholder="Visual Analog Scale">
+                                    </td>
+                                    <td colspan="1">
+                                      <label>"Faces" Pain Rating Scale</label>
+                                      <input wire:model="form.pfr_scale" type="text" class="form-control" placeholder="Faces Pain Rating Scale">
+                                    </td>
+                                    <td colspan="1">
+                                      <label>---</label>
+                                      <input wire:model="form.quality" type="text" class="form-control" placeholder="Quality">
+                                    </td>
+                                  </tr>
+                                  <!--
+                                  <tr>
+                                    <td colspan="1">
                                       <label>Intensity</label>
                                       <input wire:model="form.intensity" type="text" class="form-control" placeholder="Intensity">
                                     </td>
@@ -143,20 +158,7 @@
                                       <input wire:model="form.onset" type="text" class="form-control" placeholder="Onset">
                                     </td>
                                   </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Duration</label>
-                                      <input wire:model="form.duration" type="text" class="form-control" placeholder="Duration">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Variation</label>
-                                      <input wire:model="form.variation" type="text" class="form-control" placeholder="Variation">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Quality</label>
-                                      <input wire:model="form.quality" type="text" class="form-control" placeholder="Quality">
-                                    </td>
-                                  </tr>
+                                  -->
                                 </tbody>
                               </table>
                             </div>

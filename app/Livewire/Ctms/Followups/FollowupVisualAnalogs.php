@@ -70,6 +70,8 @@ class FollowupVisualAnalogs extends Component
         $nVAScores->duration = $input['duration'];
         $nVAScores->variation = $input['variation'];
         $nVAScores->quality = $input['quality'];
+        $nVAScores->vas_scale = $input['vas_scale'];
+        $nVAScores->pfr_scale = $input['pfr_scale'];
 
         $nVAScores->status = "follow-up-".$this->data_type;
         $nVAScores->status_date = date('Y-m-d');

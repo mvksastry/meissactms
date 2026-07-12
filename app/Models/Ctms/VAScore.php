@@ -33,6 +33,9 @@ class VAScore extends Model
         'variation',
         'quality',
 
+        'vas_scale',
+        'fpr_scale',
+
         'status',
         'status_date',
 

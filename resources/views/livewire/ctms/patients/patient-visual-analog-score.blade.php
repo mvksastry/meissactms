@@ -127,12 +127,12 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Intensity</label>
-                                      <input wire:model="form.intensity" id="intensity" type="text" class="form-control" placeholder="Intensity">
+                                      <label>Visual Analog Scale</label>
+                                      <input wire:model="form.vas_scale" id="intensity" type="text" class="form-control" placeholder="Visual Analog Scale">
                                     </td>
                                     <td colspan="1">
-                                      <label>Location</label>
-                                      <input wire:model.defer="form.location" id="location" type="text" class="form-control" placeholder="Location">
+                                      <label>Faces Pain Rating Scale</label>
+                                      <input wire:model.defer="form.fpr_scale" id="location" type="text" class="form-control" placeholder="Faces Pain Rating Scale">
                                     </td>
                                     <td colspan="1">
                                       <label>Onset</label>

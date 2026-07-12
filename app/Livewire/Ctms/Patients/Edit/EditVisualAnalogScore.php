@@ -56,6 +56,8 @@ class EditVisualAnalogScore extends Component
         $this->form->duration = $vascore->duration;
         $this->form->variation = $vascore->variation;
         $this->form->quality = $vascore->quality;
+        $this->form->vas_scale = $vascore->vas_scale;
+        $this->form->fpr_scale = $vascore->fpr_scale;
 
         $this->form->comment_entered_by = $vascore->comment_entered_by;
         $this->form->entered_by = Auth::user()->name;
