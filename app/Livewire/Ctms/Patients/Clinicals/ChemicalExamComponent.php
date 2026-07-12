@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormChemExam;
 
 //traits
 use App\Traits\TCtms\TClinicals\TChemExams;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -68,10 +69,11 @@ class ChemicalExamComponent extends Component
         $this->input = $this->form_d->all();
         //dd($this->input); // 
         $result = $this->saveChemExamData($this->input, $this->passObj);
+        LivewireAlert::title('Chem Exam Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+      //  $this->msg_panel = true;
+      //  $sysAlertWarning = false;
+      //  $this->comSuccess = $msg;
     }
 }

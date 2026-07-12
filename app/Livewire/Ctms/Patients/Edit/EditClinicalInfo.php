@@ -579,7 +579,7 @@ class EditClinicalInfo extends Component
         //dd($this->uuid, $this->form_a->opd_id, $this->input); // 
         $result = BloodRoutine::where('patient_uuid', $this->uuid)->update($this->input);
         LivewireAlert::title('Blood Routine Data Updated')->success()->asToast()->show();
-        $msg = 'User ['.Auth::user()->name.'] saved Blood Routine Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Blood Routine Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         //$this->msg_panel = true;
         //$sysAlertWarning = false;
@@ -591,7 +591,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_b->all();
         //dd($this->input); // 
         $result = BloodSugar::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Blood Sugar Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -604,7 +604,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_c->all();
         //dd($this->input); // 
         $result = BloodUrea::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Blood Urea Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Blood Urea Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Blood Urea Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -617,7 +617,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_d->all();
         //dd($this->input); // 
         $result = ChemicalExam::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Chemical Exams Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -630,7 +630,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_e->all();
         //dd($this->input); // 
         $result = Creatinine::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Creatinine Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -643,7 +643,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_f->all();
         //dd($this->input); // 
         $result = Crp::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved CRP Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved CRP Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('CRP Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -656,7 +656,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_g->all();
         //dd($this->input); // 
         $result = Electrolytes::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Electrolyte Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -669,7 +669,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_h->all();
         //dd($this->input); // 
         $result = GeneralSummary::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Gen Summary Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -682,7 +682,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_i->all();
         //dd($this->input); // 
         $result = Il6::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Il6 Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -695,7 +695,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_j->all();
         //dd($this->input); // 
         $result = LaboratoryExam::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Lab Exam Data Updated')->success()->asToast()->show();
        // $this->msg_panel = true;
@@ -708,7 +708,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_k->all();
         //dd($this->input); // 
         $result = LiverFunction::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Liv function Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Liv function Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('LFT Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -721,7 +721,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_l->all();
         //dd($this->input); // 
         $result = MicroscopicExam::where('patient_uuid', $this->uuid)->update($this->input);
-        $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Microscopi Exam Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -734,7 +734,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_m->all();
         //dd($this->input); //
         $result = RenalFunction::where('patient_uuid', $this->uuid)->update($this->input); 
-        $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('RFT Data Updated')->success()->asToast()->show();
         ///$this->msg_panel = true;
@@ -748,7 +748,7 @@ class EditClinicalInfo extends Component
         $this->input = $this->form_n->all();
         //dd($this->input); // 
         $result = UrineRoutine::where('patient_uuid', $this->uuid)->update($this->input); 
-        $msg = 'User ['.Auth::user()->name.'] saved Urine Data ['.$this->uuid.']';
+        $msg = 'User ['.Auth::user()->name.'] saved Urine Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Urine Routine Data Updated')->success()->asToast()->show();
         //$this->msg_panel = true;
@@ -764,7 +764,7 @@ class EditClinicalInfo extends Component
         {
             $drug_detail_id = $row['drug_detail_id'];
             $result = DrugDetails::where('drug_detail_id', $drug_detail_id)->update($row); 
-            $msg = 'User ['.Auth::user()->name.'] edited Drug Detail Data ['.$this->uuid.']';
+            $msg = 'User ['.Auth::user()->name.'] edited Drug Detail Data for Patient ['.$this->uuid.']';
             Log::channel('patient')->info($msg);
             LivewireAlert::title('Drug Detail Data Edited')->success()->asToast()->show();
             //$this->msg_panel = true;

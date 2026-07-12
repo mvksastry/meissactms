@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormBloodUrea;
 
 //traits
 use App\Traits\TCtms\TClinicals\TBloodUrea;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class BloodUreaComponent extends Component
         $this->input = $this->form_c->all();
         //dd($this->input); // 
         $result = $this->saveBloodUreaData($this->input, $this->passObj);
+        LivewireAlert::title('Blood Urea Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Urea Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 }

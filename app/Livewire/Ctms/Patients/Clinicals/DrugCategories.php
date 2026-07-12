@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\Clinicals\DrugCategory;
 //use App\Models\Ctms\Clinicals\DrugDetails;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -44,6 +45,7 @@ class DrugCategories extends Component
         $nCate->posted_by = Auth::user()->name;
         //dd($nCate);
         $nCate->save();
+        LivewireAlert::title('New Drug Category Created...')->success()->asToast()->show();
         $this->ncDCat = [];
         $this->drug_categories = DrugCategory::all();
 

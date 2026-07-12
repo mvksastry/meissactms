@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormGeneralSummary;
 
 //traits
 use App\Traits\TCtms\TClinicals\TGeneralSummary;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class GeneralSummaryComponent extends Component
         $this->input = $this->form_h->all();
         //dd($this->input); // 
         $result = $this->saveGenSummaryData($this->input, $this->passObj);
+        LivewireAlert::title('General Summary Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 }

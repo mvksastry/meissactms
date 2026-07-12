@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormMicroscopicExam;
 
 //traits
 use App\Traits\TCtms\TClinicals\TMicroscopicExams;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class MicroscopicExams extends Component
         $this->input = $this->form_l->all();
         //dd($this->input); // 
         $result = $this->saveMicroscopicExamData($this->input, $this->passObj);
+        LivewireAlert::title('Microscopic Exam Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     } 
 }

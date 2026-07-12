@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormRenalFunction;
 
 //traits
 use App\Traits\TCtms\TClinicals\TRenalFunctions;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class RenalFunctionComponent extends Component
         $this->input = $this->form_m->all();
         //dd($this->input); // 
         $result = $this->saveRenalFunctionsData($this->input, $this->passObj);
+        LivewireAlert::title('Renal Function Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     } 
 }

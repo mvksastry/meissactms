@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormUrineRoutine;
 
 //traits
 use App\Traits\TCtms\TClinicals\TUrineRoutine;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class UrineRoutineComponent extends Component
         $this->input = $this->form_n->all();
         //dd($this->input); // 
         $result = $this->saveUrineRoutineData($this->input, $this->passObj);
+        LivewireAlert::title('Urine Routine Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Urine Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     } 
 }

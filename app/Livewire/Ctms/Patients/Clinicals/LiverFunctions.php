@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormLiverFunction;
 
 //traits
 use App\Traits\TCtms\TClinicals\TLiverFunctions;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class LiverFunctions extends Component
         $this->input = $this->form_k->all();
        // dd($this->input); // 
         $result = $this->saveLiverFunctionData($this->input, $this->passObj);
+        LivewireAlert::title('Liver Function Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Liv function Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     } 
 }

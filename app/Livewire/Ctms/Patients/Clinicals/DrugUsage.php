@@ -17,7 +17,8 @@ use App\Models\Ctms\Clinicals\DrugDetails;
 
 //traits
 //use App\Traits\TCtms\TClinicals\TBloodRoutine;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -122,6 +123,7 @@ class DrugUsage extends Component
         $nDDet->sealed_date = null;
         //dd($nDDet);
         $nDDet->save();
+        LivewireAlert::title('Medication Data Saved...')->success()->asToast()->show();
         $this->drug_details = DrugDetails::where('patient_uuid', $this->patient_uuid)->get();
         $input = [];
         $this->nDDetForm = [];

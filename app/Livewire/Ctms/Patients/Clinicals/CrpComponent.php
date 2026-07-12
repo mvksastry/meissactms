@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormCrp;
 
 //traits
 use App\Traits\TCtms\TClinicals\TCrp;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class CrpComponent extends Component
         $this->input = $this->form_f->all();
         //dd($this->input); // 
         $result = $this->saveCrpData($this->input, $this->passObj);
+        LivewireAlert::title('CRP Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved CRP Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 }

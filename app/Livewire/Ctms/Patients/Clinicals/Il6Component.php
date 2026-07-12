@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormIl6;
 
 //traits
 use App\Traits\TCtms\TClinicals\TIl6;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class Il6Component extends Component
         $this->input = $this->form_i->all();
         //dd($this->input); // 
         $result = $this->saveIl6Data($this->input, $this->passObj);
+        LivewireAlert::title('IL-6 Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 }

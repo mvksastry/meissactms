@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormBloodSugar;
 
 //traits
 use App\Traits\TCtms\TClinicals\TBloodSugar;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class BloodSugarComponent extends Component
         $this->input = $this->form_b->all();
         //dd($this->input); // 
         $result = $this->saveBloodSugarData($this->input, $this->passObj);
+        LivewireAlert::title('Blood Sugar Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 }

@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormCreatinine;
 
 //traits
 use App\Traits\TCtms\TClinicals\TCreatinine;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -68,10 +69,11 @@ class CreatinineComponent extends Component
         $this->input = $this->form_e->all();
         //dd($this->input); // 
         $result = $this->saveCreatinineData($this->input, $this->passObj);
+        LivewireAlert::title('Creatinine Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 }

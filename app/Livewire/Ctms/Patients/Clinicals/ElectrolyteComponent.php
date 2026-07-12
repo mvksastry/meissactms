@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormElectrolytes;
 
 //traits
 use App\Traits\TCtms\TClinicals\TElectrolytes;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -66,10 +67,11 @@ class ElectrolyteComponent extends Component
         $this->input = $this->form_g->all();
         //dd($this->input); // 
         $result = $this->saveElectrolyteData($this->input, $this->passObj);
+        LivewireAlert::title('Electrolyte Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+       // $this->msg_panel = true;
+       // $sysAlertWarning = false;
+       // $this->comSuccess = $msg;
     }
 }

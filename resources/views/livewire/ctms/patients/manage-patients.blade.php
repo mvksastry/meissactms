@@ -1,184 +1,198 @@
 <div>
- {{-- The whole world belongs to you. --}}
- <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Patients : {{ ucfirst(Auth::user()->roles->pluck('name')[0] ?? '') }}</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Patients</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    {{-- The whole world belongs to you. --}}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Patients : {{ ucfirst(Auth::user()->roles->pluck('name')[0] ?? '') }}</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Patients</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
-     <section class="content">
-      <div class="container-fluid">
-        <!-- COLOR PALETTE -->
-        <div class="card card-default color-palette-box">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fas fa-tag"></i>
-              Patient Management Options
-            </h3>
-          </div>
-          <div class="card-body">
-            @if($sys_panel)
-              @include('livewire.eac_sys_panel')
-            @endif
-            @if($msg_panel)
-              @include('livewire.eac_msg_panel')
-            @endif
-            <!-- /.col-12 -->
-            <!-- /.col-12 -->
-            <div class="row">
-              <div class="col-sm-4 col-md-2">
-                <button wire:click="fnNewPatientEntrySteps()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp New Patient</button>
-              </div>
-              @if($edit_button)
-                <div class="col-sm-4 col-md-2">
-                  <button wire:click="fnRedirectToEdit()" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Edit Patients</button>
-                </div>
-              @endif
-            </div>
-            <!-- /.row -->
-            <!--Divider-->
-            <hr class="border-b-2 border-warning my-2 mx-2">
-            <!--Divider-->
-            @if($newPatientEntrySteps)
-              <div class="row">
-                @if($showPrimaryInfo)
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnShowPrimaryInfoForm()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
-                  </div>
-                @else
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnShowPrimaryInfoMesage()" type="button" class="btn btn-block btn-secondary"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
-                  </div>
-                @endif
-                <!-- /.col -->
-                @if($openAllOtherForms)
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnLifeStyle()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Life Style</button>
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnClinicalInvestigations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Clinical</button>
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnSensoryExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Sensory Exams</button>  
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnMDTRExaminations()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp M & DTR Exams</button>    
-                  </div>
-                @endif
-              </div>
-              </br>
-              
-              <div class="row">
-                <!-- /.col -->
-                @if($openAllOtherForms)
-                  <!--
+        <section class="content">
+            <div class="container-fluid">
+                <!-- COLOR PALETTE -->
+                <div class="card card-default color-palette-box">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-tag"></i>
+                            Patient Management Options
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        @if ($sys_panel)
+                            @include('livewire.eac_sys_panel')
+                        @endif
+                        @if ($msg_panel)
+                            @include('livewire.eac_msg_panel')
+                        @endif
+                        <!-- /.col-12 -->
+                        <!-- /.col-12 -->
+                        <div class="row">
+                            <div class="col-sm-4 col-md-2">
+                                <button wire:click="fnNewPatientEntrySteps()" type="button"
+                                    class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp New
+                                    Patient</button>
+                            </div>
+                            @if ($edit_button)
+                                <div class="col-sm-4 col-md-2">
+                                    <button wire:click="fnRedirectToEdit()" type="button"
+                                        class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Edit
+                                        Patients</button>
+                                </div>
+                            @endif
+                        </div>
+                        <!-- /.row -->
+                        <!--Divider-->
+                        <hr class="border-b-2 border-warning my-2 mx-2">
+                        <!--Divider-->
+                        @if ($newPatientEntrySteps)
+                            <div class="row">
+                                @if ($showPrimaryInfo)
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnShowPrimaryInfoForm()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp
+                                            Primary Infos</button>
+                                    </div>
+                                @else
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnShowPrimaryInfoMesage()" type="button"
+                                            class="btn btn-block btn-secondary"><i class="ion ion-person"></i>&nbsp
+                                            Primary Infos</button>
+                                    </div>
+                                @endif
+                                <!-- /.col -->
+                                @if ($openAllOtherForms)
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnLifeStyle()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Life
+                                            Style</button>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnClinicalInvestigations()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp
+                                            Clinical</button>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnSensoryExaminations()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp
+                                            Sensory Exams</button>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnMDTRExaminations()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp M &
+                                            DTR Exams</button>
+                                    </div>
+                                @endif
+                            </div>
+                            </br>
+
+                            <div class="row">
+                                <!-- /.col -->
+                                @if ($openAllOtherForms)
+                                    <!--
                   <div class="col-sm-3 col-md-2">
                     <button  type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Radiographs</button>
                   </div>
                   -->
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnModifiedPfirmannGrades()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnVisualAnalogScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Visual Analog Score</button>  
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnMODIQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp MODQ Score</button>  
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-3 col-md-2">
-                    <button wire:click="fnRMQScore()" type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
-                  </div>
-                @endif
-                <!-- /.col -->
-              </div>
-              <!--Divider-->
-              <hr class="border-b-2 border-warning my-2 mx-2">
-              <!--/ Divider-->
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnModifiedPfirmannGrades()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp
+                                            Pfirmann’s Grade</button>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnVisualAnalogScore()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Visual
+                                            Analog Score</button>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnMODIQScore()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp MODQ
+                                            Score</button>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button wire:click="fnRMQScore()" type="button"
+                                            class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp RMQ
+                                            Score</button>
+                                    </div>
+                                @endif
+                                <!-- /.col -->
+                            </div>
+                            <!--Divider-->
+                            <hr class="border-b-2 border-warning my-2 mx-2">
+                            <!--/ Divider-->
 
-              <!--/ Divider-->
-              </br>
-            @endif
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-        <!-- START ALERTS AND CALLOUTS -->
-      </div><!-- /.container-fluid -->
-    </section>
+                            <!--/ Divider-->
+                            </br>
+                        @endif
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <!-- START ALERTS AND CALLOUTS -->
+            </div><!-- /.container-fluid -->
+        </section>
 
-    <!-- Main content -->
-    @if($p1)
-      <livewire:ctms.patients.patient-personal :entered_by="$entered_by" :entry="$entry" />
-    @endif
+        <!-- Main content -->
+        @if ($p1)
+            <livewire:ctms.patients.patient-personal :entered_by="$entered_by" :entry="$entry" />
+        @endif
 
-    @if($p2)
-      <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
-    
-    @if($p3)
-      <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+        @if ($p2)
+            <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
-    @if($p4)
-      <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+        @if ($p3)
+            <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
-    @if($p5)
-      <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+        @if ($p4)
+            <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
-    @if($p6)
-      <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+        @if ($p5)
+            <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
-    @if($p7)
-      <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+        @if ($p6)
+            <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
-    @if($p8)
-      <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+        @if ($p7)
+            <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
-    @if($p9) 
-      <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
-    
-    @if($p10)
-      <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+        @if ($p8)
+            <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
+        @if ($p9)
+            <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
+        @if ($p10)
+            <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" :entry="$entry" />
+        @endif
 
-
-
-
-
-
-
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 </div>
-
-

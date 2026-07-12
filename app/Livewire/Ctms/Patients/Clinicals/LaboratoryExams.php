@@ -16,7 +16,8 @@ use App\Livewire\Forms\clinicals\FormLabExams;
 
 //traits
 use App\Traits\TCtms\TClinicals\TLaboratoryExams;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -67,10 +68,11 @@ class LaboratoryExams extends Component
         $this->input = $this->form_j->all();
         //dd($this->input); // 
         $result = $this->saveLaboratoryExamData($this->input, $this->passObj);
+        LivewireAlert::title('Lab Exam Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->msg_panel = true;
-        $sysAlertWarning = false;
-        $this->comSuccess = $msg;
+        //$this->msg_panel = true;
+        //$sysAlertWarning = false;
+        //$this->comSuccess = $msg;
     }    
 }
