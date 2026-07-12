@@ -249,7 +249,7 @@ class EditClinicalInfo extends Component
         $this->form_a->br_report_file_path = $c1Obj->br_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c1Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
 
@@ -270,7 +270,7 @@ class EditClinicalInfo extends Component
         $this->form_b->bs_report_file_path = $c2Obj->bs_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c2Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -288,7 +288,7 @@ class EditClinicalInfo extends Component
         $this->form_c->bubun_report_file_path = $c3Obj->bubun_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c3Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -310,7 +310,7 @@ class EditClinicalInfo extends Component
         $this->form_d->ce_report_file_path = $c4Obj->ce_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c4Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -327,7 +327,7 @@ class EditClinicalInfo extends Component
         $this->form_e->creatine_report_file_path = $c5Obj->creatine_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c5Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -344,7 +344,7 @@ class EditClinicalInfo extends Component
         $this->form_f->crp_report_file_path = $c6Obj->crp_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c6Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -361,7 +361,7 @@ class EditClinicalInfo extends Component
         $this->form_g->chloride = intval($c7Obj->chloride);
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c7Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -376,7 +376,7 @@ class EditClinicalInfo extends Component
         $this->form_h->general_summary = $c8Obj->general_summary;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c8Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -392,7 +392,7 @@ class EditClinicalInfo extends Component
         $this->form_i->il6_report_file_path = $c9Obj->il6_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c9Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -416,7 +416,7 @@ class EditClinicalInfo extends Component
         $this->form_j->pt_report_file_path = $c10Obj->pt_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c10Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -465,7 +465,7 @@ class EditClinicalInfo extends Component
         $this->form_l->me_report_file_path = $c12Obj->me_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c12Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -481,7 +481,7 @@ class EditClinicalInfo extends Component
         $this->form_m->uricacid_report_file_path = $c13Obj->uricacid_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c13Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
@@ -504,7 +504,7 @@ class EditClinicalInfo extends Component
         $this->form_n->ur_report_file_path = $c14Obj->ur_report_file_path;
 
         //--------X Common to all tables X-------------//
-        $this->form_k->comment_entered_by = $c11Obj->comment_entered_by;
+        $this->form_k->comment_entered_by = $c14Obj->comment_entered_by;
         $this->form_k->entered_by = Auth::user()->name;
         $this->form_k->entry_date = date('Y-m-d');
     }
