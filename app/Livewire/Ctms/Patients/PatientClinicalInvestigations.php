@@ -72,7 +72,8 @@ class PatientClinicalInvestigations extends Component
         //dd($this->input); // 
         $result = $this->savePatientCIInformation($this->input);
         LivewireAlert::title('Clinical Investigation Data Saved')->success()->asToast()->show();
-        Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Clinical Data for patient ['.$this->patient_uuid.']');
+        $msg = 'User ['.Auth::user()->name.'] Saved Clinical Data for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result); //
     }
 }

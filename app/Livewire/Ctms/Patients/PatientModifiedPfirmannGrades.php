@@ -54,7 +54,8 @@ class PatientModifiedPfirmannGrades extends Component
         //dd($this->input); //
         $result = $this->savePfirmannGrade($this->input);
         LivewireAlert::title('Pfirman Score Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Pfirmann score data');
+        $msg = 'User ['.Auth::user()->name.'] Saved Pfirmann Score for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result); // 
     }
 }

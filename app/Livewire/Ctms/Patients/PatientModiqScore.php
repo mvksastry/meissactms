@@ -173,6 +173,8 @@ class PatientModiqScore extends Component
         $result = $this->saveMODQScore($this->input);
         LivewireAlert::title('MODIQ Score Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MODQ data');
+        $msg = 'User ['.Auth::user()->name.'] Saved MODIQ Score for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result); 
     }
 

@@ -56,7 +56,8 @@ class SensoryExamination extends Component
         //dd($this->input); // 
         $result = $this->savePatientSEInformation($this->input);
         LivewireAlert::title('Sensory Information saved...')->info()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Sensory Exam data');
+        $msg = 'User ['.Auth::user()->name.'] Saved Sensory Exam Data for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result); //
     }
 

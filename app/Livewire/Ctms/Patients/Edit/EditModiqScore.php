@@ -295,12 +295,12 @@ class EditModiqScore extends Component
         try {
             $result = ModqScore::where('patient_uuid', $this->uuid)->update($this->input);
             if ($result) {        
-                $msg = 'Patient ['.$name.'] update successfull!';  
+                $msg = 'Patient ['.$name.'] MODQ Data update successfull!';  
                 LivewireAlert::title('Patient MODQ info updated')->success()->asToast()->show();
                 //$this->comSuccess = $msg;
                 Log::channel('patient')->info($msg);
             } else {
-                $msg = 'Patient ['.$name.'] could not be saved';
+                $msg = 'Patient ['.$name.'] MODQ Data could not be saved';
                 LivewireAlert::title('Patient MODQ info Failed')->success()->asToast()->show();
                 $this->sysAlertDanger = $msg;
                 Log::channel('patient')->info($msg);

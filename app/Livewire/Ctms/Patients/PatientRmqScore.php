@@ -98,7 +98,8 @@ class PatientRmqScore extends Component
         //dd($this->input); //
         $result = $this->saveRMQ($this->input);
         LivewireAlert::title('RMQ Score Data Saved')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved RMQ data');
+        $msg = 'User ['.Auth::user()->name.'] Saved RMQ Scores for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result); // 
     }
 }

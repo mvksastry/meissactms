@@ -56,7 +56,8 @@ class PatientVisualAnalogScore extends Component
         //dd($this->input); //
         $result = $this->saveVAScores($this->input);
         LivewireAlert::title('Visual Analog Score Data Saved')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Visual Analog score data');
+        $msg = 'User ['.Auth::user()->name.'] Saved Visual Analog Scores for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result); //
     }
 }

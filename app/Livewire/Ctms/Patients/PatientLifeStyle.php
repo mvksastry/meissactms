@@ -66,7 +66,8 @@ class PatientLifeStyle extends Component
         //dd($this->input); 
         $result = $this->savePatientLSInformation($this->input);
         LivewireAlert::title('Patient Life Style Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved life style data');
+        $msg = 'User ['.Auth::user()->name.'] Saved Life Style for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
     }
 
 }

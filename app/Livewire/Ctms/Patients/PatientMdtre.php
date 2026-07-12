@@ -56,7 +56,8 @@ class PatientMdtre extends Component
         //dd($this->input); //
         $result = $this->saveMDTREInformation($this->input);
         LivewireAlert::title('MDTRE Score Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MDTRE data');
+        $msg = 'User ['.Auth::user()->name.'] Saved M&DTRE Score for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result); //
     }
 }

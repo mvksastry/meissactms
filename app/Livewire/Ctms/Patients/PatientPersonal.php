@@ -78,7 +78,8 @@ class PatientPersonal extends Component
         //dd($this->input); // 
         $result = $this->savePatientInformation($this->input);
         LivewireAlert::title('Primary Info saved...')->info()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Patient Personal data');
+        $msg = 'User ['.Auth::user()->name.'] Saved Patient information for Patient ['.$this->patient_uuid.']';
+        Log::channel('patient')->info($msg);
         //dd($result);
 
     }
