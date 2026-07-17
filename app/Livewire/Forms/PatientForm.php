@@ -85,13 +85,13 @@ class PatientForm extends Form
     #[Validate('numeric')]
     public $alternate_contact_phone = '';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|numeric')]
     public $height = 0;
 
     #[Validate('alpha')]
     public $height_unit = 'centimeters';
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
+    #[Validate('nullable|numeric')]
     public $weight = 0;
 
     #[Validate('alpha')]
@@ -229,7 +229,7 @@ class PatientForm extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $anyother_habbits = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z.,\-_\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';   
 
     #[Validate('regex:/^[A-Za-z ]+$/')]

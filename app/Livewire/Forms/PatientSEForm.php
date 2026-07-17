@@ -46,7 +46,7 @@ class PatientSEForm extends Form
     #[Validate('regex:/^-?\d+(\.\d+)?$/')]
     public $rS1 = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('regex:/^[A-Za-z0 ]+$/')]

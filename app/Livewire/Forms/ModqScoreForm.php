@@ -57,7 +57,7 @@ class ModqScoreForm extends Form
     #[Validate('regex:/^[0-9. ]+$/')]
     public $modq_score = null;
 */
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('regex:/^[A-Za-z ]+$/')]

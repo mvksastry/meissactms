@@ -25,7 +25,7 @@ class PatientRMQForm extends Form
     public $rmq_replies = null;
 
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]

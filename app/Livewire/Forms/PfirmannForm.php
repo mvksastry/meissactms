@@ -22,7 +22,7 @@ class PfirmannForm extends Form
     #[Validate('regex:/^[A-Za-z0-9. ]+$/')]
     public $modified_pfirman_grade = '';
 
-    #[Validate('regex:/^[A-Za-z0-9,. ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('regex:/^[A-Za-z ]+$/')]

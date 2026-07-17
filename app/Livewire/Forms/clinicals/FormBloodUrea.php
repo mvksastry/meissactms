@@ -35,7 +35,7 @@ class FormBloodUrea extends Form
 
 
     
-    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
