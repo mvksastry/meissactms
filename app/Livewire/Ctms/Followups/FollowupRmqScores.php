@@ -17,7 +17,8 @@ use App\Livewire\Forms\PatientRMQForm;
 
 //Traits
 use App\Traits\TCtms\TPatientRMQData;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -91,6 +92,7 @@ class FollowupRmqScores extends Component
         $this->input = $this->form->all();
         //dd($this->input); //
         $result = $this->saveFollowupRMQ($this->input);
+        LivewireAlert::title('Follow-up R M Q Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved RMQ data');
         //dd($result); // 
     }

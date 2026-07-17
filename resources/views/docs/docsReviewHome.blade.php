@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard : {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h1>
+            <h1 class="m-0">Dashboard : {{ ucfirst(Auth::user()->roles->pluck('name')[0] ?? '') }}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Documents</li>
+              <li class="breadcrumb-item active">Document Review</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -37,7 +37,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Active Centers
+                  Documents Active
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -119,8 +119,9 @@
                                           {{ $version->obsolete_at }} /</br> {{ $version->obsolete_by }}
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-info">Edit</button>
                                             
+                                            <button class="btn btn-sm btn-info">View</button>
+                                            <button class="btn btn-sm btn-warning">Edit</button>
                                         </td>
                                       </tr>
                                     @endforeach

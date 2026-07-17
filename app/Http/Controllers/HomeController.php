@@ -8,11 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
-
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+
+use Log;
+use Validator;
+use Carbon\Carbon;
+use Illuminate\Log\Logger;
 
 // Models
 use App\Models\User;
@@ -46,7 +49,7 @@ class HomeController extends Controller
 		{
 		    $msg = "Your Account Expired on [ ".date('d-m-Y', strtotime(Auth::user()->expiry_date))." ] Contact Service Provider";
  			//return  view('norole.noroleHome');
- 			//Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] account expired');
+ 			Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] account expired');
  			return  view('layouts.errors.account_expired')->with('msg', $msg);
 		}
 		
@@ -84,6 +87,7 @@ class HomeController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.admin.home')->with([
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
@@ -101,6 +105,7 @@ class HomeController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.clinicalmanager.home')->with([
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
@@ -118,6 +123,7 @@ class HomeController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.srresident.home')->with([
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
@@ -135,6 +141,7 @@ class HomeController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.jrresident.home')->with([
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
@@ -152,6 +159,7 @@ class HomeController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.cde.home')->with([
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
@@ -169,6 +177,7 @@ class HomeController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.cro.home')->with([
                 'all_centers' => $all_centers,
                 'all_clinics' => $all_clinics,
@@ -177,7 +186,7 @@ class HomeController extends Controller
                 'chats' => $chats
             ]);
         }
-
+        Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: No Role Home Dashboard Displayed');
         return view('norole.no-role-home');
     }
 

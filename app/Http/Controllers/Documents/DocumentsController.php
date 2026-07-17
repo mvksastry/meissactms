@@ -26,6 +26,11 @@ use App\Models\Documents\DocumentVersion;
 //traits
 use App\Traits\Fileuploads\DocumentUploads;
 
+use Log;
+use Validator;
+use Carbon\Carbon;
+use Illuminate\Log\Logger;
+
 class DocumentsController extends Controller
 {
     use HasRoles;
@@ -41,11 +46,13 @@ class DocumentsController extends Controller
 		{
             $activeDocs = Document::with('category')->with('doc_versions')->get();
             //dd($activeDocs);
+            Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] shown Document Home Dashboard');
             return view('docs.docsHome')->with('activeDocs', $activeDocs);
         }
 
         if( Auth::user()->hasAnyRole('researcher') )
 		{
+            Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] shown Document Home Dashboard');
             return view('docs.docsHome');
         }
     }
@@ -59,6 +66,7 @@ class DocumentsController extends Controller
         if( Auth::user()->hasAnyRole(['ctms_incharge','director']) )
 		{
             $categories = DocumentCategory::where('status', 'active')->get();
+            Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] shown Create New Document Form');
             return view('docs.newDocForm', ['categories' => $categories]);
         }
     }
@@ -103,7 +111,7 @@ class DocumentsController extends Controller
             $result = $this->upload_new_document($fileObj, $input);
             //dd($result);
         }
-        
+        Log::channel('activity')->info('Logged in user [ '.Auth::user()->name.' ] saved New Document title ['.$input['title'].']');
         return redirect()->route('documents.index')->with('success', 'File uploaded successfully!')
                      ->with('file', $result);
 

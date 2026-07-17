@@ -3,12 +3,30 @@
 namespace App\Livewire\Ctms\Followups;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+//models
+use App\Models\Ctms\SensoryExamination;
+//forms
+use App\Livewire\Forms\PatientSEForm;
+//traits
+use App\Traits\TCtms\TPatientSEData;
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class FollowupSensoryExams extends Component
 {
+    use TPatientSEData;
+    
+    //Form bindings
+    public PatientSEForm $form;
+
     public $patient_uuid;
     public $data_type;
-    
+
+
     public function render()
     {
         return view('livewire.ctms.followups.followup-sensory-exams');
@@ -19,6 +37,7 @@ class FollowupSensoryExams extends Component
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->saveFollowupPatientSEInformation($this->input);
+        LivewireAlert::title('Follow-up Sensory Exam Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Sensory Exam data');
         //dd($result); //
     }

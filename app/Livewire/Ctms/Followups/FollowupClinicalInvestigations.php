@@ -15,9 +15,10 @@ use App\Livewire\Forms\PatientCIForm;
 
 //traits
 use App\Traits\TCtms\TPatientClinicalData;
-
 //logs
 use Illuminate\Support\Facades\Log;
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class FollowupClinicalInvestigations extends Component
 {
@@ -67,6 +68,7 @@ class FollowupClinicalInvestigations extends Component
         $this->input = $this->form->all();
         //dd($this->input); // 
         $result = $this->savePatientCIInformation($this->input);
+        LivewireAlert::title('Follow-up Clinical Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User ['.Auth::user()->name.'] saved Clinical Data for patient ['.$this->patient_uuid.']');
         //dd($result); //
     }

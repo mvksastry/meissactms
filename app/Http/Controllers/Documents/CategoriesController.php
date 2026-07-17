@@ -21,6 +21,10 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\User;
 use App\Models\Documents\DocumentCategory;
 
+use Log;
+use Validator;
+use Carbon\Carbon;
+use Illuminate\Log\Logger;
 
 class CategoriesController extends Controller
 {
@@ -36,11 +40,13 @@ class CategoriesController extends Controller
 		{
             $categories = DocumentCategory::where('status', 'active')->get();
             //dd($categories);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] Shown Category Home Dashboard Displayed');
             return view('docs.categories.categoryHome', ['categories'=>$categories]);
         }
 
         if( Auth::user()->hasAnyRole('researcher') )
 		{
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] Shown Category Home Dashboard Displayed');
             return view('docs.categories.categoryHome');
         }
     }
@@ -55,6 +61,7 @@ class CategoriesController extends Controller
 		{
             $categories = DocumentCategory::where('status', 'active')->get();
             //dd($categories);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] Shown Create Category Form');
             return view('docs.categories.categoryCreateForm', ['categories'=>$categories]);
         }
     }
@@ -79,6 +86,7 @@ class CategoriesController extends Controller
         $newCat->notes = $input['notes'];
         //dd($newCat);
         $newCat->save();
+        Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] saved new Category ['.$input['name'].'] status ok  ');
           return redirect()->route('categories.index')
             ->with('flash_message',
              'New category'. $newCat->name.' added!');

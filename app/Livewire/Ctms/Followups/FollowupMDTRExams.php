@@ -15,7 +15,8 @@ use App\Livewire\Forms\MdtreForm;
 
 //Traits
 use App\Traits\TCtms\TPatientMdtreData;
-
+//Livewire Alerts
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
@@ -52,6 +53,7 @@ class FollowupMDTRExams extends Component
         $this->input = $this->form->all();
         //dd($this->input); //
         $result = $this->saveFollowupMDTREInformation($this->input);
+        LivewireAlert::title('Follow-up M&DTRE Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MDTRE data');
         //dd($result); //
     }
