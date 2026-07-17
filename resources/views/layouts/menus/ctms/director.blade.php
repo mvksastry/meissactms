@@ -8,19 +8,6 @@
       <!-- Sidebar user panel (optional) -->
       @include('layouts.partials.user_image')
 
-      <!-- SidebarSearch Form -->
-      <!--
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      -->
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -37,17 +24,6 @@
             <ul class="nav nav-treeview">
             </ul>
           </li>
-          <!--
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          -->
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -92,63 +68,10 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/centers" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Centers</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/clinics" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Clinics</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/drug-categories" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Drug Categories</p>
-                </a>
-              </li>
-              
-              <li class="nav-item">
-                <a href="/ctms-core-activities" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Activities</p>
-                </a>
-              </li>
-              <!--
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
-              </li>
-              -->
+              @include('layouts.menus.items.admin.ctms.centers')
+              @include('layouts.menus.items.admin.ctms.clinics')
+              @include('layouts.menus.items.admin.ctms.drug-categories')
+              @include('layouts.menus.items.admin.ctms.activities')
             </ul>
           </li>
 
@@ -256,25 +179,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/activities-home" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>EHub - Dashboard</p>
-                </a>
-              </li>
+              @include('layouts.menus.items.ehub.ehub-dash')
             </ul>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/activities-home" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Activities Home</p>
-                </a>
-              </li>
+              @include('layouts.menus.items.activities.activities-dash')
             </ul>
             <ul class="nav nav-treeview">
               @include('layouts.menus.items.ehub.production-hub')
             </ul>
-
           </li>
 
           <li class="nav-item">
