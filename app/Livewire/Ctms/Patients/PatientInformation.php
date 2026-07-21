@@ -278,6 +278,7 @@ class PatientInformation extends Component
         //$this->ptEpoch = PatientEpoch::where('patient_uuid', $this->patient_uuid)->where('status', 'active')->get();
         //dd($this->ptEpoch);
         $this->patientInfoButtons = false;
+        $this->fnResetAllVisiblePanels();
         $this->TimelinePatient = true;
         $this->PatientStatusPanel = false;
     }
