@@ -39,11 +39,11 @@ class FormUrineRoutine extends Form
     #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $specific_gravity = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
-    public $me_report_file = '';
+   // #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
+   // public $me_report_file = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
-    public $melr_report_file_path = '';
+   // #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
+   // public $melr_report_file_path = '';
 
     
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
