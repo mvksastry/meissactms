@@ -30,8 +30,8 @@ trait TCrp
         }, $input);
         
         $passObj->crp = $input['crp'];
-        $passObj->crp_report_file = $input['crp_report_file'];
-        $passObj->crp_report_file_path = $input['crp_report_file_path'];
+        //$passObj->crp_report_file = $input['crp_report_file'];
+        //$passObj->crp_report_file_path = $input['crp_report_file_path'];
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

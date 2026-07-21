@@ -36,10 +36,10 @@ trait TLaboratoryExams
         $passObj->inr = $input['inr'];
         $passObj->isi = $input['isi'];
 
-        $passObj->esr_report_file = null;
-        $passObj->esr_report_file_path = null;
-        $passObj->pt_report_file = null;
-        $passObj->pt_report_file_path = null;
+        //$passObj->esr_report_file = null;
+        //$passObj->esr_report_file_path = null;
+        //$passObj->pt_report_file = null;
+        //$passObj->pt_report_file_path = null;
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

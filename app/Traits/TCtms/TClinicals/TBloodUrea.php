@@ -31,8 +31,8 @@ trait TBloodUrea
         
         $passObj->urea = $input['urea'];
         $passObj->blood_urea_nitrogen = $input['blood_urea_nitrogen'];
-        $passObj->bubun_report_file = $input['bubun_report_file'];
-        $passObj->bubun_report_file_path = $input['bubun_report_file_path'];
+        //$passObj->bubun_report_file = null;
+        //$passObj->bubun_report_file_path = null;
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

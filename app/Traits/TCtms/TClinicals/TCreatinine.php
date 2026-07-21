@@ -30,8 +30,8 @@ trait TCreatinine
         }, $input);
         
         $passObj->serum_creatinine = $input['serum_creatinine'];
-        $passObj->creatine_report_file = $input['creatine_report_file'];
-        $passObj->creatine_report_file_path = $input['creatine_report_file_path'];
+        //$passObj->creatine_report_file = $input['creatine_report_file'];
+        //$passObj->creatine_report_file_path = $input['creatine_report_file_path'];
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

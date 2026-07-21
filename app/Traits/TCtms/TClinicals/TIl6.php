@@ -28,8 +28,8 @@ trait TIl6
         }, $input);
         
         $passObj->il6 = $input['il6'];
-        $passObj->il6_report_file = $input['il6_report_file'];
-        $passObj->il6_report_file_path = $input['il6_report_file_path'];
+        //$passObj->il6_report_file = $input['il6_report_file'];
+        //$passObj->il6_report_file_path = $input['il6_report_file_path'];
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

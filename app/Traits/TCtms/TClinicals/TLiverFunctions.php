@@ -41,8 +41,8 @@ trait TLiverFunctions
         $passObj->alkaline_phosphatase = intval($input['alkaline_phosphatase']);
 
         $passObj->observations = null;
-        $passObj->lft_report_file = $input['lft_report_file'];
-        $passObj->lft_report_file_path = $input['lft_report_file_path'];
+        //$passObj->lft_report_file = $input['lft_report_file'];
+        //$passObj->lft_report_file_path = $input['lft_report_file_path'];
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

@@ -62,8 +62,8 @@ trait TBloodRoutine
         $passObj->ig_percent = $input['ig_percent'];
 
         $passObj->observations = $input['observations'];
-        $passObj->br_report_file = $input['br_report_file'];
-        $passObj->br_report_file_path = $input['br_report_file_path'];
+        //$passObj->br_report_file = null;
+        //$passObj->br_report_file_path = null;
 
         //--------X Common to all tables X-------------//
         $passObj->comment_entered_by = $input['comment_entered_by'];

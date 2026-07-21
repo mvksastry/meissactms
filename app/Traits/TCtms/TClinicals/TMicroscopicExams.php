@@ -35,8 +35,8 @@ trait TMicroscopicExams
       $passObj->yeast_cells = $input['yeast_cells'];
       $passObj->bacteria = $input['bacteria'];
 
-      $passObj->me_report_file = $input['me_report_file'];
-      $passObj->me_report_file_path = null;
+      //$passObj->me_report_file = $input['me_report_file'];
+      //$passObj->me_report_file_path = null;
 
       //--------X Common to all tables X-------------//
       $passObj->comment_entered_by = $input['comment_entered_by'];

@@ -29,8 +29,8 @@ trait TRenalFunctions
       }, $input);
 
       $passObj->uric_acid = $input['uric_acid'];
-      $passObj->uricacid_report_file = $input['uricacid_report_file'];
-      $passObj->uricacid_report_file_path = $input['uricacid_report_file_path'];
+      //$passObj->uricacid_report_file = $input['uricacid_report_file'];
+      //$passObj->uricacid_report_file_path = $input['uricacid_report_file_path'];
 
       //--------X Common to all tables X-------------//
       $passObj->comment_entered_by = $input['comment_entered_by'];
