@@ -32,13 +32,7 @@
           <label>Post-Prandial</label>
           </br>{{ $ci2Obj->post_prandial }}
         </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Blood Sugar Report File*</label>
-          </br>{{ $ci2Obj->bs_report_file }}
-        </td>
-      </tr>     
+      </tr>    
       <tr>
         <td colspan="2">
         <label>Comment By Entered</label>
@@ -119,10 +113,6 @@
         <td>
           <label>CRP</label>
           </br>{{ $ci6Obj->crp }}
-        </td>
-        <td colspan="5">
-          <label>CRP Report File</label>
-          </br>{{ $ci6Obj->crp_report_file }}
         </td>
       </tr>                              
 
@@ -206,10 +196,6 @@
         <td>
           <label>IL-6</label>
           </br>{{ $ci9Obj->il6 }}
-        </td>
-        <td colspan="5">
-          <label>IL-6 Report File*</label>
-          </br>{{ $ci9Obj->il6_report_file }}
         </td>
       </tr>                               
       <tr>

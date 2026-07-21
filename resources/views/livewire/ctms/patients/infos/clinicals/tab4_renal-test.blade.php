@@ -37,12 +37,6 @@
           </br>{{ $ci13Obj->uric_acid }}
         </td>
 
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Uric Acid Report File*</label>
-          </br>{{ $ci13Obj->uricacid_report_file }}
-        </td>
       </tr>       
     </tbody>
   </table>

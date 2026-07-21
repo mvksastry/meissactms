@@ -1,10 +1,4 @@
 <div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
-    {{-- In work, do what you enjoy. --}}
-    {{-- The whole world belongs to you. --}}
-    <!-- Content Wrapper. Contains page content -->
-    <!-- COLOR PALETTE -->
-
         <div class="card card-default color-palette-box">
           <div class="card-header">
             <h3 class="card-title">

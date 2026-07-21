@@ -153,13 +153,6 @@
           <label>Summary & Comments*</label>
           </br>{{ $ci1Obj->observations }}
         </td>
-      </tr> 
-
-      <tr>
-        <td colspan="6">
-          <label>Laboratory Report File*</label>
-          </br>{{ $ci1Obj->br_report_file }}
-        </td>
       </tr>                                    
     </tbody>
   </table>

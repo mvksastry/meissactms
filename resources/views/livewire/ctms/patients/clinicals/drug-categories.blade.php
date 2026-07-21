@@ -1,13 +1,4 @@
 <div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
-    {{-- In work, do what you enjoy. --}}
-    {{-- The whole world belongs to you. --}}
-    <!-- Content Wrapper. Contains page content -->
-    <!-- COLOR PALETTE -->
-    {{-- The Master doesn't talk, he acts. --}}
-    {{-- In work, do what you enjoy. --}}
-    {{-- The whole world belongs to you. --}}
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">

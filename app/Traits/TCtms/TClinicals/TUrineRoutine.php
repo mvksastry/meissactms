@@ -36,7 +36,7 @@ trait TUrineRoutine
         $passObj->ph = $input['ph'];
         $passObj->specific_gravity = $input['specific_gravity'];
 
-        //$passObj->ur_report_file = $input['me_report_file'];
+        //$passObj->ur_report_file = null;
         //$passObj->ur_report_file_path = null;
 
         //--------X Common to all tables X-------------//

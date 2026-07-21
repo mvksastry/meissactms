@@ -51,13 +51,6 @@
 
       <tr>
         <td colspan="2">
-          <label>ME Report File</label>
-          </br>{{ $ci12Obj->me_report_file }}
-        </td>
-      </tr>
-
-      <tr>
-        <td colspan="2">
         <label>Comment By Entered</label>
         </br>{{ $ci12Obj->comment_entered_by }}
         </td>

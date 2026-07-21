@@ -40,10 +40,6 @@
           <label>PT Control</label>
           </br>{{ $ci10Obj->pt_control }}
         </td>
-        <td>
-          <label>PT Report File</label>
-          </br>{{ $ci10Obj->pt_report_file }}
-        </td>
       </tr>
       <tr>
 

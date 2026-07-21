@@ -83,12 +83,6 @@
           </br>{{ $ci11Obj->observations }}
         </td>
       </tr>
-      <tr>
-        <td colspan="6">
-          <label>Liver Report File*</label>
-          </br>{{ $ci11Obj->lft_report_file }}
-        </td>
-      </tr>
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
@@ -185,13 +179,7 @@
           <label>Chloride</label>
           </br>{{ $ci7Obj->chloride }}
         </td>
-      </tr>
-      <tr>
-        <td colspan="6">
-          <label>Electrolyte Report File*</label>
-          </br>{{ $ci7Obj->electrolyte_report_file }}
-        </td>
-      </tr>                                    
+      </tr>                                   
     </tbody>
   </table>
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
