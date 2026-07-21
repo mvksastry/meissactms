@@ -28,11 +28,11 @@ class FormElectrolytes extends Form
     #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $chloride = null;
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $electrolyte_report_file = null;
+ //   #[Validate('nullable|regex:/^[0-9]+$/')]
+ //   public $electrolyte_report_file = null;
 
-    #[Validate('nullable|regex:/^[0-9]+$/')]
-    public $electrolyte_report_file_path = null;
+ //   #[Validate('nullable|regex:/^[0-9]+$/')]
+ //   public $electrolyte_report_file_path = null;
 
 
 

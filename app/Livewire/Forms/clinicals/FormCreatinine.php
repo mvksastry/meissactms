@@ -22,11 +22,11 @@ class FormCreatinine extends Form
     #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $serum_creatinine = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
-    public $creatine_report_file = null;
+ //   #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
+ //   public $creatine_report_file = null;
  
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/')]
-    public $creatine_report_file_path = null;
+ //   #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/')]
+ //   public $creatine_report_file_path = null;
 
 
 

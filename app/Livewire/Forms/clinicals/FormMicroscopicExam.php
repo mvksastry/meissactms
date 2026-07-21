@@ -33,8 +33,8 @@ class FormMicroscopicExam extends Form
     #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
     public $bacteria = '';
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
-    public $me_report_file = '';
+  //  #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
+  //  public $me_report_file = '';
 
 
 

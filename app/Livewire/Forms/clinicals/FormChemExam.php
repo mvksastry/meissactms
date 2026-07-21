@@ -36,8 +36,8 @@ class FormChemExam extends Form
     #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
     public $bile_pigments = '';
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
-    public $ce_report_file = '';
+ //   #[Validate('nullable|regex:/^[a-zA-Z0-9. ]+$/')]
+ //   public $ce_report_file = '';
 
 
 

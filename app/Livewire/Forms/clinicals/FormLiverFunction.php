@@ -50,11 +50,11 @@ class FormLiverFunction extends Form
     #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $alkaline_phosphatase = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\- \/]+$/')]
-    public $lft_report_file = '';
+   // #[Validate('nullable|regex:/^[A-Za-z0-9\- \/]+$/')]
+   // public $lft_report_file = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\- \/]+$/')]
-    public $lft_report_file_path = '';
+   // #[Validate('nullable|regex:/^[A-Za-z0-9\- \/]+$/')]
+   // public $lft_report_file_path = '';
 
 
     

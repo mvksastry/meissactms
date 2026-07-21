@@ -27,8 +27,8 @@ class FormBloodSugar extends Form
     #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $random = '';
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9_]+$/')]
-    public $bs_report_file = '';
+//    #[Validate('nullable|regex:/^[a-zA-Z0-9_]+$/')]
+//    public $bs_report_file = '';
 
  
 

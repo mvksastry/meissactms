@@ -33,8 +33,8 @@ class FormLabExams extends Form
     #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $isi = '';
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
-    public $pt_report_file = '';
+   // #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+   // public $pt_report_file = '';
 
 
 

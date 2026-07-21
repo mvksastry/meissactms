@@ -98,14 +98,14 @@ class FormBloodRoutine extends Form
     #[Validate('regex:/^[A-Za-z0-9_]+$/')]
     public $observations = null;
 
-    #[Validate('regex:/^[A-Za-z0-9_]+$/')]
-    public $br_report_file = null;
+//    #[Validate('regex:/^[A-Za-z0-9_]+$/')]
+//    public $br_report_file = null;
 
-    #[Validate('regex:/^[A-Za-z0-9_]+$/')]
-    public $br_report_file_path = null;
+//    #[Validate('regex:/^[A-Za-z0-9_]+$/')]
+//    public $br_report_file_path = null;
 
 
-    
+
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 
