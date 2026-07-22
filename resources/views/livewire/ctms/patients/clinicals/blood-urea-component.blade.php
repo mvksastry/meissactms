@@ -26,11 +26,11 @@
       <tr>
         <td>
           <label>Urea (mg/dL)</label>
-          <input wire:model.defer="form_c.urea" type="text" class="form-control" placeholder="Urea" >
+          <input wire:model.defer="form_c.urea" type="text" class="form-control" placeholder="Urea (mg/dL)" >
         </td>
         <td>
           <label>Blood Urea Nitrogen (mg/dL)</label>
-          <input wire:model.defer="form_c.blood_urea_nitrogen" type="text" class="form-control" placeholder="Blood Urea Nitrogen" >
+          <input wire:model.defer="form_c.blood_urea_nitrogen" type="text" class="form-control" placeholder="Blood Urea Nitrogen (mg/dL)" >
         </td>
       </tr> 
     </tbody>
@@ -45,17 +45,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_c.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_c.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_c.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_c.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_c.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_c.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

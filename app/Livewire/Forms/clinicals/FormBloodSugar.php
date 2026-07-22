@@ -16,8 +16,6 @@ class FormBloodSugar extends Form
     #[Validate('date')]
     public $admission_date = null;
 
-    
-
     #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $fasting = '';
 
@@ -30,9 +28,6 @@ class FormBloodSugar extends Form
 //    #[Validate('nullable|regex:/^[a-zA-Z0-9_]+$/')]
 //    public $bs_report_file = '';
 
- 
-
-    
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 

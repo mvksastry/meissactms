@@ -93,7 +93,7 @@
       <tr>
         <td>
           <label>PCT (%)</label>
-          <input wire:model.defer="form_a.pct" type="text"  class="form-control" placeholder="pct" >
+          <input wire:model.defer="form_a.pct" type="text"  class="form-control" placeholder="PCT" >
         </td>
         <td>
           <label>WBC (10^3 / &#181 L)</label>
@@ -159,7 +159,7 @@
       <tr>
         <td colspan="6">
           <label>Summary & Comments*</label>
-          <input wire:model.defer="form_a.observations" type="text"  class="form-control" placeholder="Report File" >
+          <input wire:model.defer="form_a.observations" type="text"  class="form-control" placeholder="Observations" >
         </td>
       </tr>                                    
     </tbody>
@@ -170,17 +170,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_a.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_a.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_a.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_a.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_a.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_a.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

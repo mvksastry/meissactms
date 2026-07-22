@@ -260,91 +260,91 @@
                                     <td>
                                       <label>Blood Routine</label>
                                       <input wire:model.defer="blood_routine" type="file" class="form-control" 
-                                      id="upload{{ $iter1 }}" placeholder="Report File" >
+                                      id="upload{{ $iter1 }}" placeholder="Blood Routine" >
                                       </br>@error('blood_routine') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Blood Sugar</label>
-                                      <input wire:model.defer="blood_sugar" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="blood_sugar" type="file" class="form-control" placeholder="Blood Sugar" >
                                       </br>@error('blood_sugar') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Blood Urea</label>
-                                      <input wire:model.defer="blood_urea" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="blood_urea" type="file" class="form-control" placeholder="Blood Urea" >
                                       </br>@error('blood_urea') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Chemical Examinations</label>
-                                      <input wire:model.defer="chem_exams" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="chem_exams" type="file" class="form-control" placeholder="Chemical Examinations" >
                                       </br>@error('chem_exams') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Creatinine</label>
-                                      <input wire:model.defer="creatinine" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="creatinine" type="file" class="form-control" placeholder="Creatinine" >
                                       </br>@error('creatinine') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>CRP</label>
-                                      <input wire:model.defer="crp" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="crp" type="file" class="form-control" placeholder="CRP" >
                                       </br>@error('crp') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Electrolytes</label>
-                                      <input wire:model.defer="electrolytes" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="electrolytes" type="file" class="form-control" placeholder="Electrolytes" >
                                       </br>@error('electrolytes') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>  
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>IL6</label>
-                                      <input wire:model.defer="il6" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="il6" type="file" class="form-control" placeholder="IL6" >
                                       </br>@error('il6') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td> 
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Laboratory Examinations</label>
-                                      <input wire:model.defer="lab_exams" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="lab_exams" type="file" class="form-control" placeholder="Laboratory Examinations" >
                                       </br>@error('lab_exams') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>   
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Liver Function Tests</label>
-                                      <input wire:model.defer="liver_function" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="liver_function" type="file" class="form-control" placeholder="Liver Function Tests" >
                                       </br>@error('liver_function') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td> 
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Microscopic Investigations</label>
-                                      <input wire:model.defer="microscopic_exam" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="microscopic_exam" type="file" class="form-control" placeholder="Microscopic Investigations" >
                                       </br>@error('microscopic_exam') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>  
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Renal Function Tests</label>
-                                      <input wire:model.defer="renal_function" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="renal_function" type="file" class="form-control" placeholder="Renal Function Tests" >
                                       </br>@error('renal_function') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>   
                                   </tr>
                                   <tr>
                                     <td>
                                       <label>Urine Routine Tests</label>
-                                      <input wire:model.defer="urine_routine" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="urine_routine" type="file" class="form-control" placeholder="Urine Routine Tests" >
                                       </br>@error('urine_routine') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td> 
                                   </tr>
@@ -368,7 +368,7 @@
                                   <tr>
                                     <td>
                                       <label>Sensory Exam</label>
-                                      <input wire:model.defer="sensoryexam" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="sensoryexam" type="file" class="form-control" placeholder="Sensory Exam" >
                                       </br>@error('sensoryexam') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>  
@@ -393,7 +393,7 @@
                                   <tr>
                                     <td>
                                       <label>M & DTR Files</label>
-                                      <input wire:model.defer="mdtre" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="mdtre" type="file" class="form-control" placeholder="M & DTR File" >
                                       </br>@error('mdtre') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr> 
@@ -418,7 +418,7 @@
                                   <tr>
                                     <td>
                                       <label>Pfirman's Score</label>
-                                      <input wire:model.defer="pfirmanscore" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="pfirmanscore" type="file" class="form-control" placeholder="Pfirman's Score File" >
                                       </br>@error('pfirmanscore') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr> 
@@ -443,7 +443,7 @@
                                   <tr>
                                     <td>
                                       <label>Visual & Analog Score File</label>
-                                      <input wire:model.defer="vascore" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="vascore" type="file" class="form-control" placeholder="Visual & Analog Score File" >
                                       </br>@error('vascore') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>  
@@ -469,7 +469,7 @@
                                   <tr>
                                     <td>
                                       <label>MODQ Score File</label>
-                                      <input wire:model.defer="modqscore" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="modqscore" type="file" class="form-control" placeholder="MODQ Score File" >
                                       </br>@error('modqscore') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr> 
@@ -494,7 +494,7 @@
                                   <tr>
                                     <td>
                                       <label>RMQ Score File</label>
-                                      <input wire:model.defer="rmqscore" type="file" class="form-control" placeholder="Report File" >
+                                      <input wire:model.defer="rmqscore" type="file" class="form-control" placeholder="RMQ Score File" >
                                       </br>@error('rmqscore') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </td>
                                   </tr>  
@@ -520,7 +520,7 @@
                                       <tr>
                                         <td colspan="2">
                                           <label>Misc / Official - 1</label>
-                                          <input wire:model.defer="miscoff1" type="file" class="form-control" placeholder="Report File" >
+                                          <input wire:model.defer="miscoff1" type="file" class="form-control" placeholder="Misc / Official - 1" >
                                           </br>@error('miscoff1') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </td>
                                       </tr>
@@ -528,7 +528,7 @@
                                       
                                         <td colspan="2">
                                           <label>Misc / Official - 2</label>
-                                          <input wire:model.defer="miscoff2" type="file" class="form-control" placeholder="Report File" >
+                                          <input wire:model.defer="miscoff2" type="file" class="form-control" placeholder="Misc / Official - 2" >
                                           </br>@error('miscoff2') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </td>
                                       

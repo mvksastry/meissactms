@@ -101,15 +101,15 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control">
                                     </td>
                                     <td colspan="1">
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" id="Admission Date" type="date" value="null" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr> 

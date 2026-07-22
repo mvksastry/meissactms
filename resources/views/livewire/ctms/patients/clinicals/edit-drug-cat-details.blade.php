@@ -128,13 +128,13 @@
                   <tbody> 
                     <tr>
                       <td colspan="4">
-                        <label>Name*</label>
+                        <label>Name</label>
                         <input wire:model="ncDCat.name" type="text" class="form-control" placeholder="Category Name">
                       </td>
                     </tr>
                     <tr>
                       <td colspan="4">
-                        <label>Description*</label>
+                        <label>Description</label>
                         <input wire:model="ncDCat.desc" type="text" class="form-control" placeholder="Description">
                       </td>
                     </tr>                                                    

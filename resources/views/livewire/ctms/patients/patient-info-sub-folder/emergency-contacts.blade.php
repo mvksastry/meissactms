@@ -7,11 +7,11 @@
     <tbody> 
       <tr>
         <td>
-          <label>Emergency Contact Name*</label>
+          <label>Emergency Contact Name</label>
           <input wire:model="form.emergency_contact_name" id="emergency_contact_name" type="text" value="null" class="form-control" placeholder="Emergency Contact Name">
         </td>
         <td>
-          <label>Emergency Contact Phone*</label>
+          <label>Emergency Contact Phone</label>
           <input wire:model="form.emergency_contact_phone" id="emergency_contact_phone" type="number" value="null" class="form-control" placeholder="Emergency Contact Phone">
         </td>
         <td>

@@ -57,8 +57,6 @@ class FormLiverFunction extends Form
    // public $lft_report_file_path = '';
 
 
-    
-    
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 

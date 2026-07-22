@@ -240,52 +240,52 @@
                       </td>
                       <td>
                         <label>Name</label>
-                        <input wire:model="NnDDetForm.name" type="text" class="form-control" placeholder="Category Name">
+                        <input wire:model="NnDDetForm.name" type="text" class="form-control" placeholder="Name">
                       </td>
                       <td>
                         <label>Brand</label>
-                        <input wire:model="NnDDetForm.brand" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.brand" type="text" class="form-control" placeholder="Brand">
                       </td>
                     </tr>
                     
                     <tr>
                       <td>
                         <label>Class</label>
-                        <input wire:model="NnDDetForm.class" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.class" type="text" class="form-control" placeholder="Class">
                       </td>
 
                       <td>
                         <label>Generic Name</label>
-                        <input wire:model="NnDDetForm.generic_name" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.generic_name" type="text" class="form-control" placeholder="Generic Name">
                       </td>
 
                       <td>
                         <label>Single Dose</label>
-                        <input wire:model="NnDDetForm.single_dose" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.single_dose" type="text" class="form-control" placeholder="Single Dose">
                       </td>
                     </tr>
 
                     <tr>
                       <td>
                         <label>Frequency</label>
-                        <input wire:model="NnDDetForm.frequency" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.frequency" type="text" class="form-control" placeholder="Frequency">
                       </td>
 
                       <td>
                         <label>Total Daily Dose</label>
-                        <input wire:model="NnDDetForm.tdd" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.tdd" type="text" class="form-control" placeholder="Total Daily Dose">
                       </td>
 
                       <td>
                         <label>Last Week Adherance</label>
-                        <input wire:model="NnDDetForm.lwa" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.lwa" type="text" class="form-control" placeholder="Last Week Adherance">
                       </td>
                     </tr>  
 
                     <tr>
                       <td colspan="3">
                         <label>Comment</label>
-                        <input wire:model="NnDDetForm.comment_entered_by" type="text" class="form-control" placeholder="Description">
+                        <input wire:model="NnDDetForm.comment_entered_by" type="text" class="form-control" placeholder="Comment">
                       </td>
                     </tr>  
 

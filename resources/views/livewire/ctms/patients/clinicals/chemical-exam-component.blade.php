@@ -26,21 +26,21 @@
       <tr>
         <td>
           <label>Proteins (Present/Absent)</label>
-          <input wire:model.defer="form_d.proteins" type="text" class="form-control" placeholder="Proteins" >
+          <input wire:model.defer="form_d.proteins" type="text" class="form-control" placeholder="Proteins (Present/Absent)" >
         </td>
         <td>
           <label>Sugar (Present/Absent)</label>
-          <input wire:model.defer="form_d.sugar" type="text" class="form-control" placeholder="Sugar" >
+          <input wire:model.defer="form_d.sugar" type="text" class="form-control" placeholder="Sugar (Present/Absent)" >
         </td>
         <td>
           <label>Ketones (Present/Absent)</label>
-          <input wire:model.defer="form_d.ketones" type="text" class="form-control" placeholder="Ketones" >
+          <input wire:model.defer="form_d.ketones" type="text" class="form-control" placeholder="Ketones (Present/Absent)" >
         </td>
       </tr>
       <tr>
         <td>
           <label>Procalcitonin (Present/Absent)</label>
-          <input wire:model.defer="form_d.procalcitonin" type="text" class="form-control" placeholder="Precalcitonin" >
+          <input wire:model.defer="form_d.procalcitonin" type="text" class="form-control" placeholder="Procalcitonin (Present/Absent)" >
         </td>
         <td>
           <label>Bile salts (Present/Absent)</label>
@@ -48,7 +48,7 @@
         </td>
         <td>
           <label>Bile Pigments (Present/Absent)</label>
-          <input wire:model.defer="form_d.bile_pigments" type="text" class="form-control" placeholder="Bile Pigments" >
+          <input wire:model.defer="form_d.bile_pigments" type="text" class="form-control" placeholder="Bile Pigments (Present/Absent)" >
         </td>
       </tr>                                   
     </tbody>

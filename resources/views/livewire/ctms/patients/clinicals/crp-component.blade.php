@@ -26,7 +26,7 @@
       <tr>
         <td>
           <label>CRP (mg/L)</label>
-          <input wire:model.defer="form_f.crp" type="text" class="form-control" placeholder="CRP" >
+          <input wire:model.defer="form_f.crp" type="text" class="form-control" placeholder="CRP (mg/L)" >
         </td>
       </tr>                              
     </tbody>
@@ -41,17 +41,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_f.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_f.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_f.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_f.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_f.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_f.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

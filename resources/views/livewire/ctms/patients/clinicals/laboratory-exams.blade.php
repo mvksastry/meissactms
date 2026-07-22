@@ -26,23 +26,23 @@
       <tr>
         <td>
           <label>ESR (mm/Hr)</label>
-          <input wire:model.defer="form_j.esr" type="text" class="form-control" placeholder="ESR">
+          <input wire:model.defer="form_j.esr" type="text" class="form-control" placeholder="ESR (mm/Hr)">
         </td>
         <td>
           <label>PT - Patient (sec)</label>
-          <input wire:model.defer="form_j.pt_patient" type="text" class="form-control" placeholder="PT - Patient">
+          <input wire:model.defer="form_j.pt_patient" type="text" class="form-control" placeholder="PT - Patient (sec)">
         </td>
         <td>
           <label>PT - Control (sec)</label>
-          <input wire:model.defer="form_j.pt_control" type="text" class="form-control" placeholder="PT - Control" >
+          <input wire:model.defer="form_j.pt_control" type="text" class="form-control" placeholder="PT - Control (sec)">
         </td>
         <td>
           <label>INR (Number)</label>
-          <input wire:model.defer="form_j.inr" type="text" class="form-control" placeholder="INR" >
+          <input wire:model.defer="form_j.inr" type="text" class="form-control" placeholder="INR (Number)">
         </td>
         <td>
           <label>ISI (Number)</label>
-          <input wire:model.defer="form_j.isi" type="text" class="form-control" placeholder="ISI" >
+          <input wire:model.defer="form_j.isi" type="text" class="form-control" placeholder="ISI (Number)">
         </td>
       </tr>                                  
     </tbody>
@@ -57,17 +57,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_j.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_j.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_j.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_j.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_j.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_j.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

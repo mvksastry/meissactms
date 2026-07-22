@@ -243,7 +243,7 @@ class PatientInformation extends Component
 
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
 		{
-            $this->activePatients = Patient::whereIn('status', ['approved','sealed'])->get();
+            $this->activePatients = Patient::whereIn('status', ['verified','approved','sealed'])->get();
             $this->activePatients->search_status = "approved/sealed";
         }
 

@@ -85,15 +85,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr> 
@@ -111,7 +111,7 @@
                                 <tbody>        
                                   <tr>
                                     <td>
-                                      <label>Modified Pfirmann Grade (see Image on left as guide)*</label>
+                                      <label>Modified Pfirmann Grade (see Image on left as guide)</label>
                                       <input wire:model="form.modified_pfirman_grade" type="text" value="null" class="form-control" placeholder="Modified Pfirmans Grade">
                                     </td>
                                   </tr>

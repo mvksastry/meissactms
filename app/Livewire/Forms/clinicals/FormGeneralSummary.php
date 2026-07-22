@@ -16,13 +16,9 @@ class FormGeneralSummary extends Form
     #[Validate('date')]
     public $admission_date = null;
 
-    
-
 
     #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
     public $general_summary = '';
-
-
 
     
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]

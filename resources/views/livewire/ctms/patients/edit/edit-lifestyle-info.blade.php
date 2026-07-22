@@ -79,21 +79,21 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model.defer="form.opd_id" @if(!$empty_result)value="{{ $ls_info->opd_id }}"@endif type="text" class="form-control"  placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model.defer="form.in_patient_id" @if(!$empty_result)value="{{ $ls_info->in_patient_id }}"@endif type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" @if(!$empty_result)value="{{ $ls_info->admission_date }}"@endif type="date" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr>
                                   <tr>
                                     <td colspan="4">
-                                      <label>Discharge Report File*</label>
+                                      <label>Discharge Report File</label>
                                       <input wire:model.defer="form.discharge_report_file" @if(!$empty_result)value="{{ $ls_info->discharge_report_file }}"@endif type="text" class="form-control" placeholder="Discharge Report FIle" >
                                     </td>
                                   </tr>  
@@ -111,34 +111,34 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Cross Leg Sitting*</label>
+                                      <label>Cross Leg Sitting</label>
                                       <input wire:model.defer="form.cross_leg_sitting" id="oande" @if(!$empty_result)value="{{ $ls_info->cross_leg_sitting }}"@endif type="text" value="null" class="form-control" placeholder="--">
                                     </td>
                                     <td>
-                                      <label>Standing*</label>
+                                      <label>Standing</label>
                                       <input wire:model.defer="form.standing" id="pr" type="text" @if(!$empty_result)value="{{ $ls_info->standing }}"@endif value="null" class="form-control" placeholder="--">
                                     </td>
                                     <td>
-                                      <label>Sitting*</label>
+                                      <label>Sitting</label>
                                       <input wire:model.defer="form.sitting" id="temperature" type="text" @if(!$empty_result)value="{{ $ls_info->sitting }}"@endif value="null" class="form-control" placeholder="--" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls3" id="temperature" type="text" @if(!$empty_result)value="{{ $ls_info->ls3 }}"@endif value="null" class="form-control" placeholder="--" >
                                     </td>
 
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls4" id="bp_systolic" type="text" @if(!$empty_result)value="{{ $ls_info->ls4 }}"@endif value="null" class="form-control" placeholder="--" >
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls5" id="bp_diastolic" type="text" @if(!$empty_result)value="{{ $ls_info->ls5 }}"@endif value="null" class="form-control" placeholder="--" >
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls6" id="bp_diastolic" type="text" @if(!$empty_result)value="{{ $ls_info->ls6 }}"@endif value="null" class="form-control" placeholder="--" >
                                     </td>
                                   </tr>
@@ -147,7 +147,7 @@
                                     <td colspan="6">
                                       <div class="form-group">
                                         <label>Life Style Description</label>
-                                        <textarea wire:model.defer="form.life_style_description" id="adverse_events" @if(!$empty_result)value="{{ $ls_info->life_style_description }}"@endif class="form-control" rows="4" placeholder="Enter ..."></textarea>
+                                        <textarea wire:model.defer="form.life_style_description" id="adverse_events" @if(!$empty_result)value="{{ $ls_info->life_style_description }}"@endif class="form-control" rows="4" placeholder="Enter Life Style Description ..."></textarea>
                                       </div>
                                     </td>
                                   </tr>                           
@@ -165,18 +165,18 @@
                                     <tbody>       
                                       <tr>
                                         <td colspan="3">
-                                        <label>Verified By*</label>
-                                        <input wire:model.defer="form.comment_entered_by" id="consumption_gutka" @if(!$empty_result)value="{{ $ls_info->comment_entered_by }}"@endif type="text" value="null" class="form-control" placeholder="Description">
+                                        <label>Verified By</label>
+                                        <input wire:model.defer="form.comment_entered_by" id="consumption_gutka" @if(!$empty_result)value="{{ $ls_info->comment_entered_by }}"@endif type="text" value="null" class="form-control" placeholder="Verified By">
                                         </td>
                                       </tr>
                                       <tr>
                                         <td colspan="1">
-                                        <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" id="entered_by" type="text" value="null" class="form-control" placeholder="Description">
+                                        <label>Entered By</label>
+                                        <input wire:model="form.entered_by" id="entered_by" type="text" value="null" class="form-control" placeholder="Entered By">
                                         </td>
                                         <td colspan="1">
-                                        <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" id="entry_date" @if(!$empty_result)value="{{ $ls_info->entry_date }}"@endif type="date" value="null" class="form-control" placeholder="Description">
+                                        <label>Entry Date</label>
+                                        <input wire:model="form.entry_date" id="entry_date" @if(!$empty_result)value="{{ $ls_info->entry_date }}"@endif type="date" value="null" class="form-control" placeholder="Entry Date">
                                         </td>
                                       </tr>
                                     </tbody>

@@ -319,52 +319,52 @@
                         </td>
                         <td>
                           <label>Name*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.drug_name" type="text" class="form-control" placeholder="Category Name">
+                          <input wire:model="nDDetForm.{{ $key }}.drug_name" type="text" class="form-control" placeholder="Name">
                         </td>
                         <td>
                           <label>Brand*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.brand" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.brand" type="text" class="form-control" placeholder="Brand">
                         </td>
                       </tr>
                       
                       <tr>
                         <td>
                           <label>Class*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.drug_class" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.drug_class" type="text" class="form-control" placeholder="Class">
                         </td>
 
                         <td>
                           <label>Generic Name*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.generic_name" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.generic_name" type="text" class="form-control" placeholder="Generic Name">
                         </td>
 
                         <td>
                           <label>Single Dose*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.single_dose" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.single_dose" type="text" class="form-control" placeholder="Single Dose">
                         </td>
                       </tr>
 
                       <tr>
                         <td>
                           <label>Frequency*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.frequency" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.frequency" type="text" class="form-control" placeholder="Frequency">
                         </td>
 
                         <td>
                           <label>Total Daily Dose*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.total_daily_dose" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.total_daily_dose" type="text" class="form-control" placeholder="Total Daily Dose">
                         </td>
 
                         <td>
                           <label>Last Week Adherance*</label>
-                          <input wire:model="nDDetForm.{{ $key }}.last_week_adherance" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.last_week_adherance" type="text" class="form-control" placeholder="Last Week Adherance">
                         </td>
                       </tr>  
 
                       <tr>
                         <td colspan="3">
                           <label>Comment</label>
-                          <input wire:model="nDDetForm.{{ $key }}.comment_entered_by" type="text" class="form-control" placeholder="Description">
+                          <input wire:model="nDDetForm.{{ $key }}.comment_entered_by" type="text" class="form-control" placeholder="Comment">
                         </td>
                       </tr>  
                       <tr class="table-warning">

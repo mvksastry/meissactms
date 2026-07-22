@@ -40,8 +40,6 @@ class FormChemExam extends Form
  //   public $ce_report_file = '';
 
 
-
-    
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';
 

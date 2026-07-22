@@ -55,34 +55,34 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control">
+                                      <label>In Patient ID</label>
+                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>Investigation Report Date*</label>
-                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Report Date">
+                                      <label>Investigation Report Date</label>
+                                      <input wire:model="form.report_date" id="report_date" type="date" class="form-control" placeholder="Investigation Report Date">
                                     </td>
                                   </tr>
                                   <tr>
                                   <td colspan="1">
-                                      <label>Admission Date*</label>
-                                      <input wire:model.defer="form.aadhar_id" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Aadhar ID">
+                                      <label>Admission Date</label>
+                                      <input wire:model.defer="form.aadhar_id" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Admission Date">
                                     </td>
                                     <td colspan="1">
-                                      <label>Discharge Date*</label>
-                                      <input wire:model.defer="form.pan_num" id="pan_num" type="text" value="null" class="form-control" placeholder="PAN">
+                                      <label>Discharge Date</label>
+                                      <input wire:model.defer="form.pan_num" id="pan_num" type="text" value="null" class="form-control" placeholder="Discharge Date">
                                     </td>
                                     <td colspan="1">
-                                      <label>Discharge Report*</label>
-                                      <input wire:model.defer="form.other_id" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>Discharge Report</label>
+                                      <input wire:model.defer="form.other_id" id="other_id" type="text" value="null" class="form-control" placeholder="Discharge Report" >
                                     </td>
                                     <td colspan="1">
-                                      <label>Discharge Report File*</label>
-                                      <input wire:model.defer="form.other_id" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>Discharge Report File</label>
+                                      <input wire:model.defer="form.other_id" id="other_id" type="text" value="null" class="form-control" placeholder="Discharge Report File" >
                                     </td>
                                   </tr>  
                                 </tbody>

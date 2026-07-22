@@ -119,15 +119,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr> 
@@ -145,40 +145,40 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Hip Flexion Adduction *</label>
+                                      <label>Hip Flexion Adduction </label>
                                       <input wire:model.defer="form.hip_flex_adduction" id="aadhar_id" type="text" value="null" class="form-control" placeholder="Hip Flexion Adduction ">
                                     </td>
                                     <td>
-                                      <label>Knee Extension *</label>
+                                      <label>Knee Extension </label>
                                       <input wire:model.defer="form.knee_extension" id="pan_num" type="text" value="null" class="form-control" placeholder="Knee Extension ">
                                     </td>
                                     <td>
-                                      <label>Ankle dorsiflexion*</label>
+                                      <label>Ankle dorsiflexion</label>
                                       <input wire:model.defer="form.ankle_dorsiflexion" id="other_id" type="text" value="null" class="form-control" placeholder="Ankle dorsiflexion" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Decreased Patellar Reflex*</label>
+                                      <label>Decreased Patellar Reflex</label>
                                       <input wire:model.defer="form.decreased_patellar_reflex" id="other_id" type="text" value="null" class="form-control" placeholder="Decreased Patellar Reflex" >
                                     </td>
                                     <td>
-                                      <label>Extensor Hallucis longus*</label>
+                                      <label>Extensor Hallucis longus</label>
                                       <input wire:model.defer="form.extensor_hallucis_longus" id="other_id" type="text" value="null" class="form-control" placeholder="Extensor Hallucis longus" >
                                     </td>
 
                                     <td>
-                                      <label>Hip Abduction*</label>
+                                      <label>Hip Abduction</label>
                                       <input wire:model.defer="form.hip_abduction" id="other_id" type="text" value="null" class="form-control" placeholder="Hip Abduction" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Ankle plantar flexion*</label>
+                                      <label>Ankle plantar flexion</label>
                                       <input wire:model.defer="form.ankle_plantar_flexion" id="other_id" type="text" value="null" class="form-control" placeholder="Ankle plantar flexion" >
                                     </td>
                                     <td>
-                                      <label>Decreased Achilles Tendon Reflex *</label>
+                                      <label>Decreased Achilles Tendon Reflex </label>
                                       <input wire:model.defer="form.dec_achilles_tendon_reflex" id="other_id" type="text" value="null" class="form-control" placeholder="Decreased Achilles Tendon Reflex " >
                                     </td>
                                     <td></td>
@@ -196,18 +196,18 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Straight leg raise*</label>
-                                      <input wire:model.defer="form.straight_leg_raise" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>Straight leg raise</label>
+                                      <input wire:model.defer="form.straight_leg_raise" id="other_id" type="text" value="null" class="form-control" placeholder="Straight leg raise" >
                                     </td>
                                     <td>
-                                      <label>Contralateral SLR*</label>
-                                      <input wire:model.defer="form.contralateral_slr" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>Contralateral SLR</label>
+                                      <input wire:model.defer="form.contralateral_slr" id="other_id" type="text" value="null" class="form-control" placeholder="Contralateral SLR" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Femoral nerve stretch test*</label>
-                                      <input wire:model.defer="form.femoral_nerve_stretch_test" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>Femoral nerve stretch test</label>
+                                      <input wire:model.defer="form.femoral_nerve_stretch_test" id="other_id" type="text" value="null" class="form-control" placeholder="Femoral nerve stretch test" >
                                     </td>
                                   </tr>
                                 </tbody>
@@ -223,16 +223,16 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Trendelenburg gait*</label>
-                                      <input wire:model.defer="form.trendelenburg_gait" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>Trendelenburg Gait</label>
+                                      <input wire:model.defer="form.trendelenburg_gait" id="other_id" type="text" value="null" class="form-control" placeholder="Trendelenburg Gait" >
                                     </td>
                                     <td>
-                                      <label>Antalgic gait *</label>
-                                      <input wire:model.defer="form.antalgic_gait" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>Antalgic Gait </label>
+                                      <input wire:model.defer="form.antalgic_gait" id="other_id" type="text" value="null" class="form-control" placeholder="Antalgic Gait" >
                                     </td>
                                     <td>
-                                      <label>List*</label>
-                                      <input wire:model.defer="form.list" id="other_id" type="text" value="null" class="form-control" placeholder="Other ID" >
+                                      <label>List</label>
+                                      <input wire:model.defer="form.list" id="other_id" type="text" value="null" class="form-control" placeholder="List" >
                                     </td>
                                   </tr>                                   
                                 </tbody>

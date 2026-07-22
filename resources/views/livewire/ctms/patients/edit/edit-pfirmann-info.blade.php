@@ -91,15 +91,15 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model="form.admission_date" type="date" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr> 
@@ -117,7 +117,7 @@
                                 <tbody>        
                                   <tr>
                                     <td>
-                                      <label>Modified Pfirmann Grade (see Image on left as guide)*</label>
+                                      <label>Modified Pfirmann Grade (see Image on left as guide)</label>
                                       <input wire:model="form.modified_pfirman_grade" type="text" class="form-control" placeholder="Modified Pfirmans Grade">
                                     </td>
                                   </tr>
@@ -137,17 +137,17 @@
                                       <tr>
                                         <td colspan="2">
                                         <label>Comment</label>
-                                        <input wire:model.defer="form.comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+                                        <input wire:model.defer="form.comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
                                         </td>
                                       </tr>
                                       <tr>
                                         <td colspan="1">
                                         <label>Entered By*</label>
-                                        <input wire:model="form.entered_by" type="text" value="null" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entered_by" type="text" value="null" class="form-control" placeholder="Entered By">
                                         </td>
                                         <td colspan="1">
                                         <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" type="date" value="null" class="form-control" placeholder="Description">
+                                        <input wire:model="form.entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
                                         </td>
                                       </tr>
                                     </tbody>

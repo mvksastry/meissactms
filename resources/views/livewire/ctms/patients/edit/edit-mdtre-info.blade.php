@@ -125,15 +125,15 @@
                                 <tbody> 
                                   <tr>
                                     <td colspan="1">
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model.defer="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td colspan="1">
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" type="date" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr> 
@@ -151,41 +151,41 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Hip Flexion Adduction *</label>
+                                      <label>Hip Flexion Adduction </label>
                                       <input wire:model.defer="form.hip_flex_adduction" class="form-control" placeholder="Hip Flexion Adduction ">
                                     </td>
                                     <td>
-                                      <label>Knee Extension *</label>
+                                      <label>Knee Extension </label>
                                       <input wire:model.defer="form.knee_extension" class="form-control" placeholder="Knee Extension ">
                                     </td>
                                     <td>
-                                      <label>Ankle dorsiflexion*</label>
+                                      <label>Ankle dorsiflexion</label>
                                       <input wire:model.defer="form.ankle_dorsiflexion" class="form-control" placeholder="Ankle dorsiflexion" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Decreased Patellar Reflex*</label>
+                                      <label>Decreased Patellar Reflex</label>
                                       <input wire:model.defer="form.decreased_patellar_reflex" class="form-control" placeholder="Decreased Patellar Reflex" >
                                     </td>
                                     <td>
-                                      <label>Extensor Hallucis longus*</label>
+                                      <label>Extensor Hallucis longus</label>
                                       <input wire:model.defer="form.extensor_hallucis_longus" class="form-control" placeholder="Extensor Hallucis longus" >
                                     </td>
 
                                     <td>
-                                      <label>Hip Abduction*</label>
+                                      <label>Hip Abduction</label>
                                       <input wire:model.defer="form.hip_abduction" type="text" class="form-control" placeholder="Hip Abduction" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Ankle plantar flexion*</label>
-                                      <input wire:model.defer="form.ankle_plantar_flexion" type="text" class="form-control" placeholder="Ankle plantar flexion" >
+                                      <label>Ankle Plantar Flexion</label>
+                                      <input wire:model.defer="form.ankle_plantar_flexion" type="text" class="form-control" placeholder="Ankle Plantar Flexion" >
                                     </td>
                                     <td>
-                                      <label>Decreased Achilles Tendon Reflex *</label>
-                                      <input wire:model.defer="form.dec_achilles_tendon_reflex" type="text" class="form-control" placeholder="Decreased Achilles Tendon Reflex " >
+                                      <label>Decreased Achilles Tendon Reflex </label>
+                                      <input wire:model.defer="form.dec_achilles_tendon_reflex" type="text" class="form-control" placeholder="Decreased Achilles Tendon Reflex" >
                                     </td>
                                     <td></td>
                                   </tr>
@@ -202,18 +202,18 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Straight leg raise*</label>
-                                      <input wire:model.defer="form.straight_leg_raise" class="form-control" placeholder="Other ID" >
+                                      <label>Straight leg raise</label>
+                                      <input wire:model.defer="form.straight_leg_raise" class="form-control" placeholder="Straight Leg Raise" >
                                     </td>
                                     <td>
-                                      <label>Contralateral SLR*</label>
-                                      <input wire:model.defer="form.contralateral_slr" class="form-control" placeholder="Other ID" >
+                                      <label>Contralateral SLR</label>
+                                      <input wire:model.defer="form.contralateral_slr" class="form-control" placeholder="Contralateral SLR" >
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Femoral nerve stretch test*</label>
-                                      <input wire:model.defer="form.femoral_nerve_stretch_test" class="form-control" placeholder="Other ID" >
+                                      <label>Femoral Nerve Stretch Test</label>
+                                      <input wire:model.defer="form.femoral_nerve_stretch_test" class="form-control" placeholder="Femoral Nerve Stretch Test" >
                                     </td>
                                   </tr>
                                 </tbody>
@@ -229,16 +229,16 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Trendelenburg gait*</label>
-                                      <input wire:model.defer="form.trendelenburg_gait" class="form-control" placeholder="Other ID" >
+                                      <label>Trendelenburg Gait</label>
+                                      <input wire:model.defer="form.trendelenburg_gait" class="form-control" placeholder="Trendelenburg Gait" >
                                     </td>
                                     <td>
-                                      <label>Antalgic gait *</label>
-                                      <input wire:model.defer="form.antalgic_gait" type="text" class="form-control" placeholder="Other ID" >
+                                      <label>Antalgic Gait </label>
+                                      <input wire:model.defer="form.antalgic_gait" type="text" class="form-control" placeholder="Antalgic Gait" >
                                     </td>
                                     <td>
-                                      <label>List*</label>
-                                      <input wire:model.defer="form.list" type="text" class="form-control" placeholder="Other ID" >
+                                      <label>List</label>
+                                      <input wire:model.defer="form.list" type="text" class="form-control" placeholder="List" >
                                     </td>
                                   </tr>                                   
                                 </tbody>
@@ -258,17 +258,17 @@
                                       <tr>
                                         <td colspan="2">
                                           <label>Comment</label>
-                                          <input wire:model="form.comment_entered_by" type="text" class="form-control" placeholder="Description">
+                                          <input wire:model="form.comment_entered_by" type="text" class="form-control" placeholder="Comment">
                                         </td>
                                       </tr>
                                       <tr>
                                         <td colspan="1">
-                                          <label>Entered By*</label>
-                                          <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Description">
+                                          <label>Entered By</label>
+                                          <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Entered By">
                                         </td>
                                         <td colspan="1">
-                                          <label>Entry Date*</label>
-                                          <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Description">
+                                          <label>Entry Date</label>
+                                          <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Entry Date">
                                         </td>
                                       </tr>
                                     </tbody>

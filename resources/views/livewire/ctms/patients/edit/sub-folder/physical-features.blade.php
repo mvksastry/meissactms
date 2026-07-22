@@ -7,25 +7,25 @@
       <tbody> 
         <tr>
           <td colspan="1">
-            <label>Height*</label>
+            <label>Height</label>
             <input wire:model="form.height" class="form-control" value="{{ $patientPrimaryInfo->height }}"  type="text">
           </td>
           <td colspan="1">
-            <label>Height Unit*</label>
+            <label>Height Unit</label>
             <input wire:model="form.height_unit" class="form-control" value="{{ $patientPrimaryInfo->height_unit }}"  type="text">
           </td>
         </tr>
         <tr>
           <td colspan="1">
-            <label>Weight*</label>
+            <label>Weight</label>
             <input wire:model="form.weight" class="form-control" value="{{ $patientPrimaryInfo->weight }}"  type="text">
           </td>
           <td colspan="1">
-            <label>Weight Unit*</label>
+            <label>Weight Unit</label>
             <input wire:model="form.weight_unit" class="form-control" value="{{ $patientPrimaryInfo->weight_unit }}"  type="text">    
           </td>
           <td colspan="1">
-            <label>BMI*</label>
+            <label>BMI</label>
             <input wire:model="form.bmi" class="form-control" value="{{ $patientPrimaryInfo->bmi }}"  type="text">
           </td>
         </tr>

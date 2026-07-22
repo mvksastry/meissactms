@@ -81,15 +81,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model.defer="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" type="date" class="form-control" placeholder="Aadhar ID">
                                     </td>
                                   </tr>
@@ -182,12 +182,12 @@
                                         <td>
                                       </tr>
                                       <tr>
-                                        <label>Entered By*</label>
+                                        <label>Entered By</label>
                                         <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Entered By">
                                         </td>
                                         <td>
-                                        <label>Entry Date*</label>
-                                        <input wire:model="form.entry_date" type="date" value="null" class="form-control" placeholder="Description">
+                                        <label>Entry Date</label>
+                                        <input wire:model="form.entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
                                         </td>
                                       </tr>
                                     </tbody>

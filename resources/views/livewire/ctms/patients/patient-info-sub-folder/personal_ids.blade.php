@@ -61,7 +61,7 @@
           </div>
         </td>
         <td colspan="1">
-          <label class="text-danger">Age</label>
+          <label class="text-danger">Age*</label>
           <input wire:model.defer="form.age" id="age" type="number"  class="form-control" placeholder="Age">
           <div>
               @error('form.age') <span class="error text-danger">{{ $message }}</span> @enderror 

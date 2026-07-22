@@ -13,11 +13,11 @@
       </tr>
       <tr>
         <td colspan="1">
-          <label>Entered By*</label>
+          <label>Entered By</label>
           <input wire:model="form.entered_by" class="form-control" value="{{ $patientPrimaryInfo->entered_by }}"  type="text">
         </td>
         <td colspan="1">
-          <label>Entry Date*</label>
+          <label>Entry Date</label>
           <input wire:model="form.entry_date" class="form-control" value="{{ $patientPrimaryInfo->entry_date }}"  type="date">
          </td>
       </tr>

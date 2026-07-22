@@ -73,15 +73,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr>
@@ -101,30 +101,30 @@
                                   <tr>
                                     <td>
                                       <label>Cross Leg Sitting</label>
-                                      <input wire:model.defer="form.cross_leg_sitting" id="oande" type="text" value="null" class="form-control" placeholder="--">
+                                      <input wire:model.defer="form.cross_leg_sitting" id="oande" type="text" value="null" class="form-control" placeholder="Cross Leg Sitting">
                                     </td>
                                     <td>
                                       <label>Standing</label>
-                                      <input wire:model.defer="form.standing" id="pr" type="text" value="null" class="form-control" placeholder="--">
+                                      <input wire:model.defer="form.standing" id="pr" type="text" value="null" class="form-control" placeholder="Standing">
                                     </td>
                                     <td>
                                       <label>Sitting</label>
-                                      <input wire:model.defer="form.sitting" id="pr" type="text" value="null" class="form-control" placeholder="--">
+                                      <input wire:model.defer="form.sitting" id="pr" type="text" value="null" class="form-control" placeholder="Sitting">
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls3" id="temperature" type="text" value="null" class="form-control" placeholder="--" >
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls4" id="bp_systolic" type="text" value="null" class="form-control" placeholder="--" >
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls5" id="bp_diastolic" type="text" value="null" class="form-control" placeholder="--" >
                                     </td>
                                     <td>
-                                      <label>---*</label>
+                                      <label>---</label>
                                       <input wire:model.defer="form.ls6" id="bp_diastolic" type="text" value="null" class="form-control" placeholder="--" >
                                     </td>
                                   </tr>

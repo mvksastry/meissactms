@@ -11,8 +11,8 @@
             <input wire:model="form.height" id="height" type="number" class="form-control" placeholder="Height">
           </td>
           <td colspan="1">
-            <label>Height Unit</label>
-            <input wire:model.defer="form.height_unit" id="height_unit" type="text" Value="centimeters" class="form-control" placeholder="Height Unit" >
+            <label>Height Unit (cm)</label>
+            <input wire:model.defer="form.height_unit" id="height_unit" type="text" Value="centimeters" class="form-control" placeholder="Height Unit (cm)" >
           </td>
         </tr>
         <tr>
@@ -21,8 +21,8 @@
             <input wire:model="form.weight" id="weight" type="number" class="form-control" placeholder="Weight">
           </td>
           <td colspan="1">
-            <label>Weight Unit</label>
-            <input wire:model.defer="form.weight_unit" id="item_desc" type="text" class="form-control" placeholder="Weight Unit">
+            <label>Weight Unit (Kg)</label>
+            <input wire:model.defer="form.weight_unit" id="item_desc" type="text" class="form-control" placeholder="Weight Unit (Kg)" >
           </td>
           <td colspan="1">
             <label>BMI</label>

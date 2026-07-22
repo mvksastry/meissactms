@@ -27,7 +27,6 @@ class FormIl6 extends Form
  //   #[Validate('nullable|regex:/^[0-9]+$/')]
  //   public $il6_report_file_path = '';
 
-
     
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = '';

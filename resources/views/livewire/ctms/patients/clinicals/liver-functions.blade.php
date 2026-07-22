@@ -26,15 +26,15 @@
       <tr>
         <td>
           <label>Serum Total protein (g/dL)</label>
-          <input wire:model.defer="form_k.serum_total_protein" type="text" value="null" class="form-control" placeholder="Total Protein">
+          <input wire:model.defer="form_k.serum_total_protein" type="text" value="null" class="form-control" placeholder="Serum Total protein (g/dL)">
         </td>
         <td>
           <label>Serum Albumin (g/dL)</label>
-          <input wire:model.defer="form_k.serum_albumin" type="text" value="null" class="form-control" placeholder="Serum Albumin">
+          <input wire:model.defer="form_k.serum_albumin" type="text" value="null" class="form-control" placeholder="Serum Albumin (g/dL)">
         </td>
         <td>
           <label>Globulin (g/dL)</label>
-          <input wire:model.defer="form_k.globulin" type="text" value="null" class="form-control" placeholder="Globulin" >
+          <input wire:model.defer="form_k.globulin" type="text" value="null" class="form-control" placeholder="Globulin (g/dL)" >
         </td>
         <td>
           <label>A/G Ratio</label>
@@ -44,30 +44,30 @@
       <tr>
         <td>
           <label>Total Bilirubin (mg/dL)</label>
-          <input wire:model.defer="form_k.total_bilirubin" type="text" value="null" class="form-control" placeholder="Total Bilirubin" >
+          <input wire:model.defer="form_k.total_bilirubin" type="text" value="null" class="form-control" placeholder="Total Bilirubin (mg/dL)" >
         </td>
         <td>
           <label>Direct Bilirubin (mg/dL)</label>
-          <input wire:model.defer="form_k.direct_bilirubin" type="text" value="null" class="form-control" placeholder="Dir Bilirubin" >
+          <input wire:model.defer="form_k.direct_bilirubin" type="text" value="null" class="form-control" placeholder="Direct Bilirubin (mg/dL)" >
         </td>
 
         <td>
           <label>Indirect Bilirubin (mg/dL)</label>
-          <input wire:model.defer="form_k.indirect_bilirubin" type="text" value="null" class="form-control" placeholder="Ind Bilirubin" >
+          <input wire:model.defer="form_k.indirect_bilirubin" type="text" value="null" class="form-control" placeholder="Indirect Bilirubin (mg/dL)" >
         </td>
       </tr>
       <tr>
         <td>
           <label>S.G.O.T (U/L)</label>
-          <input wire:model.defer="form_k.sgot" type="text" value="null" class="form-control" placeholder="SGOT" >
+          <input wire:model.defer="form_k.sgot" type="text" value="null" class="form-control" placeholder="SGOT (U/L)" >
         </td>
         <td>
           <label>S.G.P.T (U/L)</label>
-          <input wire:model.defer="form_k.sgpt" type="text" value="null" class="form-control" placeholder="SGPT" >
+          <input wire:model.defer="form_k.sgpt" type="text" value="null" class="form-control" placeholder="SGPT (U/L)" >
         </td>
         <td>
           <label>Alkaline Phosphatase (U/L)</label>
-          <input wire:model.defer="form_k.alkaline_phosphatase" type="text" value="null" class="form-control" placeholder="Alkaline Phos" >
+          <input wire:model.defer="form_k.alkaline_phosphatase" type="text" value="null" class="form-control" placeholder="Alkaline Phosphatase (U/L)" >
         </td>
       </tr>
     </tbody>
@@ -82,7 +82,7 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_k.comment_entered_by" id="comment_entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_k.comment_entered_by" id="comment_entered_by" type="text" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
@@ -92,7 +92,7 @@
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_k.entry_date" id="entry_date" type="date" class="form-control" placeholder="Description">
+          <input wire:model="form_k.entry_date" id="entry_date" type="date" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

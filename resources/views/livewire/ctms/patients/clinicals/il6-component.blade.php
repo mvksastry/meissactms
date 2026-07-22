@@ -27,7 +27,7 @@
       <tr>
         <td>
           <label>IL-6 (pg/ml)</label>
-          <input wire:model.defer="form_i.il6" type="text" class="form-control" placeholder="IL-6" >
+          <input wire:model.defer="form_i.il6" type="text" class="form-control" placeholder="IL-6 (pg/ml)" >
         </td>
       </tr>                               
     </tbody>
@@ -42,17 +42,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_i.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_i.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_i.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_i.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_i.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_i.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

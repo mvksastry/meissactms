@@ -26,9 +26,8 @@
       <tr>
         <td>
           <label>Sr.Uric Acd (mg/dL)</label>
-          <input wire:model.defer="form_m.uric_acid" type="text" class="form-control" placeholder="Uric Acid">
+          <input wire:model.defer="form_m.uric_acid" type="text" class="form-control" placeholder="Sr.Uric Acd (mg/dL)">
         </td>
-
       </tr>      
     </tbody>
   </table>
@@ -42,17 +41,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_m.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_m.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_m.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_m.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_m.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_m.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

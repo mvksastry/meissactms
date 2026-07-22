@@ -27,15 +27,15 @@
       <tr>
         <td>
           <label>Sodium (mEq/L)</label>
-          <input wire:model.defer="form_g.sodium" id="crp" type="text" value="null" class="form-control" placeholder="CRP" >
+          <input wire:model.defer="form_g.sodium" id="sodium" type="text" value="null" class="form-control" placeholder="Sodium (mEq/L)" >
         </td>
         <td>
           <label>Potassium (mEq/L)</label>
-          <input wire:model.defer="form_g.potassium" id="rft" type="text" value="null" class="form-control" placeholder="RFT" >
+          <input wire:model.defer="form_g.potassium" id="potassium" type="text" value="null" class="form-control" placeholder="Potassium (mEq/L)" >
         </td>
         <td>
           <label>Chloride (mEq/L)</label>
-          <input wire:model.defer="form_g.chloride" id="lft" type="text" value="null" class="form-control" placeholder="LFT" >
+          <input wire:model.defer="form_g.chloride" id="chloride" type="text" value="null" class="form-control" placeholder="Chloride (mEq/L)" >
         </td>
       </tr>                                    
     </tbody>
@@ -50,17 +50,17 @@
       <tr>
         <td colspan="2">
           <label>Comment</label>
-          <input wire:model.defer="form_g.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Description">
+          <input wire:model.defer="form_g.comment_entered_by" id="comment_entered_by" type="text" value="null" class="form-control" placeholder="Comment">
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Entered By*</label>
-          <input wire:model="form_g.entered_by" id="entered_by" type="text" class="form-control" placeholder="Description">
+          <input wire:model="form_g.entered_by" id="entered_by" type="text" class="form-control" placeholder="Entered By">
         </td>
         <td colspan="1">
           <label>Entry Date*</label>
-          <input wire:model="form_g.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Description">
+          <input wire:model="form_g.entry_date" id="entry_date" type="date" value="null" class="form-control" placeholder="Entry Date">
         </td>
       </tr>
     </tbody>

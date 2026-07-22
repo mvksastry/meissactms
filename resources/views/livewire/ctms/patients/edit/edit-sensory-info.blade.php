@@ -103,15 +103,15 @@
                                 <tbody> 
                                   <tr>
                                     <td>
-                                      <label>Opd ID*</label>
+                                      <label>Opd ID</label>
                                       <input wire:model="form.opd_id" type="text" class="form-control" placeholder="Out Patient ID">
                                     </td>
                                     <td>
-                                      <label>In Patient ID*</label>
+                                      <label>In Patient ID</label>
                                       <input wire:model="form.in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
                                     </td>
                                     <td>
-                                      <label>Admission Date*</label>
+                                      <label>Admission Date</label>
                                       <input wire:model="form.admission_date" type="date" class="form-control" placeholder="Admission Date">
                                     </td>
                                   </tr> 
@@ -135,31 +135,31 @@
 
                                   <tr>
                                     <td>
-                                      <label>L1*</label>
+                                      <label>L1</label>
                                       <input wire:model="form.lL1" type="text" class="form-control" placeholder="Left-L1" >
                                     </td>
                                     <td>
-                                      <label>L2*</label>
+                                      <label>L2</label>
                                       <input wire:model="form.lL2" type="text" class="form-control" placeholder="Left-L2" >
                                     </td>
                                     <td>
-                                      <label>L3*</label>
+                                      <label>L3</label>
                                       <input wire:model="form.lL3" type="text" class="form-control" placeholder="Left-L3" >
                                     </td>
 
                                     <td>
-                                      <label>L4*</label>
+                                      <label>L4</label>
                                       <input wire:model="form.lL4" type="text" class="form-control" placeholder="Left-L4" >
                                     </td>
                                     <td>
-                                      <label>L5*</label>
+                                      <label>L5</label>
                                       <input wire:model="form.lL5" type="text" class="form-control" placeholder="Left-L5" >
                                     </td>
                                   </tr>
 
                                   <tr>   
                                     <td>
-                                      <label>S1*</label>
+                                      <label>S1</label>
                                       <input wire:model="form.lS1" type="text" class="form-control" placeholder="Left-S1">
                                     </td>    
                                   </tr>       
@@ -171,30 +171,30 @@
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>L1*</label>
+                                      <label>L1</label>
                                       <input wire:model.defer="form.rL1" type="text"  class="form-control" placeholder="Right-L1">
                                     </td>
                                     <td>
-                                      <label>L2*</label>
+                                      <label>L2</label>
                                       <input wire:model.defer="form.rL2" type="text"  class="form-control" placeholder="Right-L2" >
                                     </td>
                                     <td>
-                                      <label>L3*</label>
+                                      <label>L3</label>
                                       <input wire:model.defer="form.rL3" type="text"  class="form-control" placeholder="Right-L3" >
                                     </td>
                                     <td>
-                                      <label>L4*</label>
+                                      <label>L4</label>
                                       <input wire:model.defer="form.rL4" type="text"  class="form-control" placeholder="Right-L4" >
                                     </td>
                                     <td>
-                                      <label>L5*</label>
+                                      <label>L5</label>
                                       <input wire:model.defer="form.rL5" type="text"  class="form-control" placeholder="Right-L5" >
                                     </td>                                    
                                   </tr>
                                   
                                   <tr>
                                     <td>
-                                      <label>S1*</label>
+                                      <label>S1</label>
                                       <input wire:model.defer="form.rS1" type="text"  class="form-control" placeholder="Right-S1" >
                                     </td>
                                   </tr>
@@ -215,17 +215,17 @@
                                 <tr>
                                   <td colspan="2">
                                   <label>Comment</label>
-                                  <input wire:model.defer="form.comment_entered_by" type="text" class="form-control" placeholder="Description">
+                                  <input wire:model.defer="form.comment_entered_by" type="text" class="form-control" placeholder="Comment">
                                   </td>
                                 </td>
                                 <tr>
                                   <td>
                                   <label>Entered By</label>
-                                  <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Description">
+                                  <input wire:model="form.entered_by" type="text" class="form-control" placeholder="Entered By">
                                   </td>
                                   <td>
-                                  <label>Entry Date*</label>
-                                  <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Description">
+                                  <label>Entry Date</label>
+                                  <input wire:model="form.entry_date" type="date" class="form-control" placeholder="Entry Date">
                                   </td>
                                 </tr>
                                 </tbody>
