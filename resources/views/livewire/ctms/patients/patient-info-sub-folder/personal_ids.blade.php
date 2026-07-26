@@ -55,13 +55,13 @@
       <tr>
         <td colspan="1">
           <label class="text-danger">Date of Birth*</label>
-          <input wire:model="form.date_of_birth" id="date_of_birth" type="date" value="null" class="form-control" placeholder="Date of Birth">
+          <input wire:model="form.date_of_birth" id="date_of_birth" type="date" class="form-control" placeholder="Date of Birth">
           <div>
               @error('form.date_of_birth') <span class="error text-danger">{{ $message }}</span> @enderror 
           </div>
         </td>
         <td colspan="1">
-          <label class="text-danger">Age*</label>
+          <label class="text-secondary">Age* (Auto Calculated)</label>
           <input wire:model.defer="form.age" id="age" type="number"  class="form-control" placeholder="Age">
           <div>
               @error('form.age') <span class="error text-danger">{{ $message }}</span> @enderror 
@@ -86,11 +86,11 @@
         </td>
         <td colspan="1">
           <label>Land Mark</label>
-          <input wire:model.defer="form.land_mark" id="age" type="text"  class="form-control" placeholder="Age">
+          <input wire:model.defer="form.land_mark" id="land_mark" type="text"  class="form-control" placeholder="Land Mark">
         </td>
         <td colspan="1">
           <label>Taluka/Haveli</label>
-          <input wire:model="form.taluka_haveli" id="taluka_haveli" type="text" value="null" class="form-control" placeholder="taluka_haveli">
+          <input wire:model="form.taluka_haveli" id="taluka_haveli" type="text" value="null" class="form-control" placeholder="Taluka Haveli">
         </td>
         <td colspan="1">
           <label>State</label>

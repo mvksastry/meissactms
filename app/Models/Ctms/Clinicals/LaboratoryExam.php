@@ -31,7 +31,8 @@ class LaboratoryExam extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'esr',
         'pt_patient',
         'pt_control',

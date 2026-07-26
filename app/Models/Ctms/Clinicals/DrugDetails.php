@@ -20,11 +20,12 @@ class DrugDetails extends Model
 
     protected $fillable = [
                 
-    'patient_uuid', 
+        'patient_uuid', 
 
         'opd_id', 
         'in_patient_id',
         'admission_date', 
+        'data_type',
         
         'category_id',
         'drug_name',

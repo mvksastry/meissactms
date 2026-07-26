@@ -25,7 +25,7 @@ class GeneralSummaryComponent extends Component
 {
     use TGeneralSummary;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -35,9 +35,10 @@ class GeneralSummaryComponent extends Component
     
     public FormGeneralSummary $form_h;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_h->entered_by = Auth::user()->name;
@@ -50,7 +51,9 @@ class GeneralSummaryComponent extends Component
             $this->passObj = new GeneralSummary();
         }
         else {
-            $this->passObj = GeneralSummary::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = GeneralSummary::where('patient_uuid', $this->patient_uuid)
+                                            ->where('data_type', $this->data_type)
+                                            ->first();
             $this->form_h->opd_id = $this->passObj->opd_id;
             $this->form_h->in_patient_id = $this->passObj->in_patient_id;
             $this->form_h->admission_date = $this->passObj->admission_date;
@@ -65,6 +68,7 @@ class GeneralSummaryComponent extends Component
     public function fnGeneralSummary()
     {
         $this->input = $this->form_h->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveGenSummaryData($this->input, $this->passObj);
         LivewireAlert::title('General Summary Saved...')->success()->asToast()->show();

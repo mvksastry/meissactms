@@ -26,7 +26,7 @@ class ChemicalExamComponent extends Component
     //traits
     use TChemExams;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -37,9 +37,10 @@ class ChemicalExamComponent extends Component
     //form bindings 
     public FormChemExam $form_d;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_d->entered_by = Auth::user()->name;
@@ -52,7 +53,9 @@ class ChemicalExamComponent extends Component
             $this->passObj = new ChemicalExam();
         }
         else {
-            $this->passObj = ChemicalExam::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = ChemicalExam::where('patient_uuid', $this->patient_uuid)
+                                          ->where('data_type', $this->data_type)
+                                          ->first();
             $this->form_d->opd_id = $this->passObj->opd_id;
             $this->form_d->in_patient_id = $this->passObj->in_patient_id;
             $this->form_d->admission_date = $this->passObj->admission_date;
@@ -67,6 +70,7 @@ class ChemicalExamComponent extends Component
     public function fnChemExams()
     {
         $this->input = $this->form_d->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveChemExamData($this->input, $this->passObj);
         LivewireAlert::title('Chem Exam Data Saved...')->success()->asToast()->show();

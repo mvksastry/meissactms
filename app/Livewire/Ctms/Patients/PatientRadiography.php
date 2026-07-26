@@ -39,33 +39,4 @@ class PatientRadiography extends Component
         return view('livewire.ctms.patients.patient-radiography');
     }
 
-    public function fnUploadLSImages()
-    {
-
-    }
-
-    public function fnUploadLSVideo()
-    {
-
-    }
-
-    public function fnUploadXrayImage()
-    {
-
-    }
-
-    public function fnUploadCTScanImage()
-    {
-
-    }
-
-    public function fnUploadUSGImage()
-    {
-
-    }
-
-    public function fnUploadMRIImage()
-    {
-
-    }
 }

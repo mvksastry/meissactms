@@ -19,35 +19,35 @@ class FormLiverFunction extends Form
     
 
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $serum_total_protein = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $serum_albumin = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $globulin = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $ag_ratio = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $total_bilirubin = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $direct_bilirubin = null;
 
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $indirect_bilirubin = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $sgot = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $sgpt = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
     public $alkaline_phosphatase = null;
 
    // #[Validate('nullable|regex:/^[A-Za-z0-9\- \/]+$/')]

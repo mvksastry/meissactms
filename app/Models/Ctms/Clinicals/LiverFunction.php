@@ -29,7 +29,8 @@ class LiverFunction extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'serum_total_protein',
         'serum_albumin',
         'globulin',

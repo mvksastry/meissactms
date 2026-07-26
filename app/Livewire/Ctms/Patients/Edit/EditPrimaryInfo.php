@@ -14,7 +14,7 @@ use App\Models\Ctms\Patient;
 use App\Livewire\Forms\PatientForm;
 
 //traits, facades
-
+use App\Traits\Base;
 //logs
 use Illuminate\Support\Facades\Log;
 //Livewire Alerts
@@ -23,6 +23,8 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class EditPrimaryInfo extends Component
 {
     //uuid of the patient
+    use Base;
+
     public $uuid;
 
     //Form bindings
@@ -74,6 +76,7 @@ class EditPrimaryInfo extends Component
     public function fnSaveEditPrimaryInfo()
     {
         $this->input = $this->form->all();
+        $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
         //dd($this->input); // 
         $edit = 'edit';
         $result = $this->saveEditedPrimaryPatientInfo($edit, $this->input, $this->uuid);

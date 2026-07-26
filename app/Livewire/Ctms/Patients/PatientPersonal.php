@@ -15,6 +15,7 @@ use App\Livewire\Forms\PatientForm;
 //traits
 use App\Traits\Base;
 use App\Traits\TCtms\TPatientPersonalInfo;
+use App\Traits\TCtms\TPatientDuplicateCheck;
 use App\Traits\TCtms\TDbEntries;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Log;
 class PatientPersonal extends Component
 {
     use Base;
+    use TPatientDuplicateCheck;
     use TPatientPersonalInfo;
     use TDbEntries;
     //use NewPatientCreated;
@@ -70,17 +72,32 @@ class PatientPersonal extends Component
         return view('livewire.ctms.patients.patient-personal');
     }
 
+    
+    public function updated($date_of_birth, $value): void
+    {
+        if ($date_of_birth === 'form.date_of_birth') {
+            $this->form->age = $this->getAgeFromDoB($value);
+        }
+    }
+    
+
     public function fnSavePrimaryInfo()
     {
         $this->validate(); 
         $this->input = $this->form->all();
-        //$this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
-        //dd($this->input); // 
-        $result = $this->savePatientInformation($this->input);
-        LivewireAlert::title('Primary Info saved...')->info()->asToast()->show();
-        $msg = 'User ['.Auth::user()->name.'] Saved Patient information for Patient ['.$this->patient_uuid.']';
-        Log::channel('patient')->info($msg);
-        //dd($result);
+        if($this->getDuplicateEntries($this->input))
+        {
+            $msg = 'Cannot Save as Matching Name, gender, primary phone number for ['.$this->input['name'].'] found ';
+            LivewireAlert::title('Duplicate Entry Found...')->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+        } else {
+            $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
+            $result = $this->savePatientInformation($this->input);
+            LivewireAlert::title('Primary Info saved...')->info()->asToast()->show();
+            $msg = 'User ['.Auth::user()->name.'] Saved Patient information for Patient ['.$this->patient_uuid.']';
+            Log::channel('patient')->info($msg);
+            //dd($result);
+        }
 
     }
 }

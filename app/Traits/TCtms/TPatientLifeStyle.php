@@ -28,13 +28,17 @@ trait TPatientLifeStyle
         //$patientInfo = Patient::where('patient_uuid', $this->patient_uuid)->first();
 
         //$newLSinfo = new LifeStyle();
-        $newLSinfo = LifeStyle::where('patient_uuid', $this->patient_uuid)->where('status', 'draft')->first();
+        $newLSinfo = LifeStyle::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->data_type)
+                                ->where('status', 'draft')
+                                ->first();
 
         //$newLSinfo->patient_uuid = $this->patient_uuid; 
 
         //$newLSinfo->opd_id = $input['opd_id'];
         //$newLSinfo->in_patient_id = $input[''];
         //$newLSinfo->admission_date = $input['admission_date'];
+        
 
         $newLSinfo->cross_leg_sitting = $input['cross_leg_sitting'];
         $newLSinfo->standing = $input['standing'];

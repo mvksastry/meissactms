@@ -29,15 +29,16 @@ class DrugUsage extends Component
     //public $cat_p = false;
     public $p1 = false, $p2 = false, $p3 = false;
 
-    public $patient_uuid;
+    public $patient_uuid, $data_type;
 
     //variables
     public $ncDCat = [], $nDDetForm = [], $drug_categories, $drug_details;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         //$this->p1 = false;
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
     }
 
     public function render()
@@ -96,6 +97,7 @@ class DrugUsage extends Component
         $nDDet->opd_id = $input['opd_id'];
         $nDDet->in_patient_id = $input['in_patient_id'];
         $nDDet->admission_date = $input['admission_date'];
+        $nDDet->data_type = $this->data_type;
         $nDDet->category_id = $input['cat_id'];
         $nDDet->drug_name = $input['name'];
         $nDDet->brand = $input['brand'];

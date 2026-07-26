@@ -28,7 +28,8 @@ class GeneralSummary extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'general_summary',
 
         'status',

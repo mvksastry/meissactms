@@ -28,7 +28,8 @@ class Creatinine extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'serum_creatinine',
 
         'creatine_report_file',

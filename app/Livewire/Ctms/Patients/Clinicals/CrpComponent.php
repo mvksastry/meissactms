@@ -25,7 +25,7 @@ class CrpComponent extends Component
 {
     use TCrp;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -35,9 +35,10 @@ class CrpComponent extends Component
     
     public FormCrp $form_f;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_f->entered_by = Auth::user()->name;
@@ -50,7 +51,9 @@ class CrpComponent extends Component
             $this->passObj = new Crp();
         }
         else {
-            $this->passObj = Crp::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = Crp::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->data_type)
+                                ->first();
             $this->form_f->opd_id = $this->passObj->opd_id;
             $this->form_f->in_patient_id = $this->passObj->in_patient_id;
             $this->form_f->admission_date = $this->passObj->admission_date;
@@ -65,6 +68,8 @@ class CrpComponent extends Component
     public function fnCRP()
     {
         $this->input = $this->form_f->all();
+        $this->input['data_type'] = $this->data_type;
+
         //dd($this->input); // 
         $result = $this->saveCrpData($this->input, $this->passObj);
         LivewireAlert::title('CRP Data Saved...')->success()->asToast()->show();

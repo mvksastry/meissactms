@@ -25,7 +25,8 @@ class Mdtre extends Model
         'opd_id',  
         'in_patient_id',  
         'admission_date',   
-
+        'data_type',
+        
         'hip_flex_adduction',  
         'knee_extension',
         'ankle_dorsiflexion',

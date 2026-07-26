@@ -25,7 +25,7 @@ class BloodSugarComponent extends Component
 {
     use TBloodSugar;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
     
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -35,9 +35,10 @@ class BloodSugarComponent extends Component
 
     public FormBloodSugar $form_b;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_b->entered_by = Auth::user()->name;
@@ -50,7 +51,9 @@ class BloodSugarComponent extends Component
             $this->passObj = new BloodSugar();
         }
         else {
-            $this->passObj = BloodSugar::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = BloodSugar::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
             $this->form_b->opd_id = $this->passObj->opd_id;
             $this->form_b->in_patient_id = $this->passObj->in_patient_id;
             $this->form_b->admission_date = $this->passObj->admission_date;
@@ -65,6 +68,7 @@ class BloodSugarComponent extends Component
     public function fnBloodSugar()
     {
         $this->input = $this->form_b->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveBloodSugarData($this->input, $this->passObj);
         LivewireAlert::title('Blood Sugar Data Saved...')->success()->asToast()->show();

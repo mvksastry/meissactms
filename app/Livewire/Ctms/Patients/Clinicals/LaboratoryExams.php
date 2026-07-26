@@ -26,7 +26,7 @@ class LaboratoryExams extends Component
 
     use TLaboratoryExams;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -36,9 +36,10 @@ class LaboratoryExams extends Component
     
     public FormLabExams $form_j;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_j->entered_by = Auth::user()->name;
@@ -51,7 +52,9 @@ class LaboratoryExams extends Component
             $this->passObj = new LaboratoryExam();
         }
         else {
-            $this->passObj = LaboratoryExam::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = LaboratoryExam::where('patient_uuid', $this->patient_uuid)
+                                            ->where('data_type', $this->data_type)
+                                            ->first();
             $this->form_j->opd_id = $this->passObj->opd_id;
             $this->form_j->in_patient_id = $this->passObj->in_patient_id;
             $this->form_j->admission_date = $this->passObj->admission_date;
@@ -66,6 +69,7 @@ class LaboratoryExams extends Component
     public function fnLabExams()
     {
         $this->input = $this->form_j->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveLaboratoryExamData($this->input, $this->passObj);
         LivewireAlert::title('Lab Exam Data Saved...')->success()->asToast()->show();

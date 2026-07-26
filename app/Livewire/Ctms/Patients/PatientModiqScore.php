@@ -121,6 +121,7 @@ class PatientModiqScore extends Component
 
     //global patient uuid
     public $patient_uuid;
+    public $data_type;
 
     //Form bindings
     public ModqScoreForm $form;
@@ -144,9 +145,10 @@ class PatientModiqScore extends Component
         return view('livewire.ctms.patients.patient-modiq-score');
     }
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
 
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
@@ -169,6 +171,7 @@ class PatientModiqScore extends Component
     public function fnSaveMODQScore()
     {
         $this->input = $this->form->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input);
         $result = $this->saveMODQScore($this->input);
         LivewireAlert::title('MODIQ Score Data Saved...')->success()->asToast()->show();

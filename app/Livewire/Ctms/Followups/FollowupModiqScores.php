@@ -269,16 +269,16 @@ class FollowupModiqScores extends Component
       $nModqScore->in_patient_id =  $input['in_patient_id'];
       $nModqScore->admission_date =  $input['admission_date'];
 
-      $nModqScore->pain_intensity = intval($this->pain_intensity);
-      $nModqScore->personal_care = intval($this->personal_care);
-      $nModqScore->lifting = intval($this->lifting);
-      $nModqScore->walking = intval($this->walking);
-      $nModqScore->sitting = intval($this->sitting);
-      $nModqScore->standing = intval($this->standing);
-      $nModqScore->sleeping = intval($this->sleeping);
-      $nModqScore->social_life = intval($this->social_life);
-      $nModqScore->travelling = intval($this->travelling);
-      $nModqScore->employment_home_making = intval($this->emp_home);
+      $nModqScore->pain_intensity = $this->pain_intensity;
+      $nModqScore->personal_care = $this->personal_care;
+      $nModqScore->lifting = $this->lifting;
+      $nModqScore->walking = $this->walking;
+      $nModqScore->sitting = $this->sitting;
+      $nModqScore->standing = $this->standing;
+      $nModqScore->sleeping = $this->sleeping;
+      $nModqScore->social_life = $this->social_life;
+      $nModqScore->travelling = $this->travelling;
+      $nModqScore->employment_home_making = $this->emp_home;
       $nModqScore->total = $this->total;
       $nModqScore->modq_score = $this->mod_score;
 

@@ -30,7 +30,8 @@ class MicroscopicExam extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'pus_cells',
         'epithelial_cells',
         'rbcs',

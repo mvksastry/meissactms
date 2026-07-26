@@ -26,7 +26,8 @@ class SensoryExamination extends Component
 
     //global patient uuid
     public $patient_uuid;
-    
+    public $data_type;
+
     //Form bindings
     public PatientSEForm $form;
 
@@ -38,9 +39,9 @@ class SensoryExamination extends Component
     public $rL1, $rL2, $rL3, $rL4, $rL5;
     public $rS1;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
-        
+        $this->data_type = $data_type;
         $this->patient_uuid = $patient_uuid;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
@@ -53,6 +54,7 @@ class SensoryExamination extends Component
     public function fnSaveSensoryExaminationData()
     {
         $this->input = $this->form->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->savePatientSEInformation($this->input);
         LivewireAlert::title('Sensory Information saved...')->info()->asToast()->show();

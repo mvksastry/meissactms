@@ -356,9 +356,9 @@ class EditClinicalInfo extends Component
         $this->form_g->in_patient_id = $c7Obj->in_patient_id;
         $this->form_g->admission_date = $c7Obj->admission_date;
 
-        $this->form_g->sodium = intval($c7Obj->sodium);
-        $this->form_g->potassium = intval($c7Obj->potassium);
-        $this->form_g->chloride = intval($c7Obj->chloride);
+        $this->form_g->sodium = $c7Obj->sodium;
+        $this->form_g->potassium = $c7Obj->potassium;
+        $this->form_g->chloride = $c7Obj->chloride;
 
         //--------X Common to all tables X-------------//
         $this->form_g->comment_entered_by = $c7Obj->comment_entered_by;
@@ -427,17 +427,17 @@ class EditClinicalInfo extends Component
         $this->form_k->in_patient_id = $c11Obj->in_patient_id;
         $this->form_k->admission_date = $c11Obj->admission_date;
 
-        $this->form_k->serum_total_protein = intval($c11Obj->serum_total_protein);
-        $this->form_k->serum_albumin = intval($c11Obj->serum_albumin);
-        $this->form_k->globulin = intval($c11Obj->globulin);
-        $this->form_k->ag_ratio = intval($c11Obj->ag_ratio);
-        $this->form_k->total_bilirubin = intval($c11Obj->total_bilirubin);
+        $this->form_k->serum_total_protein = $c11Obj->serum_total_protein;
+        $this->form_k->serum_albumin = $c11Obj->serum_albumin;
+        $this->form_k->globulin = $c11Obj->globulin;
+        $this->form_k->ag_ratio = $c11Obj->ag_ratio;
+        $this->form_k->total_bilirubin = $c11Obj->total_bilirubin;
 
-        $this->form_k->direct_bilirubin = intval($c11Obj->direct_bilirubin);
-        $this->form_k->indirect_bilirubin = intval($c11Obj->indirect_bilirubin);
-        $this->form_k->sgot = intval($c11Obj->sgot);
-        $this->form_k->sgpt = intval($c11Obj->sgpt);
-        $this->form_k->alkaline_phosphatase = intval($c11Obj->alkaline_phosphatase);
+        $this->form_k->direct_bilirubin = $c11Obj->direct_bilirubin;
+        $this->form_k->indirect_bilirubin = $c11Obj->indirect_bilirubin;
+        $this->form_k->sgot = $c11Obj->sgot;
+        $this->form_k->sgpt = $c11Obj->sgpt;
+        $this->form_k->alkaline_phosphatase = $c11Obj->alkaline_phosphatase;
 
         $this->form_k->observations = null;
         $this->form_k->lft_report_file = $c11Obj->lft_report_file;

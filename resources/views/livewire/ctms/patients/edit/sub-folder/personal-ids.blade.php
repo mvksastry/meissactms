@@ -56,11 +56,11 @@
       <tr>
         <td colspan="1">
           <label>Date of Birth</label>
-          <input wire:model="form.date_of_birth" class="form-control" value="{{ $patientPrimaryInfo->date_of_birth }}"  type="text">
+          <input wire:model="form.date_of_birth" class="form-control" value="{{ $patientPrimaryInfo->date_of_birth }}"  type="date">
         </td>
         <td colspan="1">
-          <label>Age</label>
-          <input wire:model="form.age" class="form-control" value="{{ $patientPrimaryInfo->age }}"  type="text">
+          <label>Age (In Years, Auto Calculated)</label>
+          <input disabled wire:model="form.age" class="form-control" value="{{ $patientPrimaryInfo->age }}"  type="text">
        </td>
         <td colspan="1">
           <label>Primary Phone</label>

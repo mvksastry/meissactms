@@ -29,7 +29,8 @@ class BloodUrea extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'urea',
         'blood_urea_nitrogen',
 

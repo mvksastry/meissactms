@@ -24,6 +24,7 @@ class ManagePatients extends Component
     use WithFileUploads;
 
     //form status
+    public $data_type = null;
     public $form_status = null;
     public $openAllOtherForms = false;
     public $showPrimaryInfo = true;
@@ -89,12 +90,13 @@ class ManagePatients extends Component
         
         if(count($this->patient_data_status) > 0)
         {
-            $this->msg_panel = true;
-            $sysAlertWarning = false;
-            $this->comWarning = "Draft' status Patients Found: Wish To Complete?";
+            //$this->msg_panel = true;
+            //$sysAlertWarning = false;
+            //$this->comWarning = "Draft' status Patients Found: Wish To Complete?";
             //show button for edit test it
             $this->edit_button = true;
             // Log info message
+            //LivewireAlert::title('Draft Patients Found: Use EDIT to complete their information?')->warning()->show();
             Log::channel('patient')->info('Patients with draft status found');
         }       
         return view('livewire.ctms.patients.manage-patients');
@@ -139,10 +141,13 @@ class ManagePatients extends Component
     public function setPatientUuid($id)
     {
         $this->patient_uuid = $id;
+        $this->data_type = "pre-enrollment";
         $this->resetMessagePanels();
 
         $this->msg_panel = true;
-        $this->comSuccess = "New Patient ID [ '.$id.' ] Created";
+        $msg = "New Patient ID [ ".$id." ] Created";
+        $this->comSuccess = $msg;
+        LivewireAlert::title($msg)->info()->show();
         Log::channel('patient')->info($this->comSuccess);
         //dd("event emitted and understood");
         $this->showPrimaryInfo = false;
@@ -160,7 +165,8 @@ class ManagePatients extends Component
     public function fnShowPrimaryInfoMesage()
     {
         $this->msg_panel = true;
-        $this->comWarning= "Patient Primary Info cannot be re-entered, Use Edit option";
+        $this->comWarning= "Tab active: Patient Primary Info cannot be re-entered";
+        LivewireAlert::title($this->comWarning)->asToast()->show();
         Log::channel('patient')->info($this->comWarning);
     }
 

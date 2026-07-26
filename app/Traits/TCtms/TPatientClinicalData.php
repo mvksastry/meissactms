@@ -23,7 +23,10 @@ trait TPatientClinicalData
     {
         //dd($input);
         //$newCIInfo = new ClinicalData();
-        $newCIInfo = ClinicalData::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $newCIInfo = ClinicalData::where('status', 'draft')
+                        ->where('patient_uuid', $this->patient_uuid)
+                        ->where('data_type', $this->data_type)
+                        ->first();
         //$newCIInfo->patient_uuid = $this->patient_uuid; 
         //dd($newCIInfo);
         //$newCIInfo->opd_id = $input['opd_id'];

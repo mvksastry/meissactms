@@ -29,7 +29,8 @@ class ChemicalExam extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'proteins',
         'sugar',
         'ketones',

@@ -30,7 +30,7 @@ class UrineRoutine extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
 
         'physical_exam',
         'quantity',

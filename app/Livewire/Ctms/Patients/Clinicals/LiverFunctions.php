@@ -25,7 +25,7 @@ class LiverFunctions extends Component
 {
     use TLiverFunctions;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -35,9 +35,10 @@ class LiverFunctions extends Component
         
     public FormLiverFunction $form_k;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_k->entered_by = Auth::user()->name;
@@ -50,7 +51,9 @@ class LiverFunctions extends Component
             $this->passObj = new LiverFunction();
         }
         else {
-            $this->passObj = LiverFunction::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = LiverFunction::where('patient_uuid', $this->patient_uuid)
+                                                ->where('data_type', $this->data_type)
+                                                ->first();
             $this->form_k->opd_id = $this->passObj->opd_id;
             $this->form_k->in_patient_id = $this->passObj->in_patient_id;
             $this->form_k->admission_date = $this->passObj->admission_date;
@@ -65,6 +68,7 @@ class LiverFunctions extends Component
     public function fnLiverFunction()
     {
         $this->input = $this->form_k->all();
+        $this->input['data_type'] = $this->data_type;
        // dd($this->input); // 
         $result = $this->saveLiverFunctionData($this->input, $this->passObj);
         LivewireAlert::title('Liver Function Data Saved...')->success()->asToast()->show();

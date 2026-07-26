@@ -24,7 +24,7 @@ class SensoryExamination extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
    
         'lL1',
         'lL2',

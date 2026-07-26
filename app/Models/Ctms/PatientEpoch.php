@@ -23,6 +23,7 @@ class PatientEpoch extends Model
       * @var array
       */
     protected $fillable = [
+        'patient_uuid',
         'event',
         'event_date',
         'event_author',

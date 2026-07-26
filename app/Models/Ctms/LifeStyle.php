@@ -22,9 +22,11 @@ class LifeStyle extends Model
         'patient_uuid',                          
         'center_id',
 
+        'opd_id',
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'cross_leg_sitting', 
         'standing',
         'sitting',

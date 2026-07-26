@@ -28,7 +28,8 @@ class Crp extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'crp',
  
         'crp_report_file',

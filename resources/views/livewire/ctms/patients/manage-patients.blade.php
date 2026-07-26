@@ -105,10 +105,10 @@
                                 <!-- /.col -->
                                 @if ($openAllOtherForms)
                                     <!--
-                  <div class="col-sm-3 col-md-2">
-                    <button  type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Radiographs</button>
-                  </div>
-                  -->
+                                    <div class="col-sm-3 col-md-2">
+                                        <button  type="button" class="btn btn-block btn-primary"><i class="ion ion-person"></i>&nbsp Radiographs</button>
+                                    </div>
+                                    -->
                                     <!-- /.col -->
                                     <div class="col-sm-3 col-md-2">
                                         <button wire:click="fnModifiedPfirmannGrades()" type="button"
@@ -157,39 +157,39 @@
         @endif
 
         @if ($p2)
-            <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-life-style :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type" />
         @endif
 
         @if ($p3)
-            <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-clinical-investigations :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type"/>
         @endif
 
         @if ($p4)
-            <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.sensory-examination :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type"/>
         @endif
 
         @if ($p5)
-            <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-mdtre :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type" />
         @endif
 
         @if ($p6)
-            <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-radiography :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type" />
         @endif
 
         @if ($p7)
-            <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-modified-pfirmann-grades :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type" />
         @endif
 
         @if ($p8)
-            <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-visual-analog-score :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type" />
         @endif
 
         @if ($p9)
-            <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-modiq-score :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type" />
         @endif
 
         @if ($p10)
-            <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" :entry="$entry" />
+            <livewire:ctms.patients.patient-rmq-score :patient_uuid="$patient_uuid" :entry="$entry" :data_type="$data_type" />
         @endif
 
         <!-- /.content -->

@@ -26,7 +26,7 @@ class CreatinineComponent extends Component
     //traits
     use TCreatinine;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -37,9 +37,10 @@ class CreatinineComponent extends Component
     //models
     public FormCreatinine $form_e;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_e->entered_by = Auth::user()->name;
@@ -52,7 +53,9 @@ class CreatinineComponent extends Component
             $this->passObj = new Creatinine();
         }
         else {
-            $this->passObj = Creatinine::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = Creatinine::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
             $this->form_e->opd_id = $this->passObj->opd_id;
             $this->form_e->in_patient_id = $this->passObj->in_patient_id;
             $this->form_e->admission_date = $this->passObj->admission_date;
@@ -67,6 +70,7 @@ class CreatinineComponent extends Component
     public function fnCreatinine()
     {
         $this->input = $this->form_e->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveCreatinineData($this->input, $this->passObj);
         LivewireAlert::title('Creatinine Data Saved...')->success()->asToast()->show();

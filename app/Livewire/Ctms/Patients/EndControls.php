@@ -17,7 +17,7 @@ class EndControls extends Component
 {
     //data binding
     public $input;
-
+    public $data_type;
     public $entered_by, $entry_date, $verified_by, $verified_date, $entry_sealed_by, $entry_sealed_date;
 
     public function render()

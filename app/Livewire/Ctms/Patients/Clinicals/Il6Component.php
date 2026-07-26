@@ -25,7 +25,7 @@ class Il6Component extends Component
 {
     use TIl6;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -35,9 +35,10 @@ class Il6Component extends Component
     
     public FormIl6 $form_i;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_i->entered_by = Auth::user()->name;
@@ -50,7 +51,9 @@ class Il6Component extends Component
             $this->passObj = new Il6();
         }
         else {
-            $this->passObj = Il6::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = Il6::where('patient_uuid', $this->patient_uuid)
+                                    ->where('data_type', $this->data_type)
+                                    ->first();
             $this->form_i->opd_id = $this->passObj->opd_id;
             $this->form_i->in_patient_id = $this->passObj->in_patient_id;
             $this->form_i->admission_date = $this->passObj->admission_date;
@@ -65,6 +68,7 @@ class Il6Component extends Component
     public function fnIl6()
     {
         $this->input = $this->form_i->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveIl6Data($this->input, $this->passObj);
         LivewireAlert::title('IL-6 Data Saved...')->success()->asToast()->show();

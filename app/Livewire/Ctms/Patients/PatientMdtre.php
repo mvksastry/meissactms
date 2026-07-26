@@ -28,15 +28,17 @@ class PatientMdtre extends Component
     public MdtreForm $form;
     //global patient uuid
     public $patient_uuid;
+    public $data_type;
 
     //MDTRE variables
     public $hip_flexion_adduction, $knee_extension, $ankle_dorsiflexion, $decreased_patellar_reflex, $extensor_hallucis_longus; 
     public $hip_abduction, $ankle_plantar_flexion, $decreased_achilles_tendon_reflex, $straight_leg_raise, $contralateral_slr;
     public $femoral_nerve_stretch_test, $trendelenburg_gait, $antalgic_gait, $list;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
@@ -53,6 +55,7 @@ class PatientMdtre extends Component
     public function fnSaveMDTREInfo()
     {
         $this->input = $this->form->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); //
         $result = $this->saveMDTREInformation($this->input);
         LivewireAlert::title('MDTRE Score Data Saved...')->success()->asToast()->show();

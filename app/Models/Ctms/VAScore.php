@@ -25,7 +25,8 @@ class VAScore extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'intensity',
         'location',
         'onset',

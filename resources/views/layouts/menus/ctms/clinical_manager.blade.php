@@ -56,17 +56,50 @@
           
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Patient Management
-                <i class="fas fa-angle-left right"></i>
+              <i class="nav-icon fas fa-circle"></i>
+              <p>Patient Management
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+
             <ul class="nav nav-treeview">
-              @include('layouts.menus.items.patientms.patients-dash')
-              @include('layouts.menus.items.patientms.enrolement')
-              @include('layouts.menus.items.patientms.edit-patients')
-              @include('layouts.menus.items.patientms.patient-details')
+              @include('layouts.menus.items.projectms.patients-dashboard')
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pre-Enrollment
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  @include('layouts.menus.items.patientms.pre-enrollment')
+                  @include('layouts.menus.items.patientms.edit-patients')
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Patient Decisions
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  @include('layouts.menus.items.patientms.patient-details')
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Follow-Ups
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+          
+                <ul class="nav nav-treeview">
+                  @include('layouts.menus.items.patientms.follow-up')
+                </ul>
+              </li>
             </ul>
           </li>
 

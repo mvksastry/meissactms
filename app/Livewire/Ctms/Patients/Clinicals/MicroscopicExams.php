@@ -25,7 +25,7 @@ class MicroscopicExams extends Component
 {
     use TMicroscopicExams;
 
-    public $patient_uuid, $passObj, $entry=null;
+    public $patient_uuid, $passObj, $entry=null, $data_type;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -35,9 +35,10 @@ class MicroscopicExams extends Component
         
     public FormMicroscopicExam $form_l;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         // Initialize the main form (which initializes the sub-form)
         $this->loadFormData();
         $this->form_l->entered_by = Auth::user()->name;
@@ -50,7 +51,9 @@ class MicroscopicExams extends Component
             $this->passObj = new MicroscopicExam();
         }
         else {
-            $this->passObj = MicroscopicExam::where('patient_uuid', $this->patient_uuid)->first();
+            $this->passObj = MicroscopicExam::where('patient_uuid', $this->patient_uuid)
+                                                ->where('data_type', $this->data_type)
+                                                ->first();
             $this->form_l->opd_id = $this->passObj->opd_id;
             $this->form_l->in_patient_id = $this->passObj->in_patient_id;
             $this->form_l->admission_date = $this->passObj->admission_date;
@@ -65,6 +68,7 @@ class MicroscopicExams extends Component
     public function fnMicroscopicExam()
     {
         $this->input = $this->form_l->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveMicroscopicExamData($this->input, $this->passObj);
         LivewireAlert::title('Microscopic Exam Data Saved...')->success()->asToast()->show();

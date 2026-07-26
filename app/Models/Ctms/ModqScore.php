@@ -27,6 +27,7 @@ class ModqScore extends Model
         'opd_id',  
         'in_patient_id',  
         'admission_date',  
+        'data_type',
         
         'pain_intensity',
         'personal_care',

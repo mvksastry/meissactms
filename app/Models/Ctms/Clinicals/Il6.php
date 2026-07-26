@@ -29,7 +29,8 @@ class Il6 extends Model
         'opd_id', 
         'in_patient_id',
         'admission_date', 
-
+        'data_type',
+        
         'il6',
 
         'il6_report_file',

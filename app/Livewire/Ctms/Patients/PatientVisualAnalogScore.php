@@ -28,15 +28,16 @@ class PatientVisualAnalogScore extends Component
     public PatientVAScoreForm $form;
     //global patient uuid
     public $patient_uuid;
-
+    public $data_type;
 
 
     //Visual Analog Scores
     public $intensity, $location, $onset, $duration, $variation, $quality;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;
@@ -53,6 +54,7 @@ class PatientVisualAnalogScore extends Component
     public function fnSaveVAscoreData()
     {
         $this->input = $this->form->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); //
         $result = $this->saveVAScores($this->input);
         LivewireAlert::title('Visual Analog Score Data Saved')->success()->asToast()->show();

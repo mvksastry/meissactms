@@ -58,6 +58,12 @@ trait TPatientPersonalInfo
 
     public function savePatientInformation($input)
     {
+        // below 4 lines are for testing purpose, uncomment them to test the function independently
+        //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
+        //$input['data_type'] = "pre-enrollment"; //lined added on 23 Jul 2026 revision;
+        //$setResult = $this->setDbEntriesPatientModels($this->patient_uuid, $input);      
+        //dd($setResult);
+
         //event for time line definition
         $event = "New Patient Entrollment";
 
@@ -164,7 +170,7 @@ trait TPatientPersonalInfo
             $this->msg_panel = true;
             $name = $newPatientInfo->name;
             $result = $newPatientInfo->save();
-            //$name = "New Patient Name"; //for testing
+            //$name = "New Patient Name"; //for testing, uncomment this, comment above two lines
             //$result = true;             //for testing
             //Attempt to save the user
             $this->dispatch('resetPanelsForNewMessages');
@@ -179,6 +185,7 @@ trait TPatientPersonalInfo
                 if($this->patient_uuid == null)
                 {
                     $this->patient_uuid = $newPatientInfo->patient_uuid; 
+                    $input['data_type'] = "pre-enrollment"; //lined added on 23 Jul 2026 revision
                     //make entries through trait in all patient models
                     $setResult = $this->setDbEntriesPatientModels($this->patient_uuid, $input);
                     //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
@@ -195,16 +202,16 @@ trait TPatientPersonalInfo
                 Log::channel('patient')->info($msg);
             }
 
-            } catch (QueryException $e) {
-                // Handles database-related errors (e.g., duplicate email)
-                $msg = 'Database error for new patient ['.$name.'] while saving : '.$e->getMessage();
-                Log::channel('patient')->info($msg);
-                $this->sysAlertDanger = $msg;
-            } catch (\Exception $e) {
-                // Handles any other general exceptions
-                $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
-                Log::channel('patient')->info($msg);
-                $this->sysAlertDanger = $msg;
-            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database error for new patient ['.$name.'] while saving : '.$e->getMessage();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
     }
 }

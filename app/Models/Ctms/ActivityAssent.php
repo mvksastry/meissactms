@@ -19,12 +19,12 @@ class ActivityAssent extends Model
     protected $primaryKey = 'ctms_activity_id';
 
     protected $fillable = [
-        'ctms_activity_id',
-		'allowed_id',
-		'start_date',
-		'end_date',
-		'notebook',
-		'status',
+      'ctms_activity_id',
+      'allowed_id',
+      'start_date',
+      'end_date',
+      'notebook',
+      'status',
     ];
 
     public function allowed()

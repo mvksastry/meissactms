@@ -30,6 +30,7 @@ class PatientClinicalInvestigations extends Component
 
     //global patient uuid
     public $patient_uuid, $entry="";
+    public $data_type;
 
     public $discharge_report, $discharge_report_file;
 
@@ -48,11 +49,13 @@ class PatientClinicalInvestigations extends Component
     //logged user
     public $logged_user, $passObj;
 
-    public function mount($patient_uuid)
+    public function mount($patient_uuid, $data_type)
     {
         //dd($patient_uuid, $entry);
         $this->patient_uuid = $patient_uuid;
-        $passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
+        $this->data_type = $data_type;
+        $passObj = Patient::where('patient_uuid', $this->patient_uuid)
+                            ->first();
         $this->form->opd_id = $passObj->opd_id;
         $this->form->in_patient_id = $passObj->in_patient_id;
         $this->form->admission_date = $passObj->admission_date;
@@ -69,6 +72,7 @@ class PatientClinicalInvestigations extends Component
     public function fnSaveClinicalData()
     {
         $this->input = $this->form->all();
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->savePatientCIInformation($this->input);
         LivewireAlert::title('Clinical Investigation Data Saved')->success()->asToast()->show();
