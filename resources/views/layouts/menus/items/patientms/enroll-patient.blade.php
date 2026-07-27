@@ -1,5 +1,5 @@
 <li class="nav-item">
-  <a href="/patient-information" class="nav-link">
+  <a href="/home-enrollment" class="nav-link">
     <i class="far fa-circle nav-icon"></i>
     <p>Enroll Patient</p>
   </a>
