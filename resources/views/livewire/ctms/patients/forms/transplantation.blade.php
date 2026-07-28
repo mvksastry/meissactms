@@ -8,19 +8,19 @@
       <tr>
         <td>
           <label>Date Transplantation</label>
-          <input wire:model.defer="form.surgery_date" type="text" class="form-control" placeholder="Surgery Date">
+          <input wire:model.defer="form.transplantation_date" type="text" class="form-control" placeholder="Transplantation Date">
         </td>
       </tr>
       <tr>
         <td>
           <label>Transplant Fitness Info</label>
-          <input wire:model.defer="form.fitness" type="text" class="form-control" placeholder="Fitness Info">
+          <input wire:model.defer="form.transplant_fitness" type="text" class="form-control" placeholder="Fitness Info">
         </td>
       </tr> 
       <tr>
         <td>
-          <label>Trnsplantation Comments</label>
-          <input wire:model.defer="form.comments" type="text" class="form-control" placeholder="Comments">
+          <label>Transplantation Comments</label>
+          <input wire:model.defer="form.transplantation_comments" type="text" class="form-control" placeholder="Comments">
         </td>
       </tr>      
     <tr>

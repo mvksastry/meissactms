@@ -54,6 +54,7 @@ class Enrollment extends Component
         $this->confirmed_patients = Patient::where('status','draft')->get();
         $this->entered_by = Auth::user()->name;
         //dd($this->confirmedPatients);
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Enrollment Decision home page');
         return view('livewire.ctms.patients.decision.enrollment');
     }
 

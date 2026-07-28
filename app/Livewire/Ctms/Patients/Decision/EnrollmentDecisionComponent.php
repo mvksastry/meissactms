@@ -38,6 +38,7 @@ class EnrollmentDecisionComponent extends Component
 
     public function render()
     {
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Enrollment Decision home page');
         return view('livewire.ctms.patients.decision.enrollment-decision-component');
     }
 }
