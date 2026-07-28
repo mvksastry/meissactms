@@ -55,10 +55,12 @@
                           <ul class="nav nav-pills ml-auto p-2">
                             <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Controls</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Discectomy</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Administrative</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">QC & QA</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Official</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Decision</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Samples</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Transplantation</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">QC & QA</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Administrative</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">Official</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">Decision</a></li>
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -72,24 +74,31 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                                @include('livewire.ctms.patients.forms.administrative')
+                                @include('livewire.ctms.patients.forms.discectomy-samples')
                             </div>
                             <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_4">
-                                @include('livewire.ctms.patients.forms.other')
+                                @include('livewire.ctms.patients.forms.transplantation')
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_5">
+                                @include('livewire.ctms.patients.forms.qc-qa-infos')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_6">
+                                @include('livewire.ctms.patients.forms.administrative')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_7">
                                 @include('livewire.ctms.end-controls')
                             </div> 
                             <!-- /.tab-pane --> 
-                            <div class="tab-pane" id="tab_6">
+                            <div class="tab-pane" id="tab_8">
                                 @include('livewire.ctms.patients.forms.decision-controls')
                             </div>
 
                             <!-- /.tab-pane -->                                                                                                                                                                                    
-
-                            <button wire:click="fnSaveStage1EnrollmentData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD STAGE 1 DATA</button>
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->

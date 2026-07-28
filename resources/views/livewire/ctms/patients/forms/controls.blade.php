@@ -19,5 +19,10 @@
         <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
       </td>
     </tr> 
-  </tbody>
+    <tr>
+      <td>
+      <button wire:click="fnSaveStage1ControlsData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CONTROLS</button>
+      </td>
+    </tr>
+    </tbody>
 </table>
