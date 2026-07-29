@@ -52,8 +52,8 @@ class PatientForm extends Form
     #[Validate('required|date')]
     public $date_of_birth = null;
 
-    #[Validate('required|numeric')]
-    public $age = '';
+    #[Validate('nullable|numeric')]
+    public $age = null;
 
     #[Validate('required|numeric')]
     public $primary_phone_number = '';
