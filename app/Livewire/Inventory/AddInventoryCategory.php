@@ -40,8 +40,8 @@ class AddInventoryCategory extends Component
 		{
 			$validatedData = $this->validate(
 			[
-				'newCategory' => 'required|alpha_num',
-				'newCatDesc'	 => 'required|string|regex:/^[A-Za-z0-9-,_. ]+$/',
+				'newCategory' => 'required|regex:/^[A-Za-z0-9-,_. ]+$/',
+				'newCatDesc'	 => 'required|regex:/^[A-Za-z0-9-,_. ]+$/',
 			],
 			[
 				'newCategory.required'	=> 'The :attribute required',

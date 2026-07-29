@@ -5,10 +5,12 @@ namespace App\Livewire\Inventory\Datatables;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Inventory\Tempproduct;
+use App\Models\Inventory\Products;
 
 class TemporaryInventoryEntries extends DataTableComponent
 {
     protected $model = Tempproduct::class;
+    //protected $model = Products::class;
 
     public $tempproduct_id, $id, $coafiles = [];
     //public $cleared = [];

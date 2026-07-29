@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Traits\Base;
 // Models
 use App\Models\Inventory\Products;
-//use App\Models\Inventory\Tempproduct;
+use App\Models\Inventory\Tempproduct;
 
 class BulkInventoryImport implements ToCollection, WithHeadingRow
 {
@@ -75,16 +75,18 @@ class BulkInventoryImport implements ToCollection, WithHeadingRow
             $this->ne['pack_size']            = $row['pack_size'];
             $this->ne['unit_id']              = $row['unit_id'];
             $this->ne['num_packs']            = $row['num_packs'];
-            //$this->ne['mfd_date'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject(intval($row['mfd_date']))->format('Y-m-d');
-            $this->ne['mfd_date']             = $row['mfd_date'];
+            $this->ne['mfd_date'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject(intval($row['mfd_date']))->format('Y-m-d');
+            //$this->ne['mfd_date']             = $row['mfd_date'];
             $this->ne['batch_code']           = $row['batch_code'];
             $this->ne['vial_cost']            = $row['vial_cost'];
             $this->ne['item_currency']        = $row['item_currency'];
             $this->ne['item_cost']            = $row['item_cost'];
-            $this->ne['expiry_date']          = $row['expiry_date'];
+           // $this->ne['expiry_date']          = $row['expiry_date'];
+            $this->ne['expiry_date'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject(intval($row['expiry_date']))->format('Y-m-d');
             $this->ne['supplier_id']          = $row['supplier_id'];
             $this->ne['status_open_unopened'] = $row['status_open_unopened'];
-            $this->ne['status_date']          = $row['status_date'];
+            //$this->ne['status_date']          = $row['status_date'];
+            $this->ne['status_date'] = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject(intval($row['status_date']))->format('Y-m-d');
             $this->ne['quantity_left']        = $row['quantity_left'];
             $this->ne['full_empty']           = $row['full_empty'];
             $this->ne['storage_container_id'] = $row['storage_container_id'];
@@ -98,8 +100,8 @@ class BulkInventoryImport implements ToCollection, WithHeadingRow
             $this->ne['off_rev_date']         = date('Y-m-d');
             $this->ne['notes']                = $row['notes'];
             //dd($this->ne);
-            $result =  Products::create($this->ne);
-
+            //$result =  Products::create($this->ne);
+            $result =  Tempproduct::create($this->ne);
             /*
             $xne = new Tempproduct();
 
@@ -165,6 +167,6 @@ class BulkInventoryImport implements ToCollection, WithHeadingRow
         }
 
         //dd($this->nee);
-        //return $this->nee;
+        //return $rowNum;
     }
 }

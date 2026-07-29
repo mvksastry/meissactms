@@ -76,6 +76,7 @@ class BulkImportInventory extends Component
     //panels
     public $templatePanel = false;
     public $finalizePanel = false;
+    public $finalizePanelButton = false;
 
     //modals variables
     public $id, $tempproduct_id, $pObj, $file_uuid;
@@ -97,6 +98,7 @@ class BulkImportInventory extends Component
     {
         $this->categories = Categories::all();
         $this->currencies = Currency::all();
+        /*
         $this->nex = Tempproduct::where('office_review', 'draft')->get();
         if(count($this->nex) > 0)
         {
@@ -108,7 +110,27 @@ class BulkImportInventory extends Component
             ]);
             $this->finalizePanel = true;
         }
+            */
+        $this->showFinalizationInventoryPanel();
         return view('livewire.inventory.bulk-import-inventory');
+    }
+
+    public function triggerRefresh()
+    {
+        $this->dispatch('$refresh');
+    }
+
+    public function showFinalizationInventoryPanel()
+    {
+        $this->nex = Tempproduct::where('office_review', 'draft')->get();
+        //dd($this->nex);
+        if(count($this->nex) > 0)
+        {
+            //set form object values
+            //LivewireAlert::title('Temporary Inventory Entries Found...')->warning()->asToast()->show();
+            $this->finalizePanel = true;
+        }
+
     }
 
     public function uploadBulkTemplate()
@@ -195,7 +217,7 @@ class BulkImportInventory extends Component
             $destPath = "skls/inventory/".$year."/raw/";
             $oExt = $this->inventoryExcel->getClientOriginalExtension();
             $check=in_array($oExt, $allowedExtension);
-            //$check = true;
+            $check = true;
             if($check)
             {
                 LivewireAlert::title('The File is valid')->success()->show();
@@ -207,11 +229,12 @@ class BulkImportInventory extends Component
 
                 //then import the file into tempproducts db table
                 $this->newEntries = Excel::import(new BulkInventoryImport, $destPath.$fileName);
-                $this->nex = Tempproduct::all();
-                //dd($this->nex);
+                $this->showFinalizationInventoryPanel();
+                //$this->nex = Tempproduct::all();
+                //dd($this->newEntries);
 
                 //$this->inventoryExcel = null;
-                LivewireAlert::title('Inventory Import Successful')->warning()->show();
+                LivewireAlert::title('Import of New Inventory Successful')->warning()->show();
                 //Now open panel for finalization of the data entered.
             }
             else {
@@ -221,7 +244,10 @@ class BulkImportInventory extends Component
                 //dd($this->irqMessage);
             }
         }
-        LivewireAlert::title('Excel Sheet Error or Check Excel Sheet')->warning()->show();
+        else {
+            LivewireAlert::title('Excel Sheet Error or Check Excel Sheet')->warning()->show();
+        }
+        
         //Log::channel('activity')->info('[ '.tenant('id')." ] [ ".Auth::user()->name.' ] Bulk Upload Not Completed');
         //return back()->with('success', 'User Imported Successfully.');
     }
