@@ -18,7 +18,7 @@ class Template extends Model
 
     protected $table = 'ctms_templates';
 
-    protected $primaryKey = 'product_id';
+    protected $primaryKey = 'template_id';
 
     protected $fillable = [
         'template_code',
