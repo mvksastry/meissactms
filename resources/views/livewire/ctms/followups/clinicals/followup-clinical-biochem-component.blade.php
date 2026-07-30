@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Clinical Investigations
+                  Follow-up Clinical Investigations
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -53,8 +53,8 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">New Patient Clinical Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Controls</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Over</a></li>
+                            <!--li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Controls</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Over</a></li> -->
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">RBI</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">LFT&Elec</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">RFT</a></li>
@@ -64,88 +64,66 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">ME</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_10" data-toggle="tab">UR</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_11" data-toggle="tab">Misc</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_12" data-toggle="tab">Drugs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_12" data-toggle="tab">Meds</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_13" data-toggle="tab">Official</a></li>
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                                <thead>
-                                  <tr>
-                                    <th colspan="3" align="center"></th>
-                                  </tr>
-                                </thead>
-                                <tbody> 
-                                  <tr>
-                                    <td>
-                                      <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
-                                    </td>
-                                    <td>
-                                      <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control" placeholder="In Patient ID">
-                                    </td>
-                                    <td>
-                                      <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="aadhar_id" type="date" value="null" class="form-control" placeholder="Admission Date">
-                                    </td>
-                                  </tr> 
-                                </tbody>
-                              </table>
+                              
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
-                              @include('livewire.ctms.patients.forms.cb-1')
+                            
                             </div>
                             <!-- /.tab-pane -->
-                            @if($entry == "update")
+                            
                               <div class="tab-pane" id="tab_3">
-                                <livewire:ctms.patients.clinicals.blood-routine-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
+                                @include('livewire.ctms.patients.clinicals.blood-routine-component')
                               </div>
                               <!-- /.tab-pane -->
                               <div class="tab-pane" id="tab_4">
-                                <livewire:ctms.patients.clinicals.liver-functions :data_type="$data_type" :patient_uuid="$patient_uuid" />
-                                <livewire:ctms.patients.clinicals.electrolyte-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
+                                @include('livewire.ctms.patients.clinicals.liver-functions')
+                                @include('livewire.ctms.patients.clinicals.electrolyte-component')
                               </div>
                               <!-- /.tab-pane -->
                               <div class="tab-pane" id="tab_5">
-                                <livewire:ctms.patients.clinicals.renal-function-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
-                                <livewire:ctms.patients.clinicals.blood-urea-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
-                                <livewire:ctms.patients.clinicals.creatinine-component :patient_uuid="$patient_uuid" />
+                                @include('livewire.ctms.patients.clinicals.renal-function-component')
+                                @include('livewire.ctms.patients.clinicals.blood-urea-component')
+                                @include('livewire.ctms.patients.clinicals.creatinine-component')
                               </div>
                               <!-- /.tab-pane -->
                               <div class="tab-pane" id="tab_6">
-                                <livewire:ctms.patients.clinicals.blood-sugar-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
-                                <livewire:ctms.patients.clinicals.crp-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
-                                <livewire:ctms.patients.clinicals.il6-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
+                                @include('livewire.ctms.patients.clinicals.blood-sugar-component')
+                                @include('livewire.ctms.patients.clinicals.crp-component')
+                                @include('livewire.ctms.patients.clinicals.il6-component')
                               </div>
                               <!-- /.tab-pane -->
                               <div class="tab-pane" id="tab_7">
-                                <livewire:ctms.patients.clinicals.laboratory-exams :data_type="$data_type" :patient_uuid="$patient_uuid" />                  
+                                @include('livewire.ctms.patients.clinicals.laboratory-exams')
                               </div>
                               <!-- /.tab-pane -->
                               <div class="tab-pane" id="tab_8">
-                                <livewire:ctms.patients.clinicals.chemical-exam-component :data_type="$data_type" :patient_uuid="$patient_uuid" />
+                                @include('livewire.ctms.patients.clinicals.chemical-exam-component')
                               </div> 
                               <!-- /.tab-pane -->     
                               <div class="tab-pane" id="tab_9">
-                                <livewire:ctms.patients.clinicals.microscopic-exams :data_type="$data_type" :patient_uuid="$patient_uuid" />                           
+                                @include('livewire.ctms.patients.clinicals.microscopic-exams')                           
                               </div> 
                               <!-- /.tab-pane -->   
                               <div class="tab-pane" id="tab_10">
-                                <livewire:ctms.patients.clinicals.urine-routine-component :data_type="$data_type" :patient_uuid="$patient_uuid" />                
+                                @include('livewire.ctms.patients.clinicals.urine-routine-component')
                               </div> 
                               <!-- /.tab-pane -->     
                               <div class="tab-pane" id="tab_11">
-                                <livewire:ctms.patients.clinicals.general-summary-component :data_type="$data_type" :patient_uuid="$patient_uuid" />                          
+                                @include('livewire.ctms.patients.clinicals.general-summary-component')
                               </div>  
                               <!-- /.tab-pane -->     
                               <div class="tab-pane" id="tab_12">
-                                <livewire:ctms.patients.clinicals.drug-usage :data_type="$data_type" :patient_uuid="$patient_uuid" />                          
-                              </div> 
-                            @endif
+                                @include('livewire.ctms.patients.clinicals.drug-usage')
+                              </div>                               
+                            
                               <!-- /.tab-pane -->                                                                                                                                                                                    
                               <div class="tab-pane" id="tab_13">
                                 @include('livewire.ctms.end-controls')
@@ -180,3 +158,4 @@
     </section>
 
 <!-- ChartJS -->
+

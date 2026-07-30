@@ -66,10 +66,11 @@ class FollowupModifiedPfirmanns extends Component
         $nPfirmannScore->opd_id =  $input['opd_id'];
         $nPfirmannScore->in_patient_id =  $input['in_patient_id'];
         $nPfirmannScore->admission_date =  $input['admission_date'];
+        $nPfirmannScore->data_type = "follow-up-".$this->data_type;
 
         $nPfirmannScore->modified_pfirman_grade = $input['modified_pfirman_grade'];
 
-        $nPfirmannScore->status = "follow-up-".$this->data_type;
+        $nPfirmannScore->status = "draft";
         $nPfirmannScore->status_date = date('Y-m-d');
 
         $nPfirmannScore->comment_entered_by = $input['comment_entered_by'];

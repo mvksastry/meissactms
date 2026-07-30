@@ -29,7 +29,8 @@ class FollowupClinicalInvestigations extends Component
     public PatientCIForm $form;
 
     //global patient uuid
-    public $patient_uuid, $data_type, $entry="";
+    public $patient_uuid; 
+    public $data_type, $entry="";
 
     public $discharge_report, $discharge_report_file;
 

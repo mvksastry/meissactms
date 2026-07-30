@@ -50,6 +50,8 @@ class BulkImportInventory extends Component
     use Base;
     use WithFileUploads;
 
+    public $refreshFlag = false;
+
     //swal messages
 	public $message, $msgx;
 
@@ -111,8 +113,13 @@ class BulkImportInventory extends Component
             $this->finalizePanel = true;
         }
             */
-        $this->showFinalizationInventoryPanel();
+        //$this->showFinalizationInventoryPanel();
         return view('livewire.inventory.bulk-import-inventory');
+    }
+
+    public function refreshComponent()
+    {
+        $this->refreshFlag = !$this->refreshFlag; // Toggle value
     }
 
     public function triggerRefresh()
@@ -122,12 +129,10 @@ class BulkImportInventory extends Component
 
     public function showFinalizationInventoryPanel()
     {
-        $this->nex = Tempproduct::where('office_review', 'draft')->get();
+        $nex = Tempproduct::where('office_review', 'draft')->get();
         //dd($this->nex);
-        if(count($this->nex) > 0)
+        if(count($nex) > 0)
         {
-            //set form object values
-            //LivewireAlert::title('Temporary Inventory Entries Found...')->warning()->asToast()->show();
             $this->finalizePanel = true;
         }
 
@@ -228,13 +233,19 @@ class BulkImportInventory extends Component
                 //dd($destPath.$fileName); // till here no isssue
 
                 //then import the file into tempproducts db table
-                $this->newEntries = Excel::import(new BulkInventoryImport, $destPath.$fileName);
+                $resx = Excel::import(new BulkInventoryImport, $destPath.$fileName);
+                // Now refresh this component
+                //$this->finalizePanel = true;
+                //$this->nex = Tempproduct::where('office_review', 'draft')->get();
+                //
+                //$this->dispatch('$refresh');
                 $this->showFinalizationInventoryPanel();
                 //$this->nex = Tempproduct::all();
                 //dd($this->newEntries);
-
+                // Tell child datatable to refresh
+                //$this->dispatch('refreshDatatable');
                 //$this->inventoryExcel = null;
-                LivewireAlert::title('Import of New Inventory Successful')->warning()->show();
+                LivewireAlert::title('Import of New Inventory Successful')->success()->show();
                 //Now open panel for finalization of the data entered.
             }
             else {
@@ -255,6 +266,26 @@ class BulkImportInventory extends Component
     public function finalizeBulkInventoryUpload()
     {
         //dd("reached finalization of inventoryupload");
+        $row = Tempproduct::all();
+        foreach($row as $val)
+        {
+            $input = $row->toArray();
+        }
+        foreach($input as $val)
+        {
+            
+            if (array_key_exists('temp_product_id', $val)) {
+                $pkey = $val['temp_product_id'];
+                unset($val['temp_product_id']);
+                unset($val['created_at']);
+                unset($val['updated_at']);
+            }
+            $res = Products::insert($val); //insert to new table
+            $xvl = Tempproduct::where('temp_product_id', $pkey)->delete();
+        }
+        $result = Tempproduct::truncate();
+        $this->dispatch('refreshDatatable');
+        $this->finalizePanel = false;
     }
 
     public function deleteBulkEntries()
@@ -272,11 +303,13 @@ class BulkImportInventory extends Component
 
     public function fnMassDeleteEntries()
     {
-        $result = true;
-        //$result = Tempproducts::truncate();
+        $result = Tempproduct::truncate();
         if($result)
         {
             LivewireAlert::title('All Entries Deleted')->success()->asToast()->show();
+            $this->dispatch('refreshDatatable');
+            $this->finalizePanel = false;
+            //$this->refreshComponent();
         }else{
             LivewireAlert::title('Deletion Failed: Check with admin')->error()->asToast()->show();
         }

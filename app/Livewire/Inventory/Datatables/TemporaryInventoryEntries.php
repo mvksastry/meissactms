@@ -11,9 +11,14 @@ class TemporaryInventoryEntries extends DataTableComponent
 {
     protected $model = Tempproduct::class;
     //protected $model = Products::class;
-
+    protected $listeners = ['refreshDatatable' => '$refresh'];
     public $tempproduct_id, $id, $coafiles = [];
     //public $cleared = [];
+
+    public function datasource(): Builder
+    {
+        return Tempproduct::query()->where('office_review', 'approved');
+    }
 
     public function configure(): void
     {

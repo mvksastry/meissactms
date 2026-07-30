@@ -268,6 +268,7 @@ class FollowupModiqScores extends Component
       $nModqScore->opd_id =  $input['opd_id'];
       $nModqScore->in_patient_id =  $input['in_patient_id'];
       $nModqScore->admission_date =  $input['admission_date'];
+      $nModqScore->data_type = "follow-up-".$this->data_type;
 
       $nModqScore->pain_intensity = $this->pain_intensity;
       $nModqScore->personal_care = $this->personal_care;
@@ -282,7 +283,7 @@ class FollowupModiqScores extends Component
       $nModqScore->total = $this->total;
       $nModqScore->modq_score = $this->mod_score;
 
-      $nModqScore->status = "follow-up-".$this->data_type;
+      $nModqScore->status = "draft";
       $nModqScore->status_date = date('Y-m-d');
 
       $nModqScore->comment_entered_by = $input['comment_entered_by'];

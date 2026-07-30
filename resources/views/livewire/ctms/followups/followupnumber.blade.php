@@ -4,7 +4,13 @@
   <tbody> 
       <tr>
         <td>
-          <label for="customRadio2" class="form-control-label">Select Follow-up</label>
+          <label for="customRadio2" class="form-control-label">Select</label>
+        </td>
+        <td>
+          <div class="custom-control custom-radio">
+            <input wire:model.live="fu_number" class="form-control-input" type="radio" value="emergency" id="funum" name="funum">
+            <label for="customRadio2" class="form-control-label">Emergency</label>
+          </div>
         </td>
         <td>
           <div class="custom-control custom-radio">

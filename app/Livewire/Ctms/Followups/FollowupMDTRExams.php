@@ -67,6 +67,7 @@ class FollowupMDTRExams extends Component
       $newMdtreInfos->opd_id =  $input['opd_id'];
       $newMdtreInfos->in_patient_id =  $input['in_patient_id'];
       $newMdtreInfos->admission_date =  $input['admission_date'];
+      $newMdtreInfos->data_type = "follow-up-".$this->data_type;
 
       $newMdtreInfos->hip_flex_adduction = $input['hip_flex_adduction'];
       $newMdtreInfos->knee_extension = $input['knee_extension'];
@@ -83,7 +84,7 @@ class FollowupMDTRExams extends Component
       $newMdtreInfos->antalgic_gait = $input['antalgic_gait'];
       $newMdtreInfos->list = $input['list'];
 
-      $newMdtreInfos->status = "follow-up-".$this->data_type;
+      $newMdtreInfos->status = "draft";
       $newMdtreInfos->status_date = date('Y-m-d');
 
       $newMdtreInfos->comment_entered_by = $input['comment_entered_by'];

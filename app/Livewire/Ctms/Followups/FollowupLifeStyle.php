@@ -83,6 +83,7 @@ class FollowupLifeStyle extends Component
         $newLSinfo->opd_id = $input['opd_id'];
         $newLSinfo->in_patient_id = $input['in_patient_id'];
         $newLSinfo->admission_date = $input['admission_date'];
+        $newLSinfo->data_type = "follow-up-".$this->data_type;
 
         $newLSinfo->cross_leg_sitting = $input['cross_leg_sitting'];
         $newLSinfo->standing = $input['standing'];
@@ -93,7 +94,7 @@ class FollowupLifeStyle extends Component
         $newLSinfo->ls6 = $input['ls6'];
         $newLSinfo->life_style_description = $input['life_style_description'];
 
-        $newLSinfo->status = "follow-up-".$this->data_type;
+        $newLSinfo->status = "draft";
         $newLSinfo->status_date = date('Y-m-d');
 
         $newLSinfo->comment_entered_by = $input['comment_entered_by'];

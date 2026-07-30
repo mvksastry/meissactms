@@ -99,6 +99,10 @@
                   </div>
               </div>
               @endif
+              <!-- existing data on Follow-ups here -->
+
+              <!-- /existing data on Follow-ups here -->
+              
             @if($patientInfoButtons)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
@@ -181,7 +185,7 @@
     @endif
     
     @if($p3)
-      <livewire:ctms.followups.followup-clinical-investigations :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
+      <livewire:ctms.followups.clinicals.followup-clinical-biochem-component :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
     @endif
 
     @if($p4)

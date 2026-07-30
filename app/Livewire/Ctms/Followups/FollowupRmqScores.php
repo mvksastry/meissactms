@@ -110,9 +110,11 @@ class FollowupRmqScores extends Component
         $nRmqReply->opd_id =  $input['opd_id'];
         $nRmqReply->in_patient_id =  $input['in_patient_id'];
         $nRmqReply->admission_date =  $input['admission_date'];
+        $nRmqReply->data_type = "follow-up-".$this->data_type;
 
         $nRmq_reply->rmq_replies = $input['rmq_replies'];
-        $nRmqReply->status = "follow-up-".$this->data_type;
+        
+        $nRmqReply->status = "draft";
         $nRmqReply->status_date = date('Y-m-d');
 
         $nRmq_reply->comment_entered_by = $input['comment_entered_by'];

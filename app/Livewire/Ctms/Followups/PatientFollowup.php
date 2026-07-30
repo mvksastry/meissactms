@@ -244,6 +244,9 @@ class PatientFollowup extends Component
     //logged user
     public $logged_user;
 
+    //follow-up value array
+    public $fu_array = ['emergency', 1, 2, 3, 4, 5];
+
     public function render()
     {
         $this->entered_by = Auth::user()->name;
@@ -263,13 +266,13 @@ class PatientFollowup extends Component
 
     public function updatedFuNumber()
     {
-        if( intval($this->fu_number) == null || intval($this->fu_number) >= 5 )
+        if(in_array($this->fu_number, $this->fu_array))
         {
-            LivewireAlert::title('Select Followup')->warning()->asToast()->show();
-        }
-        else {
             $this->data_type = $this->fu_number;
             $this->patientInfoButtons = true;
+        }
+        else {
+            LivewireAlert::title('Select Followup')->warning()->asToast()->show();
         }
     }
 
@@ -427,7 +430,6 @@ class PatientFollowup extends Component
     }
 
     //--- UI related code ends here ---//
-
 
 
 

@@ -66,6 +66,7 @@ class FollowupVisualAnalogs extends Component
         $nVAScores->opd_id =  $input['opd_id'];
         $nVAScores->in_patient_id =  $input['in_patient_id'];
         $nVAScores->admission_date =  $input['admission_date'];
+        $nVAScores->data_type = "follow-up-".$this->data_type;
 
         $nVAScores->intensity = $input['intensity'];
         $nVAScores->location = $input['location'];
@@ -76,7 +77,7 @@ class FollowupVisualAnalogs extends Component
         $nVAScores->vas_scale = $input['vas_scale'];
         $nVAScores->pfr_scale = $input['pfr_scale'];
 
-        $nVAScores->status = "follow-up-".$this->data_type;
+        $nVAScores->status = "draft";
         $nVAScores->status_date = date('Y-m-d');
 
         $nVAScores->comment_entered_by = $input['comment_entered_by'];

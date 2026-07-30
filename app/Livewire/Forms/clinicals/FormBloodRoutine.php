@@ -95,7 +95,7 @@ class FormBloodRoutine extends Form
     #[Validate('regex:/^-?\d+(\.\d+)?$/')]
     public $ig_percent = null;
 
-    #[Validate('regex:/^[A-Za-z0-9_]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9.,\-_]+$/')]
     public $observations = null;
 
 //    #[Validate('regex:/^[A-Za-z0-9_]+$/')]
