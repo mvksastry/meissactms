@@ -240,6 +240,8 @@ class EnrollmentDecisionComponent extends Component
 
         if(array_key_exists('enrollment_decision', $filtered))
         {
+            $filtered['status'] = 'current';
+            $filtered['status_date'] = date('Y-m-d');
             $filtered['decision_entered_by'] = Auth::user()->name;
             $filtered['decision_date_entered'] = date('Y-m-d');
             //dd($filtered);

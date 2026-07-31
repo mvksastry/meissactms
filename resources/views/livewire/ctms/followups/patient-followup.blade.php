@@ -39,7 +39,7 @@
             @endif
             <!-- /.col-12 -->
             <div class="row">
-              @if(count($draftPatients) > 0)
+              @if(count($enrolledPatients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
                       <tr>
@@ -52,7 +52,7 @@
                       </tr>
                   </thead>
                   <tbody> 
-                    @foreach($draftPatients as $row)
+                    @foreach($enrolledPatients as $row)
                       <tr>
                         <td>
                             {{ $row->center_id }}
@@ -80,7 +80,7 @@
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
                       <tr>
-                      <th>No Information to display</th>
+                      <th>No Enrolled Patients found or Information to display</th>
                       </tr>
                   </thead>
                 </table>

@@ -7,6 +7,8 @@ use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 //models
+use App\Models\Ctms\Decisions\Enrollment;
+
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\LifeStyle;
 use App\Models\Ctms\ClinicalData;
@@ -209,7 +211,7 @@ class PatientFollowup extends Component
     public $rmq_replies;
 
     //common to all
-    public $draftPatients;
+    public $enrolledPatients;
 
     public $cardTittle;
     public $date_created;
@@ -251,8 +253,12 @@ class PatientFollowup extends Component
     {
         $this->entered_by = Auth::user()->name;
         $this->logged_user = Auth::user()->name;
-        $this->patient_data_status = Patient::where('status','draft')->get();
-        $this->draftPatients = Patient::where('status','draft')->get();
+        //first get all active patient_uuid from enrollment table
+        $enrolled = Enrollment::where('status', 'current')->pluck('patient_uuid')->toArray();
+        //now get patient objects parent table, ideall not necessary to as we need only 
+        //patient uuid to process. the patient object give opd_id etc..
+        $this->enrolledPatients = Patient::whereIn('patient_uuid', $enrolled)->get();
+        //dd($enrolled, $this->enrolledPatients);
         return view('livewire.ctms.followups.patient-followup');
     }
 
