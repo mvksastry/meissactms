@@ -290,9 +290,6 @@ class BulkImportInventory extends Component
 
     public function deleteBulkEntries()
     {
-        //set form object values
-        //$this->dispatch('swal:confirm', $this->msgx);
-        
         LivewireAlert::title('Proceed with this Irreversible action?')
         ->asConfirm()
         ->onConfirm('fnMassDeleteEntries')

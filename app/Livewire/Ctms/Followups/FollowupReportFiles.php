@@ -181,7 +181,7 @@ class FollowupReportFiles extends Component
     {
         $this->input['file_path'] = $this->def_file_path.$this->patient_uuid.'/clinicals/valid/followups';
         $this->input['patient_uuid'] = $this->patient_uuid;
-        $this->input['report_category'] = 'follow-up-'.$this->data_type;
+        $this->input['report_category'] = $this->data_type;
         $this->input['tags'] = null;
         $this->input['report_status'] = 'valid';
         $this->input['uploaded_by'] = Auth::user()->id;

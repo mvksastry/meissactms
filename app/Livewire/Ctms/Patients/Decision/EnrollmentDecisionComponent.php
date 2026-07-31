@@ -242,20 +242,16 @@ class EnrollmentDecisionComponent extends Component
         {
             $filtered['decision_entered_by'] = Auth::user()->name;
             $filtered['decision_date_entered'] = date('Y-m-d');
-            dd($filtered);
+            //dd($filtered);
             $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
             LivewireAlert::title("Decision Update")->success()->show();
         }else {
             LivewireAlert::title("Decision NOT Selected")->warning()->show();
         }
-
-        //dd("reached 5 tab", $this->input);
     }
 
     public function fnSaveEnrollmentIDs()
     {
-        //query here whether or not decision taken and it is yes.
-        //dd("reached 6 tab");
        if($this->enrObj->enrollment_decision === "yes")
         {
             $this->input = $this->form->all();

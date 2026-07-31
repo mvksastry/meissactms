@@ -51,7 +51,7 @@ class PatientEnrollmentProcess extends Component
 
     public function render()
     {
-        $this->confirmed_patients = Patient::where('status','draft')->get();
+        $this->confirmed_patients = Patient::where('status','sealed')->get();
         $this->entered_by = Auth::user()->name;
         //dd($this->confirmedPatients);
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Enrollment Decision home page');
