@@ -23,6 +23,8 @@ use App\Models\Ctms\VAScore;
 use App\Models\Ctms\ModqScore;
 use App\Models\Ctms\RMQReply;
 
+use App\Models\Ctms\Decisions\Enrollment;
+
 use App\Models\Ctms\Clinicals\BloodRoutine;
 use App\Models\Ctms\Clinicals\BloodSugar;
 use App\Models\Ctms\Clinicals\BloodUrea;
@@ -111,6 +113,34 @@ trait TDbEntries
         Log::channel('patient')->info($msg);
         unset($obj); // destroy reference
       }
+
+      //Make an entry in the enrollment table itself.
+        $enPat = new Enrollment();
+
+        $enPat->patient_uuid = $uuid;
+        $enPat->opd_id = $input['opd_id'];
+
+        try {
+            
+            $resx = $enPat->save();    
+            $tableName = $enPat->getTable();  
+            if ($resx) { 
+                $msg = 'New Patient Model [' . $tableName . '] saved successfully!';
+            } else {
+                $msg = 'Error: New Patient Model [' . $tableName . '] could not be saved';
+            }
+
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database error for new patient model [' . $tableName . '] while saving : ' . $e->getMessage();
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected error for new patient model [' . $tableName . '] while saving : ' . $e->getMessage();
+        }
+        Log::channel('patient')->info($msg);
+        unset($enPat); // destroy reference
+
+
 
       /*
       //dd($uuid, $input);

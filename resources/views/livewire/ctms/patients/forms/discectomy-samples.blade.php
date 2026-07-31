@@ -8,19 +8,19 @@
       <tr>        
         <td>
           <label>Sample Description</label>
-          <input wire:model.defer="form.sample_description" type="text" class="form-control" placeholder="Sample Description">
+          <input wire:model.defer="form.discectomy_sample_desc" type="text" class="form-control" placeholder="Sample Description">
         </td>
       </tr>
       <tr>
         <td>
           <label>Number of Samples</label>
-          <input wire:model.defer="form.number_of_samples" id="number_of_samples" type="text" class="form-control" placeholder="Number of Samples">
+          <input wire:model.defer="form.discectomy_sample_number" id="number_of_samples" type="text" class="form-control" placeholder="Number of Samples">
         </td>
       </tr>    
       <tr>
         <td>
           <label>Comments</label>
-          <input wire:model.defer="form.comments" type="text" class="form-control" placeholder="Comments">
+          <input wire:model.defer="form.discectomy_sample_comments" type="text" class="form-control" placeholder="Comments">
         </td>
       </tr>  
       <tr>

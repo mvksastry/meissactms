@@ -1,71 +1,81 @@
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
       <tr>
-        <th colspan="6" align="center">QC Controls</th>
+        <th colspan="6" align="center">QC Comments</th>
       </tr>
     </thead>
     <tbody> 
       <tr>
         <td>
-          <label>Unique ID Number</label>
-          <input wire:model.defer="form.unique_id_number" type="text" class="form-control" placeholder="Unique ID Number">
-        </td>
-        <td>
-          <label>MFR Code</label>
-          <input wire:model.defer="form.mfr_code" type="text"  class="form-control" placeholder="MFR Code">
-        </td>
-        <td>
-          <label>Sample ID</label>
-          <input wire:model.defer="form.sample_id" type="text"  class="form-control" placeholder="Sample ID">
+          <label>Report 1</label>
+          <input wire:model.defer="form_x.qc_report_1" type="file" class="form-control" placeholder="Unique ID Number">
+          @error('form_x.qc_report_1') <span class="text-danger error">{{ $message }}</span> @enderror 
         </td>
       </tr> 
       <tr>
-        <td colspan="3">
-          <label>Other Infos 1</label>
-          <input wire:model.defer="form.other_infos_1" type="text" class="form-control" placeholder="Other Infos 1" >
+        <td>
+          <label>Report 2</label>
+          <input wire:model.defer="form_x.qc_report_2" type="file"  class="form-control" placeholder="MFR Code">
+          @error('form_x.qc_report_2') <span class="text-danger error">{{ $message }}</span> @enderror 
+        </td>
+      </tr> 
+      <tr>
+        <td>
+          <label>Report 3</label>
+          <input wire:model.defer="form_x.qc_report_3" type="file"  class="form-control" placeholder="Sample ID">
+          @error('form_x.qc_report_3') <span class="text-danger error">{{ $message }}</span> @enderror 
+        </td>
+      </tr> 
+      <tr>
+        <td>
+          <label>Certificate of Analysis</label>
+          <input wire:model.defer="form_x.qc_coa" id="other_infos_2" type="file" class="form-control" placeholder="Other Infos 2" >
+          @error('form_x.qc_coa') <span class="text-danger error">{{ $message }}</span> @enderror 
         </td>
       </tr>
       <tr>
-        <td colspan="3">
-          <label>Other Infos 2</label>
-          <input wire:model.defer="form.other_infos_2" id="other_infos_2" type="text" class="form-control" placeholder="Other Infos 2" >
+        <td>
+          <label>Other Info</label>
+          <input wire:model.defer="form.qc_other_infos" type="text" class="form-control" placeholder="Other Infos 1" >
         </td>
-      </tr>                                    
+      </tr>
+      <tr>
+        <td>
+          <label>Comment</label>
+          <input wire:model.defer="form.qc_enrollment_comment" id="other_infos_2" type="text" class="form-control" placeholder="Other Infos 2" >
+        </td>
+      </tr>       
+      <tr>
+        <td>
+          <button wire:click="fnSaveEnrolQCData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD QC REPORT</button>
+        </td>
+      </tr>                             
     </tbody>
   </table>
 
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
       <tr>
-        <th colspan="6" align="center">QA Controls</th>
+        <th colspan="6" align="center">QA Comments</th>
       </tr>
     </thead>
     <tbody> 
       <tr>
-        <td>
-          <label>Unique ID Number</label>
-          <input wire:model.defer="form.unique_id_number" type="text" class="form-control" placeholder="Unique ID Number">
+        <td colspan="3">
+          <label>Other Infos</label>
+          <input wire:model.defer="form.qa_other_infos" type="text" class="form-control" placeholder="Other Infos 1" >
         </td>
+      </tr>    
+      <tr>
         <td>
-          <label>MFR Code</label>
-          <input wire:model.defer="form.mfr_code" type="text"  class="form-control" placeholder="MFR Code">
-        </td>
-        <td>
-          <label>Sample ID</label>
-          <input wire:model.defer="form.sample_id" type="text"  class="form-control" placeholder="Sample ID">
+          <label>Comments</label>
+          <input wire:model.defer="form.qa_enrollment_comment" type="text" class="form-control" placeholder="Unique ID Number">
         </td>
       </tr> 
       <tr>
-        <td colspan="3">
-          <label>Other Infos 1</label>
-          <input wire:model.defer="form.other_infos_1" type="text" class="form-control" placeholder="Other Infos 1" >
+        <td>
+          <button wire:click="fnSaveEnrolQAData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD QA REPORT</button>
         </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <label>Other Infos 2</label>
-          <input wire:model.defer="form.other_infos_2" id="other_infos_2" type="text" class="form-control" placeholder="Other Infos 2" >
-        </td>
-      </tr>                                    
+      </tr>                                
     </tbody>
   </table>

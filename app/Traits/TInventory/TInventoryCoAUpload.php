@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\TInventory;
+namespace App\Traits\TInventory;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

@@ -43,7 +43,7 @@ use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
 use App\Livewire\Ctms\Patients\PatientInformation;
 use App\Livewire\Ctms\Followups\PatientFollowup;
-use App\Livewire\Ctms\Patients\Decision\Enrollment;
+use App\Livewire\Ctms\Patients\Decision\PatientEnrollmentProcess;
 
 // Livewire - Administration related
 use App\Livewire\Ctms\Patients\Clinicals\DrugCategories;
@@ -143,7 +143,7 @@ Route::middleware('auth')->group(function () {
     Route::get('manage-patients', ManagePatients::class);
     Route::get('edit-patients', EditPatients::class)->name('edit-patients');
     Route::get('patient-information', PatientInformation::class);
-    Route::get('home-enrollment', Enrollment::class);
+    Route::get('home-enrollment', PatientEnrollmentProcess::class);
     Route::get('patient-followup', PatientFollowup::class);
     Route::get('drug-categories', DrugCategories::class);
 

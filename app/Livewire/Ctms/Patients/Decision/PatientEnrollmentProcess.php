@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 //models
 use App\Models\Ctms\Patient;
-
+use App\Models\Ctms\Decisions\Enrollment;
 //forms
 
 //traits
@@ -22,7 +22,7 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //Logging
 use Illuminate\Support\Facades\Log;
 
-class Enrollment extends Component
+class PatientEnrollmentProcess extends Component
 {
     use Base;
     use WithFileUploads;
@@ -34,7 +34,7 @@ class Enrollment extends Component
     public $showPrimaryInfo = true;
 
     //new paitent global uuid
-    public $patient_uuid, $entry="update", $confirmed_patients, $entered_by;
+    public $patient_uuid, $opd_id, $entry="update", $confirmed_patients, $entered_by;
 
     //form variables
 
@@ -55,19 +55,19 @@ class Enrollment extends Component
         $this->entered_by = Auth::user()->name;
         //dd($this->confirmedPatients);
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Enrollment Decision home page');
-        return view('livewire.ctms.patients.decision.enrollment');
+        return view('livewire.ctms.patients.decision.patient-enrollment-process');
     }
 
     public function selectedPatient($patient_uuid)
     {
         $this->patient_uuid = $patient_uuid;
-        $this->setPatientDetails($this->patient_uuid);
+        $objPatient = Patient::where('patient_uuid', $patient_uuid)->first();
+        $this->setPanels();
        // dd('selectedPatient', $this->patient_uuid);
     }
 
-    public function setPatientDetails($patient_uuid)
-    {
-        $this->patient_uuid = $patient_uuid;
+    public function setPanels()
+    {        
         $this->resetAllPanels();
         $this->p1 = true;
     }
@@ -80,4 +80,19 @@ class Enrollment extends Component
         $this->p4 = false;
         $this->p5 = false;
     }
+
+    /*
+    private function enrollmentInsertQuery($patient_uuid, $opd_id)
+    {
+        $result = Enrollment::where('patient_uuid', $patient_uuid)->first();
+
+        if($result)
+        {
+            return $result;
+        }else {
+            $result = Enrollment::insert(['patient_uuid'=>$patient_uuid, "opd_id"=>$opd_id]);
+            return $result;
+        }
+    }
+    */
 }
