@@ -7,33 +7,41 @@
     <tbody> 
       <tr>
         <td>
-          OPD ID: {{ $enrObj->opd_id }} ; IPD ID: {{ $enrObj->discectomy_ipd_id }}; Admission Date: {{ $enrObj->discectomy_admission_date  }}
+          OPD ID: {{ $enrObj->opd_id }} </br>
+          IPD ID: {{ $enrObj->discectomy_ipd_id }} </br>
+          Admission Date: {{ $enrObj->discectomy_admission_date  }}
         </td>
       </tr>
 
       <tr>
         <td>
-          Discectomy Date: {{ $enrObj->discectomy_date }}; Surgenos: {{ $enrObj->surgeons_names  }}; Other: {{ $enrObj->discectomy_other_info  }}
-          Comment: {{ $enrObj->discectomy_comments }}; Entered By: {{ $enrObj->discectomy_comments }}; Date: {{ $enrObj->disc_info_date_entered  }}
+          Discectomy Date: {{ $enrObj->discectomy_date }} </br>
+          Surgenos: {{ $enrObj->surgeons_names  }} </br>
+          Other: {{ $enrObj->discectomy_other_info  }} </br>
+          Comment: {{ $enrObj->discectomy_comments }} </br>
+          Entered By: {{ $enrObj->discectomy_comments }} </br>
+          Date: {{ $enrObj->disc_info_date_entered  }}
         </td>
       </tr>
 
       <tr>
         <td>
-          Discectomy Date: {{ $enrObj->discectomy_sample_desc }}; Surgenos: {{ $enrObj->discectomy_sample_number  }}; Other: {{ $enrObj->discectomy_sample_comments  }}
-          Comment: {{ $enrObj->discectomy_sample_comments }}; 
-          Entered By: {{ $enrObj->discectomy_sample_info_entered_by }}; Date: {{ $enrObj->discectomy_sample_info_date_entered  }}
+          Discectomy Sample Description: {{ $enrObj->discectomy_sample_desc }}</br>
+          Number of Samples: {{ $enrObj->discectomy_sample_number  }} </br>
+          Comment: {{ $enrObj->discectomy_sample_comments }}</br>
+          Entered By: {{ $enrObj->discectomy_sample_info_entered_by }} </br>
+          Date: {{ $enrObj->discectomy_sample_info_date_entered  }}
         </td>
       </tr>
 
       <tr>
         <td>
-          QC Report 1: {{ $enrObj->qc_report1_filename }} 
-          QC Report 2: {{ $enrObj->qc_report2_filename }}
-          QC Report 3: {{ $enrObj->qc_report3_filename }}
-          QC CoA: {{ $enrObj->qc_coa_filename }}
-          Entered By: {{ $enrObj->qc_infos_entered_by }}; 
-          Date: {{ $enrObj->qc_infos_date_entered  }}
+          QC Report 1: {{ $enrObj->qc_report1_filename }} </br>
+          QC Report 2: {{ $enrObj->qc_report2_filename }} </br>
+          QC Report 3: {{ $enrObj->qc_report3_filename }} </br>
+          QC CoA: {{ $enrObj->qc_coa_filename }} </br>
+          Entered By: {{ $enrObj->qc_infos_entered_by }} </br>
+          Date: {{ $enrObj->qc_infos_date_entered  }} 
 
         </td>
       </tr>
@@ -41,9 +49,9 @@
 
       <tr>
         <td>
-          QA Comment: {{ $enrObj->qa_enrollment_comment }} 
-          QA Other Info: {{ $enrObj->qa_other_infos }} 
-          Entered By: {{ $enrObj->qa_infos_entered_by }}; 
+          QA Comment: {{ $enrObj->qa_enrollment_comment }} </br>
+          QA Other Info: {{ $enrObj->qa_other_infos }} </br>
+          Entered By: {{ $enrObj->qa_infos_entered_by }} </br>
           Date: {{ $enrObj->qa_infos_date_entered  }}
         </td>
       </tr>
@@ -51,9 +59,9 @@
 
       <tr>
         <td>
-          Decision Comment: {{ $enrObj->decision_comment }} 
-          Decision: {{ $enrObj->enrollment_decision }} 
-          Entered By: {{ $enrObj->decision_entered_by }}; 
+          Decision Comment: {{ $enrObj->decision_comment }} </br>
+          Decision: {{ $enrObj->enrollment_decision }} </br>
+          Entered By: {{ $enrObj->decision_entered_by }} </br>
           Date: {{ $enrObj->decision_date_entered  }}
         </td>
       </tr>
@@ -61,30 +69,30 @@
 
       <tr>
         <td>
-          <label>Patient Unique ID:</label> {{ $enrObj->patient_unique_id }}; 
-          BMR ID: {{ $enrObj->linked_bmr_id }} ;
-          Sample ID: {{ $enrObj->linked_sample_id }} ;
-          Entered By: {{ $enrObj->decision_entered_by }};
-          Other Info: {{ $enrObj->other_infos }} ;
-          Comment: {{ $enrObj->administrative_comment }};
-          Date: {{ $enrObj->decision_date_entered  }};
+          <label>Patient Unique ID:</label> {{ $enrObj->patient_unique_id }} </br>
+          BMR ID: {{ $enrObj->linked_bmr_id }} </br>
+          Sample ID: {{ $enrObj->linked_sample_id }} </br>
+          Entered By: {{ $enrObj->decision_entered_by }} </br>
+          Other Info: {{ $enrObj->other_infos }} </br>
+          Comment: {{ $enrObj->administrative_comment }} </br>
+          Date: {{ $enrObj->decision_date_entered  }}
         </td>
       </tr>
 
 
       <tr>
         <td>
-          Transplant Date: {{ $enrObj->transplantation_date }}; 
-          Transplant Info: {{ $enrObj->transplantation_info }} ;
-          Comments: {{ $enrObj->transplantation_comments }} ;
-          Entered By: {{ $enrObj->transplant_info_entered_by }};
-          Date: {{ $enrObj->transplant_info_date_entered  }};
+          Transplant Date: {{ $enrObj->transplantation_date }}</br>
+          Transplant Info: {{ $enrObj->transplantation_info }} </br>
+          Comments: {{ $enrObj->transplantation_comments }} </br>
+          Entered By: {{ $enrObj->transplant_info_entered_by }}</br>
+          Date: {{ $enrObj->transplant_info_date_entered  }}
         </td>
       </tr>
       <tr>
         <td>
-          Recorded Create On: {{ $enrObj->created_at }}; 
-          Record Last Updated On: {{ $enrObj->updated_at }} ;
+          Recorded Created On: {{ $enrObj->created_at }}</br>
+          Record Last Updated On: {{ $enrObj->updated_at }} </br>
         </td>
       </tr>
 

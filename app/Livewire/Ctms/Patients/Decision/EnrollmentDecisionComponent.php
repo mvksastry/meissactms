@@ -248,7 +248,7 @@ class EnrollmentDecisionComponent extends Component
     {
         //query here whether or not decision taken and it is yes.
         //dd("reached 6 tab");
-       if($this->enrObj === "yes")
+       if($this->enrObj->enrollment_decision === "yes")
         {
             $this->input = $this->form->all();
             $filtered = $this->filterInputNulls($this->input);
@@ -263,7 +263,7 @@ class EnrollmentDecisionComponent extends Component
     {
         //query here whether or not decision taken and it is yes.
         //dd("reached 7 tab");
-       if($this->enrObj === "yes")
+       if($this->enrObj->enrollment_decision === "yes")
         {
             $this->input = $this->form->all();
             $filtered = $this->filterInputNulls($this->input);
