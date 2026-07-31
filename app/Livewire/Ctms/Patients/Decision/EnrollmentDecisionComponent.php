@@ -234,13 +234,21 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrollmentDecision()
     {
+        
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
-        $filtered['decision_entered_by'] = Auth::user()->name;
-        $filtered['decision_date_entered'] = date('Y-m-d');
-        //dd($filtered);
-        $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-        LivewireAlert::title("Decision Update")->success()->show();
+
+        if(array_key_exists('enrollment_decision', $filtered))
+        {
+            $filtered['decision_entered_by'] = Auth::user()->name;
+            $filtered['decision_date_entered'] = date('Y-m-d');
+            dd($filtered);
+            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            LivewireAlert::title("Decision Update")->success()->show();
+        }else {
+            LivewireAlert::title("Decision NOT Selected")->warning()->show();
+        }
+
         //dd("reached 5 tab", $this->input);
     }
 
