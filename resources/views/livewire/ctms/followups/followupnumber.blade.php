@@ -8,7 +8,7 @@
         </td>
         <td>
           <div class="custom-control custom-radio">
-            <input wire:model.live="fu_number" class="form-control-input" type="radio" value="emergency" id="funum" name="funum">
+            <input wire:model.live="fu_number" class="form-control-input" type="radio" value="unscheduled" id="funum" name="funum">
             <label for="customRadio2" class="form-control-label">Unscheduled</label>
           </div>
         </td>

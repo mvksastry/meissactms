@@ -245,7 +245,7 @@ class PatientFollowup extends Component
     public $logged_user;
 
     //follow-up value array
-    public $fu_array = ['emergency', 1, 2, 3, 4, 5];
+    public $fu_array = ['unscheduled', 1, 2, 3, 4, 5];
 
     public function render()
     {
@@ -261,14 +261,19 @@ class PatientFollowup extends Component
         //dd($id);
         $this->patient_uuid = $id;
         $this->fuselection = true;
-        LivewireAlert::title('Select Followup')->info()->asToast()->show();
+        LivewireAlert::title('Now Select Data Type')->info()->asToast()->show();
     }
 
     public function updatedFuNumber()
     {
         if(in_array($this->fu_number, $this->fu_array))
         {
-            $this->data_type = $this->fu_number;
+            if($this->fu_number === "unscheduled")
+            {
+                $this->data_type = $this->fu_number;
+            }else {
+                $this->data_type = "follow-up-".$this->fu_number;
+            }
             $this->patientInfoButtons = true;
         }
         else {

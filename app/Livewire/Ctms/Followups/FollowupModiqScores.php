@@ -268,7 +268,7 @@ class FollowupModiqScores extends Component
       $nModqScore->opd_id =  $input['opd_id'];
       $nModqScore->in_patient_id =  $input['in_patient_id'];
       $nModqScore->admission_date =  $input['admission_date'];
-      $nModqScore->data_type = "follow-up-".$this->data_type;
+      $nModqScore->data_type = $this->data_type;
 
       $nModqScore->pain_intensity = $this->pain_intensity;
       $nModqScore->personal_care = $this->personal_care;

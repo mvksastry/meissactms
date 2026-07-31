@@ -130,7 +130,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function setPatientDataType()
     {
         $this->input['patient_uuid'] = $this->patient_uuid;
-        $this->input['data_type'] = "follow-up-".$this->data_type;
+        $this->input['data_type'] = $this->data_type;
         //$this->input['entered_by'] = Auth::user()->name;
         //$this->input['entry_date'] = date('Y-m-d');
 
@@ -175,19 +175,25 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_a->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = 
-        $resx = BloodRoutine::where('patient_uuid', $this->patient_uuid)
+
+        if($this->input['data_type'] === "unscheduled")
+        {
+            BloodRoutine::firstOrCreate($this->input);
+            LivewireAlert::title('Blood Routine [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = BloodRoutine::where('patient_uuid', $this->patient_uuid)
                                 ->where('data_type', $this->input['data_type'])
                                 ->first();
-        if($resx)
-        {
-            BloodRoutine::where('patient_uuid', $this->patient_uuid)
-                            ->where('data_type', $this->input['data_type'])
-                            ->update($this->input);
-        }else{
-            BloodRoutine::firstOrCreate($this->input);
+            if($resx)
+            {
+                BloodRoutine::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                BloodRoutine::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Blood Routine [Follow-up type] Data Updated')->success()->asToast()->show();
         }
-        LivewireAlert::title('Blood Routine Data Updated')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Blood Routine Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
     }
@@ -198,11 +204,28 @@ class FollowupClinicalBiochemComponent extends Component
         $this->msg_panel = false;
         $this->input = $this->form_b->all();
         $this->setPatientDataType();
+
+        if($this->input['data_type'] === "unscheduled")
+        {
+            BloodSugar::firstOrCreate($this->input);
+            LivewireAlert::title('Blood Sugar [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = BloodSugar::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                BloodSugar::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                BloodSugar::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Blood Sugar [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         //dd($this->input); // 
-        $result = BloodSugar::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Blood Sugar Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Blood Sugar Data Updated')->success()->asToast()->show();
     }
 
     public function fnBloodUrea()
@@ -211,10 +234,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_c->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = BloodUrea::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            BloodUrea::firstOrCreate($this->input);
+            LivewireAlert::title('Blood Urea [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = BloodUrea::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                BloodUrea::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                BloodUrea::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Blood Urea [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Blood Urea Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Blood Urea Data Updated')->success()->asToast()->show();
     }
 
     public function fnChemExams()
@@ -223,10 +262,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_d->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = ChemicalExam::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            ChemicalExam::firstOrCreate($this->input);
+            LivewireAlert::title('Chemical Exams [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = ChemicalExam::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                ChemicalExam::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                ChemicalExam::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Chemical Exams [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Chem Exam Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Chemical Exams Data Updated')->success()->asToast()->show();
     }
 
     public function fnCreatinine()
@@ -235,10 +290,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_e->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = Creatinine::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            Creatinine::firstOrCreate($this->input);
+            LivewireAlert::title('Creatinine [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = Creatinine::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                Creatinine::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                Creatinine::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Creatinine [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Creatinine Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Creatinine Data Updated')->success()->asToast()->show();
     }
 
     public function fnCRP()
@@ -247,10 +318,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_f->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = Crp::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            Crp::firstOrCreate($this->input);
+            LivewireAlert::title('Crp [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = Crp::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                Crp::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                Crp::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Crp [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] CRP Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('CRP Data Updated')->success()->asToast()->show();
     }
 
     public function fnElectrolytes()
@@ -258,11 +345,27 @@ class FollowupClinicalBiochemComponent extends Component
         // dd("saving Electrolytes");
          $this->input = $this->form_g->all();
          $this->setPatientDataType();
-        //dd($this->input); // 
-        $result = Electrolytes::where('patient_uuid', $this->uuid)->update($this->input);
+        //dd($this->input); //
+        if($this->input['data_type'] === "unscheduled")
+        {
+            Electrolytes::firstOrCreate($this->input);
+            LivewireAlert::title('Electrolytes [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = Electrolytes::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                Electrolytes::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                Electrolytes::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Electrolytes [Follow-up type] Data Updated')->success()->asToast()->show();
+        } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Electrolytes Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Electrolyte Data Updated')->success()->asToast()->show();
     }
 
     public function fnGeneralSummary()
@@ -271,10 +374,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_h->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = GeneralSummary::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            GeneralSummary::firstOrCreate($this->input);
+            LivewireAlert::title('GeneralSummary [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = GeneralSummary::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                GeneralSummary::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                GeneralSummary::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('GeneralSummary [Follow-up type] Data Updated')->success()->asToast()->show();
+        } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Gen Summary Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Gen Summary Data Updated')->success()->asToast()->show();
     }
 
     public function fnIl6()
@@ -283,10 +402,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_i->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = Il6::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            Il6::firstOrCreate($this->input);
+            LivewireAlert::title('Il6 [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = Il6::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                Il6::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                Il6::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Il6 [Follow-up type] Data Updated')->success()->asToast()->show();
+        } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] IL-6 Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Il6 Data Updated')->success()->asToast()->show();
     }
 
     public function fnLabExams()
@@ -295,10 +430,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_j->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = LaboratoryExam::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            LaboratoryExam::firstOrCreate($this->input);
+            LivewireAlert::title('Lab Exam [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = LaboratoryExam::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                LaboratoryExam::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                LaboratoryExam::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Lab Exam [Follow-up type] Data Updated')->success()->asToast()->show();
+        } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Lab Exam Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Lab Exam Data Updated')->success()->asToast()->show();
     }
 
     public function fnLiverFunction()
@@ -307,10 +458,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_k->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = LiverFunction::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            LiverFunction::firstOrCreate($this->input);
+            LivewireAlert::title('LFT Data [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = LiverFunction::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                LiverFunction::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                LiverFunction::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('LFT Data [Follow-up type] Data Updated')->success()->asToast()->show();
+        } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Liv function Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('LFT Data Updated')->success()->asToast()->show();
     }
 
     public function fnMicroscopicExam()
@@ -319,10 +486,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_l->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = MicroscopicExam::where('patient_uuid', $this->uuid)->update($this->input);
+        if($this->input['data_type'] === "unscheduled")
+        {
+            MicroscopicExam::firstOrCreate($this->input);
+            LivewireAlert::title('Microscopi Exam [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = MicroscopicExam::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                MicroscopicExam::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                MicroscopicExam::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Microscopi Exam [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Microscopic Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Microscopi Exam Data Updated')->success()->asToast()->show();
     }
 
     public function fnRenalFunction()
@@ -331,10 +514,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_m->all();
         $this->setPatientDataType();
         //dd($this->input); //
-        $result = RenalFunction::where('patient_uuid', $this->uuid)->update($this->input); 
+        if($this->input['data_type'] === "unscheduled")
+        {
+            RenalFunction::firstOrCreate($this->input);
+            LivewireAlert::title('RFT Data [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = RenalFunction::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                RenalFunction::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                RenalFunction::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('RFT Data [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Renal Fn Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('RFT Data Updated')->success()->asToast()->show();
     }
 
     public function fnUrineRoutine()
@@ -343,11 +542,26 @@ class FollowupClinicalBiochemComponent extends Component
         $this->input = $this->form_n->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-        $result = UrineRoutine::where('patient_uuid', $this->uuid)->update($this->input); 
-
+        if($this->input['data_type'] === "unscheduled")
+        {
+            UrineRoutine::firstOrCreate($this->input);
+            LivewireAlert::title('Urine Routine [Unscheduled Type] Data Updated')->success()->asToast()->show();
+        }else {
+            $resx = UrineRoutine::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->first();
+            if($resx)
+            {
+                UrineRoutine::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->input['data_type'])
+                                ->update($this->input);
+            }else{
+                UrineRoutine::firstOrCreate($this->input);
+            }
+            LivewireAlert::title('Urine Routine [Follow-up type] Data Updated')->success()->asToast()->show();
+        }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Urine Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        LivewireAlert::title('Urine Routine Data Updated')->success()->asToast()->show();
     }
 
 

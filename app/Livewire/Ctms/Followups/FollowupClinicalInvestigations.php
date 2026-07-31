@@ -105,7 +105,7 @@ class FollowupClinicalInvestigations extends Component
         $newCIInfo->procalcitonin = $input['procalcitonin'];
         $newCIInfo->laboratory_report_file = $input['laboratory_report_file'];
 
-        $newCIInfo->status = "follow-up-".$this->data_type;
+        $newCIInfo->status = $this->data_type;
         $newCIInfo->status_date = date('Y-m-d');
 
         $newCIInfo->comment_entered_by = $input['comment_entered_by'];

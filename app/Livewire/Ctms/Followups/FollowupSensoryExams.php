@@ -53,7 +53,7 @@ class FollowupSensoryExams extends Component
         $newSEInfo->opd_id =  $input['opd_id'];
         $newSEInfo->in_patient_id =  $input['in_patient_id'];
         $newSEInfo->admission_date =  $input['admission_date'];
-        $newSEInfo->data_type = "follow-up-".$this->data_type;
+        $newSEInfo->data_type = $this->data_type;
 
         $newSEInfo->lL1 = $input['lL1'];
         $newSEInfo->lL2 = $input['lL2'];

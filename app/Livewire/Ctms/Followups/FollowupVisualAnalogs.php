@@ -66,7 +66,7 @@ class FollowupVisualAnalogs extends Component
         $nVAScores->opd_id =  $input['opd_id'];
         $nVAScores->in_patient_id =  $input['in_patient_id'];
         $nVAScores->admission_date =  $input['admission_date'];
-        $nVAScores->data_type = "follow-up-".$this->data_type;
+        $nVAScores->data_type = $this->data_type;
 
         $nVAScores->intensity = $input['intensity'];
         $nVAScores->location = $input['location'];

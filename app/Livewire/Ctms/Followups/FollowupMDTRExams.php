@@ -67,7 +67,7 @@ class FollowupMDTRExams extends Component
       $newMdtreInfos->opd_id =  $input['opd_id'];
       $newMdtreInfos->in_patient_id =  $input['in_patient_id'];
       $newMdtreInfos->admission_date =  $input['admission_date'];
-      $newMdtreInfos->data_type = "follow-up-".$this->data_type;
+      $newMdtreInfos->data_type = $this->data_type;
 
       $newMdtreInfos->hip_flex_adduction = $input['hip_flex_adduction'];
       $newMdtreInfos->knee_extension = $input['knee_extension'];
