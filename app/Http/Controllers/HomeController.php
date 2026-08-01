@@ -23,6 +23,7 @@ use App\Models\User;
 //Traits
 use App\Traits\Base;
 use App\Traits\TCtms\TDashboard;
+use App\Traits\TCtms\TCroDashboard;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,7 @@ class HomeController extends Controller
 
     use Base;
     use TDashboard;
+    use TCroDashboard;
 
     /**
      * Show the application dashboard.
@@ -172,18 +174,14 @@ class HomeController extends Controller
         if( Auth::user()->hasAnyRole(['cro']) )
 		{
             $chats = $this->getAllUnseenChats();
-            $all_centers = $this->getAllCenters();
-            $all_clinics = $this->getAllClinics();
-            $pwds = $this->getPatientDataDraftStatus();
-            $pwas = $this->getPatientDataActiveStatus();
+            $enPats = $this->getAllEnrolledActivePatientCount();
+            $exPats = $this->getAllEnrolledExitedPatientCount();
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.cro.home')->with([
-                'all_centers' => $all_centers,
-                'all_clinics' => $all_clinics,
-                'pwds' => $pwds,
-                'pwas' => $pwas,
-                'chats' => $chats
+                'chats' => $chats,
+                'enPats' => $enPats,
+                'exPats' => $exPats
             ]);
         }
         Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: No Role Home Dashboard Displayed');

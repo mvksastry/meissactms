@@ -45,6 +45,10 @@ use App\Livewire\Ctms\Patients\PatientInformation;
 use App\Livewire\Ctms\Followups\PatientFollowup;
 use App\Livewire\Ctms\Patients\Decision\PatientEnrollmentProcess;
 
+//Livewire - CRO related routes
+use App\Livewire\Cro\CroPatientDashboard;
+use App\Livewire\Cro\CroPatientInformation;
+
 // Livewire - Administration related
 use App\Livewire\Ctms\Patients\Clinicals\DrugCategories;
 
@@ -147,8 +151,9 @@ Route::middleware('auth')->group(function () {
     Route::get('patient-followup', PatientFollowup::class);
     Route::get('drug-categories', DrugCategories::class);
 
-    // ------- Livewire: Components All Roles------- //
-
+    // ------- Livewire: Components CRO Roles------- //
+    Route::get('cro-patient-dashboard', CroPatientDashboard::class);
+    Route::get('cro-patient-information', CroPatientInformation::class);
 
     // ------- Livewire: Components All Roles------- //
     Route::get('adverse-events', PatientAdverseEvents::class);

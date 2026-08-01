@@ -2,14 +2,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>XX</h3>
+                <h3>{{ $enPats }}</h3>
 
                 <p>Active</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="/centers" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -17,9 +17,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ count($pwds) }}<sup style="font-size: 20px"></sup></h3>
+                <h3>{{ $exPats }}</h3>
 
-                <p>Patients</p>
+                <p>Exited Patients</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -39,7 +39,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="/clinics" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

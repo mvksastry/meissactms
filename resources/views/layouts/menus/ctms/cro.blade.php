@@ -58,14 +58,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/patients" class="nav-link">
+                <a href="/cro-patient-dashboard" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Patient Dashboard</p>
                 </a>
               </li>
               @hasrole('cro')
               <li class="nav-item">
-                <a href="/patient-information" class="nav-link">
+                <a href="/cro-patient-information" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Patient Details</p>
                 </a>
