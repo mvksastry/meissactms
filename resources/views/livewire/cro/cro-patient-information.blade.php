@@ -68,62 +68,6 @@
                             <td>
                                 <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
                             </td>
-                            <td>
-                                <button wire:click="getPatientTimeline('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Timeline</button>
-                            </td>
-
-                            @hasanyrole(['junior_resident','clinical_dataentry'])
-                              @if( $row->status == 'draft')
-                                <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient Data</button>
-                                </td>
-                              @else
-                                  Nothing to Clear
-                              @endif
-                            @endhasanyrole
-
-                            @hasrole('senior_resident')
-                               @if( $row->status == 'draft')
-                                <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Confirm Patient Data</button>
-                                </td>
-                              @else
-                                <td>
-                                  Nothing to Clear
-                                </td>
-                              @endif
-
-                            @endhasanyrole
-
-                            @hasrole('clinical_manager')
-                              @if( $row->status == 'verified')
-                                <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient Data</button>
-                                </td>
-                              @else
-                                <td>
-                                  Nothing to Approve
-                                </td>
-                              @endif
-                            @endhasanyrole
-
-                            @hasrole('ctms_incharge')
-                              @if($row->status == 'approved')
-                                <td>
-                                    <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient Data</button>
-                                </td>
-                              @else
-                                <td>
-                                  Nothing to Seal
-                                </td>
-                              @endif
-                            @endhasanyrole
-
-                            @hasrole('director')
-                              <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Post Notes</button>
-                              </td>
-                            @endhasanyrole
                         </tr>
                     @endforeach
                   </tbody>
@@ -140,6 +84,20 @@
                   </table>
                 @endif
             </div>
+            <!-- /.col-12 -->
+            <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
+              @if($data_category_selection)
+                <div class="card-header d-flex p-0">
+                  <h3 class="card-title p-3">Select Category</h3>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div wire:ignore class="tab-content">
+                      @include('livewire.ctms.followups.followupnumber')
+                    </div>
+                </div>
+              @endif
+              <!-- existing data on Follow-ups here -->
             <!-- /.row -->
             <!--Divider-->
             <hr class="border-b-2 border-warning my-2 mx-2">
@@ -218,7 +176,7 @@
     @endif
 
     @if($p2)
-        @include('livewire.ctms.patients.infos.patient-life-style')
+        @include('livewire.ctms.datatables.life-styles-data-table')
     @endif
     
     @if($p3)
@@ -226,35 +184,31 @@
     @endif
 
     @if($p4)
-        @include('livewire.ctms.patients.infos.sensory-examination')
+        @include('livewire.ctms.datatables.sensory-exams-data-table')
     @endif
 
     @if($p5)
-        @include('livewire.ctms.patients.infos.patient-mdtre')
+        @include('livewire.ctms.datatables.mdtre-data-table')
     @endif
 
     @if($p6)
-        @include('livewire.ctms.patients.infos.patient-radiography')
+        @include('livewire.ctms.datatables.patient-reports-data-table')
     @endif
 
     @if($p7)
-        @include('livewire.ctms.patients.infos.patient-modified-pfirmann-grades')
+        @include('livewire.ctms.datatables.pfirmann-grade-data-table')
     @endif
 
     @if($p8)
-        @include('livewire.ctms.patients.infos.patient-visual-analog-score')
+        @include('livewire.ctms.datatables.va-score-data-table')
     @endif
 
     @if($p9) 
-        @include('livewire.ctms.patients.infos.patient-modiq-score')
+        @include('livewire.ctms.datatables.modq-score-data-table')
     @endif
     
     @if($p10)
-        @include('livewire.ctms.patients.infos.patient-rmq-score')
-    @endif
-
-    @if($PatientStatusPanel)
-      <livewire:patients.patient-status-update :patient_uuid="$patient_uuid" key="{{ now() }}" />
+        @include('livewire.ctms.datatables.rmq-replies-data-table')
     @endif
 
     <!-- /.content -->

@@ -179,10 +179,8 @@
                               </table>
                             </div>
                             <!-- /.tab-pane -->
-
                             <!-- /.tab-content -->
                           </div>
-                          
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -195,9 +193,6 @@
                 </div>
               </div><!-- /.card-body -->
 
-
-
-              
             </div>
           </section>
         </div> 

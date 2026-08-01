@@ -200,6 +200,7 @@ class CroPatientInformation extends Component
     public $p8 = false;
     public $p9 = false;
     public $p10 = false;
+    public $data_category_selection = false;
 
     //active patient panel
 
@@ -226,7 +227,13 @@ class CroPatientInformation extends Component
     public $current_files;
 
     public $search_result = null;   
+    public $fu_number;
+    public $fuselection = false;
+    public $data_type;
 
+    //follow-up value array
+    //public $fu_array = ['unscheduled', 1, 2, 3, 4, 5];
+       
     public function render()
     {
         if( Auth::user()->hasAnyRole(['cro']) )
@@ -244,11 +251,35 @@ class CroPatientInformation extends Component
     public function selectedPatient($id)
     {
         $this->patient_uuid = $id;
-        //dd($this->patient_uuid);
         $this->patientInfoButtons = true;
         $this->TimelinePatient = false;
         $this->PatientStatusPanel = false;
+        //dd($this->patient_uuid);
     }
+
+    /*
+    public function updatedFuNumber()
+    {
+        $this->patientInfoButtons = false;
+
+        if(in_array($this->fu_number, $this->fu_array))
+        {
+            if($this->fu_number === "unscheduled")
+            {
+                $this->data_type = $this->fu_number;
+            }else {
+                $this->data_type = "follow-up-".$this->fu_number;
+            }
+            $this->patientInfoButtons = true;
+            $this->TimelinePatient = false;
+            $this->PatientStatusPanel = false;
+            
+        }
+        else {
+            LivewireAlert::title('Select Followup')->warning()->asToast()->show();
+        }
+    }
+    */
 
     public function getPatientTimeline($id)
     {
@@ -289,9 +320,21 @@ class CroPatientInformation extends Component
 
     public function fnLifeStyleData($id)
     {
-        $this->ls_info = LifeStyle::where('patient_uuid', $id)->first();
         $this->cardTittle = "Life Style Observations";
-        $this->date_created = $this->ls_info->created_at;
+
+        /*
+        if($this->data_type === $this->fu_array[0])
+        {
+            $this->ls_info = LifeStyle::where('patient_uuid', $id)
+                                ->where('data_type',$this->data_type)
+                                ->get();            
+        }else {
+            $this->ls_info = LifeStyle::where('patient_uuid', $id)
+                                ->where('data_type',$this->data_type)
+                                ->first();
+            //$this->date_created = $this->ls_info->created_at;
+        }
+        */
         //dd($this->patientPrimaryInfo);
         //close all other open forms 
         $this->fnResetAllVisiblePanels();

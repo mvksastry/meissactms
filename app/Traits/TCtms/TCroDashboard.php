@@ -22,35 +22,35 @@ use Illuminate\Support\Facades\Log;
 
 trait TCroDashboard
 {
-    public function getAllEnrolledActivePatientCount()
-    {
-      $enrolled = Enrollment::where('status', 'current')->pluck('patient_uuid')->toArray();
-      //now get patient objects parent table, ideall not necessary to as we need only 
-      //patient uuid to process. the patient object give opd_id etc..
-      return Patient::whereIn('patient_uuid', $enrolled)->get()->count();
-    }
-
-    public function getAllEnrolledExitedPatientCount()
-    {
-      $enrolled = Enrollment::where('status', 'exited')->pluck('patient_uuid')->toArray();
-      //now get patient objects parent table, ideall not necessary to as we need only 
-      //patient uuid to process. the patient object give opd_id etc..
-      return Patient::whereIn('patient_uuid', $enrolled)->get()->count();
-    }
-
     public function getAllEnrolledActivePatients()
-    {
-      $enrolled = Enrollment::where('status', 'current')->pluck('patient_uuid')->toArray();
+    { //below line for testing only, to be removed in production
+      $enrolled = Enrollment::where('status', null)->pluck('patient_uuid')->toArray();
+      //below line is the correct one to use in production
+      //$enrolled = Enrollment::where('status', 'current')->pluck('patient_uuid')->toArray();
+
       //now get patient objects parent table, ideall not necessary to as we need only 
       //patient uuid to process. the patient object give opd_id etc..
       return Patient::whereIn('patient_uuid', $enrolled)->get();
     }
+
+    public function getAllEnrolledActivePatientCount()
+    {
+      return count($this->getAllEnrolledActivePatients());
+    }
+
 
     public function getAllEnrolledExitedPatients()
     {
       $enrolled = Enrollment::where('status', 'exited')->pluck('patient_uuid')->toArray();
-      //now get patient objects parent table, ideall not necessary to as we need only 
-      //patient uuid to process. the patient object give opd_id etc..
       return Patient::whereIn('patient_uuid', $enrolled)->get();
     }
+
+    public function getAllEnrolledExitedPatientCount()
+    {
+      return count($this->getAllEnrolledExitedPatients());
+    }
+
+
+
+
 }
