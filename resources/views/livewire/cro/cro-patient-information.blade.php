@@ -180,7 +180,7 @@
     @endif
     
     @if($p3)
-        @include('livewire.ctms.patients.infos.patient-clinical-investigations')
+        @include('livewire.ctms.datatables.clinical-tests-component')
     @endif
 
     @if($p4)
