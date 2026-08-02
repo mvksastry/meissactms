@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
+use App\Ctms\Decisions\Enrollment;
+
 class Patient extends Model
 {
     //
@@ -131,4 +133,9 @@ class Patient extends Model
         'created_at',
         'updated_at',
     ];
+
+	public function enrolled()
+    {
+      return $this->hasOne(Enrollment::class, 'patient_uuid', 'patient_uuid');
+    }
 }

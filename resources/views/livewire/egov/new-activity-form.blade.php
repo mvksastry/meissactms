@@ -32,12 +32,12 @@
           @enderror
       </td>
       <td colspan="1">
-        <label>Patient (Right Now inactive)</label>
+        <label>Link To Patient</label>
           <select wire:model="form.patient_id" class="form-control">
           <option value="-1">Select</option>
-           
-            <option value="0" selected>Open</option>
-          
+           @foreach($patients as $key => $value)
+            <option value="{{ $key }}" selected>{{ $value }}</option>
+          @endforeach
           </select>
           @error('form.patient_id')
               <span class="text-danger">{{ $message }}</span>

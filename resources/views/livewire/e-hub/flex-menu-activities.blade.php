@@ -1,12 +1,12 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/add-inventory-category">
-      <i class="far fa-envelope"></i>
+      <a href="javascript:void(0)">
+      <i wire:click="fnCreateNewChondrocyteMfr()" class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">
-      <span class="info-box-text">ADD ACTIVITY</span>
+      <span class="info-box-text">ChonCyte BMRs</span>
       <span class="info-box-number">Current: </span>
     </div>
     <!-- /.info-box-content -->
@@ -17,13 +17,13 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="#">
+      <a href="javascript:void(0)">
       <i class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">
-      <span class="info-box-text">...</span>
-      <span class="info-box-number">1,410</span>
+      <span class="info-box-text">AuPL-Medium BMRs</span>
+      <span class="info-box-number">Current: </span>
     </div>
     <!-- /.info-box-content -->
   </div>
@@ -34,7 +34,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-success">
-      <a href="#">
+      <a href="javascript:void(0)">
         <i class="far fa-flag"></i>
       </a>
     </span>

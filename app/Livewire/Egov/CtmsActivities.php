@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 //models
-use App\Models\Ctms\Activities;
+use App\Models\Ctms\Activity;
 use App\Models\User;
 
 //Livewire Alerts
@@ -26,8 +26,20 @@ class CtmsActivities extends Component
 
     public function render()
     {
-        $this->activities = Activities::with('incharge')->with('leader')->where('status','active')->get();
+        $this->activities = Activity::with('incharge')->with('leader')->where('status','active')->get();
 
         return view('livewire.egov.ctms-activities');
+    }
+
+    public function selectedActivityId($activityId)
+    {
+        $this->message = "Selected Activity ID: ".$activityId;
+        LivewireAlert::title('Activity Selected')->info()->asToast()->show();
+    }
+
+    public function fnEndActivity()
+    {
+        $this->message = "Ending Activity";
+        LivewireAlert::title('Ending Activity')->info()->asToast()->show();
     }
 }

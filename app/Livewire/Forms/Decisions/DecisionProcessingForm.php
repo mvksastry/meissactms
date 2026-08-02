@@ -77,7 +77,7 @@ class DecisionProcessingForm extends Form
     #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
     public $patient_unique_id = null;
     #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
-    public $linked_bmr_id = null;
+    public $mbr_id = null;
     #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
     public $linked_sample_id = null;
     #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]

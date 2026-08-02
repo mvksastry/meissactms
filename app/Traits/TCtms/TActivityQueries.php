@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 //use Illuminate\Support\Facades\Storage;
 
 use App\Models\Ctms\ActivityAssent;
-use App\Models\Ctms\Activities;
+use App\Models\Ctms\Activity;
 
 //use File;
 use App\Traits\Base;
@@ -19,12 +19,12 @@ trait TActivityQueries
 	
 	public function allCtmsActivities()
 	{
-		return Activities::all();
+		return Activity::all();
 	}
 	
 	public function ctmsActivityById($id)
 	{
-		return Activities::where('ctms_activity_id', $id)->first();
+		return Activity::where('ctms_activity_id', $id)->first();
 	}
 	
 	public function allCtmsActivityUsers()

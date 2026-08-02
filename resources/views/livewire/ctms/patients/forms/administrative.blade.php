@@ -8,15 +8,15 @@
       <tr>
         <td>
           <label>Unique ID Number</label>
-          <input wire:model.defer="form.unique_id_number" type="text" class="form-control" placeholder="Unique ID Number">
+          <input wire:model.defer="form.patient_unique_id" type="text" class="form-control" placeholder="Unique ID Number">
         </td>
         <td>
-          <label>Linked BMR Code</label>
-          <input wire:model.defer="form.bmr_code" type="text"  class="form-control" placeholder="MFR Code">
+          <label>Linked Master Batch Record</label>
+          <input wire:model.defer="form.mbr_id" type="text"  class="form-control" placeholder="MBR Code">
         </td>
         <td>
           <label>Sample ID</label>
-          <input wire:model.defer="form.sample_ids" type="text"  class="form-control" placeholder="Sample ID">
+          <input wire:model.defer="form.linked_sample_id" type="text"  class="form-control" placeholder="Sample ID">
         </td>
       </tr> 
       <tr>
@@ -28,7 +28,7 @@
       <tr>
         <td colspan="3">
           <label>Comment</label>
-          <input wire:model.defer="form.admin_comment" id="other_infos_2" type="text" class="form-control" placeholder="Other Infos 2" >
+          <input wire:model.defer="form.administrative_comment" id="other_infos_2" type="text" class="form-control" placeholder="Other Infos 2" >
         </td>
       </tr>        
       <tr>

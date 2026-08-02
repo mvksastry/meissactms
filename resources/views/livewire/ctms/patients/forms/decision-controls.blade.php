@@ -70,7 +70,7 @@
       <tr>
         <td>
           <label>Patient Unique ID:</label> {{ $enrObj->patient_unique_id }} </br>
-          BMR ID: {{ $enrObj->linked_bmr_id }} </br>
+          BMR ID: {{ $enrObj->mbr_id }} </br>
           Sample ID: {{ $enrObj->linked_sample_id }} </br>
           Entered By: {{ $enrObj->decision_entered_by }} </br>
           Other Info: {{ $enrObj->other_infos }} </br>

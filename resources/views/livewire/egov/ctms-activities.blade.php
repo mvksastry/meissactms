@@ -59,9 +59,11 @@
                                       <th>InCharge</th>
                                       <th>Leader</th>
                                       <th>Code</th>
-                                      <th>Desc</th>
+                                      <th>Description</th>
                                       <th>Status /</br> Date</th>
+                                      <th>Start Date / </br> End Date</th>
                                       <th>Budget</th>
+                                      <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody> 
@@ -83,7 +85,13 @@
                                           {{ ucfirst($row->status) }} </br> {{ date('d-m-Y', strtotime($row->status_date)) }}
                                       </td>
                                       <td>
-                                          <button wire:click="selectedPatient('{{ $row->ctms_activity_id}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Edit</button>
+                                          {{ date('d-m-Y', strtotime($row->start_date)) }} </br> {{ date('d-m-Y', strtotime($row->end_date)) }}
+                                      </td>
+                                      <td>
+                                          {{ number_format($row->budget, 2) }}
+                                      </td>
+                                      <td>
+                                          <button wire:click="selectedActivityId('{{ $row->ctms_activity_id}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Edit</button>
                                       </td>
                                     </tr>
                                   @endforeach

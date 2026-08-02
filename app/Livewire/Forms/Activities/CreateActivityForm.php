@@ -15,7 +15,7 @@ class CreateActivityForm extends Form
     public $leader_id;
 
     #[Validate('sometimes|nullable|numeric')]
-    public $patient_id;
+    public $patient_uuid;
 
     #[Validate('required|alpha')]
     public $code;

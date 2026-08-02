@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 //models
-use App\Models\Ctms\Activities;
+use App\Models\Ctms\Activity;
+use App\Models\Ctms\Patient;
 use App\Models\User;
 
 //Traits
@@ -26,7 +27,6 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use App\Livewire\Forms\Activities\CreateActivityForm;
 
 
-
 class CreateNewActivity extends Component
 {
     //form bindings
@@ -38,12 +38,12 @@ class CreateNewActivity extends Component
     public $viewCreateActivityForm = false;
 
     //form variables
-    public $allActivities = [], $users;
+    public $allActivities = [], $users, $patients;
 
     public function render()
     {
         $this->users = User::all();
-
+        $this->patients = Patient::pluck('name','patient_uuid')->toArray();
         return view('livewire.egov.create-new-activity');
     }
 
@@ -58,7 +58,11 @@ class CreateNewActivity extends Component
         $input['status'] = 'active';
         $input['status_date'] = date('Y-m-d');
 
-        $result = Activities::create($input);
+        //before creating entry, check whether patient_id has value enrollment status yes
+        //if yes, make entry of enrollment id in the activity table.
+
+        //
+        $result = Activity::create($input);
 
         if($result)
         {

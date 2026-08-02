@@ -10,7 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 use App\Models\User;
 
-class Activities extends Model
+class Activity extends Model
 {
     //
     use HasFactory;
@@ -24,7 +24,8 @@ class Activities extends Model
         'uuid',
         'incharge_id',
         'leader_id',
-        'patient_id',
+        'patient_uuid', //which is good ? Patient id or Enrollment id, enrollment Id is better?
+        'enrollment_id',
         'name',
         'description',
         'start_date',

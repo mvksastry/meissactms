@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 use App\Models\User;
+use App\Models\Ctms\Patietn;
 
 class Enrollment extends Model
 {
@@ -67,7 +68,7 @@ class Enrollment extends Model
         'decision_date_entered',
 
         'patient_unique_id',
-        'linked_bmr_id',
+        'mbr_id',
         'linked_sample_id',
         'other_infos',
         'administrative_comment',
@@ -79,6 +80,9 @@ class Enrollment extends Model
         'transplant_info_date_entered',
     ];
 
-
+	public function patient()
+    {
+      return $this->hasOne(Patient::class, 'patient_uuid', 'patient_uuid');
+    }
 
 }

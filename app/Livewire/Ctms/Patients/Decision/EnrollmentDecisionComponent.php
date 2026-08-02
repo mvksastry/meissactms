@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\Decisions\Enrollment;
 use App\Models\Ctms\Decisions\EnrollmentFiles;
+use App\Models\Common\Todo;
 
 //forms
 use App\Livewire\Forms\Decisions\DecisionProcessingForm;
@@ -259,6 +260,15 @@ class EnrollmentDecisionComponent extends Component
             $this->input = $this->form->all();
             $filtered = $this->filterInputNulls($this->input);
             $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+
+            //now we have create a ctms_activity entry? here??
+            //when en enrollment id created, it be made visible to the respective teams???
+            //best is to make an entry in todo list for team members.
+            $newTodo = new Todo();
+            $newTodo->user_id = Auth::user()->id;
+            $newTodo->message = "New Patient Enrollment Done, Create MBR and other records";
+            $newTodo->save();
+
         }else{
             LivewireAlert::title("Patient NOT Enrolled")->warning()->show();
         }

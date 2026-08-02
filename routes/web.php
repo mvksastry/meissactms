@@ -15,12 +15,11 @@ use App\Http\Controllers\Documents\DocumentsController;
 use App\Http\Controllers\Documents\CategoriesController;
 use App\Http\Controllers\Documents\DocreviewController;
 
+//--- App/Controllers/Ctms folder ----------------------//
 use App\Http\Controllers\Ctms\CentersController;
 use App\Http\Controllers\Ctms\ClinicsController;
-
 use App\Http\Controllers\Ctms\PatientsController;
-use App\Http\Controllers\Ctms\EnrollmentsController;
-use App\Http\Controllers\Ctms\HealthInformationController;
+
 
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\RolesController;
@@ -125,13 +124,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('categories', CategoriesController::class);
     Route::resource('docsreview', DocreviewController::class);
 
-
     Route::resource('centers', CentersController::class);
     Route::resource('clinics', ClinicsController::class);
     Route::resource('patients', PatientsController::class);
-    Route::resource('enrollments', EnrollmentsController::class);
-    Route::resource('health-information', HealthInformationController::class);
-
+    
 
     // ------- Livewire: Components All Roles------- //
     Route::get('ctms-core-activities', CtmsActivities::class);

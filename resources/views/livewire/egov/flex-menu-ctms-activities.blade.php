@@ -19,8 +19,8 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="/close_activity">
-      <i class="far fa-envelope"></i>
+      <a href="#">
+      <i wire:click="fnEndActivity()" class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">
@@ -37,12 +37,12 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-success">
-      <a href="/extend-activity">
+      <a href="#">
         <i class="far fa-flag"></i>
       </a>
     </span>
     <div class="info-box-content">
-      <span class="info-box-text">EXTEND ACTIVITY</span>
+      <span class="info-box-text">ARCHIVES</span>
       <span class="info-box-number">410</span>
     </div>
     <!-- /.info-box-content -->
