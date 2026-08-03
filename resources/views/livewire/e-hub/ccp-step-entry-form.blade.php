@@ -18,26 +18,26 @@
   </thead>
   <tbody> 		
     <tr>
-      <td> Issue Date: {{ $this->amps_steps->issue_date ?? 'N/A' }}</td>
+      <td> Issue Date: {{ $this->ccps_steps->issue_date ?? 'N/A' }}</td>
     
-      <td> Prepared By: {{ $this->amps_steps->prepared_by ?? 'N/A' }}</td>
+      <td> Prepared By: {{ $this->ccps_steps->prepared_by ?? 'N/A' }}</td>
     
-      <td> Reviewed By: {{ $this->amps_steps->reviewed_by ?? 'N/A' }}</td>
+      <td> Reviewed By: {{ $this->ccps_steps->reviewed_by ?? 'N/A' }}</td>
     
-      <td> Version No: {{ $this->amps_steps->version_no ?? 'N/A' }}</td> 
+      <td> Version No: {{ $this->ccps_steps->version_no ?? 'N/A' }}</td> 
     </tr>
     <tr>
-      <td> Amendment No: {{ $this->amps_steps->amendment_no ?? 'N/A' }}</td>
+      <td> Amendment No: {{ $this->ccps_steps->amendment_no ?? 'N/A' }}</td>
     
-      <td> Amendment Date: {{ $this->amps_steps->amendement_date ?? 'N/A' }}</td>
+      <td> Amendment Date: {{ $this->ccps_steps->amendement_date ?? 'N/A' }}</td>
     
-      <td> Created At: {{ $this->amps_steps->created_at ?? 'N/A' }}</td>
+      <td> Created At: {{ $this->ccps_steps->created_at ?? 'N/A' }}</td>
     
-      <td> Updated At: {{ $this->amps_steps->updated_at ?? 'N/A' }}</td> 
+      <td> Updated At: {{ $this->ccps_steps->updated_at ?? 'N/A' }}</td> 
     </tr>
 
     <tr>
-      <td class="bg-warning" colspan="4"> Step {{ $this->amps_steps->aupl_medium_step_id ?? 'N/A' }}: {{ $this->amps_steps->description ?? 'N/A' }}</td>
+      <td class="bg-warning" colspan="4"> Step {{ $this->ccps_steps->bpr_chondrocyte_step_id ?? 'N/A' }}: {{ $this->ccps_steps->description ?? 'N/A' }}</td>
     </tr>
 
     <tr>
@@ -121,7 +121,7 @@
     </tr>           
     <tr>
       <td>
-        <button wire:click="fnCreateAuplMediaProductionStepRecord()" class="btn btn-success text-white font-normal mt-3 rounded">ENTER STEP DATA</button>
+        <button wire:click="fnCreateChondrocyteProductionStepRecord()" class="btn btn-success text-white font-normal mt-3 rounded">ENTER STEP DATA</button>
       </td>
     </tr>
   </tbody>

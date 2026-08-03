@@ -50,33 +50,44 @@
                       <div class="chart tab-pane active" id="revenue-chart" style="position: relative;">
                         <div class="p-1">
                           <div class="table-responsive" id="revenue-chart2" style="position: relative;">
-
+                            @if(count($ccps) > 0  )
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
                                     <th> ID </th>
-                                    <th> Assigned </br> By / Date </th>
+                                    <th> Date Assigned </th>
                                     <th> Description </th>
                                     <th> Status </th>
                                     <th> Start Date / </br> End Date </th>
                                     <th> Created On / </br> Updated On </th>
                                     <th> MBR Id </th>
-                                    <th> AuPL Media Id</th>
-                                    <th> Chond Cyte </br> Prod ID </th>
                                     <th> Actions </th>
                                   </tr>
                                 </thead>
                                 <tbody> 		
-
+                                  @foreach($ccps as $ccp)
+                                    <tr>
+                                      <td>{{ $ccp->auplmed_production_id }}</td>
+                                      <td>{{ $ccp->assigned_date }}</td>
+                                      <td>{{ $ccp->ctmsinfo->description ?? 'N/A' }}</td>
+                                      <td>{{ $ccp->status }}</td>
+                                      <td>{{ $ccp->ctmsinfo->start_date }} </br> {{ $ccp->ctmsinfo->end_date }}</td>
+                                      <td>{{ date('d-m-Y', strtotime($ccp->created_at)) }} </br> {{ date('d-m-Y', strtotime($ccp->updated_at))   }}</td>
+                                      <td>{{ $ccp->ctmsinfo->mbr_id ?? 'N/A' }}</td>
+                                      <td>
+                                        <button wire:click="fnOpenProductionForm('{{ $ccp->chondcyte_production_id }}')" class="btn btn-info text-white font-normal mt-3 rounded">ENTER</button>
+                                      </td>
+                                    </tr>
+                                  @endforeach
                                 </tbody>
                               </table>
-                    
+                            @else
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   Either No Enrollment or No Information to Display
                                 </thead>
                               </table>
-                        
+                            @endif
                             </br>
                           </div>
                         </div>
@@ -84,7 +95,14 @@
                         <hr class="border-b-2 my-1 mx-1">
                         <!--Divider-->
                         <div class="p-1">      
-
+                          @if($productionForm)
+                            @php
+                              $res = json_decode($this->selectedCcps->completed_stages, true);
+                              //dd($res);
+                            @endphp
+                            @include('livewire.e-hub.ccp-steps-completed-table')
+                            @include('livewire.e-hub.ccp-step-entry-form')
+                          @endif
                         </div>
                       </div>
                     </div>
