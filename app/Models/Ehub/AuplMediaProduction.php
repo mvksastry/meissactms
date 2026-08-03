@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
+use App\Models\Ctms\Activity;
+use App\Models\User;
+
 class AuplMediaProduction extends Model
 {
     use HasFactory;
@@ -30,4 +33,14 @@ class AuplMediaProduction extends Model
         'status_date',
         'incharge_id',
     ];
+
+    public function assigned()
+    {
+      return $this->hasOne(User::class, 'id', 'assigned_by');
+    }
+
+    public function ctmsinfo()
+    {
+      return $this->hasOne(Activity::class, 'ctms_activity_id', 'ctms_activity_id');
+    }
 }

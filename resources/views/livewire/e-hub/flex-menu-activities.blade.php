@@ -1,8 +1,8 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="javascript:void(0)">
-      <i wire:click="fnCreateNewChondrocyteMfr()" class="far fa-envelope"></i>
+      <a href="/chondrocyte-production">
+      <i class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">
@@ -17,7 +17,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="javascript:void(0)">
+      <a href="/aupl-media-production">
       <i class="far fa-envelope"></i>
       </a>
     </span>

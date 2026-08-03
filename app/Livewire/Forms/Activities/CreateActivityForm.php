@@ -14,8 +14,8 @@ class CreateActivityForm extends Form
     #[Validate('required|numeric')]
     public $leader_id;
 
-    #[Validate('sometimes|nullable|numeric')]
-    public $patient_uuid;
+   #[Validate('sometimes|nullable|regex:/^[A-Za-z0-9\-]+$/')]
+   public $patient_uuid;
 
     #[Validate('required|alpha')]
     public $code;
@@ -49,5 +49,8 @@ class CreateActivityForm extends Form
 
     #[Validate('nullable|string|regex:/^[A-Za-z0-9-,_.\/ ]+$/')]
     public $notes;
+
+
+
 
 }

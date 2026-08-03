@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 use App\Models\User;
+use App\Models\Ctms\Decisions\Enrollment;
 
 class Activity extends Model
 {
@@ -25,7 +26,7 @@ class Activity extends Model
         'incharge_id',
         'leader_id',
         'patient_uuid', //which is good ? Patient id or Enrollment id, enrollment Id is better?
-        'enrollment_id',
+        'enrollment_id', // Foreign Key to enrollment table
         'name',
         'description',
         'start_date',
@@ -46,6 +47,10 @@ class Activity extends Model
         'status_date',
 
         'notes',
+
+        'mbr_id', // Foreign Key -- link to enrollment table where first time mbr_id created Foreign Key
+        'chondcyte_production_id',  // Foreign Key -- the mbr_id associated chondrocyte production bmr_id this Foreign Key
+        'auplmed_production_id', // Foreign Key -- the mbr_id associated aupl media production id Foreign Key
 
         'comment_entered_by',
         'entered_by',
@@ -71,5 +76,10 @@ class Activity extends Model
     public function leader()
 	{
 		return $this->hasOne(User::class, 'id', 'leader_id');
+	}
+
+    public function enrolled()
+	{
+		return $this->hasOne(Enrollment::class, 'enrollment_id', 'enrollment_id');
 	}
 }

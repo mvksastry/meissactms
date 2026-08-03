@@ -61,6 +61,9 @@ use App\Livewire\Ctms\Patients\PatientAdverseEvents;
 use App\Livewire\EHub\EhubHome;
 use App\Livewire\EHub\ProductionHome;
 use App\Livewire\EHub\ActivitiesHome;
+use App\Livewire\EHub\BmrChondrocyteProduction;
+use App\Livewire\EHub\BmrAuplMeidaProduction;
+
 
 //-- Livewire: Inventory, Samples and Reagents --//   
 use App\Livewire\Inventory\AddInventoryCategory;
@@ -159,6 +162,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/ehub-home',              App\Livewire\EHub\EhubHome::class);
     Route::get('/production-hub',         App\Livewire\EHub\ProductionHub::class);
     Route::get('/activities-home',        App\Livewire\EHub\ActivitiesHome::class);
+    Route::get('/chondrocyte-production', App\Livewire\EHub\BmrChondrocyteProduction::class);
+    Route::get('/aupl-media-production',  App\Livewire\EHub\BmrAuplMediaProduction::class);
 
     // ------- Livewire: Components All Roles------- //
     Route::get('/add-inventory-category', App\Livewire\Inventory\AddInventoryCategory::class);

@@ -33,7 +33,7 @@
       </td>
       <td colspan="1">
         <label>Link To Patient</label>
-          <select wire:model="form.patient_id" class="form-control">
+          <select wire:model.live="form.patient_uuid" class="form-control">
           <option value="-1">Select</option>
            @foreach($patients as $key => $value)
             <option value="{{ $key }}" selected>{{ $value }}</option>
@@ -58,7 +58,13 @@
           @enderror
       </td>
     </tr>
-    
+    @if($enrolmsg)
+    <tr>
+      <td>
+        <label>Patien with Id {{ $patient_uuid }} is Enrolled</label>
+      </td>
+    </tr>
+    @endif
     <tr>
       <td colspan="4"> 
         <label>Activity Information</label>
