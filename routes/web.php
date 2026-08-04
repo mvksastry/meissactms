@@ -63,6 +63,7 @@ use App\Livewire\EHub\ProductionHome;
 use App\Livewire\EHub\ActivitiesHome;
 use App\Livewire\EHub\BmrChondrocyteProduction;
 use App\Livewire\EHub\BmrAuplMeidaProduction;
+use App\Livewire\EHub\PassageUpdates;
 
 
 //-- Livewire: Inventory, Samples and Reagents --//   
@@ -164,6 +165,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/activities-home',        App\Livewire\EHub\ActivitiesHome::class);
     Route::get('/chondrocyte-production', App\Livewire\EHub\BmrChondrocyteProduction::class);
     Route::get('/aupl-media-production',  App\Livewire\EHub\BmrAuplMediaProduction::class);
+    Route::get('/passage-updates',         App\Livewire\EHub\PassageUpdates::class);
 
     // ------- Livewire: Components All Roles------- //
     Route::get('/add-inventory-category', App\Livewire\Inventory\AddInventoryCategory::class);

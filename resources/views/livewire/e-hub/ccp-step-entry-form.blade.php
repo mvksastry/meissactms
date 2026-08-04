@@ -98,7 +98,9 @@
 
   </tbody>
 </table>
-
+@if($showPassageForm)
+  @include('livewire.e-hub.cell-passages')
+@endif
 <table id="userIndex2" class="table table-sm table-bordered table-hover">
   <thead>
       <tr>
@@ -106,6 +108,15 @@
       </tr>
   </thead>
   <tbody> 		
+    <tr>
+      <td>                         
+        <div class="form-check">
+          <button wire:click="fnOpenPassageForm()" 
+          class="btn btn-success text-white font-normal mt-3 rounded">ENTER PASSAGE INFO</button>
+          
+        </div>
+      </td>
+    </tr>
     <tr>
       <td>                         
         <div class="form-check">

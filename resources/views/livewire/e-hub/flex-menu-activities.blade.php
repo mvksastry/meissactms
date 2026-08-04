@@ -34,13 +34,13 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-success">
-      <a href="javascript:void(0)">
+      <a href="/passage-updates">
         <i class="far fa-flag"></i>
       </a>
     </span>
     <div class="info-box-content">
-      <span class="info-box-text">...</span>
-      <span class="info-box-number">410</span>
+      <span class="info-box-text">Passages</span>
+      <span class="info-box-number">...</span>
     </div>
     <!-- /.info-box-content -->
   </div>

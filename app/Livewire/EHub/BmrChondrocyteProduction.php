@@ -41,6 +41,10 @@ class BmrChondrocyteProduction extends Component
     public $enter_details, $step_completed, $date_time, $done_executed_by;
     public $checked_by, $observations, $deviations, $all_verified, $post_data;
 
+    //passage form variables
+    public $passageinfo, $showPassageForm, $plate_or_flask;
+    public $showPlateRow = false, $showFlaskRow = false;
+
     public function render()
     {
         $this->ccps = ChondcyteProduction::with('assigned')
