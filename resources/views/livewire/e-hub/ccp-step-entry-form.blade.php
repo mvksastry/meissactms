@@ -1,7 +1,7 @@
 <table id="userIndex2" class="table table-sm table-bordered table-hover">
   <thead>
     <tr>
-      <th colspan="4"> Progress </th>
+      <th colspan="5"> Progress </th>
     </tr>
   </thead>
   <tbody> 
@@ -13,7 +13,7 @@
 <table id="userIndex2" class="table table-sm table-bordered table-hover">
   <thead>
     <tr>
-      <th colspan="4"> BATCH PROCESSING RECORD FOR PREPARING AUTOLOGOUS PLATELET LYSATE (AuPL) AND COMPLETE MEDIUM </th>
+      <th colspan="5"> BATCH PROCESSING RECORD FOR PREPARING AUTOLOGOUS PLATELET LYSATE (AuPL) AND COMPLETE MEDIUM </th>
     </tr>
   </thead>
   <tbody> 		
@@ -37,14 +37,19 @@
     </tr>
 
     <tr>
-      <td class="bg-warning" colspan="4"> Step {{ $this->ccps_steps->bpr_chondrocyte_step_id ?? 'N/A' }}: {{ $this->ccps_steps->description ?? 'N/A' }}</td>
+      <td class="bg-warning" colspan="5"> Step {{ $this->ccps_steps->bpr_chondrocyte_step_id ?? 'N/A' }}: {{ $this->ccps_steps->description ?? 'N/A' }}</td>
     </tr>
 
     <tr>
-      <td colspan="4"> Step Expectations: </td>
+      <td colspan="5"> Step Expectations: </td>
     </tr>
 
     <tr>  
+      <td> 
+        <label>Enter Detail</label>
+        <input type="text" wire:model="enter_details" class="form-control" placeholder="Enter ...">
+        @error('enter_details') <span class="error text-danger">{{ $message }}</span> @enderror
+      </td>      
       <td> 
         <label>Step Completed</label>
         <input type="text" wire:model="step_completed" class="form-control" placeholder="Enter ...">
@@ -77,14 +82,14 @@
       </td> 
     </tr>
     <tr>
-      <td colspan="4"> 
+      <td colspan="5"> 
         <label>Observations </label>
         <input type="text" wire:model="observations" class="form-control" placeholder="Enter ...">
         @error('observations') <span class="error text-danger">{{ $message }}</span> @enderror
       </td> 
     </tr>
     <tr>
-      <td colspan="4"> 
+      <td colspan="5"> 
         <label>Deviations, If any,  </label>
         <input type="text" wire:model="deviations" class="form-control" placeholder="Enter ...">
         @error('deviations') <span class="error text-danger">{{ $message }}</span> @enderror

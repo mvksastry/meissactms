@@ -38,7 +38,7 @@ class BmrChondrocyteProduction extends Component
     public $ccps_steps = null;
 
     //form variables
-    public $step_completed, $date_time, $done_executed_by;
+    public $enter_details, $step_completed, $date_time, $done_executed_by;
     public $checked_by, $observations, $deviations, $all_verified, $post_data;
 
     public function render()
@@ -62,6 +62,7 @@ class BmrChondrocyteProduction extends Component
     public function fnCreateChondrocyteProductionStepRecord()
     {
         $validatedData = $this->validate([
+            'enter_details' => 'sometimes|nullable|string|max:55',
             'step_completed' => 'required|string|max:255',
             'date_time' => 'required|boolean',
             'done_executed_by' => 'required|string|max:255',
@@ -82,6 +83,7 @@ class BmrChondrocyteProduction extends Component
 
                     //First Collect all info
                     $FormInput['step_no'] = $this->ccps_steps->bpr_chondrocyte_step_id;
+                    $FormInput['enter_details'] = $this->enter_details;
                     $FormInput['date_time'] = date('Y-m-d H:i:s');
                     $FormInput['description'] = $this->ccps_steps->description;
                     $FormInput['step_completed'] = $this->step_completed;
@@ -90,14 +92,15 @@ class BmrChondrocyteProduction extends Component
                     $FormInput['observations'] = $this->observations;
                     $FormInput['deviations'] = $this->deviations;
                     //get the current_stage from data base
-                    $db_stages = $this->ccps_steps->completed_stages;
+                    $db_stages = $this->selectedCcps->completed_stages;
 
                     //mext decode to get the array
                     $db_stagex = json_decode($db_stages, true);
+                    //dd($db_stages, $db_stagex);
                     array_push($db_stagex, $FormInput);
 
                     $final_result = json_encode($db_stagex);
-                    //dd($final_result);
+                    //dd($FormInput, $final_result);
                     $comment = "Step-".$current_step." Completed.";
                     $this->selectedCcps->completed_stages = $final_result;
                     $this->selectedCcps->current_stage = $current_step + 1;

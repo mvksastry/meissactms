@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th> Step No </th>
+      <th> Details </th>
       <th> Date Time </th>
       <th> Description </th>
       <th> Completed </th>
@@ -16,6 +17,9 @@
       <tr>
         <td>
         {{ $x['step_no'] }}
+        </td>
+        <td>
+        {{ $x['enter_details'] }}
         </td>
         <td>
         {{ $x['date_time'] }}
