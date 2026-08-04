@@ -45,6 +45,10 @@ class BmrChondrocyteProduction extends Component
     public $passageinfo, $showPassageForm, $plate_or_flask;
     public $showPlateRow = false, $showFlaskRow = false;
 
+    //passage from variable
+    public $terminate_batch, $terminateForm, $enter_details_terminate;
+
+
     public function render()
     {
         $this->ccps = ChondcyteProduction::with('assigned')
@@ -85,9 +89,17 @@ class BmrChondrocyteProduction extends Component
                 {
                     $current_step = $this->ccps_steps->bpr_chondrocyte_step_id;
 
+                    if($this->terminate_batch)
+                    {
+                        $comment = "At Step-".$current_step." Process Terminated.";
+                        $FormInput['enter_details'] = $this->enter_details_terminate;
+                    }else{
+                        $comment = "Step-".$current_step." Completed.";
+                        $FormInput['enter_details'] = $this->enter_details;
+                    }
+
                     //First Collect all info
                     $FormInput['step_no'] = $this->ccps_steps->bpr_chondrocyte_step_id;
-                    $FormInput['enter_details'] = $this->enter_details;
                     $FormInput['date_time'] = date('Y-m-d H:i:s');
                     $FormInput['description'] = $this->ccps_steps->description;
                     $FormInput['step_completed'] = $this->step_completed;
@@ -104,7 +116,7 @@ class BmrChondrocyteProduction extends Component
 
                     $final_result = json_encode($db_stagex);
                     //dd($FormInput, $final_result);
-                    $comment = "Step-".$current_step." Completed.";
+                    
                     $this->selectedCcps->completed_stages = $final_result;
                     $this->selectedCcps->current_stage = $current_step + 1;
                     $this->selectedCcps->comments = $comment;
@@ -119,5 +131,12 @@ class BmrChondrocyteProduction extends Component
         $this->productionForm = false;
         // Optionally, you can show a success message or redirect the user
         session()->flash('message', 'Step data has been successfully entered.');
+    }
+
+    public function updated($terminate_batch, $values)
+    {
+        //dd("reached");
+        $this->terminateForm = true;
+        $this->terminate_batch = true;
     }
 }

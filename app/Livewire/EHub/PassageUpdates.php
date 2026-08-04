@@ -96,7 +96,7 @@ class PassageUpdates extends Component
     public function fnPostPassagRecord()
     {
         //dd($this->all_verified, $this->post_data);
-        /*
+        
         $validatedData = $this->validate([
             'cell_line_id'              => 'required|string|max:55',
             'cell_line_origin'          => 'required|string|max:250',
@@ -115,7 +115,7 @@ class PassageUpdates extends Component
             'status'                    => 'sometimes|nullable|string|max:15',
             'comments'                  => 'sometimes|nullable|string|max:250',
         ]);
-        */
+        
 
         if($this->all_verified)
         {

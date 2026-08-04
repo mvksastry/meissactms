@@ -97,7 +97,11 @@ class ProductionHub extends Component
             //$newAuPl_id  = 1;
             //$ccp_id = 3;
 
-            $this->id_specific_ctms_activityObj->mbr_id = $this->mbr_id;
+            //this is for testing as the mbr_id is fixed dummy. Ideally it comes from
+            //post entrollment entry of administrative entries like unique id etc..
+            //in future, we need to create and add mbr_id, sample id to ctms activity
+            //through edit mode.
+            $this->id_specific_ctms_activityObj->mbr_id = $this->mbr_id; 
             $this->id_specific_ctms_activityObj->chondcyte_production_id = $newAuPl_id;
             $this->id_specific_ctms_activityObj->auplmed_production_id = $ccp_id;
             //dd($this->id_specific_ctms_activityObj);
