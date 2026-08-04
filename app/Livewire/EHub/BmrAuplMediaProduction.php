@@ -39,7 +39,7 @@ class BmrAuplMediaProduction extends Component
     public $amps_steps = null;
 
     //form variables
-    public $step_completed, $date_time, $done_executed_by;
+    public $enter_details, $step_completed, $date_time, $done_executed_by;
     public $checked_by, $observations, $deviations, $all_verified, $post_data;
 
     public function render()
@@ -64,6 +64,7 @@ class BmrAuplMediaProduction extends Component
     {
     
         $validatedData = $this->validate([
+            'enter_details' => 'sometimes|nullable|string|max:55',
             'step_completed' => 'required|string|max:255',
             'date_time' => 'required|boolean',
             'done_executed_by' => 'required|string|max:255',
@@ -85,6 +86,7 @@ class BmrAuplMediaProduction extends Component
 
                     //First Collect all info
                     $FormInput['step_no'] = $this->amps_steps->aupl_medium_step_id;
+                    $FormInput['enter_details'] = $this->enter_details;
                     $FormInput['date_time'] = date('Y-m-d H:i:s');
                     $FormInput['description'] = $this->amps_steps->description;
                     $FormInput['step_completed'] = $this->step_completed;
@@ -99,10 +101,7 @@ class BmrAuplMediaProduction extends Component
                     //mext decode to get the array
                     $db_stagex = json_decode($db_stages, true);
                     array_push($db_stagex, $FormInput);
-
-                    //push both old arrays and new one into a dummy array
-                    //$xres[] = $db_stagex;
-                    //$xres[] = $FormInput;               
+            
                     //now json_encode the result ready for update the column
                     $final_result = json_encode($db_stagex);
                     //dd($final_result);

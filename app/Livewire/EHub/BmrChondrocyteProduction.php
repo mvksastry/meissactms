@@ -96,7 +96,6 @@ class BmrChondrocyteProduction extends Component
 
                     //mext decode to get the array
                     $db_stagex = json_decode($db_stages, true);
-                    //dd($db_stages, $db_stagex);
                     array_push($db_stagex, $FormInput);
 
                     $final_result = json_encode($db_stagex);

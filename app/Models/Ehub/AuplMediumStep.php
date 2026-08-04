@@ -22,6 +22,7 @@ class AuplMediumStep extends Model
         'child_seq_no',
         'description',
         'enter_details',
+        'star',
         'status',
         'issue_date',	
         'prepared_by',	
