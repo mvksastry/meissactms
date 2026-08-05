@@ -34,18 +34,19 @@ class ProductionHub extends Component
     public function render()
     {
         //This query below is for code development 
-        
+        /*
         $this->productionActivities = Activity::where('code', 'mfg')
                                               //  ->where('enrollment_id', '<>', null)
                                                 ->where('status','active')
-                                                ->get();
-        dd($this->productionActivities);
+                                             ->get();
+        */
+        //dd($this->productionActivities);
         //This query can show that only patients for whom mbr is created.
         //this means activity is for manufacturing, enrollment is done and a MBR id 
         //is created. Now that MBR id is created. 
         //so first get the info from activity.
         //next is to use that enrollment id retrieve the mbr id.
-        /*
+        
         $this->productionActivities = Activity::with('enrolled')
                                                 ->where('enrollment_id', '<>', null)
                                                 ->where('code', 'mfg')
@@ -54,7 +55,7 @@ class ProductionHub extends Component
                                                 ->where('auplmed_production_id', null)
                                                 ->where('status','active')
                                                 ->get();
-        */
+        
 
         return view('livewire.e-hub.production-hub');
     }
