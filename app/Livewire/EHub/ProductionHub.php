@@ -42,7 +42,7 @@ class ProductionHub extends Component
         //next is to use that enrollment id retrieve the mbr id.
         
         $this->productionActivities = Activity::with('enrolled')
-                                                ->where('enrollment_id', '<>', null) 
+                                              //  ->where('enrollment_id', '<>', null) 
                                                 ->where('code', 'mfg')
                                                 ->where('mbr_id', null)
                                                 ->where('chondcyte_production_id', null)
@@ -86,7 +86,7 @@ class ProductionHub extends Component
             //post entrollment entry of administrative entries like unique id etc..
             //in future, we need to create and add mbr_id, sample id to ctms activity
             //through edit mode.
-            
+
             //$this->id_specific_ctms_activityObj->mbr_id = $this->mbr_id; 
             //update this line after enrollment done through admin
             if( !empty($newAuPl_id) && !empty($ccp_id) )

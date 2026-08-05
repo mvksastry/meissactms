@@ -123,24 +123,7 @@
             @error('post_data') <span class="error text-danger">{{ $message }}</span> @enderror
         </div>
       </td>
-    </tr>       
-    <tr>
-      <td>                         
-        <div class="form-check">
-          <input wire:model.live="terminate_batch" class="form-check-input" type="checkbox">
-          <label class="form-check-label">Terminate Batch</label>
-        </div>
-      </td>
-    </tr>   
-    @if($terminateForm)
-      <tr>
-        <td> 
-          <label>Reason for Termination</label>
-          <input type="text" wire:model="enter_details" class="form-control" placeholder="Enter ...">
-          @error('enter_details_terminate') <span class="error text-danger">{{ $message }}</span> @enderror
-        </td>      
-      </tr>
-    @endif
+    </tr>          
     <tr>
       <td>
         <button wire:click="fnCreateChondrocyteProductionStepRecord()" class="btn btn-success text-white font-normal mt-3 rounded">ENTER STEP DATA</button>

@@ -89,14 +89,13 @@ class BmrChondrocyteProduction extends Component
                 {
                     $current_step = $this->ccps_steps->bpr_chondrocyte_step_id;
 
-                    if($this->terminate_batch)
-                    {
-                        $comment = "At Step-".$current_step." Process Terminated.";
-                        $FormInput['enter_details'] = $this->enter_details_terminate;
-                    }else{
-                        $comment = "Step-".$current_step." Completed.";
-                        $FormInput['enter_details'] = $this->enter_details;
-                    }
+
+                        
+                        
+                  
+                    $comment = "Step-".$current_step." Completed.";
+                    $FormInput['enter_details'] = $this->enter_details;
+                    
 
                     //First Collect all info
                     $FormInput['step_no'] = $this->ccps_steps->bpr_chondrocyte_step_id;
@@ -122,6 +121,7 @@ class BmrChondrocyteProduction extends Component
                     $this->selectedCcps->comments = $comment;
                     $this->selectedCcps->status_date = date('Y-m-d');
                     $this->selectedCcps->save();
+                    $this->resetFormInputs();
                     LivewireAlert::title($comment)->success()->show();
                 }
             }
@@ -133,10 +133,35 @@ class BmrChondrocyteProduction extends Component
         session()->flash('message', 'Step data has been successfully entered.');
     }
 
+    public function resetFormInputs()
+    {
+        $this->enter_details = null;
+        $this->observations = null;
+        $this->deviations = null;
+        $this->step_completed = null;
+        $this->done_executed_by = null;
+        $this->checked_by = null;
+    }
+
+    /*
     public function updated($terminate_batch, $values)
+    {
+        //dd("reached");
+        $this->terminateForm = true;
+        
+    }
+
+    public function fnTerminateProduction()
     {
         //dd("reached");
         $this->terminateForm = true;
         $this->terminate_batch = true;
     }
+
+    public function fnCancelTerminateProduction()
+    {
+        $this->terminateForm = false;
+        $this->terminate_batch = false;
+    }
+    */
 }
