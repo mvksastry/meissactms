@@ -114,10 +114,10 @@
                                   <td> Assigned By: </td>
                                 </tr>
                                 <tr>
-                                  <td> MBR Id: {{ $mbr_id }}</td>
+                                  <td> MBR Id: In live will be shown</td>
                                 </tr>
                                 <tr>
-                                  <td> Sample ID: {{ $sample_id }}</td> 
+                                  <td> Sample ID: In live will be shown </td> 
                                 </tr>
                                 <tr>  
                                   <td> 
@@ -171,10 +171,10 @@
                                   <td> Assigned By: </td>
                                 </tr>
                                 <tr>
-                                  <td> MBR Id: {{ $mbr_id }}</td>
+                                  <td> MBR Id: </td>
                                 </tr>
                                 <tr>
-                                  <td> Sample ID: {{ $sample_id }}</td> 
+                                  <td> Sample ID: </td> 
                                 </tr>
                                 <tr>  
                                   <td> 
