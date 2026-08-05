@@ -27,6 +27,7 @@ class Activity extends Model
         'leader_id',
         'patient_uuid', //which is good ? Patient id or Enrollment id, enrollment Id is better?
         'enrollment_id', // Foreign Key to enrollment table
+        'code',
         'name',
         'description',
         'start_date',

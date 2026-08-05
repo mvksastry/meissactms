@@ -29,25 +29,23 @@ class ProductionHub extends Component
     public $entry_comment, $createFlag = false;
 
     //fortesting purpose not for live
-    public $leader_id = 5, $incharge_id = 7;
-    public $mbr_id = "SKLS_2026_12";
-    public $sample_id = "SKLS_2026_sample_4556";
+
 
     public function render()
     {
         //This query below is for code development 
-        /*
+        
         $this->productionActivities = Activity::where('code', 'mfg')
                                               //  ->where('enrollment_id', '<>', null)
                                                 ->where('status','active')
                                                 ->get();
-        */
+        dd($this->productionActivities);
         //This query can show that only patients for whom mbr is created.
         //this means activity is for manufacturing, enrollment is done and a MBR id 
         //is created. Now that MBR id is created. 
         //so first get the info from activity.
         //next is to use that enrollment id retrieve the mbr id.
-        
+        /*
         $this->productionActivities = Activity::with('enrolled')
                                                 ->where('enrollment_id', '<>', null)
                                                 ->where('code', 'mfg')
@@ -56,7 +54,7 @@ class ProductionHub extends Component
                                                 ->where('auplmed_production_id', null)
                                                 ->where('status','active')
                                                 ->get();
-        
+        */
 
         return view('livewire.e-hub.production-hub');
     }
@@ -79,10 +77,6 @@ class ProductionHub extends Component
         //dd("reached new BMR creation stage");
         //show a form here for each of the table
         $this->showFormsForEntry = true;
-
-
-
-
     }
 
     public function fnCreateBMRecords()
@@ -92,26 +86,32 @@ class ProductionHub extends Component
             LivewireAlert::title('reached the entry stage')->info()->show();
             $newAuPl_id = $this->fnPostNewEntryAuplMediaProduction();
             $ccp_id = $this->fnPostNewEntryChondcyteProduction();
-            
-            //For testing
-            //$newAuPl_id  = 1;
-            //$ccp_id = 3;
-
+                       
             //this is for testing as the mbr_id is fixed dummy. Ideally it comes from
             //post entrollment entry of administrative entries like unique id etc..
             //in future, we need to create and add mbr_id, sample id to ctms activity
             //through edit mode.
-            $this->id_specific_ctms_activityObj->mbr_id = $this->mbr_id; 
-            $this->id_specific_ctms_activityObj->chondcyte_production_id = $newAuPl_id;
-            $this->id_specific_ctms_activityObj->auplmed_production_id = $ccp_id;
-            //dd($this->id_specific_ctms_activityObj);
-            $this->id_specific_ctms_activityObj->save();
-            $this->showFormsForEntry = false;
-            LivewireAlert::title('Production Initiated')->info()->show();
+            //$this->id_specific_ctms_activityObj->mbr_id = $this->mbr_id; 
+            //update this line after enrollment done through admin
+            if( !empty($newAuPl_id) && !empty($ccp_id) )
+            {
+                $this->id_specific_ctms_activityObj->chondcyte_production_id = $newAuPl_id;
+                $this->id_specific_ctms_activityObj->auplmed_production_id = $ccp_id;
+                //activate mfr process. we can use this to query easily.
+                $this->id_specific_ctms_activityObj->mfr_status ="active";
+                $this->id_specific_ctms_activityObj->mfr_decision_date = date('Y-m-d');
+                $this->id_specific_ctms_activityObj->mfr_auth_by = Auth::user()->name;
+                //dd($this->id_specific_ctms_activityObj);
+                $this->id_specific_ctms_activityObj->save();
+                LivewireAlert::title('Production Entries Succeeded')->success()->show();
+                $this->showFormsForEntry = false;
+            } else {
+                LivewireAlert::title('Production Entries Failed - Check with Admin')->warning()->show();
+            }
+
         }else {
             LivewireAlert::title('Check Both Production Needs')->warning()->show();
         }
-        
     }
 
     public function fnPostNewEntryAuplMediaProduction()

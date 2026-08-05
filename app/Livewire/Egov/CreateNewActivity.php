@@ -70,10 +70,11 @@ class CreateNewActivity extends Component
     public function fnPostCreateActivityInfo()
     {
         //dd("reached");
-        LivewireAlert::title('Processing...')->info()->asToast()->show();
+       
+        //LivewireAlert::title('Processing...')->info()->asToast()->show();
         $this->validate();
         $input = $this->form->all();
-        
+        // dd($input);
         //set status and status dates
         $input['status'] = 'active';
         $input['status_date'] = date('Y-m-d');
