@@ -203,6 +203,8 @@ class EditPatients extends Component
 
     public $entry="update";
 
+    public $highlightedId = null;
+
     //---listeners from child component---//
     /*
     #[On('close_se_panel')] 
@@ -256,6 +258,7 @@ class EditPatients extends Component
         $this->patient_uuid = $id;
         //dd($this->patient_uuid);
         $this->patientInfoButtons = true;
+        $this->highlightedId = $id;
     }
 
     
@@ -266,6 +269,7 @@ class EditPatients extends Component
         $this->patient_uuid = $id;
         //dd($this->patient_uuid);
         $this->dispatch('uuid-selected', patient_uuid: $id );
+        
         //$this->patientInfoButtons = true;
     }    
     

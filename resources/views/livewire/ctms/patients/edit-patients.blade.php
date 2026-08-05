@@ -50,7 +50,7 @@
                   </thead>
                   <tbody> 
                     @foreach($draftPatients as $row)
-                      <tr>
+                      <tr class="{{ $highlightedId === $row->patient_uuid ? 'table-warning' : '' }}">
                         <td>
                             {{ $row->center_id }}
                         </td>

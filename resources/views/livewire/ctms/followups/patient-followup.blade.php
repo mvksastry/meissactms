@@ -53,7 +53,7 @@
                   </thead>
                   <tbody> 
                     @foreach($enrolledPatients as $row)
-                      <tr>
+                      <tr class="{{ $rowSelected === $row->patient_uuid ? 'table-secondary' : '' }}">
                         <td>
                             {{ $row->center_id }}
                         </td>

@@ -221,6 +221,9 @@ class PatientInformation extends Component
 
     public $current_files;
 
+    //selected row highlighting
+    public $selectedRow;
+
     public function render()
     {
         if( Auth::user()->hasAnyRole(['clinical_dataentry', 'junior_resident']) )
@@ -269,6 +272,7 @@ class PatientInformation extends Component
         $this->patientInfoButtons = true;
         $this->TimelinePatient = false;
         $this->PatientStatusPanel = false;
+        $this->selectedRow = $id;
     }
 
     public function getPatientTimeline($id)

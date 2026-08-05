@@ -250,6 +250,9 @@ class PatientFollowup extends Component
     //follow-up value array
     public $fu_array = ['unscheduled', 1, 2, 3, 4, 5];
 
+    //row selected
+    public $rowSelected;
+
     public function render()
     {
         $this->entered_by = Auth::user()->name;
@@ -268,6 +271,7 @@ class PatientFollowup extends Component
         //dd($id);
         $this->patient_uuid = $id;
         $this->fuselection = true;
+        $this->rowSelected = $id;
         LivewireAlert::title('Now Select Data Type')->info()->asToast()->show();
     }
 

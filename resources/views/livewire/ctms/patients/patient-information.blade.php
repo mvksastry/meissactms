@@ -38,92 +38,92 @@
               @if(count($activePatients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
-                      <tr>
+                    <tr>
                       <th>Center</th>
                       <th>Clinic</th>
                       <th>Name</th>
                       <th>Gender</th>
                       <th>Status</th>
                       <th>Details</th>
-                      </tr>
+                    </tr>
                   </thead>
                   <tbody> 
                     @foreach($activePatients as $row)
-                        <tr>
-                            <td>
-                                {{ $row->center_id }}
-                            </td>
-                            <td>
-                                {{ $row->ctarm_id }}
-                            </td>
-                            <td>
-                                {{ $row->name }}
-                            </td>
-                            <td>
-                                {{ $row->gender }}
-                            </td>
-                            <td>
-                                {{ ucfirst($row->status) }}
-                            </td>
-                            <td>
-                                <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
-                            </td>
-                            <td>
-                                <button wire:click="getPatientTimeline('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Timeline</button>
-                            </td>
+                        <tr class="{{ $selectedRow === $row->patient_uuid ? 'table-primary' : '' }}">
+                          <td>
+                              {{ $row->center_id }}
+                          </td>
+                          <td>
+                              {{ $row->ctarm_id }}
+                          </td>
+                          <td>
+                              {{ $row->name }}
+                          </td>
+                          <td>
+                              {{ $row->gender }}
+                          </td>
+                          <td>
+                              {{ ucfirst($row->status) }}
+                          </td>
+                          <td>
+                              <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
+                          </td>
+                          <td>
+                              <button wire:click="getPatientTimeline('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Timeline</button>
+                          </td>
 
-                            @hasanyrole(['junior_resident','clinical_dataentry'])
-                              @if( $row->status == 'draft')
-                                <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient Data</button>
-                                </td>
-                              @else
-                                  Nothing to Clear
-                              @endif
-                            @endhasanyrole
-
-                            @hasrole('senior_resident')
-                               @if( $row->status == 'draft')
-                                <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Confirm Patient Data</button>
-                                </td>
-                              @else
-                                <td>
-                                  Nothing to Clear
-                                </td>
-                              @endif
-
-                            @endhasanyrole
-
-                            @hasrole('clinical_manager')
-                              @if( $row->status == 'verified')
-                                <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient Data</button>
-                                </td>
-                              @else
-                                <td>
-                                  Nothing to Approve
-                                </td>
-                              @endif
-                            @endhasanyrole
-
-                            @hasrole('ctms_incharge')
-                              @if($row->status == 'approved')
-                                <td>
-                                    <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient Data</button>
-                                </td>
-                              @else
-                                <td>
-                                  Nothing to Seal
-                                </td>
-                              @endif
-                            @endhasanyrole
-
-                            @hasrole('director')
+                          @hasanyrole(['junior_resident','clinical_dataentry'])
+                            @if( $row->status == 'draft')
                               <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Post Notes</button>
+                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient Data</button>
                               </td>
-                            @endhasanyrole
+                            @else
+                                Nothing to Clear
+                            @endif
+                          @endhasanyrole
+
+                          @hasrole('senior_resident')
+                              @if( $row->status == 'draft')
+                              <td>
+                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Confirm Patient Data</button>
+                              </td>
+                            @else
+                              <td>
+                                Nothing to Clear
+                              </td>
+                            @endif
+
+                          @endhasanyrole
+
+                          @hasrole('clinical_manager')
+                            @if( $row->status == 'verified')
+                              <td>
+                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient Data</button>
+                              </td>
+                            @else
+                              <td>
+                                Nothing to Approve
+                              </td>
+                            @endif
+                          @endhasanyrole
+
+                          @hasrole('ctms_incharge')
+                            @if($row->status == 'approved')
+                              <td>
+                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient Data</button>
+                              </td>
+                            @else
+                              <td>
+                                Nothing to Seal
+                              </td>
+                            @endif
+                          @endhasanyrole
+
+                          @hasrole('director')
+                            <td>
+                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Post Notes</button>
+                            </td>
+                          @endhasanyrole
                         </tr>
                     @endforeach
                   </tbody>
