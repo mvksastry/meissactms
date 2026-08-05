@@ -37,7 +37,7 @@
         </td>
         <td>
           <label>HGB</label>
-          </br>{{ $ci1Obj->hbg }}
+          </br>{{ $ci1Obj->hgb }}
         </td>
         <td>
           <label>HCT</label>
