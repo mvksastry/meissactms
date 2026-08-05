@@ -28,7 +28,7 @@ class Activity extends Model
         'patient_uuid', //which is good ? Patient id or Enrollment id, enrollment Id is better?
         'enrollment_id', // Foreign Key to enrollment table
         'code',
-        'name',
+
         'description',
         'start_date',
         'end_date',
@@ -53,6 +53,10 @@ class Activity extends Model
         'chondcyte_production_id',  // Foreign Key -- the mbr_id associated chondrocyte production bmr_id this Foreign Key
         'auplmed_production_id', // Foreign Key -- the mbr_id associated aupl media production id Foreign Key
 
+        'mfr_status',
+        'mfr_decision_date',
+        'mfr_auth_by',
+        
         'comment_entered_by',
         'entered_by',
         'entry_date',
