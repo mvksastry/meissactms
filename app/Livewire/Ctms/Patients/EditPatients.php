@@ -205,6 +205,8 @@ class EditPatients extends Component
 
     public $highlightedId = null;
 
+    public $activeTab;
+
     //---listeners from child component---//
     /*
     #[On('close_se_panel')] 
@@ -244,6 +246,11 @@ class EditPatients extends Component
     }
     */
     //------------------------------------//
+
+    public function setActiveTab($tab)
+    {
+        $this->activeTab = $tab;
+    }
 
     public function render()
     {

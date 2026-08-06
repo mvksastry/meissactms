@@ -59,9 +59,6 @@ class ChemicalExam extends Model
 
         'comment_sealed_by',
         'sealed_by',
-        'sealed_date',
-        
-        'created_at',
-        'updated_at',
+        'sealed_date'
     ];
 }

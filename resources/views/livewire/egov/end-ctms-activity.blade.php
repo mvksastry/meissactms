@@ -9,11 +9,11 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0 mb-3">Home: Activities</h1>
+                <h1 class="m-0 mb-3">Home: End Activity</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="/home">Home: Activities</a></li>
+                  <li class="breadcrumb-item"><a href="/home">Home: End Activity</a></li>
                   <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
               </div><!-- /.col -->
@@ -37,7 +37,7 @@
                   <div class="card-header">
                     <h3 class="card-title">
                       <i class="fas fa-chart-pie mr-1"></i>
-                      Activity Home
+                      End Activity
                     </h3>
                     <div class="card-tools">
                       <ul class="nav nav-pills ml-auto">
@@ -113,7 +113,7 @@
                         <!--Divider-->
                         <div class="p-1"> 
                           @if($p1)    
-                            @include('livewire.egov.edit-activity-form')
+                            @include('livewire.egov.activity-details-end-form')
                           @endif
                         </div>
                         <hr class="border-b-2 my-1 mx-1">
@@ -139,128 +139,7 @@
       </div>
     </main>
   </div>
-  @script
-  <script>
-    $(document).ready(function () {
-      window.addEventListener('swal:confirm', function(msgx){ 
-        let title = JSON.stringify(msgx.detail);
-        let tarr = JSON.parse(title);
-        let finres = tarr[0].title;
-        console.log(finres);
-        //alert(result);
-        var Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 5000
-        });
-        Toast.fire({
-            icon: 'info',
-            title: finres,
-        });
-        /*
-        Swal.fire({
-            title:  '{{ $message }}',
-            icon: "info",
-            iconColor: "danger",
-            timer: 3000,
-            toast: true,
-            position: 'top-right',
-            toast:  true,
-            showConfirmButton:  false,
-        });
-        Swal.fire({
-            icon: "question",
-            title: "{{__('Are you sure?')}}",
-            showCancelButton: true,
-            confirmButtonText: "{{__('Delete')}}",
-            cancelButtonText: "{{__('Cancel')}}",
-            }).then((result) => {
-            if (result.isConfirmed) {
-                Livewire.dispatch("groupDelete");
-            }
-        });
-        */
-      });
 
-      window.addEventListener('swal:warning', function(msgx1){ 
-        let title = JSON.stringify(msgx1.detail);
-        let tarr = JSON.parse(title);
-        let finres1 = tarr[0].title;
-        console.log(finres1);
-        //alert(finres1);
-        var Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 5000
-        });
-        Toast.fire({
-            icon: 'warning',
-            title: finres1,
-        });
-        /*
-        Swal.fire({
-            title:  '{{ $message }}',
-            icon: "info",
-            iconColor: "danger",
-            timer: 3000,
-            toast: true,
-            position: 'top-right',
-            toast:  true,
-            showConfirmButton:  false,
-        });
-        Swal.fire({
-            icon: "question",
-            title: "{{__('Are you sure?')}}",
-            showCancelButton: true,
-            confirmButtonText: "{{__('Delete')}}",
-            cancelButtonText: "{{__('Cancel')}}",
-            }).then((result) => {
-            if (result.isConfirmed) {
-                Livewire.dispatch("groupDelete");
-            }
-        });
-        */
-      });
-
-      window.addEventListener("openModaljs", function(data){
-        /*
-        //alert("reached");
-        let idx = JSON.stringify(data.detail);
-        let tarr = JSON.parse(idx);
-        let result = null;
-        for (let i = 0; i < tarr.length; i++) 
-        {
-            result = tarr[0];
-            let finres = result.data;
-            console.log(finres);
-        }
-        let finres = result.data;
-        alert(finres);
-        */
-        $("#modal-lg").modal('show');
-      });
-
-      window.addEventListener("dataTableInit", function(){    
-        $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        
-        $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        });
-      });
-    });
-  </script>
-  @endscript
 
 
 

@@ -71,7 +71,7 @@ class BloodSugarComponent extends Component
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveBloodSugarData($this->input, $this->passObj);
-        LivewireAlert::title('Blood Sugar Data Saved...')->success()->asToast()->show();
+        LivewireAlert::title('Blood Sugar x Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
        // $this->msg_panel = true;

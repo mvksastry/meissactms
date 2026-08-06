@@ -14,13 +14,13 @@ class PatientForm extends Form
     public $ctarm_id = '1';
 
     #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
-    public $opd_id = '';
+    public $opd_id = null;
 
     #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
-    public $in_patient_id = '';
+    public $in_patient_id = null;
 
     #[Validate('regex:/^[A-Za-z0-9,._\-\/ ]+$/|max:20')]
-    public $subject_id = '';
+    public $subject_id = null;
 
     #[Validate('nullable|date')]
     public $admission_date = null;
@@ -29,25 +29,25 @@ class PatientForm extends Form
     public $aadhar_id = null;
 
     #[Validate('nullable|alpha_num')]
-    public $pan_num = '';
+    public $pan_num = NULL;
 
     #[Validate('nullable|alpha_num')]
-    public $other_id = '';
+    public $other_id = NULL;
 
     #[Validate('nullable|alpha')]
-    public $present_occupation = '';
+    public $present_occupation = null;
 
     #[Validate('required|regex:/^[A-Za-z ]+$/')]
-    public $name = '';
+    public $name = null;
 
     #[Validate('regex:/^[A-Za-z ]+$/')]
-    public $nick_name = '';
+    public $nick_name = null;
 
     #[Validate('regex:/^[A-Za-z ]+$/')]
-    public $alias_name = '';
+    public $alias_name = null;
 
     #[Validate('required|alpha')]
-    public $gender = '';
+    public $gender = null;
 
     #[Validate('required|date')]
     public $date_of_birth = null;
@@ -56,34 +56,34 @@ class PatientForm extends Form
     public $age = null;
 
     #[Validate('required|numeric')]
-    public $primary_phone_number = '';
+    public $primary_phone_number = null;
 
     #[Validate('nullable|numeric')]
-    public $alternate_phone_number = '';
+    public $alternate_phone_number = null;
 
     #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $address = '';
+    public $address = null;
 
     #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $land_mark = '';
+    public $land_mark = null;
 
     #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $taluka_haveli = '';
+    public $taluka_haveli = null;
 
     #[Validate('alpha')]
-    public $state = '';
+    public $state = null;
 
     #[Validate('regex:/^[A-Za-z ]+$/')]
-    public $emergency_contact_name = '';
+    public $emergency_contact_name = null;
 
     #[Validate('numeric')]
-    public $emergency_contact_phone = '';
+    public $emergency_contact_phone = null;
 
     #[Validate('regex:/^[A-Za-z ]+$/')]
-    public $alternate_contact_name = '';
+    public $alternate_contact_name = null;
 
     #[Validate('numeric')]
-    public $alternate_contact_phone = '';
+    public $alternate_contact_phone = null;
 
     #[Validate('nullable|numeric')]
     public $height = 0;
@@ -98,142 +98,142 @@ class PatientForm extends Form
     public $weight_unit = 'kg';
 
     #[Validate('numeric')]
-    public $bmi = '';
+    public $bmi = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $consent_status = '';
+    public $consent_status = null;
 
     #[Validate('nullable|date')]
     public $consent_date = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
-    public $consent_av = '';
+    public $consent_av = null;
 
     #[Validate('nullable|date')]
     public $consent_approval_date = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
-    public $consent_approval_reference = '';
+    public $consent_approval_reference = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
-    public $consent_approval_file = '';
+    public $consent_approval_file = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $gen_surgical_info = '';
+    public $gen_surgical_info = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $surgery_at_lumbar = '';
+    public $surgery_at_lumbar = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $malignancies = '';
+    public $malignancies = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $general_medical_history = '';
+    public $general_medical_history = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $infections_suffered = '';
+    public $infections_suffered = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $general_inflammatory_diseases = '';
+    public $general_inflammatory_diseases = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $ankylosing_spondylosis = '';
+    public $ankylosing_spondylosis = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $rheumatoid_arthritis = '';
+    public $rheumatoid_arthritis = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $chronic_kidney_issues = '';
+    public $chronic_kidney_issues = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $chronic_liver_issues = '';
+    public $chronic_liver_issues = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $hiv = '';
+    public $hiv = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $aids = '';
+    public $aids = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $hepatitis_b = '';
+    public $hepatitis_b = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,. ]+$/')]
-    public $hepatitis_c = '';
+    public $hepatitis_c = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $diabetes_mellitus_self = '';
+    public $diabetes_mellitus_self = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $diabetes_mellitus_family = '';
+    public $diabetes_mellitus_family = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $hypertension_self = '';
+    public $hypertension_self = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $hypertension_family = '';
+    public $hypertension_family = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $ihd_self = '';
+    public $ihd_self = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $ihd_family = '';
+    public $ihd_family = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $paralysis_self = '';
+    public $paralysis_self = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $paralysis_family = '';
+    public $paralysis_family = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $past_complaints = '';
+    public $past_complaints = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $present_complaints = '';
+    public $present_complaints = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $past_medications = '';
+    public $past_medications = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $present_medications = '';
+    public $present_medications = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $addictive_substance_use = '';
+    public $addictive_substance_use = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $non_addictive_substance_use = '';
+    public $non_addictive_substance_use = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $past_history = '';
+    public $past_history = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $notable_family_history = '';
+    public $notable_family_history = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $before_problem_occupation = '';
+    public $before_problem_occupation = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $general_habits = '';
+    public $general_habits = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $consumption_non_tgp = '';
+    public $consumption_non_tgp = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $consumption_tobacco = '';
+    public $consumption_tobacco = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $consumption_gutka = '';
+    public $consumption_gutka = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $consumption_pan = '';
+    public $consumption_pan = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
-    public $anyother_habbits = '';
+    public $anyother_habbits = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
-    public $comment_entered_by = '';   
+    public $comment_entered_by = null;   
 
     #[Validate('regex:/^[A-Za-z ]+$/')]
-    public $entered_by = '';
+    public $entered_by = null;
 
     #[Validate('nullable|date')]
     public $entry_date = null;

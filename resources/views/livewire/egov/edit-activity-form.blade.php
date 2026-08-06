@@ -244,16 +244,6 @@
     </tr>
     <tr>
     <tr>
-      <td>                         
-        <div class="form-check">
-          <input wire:model="form.close" value="close" class="form-check-input" type="checkbox">
-          <label class="form-check-label">Close Activity</label>
-            @error('close') <span class="error text-danger">{{ $message }}</span> @enderror
-        </div>
-      </td>
-    </tr>
-
-    <tr>
     </tr>
     <tr>
       <td colspan="2">

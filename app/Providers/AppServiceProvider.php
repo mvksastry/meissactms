@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Get Laravel's timezone offset dynamically
+        $offset = now()->format('P'); // e.g., +05:30 for Asia/Kolkata
+
+        // Set MySQL session timezone to match Laravel
+        DB::statement("SET time_zone = '{$offset}'");
     }
 }

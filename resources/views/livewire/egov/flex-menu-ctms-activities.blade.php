@@ -19,8 +19,8 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-info">
-      <a href="#">
-      <i wire:click="fnEndActivity()" class="far fa-envelope"></i>
+      <a href="/end-ctms-activity">
+      <i class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">
@@ -37,7 +37,7 @@
 <div class="col-md-4 col-sm-6 col-12">
   <div class="info-box">
     <span class="info-box-icon bg-success">
-      <a href="#">
+      <a href="/ctms-activity-archieves">
         <i class="far fa-flag"></i>
       </a>
     </span>

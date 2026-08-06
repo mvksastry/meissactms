@@ -30,6 +30,8 @@ use App\Http\Controllers\PermissionsController;
 // Livewire - Project management
 use App\Livewire\Egov\CtmsActivities;
 use App\Livewire\Egov\CreateNewActivity;
+use App\Livewire\Egov\CtmsActivityArchieves;
+use App\Livewire\Egov\EndCtmsActivity;
 
 use App\Livewire\Projects\GoalDivisions;
 use App\Livewire\Projects\GoalCategories;
@@ -136,6 +138,8 @@ Route::middleware('auth')->group(function () {
     // ------- Livewire: Components All Roles------- //
     Route::get('ctms-core-activities', CtmsActivities::class);
     Route::get('create_new_activity', CreateNewActivity::class);
+    Route::get('end-ctms-activity', EndCtmsActivity::class);
+    Route::get('ctms-activity-archieves', CtmsActivityArchieves::class);
 
     Route::get('goal-divisions', GoalDivisions::class);
     Route::get('goal-categories', GoalCategories::class);

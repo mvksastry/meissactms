@@ -126,21 +126,87 @@
             </ul>
           </li>
 
+
+
+
+
+
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                QMS
-                <i class="fas fa-angle-left right"></i>
+              <i class="nav-icon fas fa-circle"></i>
+              <p>QMS
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+
             <ul class="nav nav-treeview">
-              @include('layouts.menus.items.qms.non-conformity-home')
-              @include('layouts.menus.items.qms.capa-home')
-              @include('layouts.menus.items.qms.root-cause-home')
+              @include('layouts.menus.items.projectms.patients-dashboard')
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Quality Assurance
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  @include('layouts.menus.items.qms.non-conformity-home')
+                  @include('layouts.menus.items.qms.capa-home')
+                  @include('layouts.menus.items.qms.root-cause-home')
+                  @include('layouts.menus.items.qms.production-steps')
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Quality Control
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+
+                </ul>
+              </li>
+              <!--
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Follow-Ups
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                  </ul>
+                </li>
+              -->
             </ul>
           </li>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -159,6 +225,8 @@
             </ul>
           </li>
 
+        -->
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -173,7 +241,7 @@
               @include('layouts.menus.items.admin.users.user-permissions')
             </ul>
           </li>
-
+<!--
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -203,7 +271,7 @@
               </li>
             </ul>
           </li>
-
+        -->
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>

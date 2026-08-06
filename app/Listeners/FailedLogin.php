@@ -2,6 +2,8 @@
 
 namespace App\Listeners;
 
+use Illuminate\Http\Request;
+
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -13,20 +15,25 @@ class FailedLogin
     /**
      * Create the event listener.
      */
-    public function __construct()
+    protected $request;
+
+    public function __construct(Request $request)
     {
-        //
+        $this->request = $request;
     }
 
     /**
      * Handle the event.
      */
-    public function handle(Failed $event): void
+    public function handle(Failed $event)
     {
-        // Log to storage/logs/laravel.log
-        Log::channel('failed')->info('User with ID failed', [
-            'email' => $event->user->email,
-            'time' => now()->toDateTimeString(),
-        ]);
-    }
+    $request = request(); // current request instance
+
+    Log::channel('failed')->info('User login failed', [
+        'email'      => $event->credentials['email'] ?? 'N/A',
+        'ip'         => $request->ip(),
+        'user_agent' => $request->header('User-Agent'),
+        'time'       => now()->toDateTimeString(),
+    ]);
+}
 }

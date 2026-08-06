@@ -7,7 +7,7 @@ use Livewire\Form;
  
 class FormGeneralSummary extends Form
 {
-    #[Validate('regex:/^[0-9]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = '';
 
     #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
@@ -22,7 +22,7 @@ class FormGeneralSummary extends Form
 
     
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
-    public $comment_entered_by = '';
+    public $comment_entered_by = null;
 
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $entered_by = '';

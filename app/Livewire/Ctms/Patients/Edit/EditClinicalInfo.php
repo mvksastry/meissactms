@@ -589,7 +589,7 @@ class EditClinicalInfo extends Component
     public function fnBloodSugar()
     {   $this->msg_panel = false;
         $this->input = $this->form_b->all();
-        //dd($this->input); // 
+        dd($this->input); // 
         $result = BloodSugar::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);

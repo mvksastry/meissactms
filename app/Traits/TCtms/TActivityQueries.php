@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Ctms\ActivityAssent;
 use App\Models\Ctms\Activity;
+use App\Models\Ctms\Decisions\Enrollment;
+
 
 //use File;
 use App\Traits\Base;
@@ -95,4 +97,32 @@ trait TActivityQueries
 		}
 	}	
   */
+
+	public function getEnrollmentDecisionStatusById($patient_uuid)
+	{
+		$checkE = Enrollment::where('patient_uuid', $patient_uuid)
+                                        ->first();
+		if($checkE->enrollment_decision === "yes")
+		{
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	public function checkEnrollmentCurrentStatusById($patient_uuid)
+	{
+		$checkE = Enrollment::where('patient_uuid', $patient_uuid)
+                                        //->where('status', 'current')
+                                        ->first();	
+		if($checkE->status == "current")
+		{
+				return true;
+		}else {
+			return false;
+		}
+				
+		
+	}
+	        
 }
