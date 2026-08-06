@@ -291,5 +291,14 @@ trait Base
 		return $ageDifference->y;
 	}
   
+    private function sanitizeInput($data)
+    {
+        $data = array_map(function ($value) {
+            // Check if value is exactly an empty string
+            $value = trim((string)$value);
+            return $value === "" ? null : $value;
+        }, $data);
 
+        return $data;
+    }
 }

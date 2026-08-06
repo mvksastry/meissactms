@@ -19,9 +19,12 @@ use App\Livewire\Forms\PatientLSForm;
 use Illuminate\Support\Facades\Log;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
+//traits
+use App\Traits\Base;
 
 class EditLifestyleInfo extends Component
 {
+    use Base;
     //Form bindings
     public PatientLSForm $form;
 
@@ -70,6 +73,7 @@ class EditLifestyleInfo extends Component
     public function fnSaveEditedLSInfo()
     {   $this->validate();
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);
         $this->msg_panel = true;
         $name = $this->uuid;

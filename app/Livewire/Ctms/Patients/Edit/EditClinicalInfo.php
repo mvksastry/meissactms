@@ -50,9 +50,13 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 //logs
 use Illuminate\Support\Facades\Log;
+//traits
+use App\Traits\Base;
 
 class EditClinicalInfo extends Component
 {
+    use Base;
+
     //Form bindings
     public PatientCIForm $form;
     public FormBloodRoutine $form_a;
@@ -576,58 +580,53 @@ class EditClinicalInfo extends Component
     {   $this->msg_panel = false;
         //dd("reached blood routine");
         $this->input = $this->form_a->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->uuid, $this->form_a->opd_id, $this->input); // 
         $result = BloodRoutine::where('patient_uuid', $this->uuid)->update($this->input);
         LivewireAlert::title('Blood Routine Data Updated')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Routine Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnBloodSugar()
     {   $this->msg_panel = false;
         $this->input = $this->form_b->all();
+
+        $this->input = $this->sanitizeInput($this->input);
+
         //dd($this->input); // 
         $result = BloodSugar::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Blood Sugar Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnBloodUrea()
     {
         $this->input = $this->form_c->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = BloodUrea::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Blood Urea Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Blood Urea Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnChemExams()
     {
         $this->input = $this->form_d->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = ChemicalExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Chemical Exams Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnCreatinine()
     {
         $this->input = $this->form_e->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = Creatinine::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data for Patient ['.$this->uuid.']';
@@ -641,6 +640,7 @@ class EditClinicalInfo extends Component
     public function fnCRP()
     {
         $this->input = $this->form_f->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = Crp::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved CRP Data for Patient ['.$this->uuid.']';
@@ -654,6 +654,7 @@ class EditClinicalInfo extends Component
     public function fnElectrolytes()
     {
         $this->input = $this->form_g->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = Electrolytes::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data for Patient ['.$this->uuid.']';
@@ -667,6 +668,7 @@ class EditClinicalInfo extends Component
     public function fnGeneralSummary()
     {
         $this->input = $this->form_h->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = GeneralSummary::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data for Patient ['.$this->uuid.']';
@@ -680,6 +682,7 @@ class EditClinicalInfo extends Component
     public function fnIl6()
     {
         $this->input = $this->form_i->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = Il6::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data for Patient ['.$this->uuid.']';
@@ -693,6 +696,7 @@ class EditClinicalInfo extends Component
     public function fnLabExams()
     {
         $this->input = $this->form_j->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = LaboratoryExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data for Patient ['.$this->uuid.']';
@@ -706,6 +710,7 @@ class EditClinicalInfo extends Component
     public function fnLiverFunction()
     {
         $this->input = $this->form_k->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = LiverFunction::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Liv function Data for Patient ['.$this->uuid.']';
@@ -719,6 +724,7 @@ class EditClinicalInfo extends Component
     public function fnMicroscopicExam()
     {
         $this->input = $this->form_l->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = MicroscopicExam::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data for Patient ['.$this->uuid.']';
@@ -732,6 +738,7 @@ class EditClinicalInfo extends Component
     public function fnRenalFunction()
     {
         $this->input = $this->form_m->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); //
         $result = RenalFunction::where('patient_uuid', $this->uuid)->update($this->input); 
         $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data for Patient ['.$this->uuid.']';
@@ -746,6 +753,7 @@ class EditClinicalInfo extends Component
     {
         //dd("urine routine entry?");
         $this->input = $this->form_n->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = UrineRoutine::where('patient_uuid', $this->uuid)->update($this->input); 
         $msg = 'User ['.Auth::user()->name.'] saved Urine Data for Patient ['.$this->uuid.']';
@@ -846,4 +854,5 @@ class EditClinicalInfo extends Component
     {
         //dd($drug_detail_id);
     }
+
 }

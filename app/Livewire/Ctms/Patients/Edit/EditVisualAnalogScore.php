@@ -14,7 +14,7 @@ use App\Models\Ctms\VAScore;
 use App\Livewire\Forms\PatientVAScoreForm;
 
 //traits, facades
-
+use App\Traits\Base;
 //logs
 use Illuminate\Support\Facades\Log;
 //Livewire Alerts
@@ -22,6 +22,8 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class EditVisualAnalogScore extends Component
 {
+    use Base;
+    
     //Form bindings
     public PatientVAScoreForm $form;
 
@@ -70,6 +72,7 @@ class EditVisualAnalogScore extends Component
         $this->msg_panel = false;
         $this->validate(); 
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->uuid, $this->input);
         $this->msg_panel = true;
         $name = $this->uuid;

@@ -15,6 +15,7 @@ use App\Models\Ctms\Rmquestion;
 use App\Livewire\Forms\PatientRMQForm;
 
 //traits, facades
+use App\Traits\Base;
 
 //logs
 use Illuminate\Support\Facades\Log;
@@ -23,6 +24,8 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class EditRmqScore extends Component
 {
+    use Base;
+
     public $rmqreplies = [
         1 => "I stay at home most of the time because of my back.",
         2 => "I change position frequently to try to get my back comfortable.",
@@ -97,7 +100,7 @@ class EditRmqScore extends Component
         $this->validate();
         $this->form->rmq_replies = json_encode($this->rmq_replies);
         $this->input = $this->form->all();
-        
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);       
         $this->msg_panel = true;
         $name = $this->uuid;

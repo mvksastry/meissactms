@@ -14,6 +14,7 @@ use App\Models\Ctms\SensoryExamination;
 use App\Livewire\Forms\PatientSEForm;
 
 //traits, facades
+use App\Traits\Base;
 
 //logs
 use Illuminate\Support\Facades\Log;
@@ -22,6 +23,8 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class EditSensoryInfo extends Component
 {
+    use Base;
+
     //Form bindings
     public PatientSEForm $form;
 
@@ -76,6 +79,7 @@ class EditSensoryInfo extends Component
     {
         $this->validate();
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);       
         $this->msg_panel = true;
         $name = $this->uuid;

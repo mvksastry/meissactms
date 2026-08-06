@@ -14,7 +14,8 @@ use App\Models\Ctms\PfirmannGrade;
 use App\Livewire\Forms\PfirmannForm;
 
 //traits, facades
-
+//traits
+use App\Traits\Base;
 //logs
 use Illuminate\Support\Facades\Log;
 //Livewire Alerts
@@ -22,6 +23,8 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class EditPfirmannInfo extends Component
 {
+    use Base;
+
     //Form bindings
     public PfirmannForm $form;
 
@@ -63,6 +66,7 @@ class EditPfirmannInfo extends Component
         $this->msg_panel = false;
         $this->validate(); 
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);
         $this->msg_panel = true;
         $name = $this->uuid;

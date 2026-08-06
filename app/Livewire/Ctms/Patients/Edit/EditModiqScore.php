@@ -20,8 +20,13 @@ use Illuminate\Support\Facades\Log;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
+//traits
+use App\Traits\Base;
+
 class EditModiqScore extends Component
 {
+    use Base;
+    
         //default modq arrav values
     public $painIntensity = [
         0 => 'I can tolerate the pain I have without having to use pain medication.', 

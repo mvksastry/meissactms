@@ -20,8 +20,14 @@ use Illuminate\Support\Facades\Log;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
+//traits
+use App\Traits\Base;
+
+
 class EditMdtreInfo extends Component
 {
+    use Base;
+
     //Form bindings
     public MdtreForm $form;
 
@@ -79,6 +85,7 @@ class EditMdtreInfo extends Component
         $this->msg_panel = false;
         $this->validate(); 
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);       
         $this->msg_panel = true;
         $name = $this->uuid;

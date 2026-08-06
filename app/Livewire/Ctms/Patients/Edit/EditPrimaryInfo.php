@@ -15,6 +15,7 @@ use App\Livewire\Forms\PatientForm;
 
 //traits, facades
 use App\Traits\Base;
+
 //logs
 use Illuminate\Support\Facades\Log;
 //Livewire Alerts
@@ -76,6 +77,7 @@ class EditPrimaryInfo extends Component
     public function fnSaveEditPrimaryInfo()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
         //dd($this->input); // 
         $edit = 'edit';
