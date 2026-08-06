@@ -17,13 +17,13 @@ class FormBloodSugar extends Form
     public $admission_date = null;
 
     #[Validate('nullable|numeric')]
-    public $fasting = null;
+    public $fasting;
 
     #[Validate('nullable|numeric')]
-    public $post_prandial = null;
+    public $post_prandial;
 
     #[Validate('nullable|numeric')]
-    public $random = null;
+    public $random;
 
 //    #[Validate('nullable|regex:/^[a-zA-Z0-9_]+$/')]
 //    public $bs_report_file = '';
