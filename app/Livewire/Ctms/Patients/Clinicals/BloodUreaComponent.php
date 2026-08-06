@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\BloodUrea;
 use App\Livewire\Forms\clinicals\FormBloodUrea;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TBloodUrea;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class BloodUreaComponent extends Component
 {
+    use Base;
     use TBloodUrea;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class BloodUreaComponent extends Component
     public function fnBloodUrea()
     {
         $this->input = $this->form_c->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveBloodUreaData($this->input, $this->passObj);

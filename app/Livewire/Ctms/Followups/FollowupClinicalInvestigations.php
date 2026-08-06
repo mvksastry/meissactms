@@ -14,6 +14,7 @@ use App\Models\Ctms\Patient;
 use App\Livewire\Forms\PatientCIForm;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientClinicalData;
 //logs
 use Illuminate\Support\Facades\Log;
@@ -22,6 +23,7 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class FollowupClinicalInvestigations extends Component
 {
+    use Base;
    //Trait
     use TPatientClinicalData;
 
@@ -67,6 +69,7 @@ class FollowupClinicalInvestigations extends Component
     public function fnSaveClinicalData()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = $this->savePatientCIInformation($this->input);
         LivewireAlert::title('Follow-up Clinical Data Saved...')->success()->asToast()->show();

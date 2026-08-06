@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\Electrolytes;
 use App\Livewire\Forms\clinicals\FormElectrolytes;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TElectrolytes;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class ElectrolyteComponent extends Component
 {
+    use Base;
     use TElectrolytes;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class ElectrolyteComponent extends Component
     public function fnElectrolytes()
     {
         $this->input = $this->form_g->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveElectrolyteData($this->input, $this->passObj);

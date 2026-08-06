@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\RenalFunction;
 use App\Livewire\Forms\clinicals\FormRenalFunction;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TRenalFunctions;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class RenalFunctionComponent extends Component
 {
+    use Base;
     use TRenalFunctions;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class RenalFunctionComponent extends Component
     public function fnRenalFunction()
     {
         $this->input = $this->form_m->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveRenalFunctionsData($this->input, $this->passObj);

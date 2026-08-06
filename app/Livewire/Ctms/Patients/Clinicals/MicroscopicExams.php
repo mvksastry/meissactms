@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\MicroscopicExam;
 use App\Livewire\Forms\clinicals\FormMicroscopicExam;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TMicroscopicExams;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class MicroscopicExams extends Component
 {
+    use Base;
     use TMicroscopicExams;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class MicroscopicExams extends Component
     public function fnMicroscopicExam()
     {
         $this->input = $this->form_l->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveMicroscopicExamData($this->input, $this->passObj);

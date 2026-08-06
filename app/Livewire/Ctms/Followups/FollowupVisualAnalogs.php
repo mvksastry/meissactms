@@ -14,6 +14,7 @@ use App\Models\Ctms\Patient;
 use App\Livewire\Forms\PatientVAScoreForm;
 
 //Traits
+use App\Traits\Base;
 use App\Traits\TCtms\TVAScores;
 
 //Livewire Alerts
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class FollowupVisualAnalogs extends Component
 {
+    use Base;
     //Traits
     use TVAScores;
     //Form bindings
@@ -50,6 +52,7 @@ class FollowupVisualAnalogs extends Component
     public function fnSaveVAscoreData()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); //
         $result = $this->saveFollowupVAScores($this->input);
         LivewireAlert::title('Follow-up Visual Analog Scores Saved...')->success()->asToast()->show();
@@ -59,6 +62,8 @@ class FollowupVisualAnalogs extends Component
 
     public function saveFollowupVAScores($input)
     {
+        $this->input = $this->sanitizeInput($input);
+
         // dd("reached trait");
         $nVAScores = new VAScore();
         $nVAScores->patient_uuid = $this->patient_uuid; 

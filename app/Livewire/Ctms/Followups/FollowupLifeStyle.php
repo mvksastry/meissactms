@@ -15,6 +15,7 @@ use App\Models\Ctms\LifeStyle;
 use App\Livewire\Forms\PatientLSForm;
 
 //traits-facades
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientLifeStyle;
 use Livewire\WithFileUploads;
 //Livewire Alerts
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Log;
 
 class FollowupLifeStyle extends Component
 {
+    use Base;
     //Trait binding
     use TPatientLifeStyle;
     //Form bindings
@@ -65,6 +67,7 @@ class FollowupLifeStyle extends Component
     public function fnSavePatientLSInfo()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); 
         $result = $this->saveFollowupPatientLSInformation($this->input);
         LivewireAlert::title('Follow-up Life Style Data Saved...')->success()->asToast()->show();
@@ -73,6 +76,7 @@ class FollowupLifeStyle extends Component
 
     public function saveFollowupPatientLSInformation($input)
     {
+        
         //dd($input);
         //$patientInfo = Patient::where('patient_uuid', $this->patient_uuid)->first();
 

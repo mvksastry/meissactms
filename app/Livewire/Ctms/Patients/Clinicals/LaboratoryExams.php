@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\LaboratoryExam;
 use App\Livewire\Forms\clinicals\FormLabExams;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TLaboratoryExams;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class LaboratoryExams extends Component
 {
-
+    use Base;
     use TLaboratoryExams;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -69,6 +70,7 @@ class LaboratoryExams extends Component
     public function fnLabExams()
     {
         $this->input = $this->form_j->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveLaboratoryExamData($this->input, $this->passObj);

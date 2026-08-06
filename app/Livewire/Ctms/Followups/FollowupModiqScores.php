@@ -15,6 +15,7 @@ use App\Models\Ctms\ModqScore;
 use App\Livewire\Forms\ModqScoreForm;
 
 //Traits
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientModqScore;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class FollowupModiqScores extends Component
 {
+    use Base;
     //default modq arrav values
     public $painIntensity = [
         0 => 'I can tolerate the pain I have without having to use pain medication.', 
@@ -251,6 +253,7 @@ class FollowupModiqScores extends Component
     public function fnSaveMODQScore()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);
         $result = $this->saveFollowupMODQScore($this->input);
         LivewireAlert::title('Follow-up MODQ Data Saved...')->success()->asToast()->show();

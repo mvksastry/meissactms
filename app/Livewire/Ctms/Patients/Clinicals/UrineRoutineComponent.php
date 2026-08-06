@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\UrineRoutine;
 use App\Livewire\Forms\clinicals\FormUrineRoutine;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TUrineRoutine;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class UrineRoutineComponent extends Component
 {
+    use Base;
     use TUrineRoutine;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class UrineRoutineComponent extends Component
     public function fnUrineRoutine()
     {
         $this->input = $this->form_n->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveUrineRoutineData($this->input, $this->passObj);

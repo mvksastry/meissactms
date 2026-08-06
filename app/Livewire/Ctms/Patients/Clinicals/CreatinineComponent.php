@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\Creatinine;
 use App\Livewire\Forms\clinicals\FormCreatinine;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TCreatinine;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Log;
 
 class CreatinineComponent extends Component
 {
+    use Base;
+
     //traits
     use TCreatinine;
 
@@ -70,6 +73,7 @@ class CreatinineComponent extends Component
     public function fnCreatinine()
     {
         $this->input = $this->form_e->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveCreatinineData($this->input, $this->passObj);

@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\BloodRoutine;
 use App\Livewire\Forms\clinicals\FormBloodRoutine;
 
 //traits
+use App\Traits;
 use App\Traits\TCtms\TClinicals\TBloodRoutine;
 //use App\Traits\TCtms\TClinicalReportUploads;
 //Livewire Alerts
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Log;
 
 class BloodRoutineComponent extends Component
 {
+    use Base;
     //traits
     use TBloodRoutine;
     //use TClinicalReportUploads;
@@ -74,7 +76,10 @@ class BloodRoutineComponent extends Component
     {
         //dd($this->patient_uuid, $this->entry);
         $this->input = $this->form_a->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
+        
+
         //dd($this->patient_uuid, $this->form_a->opd_id, $this->input); // 
         $result = $this->saveBloodRoutineData($this->input, $this->passObj);
         LivewireAlert::title('Blood Routine Data Saved...')->success()->asToast()->show();

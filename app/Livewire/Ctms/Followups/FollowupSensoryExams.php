@@ -12,12 +12,14 @@ use App\Models\Ctms\SensoryExamination;
 //forms
 use App\Livewire\Forms\PatientSEForm;
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientSEData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class FollowupSensoryExams extends Component
 {
+    use Base;
     use TPatientSEData;
     
     //Form bindings
@@ -35,6 +37,7 @@ class FollowupSensoryExams extends Component
     public function fnSaveSensoryExaminationData()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
         $result = $this->saveFollowupPatientSEInformation($this->input);
         LivewireAlert::title('Follow-up Sensory Exam Data Saved...')->success()->asToast()->show();
@@ -44,7 +47,6 @@ class FollowupSensoryExams extends Component
 
     public function saveFollowupPatientSEInformation($input)
     {
-
         //$newSEInfo = new SensoryExamination();
         $newSEInfo = new SensoryExamination();
         

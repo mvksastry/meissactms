@@ -16,6 +16,8 @@ use App\Models\Ctms\Clinicals\DrugDetails;
 //use App\Livewire\Forms\clinicals\FormBloodRoutine;
 
 //traits
+//traits
+use App\Traits\Base;
 //use App\Traits\TCtms\TClinicals\TBloodRoutine;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -24,6 +26,7 @@ use Illuminate\Support\Facades\Log;
 
 class DrugUsage extends Component
 {
+    use Base;
     public $sys_panel, $msg_panel;
     //forms
     //public $cat_p = false;

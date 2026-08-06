@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\LiverFunction;
 use App\Livewire\Forms\clinicals\FormLiverFunction;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TLiverFunctions;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class LiverFunctions extends Component
 {
+    use Base;
     use TLiverFunctions;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class LiverFunctions extends Component
     public function fnLiverFunction()
     {
         $this->input = $this->form_k->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
        // dd($this->input); // 
         $result = $this->saveLiverFunctionData($this->input, $this->passObj);

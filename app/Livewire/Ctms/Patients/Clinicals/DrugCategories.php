@@ -15,9 +15,14 @@ use App\Models\Ctms\Clinicals\DrugCategory;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
+//traits
+use App\Traits\Base;
+use App\Traits\TCtms\TClinicals\TCrp;
 
 class DrugCategories extends Component
 {
+    use Base;
+    
     public $sys_panel, $msg_panel;
     //forms
     //public $cat_p = false;

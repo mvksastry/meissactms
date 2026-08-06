@@ -14,6 +14,7 @@ use App\Models\Ctms\Patient;
 use App\Livewire\Forms\PfirmannForm;
 
 //Traits
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientPfirmannData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Log;
 
 class FollowupModifiedPfirmanns extends Component
 {
+    use Base;
     //Trait for data handling
     use TPatientPfirmannData;
     //Form bindings
@@ -48,6 +50,7 @@ class FollowupModifiedPfirmanns extends Component
     public function fnSavePfirmannGrade()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); //
         $result = $this->saveFollowupPfirmannGrade($this->input);
         LivewireAlert::title('Follow-up Pfirmann Data Saved...')->success()->asToast()->show();

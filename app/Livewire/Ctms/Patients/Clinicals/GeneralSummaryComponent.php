@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\GeneralSummary;
 use App\Livewire\Forms\clinicals\FormGeneralSummary;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TGeneralSummary;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class GeneralSummaryComponent extends Component
 {
+    use Base;
     use TGeneralSummary;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class GeneralSummaryComponent extends Component
     public function fnGeneralSummary()
     {
         $this->input = $this->form_h->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveGenSummaryData($this->input, $this->passObj);

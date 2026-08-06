@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\Il6;
 use App\Livewire\Forms\clinicals\FormIl6;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TIl6;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class Il6Component extends Component
 {
+    use Base;
     use TIl6;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class Il6Component extends Component
     public function fnIl6()
     {
         $this->input = $this->form_i->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveIl6Data($this->input, $this->passObj);

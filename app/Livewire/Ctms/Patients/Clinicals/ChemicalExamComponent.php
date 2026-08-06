@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\ChemicalExam;
 use App\Livewire\Forms\clinicals\FormChemExam;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TChemExams;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class ChemicalExamComponent extends Component
 {
+    use Base;
     //traits
     use TChemExams;
 
@@ -70,6 +72,7 @@ class ChemicalExamComponent extends Component
     public function fnChemExams()
     {
         $this->input = $this->form_d->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveChemExamData($this->input, $this->passObj);

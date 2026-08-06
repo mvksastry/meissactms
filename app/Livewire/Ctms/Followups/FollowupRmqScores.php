@@ -16,6 +16,7 @@ use App\Models\Ctms\RMQReply;
 use App\Livewire\Forms\PatientRMQForm;
 
 //Traits
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientRMQData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Log;
 
 class FollowupRmqScores extends Component
 {
+    use Base;
+
     public $rmqreplies = [
         1 => "I stay at home most of the time because of my back.",
         2 => "I change position frequently to try to get my back comfortable.",
@@ -90,6 +93,7 @@ class FollowupRmqScores extends Component
         //dd($this->rmq_replies);
         $this->form->rmq_replies = json_encode($this->rmq_replies);
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); //
         $result = $this->saveFollowupRMQ($this->input);
         LivewireAlert::title('Follow-up R M Q Data Saved...')->success()->asToast()->show();

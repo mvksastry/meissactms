@@ -15,6 +15,7 @@ use App\Models\Ctms\Clinicals\BloodSugar;
 use App\Livewire\Forms\clinicals\FormBloodSugar;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TClinicals\TBloodSugar;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class BloodSugarComponent extends Component
 {
+    use Base;
     use TBloodSugar;
 
     public $patient_uuid, $passObj, $entry=null, $data_type;
@@ -68,6 +70,7 @@ class BloodSugarComponent extends Component
     public function fnBloodSugar()
     {
         $this->input = $this->form_b->all();
+        $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
         $result = $this->saveBloodSugarData($this->input, $this->passObj);
