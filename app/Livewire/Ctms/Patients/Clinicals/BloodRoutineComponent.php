@@ -57,13 +57,7 @@ class BloodRoutineComponent extends Component
             $this->passObj = new BloodRoutine();
         }
         else {
-           // dd($this->patient_uuid);
-            $this->passObj = BloodRoutine::where('patient_uuid', $this->patient_uuid)
-                                            ->where('data_type', $this->data_type)
-                                            ->first();
-            $this->form_a->opd_id = $this->passObj->opd_id;
-            $this->form_a->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_a->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
     
@@ -75,7 +69,7 @@ class BloodRoutineComponent extends Component
     public function fnBloodRoutine()
     {
         //dd($this->patient_uuid, $this->entry);
-        $this->validate();
+        $this->form_a->validate();
         $this->input = $this->form_a->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);
@@ -85,10 +79,10 @@ class BloodRoutineComponent extends Component
         LivewireAlert::title('Blood Routine Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Routine Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        $this->setDataAgain();
+        $this->setData();
     }
 
-    public function setDataAgain()
+    public function setData()
     {
             $this->passObj = BloodRoutine::where('patient_uuid', $this->patient_uuid)
                                             ->where('data_type', $this->data_type)
@@ -135,6 +129,5 @@ class BloodRoutineComponent extends Component
             $this->form_a->entered_by = $this->passObj->entered_by;
             $this->form_a->entry_date = $this->passObj->entry_date;
     }
-
     
 }

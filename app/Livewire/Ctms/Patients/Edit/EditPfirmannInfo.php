@@ -64,7 +64,7 @@ class EditPfirmannInfo extends Component
     public function fnEditPfirmannGrade()
     {
         $this->msg_panel = false;
-        $this->validate(); 
+        $this->form->validate(); 
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);

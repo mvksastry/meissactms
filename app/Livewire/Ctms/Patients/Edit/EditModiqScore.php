@@ -287,7 +287,7 @@ class EditModiqScore extends Component
     public function fnEditModqScoreData()
     {
         $this->msg_panel = false;
-        $this->validate(); 
+        $this->form->validate(); 
         //$this->form->total = $this->total;
         //$this->form->modq_score = $this->modq_score;
         $this->input = $this->form->all();

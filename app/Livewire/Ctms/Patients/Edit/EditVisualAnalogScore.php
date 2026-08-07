@@ -72,7 +72,7 @@ class EditVisualAnalogScore extends Component
     public function fnEditVAscoreData()
     {
         $this->msg_panel = false;
-        $this->validate(); 
+        $this->form->validate(); 
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->uuid, $this->input);

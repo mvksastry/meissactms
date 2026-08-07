@@ -66,7 +66,7 @@ class ChemicalExamComponent extends Component
 
     public function fnChemExams()
     {
-        $this->validate();
+        $this->form_d->validate();
         $this->input = $this->form_d->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

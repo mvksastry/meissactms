@@ -76,6 +76,7 @@ class EditPrimaryInfo extends Component
 
     public function fnSaveEditPrimaryInfo()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);

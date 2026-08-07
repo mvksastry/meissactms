@@ -64,7 +64,7 @@ class UrineRoutineComponent extends Component
 
     public function fnUrineRoutine()
     {
-        $this->validate();
+        $this->form_n->validate();
         $this->input = $this->form_n->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

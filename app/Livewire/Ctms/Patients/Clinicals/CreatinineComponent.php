@@ -67,7 +67,7 @@ class CreatinineComponent extends Component
 
     public function fnCreatinine()
     {
-        $this->validate();
+        $this->form_e->validate();
         $this->input = $this->form_e->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

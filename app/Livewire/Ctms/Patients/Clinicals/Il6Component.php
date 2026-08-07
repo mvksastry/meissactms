@@ -64,7 +64,7 @@ class Il6Component extends Component
 
     public function fnIl6()
     {
-        $this->validate();
+        $this->form_i->validate();
         $this->input = $this->form_i->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

@@ -64,7 +64,7 @@ class CrpComponent extends Component
 
     public function fnCRP()
     {
-        $this->validate();
+        $this->form_f->validate();
         $this->input = $this->form_f->all();
         $this->input = $this->sanitizeInput($this->input);
         

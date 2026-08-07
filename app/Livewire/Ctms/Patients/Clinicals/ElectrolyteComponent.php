@@ -64,7 +64,7 @@ class ElectrolyteComponent extends Component
 
     public function fnElectrolytes()
     {
-        $this->validate();
+        $this->form_g->validate();
         $this->input = $this->form_g->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

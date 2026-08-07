@@ -64,7 +64,7 @@ class RenalFunctionComponent extends Component
 
     public function fnRenalFunction()
     {
-        $this->validate();
+        $this->form_m->validate();
         $this->input = $this->form_m->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

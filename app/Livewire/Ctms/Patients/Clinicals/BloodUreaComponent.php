@@ -64,7 +64,7 @@ class BloodUreaComponent extends Component
 
     public function fnBloodUrea()
     {
-        $this->validate();
+        $this->form_c->validate();
         $this->input = $this->form_c->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

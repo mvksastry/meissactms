@@ -77,7 +77,7 @@ class EditSensoryInfo extends Component
 
     public function fnEditSExamData()
     {
-        $this->validate();
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);       

@@ -97,7 +97,7 @@ class EditRmqScore extends Component
     public function fnEditRMQInfo()
     {
         $this->msg_panel = false;
-        $this->validate();
+        $this->form->validate();
         $this->form->rmq_replies = json_encode($this->rmq_replies);
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);

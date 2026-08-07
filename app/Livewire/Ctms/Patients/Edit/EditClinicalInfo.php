@@ -257,7 +257,7 @@ class EditClinicalInfo extends Component
         $this->form_a->entered_by = Auth::user()->name;
         $this->form_a->entry_date = date('Y-m-d');
 
-        //($this->form_a);
+        //dd($this->form_a);
     }
 
     //blood sugar
@@ -577,10 +577,12 @@ class EditClinicalInfo extends Component
     }
 
     public function fnBloodRoutine()
-    {   
+    {   //dd($this->getRules());
+        $this->form_a->validate();
         $this->msg_panel = false;
         $this->input = $this->form_a->all();
         $this->input = $this->sanitizeInput($this->input);
+        //dd($this->input);
         //dd($this->uuid, $this->form_a->opd_id, $this->input); // 
         $result = BloodRoutine::where('patient_uuid', $this->uuid)->update($this->input);
         LivewireAlert::title('Blood Routine Data Updated')->success()->asToast()->show();
@@ -591,6 +593,7 @@ class EditClinicalInfo extends Component
     public function fnBloodSugar()
     {   
         $this->msg_panel = false;
+        $this->form_b->validate();
         $this->input = $this->form_b->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -602,6 +605,7 @@ class EditClinicalInfo extends Component
 
     public function fnBloodUrea()
     {
+        $this->form_c->validate();
         $this->input = $this->form_c->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -613,6 +617,7 @@ class EditClinicalInfo extends Component
 
     public function fnChemExams()
     {
+        $this->form_d->validate();
         $this->input = $this->form_d->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -624,6 +629,7 @@ class EditClinicalInfo extends Component
 
     public function fnCreatinine()
     {
+        $this->form_e->validate();
         $this->input = $this->form_e->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -635,6 +641,7 @@ class EditClinicalInfo extends Component
 
     public function fnCRP()
     {
+        $this->form_f->validate();
         $this->input = $this->form_f->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -646,6 +653,7 @@ class EditClinicalInfo extends Component
 
     public function fnElectrolytes()
     {
+        $this->form_g->validate();
         $this->input = $this->form_g->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -657,6 +665,7 @@ class EditClinicalInfo extends Component
 
     public function fnGeneralSummary()
     {
+        $this->form_h->validate();
         $this->input = $this->form_h->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -668,6 +677,7 @@ class EditClinicalInfo extends Component
 
     public function fnIl6()
     {
+        $this->form_i->validate();
         $this->input = $this->form_i->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -679,6 +689,7 @@ class EditClinicalInfo extends Component
 
     public function fnLabExams()
     {
+        $this->form_j->validate();
         $this->input = $this->form_j->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -690,6 +701,7 @@ class EditClinicalInfo extends Component
 
     public function fnLiverFunction()
     {
+        $this->form_k->validate();
         $this->input = $this->form_k->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -701,6 +713,7 @@ class EditClinicalInfo extends Component
 
     public function fnMicroscopicExam()
     {
+        $this->form_l->validate();
         $this->input = $this->form_l->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -712,6 +725,7 @@ class EditClinicalInfo extends Component
 
     public function fnRenalFunction()
     {
+        $this->form_m->validate();
         $this->input = $this->form_m->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); //
@@ -724,6 +738,7 @@ class EditClinicalInfo extends Component
     public function fnUrineRoutine()
     {
         //dd("urine routine entry?");
+        $this->form_n->validate();
         $this->input = $this->form_n->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 
@@ -735,6 +750,7 @@ class EditClinicalInfo extends Component
 
     public function fnEditDrugDetail()
     {
+        //$this->nDDetForm->validate();
         $input = $this->nDDetForm;
         //dd($input);
         foreach($input as $row)

@@ -64,7 +64,7 @@ class LiverFunctions extends Component
 
     public function fnLiverFunction()
     {
-        $this->validate();
+        $this->form_k->validate();
         $this->input = $this->form_k->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;

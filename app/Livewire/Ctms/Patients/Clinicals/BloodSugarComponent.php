@@ -65,7 +65,7 @@ class BloodSugarComponent extends Component
     public function fnBloodSugar()
     {
         
-        $this->validate();
+        $this->form_b->validate();
         $this->input = $this->form_b->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
