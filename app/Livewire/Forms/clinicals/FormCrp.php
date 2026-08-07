@@ -7,26 +7,18 @@ use Livewire\Form;
  
 class FormCrp extends Form
 {
-    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
     public $in_patient_id = null;
 
     #[Validate('date')]
     public $admission_date = null;
 
     
-
-    
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $crp = null;
-
- //   #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]
- //   public $crp_report_file = null;
- 
- //   #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/')]
- //   public $crp_report_file_path = null;
 
     
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]

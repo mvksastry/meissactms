@@ -7,36 +7,36 @@ use Livewire\Form;
  
 class FormUrineRoutine extends Form
 {
-    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
     public $in_patient_id = null;
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
     
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $physical_exam = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $quantity = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $colour = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $appearance = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $deposits = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|numeric|max:14.00')]
     public $ph = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|numeric|max:2.00')]
     public $specific_gravity = null;
 
    // #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]

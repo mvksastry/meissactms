@@ -37,6 +37,8 @@ class EditVisualAnalogScore extends Component
     public $msg_panel = false;
     public $comDanger = false, $comWarning = false, $comInfo = false, $comSuccess = false;
 
+    public $vas_scale, $fpr_scale, $quality;
+
     public function render()
     {
         $this->vascore = VAScore::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
@@ -52,11 +54,11 @@ class EditVisualAnalogScore extends Component
         $this->form->in_patient_id = $vascore->in_patient_id;
         $this->form->admission_date = $vascore->admission_date;
 
-        $this->form->intensity = $vascore->intensity;
-        $this->form->location = $vascore->location;
-        $this->form->onset = $vascore->onset;
-        $this->form->duration = $vascore->duration;
-        $this->form->variation = $vascore->variation;
+        //$this->form->intensity = $vascore->intensity;
+        //$this->form->location = $vascore->location;
+        //$this->form->onset = $vascore->onset;
+       // $this->form->duration = $vascore->duration;
+        //$this->form->variation = $vascore->variation;
         $this->form->quality = $vascore->quality;
         $this->form->vas_scale = $vascore->vas_scale;
         $this->form->fpr_scale = $vascore->fpr_scale;

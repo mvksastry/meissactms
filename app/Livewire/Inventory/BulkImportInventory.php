@@ -400,7 +400,7 @@ class BulkImportInventory extends Component
                     'form.expiry_date'          => 'nullable|date',
 
                     'form.supplier_id'          => 'required|numeric',
-                    'form.pack_size'            => 'required|string|regex:/^-?\d+(\.\d+)?$/',
+                    'form.pack_size'            => 'required|string|regex:/^\d+(\.\d+)?$/',
 
                     'form.storage_container_id' => 'required|numeric',
                     'form.shelf_rack_id'        => 'required|numeric',

@@ -7,10 +7,10 @@ use Livewire\Form;
  
 class FormCreatinine extends Form
 {
-    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
 
     #[Validate('date')]
@@ -19,7 +19,7 @@ class FormCreatinine extends Form
     
 
     
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $serum_creatinine = null;
 
  //   #[Validate('nullable|regex:/^[A-Za-z0-9\-_ ]+$/')]

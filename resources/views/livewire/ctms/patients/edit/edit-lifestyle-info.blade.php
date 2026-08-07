@@ -90,13 +90,7 @@
                                       <label>Admission Date</label>
                                       <input wire:model.defer="form.admission_date" @if(!$empty_result)value="{{ $ls_info->admission_date }}"@endif type="date" class="form-control" placeholder="Admission Date">
                                     </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="4">
-                                      <label>Discharge Report File</label>
-                                      <input wire:model.defer="form.discharge_report_file" @if(!$empty_result)value="{{ $ls_info->discharge_report_file }}"@endif type="text" class="form-control" placeholder="Discharge Report FIle" >
-                                    </td>
-                                  </tr>  
+                                  </tr> 
                                 </tbody>
                               </table>
                             </div>
@@ -122,27 +116,7 @@
                                       <label>Sitting</label>
                                       <input wire:model.defer="form.sitting" id="temperature" type="text" @if(!$empty_result)value="{{ $ls_info->sitting }}"@endif value="null" class="form-control" placeholder="--" >
                                     </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls3" id="temperature" type="text" @if(!$empty_result)value="{{ $ls_info->ls3 }}"@endif value="null" class="form-control" placeholder="--" >
-                                    </td>
-
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls4" id="bp_systolic" type="text" @if(!$empty_result)value="{{ $ls_info->ls4 }}"@endif value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls5" id="bp_diastolic" type="text" @if(!$empty_result)value="{{ $ls_info->ls5 }}"@endif value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls6" id="bp_diastolic" type="text" @if(!$empty_result)value="{{ $ls_info->ls6 }}"@endif value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                  </tr>
-        
+                                  </tr>        
                                   <tr>
                                     <td colspan="6">
                                       <div class="form-group">

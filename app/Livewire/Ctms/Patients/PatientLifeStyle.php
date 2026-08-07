@@ -16,6 +16,7 @@ use App\Livewire\Forms\PatientLSForm;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //traits-facades
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientLifeStyle;
 use Livewire\WithFileUploads;
 
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Log;
 
 class PatientLifeStyle extends Component
 {
+    use Base;
     //Trait binding
     use TPatientLifeStyle;
     //Form bindings
@@ -67,6 +69,8 @@ class PatientLifeStyle extends Component
     public function fnSavePatientLSInfo()
     {
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
+        //dd($this->input);
         $this->input['data_type'] = $this->data_type;
 
         //dd($this->input); 

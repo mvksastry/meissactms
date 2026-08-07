@@ -136,28 +136,15 @@
                                     </td>
                                     <td colspan="1">
                                       <label>"Faces" Pain Rating Scale</label>
-                                      <input wire:model="form.pfr_scale" type="text" class="form-control" placeholder="Faces Pain Rating Scale">
+                                      <input wire:model="form.fpr_scale" type="text" class="form-control" placeholder="Faces Pain Rating Scale">
                                     </td>
                                     <td colspan="1">
-                                      <label>---</label>
+                                      <label>Quality</label>
                                       <input wire:model="form.quality" type="text" class="form-control" placeholder="Quality">
                                     </td>
                                   </tr>
                                   <!--
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Intensity</label>
-                                      <input wire:model="form.intensity" type="text" class="form-control" placeholder="Intensity">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Location</label>
-                                      <input wire:model="form.location" type="text" class="form-control" placeholder="Location">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Onset</label>
-                                      <input wire:model="form.onset" type="text" class="form-control" placeholder="Onset">
-                                    </td>
-                                  </tr>
+
                                   -->
                                 </tbody>
                               </table>

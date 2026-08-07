@@ -85,6 +85,8 @@ class PatientPersonal extends Component
     {
         $this->validate(); 
         $this->input = $this->form->all();
+        $this->input = $this->sanitizeInput($this->input);
+        //dd($this->input);
         if($this->getDuplicateEntries($this->input))
         {
             $msg = 'Cannot Save as Matching Name, gender, primary phone number for ['.$this->input['name'].'] found ';

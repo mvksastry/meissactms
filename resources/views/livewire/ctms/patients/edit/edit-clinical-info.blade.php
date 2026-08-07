@@ -62,7 +62,7 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_1' ? 'active' : '' }}" href="#tab_1" wire:click.prevent="setActiveTab('tab_1')" data-toggle="tab">Cryptic</a></li>
+                            <!--li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_1' ? 'active' : '' }}" href="#tab_1" wire:click.prevent="setActiveTab('tab_1')" data-toggle="tab">Cryptic</a></li -->
                             <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_2' ? 'active' : '' }}" href="#tab_2" wire:click.prevent="setActiveTab('tab_2')" data-toggle="tab">BR</a></li>
                             <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_3' ? 'active' : '' }}" href="#tab_3" wire:click.prevent="setActiveTab('tab_3')" data-toggle="tab">LFT&Elec</a></li>
                             <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_4' ? 'active' : '' }}" href="#tab_4" wire:click.prevent="setActiveTab('tab_4')" data-toggle="tab">RFT</a></li>
@@ -77,9 +77,11 @@
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <div class="tab-content">
+                            <!--
                             <div class="tab-pane {{ $activeTab === 'tab_1' ? 'active' : '' }}" id="tab_1">
-                              @include('livewire.ctms.patients.edit.clinicals.tab1_cryptic')
+                              
                             </div>
+                            -->
                             <div class="tab-pane {{ $activeTab === 'tab_2' ? 'active' : '' }}" id="tab_2">
                               @include('livewire.ctms.patients.clinicals.blood-routine-component')
                             </div>

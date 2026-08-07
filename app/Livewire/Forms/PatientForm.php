@@ -13,13 +13,13 @@ class PatientForm extends Form
     #[Validate('required|numeric|max:3')]
     public $ctarm_id = '1';
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
+    #[Validate('required|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,._\-\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $subject_id = null;
 
     #[Validate('nullable|date')]
@@ -40,10 +40,10 @@ class PatientForm extends Form
     #[Validate('required|regex:/^[A-Za-z ]+$/')]
     public $name = null;
 
-    #[Validate('regex:/^[A-Za-z ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $nick_name = null;
 
-    #[Validate('regex:/^[A-Za-z ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $alias_name = null;
 
     #[Validate('required|alpha')]
@@ -61,43 +61,43 @@ class PatientForm extends Form
     #[Validate('nullable|numeric')]
     public $alternate_phone_number = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $address = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $land_mark = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
     public $taluka_haveli = null;
 
-    #[Validate('alpha')]
+    #[Validate('nullable|alpha')]
     public $state = null;
 
-    #[Validate('regex:/^[A-Za-z ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $emergency_contact_name = null;
 
-    #[Validate('numeric')]
+    #[Validate('nullable|numeric')]
     public $emergency_contact_phone = null;
 
-    #[Validate('regex:/^[A-Za-z ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $alternate_contact_name = null;
 
-    #[Validate('numeric')]
+    #[Validate('nullable|numeric')]
     public $alternate_contact_phone = null;
 
     #[Validate('nullable|numeric')]
-    public $height = 0;
+    public $height = null;
 
     #[Validate('alpha')]
     public $height_unit = 'centimeters';
 
     #[Validate('nullable|numeric')]
-    public $weight = 0;
+    public $weight = null;
 
     #[Validate('alpha')]
     public $weight_unit = 'kg';
 
-    #[Validate('numeric')]
+    #[Validate('nullable|numeric')]
     public $bmi = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
@@ -232,7 +232,7 @@ class PatientForm extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = null;   
 
-    #[Validate('regex:/^[A-Za-z ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $entered_by = null;
 
     #[Validate('nullable|date')]

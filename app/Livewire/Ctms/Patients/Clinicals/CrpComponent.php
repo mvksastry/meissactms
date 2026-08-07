@@ -53,12 +53,7 @@ class CrpComponent extends Component
             $this->passObj = new Crp();
         }
         else {
-            $this->passObj = Crp::where('patient_uuid', $this->patient_uuid)
-                                ->where('data_type', $this->data_type)
-                                ->first();
-            $this->form_f->opd_id = $this->passObj->opd_id;
-            $this->form_f->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_f->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,17 +64,39 @@ class CrpComponent extends Component
 
     public function fnCRP()
     {
+        $this->validate();
         $this->input = $this->form_f->all();
         $this->input = $this->sanitizeInput($this->input);
+        
         $this->input['data_type'] = $this->data_type;
-
+        //dd($this->input);
         //dd($this->input); // 
-        $result = $this->saveCrpData($this->input, $this->passObj);
-        LivewireAlert::title('CRP Data Saved...')->success()->asToast()->show();
-        $msg = 'User ['.Auth::user()->name.'] saved CRP Data ['.$this->patient_uuid.']';
-        Log::channel('patient')->info($msg);
-       // $this->msg_panel = true;
-       // $sysAlertWarning = false;
-       // $this->comSuccess = $msg;
+        if($this->input['crp'] == null)
+        {
+            LivewireAlert::title('CRP Data Empty...')->warning()->show();
+        }else {
+            $result = $this->saveCrpData($this->input, $this->passObj);
+            LivewireAlert::title('CRP Data Saved...')->success()->asToast()->show();
+            $msg = 'User ['.Auth::user()->name.'] saved CRP Data ['.$this->patient_uuid.']';
+            Log::channel('patient')->info($msg);
+            $this->setData();
+        }
+        
+    }
+
+    public function setData()
+    {
+        $this->passObj = Crp::where('patient_uuid', $this->patient_uuid)
+                            ->where('data_type', $this->data_type)
+                            ->first();
+        $this->form_f->opd_id = $this->passObj->opd_id;
+        $this->form_f->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_f->admission_date = $this->passObj->admission_date;
+
+        $this->form_f->crp = $this->passObj->crp;
+
+        $this->form_f->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_f->entered_by = $this->passObj->entered_by;
+        $this->form_f->entry_date = $this->passObj->entry_date;
     }
 }

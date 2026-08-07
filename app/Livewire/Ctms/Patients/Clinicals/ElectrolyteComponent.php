@@ -53,12 +53,7 @@ class ElectrolyteComponent extends Component
             $this->passObj = new Electrolytes();
         }
         else {
-            $this->passObj = Electrolytes::where('patient_uuid', $this->patient_uuid)
-                                            ->where('data_type', $this->data_type)
-                                            ->first();
-            $this->form_g->opd_id = $this->passObj->opd_id;
-            $this->form_g->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_g->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,6 +64,7 @@ class ElectrolyteComponent extends Component
 
     public function fnElectrolytes()
     {
+        $this->validate();
         $this->input = $this->form_g->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -77,8 +73,24 @@ class ElectrolyteComponent extends Component
         LivewireAlert::title('Electrolyte Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-       // $this->msg_panel = true;
-       // $sysAlertWarning = false;
-       // $this->comSuccess = $msg;
+        $this->setData();
     }
+
+    public function setData()
+    {
+        $this->passObj = Electrolytes::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
+        $this->form_g->opd_id = $this->passObj->opd_id;
+        $this->form_g->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_g->admission_date = $this->passObj->admission_date;
+
+        $this->form_g->sodium = $this->passObj->sodium;
+        $this->form_g->potassium = $this->passObj->potassium;
+        $this->form_g->chloride = $this->passObj->chloride;
+
+        $this->form_g->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_g->entered_by = $this->passObj->entered_by;
+        $this->form_g->entry_date = $this->passObj->entry_date;
+    } 
 }

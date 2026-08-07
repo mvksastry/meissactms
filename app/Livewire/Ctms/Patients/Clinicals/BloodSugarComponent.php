@@ -53,12 +53,7 @@ class BloodSugarComponent extends Component
             $this->passObj = new BloodSugar();
         }
         else {
-            $this->passObj = BloodSugar::where('patient_uuid', $this->patient_uuid)
-                                        ->where('data_type', $this->data_type)
-                                        ->first();
-            $this->form_b->opd_id = $this->passObj->opd_id;
-            $this->form_b->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_b->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,16 +64,34 @@ class BloodSugarComponent extends Component
 
     public function fnBloodSugar()
     {
+        
+        $this->validate();
         $this->input = $this->form_b->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
-        //dd($this->input); // 
+        // dd($this->input); // 
         $result = $this->saveBloodSugarData($this->input, $this->passObj);
         LivewireAlert::title('Blood Sugar x Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-       // $this->msg_panel = true;
-       // $sysAlertWarning = false;
-       // $this->comSuccess = $msg;
+        $this->setData();
+    }
+
+    public function setData()
+    {
+        $this->passObj = BloodSugar::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
+        $this->form_b->opd_id = $this->passObj->opd_id;
+        $this->form_b->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_b->admission_date = $this->passObj->admission_date;
+
+        $this->form_b->fasting = $this->passObj->fasting;
+        $this->form_b->post_prandial = $this->passObj->post_prandial;
+        $this->form_b->random = $this->passObj->random;
+
+        $this->form_b->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_b->entered_by = $this->passObj->entered_by;
+        $this->form_b->entry_date = $this->passObj->entry_date;
     }
 }

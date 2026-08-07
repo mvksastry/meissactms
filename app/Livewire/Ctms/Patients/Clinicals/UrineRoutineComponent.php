@@ -53,12 +53,7 @@ class UrineRoutineComponent extends Component
             $this->passObj = new UrineRoutine();
         }
         else {
-            $this->passObj = UrineRoutine::where('patient_uuid', $this->patient_uuid)
-                                            ->where('data_type', $this->data_type)
-                                            ->first();
-            $this->form_n->opd_id = $this->passObj->opd_id;
-            $this->form_n->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_n->admission_date = $this->passObj->admission_date;
+
         }
     }
 
@@ -69,6 +64,7 @@ class UrineRoutineComponent extends Component
 
     public function fnUrineRoutine()
     {
+        $this->validate();
         $this->input = $this->form_n->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -77,8 +73,29 @@ class UrineRoutineComponent extends Component
         LivewireAlert::title('Urine Routine Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Urine Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
+        $this->setData();
     } 
+
+    public function setData()
+    {
+        $this->passObj = UrineRoutine::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
+        $this->form_n->opd_id = $this->passObj->opd_id;
+        $this->form_n->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_n->admission_date = $this->passObj->admission_date;
+
+        $this->form_n->physical_exam = $this->passObj->physical_exam;
+        $this->form_n->quantity = $this->passObj->quantity;
+        $this->form_n->colour = $this->passObj->colour;
+        $this->form_n->appearance = $this->passObj->appearance;
+        $this->form_n->deposits = $this->passObj->deposits;
+        $this->form_n->ph = $this->passObj->ph;
+        $this->form_n->specific_gravity = $this->passObj->specific_gravity;
+
+
+        $this->form_n->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_n->entered_by = $this->passObj->entered_by;
+        $this->form_n->entry_date = $this->passObj->entry_date;
+    }
 }

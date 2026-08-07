@@ -53,9 +53,9 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">New Patient Clinical Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Controls</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Over</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">RBI</a></li>
+                            <!-- li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Controls</a></li -->
+                            <!-- li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Over</a></li -->
+                            <li class="nav-item"><a class="nav-link active" href="#tab_3" data-toggle="tab">RBI</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">LFT&Elec</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">RFT</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">BS/CRP/IL6</a></li>
@@ -70,7 +70,7 @@
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <div class="tab-content">
-                            <div class="tab-pane active" id="tab_1">
+                            <div class="tab-pane" id="tab_1">
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
@@ -96,12 +96,15 @@
                               </table>
                             </div>
                             <!-- /.tab-pane -->
+                            <!--
                             <div class="tab-pane" id="tab_2">
                               @include('livewire.ctms.patients.forms.cb-1')
                             </div>
+                            -->
                             <!-- /.tab-pane -->
+                            
                             @if($entry == "update")
-                              <div class="tab-pane" id="tab_3">
+                              <div class="tab-pane active" id="tab_3">
                                 <livewire:ctms.patients.clinicals.blood-routine-component :patient_uuid="$patient_uuid" :data_type="$data_type" />
                               </div>
                               <!-- /.tab-pane -->

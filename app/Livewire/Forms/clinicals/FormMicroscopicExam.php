@@ -18,19 +18,19 @@ class FormMicroscopicExam extends Form
 
     
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9-]+$/')]
     public $pus_cells = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9-]+$/')]
     public $epithelial_cells = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9-]+$/')]
     public $rbcs = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9-]+$/')]
     public $yeast_cells = null;
 
-    #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]
+    #[Validate('nullable|regex:/^[a-zA-Z0-9-]+$/')]
     public $bacteria = null;
 
   //  #[Validate('nullable|regex:/^[a-zA-Z0-9]+$/')]

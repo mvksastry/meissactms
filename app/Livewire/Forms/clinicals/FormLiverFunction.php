@@ -7,47 +7,47 @@ use Livewire\Form;
  
 class FormLiverFunction extends Form
 {
-    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
     public $in_patient_id = null;
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
     
 
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $serum_total_protein = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $serum_albumin = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $globulin = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $ag_ratio = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $total_bilirubin = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $direct_bilirubin = null;
 
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $indirect_bilirubin = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $sgot = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $sgpt = null;
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $alkaline_phosphatase = null;
 
    // #[Validate('nullable|regex:/^[A-Za-z0-9\- \/]+$/')]

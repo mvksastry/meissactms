@@ -111,24 +111,7 @@
                                       <label>Sitting</label>
                                       <input wire:model.defer="form.sitting" id="pr" type="text" value="null" class="form-control" placeholder="Sitting">
                                     </td>
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls3" id="temperature" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls4" id="bp_systolic" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls5" id="bp_diastolic" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---</label>
-                                      <input wire:model.defer="form.ls6" id="bp_diastolic" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
                                   </tr>
-        
                                   <tr>
                                     <td colspan="6">
                                       <div class="form-group">

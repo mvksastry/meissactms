@@ -7,10 +7,10 @@ use Livewire\Form;
  
 class PatientVAScoreForm extends Form
 {
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
     
     //#[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
@@ -20,25 +20,14 @@ class PatientVAScoreForm extends Form
     public $admission_date = null;
 
     
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
+    public $vas_scale = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $intensity = null;
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
+    public $fpr_scale = null;
 
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $location = null;
-
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $onset = null;
-
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $duration = null;
-
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
-    public $variation = null;
-
-    #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $quality = null;
-
 
 
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]

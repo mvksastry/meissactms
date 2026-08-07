@@ -56,12 +56,7 @@ class CreatinineComponent extends Component
             $this->passObj = new Creatinine();
         }
         else {
-            $this->passObj = Creatinine::where('patient_uuid', $this->patient_uuid)
-                                        ->where('data_type', $this->data_type)
-                                        ->first();
-            $this->form_e->opd_id = $this->passObj->opd_id;
-            $this->form_e->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_e->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -72,6 +67,7 @@ class CreatinineComponent extends Component
 
     public function fnCreatinine()
     {
+        $this->validate();
         $this->input = $this->form_e->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -80,8 +76,23 @@ class CreatinineComponent extends Component
         LivewireAlert::title('Creatinine Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-       // $this->msg_panel = true;
-       // $sysAlertWarning = false;
-       // $this->comSuccess = $msg;
+        $this->setData();
+    }
+
+    public function setData()
+    {
+        $this->passObj = Creatinine::where('patient_uuid', $this->patient_uuid)
+                                    ->where('data_type', $this->data_type)
+                                    ->first();
+        $this->form_e->opd_id = $this->passObj->opd_id;
+        $this->form_e->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_e->admission_date = $this->passObj->admission_date;
+
+        $this->form_e->serum_creatinine = $this->passObj->serum_creatinine;
+
+        $this->form_e->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_e->entered_by = $this->passObj->entered_by;
+        $this->form_e->entry_date = $this->passObj->entry_date;
+
     }
 }

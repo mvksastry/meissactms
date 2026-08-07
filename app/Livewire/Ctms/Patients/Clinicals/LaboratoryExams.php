@@ -53,12 +53,8 @@ class LaboratoryExams extends Component
             $this->passObj = new LaboratoryExam();
         }
         else {
-            $this->passObj = LaboratoryExam::where('patient_uuid', $this->patient_uuid)
-                                            ->where('data_type', $this->data_type)
-                                            ->first();
-            $this->form_j->opd_id = $this->passObj->opd_id;
-            $this->form_j->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_j->admission_date = $this->passObj->admission_date;
+            $this->setData();
+
         }
     }
 
@@ -69,6 +65,7 @@ class LaboratoryExams extends Component
 
     public function fnLabExams()
     {
+        $this->validate();
         $this->input = $this->form_j->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -77,8 +74,26 @@ class LaboratoryExams extends Component
         LivewireAlert::title('Lab Exam Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
-    }    
+        $this->setData();
+    }   
+    
+    public function setData()
+    {
+        $this->passObj = LaboratoryExam::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
+        $this->form_j->opd_id = $this->passObj->opd_id;
+        $this->form_j->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_j->admission_date = $this->passObj->admission_date;
+
+        $this->form_j->esr = $this->passObj->esr;
+        $this->form_j->pt_patient = $this->passObj->pt_patient;
+        $this->form_j->pt_control = $this->passObj->pt_control;
+        $this->form_j->inr = $this->passObj->inr;
+        $this->form_j->isi = $this->passObj->isi;
+
+        $this->form_j->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_j->entered_by = $this->passObj->entered_by;
+        $this->form_j->entry_date = $this->passObj->entry_date;
+    }
 }

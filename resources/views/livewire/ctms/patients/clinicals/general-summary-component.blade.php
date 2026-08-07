@@ -10,6 +10,15 @@
           @if($msg_panel)
             @include('livewire.eac_msg_panel')
           @endif
+          @if ($errors->any())
+            <div class="text-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
         </th>
       </tr>
     </thead>

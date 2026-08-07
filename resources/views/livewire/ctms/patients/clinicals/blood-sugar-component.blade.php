@@ -12,6 +12,19 @@
           @endif
         </th>
       </tr>
+      <tr>
+        <td>
+          @if ($errors->any())
+            <div class="text-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          @endif
+        </td>
+      </tr>
     </thead>
     <tbody>
     </tbody>
@@ -29,12 +42,12 @@
           <input wire:model.defer="form_b.fasting" type="text" class="form-control" placeholder="Fasting (mg/dL)">
         </td>
         <td>
-          <label>Random (mg/dL)</label>
-          <input wire:model.defer="form_b.random" type="text" class="form-control" placeholder="Random (mg/dL)">
-        </td>
-        <td>
           <label>Post-Prandial (mg/dL)</label>
           <input wire:model.defer="form_b.post_prandial" type="text" class="form-control" placeholder="Post-Prandial (mg/dL)" >
+        </td>
+        <td>
+          <label>Random (mg/dL)</label>
+          <input wire:model.defer="form_b.random" type="text" class="form-control" placeholder="Random (mg/dL)">
         </td>
       </tr>     
     </tbody>

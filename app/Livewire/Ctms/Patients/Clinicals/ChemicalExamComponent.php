@@ -55,12 +55,7 @@ class ChemicalExamComponent extends Component
             $this->passObj = new ChemicalExam();
         }
         else {
-            $this->passObj = ChemicalExam::where('patient_uuid', $this->patient_uuid)
-                                          ->where('data_type', $this->data_type)
-                                          ->first();
-            $this->form_d->opd_id = $this->passObj->opd_id;
-            $this->form_d->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_d->admission_date = $this->passObj->admission_date;
+            $this->setDate();
         }
     }
 
@@ -71,6 +66,7 @@ class ChemicalExamComponent extends Component
 
     public function fnChemExams()
     {
+        $this->validate();
         $this->input = $this->form_d->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -79,8 +75,29 @@ class ChemicalExamComponent extends Component
         LivewireAlert::title('Chem Exam Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Chem Exam Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-      //  $this->msg_panel = true;
-      //  $sysAlertWarning = false;
-      //  $this->comSuccess = $msg;
+        $this->setDate();
+
+    }
+
+    public function setDate()
+    {
+        $this->passObj = ChemicalExam::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
+        $this->form_d->opd_id = $this->passObj->opd_id;
+        $this->form_d->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_d->admission_date = $this->passObj->admission_date;
+
+        $this->form_d->proteins = $this->passObj->proteins;
+        $this->form_d->sugar = $this->passObj->sugar;
+        $this->form_d->ketones = $this->passObj->ketones;
+        $this->form_d->procalcitonin = $this->passObj->procalcitonin;
+        $this->form_d->bile_salts = $this->passObj->bile_salts;
+        $this->form_d->bile_pigments = $this->passObj->bile_pigments;
+
+        $this->form_d->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_d->entered_by = $this->passObj->entered_by;
+        $this->form_d->entry_date = $this->passObj->entry_date;
+
     }
 }

@@ -53,12 +53,7 @@ class GeneralSummaryComponent extends Component
             $this->passObj = new GeneralSummary();
         }
         else {
-            $this->passObj = GeneralSummary::where('patient_uuid', $this->patient_uuid)
-                                            ->where('data_type', $this->data_type)
-                                            ->first();
-            $this->form_h->opd_id = $this->passObj->opd_id;
-            $this->form_h->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_h->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,6 +64,7 @@ class GeneralSummaryComponent extends Component
 
     public function fnGeneralSummary()
     {
+        $this->validate();
         $this->input = $this->form_h->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -80,5 +76,21 @@ class GeneralSummaryComponent extends Component
        // $this->msg_panel = true;
        // $sysAlertWarning = false;
        // $this->comSuccess = $msg;
+    }
+
+    public function setData()
+    {
+        $this->passObj = GeneralSummary::where('patient_uuid', $this->patient_uuid)
+                                        ->where('data_type', $this->data_type)
+                                        ->first();
+        $this->form_h->opd_id = $this->passObj->opd_id;
+        $this->form_h->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_h->admission_date = $this->passObj->admission_date;
+
+        $this->form_h->general_summary = $this->passObj->general_summary;
+
+        $this->form_h->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_h->entered_by = $this->passObj->entered_by;
+        $this->form_h->entry_date = $this->passObj->entry_date;
     }
 }

@@ -53,12 +53,7 @@ class MicroscopicExams extends Component
             $this->passObj = new MicroscopicExam();
         }
         else {
-            $this->passObj = MicroscopicExam::where('patient_uuid', $this->patient_uuid)
-                                                ->where('data_type', $this->data_type)
-                                                ->first();
-            $this->form_l->opd_id = $this->passObj->opd_id;
-            $this->form_l->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_l->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,6 +64,7 @@ class MicroscopicExams extends Component
 
     public function fnMicroscopicExam()
     {
+        $this->validate();
         $this->input = $this->form_l->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -77,8 +73,27 @@ class MicroscopicExams extends Component
         LivewireAlert::title('Microscopic Exam Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-       // $this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
+        $this->setData();
     } 
+
+    public function setData()
+    {
+        $this->passObj = MicroscopicExam::where('patient_uuid', $this->patient_uuid)
+                                            ->where('data_type', $this->data_type)
+                                            ->first();
+        $this->form_l->opd_id = $this->passObj->opd_id;
+        $this->form_l->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_l->admission_date = $this->passObj->admission_date;
+
+        $this->form_l->pus_cells = $this->passObj->pus_cells;
+        $this->form_l->epithelial_cells = $this->passObj->epithelial_cells;
+        $this->form_l->rbcs = $this->passObj->rbcs;
+        $this->form_l->yeast_cells = $this->passObj->yeast_cells;
+        $this->form_l->bacteria = $this->passObj->bacteria;
+
+        $this->form_l->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_l->entered_by = $this->passObj->entered_by;
+        $this->form_l->entry_date = $this->passObj->entry_date;
+
+    }
 }

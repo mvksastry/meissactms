@@ -58,10 +58,10 @@ class EditLifestyleInfo extends Component
         $this->form->cross_leg_sitting = $ls_info->cross_leg_sitting;
         $this->form->standing = $ls_info->standing;
         $this->form->sitting = $ls_info->sitting;
-        $this->form->ls3 = $ls_info->ls3;
-        $this->form->ls4 = $ls_info->ls4;
-        $this->form->ls5 = $ls_info->ls5;
-        $this->form->ls6 = $ls_info->ls6;
+        //$this->form->ls3 = $ls_info->ls3;
+        //$this->form->ls4 = $ls_info->ls4;
+        //$this->form->ls5 = $ls_info->ls5;
+        //$this->form->ls6 = $ls_info->ls6;
         $this->form->life_style_description = $ls_info->life_style_description;
         $this->form->status = $ls_info->status;
         $this->form->status_date = $ls_info->status_date;

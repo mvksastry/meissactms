@@ -8,10 +8,10 @@ use Livewire\Form;
 class PatientCIForm extends Form
 {
 
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('required|regex:/^[A-Za-z0-9-._ ]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
+    #[Validate('required|regex:/^[A-Za-z0-9-_ ]+$/|max:20')]
     public $in_patient_id = null;
     
     //#[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
@@ -77,10 +77,10 @@ class PatientCIForm extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = null;
 
-    #[Validate('regex:/^[A-Za-z0-9 ]+$/')]
+    #[Validate('required|regex:/^[A-Za-z0-9 ]+$/')]
     public $entered_by = null;
 
-    #[Validate('nullable|date')]
+    #[Validate('required|date')]
     public $entry_date = null;
     
 }

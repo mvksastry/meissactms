@@ -53,12 +53,7 @@ class BloodUreaComponent extends Component
             $this->passObj = new BloodUrea();
         }
         else {
-            $this->passObj = BloodUrea::where('patient_uuid', $this->patient_uuid)
-                                        ->where('data_type', $this->data_type)
-                                        ->first();
-            $this->form_c->opd_id = $this->passObj->opd_id;
-            $this->form_c->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_c->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,6 +64,7 @@ class BloodUreaComponent extends Component
 
     public function fnBloodUrea()
     {
+        $this->validate();
         $this->input = $this->form_c->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
@@ -77,8 +73,23 @@ class BloodUreaComponent extends Component
         LivewireAlert::title('Blood Urea Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Blood Urea Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-       // $this->msg_panel = true;
-       // $sysAlertWarning = false;
-       // $this->comSuccess = $msg;
+        $this->setData();
+    }
+
+    public function setData()
+    {
+        $this->passObj = BloodUrea::where('patient_uuid', $this->patient_uuid)
+                                    ->where('data_type', $this->data_type)
+                                    ->first();
+        $this->form_c->opd_id = $this->passObj->opd_id;
+        $this->form_c->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_c->admission_date = $this->passObj->admission_date;
+
+        $this->form_c->uric_acid = $this->passObj->uric_acid;
+        $this->form_c->blood_urea_nitrogen = $this->form_c->blood_urea_nitrogen;
+
+        $this->form_c->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_c->entered_by = $this->passObj->entered_by;
+        $this->form_c->entry_date = $this->passObj->entry_date;
     }
 }

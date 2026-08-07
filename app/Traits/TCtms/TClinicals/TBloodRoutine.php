@@ -16,6 +16,8 @@ use App\Models\Ctms\Clinicals\BloodRoutine;
 
 use Illuminate\Support\Facades\Log;
 
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
+
 trait TBloodRoutine
 {
 
@@ -28,6 +30,7 @@ trait TBloodRoutine
         {
             return $value === "" ? NULL : $value;
         }, $input);
+
         //--------X Table content X-------------//
         $passObj->rbc = $input['rbc'];
         $passObj->hgb = $input['hgb'];
@@ -70,6 +73,42 @@ trait TBloodRoutine
         $passObj->entered_by = $input['entered_by'];
         $passObj->entry_date = $input['entry_date'];
         //dd($passObj);
-        $passObj->save(); //this updates single object.
+        
+
+
+                //dd($newPatientInfo);        
+        try {
+            $this->msg_panel = true;
+            
+            $result = $passObj->save(); //this updates single object.
+
+            
+            if ($result) { 
+                return $result;
+            } else {
+                $msg = 'Patient Blood Routine Data could not be saved';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database error for new patient while saving : '.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected error for while saving Blood Routine Data while saving : '.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
+
+
+
+
+
     }
 }

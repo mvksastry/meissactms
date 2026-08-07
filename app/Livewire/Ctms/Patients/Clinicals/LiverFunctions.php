@@ -53,12 +53,7 @@ class LiverFunctions extends Component
             $this->passObj = new LiverFunction();
         }
         else {
-            $this->passObj = LiverFunction::where('patient_uuid', $this->patient_uuid)
-                                                ->where('data_type', $this->data_type)
-                                                ->first();
-            $this->form_k->opd_id = $this->passObj->opd_id;
-            $this->form_k->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_k->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,16 +64,48 @@ class LiverFunctions extends Component
 
     public function fnLiverFunction()
     {
+        $this->validate();
         $this->input = $this->form_k->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
-       // dd($this->input); // 
+       //dd($this->input); // 
         $result = $this->saveLiverFunctionData($this->input, $this->passObj);
         LivewireAlert::title('Liver Function Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Liv function Data ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
+        $this->setData();
     } 
+    public function setData()
+    {
+        $this->passObj = LiverFunction::where('patient_uuid', $this->patient_uuid)
+                                            ->where('data_type', $this->data_type)
+                                            ->first();
+        $this->form_k->opd_id = $this->passObj->opd_id;
+        $this->form_k->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_k->admission_date = $this->passObj->admission_date;
+
+        $this->form_k->serum_total_protein = $this->passObj->serum_total_protein;
+        $this->form_k->serum_albumin = $this->passObj->serum_albumin;
+        $this->form_k->globulin = $this->passObj->globulin;
+
+        $this->form_k->ag_ratio = $this->passObj->ag_ratio;
+        $this->form_k->total_bilirubin = $this->passObj->total_bilirubin;
+        $this->form_k->direct_bilirubin = $this->passObj->direct_bilirubin;
+
+        $this->form_k->indirect_bilirubin = $this->passObj->indirect_bilirubin;
+        $this->form_k->sgot = $this->passObj->sgot;
+        $this->form_k->sgpt = $this->passObj->sgpt;
+
+        $this->form_k->alkaline_phosphatase = $this->passObj->alkaline_phosphatase;
+        $this->form_k->observations = $this->passObj->observations;
+
+        $this->form_k->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_k->entered_by = $this->passObj->entered_by;
+        $this->form_k->entry_date = $this->passObj->entry_date;
+    }
+
+    public function chechEmptyInput()
+    {
+
+    }
 }

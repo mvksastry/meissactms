@@ -43,10 +43,10 @@ trait TPatientLifeStyle
         $newLSinfo->cross_leg_sitting = $input['cross_leg_sitting'];
         $newLSinfo->standing = $input['standing'];
         $newLSinfo->sitting = $input['sitting'];
-        $newLSinfo->ls3 = $input['ls3'];
-        $newLSinfo->ls4 = $input['ls4'];
-        $newLSinfo->ls5 = $input['ls5'];
-        $newLSinfo->ls6 = $input['ls6'];
+        //$newLSinfo->ls3 = $input['ls3'];
+        //$newLSinfo->ls4 = $input['ls4'];
+        //$newLSinfo->ls5 = $input['ls5'];
+        //$newLSinfo->ls6 = $input['ls6'];
         $newLSinfo->life_style_description = $input['life_style_description'];
 
         //$newLSinfo->status = "draft";

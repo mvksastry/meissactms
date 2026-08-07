@@ -19,31 +19,31 @@ class PatientSEForm extends Form
 
     #[Validate('nullable|date')]
     public $admission_date = null;
-
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+                
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $lL1 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $lL2 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $lL3 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $lL4 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $lL5 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $lS1 = null;
 
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $rL1 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $rL2 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $rL3 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $rL4 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $rL5 = null;
-    #[Validate('regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('regex:/^\d+(\.\d+)?$/')]
     public $rS1 = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]

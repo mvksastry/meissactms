@@ -7,10 +7,10 @@ use Livewire\Form;
  
 class FormIl6 extends Form
 {
-    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
     public $in_patient_id = null;
 
     #[Validate('date')]
@@ -18,7 +18,7 @@ class FormIl6 extends Form
 
     
 
-    #[Validate('nullable|regex:/^-?\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $il6 = null;
 
  //   #[Validate('nullable|regex:/^[a-zA-Z0-9.,\-\/ ]+$/')]

@@ -53,12 +53,7 @@ class Il6Component extends Component
             $this->passObj = new Il6();
         }
         else {
-            $this->passObj = Il6::where('patient_uuid', $this->patient_uuid)
-                                    ->where('data_type', $this->data_type)
-                                    ->first();
-            $this->form_i->opd_id = $this->passObj->opd_id;
-            $this->form_i->in_patient_id = $this->passObj->in_patient_id;
-            $this->form_i->admission_date = $this->passObj->admission_date;
+            $this->setData();
         }
     }
 
@@ -69,16 +64,36 @@ class Il6Component extends Component
 
     public function fnIl6()
     {
+        $this->validate();
         $this->input = $this->form_i->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
-        $result = $this->saveIl6Data($this->input, $this->passObj);
-        LivewireAlert::title('IL-6 Data Saved...')->success()->asToast()->show();
-        $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->patient_uuid.']';
-        Log::channel('patient')->info($msg);
-       // $this->msg_panel = true;
-       // $sysAlertWarning = false;
-       // $this->comSuccess = $msg;
+        if($this->input['il6'] == null)
+        {
+            LivewireAlert::title('IL-6 Data Empty...')->warning()->show();
+        }else {
+            $result = $this->saveIl6Data($this->input, $this->passObj);
+            LivewireAlert::title('IL-6 Data Saved...')->success()->asToast()->show();
+            $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data ['.$this->patient_uuid.']';
+            Log::channel('patient')->info($msg);
+            $this->setData();
+        }
+    }
+
+    public function setData()
+    {
+        $this->passObj = Il6::where('patient_uuid', $this->patient_uuid)
+                                ->where('data_type', $this->data_type)
+                                ->first();
+        $this->form_i->opd_id = $this->passObj->opd_id;
+        $this->form_i->in_patient_id = $this->passObj->in_patient_id;
+        $this->form_i->admission_date = $this->passObj->admission_date;
+
+        $this->form_i->il6 = $this->passObj->il6;
+
+        $this->form_i->comment_entered_by = $this->passObj->comment_entered_by;
+        $this->form_i->entered_by = $this->passObj->entered_by;
+        $this->form_i->entry_date = $this->passObj->entry_date;
     }
 }

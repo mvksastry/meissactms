@@ -97,7 +97,7 @@ class EditClinicalInfo extends Component
     public $new_dd_panel = false;
 
     //variables
-    public $tab, $activeTab = 'tab_1'; // default tab
+    public $tab, $activeTab = 'tab_2'; // default tab
 
     public function setActiveTab($tab)
     {
@@ -577,8 +577,8 @@ class EditClinicalInfo extends Component
     }
 
     public function fnBloodRoutine()
-    {   $this->msg_panel = false;
-        //dd("reached blood routine");
+    {   
+        $this->msg_panel = false;
         $this->input = $this->form_a->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->uuid, $this->form_a->opd_id, $this->input); // 
@@ -589,11 +589,10 @@ class EditClinicalInfo extends Component
     }
 
     public function fnBloodSugar()
-    {   $this->msg_panel = false;
+    {   
+        $this->msg_panel = false;
         $this->input = $this->form_b->all();
-
         $this->input = $this->sanitizeInput($this->input);
-
         //dd($this->input); // 
         $result = BloodSugar::where('patient_uuid', $this->uuid)->update($this->input);
         $msg = 'User ['.Auth::user()->name.'] saved Blood Sugar Data for Patient ['.$this->uuid.']';
@@ -632,9 +631,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Creatinine Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Creatinine Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnCRP()
@@ -646,9 +642,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved CRP Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('CRP Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnElectrolytes()
@@ -660,9 +653,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Electrolytes Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Electrolyte Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnGeneralSummary()
@@ -674,9 +664,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Gen Summary Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Gen Summary Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnIl6()
@@ -688,9 +675,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved IL-6 Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Il6 Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnLabExams()
@@ -702,9 +686,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Lab Exam Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Lab Exam Data Updated')->success()->asToast()->show();
-       // $this->msg_panel = true;
-       // $sysAlertWarning = false;
-       // $this->comSuccess = $msg;
     }
 
     public function fnLiverFunction()
@@ -716,9 +697,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Liv function Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('LFT Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     } 
 
     public function fnMicroscopicExam()
@@ -730,9 +708,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Microscopic Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Microscopi Exam Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     } 
 
     public function fnRenalFunction()
@@ -744,9 +719,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Renal Fn Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('RFT Data Updated')->success()->asToast()->show();
-        ///$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     }
 
     public function fnUrineRoutine()
@@ -759,9 +731,6 @@ class EditClinicalInfo extends Component
         $msg = 'User ['.Auth::user()->name.'] saved Urine Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
         LivewireAlert::title('Urine Routine Data Updated')->success()->asToast()->show();
-        //$this->msg_panel = true;
-        //$sysAlertWarning = false;
-        //$this->comSuccess = $msg;
     } 
 
     public function fnEditDrugDetail()
@@ -775,9 +744,6 @@ class EditClinicalInfo extends Component
             $msg = 'User ['.Auth::user()->name.'] edited Drug Detail Data for Patient ['.$this->uuid.']';
             Log::channel('patient')->info($msg);
             LivewireAlert::title('Drug Detail Data Edited')->success()->asToast()->show();
-            //$this->msg_panel = true;
-            //$sysAlertWarning = false;
-            //$this->comSuccess = $msg;
         }
         $this->nDDetForm = [];
         $this->edit_dd_panel = false;

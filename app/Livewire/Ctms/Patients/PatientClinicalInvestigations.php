@@ -11,9 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Ctms\Patient;
 
 //forms
+
 use App\Livewire\Forms\PatientCIForm;
 
 //traits
+use App\Traits\Base;
 use App\Traits\TCtms\TPatientClinicalData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -22,6 +24,7 @@ use Illuminate\Support\Facades\Log;
 
 class PatientClinicalInvestigations extends Component
 {
+    use Base;
     //Trait
     use TPatientClinicalData;
 
@@ -53,6 +56,7 @@ class PatientClinicalInvestigations extends Component
     {
         //dd($patient_uuid, $entry);
         $this->patient_uuid = $patient_uuid;
+        $this->entry = "update";
         $this->data_type = $data_type;
         $passObj = Patient::where('patient_uuid', $this->patient_uuid)
                             ->first();
