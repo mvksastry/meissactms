@@ -52,6 +52,7 @@ class PatientModifiedPfirmannGrades extends Component
 
     public function fnSavePfirmannGrade()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); //

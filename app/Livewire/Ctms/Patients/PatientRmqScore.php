@@ -95,6 +95,7 @@ class PatientRmqScore extends Component
     public function fnSaveRMQInfo()
     {
         //dd($this->rmq_replies);
+        $this->form->validate();
         $this->form->rmq_replies = json_encode($this->rmq_replies);
         $this->input = $this->form->all();
         $this->input['data_type'] = $this->data_type;

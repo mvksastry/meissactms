@@ -8,10 +8,10 @@ use Livewire\Form;
 class PatientSEForm extends Form
 {
 
-    #[Validate('regex:/^[A-Za-z0-9_\- ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9_\- ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
     
    // #[Validate('regex:/^[A-Za-z0-9,.\-\/ ]+$/|max:20')]
@@ -20,36 +20,36 @@ class PatientSEForm extends Form
     #[Validate('nullable|date')]
     public $admission_date = null;
                 
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $lL1 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $lL2 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $lL3 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $lL4 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $lL5 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $lS1 = null;
 
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $rL1 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $rL2 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $rL3 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $rL4 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $rL5 = null;
-    #[Validate('regex:/^\d+(\.\d+)?$/')]
+    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $rS1 = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
     public $comment_entered_by = null;
 
-    #[Validate('regex:/^[A-Za-z0 ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0 ]+$/')]
     public $entered_by = null;
 
     #[Validate('nullable|date')]

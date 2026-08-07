@@ -170,6 +170,7 @@ class PatientModiqScore extends Component
 
     public function fnSaveMODQScore()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input['data_type'] = $this->data_type;
         //dd($this->input);

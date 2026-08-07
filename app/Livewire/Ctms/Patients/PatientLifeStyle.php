@@ -68,6 +68,7 @@ class PatientLifeStyle extends Component
 
     public function fnSavePatientLSInfo()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);

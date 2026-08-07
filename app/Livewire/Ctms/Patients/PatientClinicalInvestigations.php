@@ -75,6 +75,7 @@ class PatientClinicalInvestigations extends Component
     
     public function fnSaveClinicalData()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 

@@ -83,7 +83,7 @@ class PatientPersonal extends Component
 
     public function fnSavePrimaryInfo()
     {
-        $this->validate(); 
+        $this->form->validate(); 
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);

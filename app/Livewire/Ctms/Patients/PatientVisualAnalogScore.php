@@ -53,6 +53,7 @@ class PatientVisualAnalogScore extends Component
 
     public function fnSaveVAscoreData()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); //

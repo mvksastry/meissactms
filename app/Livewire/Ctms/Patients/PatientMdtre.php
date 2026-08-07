@@ -54,6 +54,7 @@ class PatientMdtre extends Component
 
     public function fnSaveMDTREInfo()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input['data_type'] = $this->data_type;
         //dd($this->input); //
