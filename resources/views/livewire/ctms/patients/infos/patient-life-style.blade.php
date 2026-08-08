@@ -90,20 +90,8 @@
                                       </br>{{ $ls_info->standing }}
                                     </td>
                                     <td>
-                                      <label>---</label>
-                                      </br>{{ $ls_info->ls3 }}
-                                    </td>
-                                    <td>
-                                      <label>---</label>
-                                      </br>{{ $ls_info->ls4 }}
-                                  </td>
-                                    <td>
-                                      <label>---</label>
-                                      </br>{{ $ls_info->ls5 }}
-                                    </td>
-                                    <td>
-                                      <label>---</label>
-                                      </br>{{ $ls_info->ls6 }}
+                                      <label>Sitting</label>
+                                      </br>{{ $ls_info->sitting }}
                                     </td>
                                   </tr>
 
