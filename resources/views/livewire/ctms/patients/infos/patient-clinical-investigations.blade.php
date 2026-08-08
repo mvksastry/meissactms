@@ -38,8 +38,8 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Cryptic</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">BR</a></li>
+                            <!--li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Cryptic</a></li -->
+                            <li class="nav-item"><a class="nav-link active" href="#tab_2" data-toggle="tab">BR</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">LFT-Elect</a></li>
 
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">RFT</a></li>
@@ -54,11 +54,13 @@
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <div class="tab-content">
+                            <!--
                             <div class="tab-pane active" id="tab_1">
-                              @include('livewire.ctms.patients.infos.clinicals.tab1_cryptic')
+                              
                             </div>
+                            -->
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_2">
+                            <div class="tab-pane active" id="tab_2">
                               @include('livewire.ctms.patients.infos.clinicals.tab2_blood-routine')
                             </div>
                             <!-- /.tab-pane -->
