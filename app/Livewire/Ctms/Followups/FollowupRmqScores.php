@@ -91,7 +91,9 @@ class FollowupRmqScores extends Component
     public function fnSaveRMQInfo()
     {
         //dd($this->rmq_replies);
+        $this->form->validate();
         $this->form->rmq_replies = json_encode($this->rmq_replies);
+        
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); //

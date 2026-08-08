@@ -49,6 +49,7 @@ class FollowupModifiedPfirmanns extends Component
 
     public function fnSavePfirmannGrade()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); //

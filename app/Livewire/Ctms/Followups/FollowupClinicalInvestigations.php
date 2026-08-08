@@ -68,6 +68,7 @@ class FollowupClinicalInvestigations extends Component
 
     public function fnSaveClinicalData()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); // 

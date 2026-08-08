@@ -172,6 +172,7 @@ class FollowupClinicalBiochemComponent extends Component
     {
         //dd("saving blood routine");
         $this->msg_panel = false;
+        $this->form_a->validate();
         $this->input = $this->form_a->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -202,6 +203,7 @@ class FollowupClinicalBiochemComponent extends Component
     {
         //dd("saving blood sugar");
         $this->msg_panel = false;
+        $this->form_b->validate();
         $this->input = $this->form_b->all();
         $this->setPatientDataType();
 
@@ -231,6 +233,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnBloodUrea()
     {
         //dd("saving blood urea");
+        $this->form_c->validate();
         $this->input = $this->form_c->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -259,6 +262,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnChemExams()
     {
         //dd("saving chem exams");
+        $this->form_d->validate();
         $this->input = $this->form_d->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -287,6 +291,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnCreatinine()
     {
         //dd("saving creatinine");
+        $this->form_e->validate();
         $this->input = $this->form_e->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -315,6 +320,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnCRP()
     {
         //dd("saving crp");
+        $this->form_f->validate();
         $this->input = $this->form_f->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -343,6 +349,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnElectrolytes()
     {
         // dd("saving Electrolytes");
+        $this->form_g->validate();
          $this->input = $this->form_g->all();
          $this->setPatientDataType();
         //dd($this->input); //
@@ -371,6 +378,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnGeneralSummary()
     {
         //dd("saving Gen Summary");
+        $this->form_h->validate();
         $this->input = $this->form_h->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -399,6 +407,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnIl6()
     {
         //dd("saving Il6");
+        $this->form_i->validate();
         $this->input = $this->form_i->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -427,6 +436,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnLabExams()
     {
         //dd("saving Lab Exams");
+        $this->form_j->validate();
         $this->input = $this->form_j->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -455,6 +465,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnLiverFunction()
     {
         //dd("saving Liver Functions");
+        $this->form_k->validate();
         $this->input = $this->form_k->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -483,6 +494,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnMicroscopicExam()
     {
         //dd("saving Microscopic Exams");
+        $this->form_l->validate();
         $this->input = $this->form_l->all();
         $this->setPatientDataType();
         //dd($this->input); // 
@@ -511,6 +523,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnRenalFunction()
     {
         //dd("saving Renal Functions");
+        $this->form_m->validate();
         $this->input = $this->form_m->all();
         $this->setPatientDataType();
         //dd($this->input); //
@@ -539,6 +552,7 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnUrineRoutine()
     {
         //dd("saving Urine Routine");
+        $this->form_n->validate();
         $this->input = $this->form_n->all();
         $this->setPatientDataType();
         //dd($this->input); // 

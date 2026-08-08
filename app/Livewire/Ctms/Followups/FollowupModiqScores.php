@@ -252,6 +252,7 @@ class FollowupModiqScores extends Component
 
     public function fnSaveMODQScore()
     {
+        $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input);
