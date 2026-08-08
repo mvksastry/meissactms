@@ -7,10 +7,10 @@ use Livewire\Form;
  
 class FormElectrolytes extends Form
 {
-    #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
 
     #[Validate('nullable|date')]

@@ -10,7 +10,7 @@ class FormUrineRoutine extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
 
     #[Validate('nullable|date')]
@@ -46,7 +46,7 @@ class FormUrineRoutine extends Form
    // public $melr_report_file_path = '';
 
     
-    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_ ]+$/')]
     public $comment_entered_by = null;
 
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]

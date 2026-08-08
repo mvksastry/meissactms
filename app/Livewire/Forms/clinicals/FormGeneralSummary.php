@@ -10,7 +10,7 @@ class FormGeneralSummary extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = '';
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = '';
 
     #[Validate('nullable|date')]

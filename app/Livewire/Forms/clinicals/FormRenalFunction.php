@@ -10,7 +10,7 @@ class FormRenalFunction extends Form
     #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
     public $opd_id = null;
 
-    #[Validate('regex:/^[A-Za-z0-9\-_\/ ]+$/|max:20')]
+    #[Validate('regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
 
     #[Validate('date')]
