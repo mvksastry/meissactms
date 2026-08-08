@@ -93,6 +93,8 @@
                             <!-- /.tab-pane -->
                             <div class="tab-pane {{ $activeTab === 'tab_4' ? 'active' : '' }}" id="tab_4">
                               @include('livewire.ctms.patients.clinicals.renal-function-component')
+                              @include('livewire.ctms.patients.clinicals.blood-urea-component')
+                              @include('livewire.ctms.patients.clinicals.creatinine-component')
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane {{ $activeTab === 'tab_5' ? 'active' : '' }}" id="tab_5">
