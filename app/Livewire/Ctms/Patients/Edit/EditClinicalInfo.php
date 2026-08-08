@@ -542,7 +542,7 @@ class EditClinicalInfo extends Component
 
     public function fnSaveEditedClinicalData()
     {   $this->msg_panel = false;
-        $this->validate(); 
+        $this->form->validate(); 
         $this->input = $this->form->all();
 
         //dd($this->input);       
