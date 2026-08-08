@@ -111,10 +111,11 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="2" align="center"></th>
+                                    <th colspan="2" align="center">Comments</th>
                                   </tr>
                                 </thead>
-                                <tbody>        
+                                <tbody>       
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')  
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment By Entered</label>
@@ -131,6 +132,8 @@
                                       </br>{{ $ls_info->entry_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_manager|ctms_incharge|director') 
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment By Verified</label>
@@ -147,6 +150,8 @@
                                       </br>{{ $ls_info->verified_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment By Sealed Authority</label>
@@ -163,6 +168,7 @@
                                       </br>{{ $ls_info->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
                                 </tbody>
                               </table>
                             </div>

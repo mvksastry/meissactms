@@ -186,6 +186,7 @@
                                 </thead>
                                 <tbody>        
                                   <tr>
+                                    @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
                                     <td colspan="2">
                                       <label>Comment By Entered</label>
                                       </br>{{ $sensoryexam_info->comment_entered_by }}
@@ -201,6 +202,8 @@
                                       </br>{{ $sensoryexam_info->entry_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')                                  
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment by Verified</label>
@@ -217,6 +220,8 @@
                                       </br>{{ $sensoryexam_info->verified_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_incharge|director')                                  
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment by Sealed Authority</label>
@@ -233,6 +238,7 @@
                                       </br>{{ $sensoryexam_info->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
                                 </tbody>
                               </table>
                             </div>

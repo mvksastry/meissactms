@@ -111,13 +111,14 @@
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
-                                                            <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
                                     <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody>        
+                                <tbody>       
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director') 
                                   <tr>
                                     <td colspan="2">
                                       <label>Entered By Entered</label>
@@ -134,6 +135,8 @@
                                       </br>{{ $rmq_replies->entry_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Verified By Comment</label>
@@ -150,6 +153,8 @@
                                       </br>{{ $rmq_replies->verified_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Verified By Sealed Authority</label>
@@ -166,6 +171,7 @@
                                       </br>{{ $rmq_replies->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
                                 </tbody>
                               </table>
                               

@@ -110,6 +110,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>        
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Entered By</label>
@@ -126,6 +127,8 @@
                                       </br>{{ $pfirmangrade_info->entry_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Verified By Verified</label>
@@ -142,6 +145,8 @@
                                       </br>{{ $pfirmangrade_info->verified_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Verified By Sealed Authority</label>
@@ -158,6 +163,7 @@
                                       </br>{{ $pfirmangrade_info->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
                                 </tbody>
                               </table>
 

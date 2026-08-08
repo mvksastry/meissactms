@@ -93,14 +93,14 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="2" align="center"></th>
+                                    <th colspan="2" align="center">Comments</th>
                                   </tr>
                                 </thead>
                                 <tbody>      
-                                  @hasrole('junior_resident')  
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')  
                                   <tr>
                                     <td colspan="2">
-                                      <label>Comment By Entered</label>
+                                      <label>Comment Entered By</label>
                                       </br>{{ $patientPrimaryInfo->comment_entered_by }}
                                     </td>
                                   </tr>
@@ -118,28 +118,11 @@
                                     <td>
                                     </td>
                                   </tr>
-                                  @endhasrole
+                                  @endhasanyrole
 
-                                  @hasrole('senior_resident')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Comment By Verified</label>
-                                      </br>{{ $patientPrimaryInfo->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>Verified By*</label>
-                                      </br>{{ $patientPrimaryInfo->verified_by }}
-                                    </td>
-                                    <td>
-                                      <label>Verified Date*</label>
-                                      </br>{{ $patientPrimaryInfo->verified_date }}
-                                    </td>
-                                  </tr>
-                                  @endhasrole
 
-                                  @hasrole('clinical_manager')
+
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td>
                                       <label>Seal Patient Data*</label>
@@ -153,9 +136,9 @@
                                       </br>{{ $patientPrimaryInfo->sealed_date }}
                                     </td>
                                   </tr>
-                                  @endhasrole
+                                  @endhasanyrole
 
-                                  @hasrole('ctms_incharge')
+                                  @hasanyrole('ctms_incharge|director')
                                   <tr>
                                     <td>
                                       <label>Seal Patient Data*</label>
@@ -169,7 +152,7 @@
                                       </br>{{ $patientPrimaryInfo->sealed_date }}
                                     </td>
                                   </tr>
-                                  @endhasrole
+                                  @endhasanyrole
                                 </tbody>
                               </table>
                               

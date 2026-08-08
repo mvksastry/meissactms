@@ -7,9 +7,9 @@ use Livewire\Form;
 
 class DecisionProcessingForm extends Form
 {
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9]+$/')]
     public $opd_id = null;
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9]+$/')]
     public $discectomy_ipd_id = null;
     #[Validate('date')]
     public $discectomy_admission_date = null;

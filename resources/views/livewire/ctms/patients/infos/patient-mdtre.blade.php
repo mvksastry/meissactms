@@ -232,6 +232,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>        
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Entered By</label>
@@ -248,6 +249,8 @@
                                       </br>{{ $mdtre_info->entry_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_manager|ctms_incharge|director') 
                                   <tr>
                                     <td colspan="2">
                                       <label>Verified By Verified</label>
@@ -264,9 +267,11 @@
                                       </br>{{ $mdtre_info->verified_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
-                                      <label>Verified By Sealed Authority</label>
+                                      <label>By Sealed Authority</label>
                                       </br>{{ $mdtre_info->comment_verified_by }}
                                     </td>
                                   </tr>
@@ -280,6 +285,7 @@
                                       </br>{{ $mdtre_info->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
                                 </tbody>
                               </table>
                                                             

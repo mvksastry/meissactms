@@ -2,9 +2,6 @@
 
 
 ?>
- 
- 
- 
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -196,6 +193,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>        
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment By Entered</label>
@@ -212,6 +210,8 @@
                                       </br>{{ $modq_info->entry_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment by Verified</label>
@@ -228,6 +228,8 @@
                                       </br>{{ $modq_info->verified_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Comment by Sealed Authority</label>
@@ -244,6 +246,7 @@
                                       </br>{{ $modq_info->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
                                 </tbody>
                               </table>
                              </div>

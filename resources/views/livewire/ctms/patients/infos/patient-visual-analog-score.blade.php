@@ -121,22 +121,6 @@
                                       </br>
                                     </td>
                                   </tr>
-                                  <!--
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>---</label>
-                                      </br>
-                                    </td>
-                                    <td colspan="1">
-                                      <label>---</label>
-                                      </br>
-                                   </td>
-                                    <td colspan="1">
-                                      <label>---</label>
-                                      </br>
-                                    </td>
-                                  </tr>
-                                  -->
                                 </tbody>
                               </table>
                             </div>
@@ -149,6 +133,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>        
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Entered By</label>
@@ -165,6 +150,8 @@
                                       </br>{{ $vascore_info->entry_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
                                       <label>Verified By Comment</label>
@@ -181,9 +168,11 @@
                                       </br>{{ $vascore_info->verified_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
+                                  @hasanyrole('ctms_incharge|director')
                                   <tr>
                                     <td colspan="2">
-                                      <label>Verified By Sealed Authority</label>
+                                      <label>By Sealed Authority</label>
                                       </br>{{ $vascore_info->comment_verified_by }}
                                     </td>
                                   </tr>
@@ -197,6 +186,7 @@
                                       </br>{{ $vascore_info->entry_sealed_date }}
                                     </td>
                                   </tr>
+                                  @endhasanyrole
                                 </tbody>
                               </table>
                               
