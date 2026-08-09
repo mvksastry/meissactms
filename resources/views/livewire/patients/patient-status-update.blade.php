@@ -317,10 +317,10 @@
                                                         Lab Exam
                                                     </td>
                                                     <td>
-                                                        {{ ucfirst($pcs['pcs']->status) }}/{{ ucfirst($pcs['le']->status) }}
+                                                        {{ ucfirst($pcs['pcs']->status) }}
                                                     </td>
                                                     <td>
-                                                        {{ ucfirst($pcs['pcs']->status) }}/{{ $pcs['le']->created_at }}
+                                                        {{ $pcs['le']->created_at }}
                                                     </td>
                                                     <td>
                                                         {{ $pcs['le']->updated_at }}
@@ -332,7 +332,7 @@
                                                         Liver Function
                                                     </td>
                                                     <td>
-                                                        {{ ucfirst($pcs['pcs']->status) }}/{{ ucfirst($pcs['lft']->status) }}
+                                                        {{ ucfirst($pcs['pcs']->status) }}
                                                     </td>
                                                     <td>
                                                         {{ $pcs['lft']->created_at }}
@@ -347,7 +347,7 @@
                                                         Microscopic Exam
                                                     </td>
                                                     <td>
-                                                        {{ ucfirst($pcs['pcs']->status) }}/{{ ucfirst($pcs['mes']->status) }}
+                                                        {{ ucfirst($pcs['pcs']->status) }}
                                                     </td>
                                                     <td>
                                                         {{ $pcs['mes']->created_at }}
@@ -362,7 +362,7 @@
                                                         Renal Function
                                                     </td>
                                                     <td>
-                                                        {{ ucfirst($pcs['pcs']->status) }}/{{ ucfirst($pcs['rft']->status) }}
+                                                        {{ ucfirst($pcs['pcs']->status) }}
                                                     </td>
                                                     <td>
                                                         {{ $pcs['rft']->created_at }}
@@ -377,7 +377,7 @@
                                                         Urine Routine
                                                     </td>
                                                     <td>
-                                                        {{ ucfirst($pcs['pcs']->status) }}/{{ ucfirst($pcs['ure']->status) }}
+                                                        {{ ucfirst($pcs['pcs']->status) }}
                                                     </td>
                                                     <td>
                                                         {{ $pcs['ure']->created_at }}
@@ -393,7 +393,7 @@
                                                 @hasanyrole(['junior_resident', 'clinical_dataentry'])
                                                     <tr>
                                                         <td>
-                                                            <label>status</label>
+                                                            <label>New status</label>
                                                             <input wire:model="updated_status" disabled placeholder="Cleared">
                                                         </td>
                                                     </tr>
@@ -409,7 +409,7 @@
                                                         <td>
                                                             <button wire:click="setNewPatientStatus('{{ $patient_uuid }}')"
                                                                 @class(['btn', 'btn-block', 'btn-info', 'rounded']) type="button"><i
-                                                                    @class(['ion', 'ion-person'])></i>&nbsp Clear
+                                                                    @class(['ion', 'ion-person'])></i>&nbsp Verified
                                                                 Patient</button>
                                                         </td>
                                                     </tr>
@@ -418,7 +418,7 @@
                                                 @hasrole('senior_resident')
                                                     <tr>
                                                         <td>
-                                                            <label>status</label>
+                                                            <label>New status</label>
                                                             <input wire:model="updated_status" disabled
                                                                 placeholder="Cleared">
                                                         </td>
@@ -444,7 +444,7 @@
                                                 @hasrole('clinical_manager')
                                                     <tr>
                                                         <td>
-                                                            <label>status</label>
+                                                            <label>New status</label>
                                                             <input wire:model="updated_status" disabled
                                                                 placeholder="Approbved">
                                                         </td>
@@ -470,7 +470,7 @@
                                                 @hasrole('ctms_incharge')
                                                     <tr>
                                                         <td>
-                                                            <label>status</label>
+                                                            <label>New status</label>
                                                             <input wire:model="updated_status" disabled
                                                                 placeholder="Sealed">
                                                         </td>
