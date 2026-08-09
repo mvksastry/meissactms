@@ -40,8 +40,27 @@ class EditSensoryInfo extends Component
 
     public function render()
     {
-        $this->se_info = SensoryExamination::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
-        //dd($this->se_info);
+        //$this->se_info = SensoryExamination::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->se_info = SensoryExamination::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->se_info = SensoryExamination::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->se_info = SensoryExamination::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $this->se_info = SensoryExamination::where('patient_uuid', $this->uuid)->first();
+        }
+        */
+        $this->se_info = SensoryExamination::where('patient_uuid', $this->uuid)->where('data_type', 'pre-enrollment')->first();
+        //dd($this->uuid, $this->se_info);
         $this->form->entered_by = Auth::user()->name;
         $this->setSEDataForm($this->se_info);
         return view('livewire.ctms.patients.edit.edit-sensory-info');

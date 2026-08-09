@@ -41,7 +41,26 @@ class EditVisualAnalogScore extends Component
 
     public function render()
     {
-        $this->vascore = VAScore::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        //$this->vascore = VAScore::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->vascore = VAScore::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->vascore = VAScore::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->vascore = VAScore::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $this->vascore = VAScore::where('patient_uuid', $this->uuid)->first();
+        }
+        */
+        $this->vascore = VAScore::where('patient_uuid', $this->uuid)->where('data_type', 'pre-enrollment')->first();
         $this->form->entered_by = Auth::user()->name;
         $this->setVAscoreData($this->vascore);
         return view('livewire.ctms.patients.edit.edit-visual-analog-score');

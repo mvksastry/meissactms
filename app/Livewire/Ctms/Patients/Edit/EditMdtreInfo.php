@@ -44,6 +44,27 @@ class EditMdtreInfo extends Component
     public function render()
     {
         $this->mdtre_info = Mdtre::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+
+        //dd($this->uuid);
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->mdtre_info = Mdtre::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->mdtre_info = Mdtre::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->mdtre_info = Mdtre::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $this->mdtre_info = Mdtre::where('patient_uuid', $this->uuid)->first();
+        }
+        */
+        $this->mdtre_info = Mdtre::where('patient_uuid', $this->uuid)->where('data_type', 'pre-enrollment')->first();
         $this->form->entered_by = Auth::user()->name;
         $this->setMdtreData($this->mdtre_info);
         return view('livewire.ctms.patients.edit.edit-mdtre-info');

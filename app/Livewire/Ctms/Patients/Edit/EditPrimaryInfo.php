@@ -67,7 +67,22 @@ class EditPrimaryInfo extends Component
     public function render()
     {
         //dd($this->uuid);
-        $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->first();
+        }
         //dd($this->patientPrimaryInfo);
         $this->setFormValues($this->patientPrimaryInfo);
     

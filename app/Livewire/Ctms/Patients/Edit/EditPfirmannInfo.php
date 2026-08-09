@@ -40,7 +40,26 @@ class EditPfirmannInfo extends Component
 
     public function render()
     {
-        $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+       // $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->first();
+        }
+        */
+        $this->pfirmg_info = PfirmannGrade::where('patient_uuid', $this->uuid)->where('data_type', 'pre-enrollment')->first();
         $this->form->entered_by = Auth::user()->name;
         $this->setMdtreData($this->pfirmg_info);
         return view('livewire.ctms.patients.edit.edit-pfirmann-info');

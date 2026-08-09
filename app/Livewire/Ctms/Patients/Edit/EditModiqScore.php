@@ -157,7 +157,26 @@ class EditModiqScore extends Component
 
     public function render()
     {
-        $this->modq_obj = ModqScore::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        //$this->modq_obj = ModqScore::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->modq_obj = ModqScore::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->modq_obj = ModqScore::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->modq_obj = ModqScore::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $this->modq_obj = ModqScore::where('patient_uuid', $this->uuid)->first();
+        }
+        */
+        $this->modq_obj = ModqScore::where('patient_uuid', $this->uuid)->where('data_type', 'pre-enrollment')->first();
         $this->form->entered_by = Auth::user()->name;
         $this->setModqScoreData($this->modq_obj);
         return view('livewire.ctms.patients.edit.edit-modiq-score');

@@ -106,12 +106,42 @@ class EditClinicalInfo extends Component
 
     public function render()
     {
-        $this->clinical_info = ClinicalData::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
+        //dd($this->uuid);
+        //$this->clinical_info = ClinicalData::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
         //dd($this->clinical_info);
         //$this->form->entered_by = Auth::user()->name;
-        $this->setClinicalDataForm($this->clinical_info);
+        //$this->setClinicalDataForm($this->clinical_info);
+
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $status = 'draft';
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $status = 'verified';
+            //dd($this->draftPatients);
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $status = 'approved';
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $status = 'sealed';
+        } 
+        */
+
+        
+        // we do not need status of each table as all tables are linked to primary table Patient.
+        // if we query this table based on status, we are passing on the uuid which key in patients table
+        // a foreign key in all other tables;
 
         //now set for all other parameters
+        $this->fnEditDataByRoleStatus();
+
+        //according to the above the below lines are not needed. kept for just may be testing.
+        /*
         $this->c1Obj = BloodRoutine::where('status', 'draft')->where('patient_uuid', $this->uuid)->first();
         //dd($this->uuid, $this->c1Obj);
         //$this->form_a->entered_by = Auth::user()->name;
@@ -175,10 +205,74 @@ class EditClinicalInfo extends Component
 
         //dd("reached entry place");
         $this->drug_categories = DrugCategory::all();
-
+        */
         return view('livewire.ctms.patients.edit.edit-clinical-info');
     }
 
+
+    public function fnEditDataByRoleStatus()
+    {
+        //now set for all other parameters
+        $this->c1Obj = BloodRoutine::where('patient_uuid', $this->uuid)->first();
+        //dd($this->uuid, $this->c1Obj);
+        //$this->form_a->entered_by = Auth::user()->name;
+        $this->setC1ObjData($this->c1Obj);
+
+        $this->c2Obj = BloodSugar::where('patient_uuid', $this->uuid)->first();
+        //$this->form_b->entered_by = Auth::user()->name;
+        $this->setC2ObjData($this->c2Obj);
+
+        $this->c3Obj = BloodUrea::where('patient_uuid', $this->uuid)->first();
+        //$this->form_c->entered_by = Auth::user()->name;
+        $this->setC3ObjData($this->c3Obj);
+
+        $this->c4Obj = ChemicalExam::where('patient_uuid', $this->uuid)->first();
+        //$this->form_d->entered_by = Auth::user()->name;
+        $this->setC4ObjData($this->c4Obj);
+
+        $this->c5Obj = Creatinine::where('patient_uuid', $this->uuid)->first();
+        //$this->form_e->entered_by = Auth::user()->name;
+        $this->setC5ObjData($this->c5Obj);
+
+        $this->c6Obj = Crp::where('patient_uuid', $this->uuid)->first();
+        //$this->form_f->entered_by = Auth::user()->name;
+        $this->setC6ObjData($this->c6Obj);
+
+        $this->c7Obj = Electrolytes::where('patient_uuid', $this->uuid)->first();
+        //$this->form_g->entered_by = Auth::user()->name;
+        $this->setC7ObjData($this->c7Obj);
+
+        $this->c8Obj = GeneralSummary::where('patient_uuid', $this->uuid)->first();
+        //$this->form_h->entered_by = Auth::user()->name;
+        $this->setC8ObjData($this->c8Obj);
+
+        $this->c9Obj = Il6::where('patient_uuid', $this->uuid)->first();
+        //$this->form_i->entered_by = Auth::user()->name;
+        $this->setC9ObjData($this->c9Obj);
+
+        $this->c10Obj = LaboratoryExam::where('patient_uuid', $this->uuid)->first();
+        //$this->form_j->entered_by = Auth::user()->name;
+        $this->setC10ObjData($this->c10Obj);
+
+        $this->c11Obj = LiverFunction::where('patient_uuid', $this->uuid)->first();
+        //$this->form_k->entered_by = Auth::user()->name;
+        $this->setC11ObjData($this->c11Obj);
+
+        $this->c12Obj = MicroscopicExam::where('patient_uuid', $this->uuid)->first();
+        //$this->form_l->entered_by = Auth::user()->name;
+        $this->setC12ObjData($this->c12Obj);
+
+        $this->c13Obj = RenalFunction::where('patient_uuid', $this->uuid)->first();
+        //$this->form_m->entered_by = Auth::user()->name;
+        $this->setC13ObjData($this->c13Obj);
+
+        $this->c14Obj = UrineRoutine::where('patient_uuid', $this->uuid)->first();
+        //$this->form_n->entered_by = Auth::user()->name;
+        $this->setC14ObjData($this->c14Obj);
+    }
+
+
+    /*
     public function setClinicalDataForm($clinical_info)
     {
         $this->form->opd_id = $clinical_info->opd_id;
@@ -206,7 +300,7 @@ class EditClinicalInfo extends Component
         $this->form->procalcitonin = $clinical_info->procalcitonin;
         $this->form->laboratory_report_file = $clinical_info->laboratory_report_file;
     }
-
+    */
 
     //blood routine
     public function setC1ObjData($c1Obj)

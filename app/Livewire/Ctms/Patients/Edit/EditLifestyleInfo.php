@@ -41,7 +41,28 @@ class EditLifestyleInfo extends Component
 
     public function render()
     {
-        $this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        //$this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+
+        //dd($this->uuid);
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            
+        }
+        */
+        $this->ls_info = LifeStyle::where('patient_uuid', $this->uuid)->where('data_type', 'pre-enrollment')->first();
         //dd($this->ls_info);
         $this->form->entered_by = Auth::user()->name;
         //$this->empty_result = true;

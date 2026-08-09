@@ -53,7 +53,7 @@ class UrineRoutineComponent extends Component
             $this->passObj = new UrineRoutine();
         }
         else {
-
+            $this->setData();
         }
     }
 
@@ -68,7 +68,7 @@ class UrineRoutineComponent extends Component
         $this->input = $this->form_n->all();
         $this->input = $this->sanitizeInput($this->input);
         $this->input['data_type'] = $this->data_type;
-        //dd($this->input); // 
+        //dd($this->input, $this->patient_uuid, $this->data_type, $this->passObj); // 
         $result = $this->saveUrineRoutineData($this->input, $this->passObj);
         LivewireAlert::title('Urine Routine Data Saved...')->success()->asToast()->show();
         $msg = 'User ['.Auth::user()->name.'] saved Urine Data ['.$this->patient_uuid.']';
@@ -79,8 +79,9 @@ class UrineRoutineComponent extends Component
     public function setData()
     {
         $this->passObj = UrineRoutine::where('patient_uuid', $this->patient_uuid)
-                                        ->where('data_type', $this->data_type)
+                                        //->where('data_type', $this->data_type)
                                         ->first();
+
         $this->form_n->opd_id = $this->passObj->opd_id;
         $this->form_n->in_patient_id = $this->passObj->in_patient_id;
         $this->form_n->admission_date = $this->passObj->admission_date;

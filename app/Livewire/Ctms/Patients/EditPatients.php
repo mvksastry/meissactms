@@ -254,9 +254,38 @@ class EditPatients extends Component
 
     public function render()
     {
-        $this->draftPatients = Patient::where('status','draft')->get();
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $status = ['draft'];
+            $this->editQuery($status);
+            //$this->draftPatients = Patient::where('status','draft')->get();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $status = ['draft','verified'];
+            $this->editQuery($status);
+            //$this->draftPatients = Patient::whereIn('status',['draft','verified'])->get();
+            //dd($this->draftPatients);
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $status = ['draft','verified','approved'];
+            $this->editQuery($status);
+            //$this->draftPatients = Patient::whereIn('status',['draft','verified','approved'])->get();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $status = ['draft','verified','approved','sealed'];
+            $this->editQuery($status);
+            //$this->draftPatients = Patient::whereIn('status',['draft','verified','approved','sealed'])->get();
+        }        
         //dd($this->draftPatients);
         return view('livewire.ctms.patients.edit-patients');
+    }
+
+    public function editQuery($status)
+    {
+        $this->draftPatients = Patient::whereIn('status',$status)->get();
     }
 
     public function selectedPatient($id)

@@ -15,7 +15,7 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check()) {
+        if (auth()->check() && $request->routeIs('login')) {
             return redirect()->intended('/home');
         }
         return $next($request);

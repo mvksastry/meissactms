@@ -27,7 +27,7 @@ trait TUrineRoutine
         {
             return $value === "" ? NULL : $value;
         }, $input);
-//dd($input);
+
         $passObj->physical_exam = $input['physical_exam'];
         $passObj->quantity = $input['quantity'];
         $passObj->colour = $input['colour'];
@@ -44,7 +44,6 @@ trait TUrineRoutine
         $passObj->entered_by = $input['entered_by'];
         $passObj->entry_date = $input['entry_date'];
 
-        //dd($passObj);
         $passObj->save();
 
   }

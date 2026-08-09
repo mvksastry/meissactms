@@ -446,7 +446,7 @@
                                                         <td>
                                                             <label>New status</label>
                                                             <input wire:model="updated_status" disabled
-                                                                placeholder="Approbved">
+                                                                placeholder="Approved">
                                                         </td>
                                                     </tr>
                                                     <tr>

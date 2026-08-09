@@ -135,20 +135,6 @@
                                       <input wire:model.defer="form.fpr_scale" id="location" type="text" class="form-control" placeholder="Faces Pain Rating Scale">
                                     </td>
                                     <td colspan="1">
-                                      <label>Onset</label>
-                                      <input wire:model="form.onset" id="onset" type="text" class="form-control" placeholder="Onset">
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Duration</label>
-                                      <input wire:model="form.duration" id="duration" type="text" class="form-control" placeholder="Duration">
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Variation</label>
-                                      <input wire:model="form.variation" id="variation" type="text" class="form-control" placeholder="Variation">
-                                    </td>
-                                    <td colspan="1">
                                       <label>Quality</label>
                                       <input wire:model="form.quality" id="quality" type="text" class="form-control" placeholder="Quality">
                                     </td>

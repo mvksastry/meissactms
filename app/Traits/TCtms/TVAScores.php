@@ -30,11 +30,13 @@ trait TVAScores
         //$nVAScores->in_patient_id =  $input['in_patient_id'];
         //$nVAScores->admission_date =  $input['admission_date'];
 
-        $nVAScores->intensity = $input['intensity'];
-        $nVAScores->location = $input['location'];
-        $nVAScores->onset = $input['onset'];
-        $nVAScores->duration = $input['duration'];
-        $nVAScores->variation = $input['variation'];
+        //$nVAScores->intensity = $input['intensity'];
+        //$nVAScores->location = $input['location'];
+        //$nVAScores->onset = $input['onset'];
+        //$nVAScores->duration = $input['duration'];
+        //$nVAScores->variation = $input['variation'];
+        $nVAScores->vas_scale = $input['vas_scale'];
+        $nVAScores->fpr_scale = $input['fpr_scale'];
         $nVAScores->quality = $input['quality'];
 
         $nVAScores->status = "draft";

@@ -74,7 +74,26 @@ class EditRmqScore extends Component
     public function render()
     {   
         $this->rmquestions = Rmquestion::all();
-        $this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        //$this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        /*
+        if( Auth::user()->hasAnyRole(['junior_resident', 'senior_resident']) )
+        {
+            $this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->where('status', 'draft')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
+        {
+            $this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+        }
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+        {
+            $this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+        }
+        if( Auth::user()->hasAnyRole(['director']) )
+        {
+            $this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->first();
+        }
+        */
+        $this->rmq_reply = RMQReply::where('patient_uuid', $this->uuid)->where('data_type', 'pre-enrollment')->first();
         $this->form->entered_by = Auth::user()->name;
         //dd($this->rmq_reply);
         $this->setRmqScoreData($this->rmq_reply);
