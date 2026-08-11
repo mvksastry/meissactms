@@ -205,7 +205,7 @@
               @endif
             @endif
 
-            @if($new_dd_panel))
+            @if($new_dd_panel)
               <div class="row">
                 <label class="form-class" for="sampdesc">New Drug Detail</label>
                 </br>
