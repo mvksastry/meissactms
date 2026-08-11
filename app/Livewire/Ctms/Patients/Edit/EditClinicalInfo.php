@@ -269,6 +269,8 @@ class EditClinicalInfo extends Component
         $this->c14Obj = UrineRoutine::where('patient_uuid', $this->uuid)->first();
         //$this->form_n->entered_by = Auth::user()->name;
         $this->setC14ObjData($this->c14Obj);
+
+        $this->dCats = DrugCategory::all();
     }
 
 
@@ -611,6 +613,7 @@ class EditClinicalInfo extends Component
     {
         $this->drug_details = [];
         $this->dCats = DrugCategory::all();
+        //dd($this->dCats);
         $this->p3 = true;
         foreach($c15Obj as $key => $row)
         {
