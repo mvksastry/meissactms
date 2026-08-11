@@ -130,7 +130,7 @@
 
                       <tr>
                         <td>
-                          <label for="">Drug Category</label>
+                          <label for="">Drug Category x</label>
                             <select class="custom-select rounded-0" wire:model="nDDetForm.{{ $key }}.category_id">
                               <option value="-1">Select</option>
                               @foreach($dCats as $row)
@@ -236,10 +236,10 @@
 
                     <tr>
                       <td>
-                        <label for="">Drug Category</label>
+                        <label for="">Drug Category x</label>
                           <select class="custom-select rounded-0" wire:model="NnDDetForm.cat_id">
                             <option value="-1">Select</option>
-                            @foreach($drug_categories as $row)
+                            @foreach($dCats as $row)
                             <option value="{{ $row->drug_category_id }}">{{ $row->category_name }}</option>
                             @endforeach
                           </select>
