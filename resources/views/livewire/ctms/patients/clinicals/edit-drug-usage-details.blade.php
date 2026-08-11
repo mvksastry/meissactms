@@ -236,7 +236,7 @@
 
                     <tr>
                       <td>
-                        <label for="">Drug Category x</label>
+                        <label for="">Drug Category</label>
                           <select class="custom-select rounded-0" wire:model="NnDDetForm.cat_id">
                             <option value="-1">Select</option>
                             @foreach($dCats as $row)
