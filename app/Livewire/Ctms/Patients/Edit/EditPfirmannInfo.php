@@ -92,25 +92,25 @@ class EditPfirmannInfo extends Component
         try {
             $result = PfirmannGrade::where('patient_uuid', $this->uuid)->update($this->input);
             if ($result) {        
-                $msg = 'Patient ['.$name.'] update successfull!';  
+                $msg = 'Pfirmann Score For Patient ['.$name.'] update successfull!';  
                 LivewireAlert::title('Patient PFirmanns info updated')->success()->asToast()->show();
                 //$this->comSuccess = $msg;
                 Log::channel('patient')->info($msg);
             } else {
-                $msg = 'Patient ['.$name.'] could not be saved';
+                $msg = 'Pfirmann Score For Patient ['.$name.'] could not be saved';
                 LivewireAlert::title('Patient PFirmanns info failed')->warning()->asToast()->show();
                 $this->sysAlertDanger = $msg;
                 Log::channel('patient')->info($msg);
             }
         } catch (QueryException $e) {
             // Handles database-related errors (e.g., duplicate email)
-            $msg = 'Database error for patient ['.$name.'] while saving : '.$e->getMessage();
+            $msg = 'Database error: Pfirmann Score For Patient ['.$name.'] while saving : '.$e->getMessage();
             LivewireAlert::title('Patient PFirmanns info failed')->warning()->asToast()->show();
             Log::channel('patient')->info($msg);
             $this->sysAlertDanger = $msg;
         } catch (\Exception $e) {
             // Handles any other general exceptions
-            $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
+            $msg = 'Unexpected error: Pfirmann Score For Patient ['.$name.'] while saving : '.$e->getMessage();
             LivewireAlert::title('Patient PFirmanns info failed')->warning()->asToast()->show();
             Log::channel('patient')->info($msg);
             $this->sysAlertDanger = $msg;

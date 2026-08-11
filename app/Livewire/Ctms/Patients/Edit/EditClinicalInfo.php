@@ -646,25 +646,25 @@ class EditClinicalInfo extends Component
             $result = ClinicalData::where('patient_uuid', $this->uuid)->update($this->input);
             if ($result) {        
                 LivewireAlert::title('Clinical Data Update')->success()->asToast()->show();
-                $msg = 'Patient ['.$name.'] update successfull!';  
+                $msg = 'Cinical Info For Patient ['.$name.'] update successfull!';  
                 $this->comSuccess = $msg;
                 Log::channel('patient')->info($msg);
             } else {
                 LivewireAlert::title('Clinical Data Failed')->warning()->asToast()->show();
-                $msg = 'Patient ['.$name.'] could not be saved';
+                $msg = 'Cinical Info For Patient ['.$name.'] could not be saved';
                 $this->sysAlertDanger = $msg;
                 Log::channel('patient')->info($msg);
             }
         } catch (QueryException $e) {
             // Handles database-related errors (e.g., duplicate email)
             LivewireAlert::title('Clinical Data Failed: Check with Admin')->warning()->asToast()->show();
-            $msg = 'Database error for patient ['.$name.'] while saving : '.$e->getMessage();
+            $msg = 'Database error: Cinical Info For Patient ['.$name.'] while saving : '.$e->getMessage();
             Log::channel('patient')->info($msg);
             $this->sysAlertDanger = $msg;
         } catch (\Exception $e) {
             LivewireAlert::title('Clinical Data Failed: Check with Admin')->warning()->asToast()->show();
             // Handles any other general exceptions
-            $msg = 'Unexpected error for new patient ['.$name.'] while saving : '.$e->getMessage();
+            $msg = 'Unexpected error: Cinical Info For Patient ['.$name.'] while saving : '.$e->getMessage();
             Log::channel('patient')->info($msg);
             $this->sysAlertDanger = $msg;
         }      
