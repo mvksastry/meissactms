@@ -52,6 +52,7 @@ class Enrollment extends Model
         'qc_report4_file_path',
         'qc_coa_filename',
         'qc_coa_file_path',
+        'qc_report_file_count',
         'qc_other_infos',
         'qc_enrollment_comment',
         'qc_infos_entered_by',
