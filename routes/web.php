@@ -107,15 +107,23 @@ use App\Livewire\Qms\RCA\RootCauseHome;
 //use App\Livewire\Ctms\TestComponent;
 
 Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect('/home');
+    }
     return view('welcome');
 });
-
 //original dashboard route killed
-/*
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    //return view('dashboard');
+    return redirect()->route('home');
 })->middleware(['auth', 'verified'])->name('dashboard');
-*/
+// Global fallback → catch-all for undefined routes
+Route::fallback(function () {
+    if (auth()->check()) {
+        return redirect('/home');
+    }
+    return redirect()->route('login');
+});
 
 require __DIR__.'/auth.php';
 
