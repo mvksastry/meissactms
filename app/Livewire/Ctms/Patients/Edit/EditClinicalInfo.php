@@ -270,6 +270,13 @@ class EditClinicalInfo extends Component
         //$this->form_n->entered_by = Auth::user()->name;
         $this->setC14ObjData($this->c14Obj);
 
+        //many entries here use first, for drug entries, first should not be used, use get();
+        $this->drug_details = DrugDetails::where('patient_uuid', $this->uuid)->get();
+        //dd($this->drug_details);
+
+        //dd("reached entry place");
+        $this->drug_categories = DrugCategory::all();
+
         $this->dCats = DrugCategory::all();
     }
 
@@ -932,6 +939,7 @@ class EditClinicalInfo extends Component
     public function fnDeleteDrugDetailEntry($drug_detail_id)
     {
         //dd($drug_detail_id);
+        LivewireAlert::title('Deletion of Entries willbe decided later')->warning()->show();
     }
 
 }
