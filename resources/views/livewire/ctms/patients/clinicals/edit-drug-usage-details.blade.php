@@ -237,7 +237,7 @@
                     <tr>
                       <td>
                         <label for="">Drug Category</label>
-                          <select class="custom-select rounded-0" wire:model="NnDDetForm.cat_id">
+                          <select class="custom-select rounded-0" wire:model="NnDDetForm.category_id">
                             <option value="-1">Select</option>
                             @foreach($dCats as $row)
                             <option value="{{ $row->drug_category_id }}">{{ $row->category_name }}</option>
@@ -249,7 +249,7 @@
                       </td>
                       <td>
                         <label>Name</label>
-                        <input wire:model="NnDDetForm.name" type="text" class="form-control" placeholder="Name">
+                        <input wire:model="NnDDetForm.drug_name" type="text" class="form-control" placeholder="Name">
                       </td>
                       <td>
                         <label>Brand</label>
@@ -260,7 +260,7 @@
                     <tr>
                       <td>
                         <label>Class</label>
-                        <input wire:model="NnDDetForm.class" type="text" class="form-control" placeholder="Class">
+                        <input wire:model="NnDDetForm.drug_class" type="text" class="form-control" placeholder="Class">
                       </td>
 
                       <td>
@@ -282,12 +282,12 @@
 
                       <td>
                         <label>Total Daily Dose</label>
-                        <input wire:model="NnDDetForm.tdd" type="text" class="form-control" placeholder="Total Daily Dose">
+                        <input wire:model="NnDDetForm.total_daily_dose" type="text" class="form-control" placeholder="Total Daily Dose">
                       </td>
 
                       <td>
                         <label>Last Week Adherance</label>
-                        <input wire:model="NnDDetForm.lwa" type="text" class="form-control" placeholder="Last Week Adherance">
+                        <input wire:model="NnDDetForm.last_week_adherance" type="text" class="form-control" placeholder="Last Week Adherance">
                       </td>
                     </tr>  
 
@@ -297,7 +297,19 @@
                         <input wire:model="NnDDetForm.comment_entered_by" type="text" class="form-control" placeholder="Comment">
                       </td>
                     </tr>  
-
+                    <tr>
+                      <td colspan="3">
+                        @if ($errors->any())
+                          <div class="text-danger">
+                            <ul>
+                              @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                              @endforeach
+                            </ul>
+                          </div>
+                        @endif
+                      </td>
+                    </tr> 
                   </tbody>
                 </table>               
                   <div class="col-sm-6 col-md-4">

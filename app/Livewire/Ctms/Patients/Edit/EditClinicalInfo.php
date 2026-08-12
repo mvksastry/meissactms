@@ -43,6 +43,7 @@ use App\Livewire\Forms\clinicals\FormLiverFunction;
 use App\Livewire\Forms\clinicals\FormMicroscopicExam;
 use App\Livewire\Forms\clinicals\FormRenalFunction;
 use App\Livewire\Forms\clinicals\FormUrineRoutine;
+use App\Livewire\Forms\clinicals\FormNewDrugDetail;
 
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -74,6 +75,9 @@ class EditClinicalInfo extends Component
     public FormRenalFunction $form_m;
     public FormUrineRoutine $form_n;
 
+    //drug detail entry
+    public FormNewDrugDetail $NnDDetForm;
+
     //uuid of the patient
     public $uuid;
     public $clinical_info = null;
@@ -83,7 +87,7 @@ class EditClinicalInfo extends Component
 
     //specific to drug usage, many entries hence better to declare here
     public $drug_details = [], $dCats = null, $ddet = [], $p1=false, $p2=false, $p3=false;
-    public $nDDetForm = [], $NnDDetForm = [], $ncDCat = [], $drug_categories =[];
+    public $nDDetForm = [], $ncDCat = [], $drug_categories =[];
 
 
     //Errors, Alers, Callouts
@@ -273,6 +277,8 @@ class EditClinicalInfo extends Component
         //many entries here use first, for drug entries, first should not be used, use get();
         $this->drug_details = DrugDetails::where('patient_uuid', $this->uuid)->get();
         //dd($this->drug_details);
+
+
 
         //dd("reached entry place");
         $this->drug_categories = DrugCategory::all();
@@ -873,29 +879,30 @@ class EditClinicalInfo extends Component
     public function fnAddNewDrugDetail()
     {
         //dd("new drug entry reached");
-        $input = $this->NnDDetForm;
+        $this->NnDDetForm->validate();
+        $input = $this->NnDDetForm->all();
         //dd($input, $this->uuid);
         $nDDet = new DrugDetails();
         $nDDet->patient_uuid = $this->uuid;
         $nDDet->opd_id = $input['opd_id'];
         $nDDet->in_patient_id = $input['in_patient_id'];
         $nDDet->admission_date = $input['admission_date'];
-        $nDDet->category_id = $input['cat_id'];
-        $nDDet->drug_name = $input['name'];
+        $nDDet->category_id = $input['category_id'];
+        $nDDet->drug_name = $input['drug_name'];
         $nDDet->brand = $input['brand'];
 
-        $nDDet->drug_class = $input['class'];
+        $nDDet->drug_class = $input['drug_class'];
         $nDDet->generic_name = $input['generic_name'];
         $nDDet->single_dose = $input['single_dose'];
         $nDDet->frequency = $input['frequency'];
-        $nDDet->total_daily_dose = $input['tdd'];
-        $nDDet->last_week_adherance = $input['lwa'];
+        $nDDet->total_daily_dose = $input['total_daily_dose'];
+        $nDDet->last_week_adherance = $input['last_week_adherance'];
         $nDDet->status = 'draft';
         $nDDet->status_date = date('Y-m-d');
         $nDDet->comment_entered_by = $input['comment_entered_by'];
         $nDDet->entered_by = Auth::user()->name;
         $nDDet->entry_date = date('Y-m-d');
-
+        /*
         $nDDet->comment_verified_by = null;
         $nDDet->verified_by = null;
         $nDDet->verified_date = null;
@@ -905,6 +912,7 @@ class EditClinicalInfo extends Component
         $nDDet->comment_sealed_by = null;
         $nDDet->sealed_by = null;
         $nDDet->sealed_date = null;
+        */
         //dd($nDDet);
         $nDDet->save();
         LivewireAlert::title('New Drug Detail Posted')->success()->asToast()->show();
