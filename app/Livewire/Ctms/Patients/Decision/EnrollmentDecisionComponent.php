@@ -20,6 +20,7 @@ use App\Livewire\Forms\Decisions\DecisionReportFiles;
 //traits
 use App\Traits\Base;
 use Livewire\WithFileUploads;
+use App\Traits\TCtms\TEnrollmentDecision;
 use App\Traits\Fileuploads\TOldFileMove;
 
 //Livewire Alerts
@@ -32,6 +33,7 @@ class EnrollmentDecisionComponent extends Component
 {
     use Base;
     use WithFileUploads;
+    use TEnrollmentDecision;
     use TOldFileMove;
 
     //form status
@@ -40,7 +42,7 @@ class EnrollmentDecisionComponent extends Component
     public $openAllOtherForms = false;
     public $showPrimaryInfo = true;
 
-    public $passObj, $enrObj;
+    public $passObj, $enrObj, $enFileObj;
 
     //Form bindings
     public DecisionProcessingForm $form;
@@ -55,12 +57,21 @@ class EnrollmentDecisionComponent extends Component
 
     public $qc_report_1, $qc_report_2, $qc_report_3, $qc_coa, $qc_report_file_count = 0;
 
+        //variables
+    public $tab, $activeTab; // default tab
+
+    public function setActiveTab($tab)
+    {
+        $this->activeTab = $tab;
+    }
+
     public function mount($patient_uuid)
     {
         //dd($patient_uuid);
         $this->patient_uuid = $patient_uuid;
         $this->passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
+        $this->enFileObj = EnrollmentFiles::where('patient_uuid', $this->patient_uuid)->get();
     }
 
     public function render()
@@ -89,126 +100,58 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrolQCData()
     {
+        $this->form_x->validate();
         $repfiles = [];
         $qc_report_file_count = 0;
-        //qc fileupload code to be inserted
-        $this->form_x->validate();
-        //dd("reached 2 tab");
-        $fileinfo['file_path'] = $this->def_file_path.$this->patient_uuid.'/enrollment/valid/';
         $fileinfo['patient_uuid'] = $this->patient_uuid;
-        $fileinfo['tags'] = null;
-        $fileinfo['report_status'] = 'valid';
-        $fileinfo['uploaded_by'] = Auth::user()->id;
-        $fileinfo['date_created'] = date('Y-m-d');
 
-        
         if ($this->form_x->qc_report_1) 
         {
-            $fileinfo['report_category'] = 'enrollment_qc_report_1';
             $fileinfo['file_code'] = 881;
-            $fileinfo['file_uuid'] = $this->fileUuid();
-            $fileinfo['report_description'] = "QC report 1";
-            $fileinfo['file_name'] = $this->generateCode(12).'.'.$this->form_x->qc_report_1->getClientOriginalExtension();
-            //dd($fileinfo);
-            //now check if file exists
-            $oldfile = $this->getOldEnrollmentFileInfo($fileinfo['file_code']);
-            
-            if($oldfile)
+            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
+            if($result['status'])
             {
-                $result = $this->fnMoveOldFileToArchieve($oldfile, $fileinfo);                 
+                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+            }else {
+                LivewireAlert::titile($msg)->warning()->show();
             }
-            //looks like first time insertion go ahead.
-            $path = $this->form_x->qc_report_1->storeAs($fileinfo['file_path'], $fileinfo['file_name'], 'public');
-            $newFile = EnrollmentFiles::create($fileinfo);
-            $this->form_x->qc_report_1 = null;
-            //$this->iter1++;
-            //dd($input, $oldfile);
-            //LivewireAlert::title('QC Report 1 File Saved')->success()->asToast()->show();
-            $repfiles['qc_report1_filename'] = $fileinfo['file_name'];
-            $repfiles['qc_report1_file_path'] = $fileinfo['file_path'];
-            $this->qc_report_file_count = $this->qc_report_file_count + 1;
         } 
 
 
         if ($this->form_x->qc_report_2) 
         {
-            $fileinfo['report_category'] = 'enrollment_qc_report_2';
             $fileinfo['file_code'] = 882;
-            $fileinfo['file_uuid'] = $this->fileUuid();
-            $fileinfo['report_description'] = "QC report 2";
-            $fileinfo['file_name'] = $this->generateCode(12).'.'.$this->form_x->qc_report_2->getClientOriginalExtension();
-            //dd($fileinfo);
-            //now check if file exists
-            $oldfile = $this->getOldEnrollmentFileInfo($fileinfo['file_code']);
-            
-            if($oldfile)
+            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
+            if($result['status'])
             {
-                $result = $this->fnMoveOldFileToArchieve($oldfile, $fileinfo);                 
+                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+            }else {
+                LivewireAlert::titile($msg)->warning()->show();
             }
-            //looks like first time insertion go ahead.
-            $path = $this->form_x->qc_report_2->storeAs($fileinfo['file_path'], $fileinfo['file_name'], 'public');
-            $newFile = EnrollmentFiles::create($fileinfo);
-            $this->form_x->qc_report_2 = null;
-            //$this->iter1++;
-            //dd($input, $oldfile);
-            //LivewireAlert::title('QC Report 1 File Saved')->success()->asToast()->show();
-            $repfiles['qc_report2_filename'] = $fileinfo['file_name'];
-            $repfiles['qc_report2_file_path'] = $fileinfo['file_path'];
-            $this->qc_report_file_count = $this->qc_report_file_count + 1;
         } 
 
         if ($this->form_x->qc_report_3) 
         {
-            $fileinfo['report_category'] = 'enrollment_qc_report_3';
             $fileinfo['file_code'] = 883;
-            $fileinfo['file_uuid'] = $this->fileUuid();
-            $fileinfo['report_description'] = "QC report 3";
-            $fileinfo['file_name'] = $this->generateCode(12).'.'.$this->form_x->qc_report_3->getClientOriginalExtension();
-            //dd($fileinfo);
-            //now check if file exists
-            $oldfile = $this->getOldEnrollmentFileInfo($fileinfo['file_code']);
-            
-            if($oldfile)
+            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
+            if($result['status'])
             {
-                $result = $this->fnMoveOldFileToArchieve($oldfile, $fileinfo);                 
+                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+            }else {
+                LivewireAlert::titile($msg)->warning()->show();
             }
-            //looks like first time insertion go ahead.
-            $path = $this->form_x->qc_report_3->storeAs($fileinfo['file_path'], $fileinfo['file_name'], 'public');
-            $newFile = EnrollmentFiles::create($fileinfo);
-            $this->form_x->qc_report_3 = null;
-            //$this->iter1++;
-            //dd($input, $oldfile);
-            //LivewireAlert::title('QC Report 1 File Saved')->success()->asToast()->show();
-            $repfiles['qc_report3_filename'] = $fileinfo['file_name'];
-            $repfiles['qc_report3_file_path'] = $fileinfo['file_path'];
-            $this->qc_report_file_count = $this->qc_report_file_count + 1;
         } 
 
         if ($this->form_x->qc_coa) 
         {
-            $fileinfo['report_category'] = 'enrollment_qc_coa';
             $fileinfo['file_code'] = 884;
-            $fileinfo['file_uuid'] = $this->fileUuid();
-            $fileinfo['report_description'] = "QC coa";
-            $fileinfo['file_name'] = $this->generateCode(12).'.'.$this->form_x->qc_coa->getClientOriginalExtension();
-            //dd($fileinfo);
-            //now check if file exists
-            $oldfile = $this->getOldEnrollmentFileInfo($fileinfo['file_code']);
-            
-            if($oldfile)
+            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
+            if($result['status'])
             {
-                $result = $this->fnMoveOldFileToArchieve($oldfile, $fileinfo);                 
+                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+            }else {
+                LivewireAlert::titile($msg)->warning()->show();
             }
-            //looks like first time insertion go ahead.
-            $path = $this->form_x->qc_coa->storeAs($fileinfo['file_path'], $fileinfo['file_name'], 'public');
-            $newFile = EnrollmentFiles::create($fileinfo);
-            $this->form_x->qc_coa = null;
-            //$this->iter1++;
-            //dd($input, $oldfile);
-            //LivewireAlert::title('QC Report 1 File Saved')->success()->asToast()->show();
-            $repfiles['qc_coa_filename'] = $fileinfo['file_name'];
-            $repfiles['qc_coa_file_path'] = $fileinfo['file_path'];
-            $this->qc_report_file_count = $this->qc_report_file_count + 1;
         } 
 
 
@@ -218,7 +161,7 @@ class EnrollmentDecisionComponent extends Component
         $merged['qc_infos_entered_by'] = Auth::user()->name;
         $merged['qc_infos_date_entered'] = date('Y-m-d');
         $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($merged);
-        LivewireAlert::title("Discectomy Sample Info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
+        LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
     }
 
     public function fnSaveEnrolQAData()

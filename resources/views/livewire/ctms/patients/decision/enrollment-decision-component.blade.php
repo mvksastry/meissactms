@@ -53,18 +53,22 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">New Enrollment Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Discectomy</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Samples</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">QC & QA</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Decision</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Administrative</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">Transplantation</a></li>                            
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_1' ? 'active' : '' }}" href="#tab_1" data-toggle="tab">Instructions</a></li>
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_2' ? 'active' : '' }}" href="#tab_2" data-toggle="tab">Discectomy</a></li>
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_3' ? 'active' : '' }}" href="#tab_3" data-toggle="tab">Samples</a></li>
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_4' ? 'active' : '' }}" href="#tab_4" data-toggle="tab">QC & QA</a></li>
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_5' ? 'active' : '' }}" href="#tab_5" data-toggle="tab">Decision</a></li>
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_6' ? 'active' : '' }}" href="#tab_6" data-toggle="tab">Administrative</a></li>
+                            <li class="nav-item"><a class="nav-link {{ $activeTab === 'tab_7' ? 'active' : '' }}" href="#tab_7" data-toggle="tab">Transplantation</a></li>                            
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
                           <div class="tab-content">
                             <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_1">
+                                @include('livewire.ctms.patients.forms.enroll-instructions')
+                            </div>
+
                             <div class="tab-pane" id="tab_2">
                                 @include('livewire.ctms.patients.forms.discectomy')
                             </div>
