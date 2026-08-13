@@ -58,7 +58,7 @@ class FollowupMDTRExams extends Component
         //dd($this->input); //
         $result = $this->saveFollowupMDTREInformation($this->input);
         LivewireAlert::title('Follow-up M&DTRE Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MDTRE data');
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' MDTRE data');
         //dd($result); //
     }
 
@@ -94,15 +94,32 @@ class FollowupMDTRExams extends Component
       $newMdtreInfos->comment_entered_by = $input['comment_entered_by'];
       $newMdtreInfos->entered_by = $input['entered_by'];
       $newMdtreInfos->entry_date = $input['entry_date'];
-      //$newMdtreInfos->verified_by = $input['verified_by'];
-      //$newMdtreInfos->verified_date = $input['verified_date'];
-      //$newMdtreInfos->sealed_by = $input['entry_sealed_by'];
-      //$newMdtreInfos->sealed_date = $input['entry_sealed_date'];
 
       //dd($newMdtreInfos);
+        try {
+            $this->msg_panel = true;
+            $result = $newMdtreInfos->save();;//this updates single object.
 
-      $result = $newMdtreInfos->save();
-
-      return $result;
+            if ($result) { 
+                return $result;
+            } else {
+                $msg = 'User [ '.Auth::user()->name.' ] could not save '.$this->data_type.' MDTRE data';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database query error for new patient while saving '.$this->data_type.' MDTRE Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected exception for while saving '.$this->data_type.' MDTRE Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
     }
 }

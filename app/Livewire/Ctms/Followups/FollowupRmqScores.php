@@ -99,7 +99,7 @@ class FollowupRmqScores extends Component
         //dd($this->input); //
         $result = $this->saveFollowupRMQ($this->input);
         LivewireAlert::title('Follow-up R M Q Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved RMQ data');
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' RMQ data');
         //dd($result); // 
     }
 
@@ -128,13 +128,38 @@ class FollowupRmqScores extends Component
         $nRmq_reply->entry_date = $input['entry_date'];
 
         //dd($nRmq_reply);
-        $result = $nRmq_reply->save();
         //here write code to remove form fields for all traits
 
         //show values entered
-        $this->show_rmq_reply_panel = true;
-        $this->resetInputs();
-        return $result;
+
+
+        try {
+            $this->msg_panel = true;
+            $result = $nRmq_reply->save();//this updates single object.
+
+            if ($result) { 
+                $this->show_rmq_reply_panel = true;
+                $this->resetInputs();
+                return $result;
+            } else {
+                $msg = 'User [ '.Auth::user()->name.' ] could not save '.$this->data_type.' RMQ data';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database query error for new patient while saving '.$this->data_type.' RMQ Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected exception for while saving '.$this->data_type.' RMQ Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
     }
 
     public function resetInputs()

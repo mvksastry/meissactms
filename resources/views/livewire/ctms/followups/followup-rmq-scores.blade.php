@@ -14,6 +14,7 @@
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
                   RMQ: Roland Morris Low Back Pain and Disability Questionnaire Score
+                  <label class="text-danger">{{ ucfirst($data_type) }} </label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">

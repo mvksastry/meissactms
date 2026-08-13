@@ -68,8 +68,6 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              @include('layouts.menus.items.admin.ctms.centers')
-              @include('layouts.menus.items.admin.ctms.clinics')
               @include('layouts.menus.items.admin.ctms.drug-categories')
               @include('layouts.menus.items.admin.ctms.ctms-activities')
             </ul>

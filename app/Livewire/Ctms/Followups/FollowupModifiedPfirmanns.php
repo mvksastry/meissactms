@@ -55,7 +55,7 @@ class FollowupModifiedPfirmanns extends Component
         //dd($this->input); //
         $result = $this->saveFollowupPfirmannGrade($this->input);
         LivewireAlert::title('Follow-up Pfirmann Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Pfirmann score data');
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' MPfirmann data');
         //dd($result); // 
     }
 
@@ -86,7 +86,31 @@ class FollowupModifiedPfirmanns extends Component
         //$nPfirmannScore->sealed_date = $input['entry_sealed_date'];
 
         //dd($nPfirmannScore);
-        $result = $nPfirmannScore->save();
-        return $result;
+        try {
+            $this->msg_panel = true;
+            $result = $nPfirmannScore->save();//this updates single object.
+
+            if ($result) { 
+                return $result;
+            } else {
+                $msg = 'User [ '.Auth::user()->name.' ] could not save '.$this->data_type.' MPfirmann data';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database query error for new patient while saving '.$this->data_type.' MPfirmann Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected exception for while saving '.$this->data_type.' MPfirmann Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
+
     }
 }

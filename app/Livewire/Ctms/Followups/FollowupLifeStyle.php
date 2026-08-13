@@ -37,7 +37,7 @@ class FollowupLifeStyle extends Component
     //data binding
     public $input;
 
-    public $form_header;
+    public $form_header, $header_tag;
 
     //form variables
     public $opd_id, $in_patient_id, $admission_date;
@@ -71,8 +71,8 @@ class FollowupLifeStyle extends Component
         $this->input = $this->sanitizeInput($this->input);
         //dd($this->input); 
         $result = $this->saveFollowupPatientLSInformation($this->input);
-        LivewireAlert::title('Follow-up Life Style Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved life style data');
+        LivewireAlert::title($this->data_type.' Life Style Data Saved...')->success()->asToast()->show();
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' life style data');
     }
 
     public function saveFollowupPatientLSInformation($input)
@@ -93,10 +93,10 @@ class FollowupLifeStyle extends Component
         $newLSinfo->cross_leg_sitting = $input['cross_leg_sitting'];
         $newLSinfo->standing = $input['standing'];
         $newLSinfo->sitting = $input['sitting'];
-        $newLSinfo->ls3 = $input['ls3'];
-        $newLSinfo->ls4 = $input['ls4'];
-        $newLSinfo->ls5 = $input['ls5'];
-        $newLSinfo->ls6 = $input['ls6'];
+        //$newLSinfo->ls3 = null;
+        //$newLSinfo->ls4 = null;
+        //$newLSinfo->ls5 = null;
+        //$newLSinfo->ls6 = null;
         $newLSinfo->life_style_description = $input['life_style_description'];
 
         $newLSinfo->status = "draft";
@@ -107,8 +107,51 @@ class FollowupLifeStyle extends Component
         $newLSinfo->entry_date = $input['entry_date'];
 
         //dd($newLSinfo);
-        $result = $newLSinfo->save();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved life style data');
+        try {
+            $this->msg_panel = true;
+            $result = $newLSinfo->save();//this updates single object.
+
+            if ($result) { 
+                return $result;
+            } else {
+                $msg = 'User [ '.Auth::user()->name.' ] could not save '.$this->data_type.' life style data';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database query error for new patient while saving '.$this->data_type.' life style data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected exception for while saving '.$this->data_type.' life style data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' life style data');
         return $result;
     }
 }

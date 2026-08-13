@@ -57,7 +57,8 @@ class FollowupVisualAnalogs extends Component
         //dd($this->input); //
         $result = $this->saveFollowupVAScores($this->input);
         LivewireAlert::title('Follow-up Visual Analog Scores Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Visual Analog score data');
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' Visual Analog score data');
+
         //dd($result); //
     }
 
@@ -74,11 +75,12 @@ class FollowupVisualAnalogs extends Component
         $nVAScores->admission_date =  $input['admission_date'];
         $nVAScores->data_type = $this->data_type;
 
-        $nVAScores->intensity = $input['intensity'];
-        $nVAScores->location = $input['location'];
-        $nVAScores->onset = $input['onset'];
-        $nVAScores->duration = $input['duration'];
-        $nVAScores->variation = $input['variation'];
+        //$nVAScores->intensity = $input['intensity'];
+        ///$nVAScores->location = $input['location'];
+        //$nVAScores->onset = $input['onset'];
+        //$nVAScores->duration = $input['duration'];
+        //$nVAScores->variation = $input['variation'];
+
         $nVAScores->quality = $input['quality'];
         $nVAScores->vas_scale = $input['vas_scale'];
         $nVAScores->pfr_scale = $input['pfr_scale'];
@@ -94,7 +96,30 @@ class FollowupVisualAnalogs extends Component
         //$nVAScores->sealed_by = $input['entry_sealed_by'];
         //$nVAScores->sealed_date = $input['entry_sealed_date'];
         //dd($nVAScores);
-        $result = $nVAScores->save();
-        return $result;
+        try {
+            $this->msg_panel = true;
+            $result = $nVAScores->save();;//this updates single object.
+
+            if ($result) { 
+                return $result;
+            } else {
+                $msg = 'User [ '.Auth::user()->name.' ] could not save '.$this->data_type.' Visual Analog score data';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database query error for new patient while saving '.$this->data_type.' Visual Analog score. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected exception for while saving '.$this->data_type.' Visual Analog score. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
     }
 }

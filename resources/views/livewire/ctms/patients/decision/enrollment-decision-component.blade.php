@@ -65,32 +65,32 @@
                         <div class="card-body">
                           <div class="tab-content">
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_1">
+                            <div class="tab-pane {{ $activeTab === 'tab_1' ? 'active' : '' }}" id="tab_1">
                                 @include('livewire.ctms.patients.forms.enroll-instructions')
                             </div>
 
-                            <div class="tab-pane" id="tab_2">
+                            <div class="tab-pane {{ $activeTab === 'tab_2' ? 'active' : '' }}" id="tab_2">
                                 @include('livewire.ctms.patients.forms.discectomy')
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_3">
+                            <div class="tab-pane {{ $activeTab === 'tab_3' ? 'active' : '' }}" id="tab_3">
                                 @include('livewire.ctms.patients.forms.discectomy-samples')
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_4">
+                            <div class="tab-pane {{ $activeTab === 'tab_4' ? 'active' : '' }}" id="tab_4">
                                 @include('livewire.ctms.patients.forms.qc-qa-infos')
                             </div>
                             <!-- /.tab-pane --> 
-                            <div class="tab-pane" id="tab_5">
+                            <div class="tab-pane {{ $activeTab === 'tab_5' ? 'active' : '' }}" id="tab_5">
                                 @include('livewire.ctms.patients.forms.decision-controls')
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_6">
+                            <div class="tab-pane {{ $activeTab === 'tab_6' ? 'active' : '' }}" id="tab_6">
                                 @include('livewire.ctms.patients.forms.administrative')
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_7">
+                            <div class="tab-pane {{ $activeTab === 'tab_7' ? 'active' : '' }}" id="tab_7">
                                 @include('livewire.ctms.patients.forms.transplantation')
                             </div>
                             <!-- /.tab-pane -->

@@ -79,7 +79,30 @@ class FollowupSensoryExams extends Component
         $newSEInfo->entered_by = $input['entered_by'];
         $newSEInfo->entry_date = $input['entry_date'];
         //dd($newSEInfo);
-        $result = $newSEInfo->save();
-        return $result;
+        try {
+            $this->msg_panel = true;
+            $result = $newSEInfo->save();//this updates single object.
+
+            if ($result) { 
+                return $result;
+            } else {
+                $msg = 'User [ '.Auth::user()->name.' ] could not save '.$this->data_type.' Sensory Exam data';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database query error for new patient while saving '.$this->data_type.' Sensory Exam Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected exception for while saving '.$this->data_type.' Sensory Exam Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
     }
 }

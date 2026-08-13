@@ -67,7 +67,7 @@ class EnrollmentDecisionComponent extends Component
 
     public function mount($patient_uuid)
     {
-        //dd($patient_uuid);
+        //dd($this->activeTab, $patient_uuid);
         $this->patient_uuid = $patient_uuid;
         $this->passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
@@ -76,30 +76,36 @@ class EnrollmentDecisionComponent extends Component
 
     public function render()
     {
+        //dd($this->tab);
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Enrollment Decision home page');
         return view('livewire.ctms.patients.decision.enrollment-decision-component');
     }
 
     public function fnSaveDiscectomyData()
     {
+        $this->tab = 'tab_2';
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
         $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
         LivewireAlert::title("Discectomy info for Decision updated")->success()->show();
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
         //dd($this->patient_uuid, $filtered);
     }
 
     public function fnSaveDiscectomySamplesData()
     {
+        $this->tab = 'tab_3';
         //dd("reached 2 tab");
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
         $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
         LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
     }
 
     public function fnSaveEnrolQCData()
     {
+        $this->tab = 'tab_4';
         $this->form_x->validate();
         $repfiles = [];
         $qc_report_file_count = 0;
@@ -110,7 +116,7 @@ class EnrollmentDecisionComponent extends Component
             $fileinfo['file_code'] = 881;
             $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
             if($result['status'])
-            {
+            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_1 For Decision');
                 $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
             }else {
                 LivewireAlert::titile($msg)->warning()->show();
@@ -123,7 +129,7 @@ class EnrollmentDecisionComponent extends Component
             $fileinfo['file_code'] = 882;
             $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
             if($result['status'])
-            {
+            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_2 For Decision');
                 $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
             }else {
                 LivewireAlert::titile($msg)->warning()->show();
@@ -135,7 +141,7 @@ class EnrollmentDecisionComponent extends Component
             $fileinfo['file_code'] = 883;
             $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
             if($result['status'])
-            {
+            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_3 For Decision');
                 $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
             }else {
                 LivewireAlert::titile($msg)->warning()->show();
@@ -147,7 +153,7 @@ class EnrollmentDecisionComponent extends Component
             $fileinfo['file_code'] = 884;
             $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
             if($result['status'])
-            {
+            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_COA For Decision');
                 $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
             }else {
                 LivewireAlert::titile($msg)->warning()->show();
@@ -162,10 +168,12 @@ class EnrollmentDecisionComponent extends Component
         $merged['qc_infos_date_entered'] = date('Y-m-d');
         $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($merged);
         LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
     }
 
     public function fnSaveEnrolQAData()
     {
+        $this->tab = 'tab_4';
         //dd("reached 4 tab");
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
@@ -178,7 +186,7 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrollmentDecision()
     {
-        
+        $this->tab = 'tab_5';
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
 
@@ -198,6 +206,7 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrollmentIDs()
     {
+        $this->tab = 'tab_6';
        if($this->enrObj->enrollment_decision === "yes")
         {
             $this->input = $this->form->all();
@@ -220,6 +229,7 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveTransplantationData()
     {
+        $this->tab = 'tab_7';
         //query here whether or not decision taken and it is yes.
         //dd("reached 7 tab");
        if($this->enrObj->enrollment_decision === "yes")

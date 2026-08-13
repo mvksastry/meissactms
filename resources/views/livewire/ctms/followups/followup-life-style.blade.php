@@ -52,7 +52,7 @@
                         @endif
                       <div class="card">
                         <div class="card-header d-flex p-0">
-                          <h3 class="card-title p-3">Information</h3>
+                          <h3 class="card-title p-3">Information <label class="text-danger">{{ ucfirst($data_type) }} </label></h3>
                           <ul class="nav nav-pills ml-auto p-2">
                             <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Life Style</a></li>
@@ -111,26 +111,10 @@
                                       <label>Sitting</label>
                                       <input wire:model.defer="form.sitting" id="pr" type="text" value="null" class="form-control" placeholder="--">
                                     </td>
-                                    <td>
-                                      <label>---*</label>
-                                      <input wire:model.defer="form.ls3" id="temperature" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---*</label>
-                                      <input wire:model.defer="form.ls4" id="bp_systolic" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---*</label>
-                                      <input wire:model.defer="form.ls5" id="bp_diastolic" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
-                                    <td>
-                                      <label>---*</label>
-                                      <input wire:model.defer="form.ls6" id="bp_diastolic" type="text" value="null" class="form-control" placeholder="--" >
-                                    </td>
                                   </tr>
         
                                   <tr>
-                                    <td colspan="6">
+                                    <td colspan="3">
                                       <div class="form-group">
                                         <label>Life Style Description</label>
                                         <textarea wire:model.defer="form.life_style_description" id="adverse_events" class="form-control" rows="4" placeholder="Enter ..."></textarea>

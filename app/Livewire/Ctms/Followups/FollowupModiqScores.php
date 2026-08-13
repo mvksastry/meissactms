@@ -258,7 +258,7 @@ class FollowupModiqScores extends Component
         //dd($this->input);
         $result = $this->saveFollowupMODQScore($this->input);
         LivewireAlert::title('Follow-up MODQ Data Saved...')->success()->asToast()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved MODQ data');
+        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' MODQ data');
         //dd($result); 
     }
 
@@ -299,11 +299,34 @@ class FollowupModiqScores extends Component
       //$nModqScore->sealed_date = $input['entry_sealed_date'];
 
       //dd($nModqScore);
-      $result = $nModqScore->save();
-      //here write code to remove form fields for all traits
-      $this->show_entered_values = true;
-      $this->modq_entered = ModqScore::where('patient_uuid', $this->patient_uuid)->first();
-      $this->resetInputs();
-      return $result;
+      //       //here write code to remove form fields for all traits
+        try {
+            $this->msg_panel = true;
+            $result = $nModqScore->save();//this updates single object.
+
+            if ($result) { 
+                $this->show_entered_values = true;
+                $this->modq_entered = ModqScore::where('patient_uuid', $this->patient_uuid)->first();
+                $this->resetInputs();
+                return $result;
+            } else {
+                $msg = 'User [ '.Auth::user()->name.' ] could not save '.$this->data_type.' MODQ data';
+                $this->sysAlertDanger = $msg;
+                LivewireAlert::title($msg)->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            }
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database query error for new patient while saving '.$this->data_type.' MODQ Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected exception for while saving '.$this->data_type.' MODQ Data. :'.$e->getMessage();
+            LivewireAlert::title($msg)->warning()->asToast()->show();
+            Log::channel('patient')->info($msg);
+            $this->sysAlertDanger = $msg;
+        }
     }
 }
