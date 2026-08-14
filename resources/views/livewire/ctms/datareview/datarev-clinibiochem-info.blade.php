@@ -485,10 +485,11 @@
                                 </div>
                                 <div class="card-header d-flex p-0">
                                     <ul class="nav nav-pills ml-auto p-2">
-                                        @foreach($c15Objs as $ci15Obj)
-                                            <li class="nav-item"><a class="nav-link" href="#tab_{{ $i1 }}" data-toggle="tab">{{ ucfirst($ci15Obj->data_type) }}</a></li>
+                                        @foreach($drug_details as $key => $rows)
+                                            <li class="nav-item"><a class="nav-link" href="#tab_{{ $i1 }}" data-toggle="tab">{{ ucfirst($key) }}</a></li>
                                             @php
-                                                $j1 = $j1 + 1
+                                                $i1 = $i1 + 1;
+                                                //dd($c15Objs, $key, $ci15Obj);
                                             @endphp
                                         @endforeach
                                     </ul>
@@ -496,9 +497,9 @@
                                 <div class="card-body">
                                     <div class="tab-content">
                                         <!-- /.tab-pane -->
-                                        @foreach($c15Objs as $ci15Obj)
+                                        @foreach($drug_details as $xrows)
                                             <div class="tab-pane" id="tab_{{ $j1 }}">
-
+                                                @include('livewire.ctms.datareview.clinicals.drug-usage')                                                     
                                             </div>
                                             @php
                                                 $j1 = $j1 + 1;

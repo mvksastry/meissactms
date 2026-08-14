@@ -54,7 +54,7 @@ class DatarevClinibiochemInfo extends Component
     //one object for every table initialize
     public $c1Objs,$c2Objs, $c3Objs, $c4Objs, $c5Objs, $c6Objs, $c7Objs;
     public $c8Objs, $c9Objs, $c10Objs, $c11Objs, $c12Objs, $c13Objs, $c14Objs;
-    public $c15Objs, $c16Objs;
+    //public $c15Objs, $c16Objs;
 
     public $drug_details = [], $dCats = null, $ddet = [], $p1=false, $p2=false, $p3=false;
     public $drug_categories =[];
@@ -89,14 +89,27 @@ class DatarevClinibiochemInfo extends Component
         $this->c13Objs = RenalFunction::where('patient_uuid', $this->patient_uuid)->get();
         $this->c14Objs = UrineRoutine::where('patient_uuid', $this->patient_uuid)->get();
         //many entries here use first, for drug entries, first should not be used, use get();
-        $this->c15Objs = DrugDetails::where('patient_uuid', $this->patient_uuid)->get();
-        //dd($this->c15Obj);
-        $this->c16Objs = DrugDetails::where('patient_uuid', $this->patient_uuid)->get();
+        $this->c15Objs = DrugDetails::where('patient_uuid', $this->patient_uuid)
+                                        ->get()
+                                        ->groupBy('data_type');
+                                        //->toArray();
+        $this->processDrugDetails($this->c15Objs);
+        //dd($this->c15Objs);
+        $this->c16Objs = DrugDetails::where('patient_uuid', $this->patient_uuid)->get()->groupBy('data_type');
         //$this->drug_details = DrugDetails::where('patient_uuid', $this->patient_uuid)->get();
         //dd($this->drug_details);
-        $this->drug_categories = DrugCategory::all();
+        //$this->drug_categories = DrugCategory::all();
 
         $this->dCats = DrugCategory::all();
+    }
+
+    public function processDrugDetails($c15Objs)
+    {
+        foreach($c15Objs as $key => $rows)
+        {
+            $this->drug_details[$key] = $rows->toArray();
+        }
+        //dd($this->drug_details);
     }
 
     public function render()
