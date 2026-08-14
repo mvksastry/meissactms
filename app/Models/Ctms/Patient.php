@@ -135,4 +135,9 @@ class Patient extends Model
     {
       return $this->hasOne(Enrollment::class, 'patient_uuid', 'patient_uuid');
     }
+
+	public function lifestyle()
+  {
+    return $this->hasMany(LifeStyle::class, 'patient_uuid', 'patient_uuid');
+  }
 }

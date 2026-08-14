@@ -40,6 +40,7 @@ use App\Livewire\Projects\EmployeeAnnualGoals;
 use App\Livewire\Projects\GoalProgressLogs;
 
 // Livewire - Patient management
+use App\Livewire\Ctms\Datareview\PatientDataReviews;
 use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
 use App\Livewire\Ctms\Patients\PatientInformation;
@@ -154,6 +155,10 @@ Route::middleware('auth')->group(function () {
     Route::get('project-goals', ProjectGoals::class);
     Route::get('employee-annual-goals', EmployeeAnnualGoals::class);
     Route::get('update-goal-progress', GoalProgressLogs::class);
+
+
+    // ------- Livewire: Components All Roles------- //
+    Route::get('patient-data-reviews', PatientDataReviews::class);
 
     // ------- Livewire: Components All Roles------- //
     Route::get('manage-patients', ManagePatients::class);

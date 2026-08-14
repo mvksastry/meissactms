@@ -115,10 +115,9 @@
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-          
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.follow-up')
-
+                  @include('layouts.menus.items.patientms.data-review')
                 </ul>
               </li>
             </ul>

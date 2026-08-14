@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Patient Primary Information: Date Created: {{ $patientPrimaryInfo->created_at }}
+                  Data Review: <label class="text-danger">Primary Information</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -28,18 +28,18 @@
                   </ul>
                 </div>
               </div><!-- /.card-header -->
-
-
               <div class="card-body">
                 <div class="tab-content p-0">
-
-                  <!--Divider-->
-                  <hr class="border-b-2 border-warning my-2 mx-2">
                   <!-- Morris chart - Sales -->
                   <div class="row">
                     <div class="col-12">
                       <!-- Custom Tabs -->
-
+                        {{-- Success message --}}
+                        @php
+                            $i = 1;
+                            $j =  1
+                            //dd($Objs);
+                        @endphp
 
                       <div class="card">
                         <div class="card-header d-flex p-0">
@@ -99,62 +99,86 @@
                                   </tr>
                                 </thead>
                                 <tbody>      
-                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')  
+                                  
                                   <tr>
-                                    <td colspan="2">
+                                    <td colspan="3">
                                       <label>Comment Entered By</label>
                                       </br>{{ $patientPrimaryInfo->comment_entered_by }}
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
-                                      <label>Entered By*</label>
+                                      <label>Entered</label>
                                       </br>{{ $patientPrimaryInfo->entered_by }}
                                     </td>
-                                    <td colspan="1">
-                                      <label>Date of Entry*</label>
+                                    <td>
+                                      <label>Date of Entry</label>
                                       </br>{{ $patientPrimaryInfo->entry_date }}
                                     </td>
                                   </tr>
-                                  <tr>
+                                  <tr>                                  
                                     <td>
+                                      <label>Verified By</label>
+                                      </br>{{ $patientPrimaryInfo->verified_by }}
+                                    </td>
+                                    <td>
+                                      <label>Date Verified</label>
+                                      </br>{{ $patientPrimaryInfo->verified_date }}
                                     </td>
                                   </tr>
-                                  @endhasanyrole
 
-
-
-                                  @hasanyrole('ctms_manager|ctms_incharge|director')
                                   <tr>
+                                    <td colspan="3">
+                                      <label>CTMS Manager Comment</label>
+                                      </br>{{ $patientPrimaryInfo->comment_verified_by }}
+                                    </td>  
+                                  </tr>
+                                  <tr>                                  
                                     <td>
-                                      <label>Seal Patient Data*</label>
-                                      </br>{{ $patientPrimaryInfo->sealed_by }}
-                                      <div class="col-sm-6 col-md-6">
-                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Seal Entry</button>
-                                      </div>
+                                      <label>CTMS Manager</label>
+                                      </br>{{ $patientPrimaryInfo->approved_by }}
                                     </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date*</label>
+                                    <td>
+                                      <label>Date Approved</label>
+                                      </br>{{ $patientPrimaryInfo->approved_date }}
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td colspan="3">
+                                      <label>CTMS In-Charge Comment</label>
+                                      </br>{{ $patientPrimaryInfo->comment_approved_by }}
+                                    </td>  
+                                  </tr>
+                                  <tr>                                  
+                                    <td>
+                                      <label>Sealed By</label>
+                                      </br>{{ $patientPrimaryInfo->sealed_by }}
+                                    </td>
+                                    <td>
+                                      <label>Date Sealed</label>
                                       </br>{{ $patientPrimaryInfo->sealed_date }}
                                     </td>
                                   </tr>
-                                  @endhasanyrole
 
-                                  @hasanyrole('ctms_incharge|director')
+                                  <tr>
+                                    <td colspan="3">
+                                      <label>CRO Comment</label>
+                                      </br>{{ $patientPrimaryInfo->sealed_by }}
+                                    </td>   
+                                  </tr>
                                   <tr>
                                     <td>
-                                      <label>Seal Patient Data*</label>
-                                      </br>{{ $patientPrimaryInfo->sealed_by }}
-                                      <div class="col-sm-6 col-md-6">
-                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Seal Entry</button>
-                                      </div>
+                                      <label>CRO</label>
+                                      </br>
+                                    </td>                                 
+                                    <td>
+                                      <label>Date CRO Viewed</label>
+                                      </br>{{ $patientPrimaryInfo->cro_approval_date }}
                                     </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date*</label>
-                                      </br>{{ $patientPrimaryInfo->sealed_date }}
-                                    </td>
+
                                   </tr>
-                                  @endhasanyrole
+
                                 </tbody>
                               </table>
                               
@@ -167,11 +191,12 @@
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
-
-
-
-                      
                     </div>
+
+
+
+
+
                     <!-- /.col -->
                   </div>
                   <!--Divider-->
@@ -179,9 +204,6 @@
                   <!--Divider-->
                 </div>
               </div><!-- /.card-body -->
-
-
-
             </div>
           </section>
         </div> 
