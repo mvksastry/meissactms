@@ -1,53 +1,51 @@
   <table id="userIndex2" class="table table-sm table-bordered table-hover">
     <thead>
       <tr>
-        <th align="center">Category</th>
-        <th align="center">Description</th>
-        <th align="center">Tags</th>
-        <th align="center">Uploaded By</th>
-        <th align="center">Created On</th>
-        <th align="center">Uploaded On</th>
-        <th align="center">Status</th>
-        <th align="center">Action</th>
+        <th  align="center">Category</th>
+        <th  align="center">Report</th>
+        <th  align="center">Description</th>
+        <th  align="center">Tags</th>
+        <th  align="center">Uploaded By</th>
+        <th  align="center">Created On</th>
+        <th  align="center">Uploaded On</th>
+        <th  align="center">Status</th>
+        <th  align="center">Action</th>
       </tr>
     </thead>
     <tbody> 
-      @if(count($c3) > 0)
-        @foreach($c3 as $row)
+      @foreach($c3 as $vals)
+        @php
+          //dd($c1, $vals, $row);
+        @endphp
         <tr>
           <td>
-            <label></label>
-            </br>{{ $row->report_category }}
+            {{ ucfirst($vals->report_category) }}
           </td>
           <td>
-            <label>report_description</label>
-            </br>{{ $row->report_description }}
+            {{ substr($file_codex[$vals->file_code], 0, 13) }}
           </td>
           <td>
-            <label>tags</label>
-            </br>{{ $row->tags }}
+            {{ ucfirst($vals->report_description) }}
           </td>
           <td>
-            <label>Uploaded By</label>
-            </br>{{ $row->uploaded_by }}
+            {{ $vals->tags }}
           </td>
           <td>
-            <label>Created On</label>
-            </br>{{ $row->created_at }}
+            {{ $vals->uploaded_by }}
           </td>
           <td>
-            <label>Updated On</label>
-            </br>{{ $row->updated_at }}
+            {{ $vals->created_at }}
           </td>
           <td>
-            <label>Status</label>
-            </br>{{ $row->report_status }}
+            {{ $vals->updated_at }}
           </td>
           <td>
-            <button wire:click="fnDownLoadPrimary()" class="btn btn-success font-normal mt-3 rounded">View</button>
+            {{ ucfirst($vals->report_status) }}
+          </td>
+          <td>
+            <button wire:click="fnDownLoadPrimary('{{ $vals->file_uuid }}')" class="btn btn-success font-normal rounded">View</button>
           </td>
         </tr>
-        @endforeach
-      @endif
+      @endforeach
     </tbody>
   </table>

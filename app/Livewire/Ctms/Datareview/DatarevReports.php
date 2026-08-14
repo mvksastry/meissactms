@@ -35,11 +35,12 @@ class DatarevReports extends Component
 
     //Errors, Alers, Callouts
 
-    public $cli_reps, $enr_files;
+    public $cli_reps, $enr_files, $dummy;
 
     public $c1,$c2,$c3,$c4,$c5,$c6,$c7,$c8,$c9,$c10,$c11,$c12;
 
     public $file_codex = [
+
         0 => 'Default',
         1 => 'Primary Information related',
         2 => 'Life Style Description',
@@ -66,9 +67,11 @@ class DatarevReports extends Component
         41 => 'Microscopic Examinations',
         42 => 'Renal Function Tests',
         43 => 'Urine Routine'
+
     ];
 
     public $tab_name = [
+
         1 => 'Primary',
         2 => 'LifeStyle',
         3 => 'Clinical',
@@ -81,6 +84,7 @@ class DatarevReports extends Component
         10 => 'Misc1',
         11 => 'Misc2',
         12 => 'Enroll'
+
     ];
 
     public $clinArray = [ 31,32,33,34,35,36,37,38,39,40,41,42,43];
@@ -88,27 +92,35 @@ class DatarevReports extends Component
     public function mount($patient_uuid)
     {
         $this->patient_uuid = $patient_uuid;
-        //$this->data_type = $data_type;
-
+        //primary
         $this->c1 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 1)->get();
+        //lifestyle
         $this->c2 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 2)->get();
-        
+        //sensory
         $this->c4 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 4)->get();
+        //mdtre
         $this->c5 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 5)->get();
+        //pfirmann
         $this->c6 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 6)->get();
+        //vas
         $this->c7 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 7)->get();
+        //modq
         $this->c8 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 8)->get();
+        //rmq
         $this->c9 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 9)->get();
+        //misc1
         $this->c10 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 10)->get();
+        //misc2
         $this->c11 = ClinicalReports::where('patient_uuid', $this->patient_uuid)->where('file_code', 11)->get();
-
+        //enroll
         $this->c12 = EnrollmentFiles::where('patient_uuid', $this->patient_uuid)->get();
 
         $this->c3 = ClinicalReports::where('patient_uuid', $this->patient_uuid)
                                     ->whereIn('file_code', $this->clinArray)
-                                    ->get()->groupBy('file_code');
-        //dd($this->c3);
-        $this->processClinReports($this->c3);
+                                    ->get();
+                                    //->groupBy('file_code');
+        //dd($this->c3, $this->patient_uuid);
+        //$this->c3 = $this->processClinReports($this->c3);
 
     }
 
@@ -117,13 +129,18 @@ class DatarevReports extends Component
         return view('livewire.ctms.datareview.datarev-reports');
     }
 
-    public function processClinReports($c3)
+    public function processClinReports($objects)
     {
         //dd("reached");
+        foreach($objects as $key => $rows)
+        {
+            $this->dummy[$key] = $rows->toArray();
+        }
+        return $this->dummy;
     }
 
     public function fnDownLoadReport($file_uuid)
     {
-        dd($file_uuid);
+        //dd($file_uuid);
     }
 }

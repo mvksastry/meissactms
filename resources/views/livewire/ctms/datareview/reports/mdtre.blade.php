@@ -12,42 +12,36 @@
       </tr>
     </thead>
     <tbody> 
-      @if(count($c5) > 0)
-        @foreach($c5 as $row)
+      @foreach($c5 as $vals)
+        @php
+          //dd($c1, $vals, $row);
+        @endphp
         <tr>
           <td>
-            <label></label>
-            </br>{{ $row->report_category }}
+            {{ $vals->report_category }}
           </td>
           <td>
-            <label>report_description</label>
-            </br>{{ $row->report_description }}
+            {{ $vals->report_description }}
           </td>
           <td>
-            <label>tags</label>
-            </br>{{ $row->tags }}
+            {{ $vals->tags }}
           </td>
           <td>
-            <label>Uploaded By</label>
-            </br>{{ $row->uploaded_by }}
+            {{ $vals->uploaded_by }}
           </td>
           <td>
-            <label>Created On</label>
-            </br>{{ $row->created_at }}
+            {{ $vals->created_at }}
           </td>
           <td>
-            <label>Updated On</label>
-            </br>{{ $row->updated_at }}
+            {{ $vals->updated_at }}
           </td>
           <td>
-            <label>Status</label>
-            </br>{{ $row->report_status }}
+            {{ $vals->report_status }}
           </td>
           <td>
-            <button wire:click="fnDownLoadPrimary()" class="btn btn-success font-normal mt-3 rounded">View</button>
+            <button wire:click="fnDownLoadPrimary('{{ $vals->file_uuid }}')" class="btn btn-success font-normal mt-3 rounded">View</button>
           </td>
         </tr>
-        @endforeach
-      @endif
+      @endforeach
     </tbody>
   </table>
