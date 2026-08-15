@@ -141,7 +141,7 @@
         </section>
 
         <section id="top2" class="col-lg-8 connectedSortable">
-          <div class="card bg-gradient-white card-outline">
+          <div class="card bg-gradient-white">
             <div class="card-header border-0">
               <h3 class="card-title">
                 <i class="far fa-calendar-alt"></i>
@@ -175,7 +175,7 @@
             <div class="card-body pt-0">
               <!--The calendar -->
               <div id='calendar-container'>
-                <div id='calendar'></div>
+                <div wire:ignore id='calendar'></div>
               </div>
             </div>
             <!-- /.card-body -->
@@ -206,12 +206,7 @@
 
       dateClick: function(info) {
         //alert('Clicked on: ' + info.dateStr);
-        //Livewire.dispatch('calendarDateClicked', {
-        //  date: info.dateStr
-        //});
-        //Livewire.dispatch('openDateModal', { date: info.dateStr });
         // Send event to Livewire component
-        Livewire.dispatch('date-selected');
         /*
           var title = prompt('Enter Event Title');
           var date = new Date(info.dateStr + 'T00:00:00');
@@ -225,19 +220,11 @@
               title: title,
               start: date
             };
-
-
-            //Livewire.on('date-selected', (eventAdd) => {
-            //  alert('Great. Now, update your database...');
-            //});
-
-            //
-
           } else {
             alert('Event Title Is Required');
           }
             */
-        //$(this).addevent(events);
+
       },
 
       editable: true,
@@ -267,8 +254,10 @@
 
     });
     calendar.render();
-    Livewire.on('refreshCalEvent', function(events) {
+
+    Livewire.on('refreshWithNewEvent', function(events) {
       calendar.removeAllEvents();
+      console.log(events);
       calendar.addEventSource(events);
     });
   });

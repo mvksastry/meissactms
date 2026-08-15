@@ -34,38 +34,17 @@ class Calendar extends Component
 
     public $evenAdd, $evenDate, $calEvent;
 
-    public $selectedDate;
     public $showModal = false;
 
     // Listen for JS event
-
-
     protected $listeners = [
         'calendarDateClicked' => 'handleDateClick',
         'refreshCalEvent' => '$refresh',
         ];
 
-    public function handleDateClick($date)
+    public function mount()
     {
-        //dd($args);
-        //$date = $data['date'] ?? null;
-        //LivewireAlert::title("reached calendar event place")->info()->show();
-        // Trigger modal opening (LivewireUI Modal example)
-        $this->dispatch('new-cal-event', date : $date);
-    }
-
-
-    #[On('date-selected')]
-    public function selectedDate()
-    {
-        //dd($calEvent);
-        $this->dispatch("new-cal-event");
-        //dd("data selected", $eventAdd);
-    }
-
-    public function closeModal()
-    {
-        $this->showModal = false;
+        $this->evenGetQuery();
     }
 
     public function getevent()
@@ -77,14 +56,11 @@ class Calendar extends Component
 
     public function updateEventInfo()
     {
-        dd("reached");
+
     }
 
     public function addNewEvent()
     {
-        dd("adding event");
-        $this->dispatch('new-cal-event');
-        //dd("adding new Event");
     }
 
     public function clearEvent()
@@ -99,16 +75,11 @@ class Calendar extends Component
     */ 
     public function addevent($event)
     {
-        //dd('reached');
-        $input['title'] = $event['title'];
-        $input['start'] = $event['start'];
-        //Event::create($input);
     }
 
     public function postEventInfo()
     {
         //dd("reached");
-        
         $this->form->validate();
         $input = $this->form->all();
         $ne = new Event();
@@ -117,9 +88,7 @@ class Calendar extends Component
         $ne->save();
         $this->form->reset();
         $this->evenGetQuery();
-        $this->dispatch('refreshCalEvent');
-
-
+        $this->dispatch('refreshWithNewEvent', events: $this->events);
     }
     /**
     * Write code on Method
@@ -141,39 +110,12 @@ class Calendar extends Component
     public function render()
     {       
         $this->evenGetQuery();
-        /*
-        //$events = Event::select('id','title','start_date')->get();
-        $events = Event::select('id', 'title', 
-                                'start_date', 'start_hour', 'start_min', 
-                                'end_date', 'end_hour', 'end_min' )
-                            ->get()
-                            ->map(function ($event) {
-                                return [
-                                    'id'     => $event->id,
-                                    'title'  => $event->title,
-                                    // Combine date + time into ISO 8601 format
-                                    'start' => sprintf(
-                                        '%sT%02d:%02d:00',
-                                        date('Y-m-d', strtotime($event->start_date)),
-                                        $event->start_hour,
-                                        $event->start_min
-                                    ),
-                                    'end'   => sprintf(
-                                        '%sT%02d:%02d:00',
-                                        date('Y-m-d', strtotime($event->end_date)),
-                                        $event->end_hour,
-                                        $event->end_min
-                                    )
-                                ];
-            });
-            */
         //$this->events = json_encode($events);
 
                 // Pass to view as JSON
         return view('livewire.general.calendar', [
             'events' => $this->events->toJson()
         ]);
-        //return view('livewire.general.calendar');
     }
 
     public function evenGetQuery()
