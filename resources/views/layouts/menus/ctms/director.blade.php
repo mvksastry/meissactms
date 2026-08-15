@@ -117,16 +117,21 @@
                 </a>
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.follow-up')
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Review
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.data-review')
                 </ul>
               </li>
             </ul>
           </li>
-
-
-
-
-
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -137,7 +142,6 @@
             </a>
 
             <ul class="nav nav-treeview">
-              @include('layouts.menus.items.projectms.patients-dashboard')
 
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -179,31 +183,7 @@
             </ul>
           </li>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
+          <!--
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -238,7 +218,7 @@
               @include('layouts.menus.items.admin.users.user-permissions')
             </ul>
           </li>
-<!--
+          <!--
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -301,7 +281,6 @@
             </ul>
           </li>
 
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -314,8 +293,7 @@
               @include('layouts.menus.items.samples.manage-samples')
             </ul>
           </li>
-          
-          
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>

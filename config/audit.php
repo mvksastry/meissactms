@@ -128,7 +128,8 @@ return [
     |
     */
 
-    'timestamps' => false,
+    //'timestamps' => false, // original default is false
+    'timestamps' => true,
 
     /*
     |--------------------------------------------------------------------------
