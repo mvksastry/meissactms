@@ -29,7 +29,8 @@ class TodoList extends Component
 
     public function render()
     {
-        $this->todo_list = Todo::all();
+        $this->todoQuery();
+        //$this->todo_list = Todo::where('user_id', Auth::user()->id)->where('is_seen', 0)->get();
         foreach($this->todo_list as $item)
         {
             $start = date('Y-m-d H:i:s');
@@ -62,7 +63,8 @@ class TodoList extends Component
         $newTodo->is_seen = 0;
         //dd($newTodo);
         $newTodo->save();
-        $this->todo_list = Todo::all();
+        $this->todoQuery();
+        //$this->todo_list = Todo::where('user_id', Auth::user()->id)->where('is_seen', 0)->get();
         $newTodo = null;
         $this->todo_item = null;
     }
@@ -72,13 +74,21 @@ class TodoList extends Component
         $res = Todo::where('uuid', $id)->first();
         $res->is_seen = true;
         $res->update();
-        $this->todo_list = Todo::all();
+        $this->todoQuery();
+        //$this->todo_list = Todo::where('user_id', Auth::user()->id)->where('is_seen', 0)->get();
         //dd($id);
     }
 
-    public function deleteItem()
+    public function deleteItem($id)
     {
-        dd("deleting");
+        // dd($id);
+        $this->markAsdone($id);
+        //dd("deleting");
+    }
+
+    public function todoQuery()
+    {
+        $this->todo_list = Todo::where('user_id', Auth::user()->id)->where('is_seen', 0)->get();
     }
     
 }

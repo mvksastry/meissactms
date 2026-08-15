@@ -192,6 +192,4 @@ class HomeController extends Controller
     {   
         return view('subscription.no-subscription-notice');
     }
-
-
 }

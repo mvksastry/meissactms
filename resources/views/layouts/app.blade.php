@@ -1,77 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		@include('layouts.partials.header')
-	</head>
-	<body class="hold-transition sidebar-mini layout-fixed">
-		<div class="wrapper">
-			<!-- preloader -->
-			@include('layouts.partials.preloader')
-			<!-- /.preloader -->
 
-			<!-- Navbar -->
-			@include('layouts.partials.navbar')
-			<!-- /.navbar -->
+<head>
+  @include('layouts.partials.header')
+</head>
 
-			<!-- Main Sidebar Container -->
-			@hasexactroles('sys_admin')
-			@include('layouts.menus.sysadmin.admin')
-			@endhasexactroles
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    <!-- preloader -->
+    @include('layouts.partials.preloader')
+    <!-- /.preloader -->
 
-			@hasexactroles('director')
-			@include('layouts.menus.ctms.director')
-			@endhasexactroles
+    <!-- Navbar -->
+    @include('layouts.partials.navbar')
+    <!-- /.navbar -->
 
-			@hasexactroles('ctms_incharge')
-			@include('layouts.menus.ctms.incharge')
-			@endhasexactroles	
-			
-			@hasexactroles('cro')
-			@include('layouts.menus.ctms.cro')
-			@endhasexactroles
+    <!-- Main Sidebar Container -->
+    @hasexactroles('sys_admin')
+      @include('layouts.menus.sysadmin.admin')
+    @endhasexactroles
 
-			@hasexactroles('clinical_manager')
-			@include('layouts.menus.ctms.clinical_manager')
-			@endhasexactroles
+    @hasexactroles('director')
+      @include('layouts.menus.ctms.director')
+    @endhasexactroles
 
-			@hasexactroles('senior_resident')
-			@include('layouts.menus.ctms.senior_resident')
-			@endhasexactroles
+    @hasexactroles('ctms_incharge')
+      @include('layouts.menus.ctms.incharge')
+    @endhasexactroles
 
-			@hasexactroles('junior_resident')
-			@include('layouts.menus.ctms.junior_resident')
-			@endhasexactroles
-			
-			@hasexactroles('clinical_dataentry')
-			@include('layouts.menus.ctms.cde_operator')
-			@endhasexactroles
-			<!-- /.Main Sidebar Container -->
+    @hasexactroles('cro')
+      @include('layouts.menus.ctms.cro')
+    @endhasexactroles
 
-			@hasexactroles('guest')
-			@include('layouts.menus.no-role-menu')
-			@endhasexactroles
+    @hasexactroles('clinical_manager')
+      @include('layouts.menus.ctms.clinical_manager')
+    @endhasexactroles
 
-			@hasexactroles('ctms_guest')
-			@include('layouts.menus.no-role-menu')
-			@endhasexactroles
+    @hasexactroles('senior_resident')
+      @include('layouts.menus.ctms.senior_resident')
+    @endhasexactroles
 
-			<!-- Dynamic content -->
-			@yield('content')  		
-			<!-- /.Dynamic content -->
-					  
-			@include('layouts.partials.footer')
+    @hasexactroles('junior_resident')
+      @include('layouts.menus.ctms.junior_resident')
+    @endhasexactroles
 
-			<!-- Control Sidebar -->
-			@include('layouts.partials.csidebar')
-			<!-- /.control-sidebar -->
-			
+    @hasexactroles('clinical_dataentry')
+      @include('layouts.menus.ctms.cde_operator')
+    @endhasexactroles
+    <!-- /.Main Sidebar Container -->
 
-		</div>
-		<!-- scripts -->
-    
-		@include('layouts.partials.scripts')
-      
-		<!-- /.scripts -->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	</body>
+    @hasexactroles('guest')
+      @include('layouts.menus.no-role-menu')
+    @endhasexactroles
+
+    @hasexactroles('ctms_guest')
+      @include('layouts.menus.no-role-menu')
+    @endhasexactroles
+
+    <!-- Dynamic content -->
+    @yield('content')
+    <!-- /.Dynamic content -->
+
+    @include('layouts.partials.footer')
+
+    <!-- Control Sidebar -->
+    @include('layouts.partials.csidebar')
+    <!-- /.control-sidebar -->
+
+    @include('layouts.modals.global-modals')
+  </div>
+  <!-- scripts -->
+
+  @include('layouts.partials.scripts')
+  <script>
+    document.addEventListener('new-cal-event', function() {
+      console.log('Opening modal for date:');
+      $('#eventModal1').modal('show');
+    });
+  </script>
+  <!-- /.scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
 </html>

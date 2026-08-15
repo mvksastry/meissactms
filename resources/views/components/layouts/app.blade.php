@@ -1,86 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		@include('layouts.partials.header')
-	</head>
-	<body class="hold-transition sidebar-mini layout-fixed">
-		<div class="wrapper">
-			<!-- preloader -->
-			@include('layouts.partials.preloader')
-			<!-- /.preloader -->
 
-			<!-- Navbar -->
-			@include('layouts.partials.navbar')
-			<!-- /.navbar -->
+<head>
+  @include('layouts.partials.header')
+</head>
 
-			<!-- Main Sidebar Container -->
-			@hasexactroles('sys_admin')
-			@include('layouts.menus.sysadmin.admin')
-			@endhasexactroles
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    <!-- preloader -->
+    @include('layouts.partials.preloader')
+    <!-- /.preloader -->
 
-			@hasexactroles('director')
-			@include('layouts.menus.ctms.director')
-			@endhasexactroles	
+    <!-- Navbar -->
+    @include('layouts.partials.navbar')
+    <!-- /.navbar -->
 
-			@hasexactroles('ctms_incharge')
-			@include('layouts.menus.ctms.incharge')
-			@endhasexactroles	
+    <!-- Main Sidebar Container -->
+    @hasexactroles('sys_admin')
+      @include('layouts.menus.sysadmin.admin')
+    @endhasexactroles
 
-			@hasexactroles('cro')
-			@include('layouts.menus.ctms.cro')
-			@endhasexactroles
+    @hasexactroles('director')
+      @include('layouts.menus.ctms.director')
+    @endhasexactroles
 
-			@hasexactroles('clinical_manager')
-			@include('layouts.menus.ctms.clinical_manager')
-			@endhasexactroles
+    @hasexactroles('ctms_incharge')
+      @include('layouts.menus.ctms.incharge')
+    @endhasexactroles
 
-			@hasexactroles('senior_resident')
-			@include('layouts.menus.ctms.senior_resident')
-			@endhasexactroles
+    @hasexactroles('cro')
+      @include('layouts.menus.ctms.cro')
+    @endhasexactroles
 
-			@hasexactroles('junior_resident')
-			@include('layouts.menus.ctms.junior_resident')
-			@endhasexactroles
+    @hasexactroles('clinical_manager')
+      @include('layouts.menus.ctms.clinical_manager')
+    @endhasexactroles
 
-			@hasexactroles('clinical_dataentry')
-			@include('layouts.menus.ctms.cde_operator')
-			@endhasexactroles
-			<!-- /.Main Sidebar Container -->
-			
-			<!-- Dynamic content -->
-			<!-- Page Content -->
-			<main>
-			{{ $slot }}
-			</main>
-			<!-- /.Dynamic content -->
-					  
-			@include('layouts.partials.footer')
+    @hasexactroles('senior_resident')
+      @include('layouts.menus.ctms.senior_resident')
+    @endhasexactroles
 
-			<!-- Control Sidebar -->
-			@include('layouts.partials.csidebar')
-			<!-- /.control-sidebar -->
-			
-		</div>
-		<!-- scripts -->
+    @hasexactroles('junior_resident')
+      @include('layouts.menus.ctms.junior_resident')
+    @endhasexactroles
 
-		@include('layouts.partials.scripts')
+    @hasexactroles('clinical_dataentry')
+      @include('layouts.menus.ctms.cde_operator')
+    @endhasexactroles
+    <!-- /.Main Sidebar Container -->
 
-		<script>
-			document.addEventListener('livewire:init', () => {
-			console.log("DOM is fully loaded");
+    <!-- Dynamic content -->
+    <!-- Page Content -->
+    <main>
+      {{ $slot }}
+    </main>
+    <!-- /.Dynamic content -->
 
-				Livewire.on('uuid-selected', () => {
-								//alert('message');
-								$('#exampleModal').modal('show');
-						});
-				Livewire.on('tempproduct-details', () => {
-								//alert('message');
-								$('#exampleModal2').modal('show');
-						});
+    @include('layouts.partials.footer')
 
-			});
-		</script>
-		<!-- /.scripts -->
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	</body>
+    <!-- Control Sidebar -->
+    @include('layouts.partials.csidebar')
+    <!-- /.control-sidebar -->
+
+  </div>
+  <!-- scripts -->
+
+  @include('layouts.partials.scripts')
+
+  <script>
+    document.addEventListener('livewire:init', () => {
+      console.log("DOM is fully loaded");
+
+      Livewire.on('uuid-selected', () => {
+        //alert('message');
+        $('#exampleModal').modal('show');
+      });
+      Livewire.on('tempproduct-details', () => {
+        //alert('message');
+        $('#exampleModal2').modal('show');
+      });
+    });
+  </script>
+  <!-- /.scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
 </html>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // All roles
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EventsController;
 //use App\Http\Controllers\DownloadController;
 
 //use App\Http\Controllers\RolesController;
@@ -130,6 +131,8 @@ require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::resource('calendar-events', EventsController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
