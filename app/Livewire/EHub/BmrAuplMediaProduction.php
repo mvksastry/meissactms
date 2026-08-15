@@ -22,13 +22,18 @@ use App\Traits\TCtms\TActivityQueries;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Validator;
-
+//traits
+use App\Traits\THub\TDashPanelInfos;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 
 class BmrAuplMediaProduction extends Component
 {
+    use TDashPanelInfos;
+    //dash items
+    public $ccyteActiveBatches, $auplMediaActiveBatches, $distinctCellLineCount;
+
     //variables globals
     public $amps, $productionForm = false;
 
@@ -42,8 +47,16 @@ class BmrAuplMediaProduction extends Component
     public $enter_details, $step_completed, $date_time, $done_executed_by;
     public $checked_by, $observations, $deviations, $all_verified, $post_data;
 
+    public function dashItems()
+    {
+        $this->ccyteActiveBatches = $this->allActiveChoncyteBMPBatches();
+        $this->auplMediaActiveBatches = $this->allActiveAuPlBMRMeidaBatches();
+        $this->distinctCellLineCount = $this->distinctActiveCellLines();
+    }
+
     public function render()
     {
+        $this->dashItems();
         $this->amps = AuplMediaProduction::with('assigned')
                                             ->with('ctmsinfo')
                                             ->where('status', 'active')->get();

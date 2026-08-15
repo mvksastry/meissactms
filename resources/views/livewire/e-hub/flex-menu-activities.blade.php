@@ -2,12 +2,12 @@
   <div class="info-box">
     <span class="info-box-icon bg-info">
       <a href="/chondrocyte-production">
-      <i class="far fa-envelope"></i>
+        <i class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">
       <span class="info-box-text">ChonCyte BMRs</span>
-      <span class="info-box-number">Current: </span>
+      <span class="info-box-number">Current: {{ $ccyteActiveBatches }}</span>
     </div>
     <!-- /.info-box-content -->
   </div>
@@ -18,12 +18,12 @@
   <div class="info-box">
     <span class="info-box-icon bg-info">
       <a href="/aupl-media-production">
-      <i class="far fa-envelope"></i>
+        <i class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">
       <span class="info-box-text">AuPL-Medium BMRs</span>
-      <span class="info-box-number">Current: </span>
+      <span class="info-box-number">Current: {{ $auplMediaActiveBatches }}</span>
     </div>
     <!-- /.info-box-content -->
   </div>
@@ -40,7 +40,7 @@
     </span>
     <div class="info-box-content">
       <span class="info-box-text">Passages</span>
-      <span class="info-box-number">...</span>
+      <span class="info-box-number">Distinct Cell Lines: {{ $distinctCellLineCount }}</span>
     </div>
     <!-- /.info-box-content -->
   </div>
@@ -53,7 +53,7 @@
     <span class="info-box-icon bg-warning">
       <a href="#">
         <i class="far fa-copy"></i>
-      </a>     
+      </a>
     </span>
     <div class="info-box-content">
       <span class="info-box-text">...</span>
@@ -70,7 +70,7 @@
     <span class="info-box-icon bg-danger">
       <a href="#">
         <i class="far fa-star"></i>
-      </a>    
+      </a>
     </span>
     <div class="info-box-content">
       <span class="info-box-text">...</span>
@@ -86,7 +86,7 @@
   <div class="info-box">
     <span class="info-box-icon bg-info">
       <a href="#" wire:navigate>
-      <i class="far fa-envelope"></i>
+        <i class="far fa-envelope"></i>
       </a>
     </span>
     <div class="info-box-content">

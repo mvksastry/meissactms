@@ -23,12 +23,17 @@ use App\Traits\TCtms\TActivityQueries;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Validator;
-
+//traits
+use App\Traits\THub\TDashPanelInfos;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class PassageUpdates extends Component
 {
+    use TDashPanelInfos;
+    //dash items
+    public $ccyteActiveBatches, $auplMediaActiveBatches, $distinctCellLineCount;
+
     //variables globals
     public $ccps, $passagesForm = false;
 
@@ -53,8 +58,16 @@ class PassageUpdates extends Component
     public $passageinfo, $passageInfos = [], $showPassageForm, $plate_or_flask;
     public $showPlateRow = false, $showFlaskRow = false;
 
+    public function dashItems()
+    {
+        $this->ccyteActiveBatches = $this->allActiveChoncyteBMPBatches();
+        $this->auplMediaActiveBatches = $this->allActiveAuPlBMRMeidaBatches();
+        $this->distinctCellLineCount = $this->distinctActiveCellLines();
+    }
+
     public function render()
     {
+        $this->dashItems();
         $this->ccps = ChondcyteProduction::with('assigned')
                                             ->with('ctmsinfo')
                                             ->where('status', 'active')->get();

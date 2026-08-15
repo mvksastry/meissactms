@@ -22,12 +22,16 @@ use App\Traits\TCtms\TActivityQueries;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Validator;
-
+//traits
+use App\Traits\THub\TDashPanelInfos;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class BmrChondrocyteProduction extends Component
 {
+    use TDashPanelInfos;
+    //dash items
+    public $ccyteActiveBatches, $auplMediaActiveBatches, $distinctCellLineCount;
     //variables globals
     public $ccps, $productionForm = false;
 
@@ -48,9 +52,16 @@ class BmrChondrocyteProduction extends Component
     //passage from variable
     public $terminate_batch, $terminateForm, $enter_details_terminate;
 
+    public function dashItems()
+    {
+        $this->ccyteActiveBatches = $this->allActiveChoncyteBMPBatches();
+        $this->auplMediaActiveBatches = $this->allActiveAuPlBMRMeidaBatches();
+        $this->distinctCellLineCount = $this->distinctActiveCellLines();
+    }
 
     public function render()
     {
+        $this->dashItems();
         $this->ccps = ChondcyteProduction::with('assigned')
                                             ->with('ctmsinfo')
                                             ->where('status', 'active')->get();

@@ -13,11 +13,19 @@ use App\Models\Ehub\AuplMediaProduction;
 use App\Models\Ehub\ChondcyteProduction;
 use App\Models\User;
 
+//traits
+use App\Traits\THub\TDashPanelInfos;
+
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class ProductionHub extends Component
 {
+    use TDashPanelInfos;
+    //dash items
+    public $ccyteActiveBatches, $auplMediaActiveBatches, $distinctCellLineCount;
+
+    //----end of dash items
     public $productionActivities;
 
     public $showFormsForEntry = false;
@@ -30,9 +38,17 @@ class ProductionHub extends Component
 
     //fortesting purpose not for live
 
+    public function dashItems()
+    {
+        $this->ccyteActiveBatches = $this->allActiveChoncyteBMPBatches();
+        $this->auplMediaActiveBatches = $this->allActiveAuPlBMRMeidaBatches();
+        $this->distinctCellLineCount = $this->distinctActiveCellLines();
+    }
+
 
     public function render()
     {
+        $this->dashItems();
         //This query below is for code development 
         //dd($this->productionActivities);
         //This query can show that only patients for whom mbr is created.
