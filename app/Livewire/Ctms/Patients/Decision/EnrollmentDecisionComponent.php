@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 //models
+use App\Models\Ctms\Activity;
 use App\Models\Ctms\Patient;
 use App\Models\Ctms\Decisions\Enrollment;
 use App\Models\Ctms\Decisions\EnrollmentFiles;
@@ -83,7 +84,6 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveDiscectomyData()
     {
-        $this->tab = 'tab_2';
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
         $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
@@ -94,7 +94,6 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveDiscectomySamplesData()
     {
-        $this->tab = 'tab_3';
         //dd("reached 2 tab");
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
@@ -105,7 +104,6 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrolQCData()
     {
-        $this->tab = 'tab_4';
         $this->form_x->validate();
         $repfiles = [];
         $qc_report_file_count = 0;
@@ -173,7 +171,6 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrolQAData()
     {
-        $this->tab = 'tab_4';
         //dd("reached 4 tab");
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
@@ -186,7 +183,6 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrollmentDecision()
     {
-        $this->tab = 'tab_5';
         $this->input = $this->form->all();
         $filtered = $this->filterInputNulls($this->input);
 
@@ -206,14 +202,25 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrollmentIDs()
     {
-        $this->tab = 'tab_6';
        if($this->enrObj->enrollment_decision === "yes")
         {
             $this->input = $this->form->all();
             $filtered = $this->filterInputNulls($this->input);
             $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
 
-            //now we have create a ctms_activity entry? here??
+            //now we have update ctms_activity table here. Why? 
+            // an entry on this patient must be there and hence update it.
+            //steps first query the activity table.
+            $ctms_patient_entry = Activity::where('patient_uuid', $this->patient_uuid)
+                                            ->where('code', 'mfg')->first();
+            if($ctms_patient_entry === null)
+            {
+
+            }else{
+                $ctms_patient_entry->mbr_id = $this->filtered['mbr_id'];
+                $ctms_patient_entry->save();
+            }
+
             //when en enrollment id created, it be made visible to the respective teams???
             //best is to make an entry in todo list for team members.
             $newTodo = new Todo();
@@ -229,7 +236,6 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveTransplantationData()
     {
-        $this->tab = 'tab_7';
         //query here whether or not decision taken and it is yes.
         //dd("reached 7 tab");
        if($this->enrObj->enrollment_decision === "yes")
