@@ -36,6 +36,9 @@ class ProductionHub extends Component
     public $team1_id =[], $team2_id = [], $incharge1_id, $incharge2_id;
     public $entry_comment, $createFlag = false;
 
+
+    public $erecord, $manual_info = false;
+
     //fortesting purpose not for live
 
     public function dashItems()
@@ -65,9 +68,19 @@ class ProductionHub extends Component
                                                 ->where('auplmed_production_id', null)
                                                 ->where('status','active')
                                                 ->get();
-        
+        //dd($this->productionActivities);
 
         return view('livewire.e-hub.production-hub');
+    }
+
+    public function updatedErecord($value)
+    {
+        //dd("reached");
+        if($this->erecord === 'no')
+        {
+            $this->manual_info = true;
+        }
+
     }
 
     public function fnCreateAssociatedBMR($ctms_activity_id)

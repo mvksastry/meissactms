@@ -132,8 +132,6 @@
             </ul>
           </li>
 
-
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
@@ -152,7 +150,7 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.pre-enrollment')
+                  @include('layouts.menus.items.patientms.on-boarding')
                   @include('layouts.menus.items.patientms.edit-patients')
                 </ul>
               </li>
@@ -175,7 +173,7 @@
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-          
+
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.follow-up')
                 </ul>
@@ -183,16 +181,6 @@
             </ul>
           </li>
 
-
-
-
-
-
-
-
-
-
-          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -211,7 +199,6 @@
             </ul>
           </li>
 
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -229,8 +216,7 @@
               </li>
             </ul>
           </li>
-          
-          
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>

@@ -14,7 +14,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="/home" class="nav-link active">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -22,6 +22,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              @include('layouts.menus.items.navbar.messages')
             </ul>
           </li>
 
@@ -87,13 +88,12 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Pre-Enrollment
+                  <p>On Boarding
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.pre-enrollment')
-                  @include('layouts.menus.items.patientms.edit-patients')
+                  @include('layouts.menus.items.patientms.on-boarding')
                 </ul>
               </li>
               <li class="nav-item">
@@ -208,7 +208,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                User Aministration
+                User Administration
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -253,16 +253,18 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                EHub - ELab
+                MFG - HUB
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <!--
             <ul class="nav nav-treeview">
               @include('layouts.menus.items.ehub.ehub-dash')
             </ul>
             <ul class="nav nav-treeview">
               @include('layouts.menus.items.activities.activities-dash')
             </ul>
+            -->
             <ul class="nav nav-treeview">
               @include('layouts.menus.items.ehub.production-hub')
             </ul>

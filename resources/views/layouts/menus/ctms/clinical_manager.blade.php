@@ -40,22 +40,6 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Documents
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-            
-            <ul class="nav nav-treeview">
-              @include('layouts.menus.items.docs.docsreview')
-              @include('layouts.menus.items.docs.docsupload')
-            </ul>
-          </li>
-          
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>Patient Management
                 <i class="right fas fa-angle-left"></i>
@@ -63,7 +47,6 @@
             </a>
 
             <ul class="nav nav-treeview">
-              @include('layouts.menus.items.projectms.patients-dashboard')
 
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -73,7 +56,7 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.pre-enrollment')
+
                   @include('layouts.menus.items.patientms.edit-patients')
                 </ul>
               </li>
@@ -95,7 +78,7 @@
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-          
+
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.follow-up')
                 </ul>

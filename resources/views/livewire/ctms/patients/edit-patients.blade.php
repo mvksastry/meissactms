@@ -22,7 +22,7 @@
     </div>
     <!-- /.content-header -->
 
-     <section class="content">
+    <section class="content">
       <div class="container-fluid">
         <!-- COLOR PALETTE -->
         <div class="card card-default color-palette-box">
@@ -36,54 +36,56 @@
             <!-- /.col-12 -->
             <!-- /.col-12 -->
             <div class="row">
-              @if(count($draftPatients) > 0)
+              @if (count($draftPatients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
-                      <tr>
-                        <th>Center</th>
-                        <th>Clinic</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Status</th>
-                        <th>Details</th>
-                      </tr>
+                    <tr>
+                      <th>Center</th>
+                      <th>Clinic</th>
+                      <th>Name</th>
+                      <th>Gender</th>
+                      <th>Status</th>
+                      <th>Details</th>
+                    </tr>
                   </thead>
-                  <tbody> 
-                    @foreach($draftPatients as $row)
+                  <tbody>
+                    @foreach ($draftPatients as $row)
                       <tr class="{{ $highlightedId === $row->patient_uuid ? 'table-warning' : '' }}">
                         <td>
-                            {{ $row->center_id }}
+                          {{ $row->center_id }}
                         </td>
                         <td>
-                            {{ $row->ctarm_id }}
+                          {{ $row->ctarm_id }}
                         </td>
                         <td>
-                            {{ $row->name }}
+                          {{ $row->name }}
                         </td>
                         <td>
-                            {{ $row->gender }}
+                          {{ $row->gender }}
                         </td>
                         <td>
-                            {{ ucfirst($row->status) }}
+                          {{ ucfirst($row->status) }}
                         </td>
                         <td>
-                            <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
+                          <button wire:click="selectedPatient('{{ $row->patient_uuid }}')"
+                            class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                            Details</button>
                         </td>
                         <!--
                         <td>
-                            <button wire:click="selectedUuidPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp UUID Details</button>
+                            <button wire:click="selectedUuidPatient('{{ $row->patient_uuid }}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp UUID Details</button>
                         </td>
                         -->
                       </tr>
                     @endforeach
                   </tbody>
                 </table>
-              @else 
+              @else
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
-                      <tr>
+                    <tr>
                       <th>No Information to display</th>
-                      </tr>
+                    </tr>
                   </thead>
                 </table>
               @endif
@@ -92,52 +94,62 @@
             <!--Divider-->
             <hr class="border-b-2 border-warning my-2 mx-2">
             <!--Divider-->
-            @if($patientInfoButtons)
+            @if ($patientInfoButtons)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
+                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnLifeStyleData('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Life Style</button>
+                  <button wire:click="fnLifeStyleData('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Life Style</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnClinicalInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Clinical</button>
+                  <button wire:click="fnClinicalInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Clinical</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Sensory Exam</button>  
+                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Sensory Exam</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp M&DTR Exam</button>    
+                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp M&DTR Exam</button>
                 </div>
               </div>
               </br>
               <div class="row">
                 <!-- /.col -->
-              
+
                 <div class="col-sm-3 col-md-2">
-                  <button  wire:click="fnPatientReportUploads('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Reports</button>
+                  <button wire:click="fnPatientReportUploads('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Reports</button>
                 </div>
-              
+
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Vis. Analog Score</button>  
+                  <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMODIQInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp MODQ Score</button>  
+                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp Vis. Analog Score</button>
                 </div>
-              
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnRMQInfo('{{ $patient_uuid }}')" type="button" class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
+                  <button wire:click="fnMODIQInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp MODQ Score</button>
+                </div>
+
+                <!-- /.col -->
+                <div class="col-sm-3 col-md-2">
+                  <button wire:click="fnRMQInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-warning"><i class="ion ion-person"></i>&nbsp RMQ Score</button>
                 </div>
                 <!-- /.col -->
                 <!--
@@ -159,69 +171,69 @@
     </section>
 
     <!-- Main content -->
-    @if($p1)
-        @livewire('ctms.patients.edit.edit-primary-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p1)
+      @livewire('ctms.patients.edit.edit-primary-info', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($p2)
-        @livewire('ctms.patients.edit.edit-lifestyle-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
-    @endif
-    
-    @if($p3)
-        @livewire('ctms.patients.edit.edit-clinical-info', ['entry'=>$entry,  'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p2)
+      @livewire('ctms.patients.edit.edit-lifestyle-info', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($p4)
-        @livewire('ctms.patients.edit.edit-sensory-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p3)
+      @livewire('ctms.patients.edit.edit-clinical-info', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($p5)
-        @livewire('ctms.patients.edit.edit-mdtre-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p4)
+      @livewire('ctms.patients.edit.edit-sensory-info', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($p6)
-        @livewire('ctms.patients.edit.edit-patient-reports', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p5)
+      @livewire('ctms.patients.edit.edit-mdtre-info', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($p7)
-        @livewire('ctms.patients.edit.edit-pfirmann-info', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p6)
+      @livewire('ctms.patients.edit.edit-patient-reports', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($p8)
-        @livewire('ctms.patients.edit.edit-visual-analog-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p7)
+      @livewire('ctms.patients.edit.edit-pfirmann-info', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-    @if($p9) 
-        @livewire('ctms.patients.edit.edit-modiq-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
-    @endif
-    
-    @if($p10)
-        @livewire('ctms.patients.edit.edit-rmq-score', ['entry'=>$entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @if ($p8)
+      @livewire('ctms.patients.edit.edit-visual-analog-score', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
-   <!-- /.content -->
+    @if ($p9)
+      @livewire('ctms.patients.edit.edit-modiq-score', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @endif
+
+    @if ($p10)
+      @livewire('ctms.patients.edit.edit-rmq-score', ['entry' => $entry, 'uuid' => $patient_uuid], key($patient_uuid))
+    @endif
+
+    <!-- /.content -->
   </div>
-    <!-- /.content-wrapper -->
-    <!-- Modal -->
-    <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            {{ $patient_uuid }}
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button wire:click="respondToSaveChanges()" type="button" class="btn btn-primary">Save changes</button>
-          </div>
+  <!-- /.content-wrapper -->
+  <!-- Modal -->
+  <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button wire:click="respondToSaveChanges()" type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
+  </div>
 
 </div>

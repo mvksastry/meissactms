@@ -24,26 +24,6 @@
             <ul class="nav nav-treeview">
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Documents
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-            
-            <ul class="nav nav-treeview">
-              @include('layouts.menus.items.docs.docsreview')
-              <li class="nav-item">
-                <a href="/documents" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload</p>
-                </a>
-              </li>
-            </ul>
-          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -54,7 +34,6 @@
             </a>
 
             <ul class="nav nav-treeview">
-              @include('layouts.menus.items.projectms.patients-dashboard')
 
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -64,7 +43,7 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.pre-enrollment')
+
                   @include('layouts.menus.items.patientms.edit-patients')
                 </ul>
               </li>
@@ -86,7 +65,7 @@
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-          
+
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.follow-up')
                 </ul>
@@ -94,23 +73,6 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Inventory
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/manage-inventory" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inventory Home</p>
-                </a>
-              </li>
-            </ul>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

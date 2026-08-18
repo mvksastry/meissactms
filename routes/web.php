@@ -29,6 +29,9 @@ use App\Http\Controllers\PermissionsController;
 
 
 // Livewire - Project management
+use App\Livewire\General\InternalMessages;
+
+
 use App\Livewire\Egov\CtmsActivities;
 use App\Livewire\Egov\CreateNewActivity;
 use App\Livewire\Egov\CtmsActivityArchieves;
@@ -148,6 +151,8 @@ Route::middleware('auth')->group(function () {
     
 
     // ------- Livewire: Components All Roles------- //
+    Route::get('internal-messages', InternalMessages::class);
+
     Route::get('ctms-core-activities', CtmsActivities::class);
     Route::get('create_new_activity', CreateNewActivity::class);
     Route::get('end-ctms-activity', EndCtmsActivity::class);

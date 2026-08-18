@@ -46,12 +46,10 @@ use App\Models\Ctms\Clinicals\DrugDetails;
 //
 use Illuminate\Support\Facades\Log;
 
-trait TDbEntries
+trait TDbEntriesRevised
 {
-
-  public function setDbEntriesPatientModels($uuid, $input)
+  public function setAllDbPatientDataModels($uuid, $patObj, $data_type)
   {
-
       $models = [
 
         \App\Models\Ctms\LifeStyle::class,
@@ -85,14 +83,14 @@ trait TDbEntries
         $obj = new $modelClass();
         $obj->fill([
             'patient_uuid' => $uuid,
-            'opd_id' => $input['opd_id'],
-            'in_patient_id' => $input['in_patient_id'],
-            'admission_date' => $input['admission_date'],
-            'data_type' => $input['data_type'],
+            'opd_id' => $patObj->opd_id,
+            'in_patient_id' => $patObj->in_patient_id,
+            'admission_date' => $patObj->admission_date,
+            'data_type' => $data_type,
             'status' => 'draft',
             'status_date' => date('Y-m-d'),
         ]);
-        dd($obj);        
+        //dd($obj);        
         try {
             
             $result = $obj->save();    
@@ -118,7 +116,7 @@ trait TDbEntries
         $enPat = new Enrollment();
 
         $enPat->patient_uuid = $uuid;
-        $enPat->opd_id = $input['opd_id'];
+        $enPat->opd_id = $patObj->opd_id;
 
         try {
             
@@ -401,5 +399,4 @@ trait TDbEntries
       */
 
   }
-
 }

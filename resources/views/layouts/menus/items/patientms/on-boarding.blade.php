@@ -1,6 +1,6 @@
 <li class="nav-item">
-  <a href="/edit-patients" class="nav-link">
+  <a href="/manage-patients" class="nav-link">
     <i class="far fa-circle nav-icon"></i>
-    <p>Edit OB Patient</p>
+    <p>On Boarding</p>
   </a>
 </li>

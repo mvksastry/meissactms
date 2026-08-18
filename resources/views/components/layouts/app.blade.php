@@ -79,6 +79,11 @@
         //alert('message');
         $('#exampleModal2').modal('show');
       });
+      Livewire.on('compose-textarea', () => {
+        //alert('message');
+        $('#compose-textarea').summernote();
+      });
+
     });
   </script>
   <!-- /.scripts -->

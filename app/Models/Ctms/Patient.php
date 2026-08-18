@@ -9,9 +9,11 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 use App\Ctms\Decisions\Enrollment;
+use App\Traits\TCommentAppender;
 
 class Patient extends Model
 {
+    use TCommentAppender;
     //
     use HasFactory;
     use HasRoles;
@@ -25,14 +27,24 @@ class Patient extends Model
       * @var array
       */
     protected $fillable = [
-        'patient_uuid',                          
+        'patient_uuid', 
+
         'center_id',
         'ctarm_id',
 
         'opd_id', 
         'in_patient_id',
+        'admission_date',
         'subject_id',
-        'admission_date', 
+ 
+
+        'ob_initiated_by',
+        'ob_initiated_role',
+        'ob_start_date',
+        'ob_approved_by',
+        'ob_approval_role',
+        'ob_approval_comment',
+        'ob_status',
 
         'aadhar_id',
         'pan_num',
@@ -107,6 +119,7 @@ class Patient extends Model
         'before_problem_occupation',
         'general_habits',
 
+        'status_code',
         'status',
         'status_date',
 
@@ -128,7 +141,16 @@ class Patient extends Model
 
         'comment_sealed_by',
         'sealed_by',
-        'sealed_date'
+        'sealed_date',
+
+        'closure_code',
+        'closure_comment',
+        'date_closed',
+        'closed_by',
+        'final_status',
+        'closure_auth_by',
+        'closure_auth_role',
+        'closure_auth_date',
     ];
 
 	public function enrolled()
