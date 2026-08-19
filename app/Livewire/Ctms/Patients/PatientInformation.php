@@ -197,6 +197,8 @@ class PatientInformation extends Component
     public $p9 = false;
     public $p10 = false;
 
+    public $p11 = false;
+
     //active patient panel
 
     //data object variables
@@ -223,6 +225,7 @@ class PatientInformation extends Component
 
     //selected row highlighting
     public $selectedRow;
+    public $data_type = "Pre-Enrollment";
 
     public function render()
     {
@@ -270,6 +273,7 @@ class PatientInformation extends Component
         $this->patient_uuid = $id;
         //dd($this->patient_uuid);
         $this->patientInfoButtons = true;
+        $this->p11 = false;
         $this->TimelinePatient = false;
         $this->PatientStatusPanel = false;
         $this->selectedRow = $id;
@@ -314,7 +318,7 @@ class PatientInformation extends Component
 
     public function fnLifeStyleData($id)
     {
-        $this->ls_info = LifeStyle::where('patient_uuid', $id)->first();
+        $this->ls_info = LifeStyle::where('patient_uuid', $id)->where('data_type', 'pre-enrollment')->first();
         $this->cardTittle = "Life Style Observations";
         $this->date_created = $this->ls_info->created_at;
         //dd($this->patientPrimaryInfo);
@@ -325,25 +329,67 @@ class PatientInformation extends Component
 
     public function fnClinicalInfo($id)
     {
-        $this->clinical_info = ClinicalData::where('patient_uuid', $id)->first();
+        $this->clinical_info = ClinicalData::where('patient_uuid', $id)->where('data_type', 'pre-enrollment')->first();
         $this->cardTittle = "Clinical Data";
         $this->date_created = $this->clinical_info->created_at;
 
         //now set for all other parameters
-        $this->ci1Obj  = BloodRoutine::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci2Obj  = BloodSugar::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci3Obj  = BloodUrea::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci4Obj  = ChemicalExam::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci5Obj  = Creatinine::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci6Obj  = Crp::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci7Obj  = Electrolytes::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci8Obj  = GeneralSummary::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci9Obj  = Il6::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci10Obj = LaboratoryExam::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci11Obj = LiverFunction::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci12Obj = MicroscopicExam::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci13Obj = RenalFunction::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
-        $this->ci14Obj = UrineRoutine::where('status', 'draft')->where('patient_uuid', $this->patient_uuid)->first();
+        $this->ci1Obj  = BloodRoutine::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci2Obj  = BloodSugar::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci3Obj  = BloodUrea::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci4Obj  = ChemicalExam::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci5Obj  = Creatinine::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci6Obj  = Crp::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci7Obj  = Electrolytes::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci8Obj  = GeneralSummary::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci9Obj  = Il6::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci10Obj = LaboratoryExam::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci11Obj = LiverFunction::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci12Obj = MicroscopicExam::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci13Obj = RenalFunction::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
+        $this->ci14Obj = UrineRoutine::where('status', 'draft')
+        ->where('patient_uuid', $this->patient_uuid)
+        ->where('data_type', 'pre-enrollment')
+        ->first();
         //close all other open forms
         $this->fnResetAllVisiblePanels();
         $this->p3 = true;

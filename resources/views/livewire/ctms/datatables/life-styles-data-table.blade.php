@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Life Style Observations Since Enrollment
+                  Life Style Observations : <label class="text-danger"> {{ ucfirst($data_type) }} </label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -35,7 +35,7 @@
                   <div class="row">
                     <div class="col-12">
                       <!-- Custom Tabs -->
-                      <livewire:ctms.datatables.life-styles-data-table :patient_uuid="$patient_uuid"/>
+                      <livewire:ctms.datatables.life-styles-data-table :patient_uuid="$patient_uuid" :data_type="$data_type" />
                       <!-- ./card -->
                     </div>
                     <!-- /.col -->
@@ -47,9 +47,7 @@
               </div><!-- /.card-body -->
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-
-

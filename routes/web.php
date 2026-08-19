@@ -49,6 +49,7 @@ use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
 use App\Livewire\Ctms\Patients\PatientInformation;
 use App\Livewire\Ctms\Followups\PatientFollowup;
+use App\Livewire\Ctms\Followups\MarkAsComplete;
 use App\Livewire\Ctms\Patients\Decision\PatientEnrollmentProcess;
 
 //Livewire - CRO related routes
@@ -174,6 +175,7 @@ Route::middleware('auth')->group(function () {
     Route::get('patient-information', PatientInformation::class);
     Route::get('home-enrollment', PatientEnrollmentProcess::class);
     Route::get('patient-followup', PatientFollowup::class);
+    Route::get('mark-as-complete', MarkAsComplete::class);
     Route::get('drug-categories', DrugCategories::class);
 
     // ------- Livewire: Components CRO Roles------- //

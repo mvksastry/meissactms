@@ -34,22 +34,22 @@
                   <!-- Morris chart - Sales -->
                   <div class="row">
                     <div class="col-12">
-                        @if ($errors->any())
-                            <div class="text-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                      @if ($errors->any())
+                        <div class="text-danger">
+                          <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                          </ul>
+                        </div>
+                      @endif
 
-                        {{-- Success message --}}
-                        @if (session()->has('success'))
-                            <div class="text-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+                      {{-- Success message --}}
+                      @if (session()->has('success'))
+                        <div class="text-success">
+                          {{ session('success') }}
+                        </div>
+                      @endif
                     </div>
 
                     <div class="col-12">
@@ -58,7 +58,8 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
+                                data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">RMQ</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
                           </ul>
@@ -72,29 +73,30 @@
                                     <th colspan="4" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control"
+                                        placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control">
+                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text"
+                                        class="form-control">
                                     </td>
                                     <td colspan="1">
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="admission_date" type="date" value="null" class="form-control" placeholder="Aadhar ID">
+                                      <input wire:model.defer="form.admission_date" id="admission_date" type="date"
+                                        value="null" class="form-control" placeholder="Aadhar ID">
                                     </td>
-                                  </tr> 
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
-                              
 
-                                              
                               <div class="row">
                                 <div class="col-6">
                                   <table id="userIndex2" class="table table-sm table-bordered table-hover">
@@ -103,26 +105,27 @@
                                         <th colspan="1">Select All Applicable</th>
                                       </tr>
                                     </thead>
-                                    <tbody> 
-                                      @foreach($rmquestions as $row)
-                                      <tr>
-                                        <td>
-                                          <div class="form-check">
-                                            <input class="form-check-input" wire:model="rmq_replies" value="{{ $row->rmquestion_id }}" type="checkbox">
-                                            <label class="form-check-label"> {{ $row->question }}</label>
-                                          </div>
-                                        </td>
-                                      </tr>
-                                      @endforeach                                    
+                                    <tbody>
+                                      @foreach ($rmquestions as $row)
+                                        <tr>
+                                          <td>
+                                            <div class="form-check">
+                                              <input class="form-check-input" wire:model="rmq_replies"
+                                                value="{{ $row->rmquestion_id }}" type="checkbox">
+                                              <label class="form-check-label"> {{ $row->question }}</label>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      @endforeach
                                     </tbody>
                                   </table>
                                 </div>
                                 <div class="col-6">
 
-                                  @if( ($srvp->rmq_replies != null) ? $srvp->rmq_replies : null)
-                                    <?php 
-                                      $srvp_decoded = json_decode($srvp->rmq_replies); 
-                                      //dd($srvp_decoded);
+                                  @if ($srvp->rmq_replies != null ? $srvp->rmq_replies : null)
+                                    <?php
+                                    $srvp_decoded = json_decode($srvp->rmq_replies);
+                                    //dd($srvp_decoded);
                                     ?>
                                     <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                       <thead>
@@ -130,9 +133,9 @@
                                           <th colspan="1">Current Values</th>
                                         </tr>
                                       </thead>
-                                      <tbody> 
-                                        @if(count($srvp_decoded) > 0)
-                                          @foreach($srvp_decoded as $row)
+                                      <tbody>
+                                        @if (count($srvp_decoded) > 0)
+                                          @foreach ($srvp_decoded as $row)
                                             <tr>
                                               <td>
                                                 <div class="form-check">
@@ -140,7 +143,7 @@
                                                 </div>
                                               </td>
                                             </tr>
-                                          @endforeach      
+                                          @endforeach
                                         @else
                                           <tr>
                                             <td>
@@ -149,7 +152,7 @@
                                               </div>
                                             </td>
                                           </tr>
-                                        @endif                              
+                                        @endif
                                       </tbody>
                                     </table>
                                   @else
@@ -169,12 +172,13 @@
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
                               @include('livewire.ctms.end-controls')
-                              <button wire:click="fnSaveRMQInfo()" class="btn btn-success text-white font-normal mt-3 rounded">ADD RMQ INFO</button>
+                              <button wire:click="fnSaveRMQInfo()"
+                                class="btn btn-success text-white font-normal mt-3 rounded">ADD RMQ INFO</button>
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -188,8 +192,7 @@
               </div><!-- /.card-body -->
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-

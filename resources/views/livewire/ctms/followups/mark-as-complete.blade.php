@@ -7,13 +7,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0">Home: Patient Follow-Up </h3>
-            <h4> Role :{{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h4>
+            <h4 class="m-0">Home: Process Data</h4>
+            <h5> Role : {{ ucfirst(Auth::user()->roles->pluck('name')[0]) ?? '' }}
+            </h5>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Patients-Followup</li>
+              <li class="breadcrumb-item active">Complete - Data</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,16 +29,10 @@
           <div class="card-header">
             <h3 class="card-title">
               <i class="fas fa-tag"></i>
-              Patient Follow-up Data Entry <label class="text-danger">Select Patient</label>
+              Process Data As Complete: Select Patient
             </h3>
           </div>
           <div class="card-body">
-            @if ($sys_panel)
-              @include('livewire.eac_sys_panel')
-            @endif
-            @if ($msg_panel)
-              @include('livewire.eac_msg_panel')
-            @endif
             <!-- /.col-12 -->
             <div class="row">
               @if (count($enrolledPatients) > 0)
@@ -73,7 +68,7 @@
                         <td>
                           <button wire:click="selectedPatient('{{ $row->patient_uuid }}')"
                             class="btn btn-block btn-light rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                            ADD FOLLOW-UP DETAILS</button>
+                            PROCESS DATA FOR NEXT STEP</button>
                         </td>
                       </tr>
                     @endforeach
@@ -83,7 +78,7 @@
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>No Enrolled Patients found or Information to display</th>
+                      <th>No "Enrolled Patients" or "Data to Display"</th>
                     </tr>
                   </thead>
                 </table>
@@ -94,7 +89,7 @@
             <!--/ Divider-->
             @if ($fuselection)
               <div class="card-header d-flex p-0">
-                <h3 class="card-title p-3">Select <label class="text-danger">Data Type</label></h3>
+                <h3 class="card-title text-danger p-3"><strong>Select Data Type</strong></h3>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div wire:ignore class="tab-content">
@@ -108,10 +103,12 @@
 
             @if ($patientInfoButtons)
               <div class="row">
+
                 <div class="col-sm-3 col-md-2">
                   <button disabled wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button"
                     class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
                 </div>
+
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
                   <button wire:click="fnFULifeStyleData('{{ $patient_uuid }}')" type="button"
@@ -187,47 +184,140 @@
     </section>
 
     <!-- Main content -->
-    @if ($p1)
-      <livewire:ctms.patients.patient-personal :data_type="$data_type" :entered_by="$entered_by" :entry="$entry" />
+
+    @if ($p11)
+      @include('livewire.ctms.datatables.life-styles-data-table')
+      @include('livewire.ctms.datatables.clinical-tests-component')
+      @include('livewire.ctms.datatables.sensory-exams-data-table')
+      @include('livewire.ctms.datatables.mdtre-data-table')
+      @include('livewire.ctms.datatables.patient-reports-data-table')
+      @include('livewire.ctms.datatables.pfirmann-grade-data-table')
+      @include('livewire.ctms.datatables.va-score-data-table')
+      @include('livewire.ctms.datatables.modq-score-data-table')
+      @include('livewire.ctms.datatables.rmq-replies-data-table')
     @endif
 
-    @if ($p2)
-      <livewire:ctms.followups.followup-life-style :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+    @if ($PatientStatusPanel)
+      <section class="content">
+        <div class="container-fluid">
+          <!-- COLOR PALETTE -->
+          <div class="card card-default color-palette-box">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-tag"></i>
+                Process Data As Complete for the Selected Patient
+              </h3>
+            </div>
+            <div class="card-body">
+              <!-- /.col-12 -->
+              <div class="row">
 
-    @if ($p3)
-      <livewire:ctms.followups.clinicals.followup-clinical-biochem-component :data_type="$data_type" :patient_uuid="$patient_uuid"
-        :entry="$entry" />
-    @endif
+              </div>
+              <!-- /.col-12 -->
+              <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--/ Divider-->
+              <!-- existing data on Follow-ups here -->
+              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th colspan="4" align="center"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  </tr>
 
-    @if ($p4)
-      <livewire:ctms.followups.followup-sensory-exams :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+                  @hasrole('senior_resident')
+                    <tr>
+                      <td>
+                        <label>New status</label>
+                        <input wire:model="updated_status" disabled placeholder="Cleared">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Comment</label>
+                        <input wire:model="status_comment" id="status_comment" type="text"
+                          @class(['form-control']) placeholder="Status Update Comment">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <button wire:click="setNewPatientStatus('{{ $patient_uuid }}')" @class(['btn', 'btn-block', 'btn-info', 'rounded'])
+                          type="button"><i @class(['ion', 'ion-person'])></i>&nbsp Verified
+                          Patient</button>
+                      </td>
+                    </tr>
+                  @endhasanyrole
 
-    @if ($p5)
-      <livewire:ctms.followups.followup-m-d-t-r-exams :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+                  @hasrole('clinical_manager')
+                    <tr>
+                      <td>
+                        <label>New status</label>
+                        <input wire:model="updated_status" disabled placeholder="Approved">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Comment</label>
+                        <input wire:model="status_comment" id="status_comment" type="text"
+                          @class(['form-control']) placeholder="Status Update Comment">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <button wire:click="setNewPatientStatus('{{ $patient_uuid }}')" @class(['btn', 'btn-block', 'btn-info', 'rounded'])
+                          type="button"><i @class(['ion', 'ion-person'])></i>&nbsp Approve
+                          Patient</button>
+                      </td>
+                    </tr>
+                  @endhasanyrole
 
-    @if ($p6)
-      <livewire:ctms.followups.followup-report-files :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+                  @hasrole('ctms_incharge')
+                    <tr>
+                      <td>
+                        <label>New status</label>
+                        <input wire:model="updated_status" disabled placeholder="Sealed">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>Comment</label>
+                        <input wire:model="status_comment" id="status_comment" type="text"
+                          @class(['form-control']) placeholder="Status Update Comment">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <button wire:click="setNewPatientStatus('{{ $patient_uuid }}')" @class(['btn', 'btn-block', 'btn-info', 'rounded'])
+                          type="button"><i @class(['ion', 'ion-person'])></i>&nbsp Seal
+                          Patient</button>
+                      </td>
+                    </tr>
+                  @endhasanyrole
 
-    @if ($p7)
-      <livewire:ctms.followups.followup-modified-pfirmanns :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+                  @hasrole('director')
+                    <td>
+                      <button wire:click="setNewPatientStatus('{{ $patient_uuid }}')" @class(['btn', 'btn-block', 'btn-info', 'rounded'])
+                        type="button"><i @class(['ion', 'ion-person'])></i>&nbsp Post Notes</button>
+                    </td>
+                  @endhasanyrole
+                </tbody>
+              </table>
+              <!-- /existing data on Follow-ups here -->
 
-    @if ($p8)
-      <livewire:ctms.followups.followup-visual-analogs :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
+              <!-- /.row -->
+              <!--Divider-->
+              <hr class="border-b-2 border-warning my-2 mx-2">
+              <!--Divider-->
 
-    @if ($p9)
-      <livewire:ctms.followups.followup-modiq-scores :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+          <!-- START ALERTS AND CALLOUTS -->
+        </div><!-- /.container-fluid -->
+      </section>
     @endif
-
-    @if ($p10)
-      <livewire:ctms.followups.followup-rmq-scores :data_type="$data_type" :patient_uuid="$patient_uuid" :entry="$entry" />
-    @endif
-
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -51,6 +51,7 @@ trait TDBStatusUpdates
       //first update the mail patient table here itself.
       //then call the other tables.
       $statusUpdate = Patient::where('patient_uuid', $uuid)->first();
+      $statusUpdate->status_code = 10; //determine this value through a login and algorithm
       $statusUpdate->status = $input['status'];
       $statusUpdate->status_date = date('Y-m-d');
 

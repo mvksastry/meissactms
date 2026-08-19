@@ -10,14 +10,14 @@
           <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card card-primary card-outline">
-                  <div class="card-header">
-                    <h3 class="card-title">
-                      <i class="fas fa-chart-pie mr-1"></i>
-                      Clinical Reports
-                    </h3>
-                    <div class="card-tools">
-                      <ul class="nav nav-pills ml-auto">
-                        <!--
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Clinical Reports : <label class="text-danger">{{ $data_type }}</label>
+                </h3>
+                <div class="card-tools">
+                  <ul class="nav nav-pills ml-auto">
+                    <!--
                           <li class="nav-item">
                             <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
                           </li>
@@ -25,9 +25,9 @@
                             <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
                           </li>
                         -->
-                      </ul>
-                    </div>
-                  </div><!-- /.card-header -->
+                  </ul>
+                </div>
+              </div><!-- /.card-header -->
 
               <div class="card-body">
                 <div class="tab-content p-0">
@@ -41,7 +41,7 @@
                           <h3 class="card-title p-3">Current Reports</h3>
                         </div><!-- /.card-header -->
                         <div class="card-body">
-                          @if(count($current_files) > 0 )
+                          @if (count($current_files) > 0)
                             <table id="userIndex2" class="table table-sm table-bordered table-hover">
                               <thead>
                                 <tr>
@@ -53,26 +53,27 @@
                                   <th align="center">Action</th>
                                 </tr>
                               </thead>
-                              <tbody> 
-                                @foreach($current_files as $curfile)
+                              <tbody>
+                                @foreach ($current_files as $curfile)
                                   <tr>
                                     <td>
-                                        {{ $curfile->report_description }}
+                                      {{ $curfile->report_description }}
                                     </td>
                                     <td>
-                                        {{ ucfirst($curfile->report_status) }}
+                                      {{ ucfirst($curfile->report_status) }}
                                     </td>
                                     <td>
-                                        {{ $curfile->uploaded_by }}
+                                      {{ $curfile->uploaded_by }}
                                     </td>
                                     <td>
-                                        {{ date('d-m-Y', strtotime($curfile->date_created)) }}
+                                      {{ date('d-m-Y', strtotime($curfile->date_created)) }}
                                     </td>
                                     <td>
-                                        {{ date('d-m-Y', strtotime($curfile->updated_at)) }}
+                                      {{ date('d-m-Y', strtotime($curfile->updated_at)) }}
                                     </td>
                                     <td>
-                                        <button wire:click="fnDownloadReport('{{ $curfile->clinicalreport_id }}')" class="btn btn-info font-normal mt-0 rounded">Download</button>
+                                      <button wire:click="fnDownloadReport('{{ $curfile->clinicalreport_id }}')"
+                                        class="btn btn-info font-normal mt-0 rounded">Download</button>
                                     </td>
                                   </tr>
                                 @endforeach
@@ -85,7 +86,7 @@
                                   <th align="center">No Information Retrieved</th>
                                 </tr>
                               </thead>
-                              <tbody> 
+                              <tbody>
                               </tbody>
                             </table>
                           @endif
@@ -94,15 +95,15 @@
                     </div>
                   </div>
                   <!-- /.col -->
-                  </div>
-                  <!--Divider-->
-                  <hr class="border-b-2 border-warning my-2 mx-2">
-                  <!--Divider-->
                 </div>
-              </div><!-- /.card-body -->
-            </div>
-          </section>
-        </div> 
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+                <!--Divider-->
+                <hr class="border-b-2 border-warning my-2 mx-2">
+                <!--Divider-->
+              </div>
+            </div><!-- /.card-body -->
+        </div>
+    </section>
+    </div>
+    <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
     </section>

@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Visual Analog Score
+                  Visual Analog Score <label class="text-danger">{{ ucfirst($data_type) }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -37,10 +37,11 @@
                       <div class="card">
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
-                          
+
                         </div><!-- /.card-header -->
                         <div class="card-body">
-                          <img src="{{asset('assets/dist/img/VASscore.png')}}" alt="AdminLTE Logo" class="w-75 h-75 object-fit-cover" style="opacity: .8">
+                          <img src="{{ asset('assets/dist/img/VASscore.png') }}" alt="AdminLTE Logo"
+                            class="w-75 h-75 object-fit-cover" style="opacity: .8">
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -53,38 +54,38 @@
                 </div>
               </div><!-- /.card-body -->
 
-
-
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
                   <div class="row">
-                      <div class="col-12">
-                        @if ($errors->any())
-                            <div class="text-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                    <div class="col-12">
+                      @if ($errors->any())
+                        <div class="text-danger">
+                          <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                          </ul>
+                        </div>
+                      @endif
 
-                        {{-- Success message --}}
-                        @if (session()->has('success'))
-                            <div class="text-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                     </div>
+                      {{-- Success message --}}
+                      @if (session()->has('success'))
+                        <div class="text-success">
+                          {{ session('success') }}
+                        </div>
+                      @endif
+                    </div>
 
                     <div class="col-12">
                       <!-- Custom Tabs -->
                       <div class="card">
                         <div class="card-header d-flex p-0">
-                          <h3 class="card-title p-3">Information <label class="text-danger">{{ ucfirst($data_type) }} </label></h3>
+                          <h3 class="card-title p-3">Information <label class="text-danger">{{ ucfirst($data_type) }}
+                            </label></h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
+                                data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">VAS</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
                           </ul>
@@ -98,21 +99,24 @@
                                     <th colspan="4" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID*</label>
-                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control" placeholder="Out Patient ID">
+                                      <input wire:model="form.opd_id" id="opd_id" type="text" class="form-control"
+                                        placeholder="Out Patient ID">
                                     </td>
                                     <td colspan="1">
                                       <label>In Patient ID*</label>
-                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text" class="form-control">
+                                      <input wire:model.defer="form.in_patient_id" id="in_patient_id" type="text"
+                                        class="form-control">
                                     </td>
                                     <td colspan="1">
                                       <label>Admission Date*</label>
-                                      <input wire:model.defer="form.admission_date" id="Admission Date" type="date" value="null" class="form-control" placeholder="Admission Date">
+                                      <input wire:model.defer="form.admission_date" id="Admission Date" type="date"
+                                        value="null" class="form-control" placeholder="Admission Date">
                                     </td>
-                                  </tr> 
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -124,19 +128,22 @@
                                     <th colspan="6" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td colspan="1">
                                       <label>Visual Analog Scale</label>
-                                      <input wire:model="form.vas_scale" id="variation" type="text" class="form-control" placeholder="Visual Analog Scale">
+                                      <input wire:model="form.vas_scale" id="variation" type="text"
+                                        class="form-control" placeholder="Visual Analog Scale">
                                     </td>
                                     <td colspan="1">
                                       <label>"Faces" Pain Rating Scale</label>
-                                      <input wire:model="form.pfr_scale" id="quality" type="text" class="form-control" placeholder="Faces Pain Rating Scale">
+                                      <input wire:model="form.pfr_scale" id="quality" type="text"
+                                        class="form-control" placeholder="Faces Pain Rating Scale">
                                     </td>
                                     <td colspan="1">
                                       <label>---</label>
-                                      <input wire:model="form.duration" id="duration" type="text" class="form-control" placeholder="Duration">
+                                      <input wire:model="form.duration" id="duration" type="text"
+                                        class="form-control" placeholder="Duration">
                                     </td>
                                   </tr>
                                   <!--
@@ -161,12 +168,13 @@
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_3">
                               @include('livewire.ctms.end-controls')
-                              <button wire:click="fnSaveVAscoreData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD VA Scores</button>
+                              <button wire:click="fnSaveVAscoreData()"
+                                class="btn btn-success text-white font-normal mt-3 rounded">ADD VA Scores</button>
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -179,11 +187,9 @@
                 </div>
               </div><!-- /.card-body -->
 
-
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-

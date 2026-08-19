@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Follow-up Clinical Investigations
+                  Clinical Investigations <label class="text-danger">{{ ucfirst($data_type) }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -34,21 +34,21 @@
                   <div class="row">
                     <div class="col-12">
                       <!-- Custom Tabs -->
-                        @if ($errors->any())
-                            <div class="text-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        {{-- Success message --}}
-                        @if (session()->has('success'))
-                            <div class="text-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+                      @if ($errors->any())
+                        <div class="text-danger">
+                          <ul>
+                            @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                            @endforeach
+                          </ul>
+                        </div>
+                      @endif
+                      {{-- Success message --}}
+                      @if (session()->has('success'))
+                        <div class="text-success">
+                          {{ session('success') }}
+                        </div>
+                      @endif
                       <div class="card">
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">New Patient Clinical Information</h3>
@@ -58,7 +58,8 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">RBI</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">LFT&Elec</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">RFT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">BS/CRP/IL6</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">BS/CRP/IL6</a>
+                            </li>
                             <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">PLI</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">CE</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">ME</a></li>
@@ -71,70 +72,71 @@
                         <div class="card-body">
                           <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                              
+
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2">
-                            
+
                             </div>
                             <!-- /.tab-pane -->
-                            
-                              <div class="tab-pane" id="tab_3">
-                                @include('livewire.ctms.patients.clinicals.blood-routine-component')
-                              </div>
-                              <!-- /.tab-pane -->
-                              <div class="tab-pane" id="tab_4">
-                                @include('livewire.ctms.patients.clinicals.liver-functions')
-                                @include('livewire.ctms.patients.clinicals.electrolyte-component')
-                              </div>
-                              <!-- /.tab-pane -->
-                              <div class="tab-pane" id="tab_5">
-                                @include('livewire.ctms.patients.clinicals.renal-function-component')
-                                @include('livewire.ctms.patients.clinicals.blood-urea-component')
-                                @include('livewire.ctms.patients.clinicals.creatinine-component')
-                              </div>
-                              <!-- /.tab-pane -->
-                              <div class="tab-pane" id="tab_6">
-                                @include('livewire.ctms.patients.clinicals.blood-sugar-component')
-                                @include('livewire.ctms.patients.clinicals.crp-component')
-                                @include('livewire.ctms.patients.clinicals.il6-component')
-                              </div>
-                              <!-- /.tab-pane -->
-                              <div class="tab-pane" id="tab_7">
-                                @include('livewire.ctms.patients.clinicals.laboratory-exams')
-                              </div>
-                              <!-- /.tab-pane -->
-                              <div class="tab-pane" id="tab_8">
-                                @include('livewire.ctms.patients.clinicals.chemical-exam-component')
-                              </div> 
-                              <!-- /.tab-pane -->     
-                              <div class="tab-pane" id="tab_9">
-                                @include('livewire.ctms.patients.clinicals.microscopic-exams')                           
-                              </div> 
-                              <!-- /.tab-pane -->   
-                              <div class="tab-pane" id="tab_10">
-                                @include('livewire.ctms.patients.clinicals.urine-routine-component')
-                              </div> 
-                              <!-- /.tab-pane -->     
-                              <div class="tab-pane" id="tab_11">
-                                @include('livewire.ctms.patients.clinicals.general-summary-component')
-                              </div>  
-                              <!-- /.tab-pane -->     
-                              <div class="tab-pane" id="tab_12">
-                                @include('livewire.ctms.patients.clinicals.drug-usage')
-                              </div>                               
-                            
-                              <!-- /.tab-pane -->                                                                                                                                                                                    
-                              <div class="tab-pane" id="tab_13">
-                                @include('livewire.ctms.end-controls')
-                                <button wire:click="fnSaveClinicalData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
-                              </div>
+
+                            <div class="tab-pane" id="tab_3">
+                              @include('livewire.ctms.patients.clinicals.blood-routine-component')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_4">
+                              @include('livewire.ctms.patients.clinicals.liver-functions')
+                              @include('livewire.ctms.patients.clinicals.electrolyte-component')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_5">
+                              @include('livewire.ctms.patients.clinicals.renal-function-component')
+                              @include('livewire.ctms.patients.clinicals.blood-urea-component')
+                              @include('livewire.ctms.patients.clinicals.creatinine-component')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_6">
+                              @include('livewire.ctms.patients.clinicals.blood-sugar-component')
+                              @include('livewire.ctms.patients.clinicals.crp-component')
+                              @include('livewire.ctms.patients.clinicals.il6-component')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_7">
+                              @include('livewire.ctms.patients.clinicals.laboratory-exams')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_8">
+                              @include('livewire.ctms.patients.clinicals.chemical-exam-component')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_9">
+                              @include('livewire.ctms.patients.clinicals.microscopic-exams')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_10">
+                              @include('livewire.ctms.patients.clinicals.urine-routine-component')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_11">
+                              @include('livewire.ctms.patients.clinicals.general-summary-component')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_12">
+                              @include('livewire.ctms.patients.clinicals.drug-usage')
+                            </div>
+
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_13">
+                              @include('livewire.ctms.end-controls')
+                              <button wire:click="fnSaveClinicalData()"
+                                class="btn btn-success text-white font-normal mt-3 rounded">ADD CLINICAL INFO</button>
+                            </div>
 
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -144,7 +146,7 @@
                   <!--Divider-->
                   <hr class="border-b-2 border-warning my-2 mx-2">
                   <!-- BAR CHART -->
-                  <livewire:charts.clinical-data-chart />
+                  <!-- livewire:charts.clinical-data-chart /> -->
                   <!-- /.card -->
                   <hr class="border-b-2 border-warning my-2 mx-2">
                   <!--Divider-->
@@ -152,10 +154,9 @@
               </div><!-- /.card-body -->
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
 
-<!-- ChartJS -->
-
+    <!-- ChartJS -->

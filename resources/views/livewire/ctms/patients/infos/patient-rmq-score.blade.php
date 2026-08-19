@@ -13,7 +13,8 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  RMQ: Roland Morris Low Back Pain and Disability Questionnaire Score
+                  RMQ: Roland Morris Low Back Pain and Disability Questionnaire Score : <label
+                    class="text-danger">{{ $data_type }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -38,7 +39,8 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
+                                data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">RMQ</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
                           </ul>
@@ -52,11 +54,11 @@
                                     <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td colspan="1">
                                       <label>Opd ID</label>
-                                    </br>
+                                      </br>
                                       {{ $rmq_replies->opd_id }}
                                     </td>
                                     <td colspan="1">
@@ -69,7 +71,7 @@
                                       </br>
                                       {{ $rmq_replies->admission_date }}
                                     </td>
-                                  </tr> 
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -81,31 +83,29 @@
                                     <th colspan="6" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <?php
-                                    if($rmq_replies->rmq_replies != null)
-                                    {
+                                  if ($rmq_replies->rmq_replies != null) {
                                       $replies_rmq = json_decode($rmq_replies->rmq_replies);
-                                    }
-                                    else{
+                                  } else {
                                       $replies_rmq = [];
-                                    }
+                                  }
                                   ?>
-                                  @foreach($replies_rmq as $row)
-                                  <tr>
-                                    <td>
-                                      @if(count($replies_rmq) > 0)
-                                      <div class="form-check">
-                                        {{  $row }} -- {{ $rmqreplies[$row] }}
-                                      </div>
-                                      @else
-                                        <div class="form-check">
-                                          No Replies Found
-                                        </div>
-                                      @endif
-                                    </td>
-                                  </tr>
-                                  @endforeach                                    
+                                  @foreach ($replies_rmq as $row)
+                                    <tr>
+                                      <td>
+                                        @if (count($replies_rmq) > 0)
+                                          <div class="form-check">
+                                            {{ $row }} -- {{ $rmqreplies[$row] }}
+                                          </div>
+                                        @else
+                                          <div class="form-check">
+                                            No Replies Found
+                                          </div>
+                                        @endif
+                                      </td>
+                                    </tr>
+                                  @endforeach
                                 </tbody>
                               </table>
                             </div>
@@ -117,69 +117,69 @@
                                     <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody>       
-                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director') 
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Entered By Entered</label>
-                                      </br>{{ $rmq_replies->comment_entered_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Entered By</label>
-                                      </br>{{ $rmq_replies->entered_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Entry Date</label>
-                                      </br>{{ $rmq_replies->entry_date }}
-                                    </td>
-                                  </tr>
+                                <tbody>
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Entered By Entered</label>
+                                        </br>{{ $rmq_replies->comment_entered_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Entered By</label>
+                                        </br>{{ $rmq_replies->entered_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Entry Date</label>
+                                        </br>{{ $rmq_replies->entry_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                   @hasanyrole('ctms_manager|ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Verified By Comment</label>
-                                      </br>{{ $rmq_replies->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Verified By</label>
-                                      </br>{{ $rmq_replies->verified_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Verified Date</label>
-                                      </br>{{ $rmq_replies->verified_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Verified By Comment</label>
+                                        </br>{{ $rmq_replies->comment_verified_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Verified By</label>
+                                        </br>{{ $rmq_replies->verified_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Verified Date</label>
+                                        </br>{{ $rmq_replies->verified_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                   @hasanyrole('ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Verified By Sealed Authority</label>
-                                      </br>{{ $rmq_replies->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Entry Sealed By</label>
-                                      </br>{{ $rmq_replies->entry_sealed_by }}
-                                    </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date</label>
-                                      </br>{{ $rmq_replies->entry_sealed_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Verified By Sealed Authority</label>
+                                        </br>{{ $rmq_replies->comment_verified_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Entry Sealed By</label>
+                                        </br>{{ $rmq_replies->entry_sealed_by }}
+                                      </td>
+                                      <td colspan="2">
+                                        <label>Sealed Date</label>
+                                        </br>{{ $rmq_replies->entry_sealed_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                 </tbody>
                               </table>
-                              
+
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -193,7 +193,7 @@
               </div><!-- /.card-body -->
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>

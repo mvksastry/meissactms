@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Patient Primary Information: Date Created: {{ $patientPrimaryInfo->created_at }}
+                  Patient Primary Information: : <label class="text-danger">{{ $data_type }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -29,7 +29,6 @@
                 </div>
               </div><!-- /.card-header -->
 
-
               <div class="card-body">
                 <div class="tab-content p-0">
 
@@ -40,12 +39,12 @@
                     <div class="col-12">
                       <!-- Custom Tabs -->
 
-
                       <div class="card">
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
+                                data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Personal</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Emergency</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Physical</a></li>
@@ -66,7 +65,7 @@
                               @include('livewire.ctms.patients.infos.sub-folder.personal-ids')
                             </div>
 
-                            <div class="tab-pane" id="tab_3"> 
+                            <div class="tab-pane" id="tab_3">
                               @include('livewire.ctms.patients.infos.sub-folder.emergency-contacts')
                             </div>
 
@@ -88,7 +87,7 @@
 
                             <div class="tab-pane" id="tab_8">
                               @include('livewire.ctms.patients.infos.sub-folder.consumption-habits')
-                              
+
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_9">
@@ -98,79 +97,78 @@
                                     <th colspan="2" align="center">Comments</th>
                                   </tr>
                                 </thead>
-                                <tbody>      
-                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')  
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Comment Entered By</label>
-                                      </br>{{ $patientPrimaryInfo->comment_entered_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>Entered By*</label>
-                                      </br>{{ $patientPrimaryInfo->entered_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Date of Entry*</label>
-                                      </br>{{ $patientPrimaryInfo->entry_date }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                    </td>
-                                  </tr>
+                                <tbody>
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Comment Entered By</label>
+                                        </br>{{ $patientPrimaryInfo->comment_entered_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label>Entered By*</label>
+                                        </br>{{ $patientPrimaryInfo->entered_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Date of Entry*</label>
+                                        </br>{{ $patientPrimaryInfo->entry_date }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
 
-
-
                                   @hasanyrole('ctms_manager|ctms_incharge|director')
-                                  <tr>
-                                    <td>
-                                      <label>Seal Patient Data*</label>
-                                      </br>{{ $patientPrimaryInfo->sealed_by }}
-                                      <div class="col-sm-6 col-md-6">
-                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Seal Entry</button>
-                                      </div>
-                                    </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date*</label>
-                                      </br>{{ $patientPrimaryInfo->sealed_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td>
+                                        <label>Seal Patient Data*</label>
+                                        </br>{{ $patientPrimaryInfo->sealed_by }}
+                                        <div class="col-sm-6 col-md-6">
+                                          <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid }}')"
+                                            type="button" class="btn btn-block btn-success"><i
+                                              class="ion ion-person"></i>&nbsp Seal Entry</button>
+                                        </div>
+                                      </td>
+                                      <td colspan="2">
+                                        <label>Sealed Date*</label>
+                                        </br>{{ $patientPrimaryInfo->sealed_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
 
                                   @hasanyrole('ctms_incharge|director')
-                                  <tr>
-                                    <td>
-                                      <label>Seal Patient Data*</label>
-                                      </br>{{ $patientPrimaryInfo->sealed_by }}
-                                      <div class="col-sm-6 col-md-6">
-                                        <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Seal Entry</button>
-                                      </div>
-                                    </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date*</label>
-                                      </br>{{ $patientPrimaryInfo->sealed_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td>
+                                        <label>Seal Patient Data*</label>
+                                        </br>{{ $patientPrimaryInfo->sealed_by }}
+                                        <div class="col-sm-6 col-md-6">
+                                          <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid }}')"
+                                            type="button" class="btn btn-block btn-success"><i
+                                              class="ion ion-person"></i>&nbsp Seal Entry</button>
+                                        </div>
+                                      </td>
+                                      <td colspan="2">
+                                        <label>Sealed Date*</label>
+                                        </br>{{ $patientPrimaryInfo->sealed_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                 </tbody>
                               </table>
-                              
+
                             </div>
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
 
-
-
-                      
                     </div>
                     <!-- /.col -->
                   </div>
@@ -180,11 +178,9 @@
                 </div>
               </div><!-- /.card-body -->
 
-
-
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>

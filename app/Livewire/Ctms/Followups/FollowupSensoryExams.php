@@ -27,7 +27,19 @@ class FollowupSensoryExams extends Component
 
     public $patient_uuid;
     public $data_type;
+    
+    public function mount($patient_uuid, $data_type)
+    {
+        $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
 
+        $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
+        $this->form->opd_id = $newObj->opd_id;
+        $this->form->in_patient_id = $newObj->in_patient_id;
+        $this->form->admission_date = $newObj->admission_date;
+        $this->form->entered_by = $newObj->entered_by;
+        $this->form->entry_date = date('Y-m-d');
+    }
 
     public function render()
     {

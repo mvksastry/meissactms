@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Clinical Investigations
+                  Clinical Investigations : <label class="text-danger">{{ $data_type }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -43,7 +43,8 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">LFT-Elect</a></li>
 
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">RFT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">BS/CRP/IL6</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">BS/CRP/IL6</a>
+                            </li>
                             <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">PLI</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">CE</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">ME</a></li>
@@ -97,7 +98,7 @@
                             </div>
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -111,7 +112,7 @@
               </div><!-- /.card-body -->
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>

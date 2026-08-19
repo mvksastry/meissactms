@@ -371,7 +371,7 @@ class ManagePatients extends Component
         $this->obpInfo->ob_status = 'completed';
 
         //now global falg till end of patient life cycle
-        $this->obpInfo->status_code = 50;
+        $this->obpInfo->status_code = 10; // is defined as pre-enrollment stage
         $this->obpInfo->status = 'draft';
         $this->obpInfo->status_date = date('Y-m-d');
 
@@ -379,7 +379,7 @@ class ManagePatients extends Component
         $this->obpInfo->save();
         //with the above everything is complete.
 
-        $data_type = "pre-enrollment";
+        $data_type = "pre-enrollment"; //get the value from config keys.
 
         //now we need to (i)update Patients table and create db entries in all 24 tables.
         $result = $this->setAllDbPatientDataModels($patient_uuid, $this->obpInfo, $data_type);

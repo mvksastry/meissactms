@@ -43,21 +43,11 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-
                   @include('layouts.menus.items.patientms.edit-patients')
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Patient Decisions
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.patient-details')
                 </ul>
               </li>
+
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -68,6 +58,7 @@
 
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.follow-up')
+                  @include('layouts.menus.items.patientms.mark-as-complete')
                 </ul>
               </li>
             </ul>

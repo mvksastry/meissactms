@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Life Style Observations Date Created: {{ $date_created }}
+                  Life Style Observations : <label class="text-danger">{{ $data_type }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -39,8 +39,10 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Life Style</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
+                                data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Life Style</a>
+                            </li>
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
                           </ul>
                         </div><!-- /.card-header -->
@@ -53,12 +55,12 @@
                                     <th colspan="4" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td>
                                       <label>Opd ID</label>
                                       </br>{{ $ls_info->opd_id }}
-                                  </td>
+                                    </td>
                                     <td>
                                       <label>In Patient ID</label>
                                       </br>{{ $ls_info->in_patient_id }}
@@ -67,7 +69,7 @@
                                       <label>Admission Date</label>
                                       </br>{{ $ls_info->admission_date }}
                                     </td>
-                                  </tr> 
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -79,7 +81,7 @@
                                     <th></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td>
                                       <label>Cross Leg Sitting</label>
@@ -102,7 +104,7 @@
                                         </br>{{ $ls_info->life_style_description }}
                                       </div>
                                     </td>
-                                  </tr>                           
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -114,60 +116,60 @@
                                     <th colspan="2" align="center">Comments</th>
                                   </tr>
                                 </thead>
-                                <tbody>       
-                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')  
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Comment By Entered</label>
-                                      </br>{{ $ls_info->comment_entered_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>Entered By</label>
-                                      </br>{{ $ls_info->entered_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Entry Date</label>
-                                      </br>{{ $ls_info->entry_date }}
-                                    </td>
-                                  </tr>
+                                <tbody>
+                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Comment By Entered</label>
+                                        </br>{{ $ls_info->comment_entered_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label>Entered By</label>
+                                        </br>{{ $ls_info->entered_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Entry Date</label>
+                                        </br>{{ $ls_info->entry_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
-                                  @hasanyrole('ctms_manager|ctms_incharge|director') 
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Comment By Verified</label>
-                                      </br>{{ $ls_info->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>Verified By</label>
-                                      </br>{{ $ls_info->verified_by }}
-                                    </td>
-                                    <td>
-                                      <label>Verified Date</label>
-                                      </br>{{ $ls_info->verified_date }}
-                                    </td>
-                                  </tr>
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Comment By Verified</label>
+                                        </br>{{ $ls_info->comment_verified_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label>Verified By</label>
+                                        </br>{{ $ls_info->verified_by }}
+                                      </td>
+                                      <td>
+                                        <label>Verified Date</label>
+                                        </br>{{ $ls_info->verified_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                   @hasanyrole('ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Comment By Sealed Authority</label>
-                                      </br>{{ $ls_info->comment_sealed_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <label>Entry Sealed By</label>
-                                      </br>{{ $ls_info->entry_sealed_by }}
-                                    </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date</label>
-                                      </br>{{ $ls_info->entry_sealed_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Comment By Sealed Authority</label>
+                                        </br>{{ $ls_info->comment_sealed_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <label>Entry Sealed By</label>
+                                        </br>{{ $ls_info->entry_sealed_by }}
+                                      </td>
+                                      <td colspan="2">
+                                        <label>Sealed Date</label>
+                                        </br>{{ $ls_info->entry_sealed_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                 </tbody>
                               </table>
@@ -189,8 +191,7 @@
 
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-

@@ -25,13 +25,32 @@ class AuplMediaProduction extends Model
         'assigned_by',
         'assigned_date',
         'team_ids',
+        'incharge_id',
         'completed_stages', 
         'current_stage',
-        'comments',
+
+        'mfg_erecord', 
+        'start_date',
         'date_completed',
+
+        'comments_mfg_asst',
+        'mfg_asst_name',
+        'mfg_asst_decision_date',
+        
+        'comments_mfg_incharge',
+        'mfg_incharge_name',
+        'incharge_decision_date',
+
+        'comments_ctms_incharge',
+
         'status',
         'status_date',
-        'incharge_id',
+        
+        'file_name',
+        'file_path',
+        'uploaded_by',
+        'date_uploaded',
+        
     ];
 
     public function assigned()

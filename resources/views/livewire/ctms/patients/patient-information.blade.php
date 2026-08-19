@@ -21,21 +21,21 @@
     </div>
     <!-- /.content-header -->
 
-     <section class="content">
+    <section class="content">
       <div class="container-fluid">
         <!-- COLOR PALETTE -->
         <div class="card card-default color-palette-box">
           <div class="card-header">
             <h3 class="card-title">
               <i class="fas fa-tag"></i>
-              Patient Information
+              Patient Information <label class="text-danger"> All Information Seen is Pre-Enrollment Only</label>
             </h3>
           </div>
           <div class="card-body">
             <!-- /.col-12 -->
             <!-- /.col-12 -->
             <div class="row">
-              @if(count($activePatients) > 0)
+              @if (count($activePatients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
                     <tr>
@@ -47,148 +47,174 @@
                       <th>Details</th>
                     </tr>
                   </thead>
-                  <tbody> 
-                    @foreach($activePatients as $row)
-                        <tr class="{{ $selectedRow === $row->patient_uuid ? 'table-primary' : '' }}">
+                  <tbody>
+                    @foreach ($activePatients as $row)
+                      <tr class="{{ $selectedRow === $row->patient_uuid ? 'table-primary' : '' }}">
+                        <td>
+                          {{ $row->center_id }}
+                        </td>
+                        <td>
+                          {{ $row->ctarm_id }}
+                        </td>
+                        <td>
+                          {{ $row->name }}
+                        </td>
+                        <td>
+                          {{ $row->gender }}
+                        </td>
+                        <td>
+                          {{ ucfirst($row->status) }}
+                        </td>
+                        <td>
+                          <button wire:click="selectedPatient('{{ $row->patient_uuid }}')"
+                            class="btn btn-block btn-success rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                            Details</button>
+                        </td>
+                        @hasanyrole(['clinical_manager', 'director'])
                           <td>
-                              {{ $row->center_id }}
+                            <button wire:click="getPatientTimeline('{{ $row->patient_uuid }}')"
+                              class="btn btn-block btn-success rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                              Timeline</button>
                           </td>
-                          <td>
-                              {{ $row->ctarm_id }}
-                          </td>
-                          <td>
-                              {{ $row->name }}
-                          </td>
-                          <td>
-                              {{ $row->gender }}
-                          </td>
-                          <td>
-                              {{ ucfirst($row->status) }}
-                          </td>
-                          <td>
-                              <button wire:click="selectedPatient('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Details</button>
-                          </td>
-                          <td>
-                              <button wire:click="getPatientTimeline('{{ $row->patient_uuid}}')" class="btn btn-block btn-success rounded" type="button" ><i class="ion ion-person"></i>&nbsp Timeline</button>
-                          </td>
+                        @endhasanyrole
 
-                          @hasanyrole(['junior_resident','clinical_dataentry'])
-                            @if( $row->status == 'draft')
-                              <td>
-                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Clear Patient Data</button>
-                              </td>
-                            @else
-                                Nothing to Clear
-                            @endif
-                          @endhasanyrole
-
-                          @hasrole('senior_resident')
-                              @if( $row->status == 'draft')
-                              <td>
-                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Confirm Patient Data</button>
-                              </td>
-                            @else
-                              <td>
-                                Nothing to Clear
-                              </td>
-                            @endif
-
-                          @endhasanyrole
-
-                          @hasrole('clinical_manager')
-                            @if( $row->status == 'verified')
-                              <td>
-                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Approve Patient Data</button>
-                              </td>
-                            @else
-                              <td>
-                                Nothing to Approve
-                              </td>
-                            @endif
-                          @endhasanyrole
-
-                          @hasrole('ctms_incharge')
-                            @if($row->status == 'approved')
-                              <td>
-                                  <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Seal Patient Data</button>
-                              </td>
-                            @else
-                              <td>
-                                Nothing to Seal
-                              </td>
-                            @endif
-                          @endhasanyrole
-
-                          @hasrole('director')
+                        @hasanyrole(['junior_resident', 'clinical_dataentry'])
+                          @if ($row->status == 'draft')
                             <td>
-                                <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid}}')" class="btn btn-block btn-info rounded" type="button" ><i class="ion ion-person"></i>&nbsp Post Notes</button>
+                              <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
+                                class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                                Clear Patient Data</button>
                             </td>
-                          @endhasanyrole
-                        </tr>
+                          @else
+                            Nothing to Clear
+                          @endif
+                        @endhasanyrole
+
+                        @hasrole('senior_resident')
+                          @if ($row->status == 'draft')
+                            <td>
+                              <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
+                                class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                                Confirm Patient Data</button>
+                            </td>
+                          @else
+                            <td>
+                              Nothing to Clear
+                            </td>
+                          @endif
+
+                        @endhasanyrole
+
+                        @hasrole('clinical_manager')
+                          @if ($row->status == 'verified')
+                            <td>
+                              <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
+                                class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                                Approve Patient Data</button>
+                            </td>
+                          @else
+                            <td>
+                              Nothing to Approve
+                            </td>
+                          @endif
+                        @endhasrole
+
+                        @hasrole('ctms_incharge')
+                          @if ($row->status == 'approved')
+                            <td>
+                              <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
+                                class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                                Seal Patient Data</button>
+                            </td>
+                          @else
+                            <td>
+                              Nothing to Seal
+                            </td>
+                          @endif
+                        @endhasanyrole
+
+                        @hasrole('director')
+                          <td>
+                            <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
+                              class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                              Post Notes</button>
+                          </td>
+                        @endhasanyrole
+                      </tr>
                     @endforeach
                   </tbody>
                 </table>
-                @else
-                  <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                    <thead>
-                        <tr>
-                          <th>Patients with Desired status: "{{ ucfirst($activePatients->search_status) }}" Not Found</th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                    </tbody>
-                  </table>
-                @endif
+              @else
+                <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Patients with Desired status: "{{ ucfirst($activePatients->search_status) }}" Not Found</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              @endif
             </div>
             <!-- /.row -->
             <!--Divider-->
             <hr class="border-b-2 border-warning my-2 mx-2">
             <!--Divider-->
-            @if($patientInfoButtons)
+            @if ($patientInfoButtons)
               <div class="row">
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
+                  <button wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnLifeStyleData('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Life Style</button>
+                  <button wire:click="fnLifeStyleData('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Life Style</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnClinicalInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Clinical</button>
+                  <button wire:click="fnClinicalInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Clinical</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Sensory Exams</button>  
+                  <button wire:click="fnSensoryExamInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Sensory Exams</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp M & DTR Exams</button>    
+                  <button wire:click="fnMDTRExamInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp M & DTR Exams</button>
                 </div>
               </div>
               </br>
               <div class="row">
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnClinicalReports('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Reports</button>
+                  <button wire:click="fnClinicalReports('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Reports</button>
                 </div>
-                
+
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Vis Analog Score</button>  
+                  <button wire:click="fnModifiedPfirmannInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnMODIQInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp MODQ Score</button>  
+                  <button wire:click="fnVisualAnalogInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp Vis Analog Score</button>
                 </div>
-              
                 <!-- /.col -->
                 <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnRMQInfo('{{ $patient_uuid}}')" type="button" class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp RMQ Score</button>    
+                  <button wire:click="fnMODIQInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp MODQ Score</button>
+                </div>
+
+                <!-- /.col -->
+                <div class="col-sm-3 col-md-2">
+                  <button wire:click="fnRMQInfo('{{ $patient_uuid }}')" type="button"
+                    class="btn btn-block btn-success"><i class="ion ion-person"></i>&nbsp RMQ Score</button>
                 </div>
                 <!-- /.col -->
                 <!--
@@ -210,50 +236,65 @@
     </section>
 
     <!-- Main content -->
-    @if($TimelinePatient)
+    @if ($TimelinePatient)
       <livewire:patients.patient-timeline :patient_uuid="$patient_uuid" key="{{ now() }}" />
     @endif
-    @if($p1)
-        @include('livewire.ctms.patients.infos.primary-info')
+
+    @if ($p1)
+      @include('livewire.ctms.patients.infos.primary-info')
     @endif
 
-    @if($p2)
-        @include('livewire.ctms.patients.infos.patient-life-style')
-    @endif
-    
-    @if($p3)
-        @include('livewire.ctms.patients.infos.patient-clinical-investigations')
+    @if ($p2)
+      @include('livewire.ctms.patients.infos.patient-life-style')
     @endif
 
-    @if($p4)
-        @include('livewire.ctms.patients.infos.sensory-examination')
+    @if ($p3)
+      @include('livewire.ctms.patients.infos.patient-clinical-investigations')
     @endif
 
-    @if($p5)
-        @include('livewire.ctms.patients.infos.patient-mdtre')
+    @if ($p4)
+      @include('livewire.ctms.patients.infos.sensory-examination')
     @endif
 
-    @if($p6)
-        @include('livewire.ctms.patients.infos.patient-radiography')
+    @if ($p5)
+      @include('livewire.ctms.patients.infos.patient-mdtre')
     @endif
 
-    @if($p7)
-        @include('livewire.ctms.patients.infos.patient-modified-pfirmann-grades')
+    @if ($p6)
+      @include('livewire.ctms.patients.infos.patient-radiography')
     @endif
 
-    @if($p8)
-        @include('livewire.ctms.patients.infos.patient-visual-analog-score')
+    @if ($p7)
+      @include('livewire.ctms.patients.infos.patient-modified-pfirmann-grades')
     @endif
 
-    @if($p9) 
-        @include('livewire.ctms.patients.infos.patient-modiq-score')
-    @endif
-    
-    @if($p10)
-        @include('livewire.ctms.patients.infos.patient-rmq-score')
+    @if ($p8)
+      @include('livewire.ctms.patients.infos.patient-visual-analog-score')
     @endif
 
-    @if($PatientStatusPanel)
+    @if ($p9)
+      @include('livewire.ctms.patients.infos.patient-modiq-score')
+    @endif
+
+    @if ($p10)
+      @include('livewire.ctms.patients.infos.patient-rmq-score')
+    @endif
+
+    @if ($p11)
+      @include('livewire.ctms.patients.infos.primary-info')
+      @include('livewire.ctms.patients.infos.patient-life-style')
+      @include('livewire.ctms.patients.infos.patient-clinical-investigations')
+      @include('livewire.ctms.patients.infos.sensory-examination')
+      @include('livewire.ctms.patients.infos.patient-mdtre')
+      @include('livewire.ctms.patients.infos.patient-radiography')
+      @include('livewire.ctms.patients.infos.patient-radiography')
+      @include('livewire.ctms.patients.infos.patient-modified-pfirmann-grades')
+      @include('livewire.ctms.patients.infos.patient-visual-analog-score')
+      @include('livewire.ctms.patients.infos.patient-modiq-score')
+      @include('livewire.ctms.patients.infos.patient-rmq-score')
+    @endif
+
+    @if ($PatientStatusPanel)
       <livewire:patients.patient-status-update :patient_uuid="$patient_uuid" key="{{ now() }}" />
     @endif
 

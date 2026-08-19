@@ -12,11 +12,13 @@ class PfirmannGradeDataTable extends DataTableComponent
 {
     protected $model = PfirmannGrade::class;
     // Example: Pass an ID to filter by
-    public $patient_uuid;
+    public string $patient_uuid;
+    public string $data_type;
 
-    public function mount($patient_uuid)
+    public function mount(string $patient_uuid, string $data_type)
     {
         $this->patient_uuid = $patient_uuid;
+        $this->data_type = $data_type;
     }
 
     public function builder(): \Illuminate\Database\Eloquent\Builder
@@ -25,7 +27,7 @@ class PfirmannGradeDataTable extends DataTableComponent
 
         // Apply WHERE clause if patient_uuid is set
         if ($this->patient_uuid) {
-            $query->where('patient_uuid', $this->patient_uuid)->where('data_type', '<>', 'pre-enrollment');
+            $query->where('patient_uuid', $this->patient_uuid)->where('data_type', $this->data_type);
         }
 
         return $query;

@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Motor & Deep Tendon Reflex Examination
+                  Motor & Deep Tendon Reflex Examination : <label class="text-danger">{{ $data_type }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -45,7 +45,7 @@
                                 <th class="text-center">Muscle Power</th>
                               </tr>
                             </thead>
-                            <tbody> 
+                            <tbody>
                               <tr>
                                 <td class="text-center">0</td>
                                 <td class="text-center">No muscle contraction seen</td>
@@ -71,7 +71,7 @@
                                 <td class="text-center">Active moment against gravity with full resistance</td>
                               </tr>
                             </tbody>
-                          </table>                       
+                          </table>
                         </div><!-- /.card-body -->
                       </div>
                     </div>
@@ -81,10 +81,14 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Observations</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Provocative Test</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Gait Analysis</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
+                                data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Observations</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Provocative
+                                Test</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Gait Analysis</a>
+                            </li>
                             <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Official</a></li>
                           </ul>
                         </div><!-- /.card-header -->
@@ -98,21 +102,21 @@
                                     <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td>
                                       <label>Opd ID</label>
-                                      </br>{{  $mdtre_info->opd_id }}
-                                      
+                                      </br>{{ $mdtre_info->opd_id }}
+
                                     </td>
                                     <td>
                                       <label>In Patient ID</label>
-                                      </br>{{  $mdtre_info->opd_id }}
+                                      </br>{{ $mdtre_info->opd_id }}
                                     </td>
                                     <td>
                                       <label>Admission Date</label>
-                                      </br>{{  $mdtre_info->opd_id }}
-                                     </td>
+                                      </br>{{ $mdtre_info->opd_id }}
+                                    </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -125,7 +129,7 @@
                                     <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td>
                                       <label>Hip Flexion Adduction </label>
@@ -138,7 +142,7 @@
                                     <td>
                                       <label>Ankle dorsiflexion</label>
                                       </br>{{ $mdtre_info->ankle_dorsiflexion }}
-                                     </td>
+                                    </td>
                                   </tr>
                                   <tr>
                                     <td>
@@ -169,15 +173,15 @@
                                 </tbody>
                               </table>
                             </div>
-                          <div class="tab-pane" id="tab_3">
+                            <div class="tab-pane" id="tab_3">
 
-                            <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
                                     <th colspan="5" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td>
                                       <label>Straight leg raise</label>
@@ -195,30 +199,30 @@
                                     </td>
                                   </tr>
                                 </tbody>
-                            </table>
-                          </div>
-                          <div class="tab-pane" id="tab_4">
-                            <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                              </table>
+                            </div>
+                            <div class="tab-pane" id="tab_4">
+                              <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
                                     <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td>
                                       <label>Trendelenburg gait</label>
                                       </br>{{ $mdtre_info->trendelenburg_gait }}
-                                   </td>
+                                    </td>
                                     <td>
                                       <label>Antalgic gait </label>
                                       </br>{{ $mdtre_info->antalgic_gait }}
-                                     </td>
+                                    </td>
                                     <td>
                                       <label>List</label>
                                       </br>{{ $mdtre_info->list }}
                                     </td>
-                                  </tr>                                   
+                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -231,72 +235,70 @@
                                     <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody>        
+                                <tbody>
                                   @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Entered By</label>
-                                      </br>{{ $mdtre_info->comment_entered_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Entered By</label>
-                                      </br>{{ $mdtre_info->entered_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Entry Date</label>
-                                      </br>{{ $mdtre_info->entry_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Entered By</label>
+                                        </br>{{ $mdtre_info->comment_entered_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Entered By</label>
+                                        </br>{{ $mdtre_info->entered_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Entry Date</label>
+                                        </br>{{ $mdtre_info->entry_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
-                                  @hasanyrole('ctms_manager|ctms_incharge|director') 
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Verified By Verified</label>
-                                      </br>{{ $mdtre_info->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Verified By</label>
-                                      </br>{{ $mdtre_info->verified_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Verified Date</label>
-                                      </br>{{ $mdtre_info->verified_date }}
-                                    </td>
-                                  </tr>
+                                  @hasanyrole('ctms_manager|ctms_incharge|director')
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Verified By Verified</label>
+                                        </br>{{ $mdtre_info->comment_verified_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Verified By</label>
+                                        </br>{{ $mdtre_info->verified_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Verified Date</label>
+                                        </br>{{ $mdtre_info->verified_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                   @hasanyrole('ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>By Sealed Authority</label>
-                                      </br>{{ $mdtre_info->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Entry Sealed By</label>
-                                      </br>{{ $mdtre_info->entry_sealed_by }}
-                                    </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date</label>
-                                      </br>{{ $mdtre_info->entry_sealed_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>By Sealed Authority</label>
+                                        </br>{{ $mdtre_info->comment_verified_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Entry Sealed By</label>
+                                        </br>{{ $mdtre_info->entry_sealed_by }}
+                                      </td>
+                                      <td colspan="2">
+                                        <label>Sealed Date</label>
+                                        </br>{{ $mdtre_info->entry_sealed_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                 </tbody>
                               </table>
-                                                            
-                      
-                              
+
                             </div>
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -310,7 +312,7 @@
               </div><!-- /.card-body -->
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>

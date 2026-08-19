@@ -74,7 +74,7 @@ class FollowupRmqScores extends Component
     {
         $this->patient_uuid = $patient_uuid;
         $this->data_type = $data_type;
-
+        $this->rmquestions =  Rmquestion::all();
         $newObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->form->opd_id = $newObj->opd_id;
         $this->form->in_patient_id = $newObj->in_patient_id;

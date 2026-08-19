@@ -13,7 +13,7 @@
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Visual Analog Score
+                  Visual Analog Score : <label class="text-danger">{{ $data_type }}</label>
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
@@ -37,10 +37,11 @@
                       <div class="card">
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
-                          
+
                         </div><!-- /.card-header -->
                         <div class="card-body">
-                          <img src="{{asset('assets/dist/img/VASscore.png')}}" alt="AdminLTE Logo" class="w-75 h-75 object-fit-cover" style="opacity: .8">
+                          <img src="{{ asset('assets/dist/img/VASscore.png') }}" alt="AdminLTE Logo"
+                            class="w-75 h-75 object-fit-cover" style="opacity: .8">
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -53,8 +54,6 @@
                 </div>
               </div><!-- /.card-body -->
 
-
-
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
@@ -65,7 +64,8 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Clinical</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
+                                data-toggle="tab">Clinical</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">VAS</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
                           </ul>
@@ -79,21 +79,21 @@
                                     <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td>
                                       <label>Opd ID</label>
-                                      </br>{{  $vascore_info->opd_id }}
-                                      
+                                      </br>{{ $vascore_info->opd_id }}
+
                                     </td>
                                     <td>
                                       <label>In Patient ID</label>
-                                      </br>{{  $vascore_info->opd_id }}
+                                      </br>{{ $vascore_info->opd_id }}
                                     </td>
                                     <td>
                                       <label>Admission Date</label>
-                                      </br>{{  $vascore_info->opd_id }}
-                                     </td>
+                                      </br>{{ $vascore_info->opd_id }}
+                                    </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -106,16 +106,16 @@
                                     <th colspan="6" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody> 
+                                <tbody>
                                   <tr>
                                     <td colspan="1">
                                       <label>Visual Analog Scale</label>
-                                      </br>{{  $vascore_info->vas_scale }}
+                                      </br>{{ $vascore_info->vas_scale }}
                                     </td>
                                     <td colspan="1">
                                       <label>"Faces" Pain Rating Scale</label>
-                                      </br>{{  $vascore_info->pfr_scale }}
-                                   </td>
+                                      </br>{{ $vascore_info->pfr_scale }}
+                                    </td>
                                     <td colspan="1">
                                       <label>---</label>
                                       </br>
@@ -132,69 +132,69 @@
                                     <th colspan="2" align="center"></th>
                                   </tr>
                                 </thead>
-                                <tbody>        
+                                <tbody>
                                   @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Entered By</label>
-                                      </br>{{ $vascore_info->comment_entered_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Entered By</label>
-                                      </br>{{ $vascore_info->entered_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Entry Date</label>
-                                      </br>{{ $vascore_info->entry_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Entered By</label>
+                                        </br>{{ $vascore_info->comment_entered_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Entered By</label>
+                                        </br>{{ $vascore_info->entered_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Entry Date</label>
+                                        </br>{{ $vascore_info->entry_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                   @hasanyrole('ctms_manager|ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>Verified By Comment</label>
-                                      </br>{{ $vascore_info->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Verified By</label>
-                                      </br>{{ $vascore_info->verified_by }}
-                                    </td>
-                                    <td colspan="1">
-                                      <label>Verified Date</label>
-                                      </br>{{ $vascore_info->verified_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>Verified By Comment</label>
+                                        </br>{{ $vascore_info->comment_verified_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Verified By</label>
+                                        </br>{{ $vascore_info->verified_by }}
+                                      </td>
+                                      <td colspan="1">
+                                        <label>Verified Date</label>
+                                        </br>{{ $vascore_info->verified_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                   @hasanyrole('ctms_incharge|director')
-                                  <tr>
-                                    <td colspan="2">
-                                      <label>By Sealed Authority</label>
-                                      </br>{{ $vascore_info->comment_verified_by }}
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="1">
-                                      <label>Entry Sealed By</label>
-                                      </br>{{ $vascore_info->entry_sealed_by }}
-                                    </td>
-                                    <td colspan="2">
-                                      <label>Sealed Date</label>
-                                      </br>{{ $vascore_info->entry_sealed_date }}
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label>By Sealed Authority</label>
+                                        </br>{{ $vascore_info->comment_verified_by }}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td colspan="1">
+                                        <label>Entry Sealed By</label>
+                                        </br>{{ $vascore_info->entry_sealed_by }}
+                                      </td>
+                                      <td colspan="2">
+                                        <label>Sealed Date</label>
+                                        </br>{{ $vascore_info->entry_sealed_date }}
+                                      </td>
+                                    </tr>
                                   @endhasanyrole
                                 </tbody>
                               </table>
-                              
+
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-content -->
                           </div>
-                          
+
                         </div><!-- /.card-body -->
                       </div>
                       <!-- ./card -->
@@ -207,10 +207,9 @@
                 </div>
               </div><!-- /.card-body -->
 
-
             </div>
           </section>
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>

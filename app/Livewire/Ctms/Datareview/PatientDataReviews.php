@@ -258,8 +258,8 @@ class PatientDataReviews extends Component
         $this->enrolledPatients = Patient::whereIn('patient_uuid', $enrolled)->get();
         */
 
-        //for testing uncomment above 4 lines and use the query below
-        $this->enrolledPatients = Patient::where('status', 'sealed')->get();
+        //for testing comment above 4 lines and use the query below
+        $this->enrolledPatients = Patient::where('status', 'draft')->get();
 
 
         //dd($enrolled, $this->enrolledPatients);
