@@ -120,17 +120,20 @@ class HomeController extends Controller
         if( Auth::user()->hasAnyRole(['senior_resident']) )
 		{
             $chats = $this->getAllUnseenChats();
-            $all_centers = $this->getAllCenters();
-            $all_clinics = $this->getAllClinics();
-            $pwds = $this->getPatientDataDraftStatus();
-            $pwas = $this->getPatientDataActiveStatus();
+            $obPatients = $this->getAllOnBoardedPatientsForSeniorResident();
+            $fuPatients = $this->getAllPatientsForFollowUpForSeniorResident();
+            //dd($obPatients, $fuPatients);
+            //$all_centers = $this->getAllCenters();
+            //$all_clinics = $this->getAllClinics();
+            //$pwds = $this->getPatientDataDraftStatus();
+            //$pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.srresident.home')->with([
-                'all_centers' => $all_centers,
-                'all_clinics' => $all_clinics,
-                'pwds' => $pwds,
-                'pwas' => $pwas,
+                //'all_centers' => $all_centers,
+                //'all_clinics' => $all_clinics,
+                'obPatients' => $obPatients,
+                'fuPatients' => $fuPatients,
                 'chats' => $chats
             ]);
         }

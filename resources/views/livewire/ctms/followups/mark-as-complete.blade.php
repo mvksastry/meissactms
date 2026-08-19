@@ -98,83 +98,11 @@
               </div>
             @endif
             <!-- existing data on Follow-ups here -->
-
             <!-- /existing data on Follow-ups here -->
-
-            @if ($patientInfoButtons)
-              <div class="row">
-
-                <div class="col-sm-3 col-md-2">
-                  <button disabled wire:click="fnShowPrimaryInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Primary Infos</button>
-                </div>
-
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFULifeStyleData('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Life Style</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFUClinicalInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Clinical</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFUSensoryExamInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Sensory Exam</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFUMDTRExamInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp M&DTR Exam</button>
-                </div>
-              </div>
-              </br>
-              <div class="row">
-                <!-- /.col -->
-
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFUPatientReportUploads('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Reports</button>
-                </div>
-
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFUModifiedPfirmannInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Pfirmann’s Grade</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFUVisualAnalogInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp Vis. Analog Score</button>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFUMODIQInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp MODQ Score</button>
-                </div>
-
-                <!-- /.col -->
-                <div class="col-sm-3 col-md-2">
-                  <button wire:click="fnFURMQInfo('{{ $patient_uuid }}')" type="button"
-                    class="btn btn-block btn-light"><i class="ion ion-person"></i>&nbsp RMQ Score</button>
-                </div>
-                <!-- /.col -->
-                <!--
-                -->
-              </div>
-              <!--Divider-->
-
-              <!--/ Divider-->
-              </br>
-            @endif
-
             <!-- /.row -->
             <!--Divider-->
             <hr class="border-b-2 border-warning my-2 mx-2">
             <!--Divider-->
-
           </div>
           <!-- /.card-body -->
         </div>

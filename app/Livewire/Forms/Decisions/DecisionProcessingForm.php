@@ -15,6 +15,8 @@ class DecisionProcessingForm extends Form
     public $discectomy_admission_date = null;
 
 
+    #[Validate('required|regex:/^[0-9]+$/')]
+    public $code8910 = null;
     #[Validate('date')]
     public $discectomy_date = null;
     #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]

@@ -17,6 +17,8 @@ use App\Models\Ctms\Center;
 use App\Models\Common\Chat;
 use App\Models\Ctms\Clinic;
 
+use App\Models\Ctms\Decisions\Enrollment;
+
 use Illuminate\Support\Facades\Log;
 
 trait TDashboard
@@ -49,5 +51,16 @@ trait TDashboard
     public function getAllUnseenChats()
     {
         return Chat::with('user')->where('is_seen', 0)->get();
+    }
+
+    public function getAllOnBoardedPatientsForSeniorResident()
+    {
+        $status = ['draft'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
+    public function getAllPatientsForFollowUpForSeniorResident()
+    {
+        return Enrollment::Where('stage_code', '>=', 28)->get();
     }
 }

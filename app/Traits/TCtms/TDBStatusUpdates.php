@@ -51,7 +51,6 @@ trait TDBStatusUpdates
       //first update the mail patient table here itself.
       //then call the other tables.
       $statusUpdate = Patient::where('patient_uuid', $uuid)->first();
-      $statusUpdate->status_code = 10; //determine this value through a login and algorithm
       $statusUpdate->status = $input['status'];
       $statusUpdate->status_date = date('Y-m-d');
 
@@ -71,6 +70,7 @@ trait TDBStatusUpdates
             break;
 
             case 'sealed':
+              $statusUpdate->status_code = 6; //determine this value through a login and algorithm
               $statusUpdate->comment_sealed_by=  $input['status_comment'];
               $statusUpdate->sealed_by = Auth::user()->name;
               $statusUpdate->sealed_date = date('Y-m-d');

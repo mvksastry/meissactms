@@ -64,32 +64,10 @@
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <label>Patient Unique ID:</label> {{ $enrObj->patient_unique_id }} </br>
-          BMR ID: {{ $enrObj->mbr_id }} </br>
-          Sample ID: {{ $enrObj->linked_sample_id }} </br>
-          Entered By: {{ $enrObj->decision_entered_by }} </br>
-          Other Info: {{ $enrObj->other_infos }} </br>
-          Comment: {{ $enrObj->administrative_comment }} </br>
-          Date: {{ $enrObj->decision_date_entered }}
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          Transplant Date: {{ $enrObj->transplantation_date }}</br>
-          Transplant Info: {{ $enrObj->transplantation_info }} </br>
-          Comments: {{ $enrObj->transplantation_comments }} </br>
-          Entered By: {{ $enrObj->transplant_info_entered_by }}</br>
-          Date: {{ $enrObj->transplant_info_date_entered }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Recorded Created On: {{ $enrObj->created_at }}</br>
-          Record Last Updated On: {{ $enrObj->updated_at }} </br>
-        </td>
+      <td>
+        Recorded Created On: {{ $enrObj->created_at }}</br>
+        Record Last Updated On: {{ $enrObj->updated_at }} </br>
+      </td>
       </tr>
 
       <tr>
@@ -105,12 +83,12 @@
             <!-- radio -->
             <div class="form-group">
               <div class="form-check">
-                <input wire:model.defer="form.enrollment_decision" value="yes" class="form-check-input"
+                <input wire:model.defer="form.enrollment_decision" value="23" class="form-check-input"
                   type="radio" name="radio1">
                 <label class="form-check-label">Enrollment Complete</label>
               </div>
               <div class="form-check">
-                <input wire:model.defer="form.enrollment_decision" value="no" class="form-check-input"
+                <input wire:model.defer="form.enrollment_decision" value="24" class="form-check-input"
                   type="radio" name="radio1">
                 <label class="form-check-label">Excluded from Enrollment</label>
               </div>

@@ -21,75 +21,94 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
+
+    <section class="content">
+      <div class="container-fluid">
+        <!-- COLOR PALETTE -->
+        <div class="card card-default color-palette-box">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-tag"></i>
+              Pending Tasks
+            </h3>
+          </div>
+          <div class="card-body">
+            <!-- /.col-12 -->
+            <!-- /.col-12 -->
+            <div class="row">
+
+              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th style="width: 30%;">Task</th>
+                    <th style="width: 30%;">For Attention</th>
+                    <th style="width: 30%;">Action</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  @if (count($obPatients) > 0)
+                    <tr>
+                      <td>
+                        <strong>O</strong>n <strong>B</strong>oarded Patients Waiting For Entry of Data
+                      </td>
+                      <td>
+                        <label class="text-danger"><strong>{{ count($obPatients) }}</strong></label>
+                      </td>
+                      <td>
+                        <a href="/edit-patients" button class="btn btn-block btn-warning rounded" type="button"><i
+                            class="ion ion-person"></i>&nbsp
+                          Go To Enter</button></a>
+                      </td>
+                    </tr>
+                  @endif
+                  @if (count($fuPatients) > 0)
+                    <tr>
+                      <td>
+                        Follow-up Data Entry Patients Waiting
+                      </td>
+                      <td>
+                        <label class="text-danger"><strong>{{ count($fuPatients) }}</strong></label>
+                      </td>
+                      <td>
+                        <a href="/patient-followup" button class="btn btn-block btn-warning rounded" type="button"><i
+                            class="ion ion-person"></i>&nbsp
+                          Go To Enter</button></a>
+                      </td>
+                    </tr>
+                  @endif
+                </tbody>
+              </table>
+            </div>
+            <!-- /.row -->
+            <!--Divider-->
+            <hr class="border-b-2 border-warning my-2 mx-2">
+            <!--Divider-->
+
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- START ALERTS AND CALLOUTS -->
+      </div><!-- /.container-fluid -->
+    </section>
+
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          @include('layouts.home.ctms.srresident.flexWrap')
         </div>
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <section class="col-lg-6 connectedSortable">
-
-            <!-- DIRECT CHAT -->
-            <div class="card direct-chat direct-chat-primary">
-              <div class="card-header">
-                <h3 class="card-title">Group Chat</h3>
-
-                <div class="card-tools">
-                  <span title="New Messages" class="badge badge-primary">{{ count($chats) }}</span>
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                    <i class="fas fa-comments"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <livewire:general.group-chat />
-              <!-- /.card-body -->
-              <!-- /.card-footer-->
-            </div>
-            <!--/.direct-chat -->
-          </section>
           <!-- /.Left col -->
 
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                    <section class="col-lg-6 connectedSortable">
-            <!-- TO DO List -->
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="ion ion-clipboard mr-1"></i>
-                  To Do List
-                </h3>
-                <div class="card-tools">
-                  <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                  </ul>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <livewire:general.todo-list>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </section>
+
         </div>
         <div class="row">
-          <section class="col-lg-12 connectedSortable">   
-            <livewire:general.calendar />
-         
+          <section class="col-lg-12 connectedSortable">
           </section>
           <!-- right col -->
         </div>
@@ -99,4 +118,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  @endsection
+@endsection

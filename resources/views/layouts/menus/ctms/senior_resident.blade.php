@@ -38,7 +38,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Pre-Enrollment
+                  <p>Stage 1: Pre-Enrollment
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -51,7 +51,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Follow-Ups
+                  <p>Stage 3: Follow-Ups
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>

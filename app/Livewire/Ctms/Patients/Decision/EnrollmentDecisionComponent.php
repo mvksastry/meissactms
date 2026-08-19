@@ -16,6 +16,8 @@ use App\Models\Common\Todo;
 
 //forms
 use App\Livewire\Forms\Decisions\DecisionProcessingForm;
+use App\Livewire\Forms\Decisions\DiscectomyForm;
+use App\Livewire\Forms\Decisions\SampleEntryForm;
 use App\Livewire\Forms\Decisions\DecisionReportFiles;
 
 //traits
@@ -26,7 +28,7 @@ use App\Traits\Fileuploads\TOldFileMove;
 
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
-
+use Validator;
 //Logging
 use Illuminate\Support\Facades\Log;
 
@@ -46,7 +48,10 @@ class EnrollmentDecisionComponent extends Component
     public $passObj, $enrObj, $enFileObj;
 
     //Form bindings
+    public DiscectomyForm $form_a;
+    public SampleEntryForm $form_b;
     public DecisionProcessingForm $form;
+
     public DecisionReportFiles $form_x;
 
     public $bpath = "app/public";
@@ -61,7 +66,10 @@ class EnrollmentDecisionComponent extends Component
         //variables
     public $tab, $activeTab; // default tab
 
-    public function setActiveTab($tab)
+    ///code dependent activation
+    public $code8910, $code1112, $code1413, $code2019, $code2221;
+
+    public function setActiveTab($tab) 
     {
         $this->activeTab = $tab;
     }
@@ -82,10 +90,29 @@ class EnrollmentDecisionComponent extends Component
         return view('livewire.ctms.patients.decision.enrollment-decision-component');
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     public function fnSaveDiscectomyData()
     {
-        $this->input = $this->form->all();
+        
+        //$this->form_a->validate();
+        $this->input = $this->form_a->all();
+        //dd($this->input);
         $filtered = $this->filterInputNulls($this->input);
+        $filtered['disc_info_entered_by'] = Auth::user()->name;
+        $filtered['disc_info_date_entered'] = date('Y-m-d');
+        $filtered = $this->changeArrayKey($filtered, "code8910", "stage_code");
+        //dd($filtered);
         $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
         LivewireAlert::title("Discectomy info for Decision updated")->success()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
@@ -94,12 +121,18 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveDiscectomySamplesData()
     {
-        //dd("reached 2 tab");
-        $this->input = $this->form->all();
-        $filtered = $this->filterInputNulls($this->input);
-        $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-        LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
+        if($this->enrObj->stage_code <= 10)
+        {
+            LivewireAlert::title("Process Has to be aborted: Something Failed")->success()->show();
+        }else {
+            //dd("reached 2 tab");
+            $this->form_b->validate();
+            $this->input = $this->form_b->all();
+            $filtered = $this->filterInputNulls($this->input);
+            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
+            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
+        }
     }
 
     public function fnSaveEnrolQCData()
@@ -267,4 +300,28 @@ class EnrollmentDecisionComponent extends Component
                                     ->where('report_status', 'valid')
                                     ->first();
     }
+
+    /**
+         * Change a specific key in an associative array while keeping its value.
+         *
+         * @param array  $array     The original array
+         * @param string $oldKey    The key to replace
+        * @param string $newKey    The new key name
+        * @return array            The updated array
+        */
+        public function changeArrayKey(array $array, string $oldKey, string $newKey): array {
+            if (!array_key_exists($oldKey, $array)) {
+                // If the old key doesn't exist, return the array unchanged
+                //dd($array);
+                return $array;
+            }
+
+            // Preserve the order of the array
+            $keys = array_keys($array);
+            $keys[array_search($oldKey, $keys, true)] = $newKey;
+
+            // Combine new keys with old values
+            //dd($keys);
+            return array_combine($keys, array_values($array));
+        }
 }

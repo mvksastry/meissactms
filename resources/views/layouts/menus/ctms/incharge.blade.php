@@ -145,37 +145,50 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Pre-Enrollment
+                  <p>Stage1: Pre-Enrollment
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.on-boarding')
                   @include('layouts.menus.items.patientms.edit-patients')
+                  @include('layouts.menus.items.patientms.patient-details')
                 </ul>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Patient Decisions
+                  <p>Stage 2: Enrollment
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.patient-details')
+
                   @include('layouts.menus.items.patientms.enroll-patient')
                 </ul>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Follow-Ups
+                  <p>Stage 3: Follow-Ups
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
 
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.follow-up')
+                  @include('layouts.menus.items.patientms.mark-as-complete')
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stage 4: Closure
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+
+                <ul class="nav nav-treeview">
+                  @include('layouts.menus.items.patientms.mark-as-complete')
                 </ul>
               </li>
             </ul>
