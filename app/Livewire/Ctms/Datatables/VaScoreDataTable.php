@@ -6,11 +6,11 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
 //Models
-use App\Models\Ctms\VaScore;
+use App\Models\Ctms\VAScore;
 
 class VaScoreDataTable extends DataTableComponent
 {
-    protected $model = VaScore::class;
+    protected $model = VAScore::class;
     // Example: Pass an ID to filter by
     public string $patient_uuid;
     public string $data_type;
