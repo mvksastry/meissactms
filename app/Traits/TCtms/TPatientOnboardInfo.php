@@ -64,50 +64,41 @@ trait TPatientOnboardInfo
 
           $newPatientInfo = new Patient();
           $newPatientInfo->patient_uuid = Str::uuid()->toString(); 
-          $newPatientInfo->center_id =  $input['center_id'];
-          $newPatientInfo->ctarm_id =  $input['ctarm_id'];
-          //controls
+          $newPatientInfo->center_id =  1;
+          $newPatientInfo->ctarm_id =  1;
+
           $newPatientInfo->opd_id =  $input['opd_id'];
           $newPatientInfo->in_patient_id =  $input['in_patient_id'];
-          $newPatientInfo->subject_id =  $input['subject_id'];
           $newPatientInfo->admission_date =  $input['admission_date'];
+
+          //controls
           // above and below blocks are unchanged
 
           //now the 
-          $newPatientInfo->ob_initiated_by = $input['entered_by'];
+          $newPatientInfo->ob_initiated_by = Auth::user()->name;
           $newPatientInfo->ob_initiated_role = Auth::user()->roles->pluck('name')[0];
-          $newPatientInfo->ob_start_date = $input['entry_date'];
+          $newPatientInfo->ob_start_date = date('Y-m-d');
 
           $newPatientInfo->ob_approved_by = null;
           $newPatientInfo->ob_approval_role = null;
           $newPatientInfo->ob_approval_comment = null;
-          $newPatientInfo->ob_status = 'incomplete';
+          $newPatientInfo->ob_status = 'pending';
           //----------------------------------------//
-
-
           //personal info
           $newPatientInfo->name =  $input['name'];
-          $newPatientInfo->nick_name =  $input['nick_name'];
-          $newPatientInfo->alias_name =  $input['alias_name'];
           $newPatientInfo->gender =  $input['gender'];
           $newPatientInfo->date_of_birth =  $input['date_of_birth'];
           $newPatientInfo->age =  $input['age'];
           $newPatientInfo->primary_phone_number =  $input['primary_phone_number'];
-          $newPatientInfo->alternate_phone_number =  $input['alternate_phone_number'];
-
-          $newPatientInfo->address =  $input['address'];
-          $newPatientInfo->land_mark =  $input['land_mark'];
-          $newPatientInfo->taluka_haveli =  $input['taluka_haveli'];
-          $newPatientInfo->state =  $input['state'];
-
+          
           //status
-          $newPatientInfo->status_code = 0; //very important, default null untill approval done
+          $newPatientInfo->status_code = 1; //very important, default null untill approval done
           $newPatientInfo->status = null;  //very important, default null untill approval done
           $newPatientInfo->status_date = date('Y-m-d');
-
-          $newPatientInfo->comment_entered_by = $input['comment_entered_by'];
-          $newPatientInfo->entered_by = $input['entered_by'];
-          $newPatientInfo->entry_date = $input['entry_date'];
+          $newPatientInfo->appendComment('comment_entered_by', $input['comment_entered_by']);
+          //$newPatientInfo->comment_entered_by = $input['comment_entered_by'];
+          $newPatientInfo->entered_by = Auth::user()->name;
+          $newPatientInfo->entry_date = date('Y-m-d');
 
           //dd($newPatientInfo);
 
@@ -127,18 +118,6 @@ trait TPatientOnboardInfo
                 $tl_msg = $input['comment_entered_by'];
                 $set = $this->savePatientTimeline($newPatientInfo->patient_uuid, $name, $event, $tl_msg);
 
-                /*
-                if($this->patient_uuid == null)
-                {
-                    $this->patient_uuid = $newPatientInfo->patient_uuid; 
-                    $input['data_type'] = "pre-enrollment"; //lined added on 23 Jul 2026 revision
-                    //make entries through trait in all patient models
-                    $setResult = $this->setDbEntriesPatientModels($this->patient_uuid, $input);
-                    //$this->patient_uuid = "ea81b98a-05f9-4b28-be6b-1a8d72405fa4"; //for testing
-                    $this->dispatch('newPatientUuidGenerated', $this->patient_uuid);
-                    //timeline entry
-                }
-                */
                 return $name;
 
             } else {

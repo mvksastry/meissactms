@@ -7,7 +7,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ Auth::user()->name }} : {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h1>
+            <h3 class="m-0">{{ Auth::user()->name }} </h3>
+            <h5> {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h5>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -45,20 +46,48 @@
                     <th style="width: 30%;">Action</th>
 
                   </tr>
-                </thead>
+                </thead>$preOBrequests
                 <tbody>
-                  @if (count($obPatients) > 0)
+                  @if (count($preOBrequests) > 0)
                     <tr>
                       <td>
-                        <strong>O</strong>n <strong>B</strong>oarded Patients Waiting For Entry of Data
+                        <strong>Patients Waiting For On Boarding Approval</strong> <strong></strong>
                       </td>
                       <td>
-                        <label class="text-danger"><strong>{{ count($obPatients) }}</strong></label>
+                        <label class="text-danger"><strong>{{ count($preOBrequests) }}</strong></label>
                       </td>
                       <td>
-                        <a href="/edit-patients" button class="btn btn-block btn-warning rounded" type="button"><i
+                        <a href="/manage-patients" button class="btn btn-block btn-warning rounded" type="button"><i
                             class="ion ion-person"></i>&nbsp
-                          Go To Enter</button></a>
+                          Take Me there</button></a>
+                      </td>
+                    </tr>
+                  @endif
+
+                  @if (count($drafts) > 0)
+                    <tr>
+                      <td>
+                        <strong>Patients with Draft status
+                          (Data stages may vary)</strong><strong></strong>
+                      </td>
+                      <td>
+                        <label class="text-danger"><strong>{{ count($drafts) }}</strong></label>
+                      </td>
+                    </tr>
+                  @endif
+
+                  @if (count($sealed) > 0)
+                    <tr>
+                      <td>
+                        <strong>Patients Reached Enrollment Stage</strong>
+                      </td>
+                      <td>
+                        <label class="text-danger"><strong>{{ count($sealed) }}</strong></label>
+                      </td>
+                      <td>
+                        <a href="/home-enrollment" button class="btn btn-block btn-warning rounded" type="button"><i
+                            class="ion ion-person"></i>&nbsp
+                          Take me there</button></a>
                       </td>
                     </tr>
                   @endif
@@ -73,7 +102,7 @@
                       <td>
                         <a href="/patient-followup" button class="btn btn-block btn-warning rounded" type="button"><i
                             class="ion ion-person"></i>&nbsp
-                          Go To Enter</button></a>
+                          Take me there</button></a>
                       </td>
                     </tr>
                   @endif

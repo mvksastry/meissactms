@@ -4,7 +4,7 @@
         <th colspan="4" align="center">Personal Identifications</th>
       </tr>
     </thead>
-    <tbody> 
+    <tbody>
       <tr>
         <td colspan="1">
           <label>Aadhar ID</label>
@@ -26,9 +26,9 @@
           </br>
           {{ $patientPrimaryInfo->aadhar_id }}
         </td>
-      </tr>  
+      </tr>
       <tr>
-        <td colspan="4"> 
+        <td colspan="4">
           <label>Patient Primary Information</label>
         </td>
       </tr>
@@ -36,7 +36,7 @@
         <td colspan="1">
           <label>Name</label>
           </br>
-          {{ $patientPrimaryInfo->name }}
+          <label class="text-danger">{{ $patientPrimaryInfo->name }}</label>
         </td>
         <td colspan="1">
           <label>Nick Name</label>
@@ -51,24 +51,24 @@
         <td colspan="1">
           <label>Gender</label>
           </br>
-          {{ $patientPrimaryInfo->gender }}
+          <label class="text-danger">{{ $patientPrimaryInfo->gender }}
         </td>
       </tr>
       <tr>
         <td colspan="1">
           <label>Date of Birth</label>
           </br>
-          {{ $patientPrimaryInfo->date_of_birth }}
+          <label class="text-danger">{{ $patientPrimaryInfo->date_of_birth }}</label>
         </td>
         <td colspan="1">
           <label>Age</label>
           </br>
-          {{ $patientPrimaryInfo->age }}
-       </td>
+          <label class="text-danger">{{ $patientPrimaryInfo->age }}</label>
+        </td>
         <td colspan="1">
           <label>Primary Phone</label>
           </br>
-          {{ $patientPrimaryInfo->primary_phone_number }}
+          <label class="text-danger">{{ $patientPrimaryInfo->primary_phone_number }}</label>
         </td>
         <td colspan="1">
           <label>Alternate Phone</label>
@@ -97,6 +97,6 @@
           </br>
           {{ $patientPrimaryInfo->state }}
         </td>
-      </tr>                                  
+      </tr>
     </tbody>
   </table>

@@ -53,6 +53,7 @@ trait TDashboard
         return Chat::with('user')->where('is_seen', 0)->get();
     }
 
+    //for in charge
     public function getAllOnBoardedPatientsForSeniorResident()
     {
         $status = ['draft'];
@@ -60,6 +61,68 @@ trait TDashboard
     }
 
     public function getAllPatientsForFollowUpForSeniorResident()
+    {
+        return Enrollment::Where('stage_code', '>=', 28)->get();
+    }
+
+    //for in charge
+    public function getAllOnBoardedPatientsForCtmsManager()
+    {
+        $status = ['verified'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
+    public function getAllPatientsForFollowUpForCtmsManager()
+    {
+        return Enrollment::Where('stage_code', '>=', 28)->get();
+    }
+
+    //for in charge
+    public function getAllOnBoardedPatientsForInCharge()
+    {
+        $status = ['verified'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
+    public function getAllPatientsForFollowUpForInCharge()
+    {
+        return Enrollment::Where('stage_code', '>=', 28)->get();
+    }
+
+    public function getAllSealedSatusPatientsForInCharge()
+    {
+        $status = ['sealed'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
+
+
+
+
+    //for director
+    public function getAllOnPreOnBoardingRequestsForDirector()
+    {
+        return  Patient::where('ob_status','pending')->get();
+    
+    }
+
+ 
+
+    //ready for Enrollment
+    public function getAllDraftSatusPatientsForDirector()
+    {
+        $status = ['draft'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
+    public function getAllSealedSatusPatientsForDirector()
+    {
+        $status = ['sealed'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
+    //ready for follow-up
+    public function getAllPatientsForFollowUpForDirector()
     {
         return Enrollment::Where('stage_code', '>=', 28)->get();
     }

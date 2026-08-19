@@ -19,8 +19,7 @@ trait TPatientDuplicateCheck
 
   public function getDuplicateEntries($input)
   {
-    $duplicateEntries = Patient::where('subject_id', $input['subject_id'])
-                                ->where('name', $input['name'])
+    $duplicateEntries = Patient::where('name', $input['name'])
                                 ->where('gender', $input['gender'])
                                 ->where('primary_phone_number',  $input['primary_phone_number'])
                                 ->where('date_of_birth', $input['date_of_birth'])

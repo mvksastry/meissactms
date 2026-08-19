@@ -108,32 +108,6 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Documents
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">3</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/categories" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categories</p>
-                </a>
-              </li>
-              @include('layouts.menus.items.docs.docsreview')
-              <li class="nav-item">
-                <a href="/documents" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Upload</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>Patient Management
                 <i class="right fas fa-angle-left"></i>
@@ -152,7 +126,9 @@
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.on-boarding')
                   @include('layouts.menus.items.patientms.edit-patients')
-                  @include('layouts.menus.items.patientms.patient-details')
+                  @hasrole('ctms_incharge')
+                    @include('layouts.menus.items.patientms.seal-patient-data')
+                  @endhasrole
                 </ul>
               </li>
               <li class="nav-item">
@@ -194,6 +170,7 @@
             </ul>
           </li>
 
+          <!--
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -247,6 +224,7 @@
               </li>
             </ul>
           </li>
+        -->
 
         </ul>
       </nav>

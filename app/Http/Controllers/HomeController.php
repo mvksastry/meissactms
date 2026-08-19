@@ -81,60 +81,63 @@ class HomeController extends Controller
         //$personalTasks = $this->personalTasks();
         //$kbCards = Kanbancards::where('posted_by', Auth::user()->name)->get();
 
-        if( Auth::user()->hasAnyRole(['ctms_incharge', 'director']) )
-		{
-            $chats = $this->getAllUnseenChats();
-            $all_centers = $this->getAllCenters();
-            $all_clinics = $this->getAllClinics();
-            $pwds = $this->getPatientDataDraftStatus();
-            $pwas = $this->getPatientDataActiveStatus();
+        if( Auth::user()->hasAnyRole(['director']) )
+		{    
+            $preOBrequests = $this->getAllOnPreOnBoardingRequestsForDirector();
+            
+             $drafts = $this->getAllDraftSatusPatientsForDirector();
+ 
+
+            $sealed = $this->getAllSealedSatusPatientsForDirector();
+
+            $fuPatients = $this->getAllPatientsForFollowUpForDirector();
+
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
-            return view('layouts.home.ctms.admin.home')->with([
-                'all_centers' => $all_centers,
-                'all_clinics' => $all_clinics,
-                'pwds' => $pwds,
-                'pwas' => $pwas,
-                'chats' => $chats
+            return view('layouts.home.ctms.director.homeDirector')->with([
+                'preOBrequests' => $preOBrequests,
+                'drafts' => $drafts,
+                'sealed'    => $sealed,
+                'fuPatients' => $fuPatients
+            ]);
+        }
+
+        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+		{
+            $obPatients = $this->getAllOnBoardedPatientsForInCharge();
+            $fuPatients = $this->getAllPatientsForFollowUpForInCharge();
+            $sealed =     $this->getAllSealedSatusPatientsForInCharge();
+                                 
+            //dd($obPatients, $fuPatients, $sealed);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
+            return view('layouts.home.ctms.incharge.Homeincharge')->with([
+                'obPatients' => $obPatients,
+                'fuPatients' => $fuPatients,
+                'sealed'    => $sealed
             ]);
         }
 
         if( Auth::user()->hasAnyRole(['clinical_manager']) )
 		{
-            $chats = $this->getAllUnseenChats();
-            $all_centers = $this->getAllCenters();
-            $all_clinics = $this->getAllClinics();
-            $pwds = $this->getPatientDataDraftStatus();
-            $pwas = $this->getPatientDataActiveStatus();
+            $obPatients = $this->getAllOnBoardedPatientsForCtmsManager();
+            $fuPatients = $this->getAllPatientsForFollowUpForCtmsManager();
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.clinicalmanager.home')->with([
-                'all_centers' => $all_centers,
-                'all_clinics' => $all_clinics,
-                'pwds' => $pwds,
-                'pwas' => $pwas,
-                'chats' => $chats
+                'obPatients' => $obPatients,
+                'fuPatients' => $fuPatients
             ]);
         }
 
         if( Auth::user()->hasAnyRole(['senior_resident']) )
 		{
-            $chats = $this->getAllUnseenChats();
             $obPatients = $this->getAllOnBoardedPatientsForSeniorResident();
             $fuPatients = $this->getAllPatientsForFollowUpForSeniorResident();
-            //dd($obPatients, $fuPatients);
-            //$all_centers = $this->getAllCenters();
-            //$all_clinics = $this->getAllClinics();
-            //$pwds = $this->getPatientDataDraftStatus();
-            //$pwas = $this->getPatientDataActiveStatus();
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.srresident.home')->with([
-                //'all_centers' => $all_centers,
-                //'all_clinics' => $all_clinics,
                 'obPatients' => $obPatients,
-                'fuPatients' => $fuPatients,
-                'chats' => $chats
+                'fuPatients' => $fuPatients
             ]);
         }
 

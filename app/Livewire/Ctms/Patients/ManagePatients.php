@@ -84,7 +84,7 @@ class ManagePatients extends Component
    // public $imageInputFile;
 
     //login credentials
-    public $entered_by;
+    public $entered_by, $entry_date, $approval;
 
     //modals and callouts.
 
@@ -101,16 +101,21 @@ class ManagePatients extends Component
     {    
         $this->entered_by = Auth::user()->name;
         $this->logged_user = Auth::user()->name;
+        $this->entry_date = date('Y-m-d');
+
         $this->patient_data_status = Patient::where('status','draft')->get();
 
         if(Auth::user()->hasAnyRole(['ctms_incharge']))
         {
-            $this->ob_patient_data_status = Patient::where('ob_status','incomplete')->get();
+            $this->ob_patient_data_status = Patient::where('ob_status','pending')
+                                                    ->where('status', null)->get();
         }
  
         if(Auth::user()->hasAnyRole(['director']))
         {
-            $this->ob_patient_data_status = Patient::where('ob_status','incomplete')->get();
+            $this->ob_patient_data_status = Patient::where('ob_status','pending')
+                                                    ->where('status', null)->get();
+        //dd($this->ob_patient_data_status);
         }
 
         /*
@@ -337,9 +342,13 @@ class ManagePatients extends Component
 
     public function patientDetailsForOnBoarding($id)
     {
+        //dd($id);
         //dd("reached onboard details");
-        $this->patietn_uuid = $id;
-        $this->patientPrimaryInfo = Patient::where('ob_status','incomplete')->first();
+        $this->patient_uuid = $id;
+        $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->patient_uuid)
+                                            ->where('ob_status','pending')->first();
+                                    
+        //dd($id, $this->patientPrimaryInfo);
         //dd($this->patientPrimaryInfo);
         if(Auth::user()->hasAnyRole(['ctms_incharge']))
         {
@@ -354,8 +363,11 @@ class ManagePatients extends Component
 
     public function fnAccordOnboardPermission($patient_uuid)
     {
+        if($this->approval == 1)
+        {
+
         $this->obpInfo = Patient::where('patient_uuid', $patient_uuid)
-                                    ->where('ob_status','incomplete')
+                                    ->where('ob_status','pending')
                                     ->first();
         //dd($this->obpInfo);
         //dd("reached", $patient_uuid);
@@ -393,8 +405,11 @@ class ManagePatients extends Component
         $event = "Patient DBs initiated";
         $resx = $this->savePatientTimeline($patient_uuid, $name, $event, $tl_msg);
 
-        LivewireAlert::title('Approval Step Success')->success()->asToast()->show();
+        LivewireAlert::title('Approval Step Success')->success()->show();
         $this->fnResetAllVisiblePanels();
+        }else{
+            LivewireAlert::title('Approval Kept In Pending State')->warning()->show();
+        }
     }
 
 }

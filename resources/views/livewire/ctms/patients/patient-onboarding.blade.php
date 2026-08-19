@@ -54,31 +54,17 @@
                         <div class="card-header d-flex p-0">
                           <h3 class="card-title p-3">Information</h3>
                           <ul class="nav nav-pills ml-auto p-2">
-                            <li class="nav-item"><a class="nav-link active" href="#tab_1"
-                                data-toggle="tab">Clinical</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Patient</a>
+                            <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Details</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Official</a></li>
                           </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
 
                           <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                              @include('livewire.ctms.patients.patient-info-sub-folder.center_control_information')
+                              @include('livewire.ctms.patients.patient-info-sub-folder.new-onboarding-form')
                             </div>
                             <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_2">
-                              @include('livewire.ctms.patients.patient-info-sub-folder.personal_ids')
-
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="tab_3">
-                              @include('livewire.ctms.end-controls')
-                              <button wire:click="fnSavePrimaryInfo()"
-                                class="btn btn-success text-white font-normal mt-3 rounded">ADD ON-BOARDING
-                                INFO</button>
-                            </div>
                             <!-- /.tab-pane -->
 
                             <!-- /.tab-content -->

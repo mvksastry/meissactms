@@ -124,9 +124,22 @@
                               </tr>
                               <tr>
                                 <td>
+                                  <div class="form-check">
+                                    <input wire:model.live="approval" value="1" class="form-check-input"
+                                      type="radio" name="cdrx">
+                                    <label class="form-check-label">Approved</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input wire:model.live="approval" value="0" class="form-check-input"
+                                      type="radio" name="cfrx">
+                                    <label class="form-check-label">Declined</label>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
                                   <button wire:click="fnAccordOnboardPermission('{{ $row->patient_uuid }}')"
-                                    class="btn btn-success text-white font-normal mt-3 rounded">APPROVE
-                                    INFO</button>
+                                    class="btn btn-success text-white font-normal mt-3 rounded">APPROVED</button>
                                 </td>
                               </tr>
                             </tbody>

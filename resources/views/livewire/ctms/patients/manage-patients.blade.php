@@ -99,7 +99,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-tag"></i>
-                On-Boarding Patient Information
+                Pending Request for On-Boarding
               </h3>
             </div>
             <div class="card-body">

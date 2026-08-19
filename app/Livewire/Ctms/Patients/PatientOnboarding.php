@@ -37,8 +37,8 @@ class PatientOnboarding extends Component
 
     //primary information of forms
     public $patient_id, $patient_uuid; 
-    public $center_id, $ctarm_id, $opd_id, $in_patient_id, $subject_id, $admission_date;
-    public $name, $nick_name, $alias_name, $gender, $date_of_birth, $age, $primary_phone_number, $alternate_phone_number;
+    public $center_id, $ctarm_id;
+    public $name, $gender, $date_of_birth, $age, $primary_phone_number;
 
     public $comment_entered_by, $entered_by, $entry_date;
 
@@ -65,6 +65,7 @@ class PatientOnboarding extends Component
     //decoupling has to be done from direct entries like before
     public function fnSavePrimaryInfo()
     {
+        
         $this->form->validate(); 
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
@@ -82,6 +83,6 @@ class PatientOnboarding extends Component
             Log::channel('patient')->info($msg);
             //dd($result);
         }
-
+        
     }
 }

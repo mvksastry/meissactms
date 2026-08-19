@@ -7,7 +7,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ Auth::user()->name }} : {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h1>
+            <h3 class="m-0">{{ Auth::user()->name }} </h3>
+            <h5> {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h5>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -58,7 +59,7 @@
                       <td>
                         <a href="/edit-patients" button class="btn btn-block btn-warning rounded" type="button"><i
                             class="ion ion-person"></i>&nbsp
-                          Go To Enter</button></a>
+                          Take Me there</button></a>
                       </td>
                     </tr>
                   @endif
@@ -73,7 +74,22 @@
                       <td>
                         <a href="/patient-followup" button class="btn btn-block btn-warning rounded" type="button"><i
                             class="ion ion-person"></i>&nbsp
-                          Go To Enter</button></a>
+                          Take me there</button></a>
+                      </td>
+                    </tr>
+                  @endif
+                  @if (count($sealed) > 0)
+                    <tr>
+                      <td>
+                        Patients Reached Enrollment Stage
+                      </td>
+                      <td>
+                        <label class="text-danger"><strong>{{ count($sealed) }}</strong></label>
+                      </td>
+                      <td>
+                        <a href="/home-enrollment" button class="btn btn-block btn-warning rounded" type="button"><i
+                            class="ion ion-person"></i>&nbsp
+                          Take me there</button></a>
                       </td>
                     </tr>
                   @endif
