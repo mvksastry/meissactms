@@ -63,6 +63,19 @@ return [
                 '34' => 'patient-exited'
         ],
 
+        'abort_steps' => [
+                '2', 
+                '5',
+                '7',
+                '11',
+                '14',
+                '16',
+                '20',
+                '22',
+                '24',
+                '27'
+        ],
+
 
         'modq_painIntensity' => [
                 0 => 'I can tolerate the pain I have without having to use pain medication.', 

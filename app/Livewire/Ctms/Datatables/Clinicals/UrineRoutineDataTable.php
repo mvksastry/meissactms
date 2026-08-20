@@ -61,10 +61,6 @@ class UrineRoutineDataTable extends DataTableComponent
             Column::make("Specific Gravity", "specific_gravity")
                 ->sortable(),
 
-            Column::make("RDW-CV", "rdw_cv")
-                ->sortable(),
-
-
             Column::make("Created at", "created_at")
                 ->sortable(),
             Column::make("Updated at", "updated_at")

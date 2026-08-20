@@ -251,6 +251,7 @@ class CroPatientInformation extends Component
     public function selectedPatient($id)
     {
         $this->patient_uuid = $id;
+        $this->data_type = false;
         $this->patientInfoButtons = true;
         $this->TimelinePatient = false;
         $this->PatientStatusPanel = false;

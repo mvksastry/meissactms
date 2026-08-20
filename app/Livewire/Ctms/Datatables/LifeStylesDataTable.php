@@ -20,6 +20,7 @@ class LifeStylesDataTable extends DataTableComponent
     {
         $this->patient_uuid = $patient_uuid;
         $this->data_type = $data_type;
+
     }
 
     public function builder(): \Illuminate\Database\Eloquent\Builder
@@ -27,8 +28,11 @@ class LifeStylesDataTable extends DataTableComponent
         $query = LifeStyle::query();
 
         // Apply WHERE clause if patient_uuid is set
-        if ($this->patient_uuid) {
+        if ($this->data_type) 
+        {
             $query->where('patient_uuid', $this->patient_uuid)->where('data_type', '=', $this->data_type);
+        }else{
+            $query->where('patient_uuid', $this->patient_uuid);
         }
 
         return $query;

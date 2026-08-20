@@ -66,7 +66,7 @@ class LiverFunctionsDataTable extends DataTableComponent
             Column::make("SGPT", "sgpt")
                 ->sortable(),
 
-            Column::make("Alkaline Phosphatase", "alaline_phosphatase")
+            Column::make("Alkaline Phosphatase", "alkaline_phosphatase")
                 ->sortable(),
             Column::make("Observations", "observations")
                 ->sortable(),
