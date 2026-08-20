@@ -74,7 +74,7 @@ class PatientCIForm extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9 ]+$/')]
     public $laboratory_report_file = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,:\-_\/ ]+$/')]
     public $comment_entered_by = null;
 
     #[Validate('required|regex:/^[A-Za-z0-9 ]+$/')]

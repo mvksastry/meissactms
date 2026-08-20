@@ -28,7 +28,7 @@ class FormBloodUrea extends Form
 //  #[Validate('nullable|regex:/^[A-Za-z0-9\-_\/ ]+$/')]
 //  public $bubun_report_file_path = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9.,\-_\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9.,:\-_\/ ]+$/')]
     public $comment_entered_by = null;
 
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
