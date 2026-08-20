@@ -24,12 +24,13 @@ class BloodRoutineDataTable extends DataTableComponent
     public function builder(): \Illuminate\Database\Eloquent\Builder
     {
         $query = BloodRoutine::query();
-
         // Apply WHERE clause if patient_uuid is set
-        if ($this->patient_uuid) {
-            $query->where('patient_uuid', $this->patient_uuid)->where('data_type', $this->data_type);
+        if ($this->data_type) 
+        {
+            $query->where('patient_uuid', $this->patient_uuid)->where('data_type', '=', $this->data_type);
+        }else{
+            $query->where('patient_uuid', $this->patient_uuid);
         }
-
         return $query;
     }
 
