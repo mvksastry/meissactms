@@ -126,9 +126,7 @@
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.on-boarding')
                   @include('layouts.menus.items.patientms.edit-patients')
-                  @hasrole('ctms_incharge')
-                    @include('layouts.menus.items.patientms.seal-patient-data')
-                  @endhasrole
+                  @include('layouts.menus.items.patientms.seal-patient-data')
                 </ul>
               </li>
               <li class="nav-item">

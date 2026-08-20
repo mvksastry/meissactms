@@ -262,14 +262,14 @@ class EditPatients extends Component
         }
         if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
         {
-            $status = ['verified'];
+            $status = ['confirmed'];
             $this->editQuery($status);
             //$this->draftPatients = Patient::whereIn('status',['draft','verified'])->get();
             //dd($this->draftPatients);
         }
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
         {
-            $status = ['approved'];
+            $status = ['verified'];
             $this->editQuery($status);
             //$this->draftPatients = Patient::whereIn('status',['draft','verified','approved'])->get();
         }

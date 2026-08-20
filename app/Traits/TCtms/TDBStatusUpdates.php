@@ -57,6 +57,12 @@ trait TDBStatusUpdates
       //dd($uuid, $input);      
         switch ($input['status']) {
 
+             case 'confirmed':
+              $statusUpdate->comment_entered_by=  $input['status_comment'];
+              $statusUpdate->entered_by = Auth::user()->name;
+              $statusUpdate->entry_date = date('Y-m-d');
+            break;       
+
             case 'verified':
               $statusUpdate->comment_verified_by=  $input['status_comment'];
               $statusUpdate->verified_by = Auth::user()->name;

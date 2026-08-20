@@ -50,9 +50,10 @@ class PatientStatusUpdate extends Component
     public $status_array = [
                         'clinical_dataentry'=>'verified',
                         'junior_resident'=>'verified',
-                        'senior_resident'=>'verified',
-                        'clinical_manager'=>'approved',
-                        'ctms_incharge'=>'sealed'
+                        'senior_resident'=>'confirmed',
+                        'clinical_manager'=>'verified',
+                        'ctms_incharge'=>'approved',
+                        'director'=>'sealed'
                         ];
 
     public $patient_uuid;
@@ -111,21 +112,9 @@ class PatientStatusUpdate extends Component
 
         switch ($role) {
 
-            case 'clinical_dataentry':
-                $input['status_by'] = Auth::user()->name;
-                $input['status'] = 'verified';
-                $input['date_updated'] = date('Y-m-d');
-            break;
-
-            case 'junior_resident':
-                $input['status_by'] = Auth::user()->name;
-                $input['status'] = 'verified';
-                $input['date_updated'] = date('Y-m-d');
-            break;
-
             case 'senior_resident':
                 $input['status_by'] = Auth::user()->name;
-                $input['status'] = 'verified';
+                $input['status'] = 'confirmed';
                 $input['date_updated'] = date('Y-m-d');
             break;
 
@@ -133,7 +122,7 @@ class PatientStatusUpdate extends Component
 
             case 'clinical_manager':
                 $input['status_by'] = Auth::user()->name;
-                $input['status'] = 'approved';
+                $input['status'] = 'verified';
                 $input['date_updated'] = date('Y-m-d');
             break;
 
@@ -141,9 +130,15 @@ class PatientStatusUpdate extends Component
 
             case 'ctms_incharge':
                 $input['status_by'] = Auth::user()->name;
-                $input['status'] = 'sealed';
+                $input['status'] = 'approved';
                 $input['date_updated'] = date('Y-m-d');
             break;  
+
+            case 'director':
+                $input['status_by'] = Auth::user()->name;
+                $input['status'] = 'sealed';
+                $input['date_updated'] = date('Y-m-d');
+            break; 
 
             default:
                 $input['status'] = 'draft';

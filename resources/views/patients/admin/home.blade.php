@@ -25,13 +25,13 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          @include('patients.admin.flexWrap')
+
         </div>
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          @hasanyrole(['director','ctms_incharge'])
+          @hasanyrole(['director'])
             <section class="col-lg-12 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
               <div class="card card-primary card-outline">
@@ -43,20 +43,20 @@
                   <div class="card-tools">
                     <ul class="nav nav-pills ml-auto">
                       <!--
-                        <li class="nav-item">
-                          <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                        </li>
-                      -->
+                                                                    <li class="nav-item">
+                                                                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                                                                    </li>
+                                                                  -->
                     </ul>
                   </div>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                   <div class="tab-content p-0">
                     <!-- Morris chart - Sales -->
-                    @if(count($all_centers) > 0)
+                    @if (count($all_centers) > 0)
                       <table id="example2" class="table table-sm table-bordered table-hover">
                         <thead>
                           <tr>
@@ -74,8 +74,8 @@
                             <th> Action</th>
                           </tr>
                         </thead>
-                        <tbody>t 
-                          @foreach($all_centers as $row)
+                        <tbody>
+                          @foreach ($all_centers as $row)
                             <tr>
                               <td>{{ $row->name }}</td>
                               <td>{{ $row->category }}</td>
@@ -86,10 +86,10 @@
                               <td>{{ $row->incharge_name }}</td>
                               <td>{{ $row->status }}</td>
                               <td>{{ $row->notes }}</td>
-                              <td>{{ $row->created_at }}</td> 
-                              <td>{{ $row->updated_at }}</td>                          
+                              <td>{{ $row->created_at }}</td>
+                              <td>{{ $row->updated_at }}</td>
                               <td>
-                                <button class="btn btn-sm btn-info">Edit</button>                             
+                                <button class="btn btn-sm btn-info">Edit</button>
                                 <button class="btn btn-sm btn-danger">Inactivate</button>
                               </td>
                             </tr>
@@ -119,12 +119,95 @@
                 </div><!-- /.card-body -->
               </div>
             </section>
+
+            <section class="col-lg-12 connectedSortable">
+              <!-- Custom tabs (Charts with tabs)-->
+              <div class="card card-primary card-outline">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fas fa-chart-pie mr-1"></i>
+                    Active patients
+                  </h3>
+                  <div class="card-tools">
+                    <ul class="nav nav-pills ml-auto">
+                      <!--
+                                        <li class="nav-item">
+                                          <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                                        </li>
+                                      -->
+                    </ul>
+                  </div>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                  <div class="tab-content p-0">
+                    <!-- Morris chart - Sales -->
+                    <!--Divider-->
+                    <!--Divider-->
+                    @if (count($allPatients) > 0)
+                      <table id="example2" class="table table-sm table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th> Name </th>
+                            <th> On Boarding Status </th>
+                            <th> Status </th>
+                            <th> Status Date </th>
+                            <th> CRO Comment / </br> On</th>
+
+                            <th> Status Code </th>
+                            <th> Date Entry Sealed</th>
+                            <th> Created</th>
+                            <th> Updated</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($allPatients as $row)
+                            <tr>
+                              <td>{{ $row->name }}</td>
+                              <td>{{ ucfirst($row->ob_status) }}</td>
+                              <td>{{ ucfirst($row->status) }}</td>
+                              <td>{{ $row->status_date }}</td>
+                              <td>{{ $row->comment_cro }} / {{ $row->cro_approval_date }}</br></td>
+                              <td>{{ $row->status_code }}</td>
+                              <td>{{ $row->sealed_date }}</td>
+                              <td>{{ $row->created_at }}</td>
+                              <td>{{ $row->updated_at }}</td>
+                              <td>
+                                <button class="btn btn-sm btn-danger">Inactivate</button>
+                              </td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    @else
+                      <table id="example2" class="table table-sm table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td align="left">
+                              None to diplay
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    @endif
+                  </div>
+                </div><!-- /.card-body -->
+              </div>
+            </section>
           @endhasanyrole
-        </div> 
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  @endsection
+@endsection

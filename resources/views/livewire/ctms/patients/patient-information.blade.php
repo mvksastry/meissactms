@@ -70,7 +70,7 @@
                             class="btn btn-block btn-success rounded" type="button"><i class="ion ion-person"></i>&nbsp
                             Details</button>
                         </td>
-                        @hasanyrole(['clinical_manager', 'director'])
+                        @hasanyrole(['ctms_incharge', 'director'])
                           <td>
                             <button wire:click="getPatientTimeline('{{ $row->patient_uuid }}')"
                               class="btn btn-block btn-success rounded" type="button"><i class="ion ion-person"></i>&nbsp
@@ -106,11 +106,11 @@
                         @endhasanyrole
 
                         @hasrole('clinical_manager')
-                          @if ($row->status == 'verified')
+                          @if ($row->status == 'confirmed')
                             <td>
                               <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
                                 class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                                Approve Patient Data</button>
+                                SET STATUS TO VERIFIED</button>
                             </td>
                           @else
                             <td>
@@ -120,25 +120,31 @@
                         @endhasrole
 
                         @hasrole('ctms_incharge')
+                          @if ($row->status == 'verified')
+                            <td>
+                              <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
+                                class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                                SET STATUS TO APPROVED</button>
+                            </td>
+                          @else
+                            <td>
+                              Nothing to Approve
+                            </td>
+                          @endif
+                        @endhasanyrole
+
+                        @hasrole('director')
                           @if ($row->status == 'approved')
                             <td>
                               <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
                                 class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                                Seal Patient Data</button>
+                                SET STATUS TO SEALED</button>
                             </td>
                           @else
                             <td>
                               Nothing to Seal
                             </td>
                           @endif
-                        @endhasanyrole
-
-                        @hasrole('director')
-                          <td>
-                            <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
-                              class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                              Post Notes</button>
-                          </td>
                         @endhasanyrole
                       </tr>
                     @endforeach

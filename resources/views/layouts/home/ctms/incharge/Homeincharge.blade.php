@@ -7,8 +7,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0">{{ Auth::user()->name }} </h3>
-            <h5> {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h5>
+            <h4 class="m-0">{{ Auth::user()->name }} </h4>
+            <h5> Role: {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h5>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -48,16 +48,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if (count($obPatients) > 0)
+                  @if (count($forApproval) > 0)
                     <tr>
                       <td>
-                        <strong>O</strong>n <strong>B</strong>oarded Patients Waiting For Entry of Data
+                        <strong>Patients Waiting For Approval</strong><strong></strong>
                       </td>
                       <td>
-                        <label class="text-danger"><strong>{{ count($obPatients) }}</strong></label>
+                        <label class="text-danger"><strong>{{ count($forApproval) }}</strong></label>
                       </td>
                       <td>
-                        <a href="/edit-patients" button class="btn btn-block btn-warning rounded" type="button"><i
+                        <a href="/patient-information" button class="btn btn-block btn-warning rounded" type="button"><i
                             class="ion ion-person"></i>&nbsp
                           Take Me there</button></a>
                       </td>

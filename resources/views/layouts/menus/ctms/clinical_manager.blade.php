@@ -56,7 +56,6 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.edit-patients')
                   @include('layouts.menus.items.patientms.patient-details')
                 </ul>
               </li>

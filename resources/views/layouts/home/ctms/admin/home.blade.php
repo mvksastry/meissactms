@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          @include('layouts.home.ctms.admin.flexWrap')
+
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -61,7 +61,7 @@
           <!-- /.Left col -->
 
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                    <section class="col-lg-6 connectedSortable">
+          <section class="col-lg-6 connectedSortable">
             <!-- TO DO List -->
             <div class="card">
               <div class="card-header">
@@ -81,15 +81,15 @@
               </div>
               <!-- /.card-header -->
               <livewire:general.todo-list>
-              <!-- /.card-body -->
+                <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </section>
         </div>
         <div class="row">
-          <section class="col-lg-12 connectedSortable">   
+          <section class="col-lg-12 connectedSortable">
             <livewire:general.calendar />
-         
+
           </section>
           <!-- right col -->
         </div>
@@ -99,4 +99,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  @endsection
+@endsection

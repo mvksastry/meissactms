@@ -83,19 +83,17 @@ class HomeController extends Controller
 
         if( Auth::user()->hasAnyRole(['director']) )
 		{    
-            $preOBrequests = $this->getAllOnPreOnBoardingRequestsForDirector();
-            
-             $drafts = $this->getAllDraftSatusPatientsForDirector();
- 
-
+            $pending = $this->getAllPendingRequestsForDirector();
+            $approved = $this->getAllApprovedRequestsForDirector();
+            $drafts = $this->getAllDraftSatusPatientsForDirector();
             $sealed = $this->getAllSealedSatusPatientsForDirector();
-
             $fuPatients = $this->getAllPatientsForFollowUpForDirector();
 
-            //dd($pwds);
+            //dd($pending, );
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.director.homeDirector')->with([
-                'preOBrequests' => $preOBrequests,
+                'pending' => $pending,
+                'approved' => $approved,
                 'drafts' => $drafts,
                 'sealed'    => $sealed,
                 'fuPatients' => $fuPatients
@@ -104,14 +102,15 @@ class HomeController extends Controller
 
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
 		{
-            $obPatients = $this->getAllOnBoardedPatientsForInCharge();
+            $forApproval = $this->getAllVerifiedPatientsForInCharge();
             $fuPatients = $this->getAllPatientsForFollowUpForInCharge();
             $sealed =     $this->getAllSealedSatusPatientsForInCharge();
+            
                                  
             //dd($obPatients, $fuPatients, $sealed);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.incharge.Homeincharge')->with([
-                'obPatients' => $obPatients,
+            'forApproval' => $forApproval,
                 'fuPatients' => $fuPatients,
                 'sealed'    => $sealed
             ]);
@@ -119,7 +118,7 @@ class HomeController extends Controller
 
         if( Auth::user()->hasAnyRole(['clinical_manager']) )
 		{
-            $obPatients = $this->getAllOnBoardedPatientsForCtmsManager();
+            $obPatients = $this->getPatientsWithConfirmedStatus();
             $fuPatients = $this->getAllPatientsForFollowUpForCtmsManager();
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
@@ -194,8 +193,5 @@ class HomeController extends Controller
         return view('norole.no-role-home');
     }
 
-    public function no_subscription()
-    {   
-        return view('subscription.no-subscription-notice');
-    }
+
 }

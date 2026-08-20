@@ -46,15 +46,15 @@
                     <th style="width: 30%;">Action</th>
 
                   </tr>
-                </thead>$preOBrequests
+                </thead>
                 <tbody>
-                  @if (count($preOBrequests) > 0)
+                  @if (count($pending) > 0)
                     <tr>
                       <td>
                         <strong>Patients Waiting For On Boarding Approval</strong> <strong></strong>
                       </td>
                       <td>
-                        <label class="text-danger"><strong>{{ count($preOBrequests) }}</strong></label>
+                        <label class="text-danger"><strong>{{ count($pending) }}</strong></label>
                       </td>
                       <td>
                         <a href="/manage-patients" button class="btn btn-block btn-warning rounded" type="button"><i
@@ -75,7 +75,21 @@
                       </td>
                     </tr>
                   @endif
-
+                  @if (count($approved) > 0)
+                    <tr>
+                      <td>
+                        <strong>Patients For Seal</strong>
+                      </td>
+                      <td>
+                        <label class="text-danger"><strong>{{ count($approved) }}</strong></label>
+                      </td>
+                      <td>
+                        <a href="/patient-information" button class="btn btn-block btn-warning rounded" type="button"><i
+                            class="ion ion-person"></i>&nbsp
+                          Take me there</button></a>
+                      </td>
+                    </tr>
+                  @endif
                   @if (count($sealed) > 0)
                     <tr>
                       <td>

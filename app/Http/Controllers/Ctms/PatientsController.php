@@ -40,12 +40,14 @@ class PatientsController extends Controller
             $pwds = $this->getPatientDataDraftStatus();
             $pwas = $this->getPatientDataActiveStatus();
             $pwes = $this->getPatientDataExitedStatus();
+            $allPatients = $this->getAllPatients();
             return view('patients.admin.home')->with([
 
                 'all_centers' => $all_centers,
                 'pwds' => $pwds,
                 'pwas' => $pwas,
-                'pwes' => $pwes
+                'pwes' => $pwes,
+                'allPatients' => $allPatients
             ]);;
         }
 

@@ -73,15 +73,15 @@ class EditPrimaryInfo extends Component
         }
         if( Auth::user()->hasAnyRole(['ctms_manager','clinical_manager']) )
         {
-            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
+            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'confirmed')->first();
         }
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
         {
-            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
+            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'verified')->first();
         }
         if( Auth::user()->hasAnyRole(['director']) )
         {
-            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->first();
+            $this->patientPrimaryInfo = Patient::where('patient_uuid', $this->uuid)->where('status', 'approved')->first();
         }
         //dd($this->patientPrimaryInfo);
         $this->setFormValues($this->patientPrimaryInfo);

@@ -243,13 +243,13 @@ class PatientInformation extends Component
 
         if( Auth::user()->hasAnyRole(['clinical_manager']) )
 		{
-            $this->activePatients = Patient::where('status', 'verified')->get();
-            $this->activePatients->search_status = "verified";
+            $this->activePatients = Patient::where('status', 'confirmed')->get();
+            $this->activePatients->search_status = "confirmed";
         }
 
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
 		{
-            $this->activePatients = Patient::whereIn('status', ['verified','approved','sealed'])->get();
+            $this->activePatients = Patient::whereIn('status', ['verified'])->get();
             $this->activePatients->search_status = "approved/sealed";
         }
 
@@ -261,7 +261,7 @@ class PatientInformation extends Component
 
         if( Auth::user()->hasAnyRole(['director']) )
 		{
-            $this->activePatients = Patient::all();
+            $this->activePatients = Patient::whereIn('status', ['approved','sealed'])->get();
         }
 
         //dd($this->activePatients);

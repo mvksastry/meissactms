@@ -53,7 +53,8 @@ trait TDashboard
         return Chat::with('user')->where('is_seen', 0)->get();
     }
 
-    //for in charge
+
+    //  ------------Senior Reside --------------------//
     public function getAllOnBoardedPatientsForSeniorResident()
     {
         $status = ['draft'];
@@ -64,11 +65,12 @@ trait TDashboard
     {
         return Enrollment::Where('stage_code', '>=', 28)->get();
     }
+    
 
-    //for in charge
-    public function getAllOnBoardedPatientsForCtmsManager()
+    //------------  Clinical Manager --------------------//
+    public function getPatientsWithConfirmedStatus()
     {
-        $status = ['verified'];
+        $status = ['confirmed'];
         return Patient::whereIn('status', $status)->get();
     }
 
@@ -76,9 +78,19 @@ trait TDashboard
     {
         return Enrollment::Where('stage_code', '>=', 28)->get();
     }
+    //-------------------------------------------------//
+    
+
+
 
     //for in charge
     public function getAllOnBoardedPatientsForInCharge()
+    {
+        $status = ['verified'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
+    public function getAllVerifiedPatientsForInCharge()
     {
         $status = ['verified'];
         return Patient::whereIn('status', $status)->get();
@@ -100,13 +112,16 @@ trait TDashboard
 
 
     //for director
-    public function getAllOnPreOnBoardingRequestsForDirector()
+    public function getAllPendingRequestsForDirector()
     {
         return  Patient::where('ob_status','pending')->get();
-    
     }
 
- 
+    public function getAllApprovedRequestsForDirector()
+    {
+        $status = ['approved'];
+        return Patient::whereIn('status', $status)->get();
+    }
 
     //ready for Enrollment
     public function getAllDraftSatusPatientsForDirector()
@@ -125,5 +140,10 @@ trait TDashboard
     public function getAllPatientsForFollowUpForDirector()
     {
         return Enrollment::Where('stage_code', '>=', 28)->get();
+    }
+
+    public function getAllPatients()
+    {
+        return Patient::all();
     }
 }
