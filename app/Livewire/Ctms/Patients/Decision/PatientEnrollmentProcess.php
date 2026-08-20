@@ -34,7 +34,7 @@ class PatientEnrollmentProcess extends Component
     public $showPrimaryInfo = true;
 
     //new paitent global uuid
-    public $patient_uuid, $opd_id, $entry="update", $confirmed_patients, $entered_by;
+    public $patient_uuid, $opd_id, $entry="update", $sealed_patients, $entered_by;
 
     //form variables
 
@@ -51,7 +51,7 @@ class PatientEnrollmentProcess extends Component
 
     public function render()
     {
-        $this->confirmed_patients = Patient::where('status','sealed')->get();
+        $this->sealed_patients = Patient::where('status','sealed')->get();
         //dd($this->confirmed_patients);
         $this->entered_by = Auth::user()->name;
         //dd($this->confirmedPatients);

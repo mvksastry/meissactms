@@ -15,7 +15,6 @@
               <li class="breadcrumb-item active">Decisions/Enrollment</li>
             </ol>
           </div><!-- /.col -->
-          @include('livewire.ctms.patients.decision.flex-menu-decisions')
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -35,7 +34,7 @@
             <!-- /.col-12 -->
             <!-- /.col-12 -->
             <div class="row">
-              @if (count($confirmed_patients) > 0)
+              @if (count($sealed_patients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
                     <tr>
@@ -51,7 +50,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($confirmed_patients as $patient)
+                    @foreach ($sealed_patients as $patient)
                       <tr>
                         <td>
                           {{ $patient->center_id }}
