@@ -63,9 +63,10 @@
                             @foreach ($Objs as $Obj)
                               @php
                                 $replies = json_decode($Obj->rmq_replies);
-                                if($replies == null){
-                                  $replies = [];
-                                } 
+                                if ($replies == null) {
+                                    $replies = [];
+                                }
+                                $configRMQ = config('ctms.rmqreplies');
                                 //dd($Obj->rmq_replies, $replies);
                               @endphp
                               <div class="tab-pane" id="tab_{{ $j }}">
@@ -92,17 +93,17 @@
                                         </br>
                                         {{ $Obj->admission_date }}
                                       </td>
-                                    </tr>    
-                                      @if(count($replies) > 0)
-                                        @foreach($replies as $row)
-                                          <tr>
-                                            <td colspan="3">
-                                              {{ $rmqreplies[$row] }}
-                                              
-                                            </td>
-                                          </tr>
-                                        @endforeach
-                                      @endif
+                                    </tr>
+                                    @if (count($replies) > 0)
+                                      @foreach ($replies as $row)
+                                        <tr>
+                                          <td colspan="3">
+                                            {{ $configRMQ[$row] }}
+
+                                          </td>
+                                        </tr>
+                                      @endforeach
+                                    @endif
                                     <tr>
                                       <td colspan="2">
                                         <label>Comment</label>
@@ -148,6 +149,3 @@
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
-
-
-
