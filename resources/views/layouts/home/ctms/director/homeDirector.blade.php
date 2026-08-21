@@ -3,139 +3,25 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h3 class="m-0">{{ Auth::user()->name }} </h3>
-            <h5> {{ Auth::user()->roles->pluck('name')[0] ?? '' }}</h5>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+    @include('layouts.home.commons.homePageTopHeader')
     <!-- /.content-header -->
-
     <!-- Main content -->
-
     <section class="content">
       <div class="container-fluid">
-        <!-- COLOR PALETTE -->
-        <div class="card card-default color-palette-box">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fas fa-tag"></i>
-              Pending Tasks
-            </h3>
-          </div>
-          <div class="card-body">
-            <!-- /.col-12 -->
-            <!-- /.col-12 -->
-            <div class="row">
-
-              <table id="userIndex2" class="table table-sm table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th style="width: 30%;">Task</th>
-                    <th style="width: 30%;">For Attention</th>
-                    <th style="width: 30%;">Action</th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  @if (count($pending) > 0)
-                    <tr>
-                      <td>
-                        <strong>Patients Waiting For On Boarding Approval</strong> <strong></strong>
-                      </td>
-                      <td>
-                        <label class="text-danger"><strong>{{ count($pending) }}</strong></label>
-                      </td>
-                      <td>
-                        <a href="/manage-patients" button class="btn btn-block btn-warning rounded" type="button"><i
-                            class="ion ion-person"></i>&nbsp
-                          Take Me there</button></a>
-                      </td>
-                    </tr>
-                  @endif
-
-                  @if (count($drafts) > 0)
-                    <tr>
-                      <td>
-                        <strong>Patients with Draft status
-                          (Data stages may vary)</strong><strong></strong>
-                      </td>
-                      <td>
-                        <label class="text-danger"><strong>{{ count($drafts) }}</strong></label>
-                      </td>
-                    </tr>
-                  @endif
-                  @if (count($approved) > 0)
-                    <tr>
-                      <td>
-                        <strong>Patients For Seal</strong>
-                      </td>
-                      <td>
-                        <label class="text-danger"><strong>{{ count($approved) }}</strong></label>
-                      </td>
-                      <td>
-                        <a href="/patient-information" button class="btn btn-block btn-warning rounded" type="button"><i
-                            class="ion ion-person"></i>&nbsp
-                          Take me there</button></a>
-                      </td>
-                    </tr>
-                  @endif
-                  @if (count($sealed) > 0)
-                    <tr>
-                      <td>
-                        <strong>Patients Reached Enrollment Stage</strong>
-                      </td>
-                      <td>
-                        <label class="text-danger"><strong>{{ count($sealed) }}</strong></label>
-                      </td>
-                      <td>
-                        <a href="/home-enrollment" button class="btn btn-block btn-warning rounded" type="button"><i
-                            class="ion ion-person"></i>&nbsp
-                          Take me there</button></a>
-                      </td>
-                    </tr>
-                  @endif
-                  @if (count($fuPatients) > 0)
-                    <tr>
-                      <td>
-                        Follow-up Data Entry Patients Waiting
-                      </td>
-                      <td>
-                        <label class="text-danger"><strong>{{ count($fuPatients) }}</strong></label>
-                      </td>
-                      <td>
-                        <a href="/patient-followup" button class="btn btn-block btn-warning rounded" type="button"><i
-                            class="ion ion-person"></i>&nbsp
-                          Take me there</button></a>
-                      </td>
-                    </tr>
-                  @endif
-                </tbody>
-              </table>
-            </div>
-            <!-- /.row -->
-            <!--Divider-->
-            <hr class="border-b-2 border-warning my-2 mx-2">
-            <!--Divider-->
-
-          </div>
-          <!-- /.card-body -->
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          @include('layouts.home.ctms.director.directorFlexWrap')
         </div>
-        <!-- /.card -->
-        <!-- START ALERTS AND CALLOUTS -->
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          @include('layouts.home.ctms.director.action-tables')
+        </div>
+        <!-- home page widgets -->
+        @include('layouts.home.commons.homePageChatTodoCalendar')
+        <!-- /End of widgets -->
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

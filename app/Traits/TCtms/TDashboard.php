@@ -54,17 +54,7 @@ trait TDashboard
     }
 
 
-    //  ------------Senior Reside --------------------//
-    public function getAllOnBoardedPatientsForSeniorResident()
-    {
-        $status = ['draft'];
-        return Patient::whereIn('status', $status)->get();
-    }
 
-    public function getAllPatientsForFollowUpForSeniorResident()
-    {
-        return Enrollment::Where('stage_code', '>=', 28)->get();
-    }
     
 
     //------------  Clinical Manager --------------------//

@@ -36,7 +36,7 @@
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
-            
+
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
@@ -47,7 +47,7 @@
               </li>
             </ul>
           </li>
-          
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -57,19 +57,13 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/cro-patient-dashboard" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Patient Dashboard</p>
-                </a>
-              </li>
               @hasrole('cro')
-              <li class="nav-item">
-                <a href="/cro-patient-information" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Patient Details</p>
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a href="/cro-patient-information" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Patient Details</p>
+                  </a>
+                </li>
               @endhasrole
             </ul>
           </li>

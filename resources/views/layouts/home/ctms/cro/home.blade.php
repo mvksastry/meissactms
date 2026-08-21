@@ -7,7 +7,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ Auth::user()->name }} : Role - {{ ucfirst(Auth::user()->roles->pluck('name')[0]) ?? '' }}</h1>
+            <h3 class="m-0">{{ Auth::user()->name }} </h3>
+            <h5>Role - {{ ucfirst(Auth::user()->roles->pluck('name')[0]) ?? '' }}</h5>
+            </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -25,7 +27,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          @include('layouts.home.ctms.cro.flexWrap')
+
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -61,7 +63,7 @@
           <!-- /.Left col -->
 
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                    <section class="col-lg-6 connectedSortable">
+          <section class="col-lg-6 connectedSortable">
             <!-- TO DO List -->
             <div class="card">
               <div class="card-header">
@@ -81,15 +83,15 @@
               </div>
               <!-- /.card-header -->
               <livewire:general.todo-list>
-              <!-- /.card-body -->
+                <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </section>
         </div>
         <div class="row">
-          <section class="col-lg-12 connectedSortable">   
+          <section class="col-lg-12 connectedSortable">
             <livewire:general.calendar />
-         
+
           </section>
           <!-- right col -->
         </div>
@@ -99,4 +101,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  @endsection
+@endsection

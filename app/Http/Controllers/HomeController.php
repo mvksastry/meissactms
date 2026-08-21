@@ -22,6 +22,9 @@ use App\Models\User;
 
 //Traits
 use App\Traits\Base;
+
+//Dashboards
+use App\Traits\TCtms\TRoleL1\TL1Dash;
 use App\Traits\TCtms\TDashboard;
 use App\Traits\TCtms\TCroDashboard;
 
@@ -32,6 +35,7 @@ class HomeController extends Controller
 
     use Base;
     use TDashboard;
+    use TL1Dash;
     use TCroDashboard;
 
     /**
