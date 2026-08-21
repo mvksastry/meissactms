@@ -3,13 +3,13 @@
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h3>{{ count($obPatients) }}</h3>
+        <h4>{{ count($pending) }}</h4>
         <p>On-Boarded</p>
       </div>
       <div class="icon">
         <i class="ion ion-bag"></i>
       </div>
-      <a href="/manage-patients" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="/new-patient-onboarding" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
   </div>
 @endif

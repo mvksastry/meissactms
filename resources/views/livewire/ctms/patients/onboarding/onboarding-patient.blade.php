@@ -62,7 +62,7 @@
 
                           <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                              @include('livewire.ctms.patients.patient-info-sub-folder.new-onboarding-form')
+                              @include('livewire.ctms.patients.onboarding.new-onboarding-form')
                             </div>
                             <!-- /.tab-pane -->
                             <!-- /.tab-pane -->

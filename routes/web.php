@@ -26,8 +26,13 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionsController;
 //------------------------------------------------------//
+use App\Livewire\Ctms\Patients\Onboarding\NewPatientOnboarding;
 
 
+
+
+
+//------------------------------------------------------//
 // Livewire - Project management
 use App\Livewire\General\InternalMessages;
 
@@ -168,6 +173,22 @@ Route::middleware('auth')->group(function () {
 
     // ------- Livewire: Components All Roles------- //
     Route::get('patient-data-reviews', PatientDataReviews::class);
+    // ------- END Livewire: Components All Roles------- //
+
+
+    Route::get('new-patient-onboarding', NewPatientOnboarding::class);
+
+
+
+
+
+
+
+
+
+
+
+
 
     // ------- Livewire: Components All Roles------- //
     Route::get('manage-patients', ManagePatients::class);

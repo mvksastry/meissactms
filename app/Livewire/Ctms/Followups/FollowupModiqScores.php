@@ -26,6 +26,7 @@ class FollowupModiqScores extends Component
 {
     use Base;
     //default modq arrav values
+    /*
     public $painIntensity = [
         0 => 'I can tolerate the pain I have without having to use pain medication.', 
         1 => 'The pain is bad, but I can manage without having to take pain medication.', 
@@ -118,6 +119,7 @@ class FollowupModiqScores extends Component
         4 => 'Pain prevents me from doing even light duties.',
         5 => 'Pain prevents me from performing any job or homemaking chores.',
     ]; 
+    */
     //Traits
     use TPatientModqScore;
 

@@ -34,6 +34,7 @@ class EditPatients extends Component
 {
     use WithFileUploads;
 
+    /*
     //default modq arrav values
     public $painIntensity = [
         0 => 'I can tolerate the pain I have without having to use pain medication.', 
@@ -154,6 +155,7 @@ class EditPatients extends Component
         23 => "Because of my back, I go upstairs more slowly than usual.", 
         24 => "I stay in bed most of the time because of my back.",
     ];
+    */
 
     //default panels
     public $patientInfoButtons = false;

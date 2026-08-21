@@ -27,6 +27,7 @@ class FollowupRmqScores extends Component
 {
     use Base;
 
+    /*
     public $rmqreplies = [
         1 => "I stay at home most of the time because of my back.",
         2 => "I change position frequently to try to get my back comfortable.",
@@ -53,7 +54,7 @@ class FollowupRmqScores extends Component
         23 => "Because of my back, I go upstairs more slowly than usual.", 
         24 => "I stay in bed most of the time because of my back.",
     ];
-
+    */
     use TPatientRMQData;
 
     //global patient uuid

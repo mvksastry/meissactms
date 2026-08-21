@@ -24,13 +24,13 @@
               <tbody>
                 <tr>
                   <td>
-                    <strong>Pending On-Boarding Approval</strong> <strong></strong>
+                    <strong>Pending Approval: On-Boarding Approval</strong> <strong></strong>
                   </td>
                   <td>
                     <label class="text-danger"><strong>{{ count($pending) }}</strong></label>
                   </td>
                   <td>
-                    <a href="/manage-patients" button class="btn btn-block btn-warning rounded" type="button"><i
+                    <a href="/new-patient-onboarding" button class="btn btn-block btn-warning rounded" type="button"><i
                         class="ion ion-person"></i>&nbsp
                       More Info</button></a>
                   </td>

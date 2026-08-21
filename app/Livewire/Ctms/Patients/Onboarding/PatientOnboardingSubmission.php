@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Ctms\Patients;
+namespace App\Livewire\Ctms\Patients\Onboarding;
 
 use Livewire\Component;
 use Livewire\Attributes\On; 
@@ -24,7 +24,7 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
 
-class PatientOnboarding extends Component
+class PatientOnboardingSubmission extends Component
 {
     use Base;
     use TPatientDuplicateCheck;
@@ -50,7 +50,7 @@ class PatientOnboarding extends Component
 
     public function render()
     {
-        return view('livewire.ctms.patients.patient-onboarding');
+        return view('livewire.ctms.patients.onboarding.patient-onboarding-submission');
     }
 
     public function updated($date_of_birth, $value): void

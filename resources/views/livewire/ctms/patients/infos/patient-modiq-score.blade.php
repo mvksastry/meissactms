@@ -1,6 +1,15 @@
- <?php
- 
- ?>
+ @php
+   $modq_painIntensity = config('ctms.modq_painIntensity');
+   $modq_persCare = config('ctms.modq_persCare');
+   $modq_lifting = config('ctms.modq_lifting');
+   $modq_walking = config('ctms.modq_walking');
+   $modq_sitting = config('ctms.modq_sitting');
+   $modq_standing = config('ctms.modq_standing');
+   $modq_sleeping = config('ctms.modq_sleeping');
+   $modq_sociallife = config('ctms.modq_sociallife');
+   $modq_travelling = config('ctms.modq_travelling');
+   $modq_emphome = config('ctms.modq_emphome');
+ @endphp
  <section class="content">
    <div class="container-fluid">
      <!-- Small boxes (Stat box) -->
@@ -58,7 +67,8 @@
                              <label>Pain Intensity</label>
                              <div class="form-check">
                                @if ($modq_info->pain_intensity != null)
-                                 {{ $modq_info->pain_intensity }} -- {{ $painIntensity[$modq_info->pain_intensity] }}
+                                 {{ $modq_info->pain_intensity }} --
+                                 {{ $modq_painIntensity[$modq_info->pain_intensity] }}
                                @endif
                              </div>
                            </div>
@@ -67,7 +77,7 @@
                              <label>Personal Care (eg. Washing, Dressing )</label>
                              <div class="form-check">
                                @if ($modq_info->personal_care != null)
-                                 {{ $modq_info->personal_care }} -- {{ $persCare[$modq_info->personal_care] }}
+                                 {{ $modq_info->personal_care }} -- {{ $modq_persCare[$modq_info->personal_care] }}
                                @endif
                              </div>
                            </div>
