@@ -37,9 +37,8 @@
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h3>XX</h3>
-
-        <p>On Board Patient: Complete Data</p>
+        <h3>{{ count($obPatients) }}</h3>
+        <p>On Board Patient: Mark As Complete</p>
       </div>
       <div class="icon">
         <i class="ion ion-person-add"></i>
