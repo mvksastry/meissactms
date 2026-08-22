@@ -15,17 +15,17 @@ class DiscectomyForm extends Form
     public $discectomy_admission_date = null;
 
     #[Validate('required|regex:/^[0-9]+$/')]
-    public $code8910;
+    public $code170200;
     #[Validate('date')]
     public $discectomy_date = null;
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9.,\-_ ]+$/')]
     public $surgeons_names = null;
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9.,\-_ ]+$/')]
     public $discectomy_other_info = null;
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
+    #[Validate('regex:/^[A-Za-z0-9.,\-_ ]+$/')]
     public $discectomy_comments = null;
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
-    public $disc_info_entered_by = null;
-    #[Validate('date')]
-    public $disc_info_date_entered = null;
+    //#[Validate('regex:/^[A-Za-z0-9.,\-_ ]+$/')]
+    //public $disc_info_entered_by = null;
+    //#[Validate('date')]
+    //public $disc_info_date_entered = null;
 }

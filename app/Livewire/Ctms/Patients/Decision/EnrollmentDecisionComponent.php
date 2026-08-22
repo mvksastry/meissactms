@@ -19,6 +19,12 @@ use App\Livewire\Forms\Decisions\DecisionProcessingForm;
 use App\Livewire\Forms\Decisions\DiscectomyForm;
 use App\Livewire\Forms\Decisions\SampleEntryForm;
 use App\Livewire\Forms\Decisions\DecisionReportFiles;
+use App\Livewire\Forms\Decisions\Qc1DecisionForm;
+use App\Livewire\Forms\Decisions\Qc2DecisionForm;
+use App\Livewire\Forms\Decisions\QaDecisionForm;
+use App\Liveiwre\Forms\Decisions\FinalDecisionForm;
+use App\Livewire\Forms\Decisions\AdminDecisionForm;
+use App\Livewire\Forms\Decisions\TransplantDecisionForm;
 
 //traits
 use App\Traits\Base;
@@ -50,6 +56,14 @@ class EnrollmentDecisionComponent extends Component
     //Form bindings
     public DiscectomyForm $form_a;
     public SampleEntryForm $form_b;
+    public Qc1DecisionForm $form_d;
+    public QaDecisionForm $form_e;
+    public FinalDecisionForm $form_f;
+    public AdminDecisionForm $form_g;
+    public TransplantDecisionForm $form_h;
+    public Qc2DecisionForm $form_i;
+
+
     public DecisionProcessingForm $form;
 
     public DecisionReportFiles $form_x;
@@ -62,12 +76,13 @@ class EnrollmentDecisionComponent extends Component
     public $patient_uuid, $confirmed_patients;
 
     public $qc_report_1, $qc_report_2, $qc_report_3, $qc_coa, $qc_report_file_count = 0;
+    public $qc_report1_description,$qc_report2_description,$qc_report3_description, $qc_coa_description;
 
         //variables
     public $tab, $activeTab; // default tab
 
     ///code dependent activation
-    public $code8910, $code1112, $code1413, $code2019, $code2221;
+    public $code170200, $code1112, $code1413, $code2019, $code2221;
 
     public function setActiveTab($tab) 
     {
@@ -81,6 +96,7 @@ class EnrollmentDecisionComponent extends Component
         $this->passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
         $this->enFileObj = EnrollmentFiles::where('patient_uuid', $this->patient_uuid)->get();
+        //dd($this->enFileObj);
     }
 
     public function render()
@@ -90,8 +106,16 @@ class EnrollmentDecisionComponent extends Component
         return view('livewire.ctms.patients.decision.enrollment-decision-component');
     }
 
-
-
+    public function fnDownLoadQCfile($report_id)
+    {
+        //dd($report_id);
+        $rep_file = EnrollmentFiles::where('file_uuid', $report_id)->first();
+        //dd("reached", $rep_file);
+        $file_path = "app/public/".$rep_file->file_path.$rep_file->file_name;
+        //return Storage::disk('public')->download(storage_path($file_path), $rep_file->file_name);
+        //return Storage::disk('public')->path($file_path)->download($rep_file->file_name);
+        return response()->download(storage_path($file_path));
+    }
 
 
 
@@ -104,140 +128,223 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveDiscectomyData()
     {
-        
-        //$this->form_a->validate();
-        $this->input = $this->form_a->all();
-        //dd($this->input);
-        $filtered = $this->filterInputNulls($this->input);
-        $filtered['disc_info_entered_by'] = Auth::user()->name;
-        $filtered['disc_info_date_entered'] = date('Y-m-d');
-        $filtered = $this->changeArrayKey($filtered, "code8910", "stage_code");
-        //dd($filtered);
-        $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-        LivewireAlert::title("Discectomy info for Decision updated")->success()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
-        //dd($this->patient_uuid, $filtered);
+        //dd($this->enrObj->discec_status_code);
+        if($this->enrObj->stage_code >= 160 && $this->enrObj->stage_code < 200)
+        {
+            $this->form_a->validate();
+            $this->input = $this->form_a->all();
+            //dd($this->input);
+            $filtered = $this->filterInputNulls($this->input);
+            $filtered['disc_info_entered_by'] = Auth::user()->name;
+            $filtered['disc_info_date_entered'] = date('Y-m-d');
+            $filtered = $this->changeArrayKey($filtered, "code170200", "stage_code");
+            $filtered['discec_status_code'] = $filtered['stage_code'];
+            //dd($filtered);
+            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            LivewireAlert::title("Discectomy info for Decision updated")->success()->show();
+            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
+            //dd($this->patient_uuid, $filtered);
+        }else {
+            LivewireAlert::title("Process NOT Reached the Step Or Elapsed")->warning()->show();
+        }
     }
 
     public function fnSaveDiscectomySamplesData()
     {
-        if($this->enrObj->stage_code <= 10)
+        if($this->enrObj->stage_code == 200 && $this->enrObj->stage_code < 220 )
         {
-            LivewireAlert::title("Process Has to be aborted: Something Failed")->success()->show();
-        }else {
             //dd("reached 2 tab");
             $this->form_b->validate();
             $this->input = $this->form_b->all();
             $filtered = $this->filterInputNulls($this->input);
+            $filtered['discectomy_sample_info_entered_by'] = Auth::user()->name;
+            $filtered['discectomy_sample_info_date_entered'] = date('Y-m-d');
+            $filtered = $this->changeArrayKey($filtered, "code210220", "stage_code");
+            $filtered['discec_sample_status_code'] = $filtered['stage_code'];
+            //dd($filtered);
             $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
             LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
             Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
+        }else {
+            LivewireAlert::title("Process NOT Reached the Step Or Elapsed")->success()->show();
+        }
+    }
+                    
+    public function fnSaveEnrolQCPart1Data()
+    {
+        if($this->enrObj->stage_code == 220 && $this->enrObj->stage_code < 300)
+        { 
+            //$this->form_x->validate();
+            $repfiles = [];
+            $qc_report_file_count = 0;
+            $fileinfo['patient_uuid'] = $this->patient_uuid;
+
+            
+            if ($this->form_x->qc_report_1) 
+            {
+                $this->validate([
+                'form_x.qc_report_1' => 'required|file|mimes:pdf|max:5120', // 5MB
+                ]);
+                $fileinfo['file_code'] = 881;
+                $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
+                if($result['status'])
+                {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_1 For Decision');
+                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                }else {
+                    LivewireAlert::titile($msg)->warning()->show();
+                }
+            } 
+
+
+            if ($this->form_x->qc_report_2) 
+            {
+                $this->validate([
+                'form_x.qc_report_2' => 'required|file|mimes:pdf|max:5120', // 5MB
+                ]);
+                $fileinfo['file_code'] = 882;
+                $result = $this->uploadEnrollemntFile($this->form_x->qc_report_2, $fileinfo);
+                if($result['status'])
+                {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_2 For Decision');
+                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                }else {
+                    LivewireAlert::titile($msg)->warning()->show();
+                }
+            } 
+            
+            $this->form_d->validate();
+            $this->input = $this->form_d->all();
+            $filtered = $this->filterInputNulls($this->input);
+            $merged = array_merge($filtered, $repfiles);
+            $merged['qc_infos_entered_by'] = Auth::user()->name;
+            $merged['qc_infos_date_entered'] = date('Y-m-d');
+            $filtered = $this->changeArrayKey($filtered, "code230240", "stage_code");
+            $filtered['qc_status_code'] = $filtered['stage_code'];
+            //dd($filtered);
+            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+
+            LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
+            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
+        
+        } else {
+            LivewireAlert::title("QC Step Not Reached or Elapsed")->warning()->show();
         }
     }
 
-    public function fnSaveEnrolQCData()
+
+
+    public function fnSaveEnrolPart2QCData()
     {
-        $this->form_x->validate();
-        $repfiles = [];
-        $qc_report_file_count = 0;
-        $fileinfo['patient_uuid'] = $this->patient_uuid;
+        //dd($this->enrObj->stage_code);
+        if($this->enrObj->stage_code > 220 && $this->enrObj->stage_code < 300)
+        { 
+            //$this->form_x->validate();
+            $repfiles = [];
+            $qc_report_file_count = 0;
+            $fileinfo['patient_uuid'] = $this->patient_uuid;
 
-        if ($this->form_x->qc_report_1) 
-        {
-            $fileinfo['file_code'] = 881;
-            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
-            if($result['status'])
-            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_1 For Decision');
-                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
-            }else {
-                LivewireAlert::titile($msg)->warning()->show();
-            }
-        } 
+            if ($this->form_x->qc_report_3) 
+            {
+                $this->validate([
+                'form_x.qc_report_3' => 'file|mimes:pdf|max:5120', // 5MB
+                ]);
+                $fileinfo['file_code'] = 883;
+                $result = $this->uploadEnrollemntFile($this->form_x->qc_report_3, $fileinfo);
+                if($result['status'])
+                {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_3 For Decision');
+                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                }else {
+                    LivewireAlert::titile($msg)->warning()->show();
+                }
+            } 
 
+            if ($this->form_x->qc_coa) 
+            {
+                $this->validate([
+                'form_x.qc_coa' => 'file|mimes:pdf|max:5120', // 5MB
+                ]);
+                $fileinfo['file_code'] = 884;
+                $result = $this->uploadEnrollemntFile($this->form_x->qc_coa, $fileinfo);
+                if($result['status'])
+                {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_COA For Decision');
+                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                }else {
+                    LivewireAlert::titile($msg)->warning()->show();
+                }
+            } 
 
-        if ($this->form_x->qc_report_2) 
-        {
-            $fileinfo['file_code'] = 882;
-            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
-            if($result['status'])
-            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_2 For Decision');
-                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
-            }else {
-                LivewireAlert::titile($msg)->warning()->show();
-            }
-        } 
-
-        if ($this->form_x->qc_report_3) 
-        {
-            $fileinfo['file_code'] = 883;
-            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
-            if($result['status'])
-            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_3 For Decision');
-                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
-            }else {
-                LivewireAlert::titile($msg)->warning()->show();
-            }
-        } 
-
-        if ($this->form_x->qc_coa) 
-        {
-            $fileinfo['file_code'] = 884;
-            $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
-            if($result['status'])
-            {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_COA For Decision');
-                $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
-            }else {
-                LivewireAlert::titile($msg)->warning()->show();
-            }
-        } 
-
-
-        $this->input = $this->form->all();
-        $filtered = $this->filterInputNulls($this->input);
-        $merged = array_merge($filtered, $repfiles);
-        $merged['qc_infos_entered_by'] = Auth::user()->name;
-        $merged['qc_infos_date_entered'] = date('Y-m-d');
-        $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($merged);
-        LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
+            $this->form_i->validate();
+            $this->input = $this->form_i->all();
+            $filtered = $this->filterInputNulls($this->input);
+            $merged = array_merge($filtered, $repfiles);
+            $merged['qc_infos_entered_by'] = Auth::user()->name;
+            $merged['qc_infos_date_entered'] = date('Y-m-d');
+            $filtered = $this->changeArrayKey($filtered, "code280300", "stage_code");
+            $filtered['qc_status_code'] = $filtered['stage_code'];
+            //dd($filtered);
+            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            $this->reset();
+            LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
+            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
+        
+        } else {
+            LivewireAlert::title("QC Step Not Reached or Elapsed")->warning()->show();
+        }
     }
 
     public function fnSaveEnrolQAData()
     {
-        //dd("reached 4 tab");
-        $this->input = $this->form->all();
-        $filtered = $this->filterInputNulls($this->input);
-        $filtered['qa_infos_entered_by'] = Auth::user()->name;
-        $filtered['qa_infos_date_entered'] = date('Y-m-d');
-        //dd($filtered);
-        $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-        LivewireAlert::title("QA info for Decision updated")->success()->show();
+        if($this->enrObj->stage_code == 300 && $this->enrObj->stage_code < 320)
+        {
+
+            //dd("reached 4 tab");
+            $this->form_e->validate();
+            $this->input = $this->form_e->all();
+            $filtered = $this->filterInputNulls($this->input);
+            $filtered['qa_infos_entered_by'] = Auth::user()->name;
+            $filtered['qa_infos_date_entered'] = date('Y-m-d');
+            $filtered = $this->changeArrayKey($filtered, "code310320", "stage_code");
+            $filtered['qa_status_code'] = $filtered['stage_code'];
+            //dd($filtered);
+            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            $this->reset();
+            LivewireAlert::title("QA info for Decision updated")->success()->show();
+
+        }else {
+            LivewireAlert::title("Step Not Reached or Elapsed")->warning()->show();
+        }
     }
 
     public function fnSaveEnrollmentDecision()
     {
-        $this->input = $this->form->all();
-        $filtered = $this->filterInputNulls($this->input);
-
-        if(array_key_exists('enrollment_decision', $filtered))
+        if($this->enrObj->discec_status_code == 320)
         {
-            $filtered['status'] = 'current';
-            $filtered['status_date'] = date('Y-m-d');
-            $filtered['decision_entered_by'] = Auth::user()->name;
-            $filtered['decision_date_entered'] = date('Y-m-d');
-            //dd($filtered);
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-            LivewireAlert::title("Decision Update")->success()->show();
-        }else {
-            LivewireAlert::title("Decision NOT Selected")->warning()->show();
+            $this->form_f->validate();
+            $this->input = $this->form_f->all();
+            $filtered = $this->filterInputNulls($this->input);
+
+            if(array_key_exists('enrollment_decision', $filtered))
+            {
+                $filtered['status'] = 'current';
+                $filtered['status_date'] = date('Y-m-d');
+                $filtered['decision_entered_by'] = Auth::user()->name;
+                $filtered['decision_date_entered'] = date('Y-m-d');
+                dd($filtered);
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                LivewireAlert::title("Decision Update")->success()->show();
+            }else {
+                LivewireAlert::title("Decision NOT Selected")->warning()->show();
+            }
+        }else{
+            LivewireAlert::title("Stage NOT Reached or Elapsed")->warning()->show();
         }
     }
 
     public function fnSaveEnrollmentIDs()
     {
-       if($this->enrObj->enrollment_decision === "yes")
+        if($this->enrObj->discec_status_code == 340 && $this->enrObj->enrollment_decision === "yes")
         {
-            $this->input = $this->form->all();
+            $this->form_g->validate();
+            $this->input = $this->form_g->all();
             $filtered = $this->filterInputNulls($this->input);
             $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
 
@@ -262,24 +369,31 @@ class EnrollmentDecisionComponent extends Component
             $newTodo->save();
 
         }else{
-            LivewireAlert::title("Patient NOT Enrolled")->warning()->show();
+            LivewireAlert::title("Step Not Reached or Patient NOT Enrolled")->warning()->show();
         }
+        
 
     }
 
     public function fnSaveTransplantationData()
     {
-        //query here whether or not decision taken and it is yes.
-        //dd("reached 7 tab");
-       if($this->enrObj->enrollment_decision === "yes")
+        if($this->enrObj->discec_status_code == 350 && $this->enrObj->discec_status_code < 370)
         {
-            $this->input = $this->form->all();
-            $filtered = $this->filterInputNulls($this->input);
-            $filtered['transplant_info_entered_by'] = Auth::user()->name;
-            $filtered['transplant_info_date_entered'] = date('Y-m-d');
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            //query here whether or not decision taken and it is yes.
+            //dd("reached 7 tab");
+            if($this->enrObj->enrollment_decision === "yes")
+            {
+                $this->form_h->validate();
+                $this->input = $this->form_h->all();
+                $filtered = $this->filterInputNulls($this->input);
+                $filtered['transplant_info_entered_by'] = Auth::user()->name;
+                $filtered['transplant_info_date_entered'] = date('Y-m-d');
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            }else{
+                LivewireAlert::title("Patient NOT Enrolled")->warning()->show();
+            }
         }else{
-            LivewireAlert::title("Patient NOT Enrolled")->warning()->show();
+            LivewireAlert::title("Step Not Reached or Elapsed")->warning()->show();
         }
     }
 

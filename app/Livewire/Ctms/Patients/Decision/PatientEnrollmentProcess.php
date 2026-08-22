@@ -35,6 +35,7 @@ class PatientEnrollmentProcess extends Component
 
     //new paitent global uuid
     public $patient_uuid, $opd_id, $entry="update", $sealed_patients, $entered_by;
+    public $enroll_status;
 
     //form variables
 
@@ -52,7 +53,8 @@ class PatientEnrollmentProcess extends Component
     public function render()
     {
         $this->sealed_patients = Patient::where('status','sealed')->get();
-        //dd($this->confirmed_patients);
+        $this->enroll_status = Enrollment::where('stage_code','>=', 160)->get();
+        //dd($this->enroll_status);
         $this->entered_by = Auth::user()->name;
         //dd($this->confirmedPatients);
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Enrollment Decision home page');

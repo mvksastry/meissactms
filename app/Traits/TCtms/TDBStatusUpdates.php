@@ -76,7 +76,7 @@ trait TDBStatusUpdates
             break;
 
             case 'sealed':
-              $statusUpdate->status_code = 6; //determine this value through a login and algorithm
+              $statusUpdate->status_code = 160; //determine this value through a login and algorithm
               $statusUpdate->comment_sealed_by=  $input['status_comment'];
               $statusUpdate->sealed_by = Auth::user()->name;
               $statusUpdate->sealed_date = date('Y-m-d');

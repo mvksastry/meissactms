@@ -22,18 +22,19 @@
       <tr>
         <td>
           <div class="form-group">
+            <label class="form-check-label text-danger"><strong>Code210220</strong></label>
             <div class="form-check">
-              <input wire:model.live="form_b.code1112" class="form-check-input" value="11" type="radio"
+              <input wire:model.live="form_b.code210220" class="form-check-input" value="210" type="radio"
                 name="radio1">
               <label class="form-check-label">discectomy-sample-status-fail</label>
             </div>
             <div class="form-check">
-              <input wire:model.live="form_b.code1112" class="form-check-input" value="12" type="radio"
+              <input wire:model.live="form_b.code210220" class="form-check-input" value="220" type="radio"
                 name="radio1">
               <label class="form-check-label">discectomy-sample-status-success</label>
             </div>
             </br>
-            @error('form.code8910')
+            @error('form.code210220')
               <span class="text-danger">{{ $message }}</span>
             @enderror
           </div>

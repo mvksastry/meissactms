@@ -138,7 +138,7 @@ class ManagePatients extends Component
         $this->obpInfo->ob_status = 'completed';
 
         //now global falg till end of patient life cycle
-        $this->obpInfo->status_code = 10; // is defined as pre-enrollment stage
+        $this->obpInfo->status_code = 160; // is defined as pre-enrollment stage
         $this->obpInfo->status = 'draft';
         $this->obpInfo->status_date = date('Y-m-d');
 

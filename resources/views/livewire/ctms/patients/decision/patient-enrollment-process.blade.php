@@ -27,13 +27,17 @@
           <div class="card-header">
             <h3 class="card-title">
               <i class="fas fa-tag"></i>
-              Active Patient List
+              Active Patient List x
             </h3>
           </div>
           <div class="card-body">
             <!-- /.col-12 -->
             <!-- /.col-12 -->
             <div class="row">
+              @php
+                $steps = config('ctms.steps');
+                //dd($steps);
+              @endphp
               @if (count($sealed_patients) > 0)
                 <table id="userIndex2" class="table table-sm table-bordered table-hover">
                   <thead>
@@ -44,7 +48,7 @@
                       <th>Gender</th>
                       <th>Date or Pre-Enroll</th>
                       <th>Approval Date</th>
-
+                      <th>Status Code</th>
                       <th>Status</th>
                       <th>Details</th>
                     </tr>
@@ -70,14 +74,148 @@
                         <td>
                           {{ $patient->created_at }}
                         </td>
-
+                        <td>
+                          {{ $steps[$patient->status_code] }}
+                        </td>
                         <td>
                           {{ ucfirst($patient->status) }}
                         </td>
+                        @hasrole('ctms_incharge')
+                          @if ($patient->status_code >= 160)
+                            <td>
+                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Enrollment</button>
+                            </td>
+                          @endif
+                        @endhasrole
+
+                        @hasrole('qc_incharge')
+                          @if ($patient->status_code >= 190)
+                            <td>
+                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Enrollment</button>
+                            </td>
+                          @endif
+                        @endhasrole
+
+                        @hasrole('qa_incharge')
+                          @if ($patient->status_code >= 200)
+                            <td>
+                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Enrollment</button>
+                            </td>
+                          @endif
+                        @endhasrole
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              @else
+                <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>No Information to display</th>
+                    </tr>
+                  </thead>
+                </table>
+              @endif
+            </div>
+
+            <div class="row">
+              @if (count($enroll_status) > 0)
+                <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Discec Status</th>
+                      <th>Sample Status</th>
+                      <th>QC Status</th>
+                      <th>QA Status</th>
+                      <th>Process Status</th>
+                      <th>As On</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($enroll_status as $row)
+                      <tr>
                         <td>
-                          <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
-                            class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                            Enrollment</button>
+                          @if ($row->discec_status_code >= 200)
+                            <span class="badge badge-success">
+                              {{ $steps[$row->discec_status_code] }}
+                            </span>
+                          @else
+                            Not Available
+                          @endif
+                        </td>
+                        <td>
+
+                          @if ($row->discec_sample_status_code >= 220)
+                            <span class="badge badge-success">
+                              {{ $steps[$row->discec_sample_status_code] }}
+                            </span>
+                          @else
+                            Not Available
+                          @endif
+
+                        </td>
+                        <td>
+                          @if ($row->qc_status_code >= 300)
+                            <span class="badge badge-success">
+                              {{ $steps[$row->qc_status_code] }}
+                            </span>
+                          @else
+                            Not Available
+                          @endif
+                        </td>
+                        <td>
+                          @if ($row->qa_status_code >= 300)
+                            <span class="badge badge-success">
+                              {{ $steps[$row->qa_status_code] }}
+                            </span>
+                          @else
+                            Not Available
+                          @endif
+                        </td>
+                        <td>
+                          <span class="badge badge-primary">
+                            {{ $steps[$row->stage_code] }}
+                          </span </td>
+                        <td>
+                          {{ $row->created_at }}
+                        </td>
+                        <td>
+                          @hasrole('ctms_incharge')
+                            @if ($row->stage_code >= 160)
+                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Enrollment</button>
+                            @endif
+                          @endhasrole
+
+                          @hasrole('qc_incharge')
+                            @if ($row->stage_code >= 220)
+                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Enrollment</button>
+                            @endif
+                          @endhasrole
+
+                          @hasrole('qa_incharge')
+                            @if ($row->stage_code >= 300)
+                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Enrollment</button>
+                            @endif
+                          @endhasrole
                         </td>
                       </tr>
                     @endforeach

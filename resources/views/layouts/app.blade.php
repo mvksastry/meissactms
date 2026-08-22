@@ -28,6 +28,18 @@
       @include('layouts.menus.ctms.incharge')
     @endhasexactroles
 
+    @hasexactroles('qc_incharge')
+      @include('layouts.menus.ctms.qc_chief')
+    @endhasexactroles
+
+    @hasexactroles('qa_incharge')
+      @include('layouts.menus.ctms.qa_chief')
+    @endhasexactroles
+
+    @hasexactroles('process_incharge')
+      @include('layouts.menus.ctms.process_chief')
+    @endhasexactroles
+
     @hasexactroles('cro')
       @include('layouts.menus.ctms.cro')
     @endhasexactroles

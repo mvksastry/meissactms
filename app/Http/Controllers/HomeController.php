@@ -27,6 +27,9 @@ use App\Traits\Base;
 use App\Traits\TCtms\TRoleL1\TL1Dash;
 use App\Traits\TCtms\TDashboard;
 use App\Traits\TCtms\TCroDashboard;
+use App\Traits\TCtms\TProcess\TProcessDBQueries;
+use App\Traits\TCtms\TQa\TQaDBQueries;
+use App\Traits\TCtms\TQc\TQcDBQueries;
 
 class HomeController extends Controller
 {
@@ -37,6 +40,9 @@ class HomeController extends Controller
     use TDashboard;
     use TL1Dash;
     use TCroDashboard;
+    use TProcessDBQueries;
+    use TQaDBQueries;
+    use TQcDBQueries;
 
     /**
      * Show the application dashboard.
@@ -131,6 +137,43 @@ class HomeController extends Controller
                 'fuPatients' => $fuPatients
             ]);
         }
+
+        if( Auth::user()->hasAnyRole(['qc_incharge']) )
+		{
+            $sealed = $this->getPatientsSealedStatus();
+            $qcInpFlag = $this->getPatientsEnrollmentStatus();
+            //dd($sealed, $qcInpFlag);
+            //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
+            return view('layouts.home.ctms.qc.qcHome')->with([
+                'sealed' => $sealed,    
+                'qcInpFlag' => $qcInpFlag
+            ]);
+        }
+
+        if( Auth::user()->hasAnyRole(['qa_incharge']) )
+		{
+            $sealed = $this->getPatientsSealedStatus();
+            $qaInpFlag = $this->getPatientsWithConfirmedStatus();
+            //dd($sealed);
+            //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
+            return view('layouts.home.ctms.qa.qaHome')->with([
+                'qaInpFlag' => $qaInpFlag
+            ]);
+        }
+
+        if( Auth::user()->hasAnyRole(['process_incharge']) )
+		{
+            $processFlag = $this->getPatientsWithConfirmedStatus();
+
+            //dd($pwds);
+            Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
+            return view('layouts.home.ctms.process.processChiefHome')->with([
+                'processFlag' => $processFlag
+            ]);
+        }
+
 
         if( Auth::user()->hasAnyRole(['senior_resident']) )
 		{

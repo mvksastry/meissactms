@@ -339,7 +339,7 @@ class MarkAsComplete extends Component
         $status_code = $patient->status_code;
 
         
-        $status_code = 10;
+        $status_code = 160;
         //assume that this is the array came back from db.
         $steps = [   
                       "10" => 'pre-enrollment', 

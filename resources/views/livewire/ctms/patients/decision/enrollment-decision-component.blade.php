@@ -13,7 +13,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-chart-pie mr-1"></i>
-                Decision Information For: {{ $passObj->name }}
+                Decision Information For: {{ $patient_uuid }}
               </h3>
               <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
@@ -51,51 +51,71 @@
                     @endif
                     <div wire:ignore class="card">
                       <div class="card-header d-flex p-0">
-                        <h3 class="card-title p-3">New Enrollment Information</h3>
+                        <h3 class="card-title p-3">New Enrollment Information x</h3>
                         <ul class="nav nav-pills ml-auto p-2">
                           <li class="nav-item"><a class="nav-link" href="#tab_1" data-toggle="tab">Instructions</a>
                           </li>
                           <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Discectomy</a></li>
+
                           <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Samples</a></li>
-                          <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">QC & QA</a></li>
-                          <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">Decision</a></li>
-                          <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Administrative</a>
+
+                          @hasrole('qc_incharge')
+                            <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">QC</a></li>
+                          @endhasrole
+                          @hasrole('qa_incharge')
+                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">QA</a></li>
+                          @endhasrole
+                          <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Decision</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">Administrative</a>
                           </li>
-                          <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">Transplantation</a>
+                          <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">Transplantation</a>
                           </li>
                         </ul>
                       </div><!-- /.card-header -->
                       <div class="card-body">
                         <div class="tab-content">
                           <!-- /.tab-pane -->
+
                           <div class="tab-pane" id="tab_1">
                             @include('livewire.ctms.patients.forms.enroll-instructions')
                           </div>
-
-                          <div class="tab-pane" id="tab_2">
-                            @include('livewire.ctms.patients.forms.discectomy')
-                          </div>
+                          @hasrole('ctms_incharge')
+                            <div class="tab-pane" id="tab_2">
+                              @include('livewire.ctms.patients.forms.discectomy')
+                            </div>
+                          @endhasrole
                           <!-- /.tab-pane -->
-                          <div class="tab-pane" id="tab_3">
-                            @include('livewire.ctms.patients.forms.discectomy-samples')
-                          </div>
+                          @hasrole('ctms_incharge')
+                            <div class="tab-pane" id="tab_3">
+                              @include('livewire.ctms.patients.forms.discectomy-samples')
+                            </div>
+                          @endhasrole
                           <!-- /.tab-pane -->
-                          <div class="tab-pane" id="tab_4">
-                            @include('livewire.ctms.patients.forms.qc-qa-infos')
-                          </div>
+                          @hasrole('qc_incharge')
+                            <div class="tab-pane" id="tab_4">
+                              @include('livewire.ctms.patients.forms.qc-qa-infos')
+                            </div>
+                          @endhasrole
+                          @hasrole('qa_incharge')
+                            <div class="tab-pane" id="tab_5">
+                              @include('livewire.ctms.patients.forms.qa-inputs')
+                            </div>
+                          @endhasrole
                           <!-- /.tab-pane -->
-                          <div class="tab-pane" id="tab_5">
-                            @include('livewire.ctms.patients.forms.decision-controls')
-                          </div>
-                          <!-- /.tab-pane -->
-                          <div class="tab-pane" id="tab_6">
-                            @include('livewire.ctms.patients.forms.administrative')
-                          </div>
-                          <!-- /.tab-pane -->
-                          <!-- /.tab-pane -->
-                          <div class="tab-pane" id="tab_7">
-                            @include('livewire.ctms.patients.forms.transplantation')
-                          </div>
+                          @hasrole('ctms_incharge')
+                            <div class="tab-pane" id="tab_6">
+                              @include('livewire.ctms.patients.forms.decision-controls')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_7">
+                              @include('livewire.ctms.patients.forms.administrative')
+                            </div>
+                            <!-- /.tab-pane -->
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_8">
+                              @include('livewire.ctms.patients.forms.transplantation')
+                            </div>
+                          @endhasrole
                           <!-- /.tab-pane -->
                           <!-- /.tab-pane -->
                           <!-- /.tab-pane -->

@@ -49,22 +49,27 @@
         <td>
           <div class="form-group">
             <div class="form-check">
-              <input wire:model.live="form_a.code8910" class="form-check-input" value="7" type="radio"
+              <input wire:model.live="form_a.code170200" class="form-check-input" value="170" type="radio"
                 name="radio1">
               <label class="form-check-label">patient-aborted-at-discectomy</label>
             </div>
             <div class="form-check">
-              <input wire:model.live="form_a.code8910" class="form-check-input" value="8" type="radio"
+              <input wire:model.live="form_a.code170200" class="form-check-input" value="180" type="radio"
                 name="radio1">
               <label class="form-check-label">discectomy-completed</label>
             </div>
             <div class="form-check">
-              <input wire:model.live="form_a.code8910" class="form-check-input" value="10" type="radio"
+              <input wire:model.live="form_a.code170200" class="form-check-input" value="190" type="radio"
                 name="radio1">
               <label class="form-check-label">discectomy-sample-collected</label>
             </div>
+            <div class="form-check">
+              <input wire:model.live="form_a.code170200" class="form-check-input" value="200" type="radio"
+                name="radio1">
+              <label class="form-check-label">discectomy-sample-passed-to-process</label>
+            </div>
             </br>
-            @error('form.code8910')
+            @error('form.code170200')
               <span class="text-danger">{{ $message }}</span>
             @enderror
           </div>

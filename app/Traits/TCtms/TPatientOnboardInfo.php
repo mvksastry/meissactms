@@ -92,7 +92,7 @@ trait TPatientOnboardInfo
           $newPatientInfo->primary_phone_number =  $input['primary_phone_number'];
           
           //status
-          $newPatientInfo->status_code = 1; //very important, default null untill approval done
+          $newPatientInfo->status_code = 100; //very important, default null untill approval done
           $newPatientInfo->status = null;  //very important, default null untill approval done
           $newPatientInfo->status_date = date('Y-m-d');
           $newPatientInfo->appendComment('comment_entered_by', $input['comment_entered_by']);
