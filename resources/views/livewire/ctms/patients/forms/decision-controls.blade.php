@@ -10,74 +10,53 @@
     <tbody>
       <tr>
         <td>
-          OPD ID: {{ $enrObj->opd_id }} </br>
-          IPD ID: {{ $enrObj->discectomy_ipd_id }} </br>
-          Admission Date: {{ $enrObj->discectomy_admission_date }}
+          <button class='btn btn-secondary text-white font-normal rounded'>
+            OPD ID: {{ $enrObj->opd_id }}</button> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button class='btn btn-secondary text-white font-normal rounded'>
+            IPD ID: {{ $enrObj->discectomy_ipd_id }} </button> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button class='btn btn-secondary text-white font-normal rounded'>
+            Admission Date: {{ $enrObj->discectomy_admission_date }} </button> &nbsp;&nbsp;&nbsp;&nbsp;
         </td>
       </tr>
 
       <tr>
         <td>
-          Discectomy Date: {{ $enrObj->discectomy_date }} </br>
-          Surgenos: {{ $enrObj->surgeons_names }} </br>
-          Other: {{ $enrObj->discectomy_other_info }} </br>
-          Comment: {{ $enrObj->discectomy_comments }} </br>
-          Status code: {{ $step_code[$enrObj->discec_status_code] }}</br>
-          Entered By: {{ $enrObj->disc_info_entered_by }} </br>
-          Date: {{ $enrObj->disc_info_date_entered }}
+          @include('livewire.ctms.patients.decision.discectomy-table')
         </td>
       </tr>
 
       <tr>
         <td>
-          Discectomy Sample Description: {{ $enrObj->discectomy_sample_desc }}</br>
-          Number of Samples: {{ $enrObj->discectomy_sample_number }} </br>
-          Comment: {{ $enrObj->discectomy_sample_comments }}</br>
-          Entered By: {{ $enrObj->discectomy_sample_info_entered_by }} </br>
-          Date: {{ $enrObj->discectomy_sample_info_date_entered }}
+          @include('livewire.ctms.patients.decision.sample-table')
         </td>
       </tr>
+      <tr>
+        <td>
+          @include('livewire.ctms.patients.decision.qc-table')
 
       <tr>
         <td>
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
-              <tr>
-                <th align="center">File Code</th>
-                <th align="center">Report Cateogry</th>
-                <th align="center">Action</th>
-              </tr>
             </thead>
             <tbody>
-              @foreach ($enFileObj as $row)
-                <tr>
-                  <td>
-                    {{ $row->file_code }}
-                  </td>
-                  <td>
-                    {{ $row->report_category }}
-                  </td>
-                  <td>
+              <tr>
+                <td>
+                  @foreach ($enFileObj as $row)
                     <button wire:click="fnDownLoadQCfile('{{ $row->file_uuid }}')"
-                      class="btn btn-success text-white font-normal rounded">DOWNLOAD
-                      {{ $row->report_category }}</button>
-                  </td>
-                </tr>
-              @endforeach
-              Other Infos: {{ $enrObj->qc_other_infos }}</br>
-              Comment: {{ $enrObj->qc_enrollment_comment }} </br>
-              Entered By: {{ $enrObj->qc_infos_entered_by }} </br>
-              Date: {{ $enrObj->qc_infos_date_entered }}
-
+                      class='btn btn-success text-white font-normal rounded'>
+                      {{ $row->report_category }} </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                  @endforeach
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </td>
       </tr>
 
       <tr>
         <td>
-          QA Comment: {{ $enrObj->qa_enrollment_comment }} </br>
-          QA Other Info: {{ $enrObj->qa_other_infos }} </br>
-          Entered By: {{ $enrObj->qa_infos_entered_by }} </br>
-          Date: {{ $enrObj->qa_infos_date_entered }}
+          @include('livewire.ctms.patients.decision.qa-table')
         </td>
       </tr>
 
