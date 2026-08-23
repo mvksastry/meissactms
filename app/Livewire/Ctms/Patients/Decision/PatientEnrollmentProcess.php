@@ -53,7 +53,9 @@ class PatientEnrollmentProcess extends Component
     public function render()
     {
         $this->sealed_patients = Patient::where('status','sealed')->get();
-        $this->enroll_status = Enrollment::where('stage_code','>=', 160)->get();
+        $this->enroll_status = Enrollment::where('stage_code','>=', 160)
+                                            //->where('stage_code','<', 370)
+                                            ->get();
         //dd($this->enroll_status);
         $this->entered_by = Auth::user()->name;
         //dd($this->confirmedPatients);

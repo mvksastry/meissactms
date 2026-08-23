@@ -13,6 +13,7 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\Decisions\Enrollment;
 use App\Models\Ctms\Decisions\EnrollmentFiles;
 use App\Models\Common\Todo;
+use App\Models\Common\Chat;
 
 //forms
 use App\Livewire\Forms\Decisions\DecisionProcessingForm;
@@ -345,37 +346,51 @@ class EnrollmentDecisionComponent extends Component
 
         if($this->go)
         {
-            if($this->enrObj->stage_code == 320)
+            if($this->enrObj->stage_code == 320 || $this->enrObj->stage_code == 340)
             {
                 //dd("inside");
                 $this->form_f->validate();
                 $this->input = $this->form_f->all();
-                $filtered = $this->filterInputNulls($this->input);
+                $filtered = $this->filterInputNulls($this->input);          
 
                 if(array_key_exists('enrollment_decision', $filtered))
                 {
-                    $filtered['status'] = 'pending';
-                    $filtered['status_date'] = date('Y-m-d');
-                    $filtered['decision_entered_by'] = Auth::user()->name;
-                    $filtered['decision_date_entered'] = date('Y-m-d');
-                    //dd($filtered);
-                    $this->enrObj->status = 'pending';
-                    $this->enrObj->status_date = date('Y-m-d');
-                    //get the code of the 
                     $codes = config('ctms.steps'); 
-
+                    $filtered['status_date'] = date('Y-m-d');
                     $this->enrObj->stage_code = $filtered['enrollment_decision'];
                     $this->enrObj->enrollment_decision = $codes[$filtered['enrollment_decision']];
-                    $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
-                    $this->enrObj->decision_entered_by = Auth::user()->name;
-                    $this->enrObj->decision_date_entered = date('Y-m-d');
-                    //dd($filtered['comment_decision'], $this->enrObj);
-                    $this->enrObj->save();
+                    $this->enrObj->status_date = date('Y-m-d');
+                    //get the code of the 
+                    
 
-                    //$qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-                    LivewireAlert::title("Decision Update")->success()->show();
+                    if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+		            {
+                        //$filtered['status'] = 'pending';
+                        //$filtered['decision_entered_by'] = Auth::user()->name;
+                        //$filtered['decision_date_entered'] = date('Y-m-d');
+                        //dd($filtered);
+                        $this->enrObj->status = 'pending';
+
+                        $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
+                        $this->enrObj->decision_entered_by = Auth::user()->name;
+                        $this->enrObj->decision_date_entered = date('Y-m-d');
+                        //dd($filtered['comment_decision'], $this->enrObj);
+                        $this->enrObj->save();
+                        //$qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                        LivewireAlert::title("In-Charge: Enrollment Decision Updated")->success()->show();
+                    }
+
+                    if( Auth::user()->hasAnyRole(['director']) )
+		            {
+                        $this->enrObj->status = 'approved';
+                        $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
+                        $this->enrObj->approved_by = Auth::user()->name;
+                        $this->enrObj->approved_date = date('Y-m-d');
+                        //dd($filtered['comment_decision'], $this->enrObj);
+                        $this->enrObj->save();
+                        LivewireAlert::title("Director: Enrollment Decision Updated")->success()->show();
+                    }
                     $this->form_f->reset();
-
                 }else {
                     LivewireAlert::title("Decision NOT Selected")->warning()->show();
                 }
@@ -384,17 +399,20 @@ class EnrollmentDecisionComponent extends Component
             }
         }else {
             LivewireAlert::title("Failed Steps Found, Aborting Enrollment")->warning()->show();
+            //code for aborting here.
         }
 
     }
 
     public function fnSaveEnrollmentIDs()
     {
-        if($this->enrObj->discec_status_code == 340 && $this->enrObj->enrollment_decision === "yes")
+        if($this->enrObj->stage_code == 340)
         {
             $this->form_g->validate();
             $this->input = $this->form_g->all();
             $filtered = $this->filterInputNulls($this->input);
+            $filtered['stage_code'] = 350;
+            //dd($filtered);
             $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
 
             //now we have update ctms_activity table here. Why? 
@@ -412,13 +430,14 @@ class EnrollmentDecisionComponent extends Component
 
             //when en enrollment id created, it be made visible to the respective teams???
             //best is to make an entry in todo list for team members.
-            $newTodo = new Todo();
-            $newTodo->user_id = Auth::user()->id;
-            $newTodo->message = "New Patient Enrollment Done, Create MBR and other records";
-            $newTodo->save();
-
+            $newChat = new Chat();
+            $newChat->user_id = Auth::user()->id;
+            $newChat->message = "New Patient Enrollment Done, Update MBR and other records";
+            $newChat->save();
+            LivewireAlert::title("Assigned Administrative Ids")->success()->show();
+            $this->form_g->reset();
         }else{
-            LivewireAlert::title("Step Not Reached or Patient NOT Enrolled")->warning()->show();
+            LivewireAlert::title("Step Not Reached or Elapsed")->warning()->show();
         }
         
 
@@ -426,21 +445,23 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveTransplantationData()
     {
-        if($this->enrObj->discec_status_code == 350 && $this->enrObj->discec_status_code < 370)
+        if($this->enrObj->stage_code == 350 && $this->enrObj->stage_code < 370)
         {
+            $steps = config('ctms.steps');
             //query here whether or not decision taken and it is yes.
             //dd("reached 7 tab");
-            if($this->enrObj->enrollment_decision === "yes")
-            {
+
                 $this->form_h->validate();
                 $this->input = $this->form_h->all();
                 $filtered = $this->filterInputNulls($this->input);
                 $filtered['transplant_info_entered_by'] = Auth::user()->name;
                 $filtered['transplant_info_date_entered'] = date('Y-m-d');
+                $filtered['stage_code'] = $filtered['transplant_status'];
+                $filtered['transplant_status'] = $steps[$filtered['transplant_status']];
+                //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-            }else{
-                LivewireAlert::title("Patient NOT Enrolled")->warning()->show();
-            }
+                LivewireAlert::title("Transplant Status Updated! This Completes Enrollment")->success()->show();
+                $this->form_h->reset();
         }else{
             LivewireAlert::title("Step Not Reached or Elapsed")->warning()->show();
         }

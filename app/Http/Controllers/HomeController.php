@@ -140,8 +140,8 @@ class HomeController extends Controller
 
         if( Auth::user()->hasAnyRole(['qc_incharge']) )
 		{
-            $sealed = $this->getPatientsSealedStatus();
-            $qcInpFlag = $this->getPatientsEnrollmentStatus();
+            $sealed = $this->getQCPatientsSealedStatus();
+            $qcInpFlag = $this->getQCPatientsEnrollmentStatus();
             //dd($sealed, $qcInpFlag);
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
@@ -153,12 +153,13 @@ class HomeController extends Controller
 
         if( Auth::user()->hasAnyRole(['qa_incharge']) )
 		{
-            $sealed = $this->getPatientsSealedStatus();
-            $qaInpFlag = $this->getPatientsWithConfirmedStatus();
+            $sealed = $this->getQAPatientsSealedStatus();
+            $qaInpFlag = $this->getQAPatientsEnrollmentStatus();
             //dd($sealed);
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.qa.qaHome')->with([
+                'sealed' => $sealed,    
                 'qaInpFlag' => $qaInpFlag
             ]);
         }

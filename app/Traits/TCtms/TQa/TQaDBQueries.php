@@ -24,7 +24,17 @@ use Illuminate\Support\Facades\Log;
 trait TQaDBQueries
 {
 
+  public function getQAPatientsSealedStatus()
+  {
+      $status = ['sealed'];
+      return Patient::whereIn('status', $status)->get();
+  }
 
+  public function getQAPatientsEnrollmentStatus()
+  {
+      return Enrollment::where('stage_code', '>=', 300)
+                        ->where('stage_code', '<', 320)->get();
+  }
 
 
 }

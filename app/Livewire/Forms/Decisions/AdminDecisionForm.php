@@ -15,4 +15,6 @@ class AdminDecisionForm extends Form
     public $linked_sample_id = null;
     #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
     public $other_infos = null;
+    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
+    public $administrative_comment = null;
 }

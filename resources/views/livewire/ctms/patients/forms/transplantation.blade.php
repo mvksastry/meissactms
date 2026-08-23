@@ -11,12 +11,12 @@
             <!-- radio -->
             <div class="form-group">
               <div class="form-check">
-                <input wire:model.defer="form_h.transplant_status" value="26" class="form-check-input" type="radio"
+                <input wire:model.defer="form_h.transplant_status" value="360" class="form-check-input" type="radio"
                   name="radio1">
                 <label class="form-check-label">Transplantation Aborted</label>
               </div>
               <div class="form-check">
-                <input wire:model.defer="form_h.transplant_status" value="27" class="form-check-input"
+                <input wire:model.defer="form_h.transplant_status" value="370" class="form-check-input"
                   type="radio" name="radio1">
                 <label class="form-check-label">Transplantation Complete</label>
               </div>
@@ -34,7 +34,7 @@
       <tr>
         <td>
           <label>Transplant Info</label>
-          <input wire:model.defer="form_h.transplant_info" type="text" class="form-control"
+          <input wire:model.defer="form_h.transplantation_info" type="text" class="form-control"
             placeholder="Fitness Info">
         </td>
       </tr>

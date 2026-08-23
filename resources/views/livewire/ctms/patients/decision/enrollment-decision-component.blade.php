@@ -102,7 +102,7 @@
                             </div>
                           @endhasrole
                           <!-- /.tab-pane -->
-                          @hasrole('ctms_incharge')
+                          @hasanyrole(['ctms_incharge', 'director'])
                             <div class="tab-pane" id="tab_6">
                               @include('livewire.ctms.patients.forms.decision-controls')
                             </div>
@@ -115,7 +115,7 @@
                             <div class="tab-pane" id="tab_8">
                               @include('livewire.ctms.patients.forms.transplantation')
                             </div>
-                          @endhasrole
+                          @endhasanyrole
                           <!-- /.tab-pane -->
                           <!-- /.tab-pane -->
                           <!-- /.tab-pane -->

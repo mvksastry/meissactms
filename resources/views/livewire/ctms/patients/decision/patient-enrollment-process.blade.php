@@ -190,32 +190,43 @@
                           {{ $row->created_at }}
                         </td>
                         <td>
-                          @hasrole('ctms_incharge')
-                            @if ($row->stage_code >= 160)
-                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
-                                class="btn btn-block btn-warning rounded" type="button"><i
-                                  class="ion ion-person"></i>&nbsp
-                                Enrollment</button>
-                            @endif
-                          @endhasrole
+                          @if ($row->stage_code < 370)
+                            @hasrole('ctms_incharge')
+                              @if ($row->stage_code >= 160)
+                                <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                  class="btn btn-block btn-warning rounded" type="button"><i
+                                    class="ion ion-person"></i>&nbsp
+                                  Enrollment</button>
+                              @endif
+                            @endhasrole
+                            @hasrole('director')
+                              @if ($row->stage_code >= 160)
+                                <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                  class="btn btn-block btn-warning rounded" type="button"><i
+                                    class="ion ion-person"></i>&nbsp
+                                  Enrollment</button>
+                              @endif
+                            @endhasrole
+                            @hasrole('qc_incharge')
+                              @if ($row->stage_code >= 220 && $row->stage_code < 300)
+                                <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                  class="btn btn-block btn-warning rounded" type="button"><i
+                                    class="ion ion-person"></i>&nbsp
+                                  Enrollment</button>
+                              @endif
+                            @endhasrole
 
-                          @hasrole('qc_incharge')
-                            @if ($row->stage_code >= 220 && $row->stage_code < 300)
-                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
-                                class="btn btn-block btn-warning rounded" type="button"><i
-                                  class="ion ion-person"></i>&nbsp
-                                Enrollment</button>
-                            @endif
-                          @endhasrole
-
-                          @hasrole('qa_incharge')
-                            @if ($row->stage_code >= 300 && $row->stage_code < 320)
-                              <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
-                                class="btn btn-block btn-warning rounded" type="button"><i
-                                  class="ion ion-person"></i>&nbsp
-                                Enrollment</button>
-                            @endif
-                          @endhasrole
+                            @hasrole('qa_incharge')
+                              @if ($row->stage_code >= 300 && $row->stage_code < 320)
+                                <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
+                                  class="btn btn-block btn-warning rounded" type="button"><i
+                                    class="ion ion-person"></i>&nbsp
+                                  Enrollment</button>
+                              @endif
+                            @endhasrole
+                          @else
+                            Locked For view
+                          @endif
                         </td>
                       </tr>
                     @endforeach

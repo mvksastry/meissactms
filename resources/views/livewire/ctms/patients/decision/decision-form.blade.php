@@ -12,9 +12,6 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-12">
-          {{ $enrObj->decision_comment }}
-        </div>
-        <div class="col-md-12">
           @if ($errors->any())
             <div class="text-danger">
               <ul>
@@ -26,6 +23,9 @@
           @endif
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <tdead>
+              <tr>
+                <th> Earlier: {{ $enrObj->decision_comment }} </th>
+              </tr>
               <tr>
                 <th>
                   @hasrole('ctms_incharge')

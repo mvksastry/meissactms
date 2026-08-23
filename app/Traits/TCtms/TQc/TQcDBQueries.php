@@ -24,15 +24,16 @@ use Illuminate\Support\Facades\Log;
 trait TQcDBQueries
 {
 
-  public function getPatientsSealedStatus()
+  public function getQCPatientsSealedStatus()
   {
       $status = ['sealed'];
       return Patient::whereIn('status', $status)->get();
   }
 
-  public function getPatientsEnrollmentStatus()
+  public function getQCPatientsEnrollmentStatus()
   {
-      return Enrollment::where('stage_code', '>=', 12)->get();
+      return Enrollment::where('stage_code', '>=', 220)
+                        ->where('stage_code', '<', 300)->get();
   }
 
 }

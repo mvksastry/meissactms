@@ -80,6 +80,9 @@ class Enrollment extends Model
         'decision_entered_by',
         'decision_date_entered',
 
+        'approved_by',
+        'approved_date',
+
         'patient_unique_id',
         'mbr_id',
         'linked_sample_id',
