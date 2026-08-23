@@ -14,6 +14,8 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Models\Common\Chat;
 use App\Models\User;
 
+use Carbon\Carbon;
+
 //traits
 use App\Traits\Base;
 
@@ -31,7 +33,10 @@ class GroupChat extends Component
 
     public function render()
     {
-        $this->chats = Chat::with('user')->where('is_seen', 0)->get();
+        //$this->chats = Chat::with('user')->where('is_seen', 0)->get();
+        //$this->chats = Chat::where('is_seen', 0)->get();
+        $var = Carbon::now();
+        $this->chats = Chat::whereDate('created_at', '=', $var)->get();
         $this->contacts = User::select('name', 'email', 'id')->where('role','<>', 'supadmin')->get();
         foreach($this->chats as $chat)
         {
@@ -54,7 +59,7 @@ class GroupChat extends Component
             'chat_msg.chat_msg' => 'Error: The :attribute must be letters, dash and underscore only.',			
         ],
         [ 
-            'chat_msg'           => 'To do item',
+            'chat_msg'           => 'Message',
         ]);
 
         $this->updateIsSeen();

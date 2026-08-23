@@ -20,6 +20,7 @@ use App\Models\Ctms\Clinic;
 use App\Models\Ctms\Decisions\Enrollment;
 
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 trait TDashboard
 {
@@ -50,7 +51,10 @@ trait TDashboard
 
     public function getAllUnseenChats()
     {
-        return Chat::with('user')->where('is_seen', 0)->get();
+        //return Chat::with('user')->where('is_seen', 0)->get();
+        //return Chat::where('is_seen', 0)->get();
+        $var = Carbon::now();
+        return Chat::whereDate('created_at', '=', $var)->get();
     }
 
 
