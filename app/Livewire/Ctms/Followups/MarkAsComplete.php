@@ -262,16 +262,16 @@ class MarkAsComplete extends Component
         $this->entered_by = Auth::user()->name;
         $this->logged_user = Auth::user()->name;
 
-        /*
+        
         //first get all active patient_uuid from enrollment table
-        $enrolled = Enrollment::where('status', 'current')->pluck('patient_uuid')->toArray();
+        $enrolled = Enrollment::where('stage_code', 370)->pluck('patient_uuid')->toArray();
         //now get patient objects parent table, ideall not necessary to as we need only 
         //patient uuid to process. the patient object give opd_id etc..
         $this->enrolledPatients = Patient::whereIn('patient_uuid', $enrolled)->get();
-        */
+        
 
         //for testing comment above 4 lines and use the query below
-        $this->enrolledPatients = Patient::where('status', 'draft')->get();
+        //$this->enrolledPatients = Patient::where('status', 'draft')->get();
 
 
         //dd($enrolled, $this->enrolledPatients);

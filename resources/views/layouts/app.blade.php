@@ -84,12 +84,7 @@
   <!-- scripts -->
 
   @include('layouts.partials.scripts')
-  <script>
-    document.addEventListener('new-cal-event', function() {
-      console.log('Opening modal for date:');
-      $('#eventModal1').modal('show');
-    });
-  </script>
+
   <!-- /.scripts -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>

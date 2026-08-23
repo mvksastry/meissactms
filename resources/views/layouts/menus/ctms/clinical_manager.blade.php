@@ -68,7 +68,6 @@
                 </a>
 
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.follow-up')
                   @include('layouts.menus.items.patientms.mark-as-complete')
                 </ul>
               </li>

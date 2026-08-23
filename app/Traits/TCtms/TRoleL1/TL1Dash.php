@@ -30,9 +30,9 @@ trait TL1Dash
         return Patient::whereIn('status', $status)->get();
     }
 
-    public function getAllPatientsForFollowUpForSeniorResident()
+    public function getAllFollowUpPatientsForSeniorResident()
     {
-        return Enrollment::Where('stage_code', '>=', 28)->get();
+        return Enrollment::Where('stage_code', '=', 370)->get();
     }
 
 

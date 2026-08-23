@@ -179,12 +179,13 @@ class HomeController extends Controller
         if( Auth::user()->hasAnyRole(['senior_resident']) )
 		{
             $obPatients = $this->getAllOnBoardedPatientsForSeniorResident();
-            $fuPatients = $this->getAllPatientsForFollowUpForSeniorResident();
+            $xfuPats = $this->getAllFollowUpPatientsForSeniorResident();
             //dd($pwds);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
-            return view('layouts.home.ctms.srresident.home')->with([
+            //dd($obPatients, $xfuPats);
+            return view('layouts.home.ctms.srresident.homeSrRes')->with([
                 'obPatients' => $obPatients,
-                'fuPatients' => $fuPatients
+                'xfuPats' => $xfuPats
             ]);
         }
 

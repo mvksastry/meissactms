@@ -2,7 +2,6 @@
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     @include('layouts.home.commons.homePageTopHeader')
     <!-- /.content-header -->
     <!-- Main content -->
@@ -15,14 +14,18 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
-          @include('layouts.home.ctms.srresident.action-tables')
+          @include('layouts.home.ctms.srresident.sr-dash-tables')
         </div>
         <!-- home page widgets -->
-        @include('layouts.home.commons.homePageChatTodoCalendar')
+        <div class="row">
+
+        </div>
+        <div class="row">
+
+        </div>
         <!-- /End of widgets -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 @endsection
