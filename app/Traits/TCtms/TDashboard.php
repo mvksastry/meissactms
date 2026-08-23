@@ -88,7 +88,7 @@ trait TDashboard
 
     public function getAllPatientsForFollowUpForInCharge()
     {
-        return Enrollment::Where('stage_code', '>=', 28)->get();
+        return Enrollment::Where('stage_code', '>=', 370)->get();
     }
 
     public function getAllSealedSatusPatientsForInCharge()
@@ -129,7 +129,7 @@ trait TDashboard
     //ready for follow-up
     public function getAllPatientsForFollowUpForDirector()
     {
-        return Enrollment::Where('stage_code', '>=', 28)->get();
+        return Enrollment::Where('stage_code', '>=', 370)->get();
     }
 
     public function getAllPatients()
