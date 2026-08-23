@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="card card-outline card-success">
     <div class="card-header">
-      <h3 class="card-title">QA Status</h3>
+      <h3 class="card-title">Summary</h3>
       <div class="card-tools">
         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
         </button>
@@ -21,27 +21,31 @@
               </thdead>
               <tbody>
                 <tr>
-                  <td>QA Comment</td>
+                  <td>Date Created</td>
                   <td>
-                    {{ $enrObj->qa_enrollment_comment }}
+                    {{ date('d-m-Y H:i:s', strtotime($enrObj->created_at)) }}
                   </td>
                 </tr>
                 <tr>
-                  <td>QA Other Info</td>
+                  <td>Date Last Edited</td>
                   <td>
-                    {{ $enrObj->qa_other_infos }}
+                    {{ date('d-m-Y H:i:s', strtotime($enrObj->updated_at)) }}
                   </td>
                 </tr>
                 <tr>
-                  <td>Status code</td>
+                  <td>Final Status code</td>
                   <td>
-                    {{ $step_code[$enrObj->qa_status_code] }}
+                    {{ ucfirst($step_code[$enrObj->stage_code]) }}
                   </td>
                 </tr>
                 <tr>
-                  <td>Entered By</td>
+                  <td>Failed Steps</td>
                   <td>
-                    {{ $enrObj->qa_infos_entered_by }}
+                    @if ($go)
+                      ✅ Failed Steps Not Found:
+                    @else
+                      ❌ Failed Steps Found
+                    @endif
                   </td>
                 </tr>
                 <tr>

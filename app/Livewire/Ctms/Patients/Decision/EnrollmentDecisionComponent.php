@@ -22,7 +22,7 @@ use App\Livewire\Forms\Decisions\DecisionReportFiles;
 use App\Livewire\Forms\Decisions\Qc1DecisionForm;
 use App\Livewire\Forms\Decisions\Qc2DecisionForm;
 use App\Livewire\Forms\Decisions\QaDecisionForm;
-use App\Liveiwre\Forms\Decisions\FinalDecisionForm;
+use App\Livewire\Forms\Decisions\FinalDecisionForm;
 use App\Livewire\Forms\Decisions\AdminDecisionForm;
 use App\Livewire\Forms\Decisions\TransplantDecisionForm;
 
@@ -31,6 +31,7 @@ use App\Traits\Base;
 use Livewire\WithFileUploads;
 use App\Traits\TCtms\TEnrollmentDecision;
 use App\Traits\Fileuploads\TOldFileMove;
+use App\Traits\TCommentAppender;
 
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -43,6 +44,7 @@ class EnrollmentDecisionComponent extends Component
     use Base;
     use WithFileUploads;
     use TEnrollmentDecision;
+    use TCommentAppender;
     use TOldFileMove;
 
     //form status
@@ -64,7 +66,7 @@ class EnrollmentDecisionComponent extends Component
     public Qc2DecisionForm $form_i;
 
 
-    public DecisionProcessingForm $form;
+    //public DecisionProcessingForm $form;
 
     public DecisionReportFiles $form_x;
 
@@ -80,6 +82,8 @@ class EnrollmentDecisionComponent extends Component
 
         //variables
     public $tab, $activeTab; // default tab
+
+    public $enrollment_decision, $decision_comment, $go = false;
 
     ///code dependent activation
     public $code170200, $code1112, $code1413, $code2019, $code2221;
@@ -97,6 +101,7 @@ class EnrollmentDecisionComponent extends Component
         $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
         $this->enFileObj = EnrollmentFiles::where('patient_uuid', $this->patient_uuid)->get();
         //dd($this->enFileObj);
+        $this->fnGoNogo();
     }
 
     public function render()
@@ -117,8 +122,27 @@ class EnrollmentDecisionComponent extends Component
         return response()->download(storage_path($file_path));
     }
 
+    public function fnGoNogo()
+    {
+        $keysToCheck = [
+            $this->enrObj->discec_status_code,
+            $this->enrObj->discec_sample_status_code,
+            $this->enrObj->qc_status_code,
+            $this->enrObj->qa_status_code,
+        ];
 
+        $abort_steps = config('ctms.abort_steps');
 
+        $missingKeys = array_diff_key($keysToCheck, array_keys($abort_steps));
+
+        if (empty($missingKeys)) 
+        {
+            $this->go = true;
+        } else {
+            $this->go = false;
+        }
+        //dd($keysToCheck, $abort_steps, $missingKeys, $this->go);
+    }
 
 
 
@@ -316,27 +340,52 @@ class EnrollmentDecisionComponent extends Component
 
     public function fnSaveEnrollmentDecision()
     {
-        if($this->enrObj->discec_status_code == 320)
-        {
-            $this->form_f->validate();
-            $this->input = $this->form_f->all();
-            $filtered = $this->filterInputNulls($this->input);
+        //dd($this->enrObj->stage_code);
+        $flag = $this->fnGoNogo();
 
-            if(array_key_exists('enrollment_decision', $filtered))
+        if($this->go)
+        {
+            if($this->enrObj->stage_code == 320)
             {
-                $filtered['status'] = 'current';
-                $filtered['status_date'] = date('Y-m-d');
-                $filtered['decision_entered_by'] = Auth::user()->name;
-                $filtered['decision_date_entered'] = date('Y-m-d');
-                dd($filtered);
-                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-                LivewireAlert::title("Decision Update")->success()->show();
-            }else {
-                LivewireAlert::title("Decision NOT Selected")->warning()->show();
+                //dd("inside");
+                $this->form_f->validate();
+                $this->input = $this->form_f->all();
+                $filtered = $this->filterInputNulls($this->input);
+
+                if(array_key_exists('enrollment_decision', $filtered))
+                {
+                    $filtered['status'] = 'pending';
+                    $filtered['status_date'] = date('Y-m-d');
+                    $filtered['decision_entered_by'] = Auth::user()->name;
+                    $filtered['decision_date_entered'] = date('Y-m-d');
+                    //dd($filtered);
+                    $this->enrObj->status = 'pending';
+                    $this->enrObj->status_date = date('Y-m-d');
+                    //get the code of the 
+                    $codes = config('ctms.steps'); 
+
+                    $this->enrObj->stage_code = $filtered['enrollment_decision'];
+                    $this->enrObj->enrollment_decision = $codes[$filtered['enrollment_decision']];
+                    $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
+                    $this->enrObj->decision_entered_by = Auth::user()->name;
+                    $this->enrObj->decision_date_entered = date('Y-m-d');
+                    //dd($filtered['comment_decision'], $this->enrObj);
+                    $this->enrObj->save();
+
+                    //$qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                    LivewireAlert::title("Decision Update")->success()->show();
+                    $this->form_f->reset();
+
+                }else {
+                    LivewireAlert::title("Decision NOT Selected")->warning()->show();
+                }
+            }else{
+                LivewireAlert::title("Stage NOT Reached or Elapsed")->warning()->show();
             }
-        }else{
-            LivewireAlert::title("Stage NOT Reached or Elapsed")->warning()->show();
+        }else {
+            LivewireAlert::title("Failed Steps Found, Aborting Enrollment")->warning()->show();
         }
+
     }
 
     public function fnSaveEnrollmentIDs()

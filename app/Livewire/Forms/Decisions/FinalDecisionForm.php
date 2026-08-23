@@ -7,12 +7,9 @@ use Livewire\Form;
 
 class FinalDecisionForm extends Form
 {
-    #[Validate('required|regex:/^[A-Za-z]+$/')]
-    public $enrollment_decision = null;
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
-    public $decision_comment = null;
-    #[Validate('regex:/^[A-Za-z0-9., \-_]+$/')]
-    public $decision_entered_by = null;
-    #[Validate('date')]
-    public $decision_date_entered = null;
+    #[Validate('required|regex:/^[A-Za-z0-9.,\-_ ]+$/')]
+    public $comment_decision = null;
+    #[Validate('required|numeric')]
+    public $enrollment_decision;
+
 }

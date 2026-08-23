@@ -200,7 +200,7 @@
                           @endhasrole
 
                           @hasrole('qc_incharge')
-                            @if ($row->stage_code >= 220)
+                            @if ($row->stage_code >= 220 && $row->stage_code < 300)
                               <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
                                 class="btn btn-block btn-warning rounded" type="button"><i
                                   class="ion ion-person"></i>&nbsp
@@ -209,7 +209,7 @@
                           @endhasrole
 
                           @hasrole('qa_incharge')
-                            @if ($row->stage_code >= 300)
+                            @if ($row->stage_code >= 300 && $row->stage_code < 320)
                               <button wire:click="selectedPatient('{{ $patient->patient_uuid }}')"
                                 class="btn btn-block btn-warning rounded" type="button"><i
                                   class="ion ion-person"></i>&nbsp

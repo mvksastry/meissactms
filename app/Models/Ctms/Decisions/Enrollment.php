@@ -9,10 +9,13 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 use App\Models\User;
-use App\Models\Ctms\Patietn;
+use App\Models\Ctms\Patient;
+
+use App\Traits\TCommentAppender;
 
 class Enrollment extends Model
 {
+    use TCommentAppender;
     //
     use HasFactory;
     use HasRoles;
