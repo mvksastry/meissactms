@@ -18,7 +18,7 @@
                       @foreach ($obPatients as $row)
                         <tr>
                           <td>#</td>
-                          <td>{{ $row->ob_status }}</td>
+                          <td>{{ $row->name }}</td>
                           <td>
                             <a href="/edit-patients" button class="btn btn-block btn-warning rounded" type="button"><i
                                 class="ion ion-person"></i>&nbsp
