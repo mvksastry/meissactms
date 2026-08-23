@@ -10,22 +10,20 @@
                     <thead>
                       <tr>
                         <th style="width: 10px">#</th>
-                        <th>Task</th>
-                        <th>Progress</th>
-                        <th style="width: 40px">Label</th>
+                        <th>Status</th>
+                        <th style="width: 300px">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($obPatients as $row)
                         <tr>
-                          <td>1.</td>
-                          <td>Update software</td>
+                          <td>#</td>
+                          <td>{{ $row->ob_status }}</td>
                           <td>
-                            <div class="progress progress-xs">
-                              <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                            </div>
+                            <a href="/edit-patients" button class="btn btn-block btn-warning rounded" type="button"><i
+                                class="ion ion-person"></i>&nbsp
+                              More Info</button></a>
                           </td>
-                          <td><span class="badge bg-danger">55%</span></td>
                         </tr>
                       @endforeach
                     </tbody>
