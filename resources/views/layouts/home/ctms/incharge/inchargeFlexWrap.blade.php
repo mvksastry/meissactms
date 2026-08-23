@@ -19,7 +19,7 @@
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h3><sup style="font-size: 20px"></sup></h3>
+        <h4><sup style="font-size: 20px">0</sup></h4>
 
         <p>Follow-up: Pending</p>
       </div>
@@ -36,7 +36,13 @@
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h4>{{ count($sealed) }}</h4>
+        <h4>
+          @if (count($sealed) > 0)
+            {{ count($sealed) }}
+          @else
+            0
+          @endif
+        </h4>
 
         <p>@ Enrollment Stage</p>
       </div>
@@ -53,7 +59,7 @@
     <!-- small box -->
     <div class="small-box bg-info">
       <div class="inner">
-        <h3>0</h3>
+        <h4>0</h4>
         <p>Follow-Up: M A C</p>
       </div>
       <div class="icon">
