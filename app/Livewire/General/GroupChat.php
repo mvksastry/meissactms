@@ -35,11 +35,9 @@ class GroupChat extends Component
     {
         //$this->chats = Chat::with('user')->where('is_seen', 0)->get();
         //$this->chats = Chat::where('is_seen', 0)->get();
-        $var = Carbon::now();
+        
         //$this->chats = Chat::whereDate('created_at', '=', $var)->get();
-        $this->chats = Chat::whereDate('created_at', '=', $var)
-                    ->orderBy('created_at', 'desc')
-                    ->get();
+        $this->chats = $this->chatQuery();
         $this->contacts = User::select('name', 'email', 'id')->where('role','<>', 'supadmin')->get();
         foreach($this->chats as $chat)
         {
@@ -51,11 +49,18 @@ class GroupChat extends Component
         return view('livewire.general.group-chat');
     }
 
+    public function chatQuery()
+    {   
+        return Chat::whereDate('created_at', '=', Carbon::now())
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+    }
+
     public function postChatMessage()
     {
         $validatedData     = $this->validate(
         [
-            'chat_msg'           => 'required|string|regex:/^[A-Za-z0-9-_,. ]+$/|max:200',
+            'chat_msg'           => 'required|string|regex:/^[A-Za-z0-9\-_,. ]+$/|max:200',
         ],
         [
             'chat_msg.required'  => 'Error: The :attribute cannot be empty.',
@@ -74,7 +79,8 @@ class GroupChat extends Component
         $newChat->is_seen = 0;
         //dd($newChat);
         $newChat->save();
-        $newChat = Chat::all();
+        $this->chats = $this->chatQuery();
+        //$newChat = Chat::all();
         $newChat = null;
         $this->chat_msg = null;
         

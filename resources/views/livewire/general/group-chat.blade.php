@@ -82,14 +82,14 @@
   </div>
   <!-- /.card-body -->
   <div class="card-footer">
-    <form action="#" method="post">
+    <form wire:submit.prevent="postChatMessage">
       <div class="input-group">
-        <input type="text" wire:model="chat_msg" name="message" placeholder="Type Message ..." class="form-control">
+        <input type="text" wire:model.defer="chat_msg" name="message" placeholder="Type Message ..."
+          class="form-control">
         <span class="input-group-append">
           <button wire:click="postChatMessage" type="button" class="btn btn-primary">Send</button>
         </span>
         </br>
-
       </div>
     </form>
     @error('chat_msg')
