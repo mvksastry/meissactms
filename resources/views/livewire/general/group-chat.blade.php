@@ -88,7 +88,7 @@
         <input type="text" wire:model.defer="chat_msg" wire:keydown.shift.enter="$event.stopPropagation()"
           name="message" placeholder="Type Message ..." class="form-control">
         <span class="input-group-append">
-          <button wire:click="postChatMessage" type="submit" class="btn btn-primary">Send</button>
+          <button type="submit" class="btn btn-primary">Send</button>
         </span>
         </br>
       </div>
