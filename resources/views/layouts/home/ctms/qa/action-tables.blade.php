@@ -1,17 +1,32 @@
-<div class="container-fluid">
-  <!-- COLOR PALETTE -->
-  <div class="card card-default color-palette-box">
-    <div class="card-header">
-      <h3 class="card-title">
-        <i class="fas fa-tag"></i>
-        Pending/Up Coming Tasks
-      </h3>
+<!-- COLOR PALETTE -->
+<div class="card card-default color-palette-box">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-tag"></i>
+      Pending Tasks
+    </h3>
+  </div><!-- /.card-header -->
+  <div class="card-body">
+    <div class="tab-content p-0">
+      <!-- /.col-12 -->
+      <!-- /.col-12 -->
     </div>
-    <div class="card-body">
-      <!-- /.col-12 -->
-      <!-- /.col-12 -->
-      <div class="row">
+    <!-- /.row -->
+    <!--Divider-->
+    <hr class="border-b-2 border-warning my-2 mx-2">
+    <!--Divider-->
+    @php
+      $code = config('ctms.steps');
+    @endphp
+    <!-- DIRECT CHAT -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Immediate Attention</h3>
 
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body p-0">
+        <!-- Conversations are loaded here -->
         @if (count($sealed) > 0)
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
@@ -46,7 +61,7 @@
             </thead>
           </table>
         @endif
-
+        <hr class="border-b-2 border-warning my-2 mx-2">
         @if (count($qaInpFlag) > 0)
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
@@ -81,15 +96,31 @@
             </thead>
           </table>
         @endif
-      </div>
-      <!-- /.row -->
-      <!--Divider-->
-      <hr class="border-b-2 border-warning my-2 mx-2">
-      <!--Divider-->
 
+        <hr class="border-b-2 border-warning my-2 mx-2">
+
+        <hr class="border-b-2 border-warning my-2 mx-2">
+
+      </div>
     </div>
-    <!-- /.card-body -->
+    <!-- TO DO List -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="ion ion-clipboard mr-1"></i>
+          Patient Data Status
+        </h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
   </div>
-  <!-- /.card -->
-  <!-- START ALERTS AND CALLOUTS -->
-</div><!-- /.container-fluid -->
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
+<!-- START ALERTS AND CALLOUTS -->

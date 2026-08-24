@@ -15,10 +15,22 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
-          @include('layouts.home.ctms.incharge.action-tables')
+          <!-- Left col -->
+          <section class="col-lg-7 connectedSortable">
+            @include('layouts.home.ctms.incharge.action-tables')
+          </section>
+          <!-- Right col -->
+          <section class="col-lg-5 connectedSortable">
+            @include('layouts.home.commons.homePageTodos')
+            @include('layouts.home.commons.homePageChat')
+          </section>
         </div>
         <!-- home page widgets -->
-        @include('layouts.home.commons.homePageChatTodoCalendar')
+        <div class="row">
+          <section class="col-lg-12">
+            @include('layouts.home.commons.homePageCalendar')
+          </section>
+        </div>
         <!-- /End of widgets -->
       </div><!-- /.container-fluid -->
     </section>

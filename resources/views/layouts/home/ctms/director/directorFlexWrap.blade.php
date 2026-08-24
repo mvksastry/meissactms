@@ -1,67 +1,28 @@
 @if (count($pending) > 0)
-  <div class="col-lg-3 col-6">
-    <!-- small box -->
-    <div class="small-box bg-info">
-      <div class="inner">
-        <h4>{{ count($pending) }}</h4>
-        <p>On-Boarded</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-bag"></i>
-      </div>
-      <a href="/new-patient-onboarding" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
+  <a href="/new-patient-onboarding" class="btn btn-app bg-info mr-4">
+    <span class="badge bg-danger">{{ count($pending) }}</span>
+    <i class="ion ion-person"></i> On-Board: M A C
+  </a>
 @endif
 <!-- ./col -->
 @if (count($approved) > 0)
-  <div class="col-lg-3 col-6">
-    <!-- small box -->
-    <div class="small-box bg-info">
-      <div class="inner">
-        <h3><sup style="font-size: 20px"></sup></h3>
-
-        <p>Data @ Seling Stage</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-stats-bars"></i>
-      </div>
-      <a href="/patient-information" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
+  <a href="/patient-information" class="btn btn-app bg-info mr-4">
+    <span class="badge bg-danger">{{ count($approved) }}</span>
+    <i class="ion ion-person"></i>@ Seling Stage
+  </a>
 @endif
 <!-- ./col -->
 @if (count($sealed) > 0)
-  <div class="col-lg-3 col-6">
-    <!-- small box -->
-    <div class="small-box bg-info">
-      <div class="inner">
-        <h4>{{ count($sealed) }}</h4>
-
-        <p>@ Enrollment Stage</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-person-add"></i>
-      </div>
-      <a href="/home-enrollment" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
+  <a href="/home-enrollment" class="btn btn-app bg-info mr-4">
+    <span class="badge bg-danger">{{ count($sealed) }}</span>
+    <i class="ion ion-person"></i>@ Enrollment
+  </a>
 @endif
 <!-- ./col -->
 @if (count($fuPatients) > 0)
-  <div class="col-lg-3 col-6">
-    <!-- small box -->
-    <div class="small-box bg-info">
-      <div class="inner">
-        <h3>0</h3>
-
-        <p>Follow-Up: Mark As Complete</p>
-      </div>
-      <div class="icon">
-        <i class="ion ion-pie-graph"></i>
-      </div>
-      <a href="/mark-as-complete" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
+  <a href="/mark-as-complete" class="btn btn-app bg-info mr-4">
+    <span class="badge bg-danger">{{ count($fuPatients) }}</span>
+    <i class="ion ion-person"></i>Follow-Up: M A C
+  </a>
 @endif
 <!-- ./col -->

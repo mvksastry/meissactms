@@ -99,6 +99,16 @@ trait TDashboard
     {
         $status = ['sealed'];
         return Patient::whereIn('status', $status)->get();
+
+    }
+
+    public function getAllEnrollmentStatusDetails()
+    {
+        return Enrollment::select('discec_status_code', 
+                                'discec_sample_status_code',
+                                'qc_status_code',
+                                'qa_status_code',
+                                'stage_code')->get();
     }
 
 
@@ -138,6 +148,6 @@ trait TDashboard
 
     public function getAllPatients()
     {
-        return Patient::all();
+        return Patient::with('enrolled')->get();
     }
 }

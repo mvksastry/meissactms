@@ -98,6 +98,7 @@ class HomeController extends Controller
             $drafts = $this->getAllDraftSatusPatientsForDirector();
             $sealed = $this->getAllSealedSatusPatientsForDirector();
             $fuPatients = $this->getAllPatientsForFollowUpForDirector();
+            $allPatients = $this->getAllPatients();
 
             //dd($pending, );
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
@@ -106,7 +107,8 @@ class HomeController extends Controller
                 'approved' => $approved,
                 'drafts' => $drafts,
                 'sealed'    => $sealed,
-                'fuPatients' => $fuPatients
+                'fuPatients' => $fuPatients,
+                'allPatients' => $allPatients
             ]);
         }
 
@@ -115,14 +117,16 @@ class HomeController extends Controller
             $forApproval = $this->getAllVerifiedPatientsForInCharge();
             $fuPatients = $this->getAllPatientsForFollowUpForInCharge();
             $sealed =     $this->getAllSealedSatusPatientsForInCharge();
-            
-                                 
+            $enrStatus = $this->getAllEnrollmentStatusDetails();
+            $allPatients = $this->getAllPatients();
             //dd($obPatients, $fuPatients, $sealed);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.incharge.Homeincharge')->with([
             'forApproval' => $forApproval,
                 'fuPatients' => $fuPatients,
-                'sealed'    => $sealed
+                'sealed'    => $sealed,
+                'enrStatus' => $enrStatus,
+                'allPatients' => $allPatients
             ]);
         }
 

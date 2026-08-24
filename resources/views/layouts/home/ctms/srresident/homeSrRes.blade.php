@@ -1,37 +1,40 @@
 @extends('layouts.app')
 @section('content')
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h4 class="m-0">{{ Auth::user()->name }}</h4>
-            <h5>Role : {{ ucfirst(Auth::user()->roles->pluck('name')[0] ?? '') }}</h5>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-
+    @include('layouts.home.commons.homePageTopHeader')
+    <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-
+          @include('layouts.home.ctms.srresident.flexWrap')
         </div>
-
+        <!-- /.row -->
+        <!-- Main row -->
         <div class="row">
-          @include('layouts.home.ctms.srresident.sr-dash-tables')
+          <!-- Left col -->
+          <section class="col-lg-7 connectedSortable">
+            @include('layouts.home.ctms.srresident.sr-dash-tables')
+          </section>
+          <!-- Right col -->
+          <section class="col-lg-5 connectedSortable">
+            @include('layouts.home.commons.homePageTodos')
+            @include('layouts.home.commons.homePageChat')
+          </section>
         </div>
-
-      </div>
+        <!-- home page widgets -->
+        <div class="row">
+          <section class="col-lg-12">
+            @include('layouts.home.commons.homePageCalendar')
+          </section>
+        </div>
+        <!-- /End of widgets -->
+      </div><!-- /.container-fluid -->
     </section>
+    <!-- /.content -->
   </div>
+  <!-- /.content-wrapper -->
 @endsection
