@@ -82,7 +82,8 @@
   </div>
   <!-- /.card-body -->
   <div class="card-footer">
-    <form wire:submit.prevent="postChatMessage">
+    <form wire:submit.prevent="postChatMessage()">
+      @csrf
       <div class="input-group">
         <input type="text" wire:model.defer="chat_msg" name="message" placeholder="Type Message ..."
           class="form-control">
