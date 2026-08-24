@@ -175,6 +175,7 @@ class PatientInformation extends Component
     {   $this->patient_uuid = $id;
         //dd("reached");
         $this->patientInfoButtons = false;
+        $this->fnResetAllVisiblePanels();
         $this->TimelinePatient = false;
         $this->PatientStatusPanel = true;
     }
