@@ -85,11 +85,10 @@
     <form wire:submit.prevent="postChatMessage">
       @csrf
       <div class="input-group">
-        <input type="text" wire:model.defer="chat_msg" wire:keydown.enter.prevent="postChatMessage"
-          wire:keydown.shift.enter="$event.stopPropagation()" name="message" placeholder="Type Message ..."
-          class="form-control">
+        <input type="text" wire:model.defer="chat_msg" wire:keydown.shift.enter="$event.stopPropagation()"
+          name="message" placeholder="Type Message ..." class="form-control">
         <span class="input-group-append">
-          <button wire:click="postChatMessage" type="button" class="btn btn-primary">Send</button>
+          <button wire:click="postChatMessage" type="submit" class="btn btn-primary">Send</button>
         </span>
         </br>
       </div>
