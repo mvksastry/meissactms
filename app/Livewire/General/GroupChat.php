@@ -36,7 +36,10 @@ class GroupChat extends Component
         //$this->chats = Chat::with('user')->where('is_seen', 0)->get();
         //$this->chats = Chat::where('is_seen', 0)->get();
         $var = Carbon::now();
-        $this->chats = Chat::whereDate('created_at', '=', $var)->get();
+        //$this->chats = Chat::whereDate('created_at', '=', $var)->get();
+        $this->chats = Chat::whereDate('created_at', '=', $var)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
         $this->contacts = User::select('name', 'email', 'id')->where('role','<>', 'supadmin')->get();
         foreach($this->chats as $chat)
         {

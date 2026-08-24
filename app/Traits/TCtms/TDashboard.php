@@ -54,7 +54,9 @@ trait TDashboard
         //return Chat::with('user')->where('is_seen', 0)->get();
         //return Chat::where('is_seen', 0)->get();
         $var = Carbon::now();
-        return Chat::whereDate('created_at', '=', $var)->get();
+        return Chat::whereDate('created_at', '=', $var)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
     }
 
 
