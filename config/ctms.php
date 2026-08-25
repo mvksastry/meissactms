@@ -2,6 +2,122 @@
 
 return [
 
+        'tests' => [
+                
+                'Life Style'    =>      \App\Models\Ctms\LifeStyle::class,
+                'Clinicals'     =>      \App\Models\Ctms\ClinicalData::class,
+                'Sensory Exam'  =>      \App\Models\Ctms\SensoryExamination::class,
+                'M&DTR Exam'    =>      \App\Models\Ctms\Mdtre::class,
+                'Pfirmann Grade'=>      \App\Models\Ctms\PfirmannGrade::class,
+                'V & A Score'   =>      \App\Models\Ctms\VAScore::class,
+                'MODQ Score'    =>      \App\Models\Ctms\ModqScore::class,
+                'RMQ Reply'     =>      \App\Models\Ctms\RMQReply::class,
+                'Blood Routime' =>      \App\Models\Ctms\Clinicals\BloodRoutine::class,
+                'Blood Sugar'   =>      \App\Models\Ctms\Clinicals\BloodSugar::class,
+                'Blood Urea'    =>      \App\Models\Ctms\Clinicals\BloodUrea::class,
+                'Chemical Exam' =>      \App\Models\Ctms\Clinicals\ChemicalExam::class,
+                'Creatinine'    =>      \App\Models\Ctms\Clinicals\Creatinine::class,
+                'CRP'           =>      \App\Models\Ctms\Clinicals\Crp::class,
+                'Electrolytes'  =>      \App\Models\Ctms\Clinicals\Electrolytes::class,
+                'Gen Summary'   =>      \App\Models\Ctms\Clinicals\GeneralSummary::class,
+                'IL-6'          =>      \App\Models\Ctms\Clinicals\Il6::class,
+                'Lab Exam'      =>      \App\Models\Ctms\Clinicals\LaboratoryExam::class,
+                'LFT'           =>      \App\Models\Ctms\Clinicals\LiverFunction::class,
+                'Microscopics'  =>      \App\Models\Ctms\Clinicals\MicroscopicExam::class,
+                'RFT'           =>      \App\Models\Ctms\Clinicals\RenalFunction::class,
+                'Urine Routine' =>      \App\Models\Ctms\Clinicals\UrineRoutine::class,
+                'Drug Details'  =>      \App\Models\Ctms\Clinicals\DrugDetails::class,
+        ],
+
+        'data_types' => [
+
+                'pre-enrollment' => [
+                        'description'   => 'Test at Pre-Enrollment Stage',
+
+                        'tests' => [
+
+                                'Life Style',
+                                'Sensory Exam',
+                                'M&DTR Exam',
+                                'Pfirmann Grade',
+                                'V & A Score',
+                                'MODQ Score',
+                                'RMQ Reply',
+                                'Blood Routime',
+                                'Blood Sugar',
+                                'Blood Urea',
+                                'Chemical Exam',
+                                'Creatinine',
+                                'CRP',
+                                'Electrolytes',
+                                'Gen Summary',
+                                'IL-6',
+                                'Lab Exam',
+                                'LFT',
+                                'Microscopics',
+                                'RFT',
+                                'Urine Routine',
+                                'Drug Details',
+                        ],
+                ],
+
+                'follow-up-1'   => [
+
+                        'description'   => 'First Follow-up Visit',
+                        
+                        'tests' => [
+
+                        ],
+                ],
+
+                'follow-up-2'   => [
+
+                        'description'   => 'Second Follow-up Visit',
+
+                        'tests' => [
+
+                        ],
+                ],
+                
+                'follow-up-3'   => [
+
+                        'description'   => 'Third Follow-up Visit',
+
+                        'tests' => [
+
+                        ],
+                ],
+
+                'follow-up-4'   => [
+
+                        'description'   => 'Fourth Follow-up Visit',
+
+                        'tests' => [
+
+                        ],
+                ],
+
+                'follow-up-5'   => [
+
+                        'description'   => 'Fifth Follow-up Visit',
+
+                        'tests' => [
+
+                        ],
+                ],
+
+                'unscheduled'   => [
+
+                        'description'   => 'Non-Scheduled Follow-up Visit',
+
+                        'tests' => [
+
+                        ],
+                ],
+
+
+        ],
+
         'stages_status' => [
 
           'pre-enrollment' => "sealed",

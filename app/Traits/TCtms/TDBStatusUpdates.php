@@ -108,9 +108,6 @@ trait TDBStatusUpdates
       $newLS->save();
 
       $newCD = ClinicalData::where('patient_uuid', $uuid)->first();
-      
-      
-
       $newCD->status = 'draft';
       $newCD->status_date = date('Y-m-d');
       $newCD->save();
@@ -122,9 +119,6 @@ trait TDBStatusUpdates
       $newSE->save();
 
       $newMDT = Mdtre::where('patient_uuid', $uuid)->first();
-      
-      
-
       $newMDT->status = 'draft';
       $newMDT->status_date = date('Y-m-d');
       $newMDT->save();

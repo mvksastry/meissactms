@@ -146,7 +146,11 @@ class EnrollmentDecisionComponent extends Component
     }
 
 
-
+    public function fnUpdatePatientTableForStatus($status_code, $status_date)
+    {
+        $this->passObj->status_code = $status_code;
+        $this->passObj->status_date = $status_date;
+    }
 
 
 

@@ -27,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Set MySQL session timezone to match Laravel
         DB::statement("SET time_zone = '{$offset}'");
+
+        // Load your helper file
+        require_once app_path('Helpers/ClinicalTestHelper.php');
     }
 }

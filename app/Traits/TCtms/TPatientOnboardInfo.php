@@ -141,9 +141,4 @@ trait TPatientOnboardInfo
 
     }
 
-    public function completeOnboardingProcess($input)
-    {
-
-    }
-
 }

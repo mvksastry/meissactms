@@ -106,6 +106,7 @@ trait TEnrollmentDecision
     }
 
 
+    /*
     public function setFinalEnrollmentDecision($input)
     {
         //Make an entry in the enrollment table itself.
@@ -133,5 +134,6 @@ trait TEnrollmentDecision
         Log::channel('patient')->info($msg);
         unset($enPat); // destroy reference
     }
+        */
 
 }
