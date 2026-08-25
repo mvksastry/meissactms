@@ -14,8 +14,13 @@ class CtmsEventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-            \App\Events\PatientEnrolled::class => [
-            //\App\Listeners\SendUserNotification::class,
+
+            \App\Events\Ctms\PatientEnrollmentAborted::class => [
+            \App\Listeners\Ctms\LogPatientEnrollmentAorted::class,
+
+            \App\Events\PatientEnrollmentCompleted::class => [
+            \App\Listeners\Ctms\LogPatientEnrollmentSuccess::class,
+             ],
         ],
         // Add more events here...
     ];

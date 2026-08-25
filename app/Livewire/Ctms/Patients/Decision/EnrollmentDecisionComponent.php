@@ -27,6 +27,9 @@ use App\Livewire\Forms\Decisions\FinalDecisionForm;
 use App\Livewire\Forms\Decisions\AdminDecisionForm;
 use App\Livewire\Forms\Decisions\TransplantDecisionForm;
 
+//Events
+use App\Events\Ctms\PatientEnrollmentAborted;
+
 //traits
 use App\Traits\Base;
 use Livewire\WithFileUploads;
@@ -141,6 +144,8 @@ class EnrollmentDecisionComponent extends Component
             $this->go = true;
         } else {
             $this->go = false;
+            // Fire the event
+            event(new PatientEnrollmentAborted($this->passObj));
         }
         //dd($keysToCheck, $abort_steps, $missingKeys, $this->go);
     }
@@ -174,7 +179,7 @@ class EnrollmentDecisionComponent extends Component
             Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
             //dd($this->patient_uuid, $filtered);
         }else {
-            LivewireAlert::title("Process NOT Reached the Step Or Elapsed")->warning()->show();
+            LivewireAlert::title("Discectomy Data Enry Step NOT Reached the Step Or Elapsed")->warning()->show();
         }
     }
 
@@ -195,7 +200,7 @@ class EnrollmentDecisionComponent extends Component
             LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
             Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
         }else {
-            LivewireAlert::title("Process NOT Reached the Step Or Elapsed")->success()->show();
+            LivewireAlert::title("Saample Data Entry Step NOT Reached Or Elapsed")->success()->show();
         }
     }
                     
@@ -255,7 +260,7 @@ class EnrollmentDecisionComponent extends Component
             Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
         
         } else {
-            LivewireAlert::title("QC Step Not Reached or Elapsed")->warning()->show();
+            LivewireAlert::title("QC Step 1 Not Reached or Elapsed")->warning()->show();
         }
     }
 
@@ -316,7 +321,7 @@ class EnrollmentDecisionComponent extends Component
             Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
         
         } else {
-            LivewireAlert::title("QC Step Not Reached or Elapsed")->warning()->show();
+            LivewireAlert::title("QC Step 2 Not Reached or Elapsed")->warning()->show();
         }
     }
 
@@ -339,7 +344,7 @@ class EnrollmentDecisionComponent extends Component
             LivewireAlert::title("QA info for Decision updated")->success()->show();
 
         }else {
-            LivewireAlert::title("Step Not Reached or Elapsed")->warning()->show();
+            LivewireAlert::title("QA Info Step Not Reached or Elapsed")->warning()->show();
         }
     }
 
@@ -399,7 +404,7 @@ class EnrollmentDecisionComponent extends Component
                     LivewireAlert::title("Decision NOT Selected")->warning()->show();
                 }
             }else{
-                LivewireAlert::title("Stage NOT Reached or Elapsed")->warning()->show();
+                LivewireAlert::title("Decision Stage NOT Reached or Elapsed")->warning()->show();
             }
         }else {
             LivewireAlert::title("Failed Steps Found, Aborting Enrollment")->warning()->show();
@@ -441,10 +446,8 @@ class EnrollmentDecisionComponent extends Component
             LivewireAlert::title("Assigned Administrative Ids")->success()->show();
             $this->form_g->reset();
         }else{
-            LivewireAlert::title("Step Not Reached or Elapsed")->warning()->show();
+            LivewireAlert::title("Administrative Step Not Reached or Elapsed")->warning()->show();
         }
-        
-
     }
 
     public function fnSaveTransplantationData()
@@ -467,7 +470,7 @@ class EnrollmentDecisionComponent extends Component
                 LivewireAlert::title("Transplant Status Updated! This Completes Enrollment")->success()->show();
                 $this->form_h->reset();
         }else{
-            LivewireAlert::title("Step Not Reached or Elapsed")->warning()->show();
+            LivewireAlert::title("Transplant Data Entry Step Not Reached or Elapsed")->warning()->show();
         }
     }
 
