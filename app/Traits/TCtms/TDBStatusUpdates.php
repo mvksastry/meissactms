@@ -50,8 +50,10 @@ trait TDBStatusUpdates
   {
       //first update the mail patient table here itself.
       //then call the other tables.
+      $testObjects = config('ctms.tests');
+
       $statusUpdate = Patient::where('patient_uuid', $uuid)->first();
-      $statusUpdate->status->appendComment('status', $input['status']);
+      $statusUpdate->status = $input['status'];
       $statusUpdate->status_date = date('Y-m-d');
 
       //dd($uuid, $input);      
@@ -86,7 +88,35 @@ trait TDBStatusUpdates
               $input['status'] = 'draft';
         }
         //dd($statusUpdate);
-        $result = $statusUpdate->save();
+        
+
+
+      try {
+            $result = $statusUpdate->save();    
+
+            if ($result) 
+            { 
+                $msg = 'Patient Data Status for [' . $uuid . '] Updated successfully!';
+            } else {
+                $msg = 'Error: Patient Data Status for [' . $uuid . '] could not be Updated';
+            }
+
+        } catch (QueryException $e) {
+            // Handles database-related errors (e.g., duplicate email)
+            $msg = 'Database Error While Updating Patient Data Status [' . $uuid . '] While Saving : ' . $e->getMessage();
+        } catch (\Exception $e) {
+            // Handles any other general exceptions
+            $msg = 'Unexpected error while updating patient Data Status [' . $uuid . '] While Saving : ' . $e->getMessage();
+        }
+        Log::channel('patient')->info($msg);
+        unset($statusUpdate); // destroy reference
+      
+
+
+
+        // now update all the relevant table, below a huge code was 
+        // there but was only first time entry, now let us fill all other columns much like the patients table instead of
+        // leaving them blank.
         
         
       //IMPORTANT BREAKING CHANGE, IN ALL 23 TABLES, BEYOND ENTERED BY STATUS
@@ -234,6 +264,11 @@ trait TDBStatusUpdates
       */
 
       return $result;
+  }
+
+  private function updateEachTestTable()
+  {
+    dd("reached");
   }
 
 }

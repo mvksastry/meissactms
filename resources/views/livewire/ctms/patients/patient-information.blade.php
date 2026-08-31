@@ -83,7 +83,7 @@
                             <td>
                               <button wire:click="getCurrentPatientStatus('{{ $row->patient_uuid }}')"
                                 class="btn btn-block btn-info rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                                Clear Patient Data</button>
+                                SET STATUS TO CONFIRMED</button>
                             </td>
                           @else
                             Nothing to Clear

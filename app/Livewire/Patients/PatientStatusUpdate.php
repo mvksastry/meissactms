@@ -119,7 +119,6 @@ class PatientStatusUpdate extends Component
             break;
 
             //take note of this role
-
             case 'clinical_manager':
                 $input['status_by'] = Auth::user()->name;
                 $input['status'] = 'verified';
@@ -143,7 +142,7 @@ class PatientStatusUpdate extends Component
             default:
                 $input['status'] = 'draft';
         }
-dd($input);
+
         $result = $this->setUpdatedPatientDataStatus($patient_uuid, $input);
 
         if($result)

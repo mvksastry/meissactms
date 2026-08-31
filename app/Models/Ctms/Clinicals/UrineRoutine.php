@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+use App\Traits\TCommentAppender;
 
 class UrineRoutine extends Model
 {
-    //
-    //
+    use TCommentAppender;
     use HasFactory;
     use HasRoles;
 

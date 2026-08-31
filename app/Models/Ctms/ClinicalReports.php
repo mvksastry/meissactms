@@ -10,10 +10,11 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 
 use App\Models\User;
+use App\Traits\TCommentAppender;
 
 class ClinicalReports extends Model
 {
-    //
+    use TCommentAppender;
     use HasFactory;
     use HasRoles;
 

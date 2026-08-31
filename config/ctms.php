@@ -2,6 +2,34 @@
 
 return [
 
+        'status_columns' => [
+
+                'confirmed' => [
+                        'comment_entered_by',
+                        'entered_by',
+                        'entry_date',
+                ],
+
+                'verified' => [
+                        'comment_verified_by',
+                        'verified_by',
+                        'verified_data',
+                ],
+
+                'approved' => [
+                        'comment_approved_by',
+                        'approved_by',
+                        'approved_date',
+                ],
+
+                'sealed' => [
+                        'comment_sealed_by',
+                        'sealed_by',
+                        'sealed_date',
+                ],
+
+        ],
+
         'tests' => [
                 
                 'Life Style'    =>      \App\Models\Ctms\LifeStyle::class,
