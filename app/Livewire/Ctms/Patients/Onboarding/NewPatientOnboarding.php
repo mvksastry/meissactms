@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Log;
 
 class NewPatientOnboarding extends Component
 {
+    use TDbEntriesRevised;
+    use TPatientTimeline;
 
     //variables
     public $entered_by, $entry_date, $approval;
@@ -28,6 +30,7 @@ class NewPatientOnboarding extends Component
 
     //public variable for checking status incomplete status
     public $patient_data_status, $ob_patient_data_status, $patientPrimaryInfo, $obpInfo;
+    public $ob_approval_comment;
 
     public $highlightedId = null;
     //panels
@@ -95,15 +98,14 @@ class NewPatientOnboarding extends Component
             $this->obpInfo = Patient::where('patient_uuid', $patient_uuid)
                                         ->where('ob_status','pending')
                                         ->first();
-            //dd($this->obpInfo);
-            //dd("reached", $patient_uuid);
+           // dd($patient_uuid, $this->ob_approval_comment, $this->obpInfo);
             //we are now reached the final decision by director
             // 1. object obtained. // we need to make 4 changes to this object
             //
             //on boarding decisions
             $this->obpInfo->ob_approved_by = Auth::user()->name;
             $this->obpInfo->ob_approval_role = Auth::user()->roles->pluck('name')[0];
-            //pd$this->obpInfo->ob_approval_comment = $this->ob_approval_comment;
+            //$this->obpInfo->ob_approval_comment = $this->ob_approval_comment;
             $this->obpInfo->appendComment('ob_approval_comment', $this->ob_approval_comment);
 
             $this->obpInfo->ob_status = 'completed';

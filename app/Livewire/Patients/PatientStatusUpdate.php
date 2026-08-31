@@ -143,7 +143,7 @@ class PatientStatusUpdate extends Component
             default:
                 $input['status'] = 'draft';
         }
-
+dd($input);
         $result = $this->setUpdatedPatientDataStatus($patient_uuid, $input);
 
         if($result)
