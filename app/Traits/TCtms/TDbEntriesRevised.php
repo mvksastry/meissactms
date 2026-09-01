@@ -93,8 +93,10 @@ trait TDbEntriesRevised
         //dd($obj);        
         try {
             
-            $result = $obj->save();    
+            $result = $obj->save(); 
+
             $tableName = $obj->getTable();  
+            
             if ($result) { 
                 $msg = 'New Patient Model [' . $tableName . '] saved successfully!';
             } else {

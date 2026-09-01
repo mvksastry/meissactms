@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+//use Illuminate\Support\ServiceProvider;
+
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class CtmsEventServiceProvider extends ServiceProvider
 {
@@ -16,12 +18,20 @@ class CtmsEventServiceProvider extends ServiceProvider
     protected $listen = [
 
             \App\Events\Ctms\PatientEnrollmentAborted::class => [
-            \App\Listeners\Ctms\LogPatientEnrollmentAorted::class,
-
+            \App\Listeners\Ctms\LogPatientEnrollmentAborted::class,
+            ],
+        
             \App\Events\PatientEnrollmentCompleted::class => [
             \App\Listeners\Ctms\LogPatientEnrollmentSuccess::class,
-             ],
-        ],
+            ],
+
+            \App\Events\Ctms\ModelUpdateRequested::class => [
+            \App\Listeners\Ctms\RunModelUpdates::class,
+            ],
+
+            \App\Events\TestEvent::class => [
+            \App\Listeners\TestListener::class,
+            ],
         // Add more events here...
     ];
 

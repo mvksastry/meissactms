@@ -113,30 +113,30 @@ class PatientStatusUpdate extends Component
         switch ($role) {
 
             case 'senior_resident':
-                $input['status_by'] = Auth::user()->name;
+                $input['status_by'] = Auth::user()->name; //this line can be removed as not used
                 $input['status'] = 'confirmed';
-                $input['date_updated'] = date('Y-m-d');
+                $input['date_updated'] = date('Y-m-d'); //this line can be removed as not used
             break;
 
             //take note of this role
             case 'clinical_manager':
-                $input['status_by'] = Auth::user()->name;
+                $input['status_by'] = Auth::user()->name; //this line can be removed as not used
                 $input['status'] = 'verified';
-                $input['date_updated'] = date('Y-m-d');
+                $input['date_updated'] = date('Y-m-d'); //this line can be removed as not used
             break;
 
             //take note of this role
 
             case 'ctms_incharge':
-                $input['status_by'] = Auth::user()->name;
+                $input['status_by'] = Auth::user()->name; //this line can be removed as not used
                 $input['status'] = 'approved';
-                $input['date_updated'] = date('Y-m-d');
+                $input['date_updated'] = date('Y-m-d'); //this line can be removed as not used
             break;  
 
             case 'director':
-                $input['status_by'] = Auth::user()->name;
+                $input['status_by'] = Auth::user()->name; //this line can be removed as not used
                 $input['status'] = 'sealed';
-                $input['date_updated'] = date('Y-m-d');
+                $input['date_updated'] = date('Y-m-d'); //this line can be removed as not used
             break; 
 
             default:

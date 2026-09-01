@@ -45,7 +45,7 @@ trait TDBStatusUpdates
 {
 
 
-//this should be followed update of timeline of the patient.
+  //this should be followed update of timeline of the patient.
   public function setUpdatedPatientDataStatus($uuid, $input)
   {
       //first update the mail patient table here itself.
@@ -88,15 +88,20 @@ trait TDBStatusUpdates
               $input['status'] = 'draft';
         }
         //dd($statusUpdate);
-        
 
+        try {
 
-      try {
             $result = $statusUpdate->save();    
 
             if ($result) 
             { 
                 $msg = 'Patient Data Status for [' . $uuid . '] Updated successfully!';
+                //now call function to update all tables.
+
+                event(new \App\Events\Ctms\ModelUpdateRequested($uuid, $input['status'], $input['status_comment']));
+
+                //$result = $this->updateEachTestTable($input, $uuid);
+
             } else {
                 $msg = 'Error: Patient Data Status for [' . $uuid . '] could not be Updated';
             }
@@ -108,167 +113,63 @@ trait TDBStatusUpdates
             // Handles any other general exceptions
             $msg = 'Unexpected error while updating patient Data Status [' . $uuid . '] While Saving : ' . $e->getMessage();
         }
+
         Log::channel('patient')->info($msg);
+
         unset($statusUpdate); // destroy reference
       
-
+        return $result;
 
 
         // now update all the relevant table, below a huge code was 
         // there but was only first time entry, now let us fill all other columns much like the patients table instead of
         // leaving them blank.
-        
-        
       //IMPORTANT BREAKING CHANGE, IN ALL 23 TABLES, BEYOND ENTERED BY STATUS
       //DONT CHANGE ANYTHING. IT IS NOT NEEDED WE CAN REMOVE THE COLUMNS AS
       //ONLY PATIENT TABLE NEEDS TO UPDATED.
-      /*
-      //make entries in all relevant tables.
-      $newLS = LifeStyle::where('patient_uuid', $uuid)->first();
-      
-      $newLS->comment_verified_by =  $input['status_comment'];
-      $newLS->verified_by =  $input['status_by'];
-      $newLS->verified_date =  $input['date_updated'];
-
-      $newLS->status->appendComment('status', $input['status']);
-      $newLS->status_date = date('Y-m-d');
-      //dd($newLS);
-      $newLS->save();
-
-      $newCD = ClinicalData::where('patient_uuid', $uuid)->first();
-      $newCD->status->appendComment('status', $input['status']);
-      $newCD->status_date = date('Y-m-d');
-      $newCD->save();
-
-      $newSE = SensoryExamination::where('patient_uuid', $uuid)->first();
-      
-      $newSE->status->appendComment('status', $input['status']);
-      $newSE->status_date = date('Y-m-d');
-      $newSE->save();
-
-      $newMDT = Mdtre::where('patient_uuid', $uuid)->first();
-      $newMDT->status->appendComment('status', $input['status']);
-      $newMDT->status_date = date('Y-m-d');
-      $newMDT->save();
-
-      $newPfg = PfirmannGrade::where('patient_uuid', $uuid)->first();
-      
-      $newPfg->status->appendComment('status', $input['status']);
-      $newPfg->status_date = date('Y-m-d');
-      $newPfg->save();
-
-      $newVasc = VAScore::where('patient_uuid', $uuid)->first();
-      
-      $newVasc->status->appendComment('status', $input['status']);
-      $newVasc->status_date = date('Y-m-d');
-      $newVasc->save();
-
-      $newModq = ModqScore::where('patient_uuid', $uuid)->first();
-                  
-      $newModq->status->appendComment('status', $input['status']);
-      $newModq->status_date = date('Y-m-d');
-      $newModq->save();
-
-      $newRMQ = RMQReply::where('patient_uuid', $uuid)->first();
-      
-      $newRMQ->status->appendComment('status', $input['status']);
-      $newRMQ->status_date = date('Y-m-d');
-      $newRMQ->save();
-
-      //-- complete rest of the --//
-
-      $an1 = BloodRoutine::where('patient_uuid', $uuid)->first();
-      
-      $an1->status->appendComment('status', $input['status']);
-      $an1->status_date = date('Y-m-d');
-      $an1->save();
-
-      $an2 = BloodSugar::where('patient_uuid', $uuid)->first();
-      
-      $an2->status->appendComment('status', $input['status']);
-      $an2->status_date = date('Y-m-d');
-      $an2->save();
-
-
-      $an3 = BloodUrea::where('patient_uuid', $uuid)->first();
-      
-      $an3->status->appendComment('status', $input['status']);
-      $an3->status_date = date('Y-m-d');
-      $an3->save();
-
-      $an4 = ChemicalExam::where('patient_uuid', $uuid)->first();
-      
-      $an4->status->appendComment('status', $input['status']);
-      $an4->status_date = date('Y-m-d');
-      $an4->save();
-
-      $an5 = Creatinine::where('patient_uuid', $uuid)->first();
-      
-      $an5->status->appendComment('status', $input['status']);
-      $an5->status_date = date('Y-m-d');
-      $an5->save();
-
-      $an6 = Crp::where('patient_uuid', $uuid)->first();
-      
-      $an6->status->appendComment('status', $input['status']);
-      $an6->status_date = date('Y-m-d');
-      $an6->save();
-
-      $an7 = Electrolytes::where('patient_uuid', $uuid)->first();
-      
-      $an7->status->appendComment('status', $input['status']);
-      $an7->status_date = date('Y-m-d');
-      $an7->save();
-
-      $an8 = GeneralSummary::where('patient_uuid', $uuid)->first();
-      
-      $an8->status->appendComment('status', $input['status']);;
-      $an8->status_date = date('Y-m-d');
-      $an8->save();
-
-      $an9 = Il6::where('patient_uuid', $uuid)->first();
-      
-      $an9->status->appendComment('status', $input['status']);
-      $an9->status_date = date('Y-m-d');
-      $an9->save();
-
-      $an10 = LaboratoryExam::where('patient_uuid', $uuid)->first();
-      
-      $an10->status->appendComment('status', $input['status']);
-      $an10->status_date = date('Y-m-d');
-      $an10->save();
-
-      $an11 = LiverFunction::where('patient_uuid', $uuid)->first();
-      
-      $an11->status->appendComment('status', $input['status']);
-      $an11->status_date = date('Y-m-d');
-      $an11->save();
-
-      $an12 = MicroscopicExam::where('patient_uuid', $uuid)->first();
-      
-      $an12->status->appendComment('status', $input['status']);
-      $an12->status_date = date('Y-m-d');
-      $an12->save();
-
-      $an13 = RenalFunction::where('patient_uuid', $uuid)->first();
-      
-      $an13->status->appendComment('status', $input['status']);
-      $an13->status_date = date('Y-m-d');
-      $an13->save();
-
-      $an14 = UrineRoutine::where('patient_uuid', $uuid)->first();
-      
-      $an14->status->appendComment('status', $input['status']);
-      $an14->status_date = date('Y-m-d');
-      $an14->save();
-      */
-
-      return $result;
   }
 
+  /*
   private function updateEachTestTable()
   {
-    dd("reached");
+      //dd("reached");
+
+      $tests = config('ctms.tests');
+
+      foreach ($tests as $key => $modelClass) {
+
+            $model = $modelClass::find('patient_uuid', $uuid);
+
+            if ($model) {
+
+                    $model->status = $input['status'];
+                    $model->status_date = date('Y-m-d');
+                    $model->appendComment('comment_entered_by', $input['comment']);
+
+                try {
+                      
+                    $result = $model->save();
+                    if ($result) { 
+                        $msg = 'Patient Test Status For [' . $key . '] Updated Successfully!';
+                    } else {
+                        $msg = 'Error: Patient Test Status For [' . $key . '] Could Not Be updated';
+                    }
+
+                } catch (QueryException $e) {
+                    // Handles database-related errors (e.g., duplicate email)
+                    $msg = 'Database Error While Updating Patient Status [' . $key . '] Message : ' . $e->getMessage();
+                } catch (\Exception $e) {
+                    // Handles any other general exceptions
+                    $msg = 'Unexpected Error While Updating Patient Status [' . $key . '] Message : ' . $e->getMessage();
+                }
+                Log::channel('patient')->info($msg);
+                unset($model); // destroy reference
+            } else {
+              $msg = 'Test Key [' . $key . '] Not Found';
+              Log::channel('patient')->info($msg);
+            }
+      }
   }
+  */
 
 }
