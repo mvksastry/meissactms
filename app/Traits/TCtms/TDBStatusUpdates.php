@@ -121,9 +121,9 @@ trait TDBStatusUpdates
         return $result;
 
 
-        // now update all the relevant table, below a huge code was 
-        // there but was only first time entry, now let us fill all other columns much like the patients table instead of
-        // leaving them blank.
+      // now update all the relevant table, below a huge code was 
+      // there but was only first time entry, now let us fill all other columns much like the patients table instead of
+      // leaving them blank.
       //IMPORTANT BREAKING CHANGE, IN ALL 23 TABLES, BEYOND ENTERED BY STATUS
       //DONT CHANGE ANYTHING. IT IS NOT NEEDED WE CAN REMOVE THE COLUMNS AS
       //ONLY PATIENT TABLE NEEDS TO UPDATED.

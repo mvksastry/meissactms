@@ -33,13 +33,14 @@ return [
         'tests' => [
                 
                 'Life Style'    =>      \App\Models\Ctms\LifeStyle::class,
-                'Clinicals'     =>      \App\Models\Ctms\ClinicalData::class,
+                //'Clinicals'   =>      \App\Models\Ctms\ClinicalData::class,
                 'Sensory Exam'  =>      \App\Models\Ctms\SensoryExamination::class,
                 'M&DTR Exam'    =>      \App\Models\Ctms\Mdtre::class,
                 'Pfirmann Grade'=>      \App\Models\Ctms\PfirmannGrade::class,
                 'V & A Score'   =>      \App\Models\Ctms\VAScore::class,
                 'MODQ Score'    =>      \App\Models\Ctms\ModqScore::class,
                 'RMQ Reply'     =>      \App\Models\Ctms\RMQReply::class,
+                
                 'Blood Routime' =>      \App\Models\Ctms\Clinicals\BloodRoutine::class,
                 'Blood Sugar'   =>      \App\Models\Ctms\Clinicals\BloodSugar::class,
                 'Blood Urea'    =>      \App\Models\Ctms\Clinicals\BloodUrea::class,
