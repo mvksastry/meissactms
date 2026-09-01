@@ -136,6 +136,12 @@ return [
             'level' => 'info',
         ],
 
+        'psfc' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/psfc.log'),
+            'level' => 'info',
+        ],
+
         'activity' => [
             'driver' => 'daily',
             'path' => storage_path('logs/activity.log'),

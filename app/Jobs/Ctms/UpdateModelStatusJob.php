@@ -42,7 +42,7 @@ class UpdateModelStatusJob implements ShouldQueue
      */
     public function handle(): void
     {
-         \Log::info('JOB-START: ' . __CLASS__, [
+         \Log::channel('psfc')->info('JOB-START: ' . __CLASS__, [
             'model' => $this->modelClass,
             'patient_uuid' => $this->uuid
         ]);
@@ -50,14 +50,14 @@ class UpdateModelStatusJob implements ShouldQueue
         //
         try {
             if (!class_exists($this->modelClass)) {
-                Log::error("Model class {$this->modelClass} does not exist.");
+                Log::channel('psfc')->error("Model class {$this->modelClass} does not exist.");
                 return;
             }
 
             $model = $this->modelClass::where('patient_uuid', $this->uuid)->first();
 
             if (!$model) {
-                Log::warning("MU-L1: Record not found: {$this->modelClass} ID {$this->uuid}");
+                Log::channel('psfc')->warning("MU-L1: Record not found: {$this->modelClass} ID {$this->uuid}");
                 return;
             } else{
                 // Modify fields instead of appending
@@ -67,7 +67,7 @@ class UpdateModelStatusJob implements ShouldQueue
 
                 $model->save();
 
-                \Log::info('JOB-END: ' . __CLASS__, [
+                \Log::channel('psfc')->info('JOB-END: ' . __CLASS__, [
                     'model' => $this->modelClass,
                     'uuid' => $this->uuid
                 ]);
@@ -78,7 +78,7 @@ class UpdateModelStatusJob implements ShouldQueue
             }
 
         } catch (\Throwable $e) {
-            Log::error("Error Updating {$this->modelClass} Patient uuid {$this->uuid}: " . $e->getMessage());
+            Log::channel('psfc')->error("Error Updating {$this->modelClass} Patient uuid {$this->uuid}: " . $e->getMessage());
         }
     }
 }
