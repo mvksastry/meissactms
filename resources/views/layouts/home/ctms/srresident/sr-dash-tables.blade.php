@@ -75,7 +75,7 @@
               @foreach ($xfuPats as $row)
                 <tr>
                   <td>1.</td>
-                  <td>{{ ucfirst($row->status) }}</td>
+                  <td>{{ ucfirst($row->transplant_status) }}</td>
                   <td>
                     <a href="/patient-followup" button class="btn btn-block btn-warning rounded" type="button"><i
                         class="ion ion-person"></i>&nbsp

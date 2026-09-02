@@ -184,7 +184,7 @@ class HomeController extends Controller
 		{
             $obPatients = $this->getAllOnBoardedPatientsForSeniorResident();
             $xfuPats = $this->getAllFollowUpPatientsForSeniorResident();
-            //dd($pwds);
+            //dd($obPatients, $xfuPats);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             //dd($obPatients, $xfuPats);
             return view('layouts.home.ctms.srresident.homeSrRes')->with([
