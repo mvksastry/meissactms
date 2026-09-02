@@ -31,15 +31,15 @@
           <table class="table table-sm">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <strong>Pending: On-Boarding Approval</strong> <strong></strong>
+                  Pending: On-Boarding Approval
                 </td>
                 <td>
                   <label class="text-danger"><strong>{{ count($pending) }}</strong></label>
@@ -55,10 +55,14 @@
         @else
           <table class="table table-sm">
             <thead>
-              <tr>
-                <th>No Actionables: On Boarding Approval</th>
-              </tr>
             </thead>
+            <tbody>
+              <tr>
+                <td>
+                  No Actionables: On Boarding Approval
+                </td>
+              </tr>
+            </tbody>
           </table>
         @endif
         <hr class="border-b-2 border-warning my-2 mx-2">
@@ -66,16 +70,16 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <strong>Patients @ Draft status
-                    (Data stages may vary)</strong><strong></strong>
+                  Patients @ Draft status
+                  (Data stages may vary)
                 </td>
                 <td>
                   <label class="text-danger"><strong>{{ count($drafts) }}</strong></label>
@@ -87,11 +91,13 @@
           </table>
         @else
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
-            <thead>
+            <tbody>
               <tr>
-                <th>None @ Draft Status</th>
+                <td>
+                  No Actionables: Draft Status
+                </td>
               </tr>
-            </thead>
+            </tbody>
           </table>
         @endif
         <hr class="border-b-2 border-warning my-2 mx-2">
@@ -99,15 +105,15 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <strong>Data For Mark as Sealed</strong>
+                  Data For Mark as Sealed
                 </td>
                 <td>
                   <label class="text-danger"><strong>{{ count($approved) }}</strong></label>
@@ -122,11 +128,13 @@
           </table>
         @else
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
-            <thead>
+            <tbody>
               <tr>
-                <th>No Actionables: Mark As Sealed</th>
+                <td>
+                  No Actionables: Mark As Sealed
+                </td>
               </tr>
-            </thead>
+            </tbody>
           </table>
         @endif
         <hr class="border-b-2 border-warning my-2 mx-2">
@@ -134,15 +142,15 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <strong>Patients @ Enrollment Stage</strong>
+                  Patients @ Enrollment Stage
                 </td>
                 <td>
                   <label class="text-danger"><strong>{{ count($sealed) }}</strong></label>
@@ -157,11 +165,13 @@
           </table>
         @else
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
-            <thead>
+            <tbody>
               <tr>
-                <th>No Actionables: No Patient Data Sealed </th>
+                <td>
+                  No Actionables: No Patient Data Sealed
+                </td>
               </tr>
-            </thead>
+            </tbody>
           </table>
         @endif
         <hr class="border-b-2 border-warning my-2 mx-2">
@@ -169,9 +179,9 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -192,11 +202,13 @@
           </table>
         @else
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
-            <thead>
+            <tbody>
               <tr>
-                <th>No Actionables: Follow-up Patient Data</th>
+                <td>
+                  No Actionables: Follow-up Patient Data
+                </td>
               </tr>
-            </thead>
+            </tbody>
           </table>
         @endif
       </div>
@@ -246,11 +258,13 @@
           </table>
         @else
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
-            <thead>
+            <tbody>
               <tr>
-                <th>No Info Available</th>
+                <td>
+                  No Info Available
+                </td>
               </tr>
-            </thead>
+            </tbody>
           </table>
         @endif
       </div>

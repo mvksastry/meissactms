@@ -31,9 +31,9 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -67,9 +67,9 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -102,9 +102,9 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>

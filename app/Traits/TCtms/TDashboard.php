@@ -72,7 +72,7 @@ trait TDashboard
 
     public function getAllPatientsForFollowUpForCtmsManager()
     {
-        return Enrollment::Where('stage_code', '>=', 28)->get();
+        return Enrollment::Where('stage_code', '>=', 370)->get();
     }
     //-------------------------------------------------//
     

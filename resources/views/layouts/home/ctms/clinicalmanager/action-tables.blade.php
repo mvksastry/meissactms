@@ -31,23 +31,23 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <strong>O</strong>n <strong>B</strong>oarded Patients Waiting For Entry of Data
+                  <strong></strong> <strong></strong>PreEnroll: Mark As Complete (M A C) Waiting
                 </td>
                 <td>
                   <label class="text-danger"><strong>{{ count($obPatients) }}</strong></label>
                 </td>
                 <td>
-                  <a href="/edit-patients" button class="btn btn-block btn-warning rounded" type="button"><i
+                  <a href="/patient-information" button class="btn btn-block btn-warning rounded" type="button"><i
                       class="ion ion-person"></i>&nbsp
-                    Go To Enter</button></a>
+                    More Info</button></a>
                 </td>
               </tr>
             </tbody>
@@ -66,15 +66,15 @@
           <table id="userIndex2" class="table table-sm table-bordered table-hover">
             <thead>
               <tr>
-                <th style="width: 30%;">Task</th>
-                <th style="width: 30%;">For Attention</th>
-                <th style="width: 30%;">Action</th>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  Follow-up Data Entry Patients Waiting
+                  Follow-up: Mark As Complete (M A C) Waiting
                 </td>
                 <td>
                   <label class="text-danger"><strong>{{ count($fuPatients) }}</strong></label>
@@ -82,7 +82,7 @@
                 <td>
                   <a href="/patient-followup" button class="btn btn-block btn-warning rounded" type="button"><i
                       class="ion ion-person"></i>&nbsp
-                    Go To Enter</button></a>
+                    More Info</button></a>
                 </td>
               </tr>
             </tbody>

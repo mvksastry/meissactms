@@ -27,7 +27,7 @@
           <div class="card-header">
             <h3 class="card-title">
               <i class="fas fa-tag"></i>
-              Active Patient List x
+              Active Patient List
             </h3>
           </div>
           <div class="card-body">
@@ -139,7 +139,7 @@
                               @endif
                             @endhasrole
                           @else
-                            Locked For view
+                            Locked: View Only
                           @endif
                         </td>
                       </tr>
