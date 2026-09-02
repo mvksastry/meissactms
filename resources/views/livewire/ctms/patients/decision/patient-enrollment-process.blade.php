@@ -164,7 +164,7 @@
             <div class="row">
               <!-- /.col -->
               @if ($p1)
-                <livewire:ctms.patients.decision.enrollment-decision-component :patient_uuid="$patient_uuid" />
+                <livewire:ctms.patients.decision.enrollment-decision-component :patient_uuid="$patient_uuid" :key="$patient_uuid" />
               @endif
             </div>
             </br>
