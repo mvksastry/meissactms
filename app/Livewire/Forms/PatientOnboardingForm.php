@@ -8,10 +8,10 @@ use Livewire\Form;
 class PatientOnboardingForm extends Form
 {
 
-    #[Validate('nullable|alpha_num|max:20', message: 'Only Alpha NUmbers no space')]
+    #[Validate('required|alpha_num|max:20', message: 'Only Alpha NUmbers no space')]
     public $opd_id = null;
 
-    #[Validate('nullable|alpha_num|max:20')]
+    #[Validate('required|alpha_num|max:20', message: 'Only Alpha NUmbers no space')]
     public $in_patient_id = null;
 
     #[Validate('nullable|date')]
