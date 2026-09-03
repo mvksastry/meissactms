@@ -20,7 +20,18 @@ class FormBloodRoutine extends Form
     #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
     public $rbc = null;
                       
-    #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
+    //#[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
+    //public $hgb = null;
+
+    #[Validate(
+        rule: 'nullable|numeric|decimal:0,4|min:3.52|max:19.21',
+        message: [
+            'numeric' => 'The :attribute must be a valid number.',
+            'decimal' => 'The :attribute must have up to 4 decimal places.',
+            'min'     => 'The :attribute must be at least 4.52.',
+            'max'     => 'The :attribute must not exceed 19.20.',
+        ]
+    )]
     public $hgb = null;
 
     #[Validate('nullable|regex:/^\d+(\.\d+)?$/')]
