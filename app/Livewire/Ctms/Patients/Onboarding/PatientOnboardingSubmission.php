@@ -18,6 +18,7 @@ use App\Traits\TCtms\TPatientPersonalInfo;
 use App\Traits\TCtms\TPatientDuplicateCheck;
 //use App\Traits\TCtms\TDbEntries;
 use App\Traits\TCtms\TPatientOnboardInfo;
+use App\Traits\THandlesValidationAlerts;
 
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -31,6 +32,7 @@ class PatientOnboardingSubmission extends Component
     use TPatientPersonalInfo;
     //use TDbEntries;
     use TPatientOnboardInfo;
+    use THandlesValidationAlerts;
 
     //Form bindings
     public PatientOnboardingForm $form;
@@ -65,7 +67,38 @@ class PatientOnboardingSubmission extends Component
     //decoupling has to be done from direct entries like before
     public function fnSavePrimaryInfo()
     {
+        $errors = $this->handleValidation($this->form);
+
+        if ($errors) {
+            // Fire SweetAlert in component
+            LivewireAlert::title('Validation Failed')
+                ->error()
+                ->html(implode('<br>', $errors))
+                ->position('center')
+                ->timer(null)
+                ->toast(false)
+                ->show();
+        } else {
+            // save logic...
+            $this->input = $this->form->all();
+            $this->input = $this->sanitizeInput($this->input);
+            //dd($this->input);
+            if($this->getDuplicateEntries($this->input))
+            {
+                $msg = 'Cannot Save as Matching Name, gender, primary phone number for ['.$this->input['name'].'] found ';
+                LivewireAlert::title('Duplicate Entry Found...')->warning()->asToast()->show();
+                Log::channel('patient')->info($msg);
+            } else {
+                $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
+                $result = $this->savePatientOnBoardingInformation($this->input);
+                LivewireAlert::title('Patient On-Boarding ['.$result.'] Data Saved...')->info()->asToast()->show();
+                $msg = 'User ['.Auth::user()->name.'] Saved On-Boarding Patient information for ['.$result.']';
+                Log::channel('patient')->info($msg);
+                //dd($result);
+            }
+        }
         
+        /*
         $this->form->validate(); 
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
@@ -83,6 +116,6 @@ class PatientOnboardingSubmission extends Component
             Log::channel('patient')->info($msg);
             //dd($result);
         }
-        
+        */
     }
 }

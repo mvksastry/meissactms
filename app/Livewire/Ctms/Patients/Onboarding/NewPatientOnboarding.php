@@ -13,6 +13,7 @@ use App\Models\Ctms\Patient;
 //traits
 use App\Traits\TCtms\TDbEntriesRevised;
 use App\Traits\TCtms\TPatientTimeline;
+use App\Traits\THandlesValidationAlerts;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //
@@ -22,6 +23,7 @@ class NewPatientOnboarding extends Component
 {
     use TDbEntriesRevised;
     use TPatientTimeline;
+    use THandlesValidationAlerts;
 
     //variables
     public $entered_by, $entry_date, $approval;
