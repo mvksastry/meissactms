@@ -36,6 +36,7 @@ use Livewire\WithFileUploads;
 use App\Traits\TCtms\TEnrollmentDecision;
 use App\Traits\Fileuploads\TOldFileMove;
 use App\Traits\TCommentAppender;
+use App\Traits\THandlesValidationAlerts;
 
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -50,6 +51,7 @@ class EnrollmentDecisionComponent extends Component
     use TEnrollmentDecision;
     use TCommentAppender;
     use TOldFileMove;
+    use THandlesValidationAlerts;
 
     //form status
     public $data_type = null;
@@ -157,27 +159,41 @@ class EnrollmentDecisionComponent extends Component
         $this->passObj->status_date = $status_date;
     }
 
-
-
-
     public function fnSaveDiscectomyData()
     {
         //dd($this->enrObj->discec_status_code);
         if($this->enrObj->stage_code >= 160 && $this->enrObj->stage_code < 200)
         {
-            $this->form_a->validate();
-            $this->input = $this->form_a->all();
-            //dd($this->input);
-            $filtered = $this->filterInputNulls($this->input);
-            $filtered['disc_info_entered_by'] = Auth::user()->name;
-            $filtered['disc_info_date_entered'] = date('Y-m-d');
-            $filtered = $this->changeArrayKey($filtered, "code170200", "stage_code");
-            $filtered['discec_status_code'] = $filtered['stage_code'];
-            //dd($filtered);
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-            LivewireAlert::title("Discectomy info for Decision updated")->success()->show();
-            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
-            //dd($this->patient_uuid, $filtered);
+            
+            $errors = $this->handleValidation($this->form_a);
+
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            } else {
+
+                //$this->form_a->validate();
+                $this->input = $this->form_a->all();
+                //dd($this->input);
+                $filtered = $this->filterInputNulls($this->input);
+                $filtered['disc_info_entered_by'] = Auth::user()->name;
+                $filtered['disc_info_date_entered'] = date('Y-m-d');
+                $filtered = $this->changeArrayKey($filtered, "code170200", "stage_code");
+                $filtered['discec_status_code'] = $filtered['stage_code'];
+                //dd($filtered);
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                LivewireAlert::title("Discectomy info for Decision updated")->success()->show();
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
+                //dd($this->patient_uuid, $filtered);
+
+            }
+
         }else {
             LivewireAlert::title("Discectomy Data Enry Step NOT Reached the Step Or Elapsed")->warning()->show();
         }
@@ -187,18 +203,33 @@ class EnrollmentDecisionComponent extends Component
     {
         if($this->enrObj->stage_code == 200 && $this->enrObj->stage_code < 220 )
         {
-            //dd("reached 2 tab");
-            $this->form_b->validate();
-            $this->input = $this->form_b->all();
-            $filtered = $this->filterInputNulls($this->input);
-            $filtered['discectomy_sample_info_entered_by'] = Auth::user()->name;
-            $filtered['discectomy_sample_info_date_entered'] = date('Y-m-d');
-            $filtered = $this->changeArrayKey($filtered, "code210220", "stage_code");
-            $filtered['discec_sample_status_code'] = $filtered['stage_code'];
-            //dd($filtered);
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-            LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
-            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
+
+            $errors = $this->handleValidation($this->form_b);
+
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            } else {
+                //dd("reached 2 tab");
+                //$this->form_b->validate();
+                $this->input = $this->form_b->all();
+                $filtered = $this->filterInputNulls($this->input);
+                $filtered['discectomy_sample_info_entered_by'] = Auth::user()->name;
+                $filtered['discectomy_sample_info_date_entered'] = date('Y-m-d');
+                $filtered = $this->changeArrayKey($filtered, "code210220", "stage_code");
+                $filtered['discec_sample_status_code'] = $filtered['stage_code'];
+                //dd($filtered);
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
+            }
+
         }else {
             LivewireAlert::title("Saample Data Entry Step NOT Reached Or Elapsed")->success()->show();
         }
@@ -245,20 +276,33 @@ class EnrollmentDecisionComponent extends Component
                 }
             } 
             
-            $this->form_d->validate();
-            $this->input = $this->form_d->all();
-            $filtered = $this->filterInputNulls($this->input);
-            $merged = array_merge($filtered, $repfiles);
-            $merged['qc_infos_entered_by'] = Auth::user()->name;
-            $merged['qc_infos_date_entered'] = date('Y-m-d');
-            $filtered = $this->changeArrayKey($filtered, "code230240", "stage_code");
-            $filtered['qc_status_code'] = $filtered['stage_code'];
-            //dd($filtered);
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+            $errors = $this->handleValidation($this->form_d);
 
-            LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
-            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
-        
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            } else {
+
+                //$this->form_d->validate();
+                $this->input = $this->form_d->all();
+                $filtered = $this->filterInputNulls($this->input);
+                $merged = array_merge($filtered, $repfiles);
+                $merged['qc_infos_entered_by'] = Auth::user()->name;
+                $merged['qc_infos_date_entered'] = date('Y-m-d');
+                $filtered = $this->changeArrayKey($filtered, "code230240", "stage_code");
+                $filtered['qc_status_code'] = $filtered['stage_code'];
+                //dd($filtered);
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+
+                LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
+            }
         } else {
             LivewireAlert::title("QC Step 1 Not Reached or Elapsed")->warning()->show();
         }
@@ -306,20 +350,36 @@ class EnrollmentDecisionComponent extends Component
                 }
             } 
 
-            $this->form_i->validate();
-            $this->input = $this->form_i->all();
-            $filtered = $this->filterInputNulls($this->input);
-            $merged = array_merge($filtered, $repfiles);
-            $merged['qc_infos_entered_by'] = Auth::user()->name;
-            $merged['qc_infos_date_entered'] = date('Y-m-d');
-            $filtered = $this->changeArrayKey($filtered, "code280300", "stage_code");
-            $filtered['qc_status_code'] = $filtered['stage_code'];
-            //dd($filtered);
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-            $this->reset();
-            LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
-            Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
-        
+
+            $errors = $this->handleValidation($this->form_i);
+
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            } else {
+
+                //$this->form_i->validate();
+                $this->input = $this->form_i->all();
+                $filtered = $this->filterInputNulls($this->input);
+                $merged = array_merge($filtered, $repfiles);
+                $merged['qc_infos_entered_by'] = Auth::user()->name;
+                $merged['qc_infos_date_entered'] = date('Y-m-d');
+                $filtered = $this->changeArrayKey($filtered, "code280300", "stage_code");
+                $filtered['qc_status_code'] = $filtered['stage_code'];
+                //dd($filtered);
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $this->reset();
+                LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
+
+            }
+
         } else {
             LivewireAlert::title("QC Step 2 Not Reached or Elapsed")->warning()->show();
         }
@@ -330,18 +390,32 @@ class EnrollmentDecisionComponent extends Component
         if($this->enrObj->stage_code == 300 && $this->enrObj->stage_code < 320)
         {
 
-            //dd("reached 4 tab");
-            $this->form_e->validate();
-            $this->input = $this->form_e->all();
-            $filtered = $this->filterInputNulls($this->input);
-            $filtered['qa_infos_entered_by'] = Auth::user()->name;
-            $filtered['qa_infos_date_entered'] = date('Y-m-d');
-            $filtered = $this->changeArrayKey($filtered, "code310320", "stage_code");
-            $filtered['qa_status_code'] = $filtered['stage_code'];
-            //dd($filtered);
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-            $this->reset();
-            LivewireAlert::title("QA info for Decision updated")->success()->show();
+            $errors = $this->handleValidation($this->form_e);
+
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            } else {
+                //dd("reached 4 tab");
+                //$this->form_e->validate();
+                $this->input = $this->form_e->all();
+                $filtered = $this->filterInputNulls($this->input);
+                $filtered['qa_infos_entered_by'] = Auth::user()->name;
+                $filtered['qa_infos_date_entered'] = date('Y-m-d');
+                $filtered = $this->changeArrayKey($filtered, "code310320", "stage_code");
+                $filtered['qa_status_code'] = $filtered['stage_code'];
+                //dd($filtered);
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $this->reset();
+                LivewireAlert::title("QA info for Decision updated")->success()->show();
+
+            }
 
         }else {
             LivewireAlert::title("QA Info Step Not Reached or Elapsed")->warning()->show();
@@ -357,51 +431,67 @@ class EnrollmentDecisionComponent extends Component
         {
             if($this->enrObj->stage_code == 320 || $this->enrObj->stage_code == 340)
             {
-                //dd("inside");
-                $this->form_f->validate();
-                $this->input = $this->form_f->all();
-                $filtered = $this->filterInputNulls($this->input);          
+                $errors = $this->handleValidation($this->form_f);
 
-                if(array_key_exists('enrollment_decision', $filtered))
-                {
-                    $codes = config('ctms.steps'); 
-                    $filtered['status_date'] = date('Y-m-d');
-                    $this->enrObj->stage_code = $filtered['enrollment_decision'];
-                    $this->enrObj->enrollment_decision = $codes[$filtered['enrollment_decision']];
-                    $this->enrObj->status_date = date('Y-m-d');
-                    //get the code of the 
+                if ($errors) {
+                    // Fire SweetAlert in component
+                    LivewireAlert::title('Validation Failed')
+                        ->error()
+                        ->html(implode('<br>', $errors))
+                        ->position('center')
+                        ->timer(null)
+                        ->toast(false)
+                        ->show();
+                } else {
                     
+                    //dd("inside");
+                    //$this->form_f->validate();
+                    $this->input = $this->form_f->all();
+                    $filtered = $this->filterInputNulls($this->input);          
 
-                    if( Auth::user()->hasAnyRole(['ctms_incharge']) )
-		            {
-                        //$filtered['status'] = 'pending';
-                        //$filtered['decision_entered_by'] = Auth::user()->name;
-                        //$filtered['decision_date_entered'] = date('Y-m-d');
-                        //dd($filtered);
-                        $this->enrObj->status = 'pending';
+                    if(array_key_exists('enrollment_decision', $filtered))
+                    {
+                        $codes = config('ctms.steps'); 
+                        $filtered['status_date'] = date('Y-m-d');
+                        $this->enrObj->stage_code = $filtered['enrollment_decision'];
+                        $this->enrObj->enrollment_decision = $codes[$filtered['enrollment_decision']];
+                        $this->enrObj->status_date = date('Y-m-d');
+                        //get the code of the 
+                        
 
-                        $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
-                        $this->enrObj->decision_entered_by = Auth::user()->name;
-                        $this->enrObj->decision_date_entered = date('Y-m-d');
-                        //dd($filtered['comment_decision'], $this->enrObj);
-                        $this->enrObj->save();
-                        //$qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-                        LivewireAlert::title("In-Charge: Enrollment Decision Updated")->success()->show();
+                        if( Auth::user()->hasAnyRole(['ctms_incharge']) )
+                        {
+                            //$filtered['status'] = 'pending';
+                            //$filtered['decision_entered_by'] = Auth::user()->name;
+                            //$filtered['decision_date_entered'] = date('Y-m-d');
+                            //dd($filtered);
+                            $this->enrObj->status = 'pending';
+
+                            $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
+                            $this->enrObj->decision_entered_by = Auth::user()->name;
+                            $this->enrObj->decision_date_entered = date('Y-m-d');
+                            //dd($filtered['comment_decision'], $this->enrObj);
+                            $this->enrObj->save();
+                            //$qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                            LivewireAlert::title("In-Charge: Enrollment Decision Updated")->success()->show();
+                        }
+
+                        if( Auth::user()->hasAnyRole(['director']) )
+                        {
+                            $this->enrObj->status = 'approved';
+                            $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
+                            $this->enrObj->approved_by = Auth::user()->name;
+                            $this->enrObj->approved_date = date('Y-m-d');
+                            //dd($filtered['comment_decision'], $this->enrObj);
+                            $this->enrObj->save();
+                            LivewireAlert::title("Director: Enrollment Decision Updated")->success()->show();
+                        }
+
+                        $this->form_f->reset();
+
+                    }else {
+                        LivewireAlert::title("Decision NOT Selected")->warning()->show();
                     }
-
-                    if( Auth::user()->hasAnyRole(['director']) )
-		            {
-                        $this->enrObj->status = 'approved';
-                        $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
-                        $this->enrObj->approved_by = Auth::user()->name;
-                        $this->enrObj->approved_date = date('Y-m-d');
-                        //dd($filtered['comment_decision'], $this->enrObj);
-                        $this->enrObj->save();
-                        LivewireAlert::title("Director: Enrollment Decision Updated")->success()->show();
-                    }
-                    $this->form_f->reset();
-                }else {
-                    LivewireAlert::title("Decision NOT Selected")->warning()->show();
                 }
             }else{
                 LivewireAlert::title("Decision Stage NOT Reached or Elapsed")->warning()->show();
@@ -417,34 +507,49 @@ class EnrollmentDecisionComponent extends Component
     {
         if($this->enrObj->stage_code == 340)
         {
-            $this->form_g->validate();
-            $this->input = $this->form_g->all();
-            $filtered = $this->filterInputNulls($this->input);
-            $filtered['stage_code'] = 350;
-            //dd($filtered);
-            $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
 
-            //now we have update ctms_activity table here. Why? 
-            // an entry on this patient must be there and hence update it.
-            //steps first query the activity table.
-            $ctms_patient_entry = Activity::where('patient_uuid', $this->patient_uuid)
-                                            ->where('code', 'mfg')->first();
-            if($ctms_patient_entry === null)
-            {
+            $errors = $this->handleValidation($this->form_g);
 
-            }else{
-                $ctms_patient_entry->mbr_id = $this->filtered['mbr_id'];
-                $ctms_patient_entry->save();
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            } else {
+
+                //$this->form_g->validate();
+                $this->input = $this->form_g->all();
+                $filtered = $this->filterInputNulls($this->input);
+                $filtered['stage_code'] = 350;
+                //dd($filtered);
+                $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+
+                //now we have update ctms_activity table here. Why? 
+                // an entry on this patient must be there and hence update it.
+                //steps first query the activity table.
+                $ctms_patient_entry = Activity::where('patient_uuid', $this->patient_uuid)
+                                                ->where('code', 'mfg')->first();
+                if($ctms_patient_entry === null)
+                {
+
+                }else{
+                    $ctms_patient_entry->mbr_id = $this->filtered['mbr_id'];
+                    $ctms_patient_entry->save();
+                }
+
+                //when en enrollment id created, it be made visible to the respective teams???
+                //best is to make an entry in todo list for team members.
+                $newChat = new Chat();
+                $newChat->user_id = Auth::user()->id;
+                $newChat->message = "New Patient Enrollment Done, Update MBR and other records";
+                $newChat->save();
+                LivewireAlert::title("Assigned Administrative Ids")->success()->show();
+                $this->form_g->reset();
             }
-
-            //when en enrollment id created, it be made visible to the respective teams???
-            //best is to make an entry in todo list for team members.
-            $newChat = new Chat();
-            $newChat->user_id = Auth::user()->id;
-            $newChat->message = "New Patient Enrollment Done, Update MBR and other records";
-            $newChat->save();
-            LivewireAlert::title("Assigned Administrative Ids")->success()->show();
-            $this->form_g->reset();
         }else{
             LivewireAlert::title("Administrative Step Not Reached or Elapsed")->warning()->show();
         }
@@ -457,8 +562,20 @@ class EnrollmentDecisionComponent extends Component
             $steps = config('ctms.steps');
             //query here whether or not decision taken and it is yes.
             //dd("reached 7 tab");
+            $errors = $this->handleValidation($this->form_h);
 
-                $this->form_h->validate();
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            } else {
+
+                // $this->form_h->validate();
                 $this->input = $this->form_h->all();
                 $filtered = $this->filterInputNulls($this->input);
                 $filtered['transplant_info_entered_by'] = Auth::user()->name;
@@ -469,6 +586,7 @@ class EnrollmentDecisionComponent extends Component
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
                 LivewireAlert::title("Transplant Status Updated! This Completes Enrollment")->success()->show();
                 $this->form_h->reset();
+            }
         }else{
             LivewireAlert::title("Transplant Data Entry Step Not Reached or Elapsed")->warning()->show();
         }
@@ -493,26 +611,27 @@ class EnrollmentDecisionComponent extends Component
     }
 
     /**
-         * Change a specific key in an associative array while keeping its value.
-         *
-         * @param array  $array     The original array
-         * @param string $oldKey    The key to replace
-        * @param string $newKey    The new key name
-        * @return array            The updated array
-        */
-        public function changeArrayKey(array $array, string $oldKey, string $newKey): array {
-            if (!array_key_exists($oldKey, $array)) {
-                // If the old key doesn't exist, return the array unchanged
-                //dd($array);
-                return $array;
-            }
+     * Change a specific key in an associative array while keeping its value.
+     *
+     * @param array  $array     The original array
+     * @param string $oldKey    The key to replace
+    * @param string $newKey    The new key name
+    * @return array            The updated array
+    */
+    public function changeArrayKey(array $array, string $oldKey, string $newKey): array {
 
-            // Preserve the order of the array
-            $keys = array_keys($array);
-            $keys[array_search($oldKey, $keys, true)] = $newKey;
-
-            // Combine new keys with old values
-            //dd($keys);
-            return array_combine($keys, array_values($array));
+        if (!array_key_exists($oldKey, $array)) {
+            // If the old key doesn't exist, return the array unchanged
+            //dd($array);
+            return $array;
         }
+
+        // Preserve the order of the array
+        $keys = array_keys($array);
+        $keys[array_search($oldKey, $keys, true)] = $newKey;
+
+        // Combine new keys with old values
+        //dd($keys);
+        return array_combine($keys, array_values($array));
+    }
 }
