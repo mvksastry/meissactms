@@ -32,7 +32,7 @@ class PatientOnboardingForm extends Form
     #[Validate('nullable|numeric')]
     public $age = null;
 
-    #[Validate('required|numeric')]
+    #[Validate('required|numeric|min_digits:10|max_digits:10')]
     public $primary_phone_number = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9.,:\-_\/ ]+$/')]

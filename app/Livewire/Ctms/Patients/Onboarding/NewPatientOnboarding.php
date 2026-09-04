@@ -38,6 +38,11 @@ class NewPatientOnboarding extends Component
     //panels
     public $p10, $p11, $p12;
 
+    protected $listeners = [
+        'primaryInfoSaved' => 'fnResetAllVisiblePanels'
+    ];
+
+
     public function render()
     {
         $this->entered_by = Auth::user()->name;

@@ -67,6 +67,7 @@ class PatientOnboardingSubmission extends Component
     //decoupling has to be done from direct entries like before
     public function fnSavePrimaryInfo()
     {
+        
         $errors = $this->handleValidation($this->form);
 
         if ($errors) {
@@ -95,27 +96,10 @@ class PatientOnboardingSubmission extends Component
                 $msg = 'User ['.Auth::user()->name.'] Saved On-Boarding Patient information for ['.$result.']';
                 Log::channel('patient')->info($msg);
                 //dd($result);
+                $this->form->reset();
+                $this->dispatch('primaryInfoSaved');
             }
         }
-        
-        /*
-        $this->form->validate(); 
-        $this->input = $this->form->all();
-        $this->input = $this->sanitizeInput($this->input);
-        //dd($this->input);
-        if($this->getDuplicateEntries($this->input))
-        {
-            $msg = 'Cannot Save as Matching Name, gender, primary phone number for ['.$this->input['name'].'] found ';
-            LivewireAlert::title('Duplicate Entry Found...')->warning()->asToast()->show();
-            Log::channel('patient')->info($msg);
-        } else {
-            $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
-            $result = $this->savePatientOnBoardingInformation($this->input);
-            LivewireAlert::title('Patient On-Boarding ['.$result.'] Data Saved...')->info()->asToast()->show();
-            $msg = 'User ['.Auth::user()->name.'] Saved On-Boarding Patient information for ['.$result.']';
-            Log::channel('patient')->info($msg);
-            //dd($result);
-        }
-        */
+
     }
 }
