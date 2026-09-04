@@ -50,46 +50,21 @@ trait TDbEntriesRevised
 {
   public function setAllDbPatientDataModels($uuid, $patObj, $data_type)
   {
-      $models = [
 
-        \App\Models\Ctms\LifeStyle::class,
-        \App\Models\Ctms\ClinicalData::class,
-        \App\Models\Ctms\SensoryExamination::class,
-        \App\Models\Ctms\Mdtre::class,
-        \App\Models\Ctms\PfirmannGrade::class,
-        \App\Models\Ctms\VAScore::class,
-        \App\Models\Ctms\ModqScore::class,
-        \App\Models\Ctms\RMQReply::class,
-        \App\Models\Ctms\Clinicals\BloodRoutine::class,
-        \App\Models\Ctms\Clinicals\BloodSugar::class,
-        \App\Models\Ctms\Clinicals\BloodUrea::class,
-        \App\Models\Ctms\Clinicals\ChemicalExam::class,
-        \App\Models\Ctms\Clinicals\Creatinine::class,
-        \App\Models\Ctms\Clinicals\Crp::class,
-        \App\Models\Ctms\Clinicals\Electrolytes::class,
-        \App\Models\Ctms\Clinicals\GeneralSummary::class,
-        \App\Models\Ctms\Clinicals\Il6::class,
-        \App\Models\Ctms\Clinicals\LaboratoryExam::class,
-        \App\Models\Ctms\Clinicals\LiverFunction::class,
-        \App\Models\Ctms\Clinicals\MicroscopicExam::class,
-        \App\Models\Ctms\Clinicals\RenalFunction::class,
-        \App\Models\Ctms\Clinicals\UrineRoutine::class,
-        \App\Models\Ctms\Clinicals\DrugDetails::class,
+        $models = config('ctms.tests');
 
-      ];
-
-
-      foreach ($models as $modelClass) {
-        $obj = new $modelClass();
-        $obj->fill([
-            'patient_uuid' => $uuid,
-            'opd_id' => $patObj->opd_id,
-            'in_patient_id' => $patObj->in_patient_id,
-            'admission_date' => $patObj->admission_date,
-            'data_type' => $data_type,
-            'status' => 'draft',
-            'status_date' => date('Y-m-d'),
+        foreach ($models as $modelClass) {
+            $obj = new $modelClass();
+            $obj->fill([
+                'patient_uuid' => $uuid,
+                'opd_id' => $patObj->opd_id,
+                'in_patient_id' => $patObj->in_patient_id,
+                'admission_date' => $patObj->admission_date,
+                'data_type' => $data_type,
+                'status' => 'draft',
+                'status_date' => date('Y-m-d'),
         ]);
+
         //dd($obj);        
         try {
             

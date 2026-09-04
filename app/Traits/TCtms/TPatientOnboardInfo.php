@@ -86,7 +86,7 @@ trait TPatientOnboardInfo
           //----------------------------------------//
           //personal info
           $newPatientInfo->name =  $input['name'];
-          $newPatientInfo->gender =  $input['gender'];
+          $newPatientInfo->gender =  ucfirst($input['gender']);
           $newPatientInfo->date_of_birth =  $input['date_of_birth'];
           $newPatientInfo->age =  $input['age'];
           $newPatientInfo->primary_phone_number =  $input['primary_phone_number'];
