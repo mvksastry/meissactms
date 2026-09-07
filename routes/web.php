@@ -27,7 +27,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionsController;
 //------------------------------------------------------//
 use App\Livewire\Ctms\Patients\Onboarding\NewPatientOnboarding;
-
+use App\Livewire\Ctms\Closures\PatientRecordClosure;
 
 
 
@@ -198,6 +198,8 @@ Route::middleware('auth')->group(function () {
     Route::get('patient-followup', PatientFollowup::class);
     Route::get('mark-as-complete', MarkAsComplete::class);
     Route::get('drug-categories', DrugCategories::class);
+
+    Route::get('patient-record-closure', PatientRecordClosure::class);
 
     // ------- Livewire: Components CRO Roles------- //
     Route::get('cro-patient-dashboard', CroPatientDashboard::class);

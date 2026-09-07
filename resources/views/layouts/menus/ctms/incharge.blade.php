@@ -162,7 +162,7 @@
                 </a>
 
                 <ul class="nav nav-treeview">
-                  @include('layouts.menus.items.patientms.mark-as-complete')
+                  @include('layouts.menus.items.patientms.patient-record-closure')
                 </ul>
               </li>
             </ul>
