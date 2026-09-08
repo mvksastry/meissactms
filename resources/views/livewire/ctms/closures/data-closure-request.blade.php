@@ -78,61 +78,100 @@
                   <td>
                     <label>SKLS Unique ID</label>
                     </br>
-                    {{ $patientInfo->patient_unique_id }}
+                    {{ $enrollInfo->patient_unique_id }}
                   </td>
 
                   <td>
                     <label>Transplant Status</label>
                     </br>
-                    {{ $patientInfo->transplant_status }}
+                    {{ $enrollInfo->transplant_status }}
                   </td>
                 </tr>
 
+                <tr>
+                  <td colspan="5">
+                    <label>Closure Comment</label>
+                    </br>
+                    {{ $patientInfo->closure_comment }}
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label>Date Closed</label>
+                    </br>
+                    {{ $patientInfo->date_closed }}
+                  </td>
+                  <td>
+                    <label>Closed By</label>
+                    </br>
+                    {{ $patientInfo->closed_by }}
+                  </td>
+
+                  <td>
+                    <label>Final Status</label>
+                    </br>
+                    {{ ucfirst($patientInfo->final_status) }}
+                  </td>
+
+                  <td>
+
+                  </td>
+                  <td>
+
+                  </td>
+                </tr>
               </tbody>
             </table>
 
             {{-- The whole world belongs to you. --}}
-            <table id="userIndex2" class="table table-sm table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th colspan="3"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td colspan="2">
-                    <label>Closure Comment</label>
-                    <input wire:model.defer="form.closure_comment" id="closure_comment" type="text" value="null"
-                      class="form-control" placeholder="Comment">
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="1">
-                    <label>Closure Initiated By</label>
-                    <input wire:model="form.initiated_by" id="initiated_by" type="text" class="form-control"
-                      placeholder="Initiated By">
-                  </td>
-                  <td colspan="1">
-                    <label>Date Initiated</label>
-                    <input wire:model="form.date_initiated" id="date_initiated" type="date" value="null"
-                      class="form-control" placeholder="Date Initiated">
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            @if ($patientInfo->status == 'sealed' || $patientInfo->status == 'closed')
+              <table id="userIndex2" class="table table-sm table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="2">
+                      <label>Closure Comment</label>
+                      <input wire:model.defer="form.closure_comment" id="closure_comment" type="text" value="null"
+                        class="form-control" placeholder="Comment">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="1">
+                      <label>Closure Initiated By</label>
+                      <input wire:model="form.initiated_by" id="initiated_by" type="text" class="form-control"
+                        placeholder="Initiated By">
+                    </td>
+                    <td colspan="1">
+                      <label>Date Initiated</label>
+                      <input wire:model="form.date_initiated" id="date_initiated" type="date" value="null"
+                        class="form-control" placeholder="Date Initiated">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            @endif
 
           </div>
           <!-- /.row -->
           @hasrole('ctms_incharge')
-            <button wire:click="initiateDataClosure()" class="btn btn-block btn-warning rounded" type="button"><i
-                class="ion ion-person"></i>&nbsp
-              Initiate Closure</button>
+            @if ($patientInfo->status == 'sealed')
+              <button wire:click="initiateDataClosure()" class="btn btn-block btn-warning rounded" type="button"><i
+                  class="ion ion-person"></i>&nbsp
+                Initiate Closure</button>
+            @endif
           @endhasrole
 
           @hasrole('director')
-            <button wire:click="completePatientDataClosure()" class="btn btn-block btn-warning rounded" type="button"><i
-                class="ion ion-person"></i>&nbsp
-              Complete Closure</button>
+            @if ($patientInfo->status == 'closed')
+              <button wire:click="completePatientDataClosure()" class="btn btn-block btn-warning rounded"
+                type="button"><i class="ion ion-person"></i>&nbsp
+                Complete Closure</button>
+            @endif
           @endhasrole
 
           <!--Divider-->

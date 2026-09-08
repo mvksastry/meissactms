@@ -29,50 +29,21 @@ use Livewire\WithFileUploads;
 class PatientRecordClosure extends Component
 {
 
-    public $patientInfoButtons = false;
-
-    public $patientClosure;
-
-    //Form openings
-    //public $panel_primary_info = false;
-    //public $panel_life_style = false;
+    public $patientClosure, $patient_uuid, $patientInfo, $enrollInfo;
 
     public $p1 = false;
     public $p2 = false;
-    //public $p3 = false;
-    //public $p4 = false;
-    //public $p5 = false;
 
     //data object variables
     public $id;
-    /*
-    public $patientPrimaryInfo;
-    public $ls_infox;
-    public $clinical_info;
-    public $sensoryexam_info;
-    public $mdtre_info;
-    public $pfirmangrade_info;
-    public $vascore_info;
-    public $modq_info;
-    public $rmq_replies;
-
-    //common to all
-    public $draftPatients;
-    public $patient_uuid;
-    public $cardTittle;
-    public $date_created;
-    public $VAScore;
-    */
-
-    // important
-    public $created_at;
-    public $empty_result;
-
-
 
     public $highlightedId = null;
 
     public $activeTab;
+
+    protected $listeners = [
+        'closeP1P2' => 'closeAllPanels',
+    ];
 
 
     public function render()
@@ -127,9 +98,6 @@ class PatientRecordClosure extends Component
     {
         $p1 = false;
         $p2 = false;
-        //$p3 = false;
-        //$p4 = false;
-        //$p5 = false;
     }
 
 }

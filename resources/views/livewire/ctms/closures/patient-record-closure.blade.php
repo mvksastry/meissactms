@@ -115,11 +115,11 @@
 
     <!-- Main content -->
     @if ($p1)
-      @livewire('ctms.closures.data-closure-request', ['uuid' => $patient_uuid], key($patient_uuid))
+      @livewire('ctms.closures.data-closure-request', ['patient_uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     @if ($p2)
-      @livewire('ctms.closures.data-closure-request', ['uuid' => $patient_uuid], key($patient_uuid))
+      @livewire('ctms.closures.data-closure-request', ['patient_uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     <!-- /.content -->

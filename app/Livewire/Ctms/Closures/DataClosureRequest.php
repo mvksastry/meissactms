@@ -33,9 +33,9 @@ class DataClosureRequest extends Component
         'date_initiated' => null,
     ];
 
-    public function mount($uuid)
+    public function mount($patient_uuid)
     {
-        $this->patient_uuid = $uuid;
+        $this->patient_uuid = $patient_uuid;
         $this->patientInfo = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->enrollInfo = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
         $this->form['initiated_by'] = auth()->user()->name; // Assuming you want to set the initiated_by to the current user's name
@@ -70,6 +70,7 @@ class DataClosureRequest extends Component
         // Optionally, you can emit an event or redirect to another page
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Initiated Data Closure for Patient [ '.$this->patientInfo->patient_uuid.' ]');
         LivewireAlert::title("Closure Request Initiated")->success()->show();
+        $this->dispatch('closeP1P2'); // Emit the event to close panels P1 and P2
     }   
 
     
@@ -95,8 +96,9 @@ class DataClosureRequest extends Component
             $this->resetValues(); // Reset the form values after submission
             Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Completed Data Closure for Patient [ '.$this->patient_uuid.' ]');
             LivewireAlert::title("Closure Completed")->success()->show();
+            $this->dispatch('closeP1P2'); // Emit the event to close panels P1 and P2
         } else {
-            LivewireAlert::title("Error")->error()->show();
+            LivewireAlert::title("Error: Patient ID Invalid")->error()->show();
         }
     }
 
