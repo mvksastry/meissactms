@@ -148,6 +148,12 @@ trait TDashboard
         return Enrollment::Where('stage_code', '>=', 370)->get();
     }
 
+    public function getAllClosedSatusPatientsForDirector()
+    {
+        $status = ['closed'];
+        return Patient::whereIn('status', $status)->get();
+    }
+
     public function getAllPatients()
     {
         return Patient::with('enrolled')->get();

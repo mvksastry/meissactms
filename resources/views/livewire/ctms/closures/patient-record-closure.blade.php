@@ -67,11 +67,20 @@
                         <td>
                           {{ ucfirst($row->status) }}
                         </td>
-                        <td>
-                          <button wire:click="initiatePatientDataClosure('{{ $row->patient_uuid }}')"
-                            class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                            Initiate Closure</button>
-                        </td>
+                        @hasrole('ctms_incharge')
+                          <td>
+                            <button wire:click="openPanelP1('{{ $row->patient_uuid }}')"
+                              class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                              Initiate Closure</button>
+                          </td>
+                        @endhasrole
+                        @hasrole('director')
+                          <td>
+                            <button wire:click="openPanelP2('{{ $row->patient_uuid }}')"
+                              class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                              Complete Closure</button>
+                          </td>
+                        @endhasrole
                         <!--
                         <td>
                             <button wire:click="selectedUuidPatient('{{ $row->patient_uuid }}')" class="btn btn-block btn-warning rounded" type="button" ><i class="ion ion-person"></i>&nbsp UUID Details</button>
@@ -110,15 +119,7 @@
     @endif
 
     @if ($p2)
-    @endif
-
-    @if ($p3)
-    @endif
-
-    @if ($p4)
-    @endif
-
-    @if ($p5)
+      @livewire('ctms.closures.data-closure-request', ['uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
     <!-- /.content -->

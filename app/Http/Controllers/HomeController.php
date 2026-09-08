@@ -98,9 +98,10 @@ class HomeController extends Controller
             $drafts = $this->getAllDraftSatusPatientsForDirector();
             $sealed = $this->getAllSealedSatusPatientsForDirector();
             $fuPatients = $this->getAllPatientsForFollowUpForDirector();
+            $closedPatients = $this->getAllClosedSatusPatientsForDirector();
             $allPatients = $this->getAllPatients();
 
-            //dd($pending, );
+            //dd($closedPatients);
             Log::channel('activity')->info(' User [ '.Auth::user()->name.' ] logged in: Home Dashboard Displayed');
             return view('layouts.home.ctms.director.homeDirector')->with([
                 'pending' => $pending,
@@ -108,7 +109,8 @@ class HomeController extends Controller
                 'drafts' => $drafts,
                 'sealed'    => $sealed,
                 'fuPatients' => $fuPatients,
-                'allPatients' => $allPatients
+                'allPatients' => $allPatients,
+                'closedPatients' => $closedPatients
             ]);
         }
 

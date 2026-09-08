@@ -123,10 +123,17 @@
 
           </div>
           <!-- /.row -->
+          @hasrole('ctms_incharge')
+            <button wire:click="initiateDataClosure()" class="btn btn-block btn-warning rounded" type="button"><i
+                class="ion ion-person"></i>&nbsp
+              Initiate Closure</button>
+          @endhasrole
 
-          <button wire:click="initiateDataClosure()" class="btn btn-block btn-warning rounded" type="button"><i
-              class="ion ion-person"></i>&nbsp
-            Initiate Closure</button>
+          @hasrole('director')
+            <button wire:click="completePatientDataClosure()" class="btn btn-block btn-warning rounded" type="button"><i
+                class="ion ion-person"></i>&nbsp
+              Complete Closure</button>
+          @endhasrole
 
           <!--Divider-->
           <hr class="border-b-2 border-warning my-2 mx-2">

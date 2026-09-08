@@ -28,6 +28,18 @@ return [
                         'sealed_date',
                 ],
 
+                'closed' => [
+                        'closure_comment',
+                        'date_closed',
+                        'closed_by',
+                ],
+
+                'exited' => [
+                        'closure_comment',
+                        'closure_auth_by',
+                        'closure_auth_date',
+                ],
+
         ],
 
         'tests' => [

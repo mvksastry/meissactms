@@ -211,8 +211,46 @@
             </tbody>
           </table>
         @endif
+        <hr class="border-b-2 border-warning my-2 mx-2">
+        @if (count($closedPatients) > 0)
+          <table id="userIndex2" class="table table-sm table-bordered table-hover">
+            <thead>
+              <tr>
+                <th style="width: 55%;">Task</th>
+                <th style="width: 20%;">For Attention</th>
+                <th style="width: 25%;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Closed Patient Records
+                </td>
+                <td>
+                  <label class="text-danger"><strong>{{ count($closedPatients) }}</strong></label>
+                </td>
+                <td>
+                  <a href="/patient-record-closure" button class="btn btn-block btn-warning rounded" type="button"><i
+                      class="ion ion-person"></i>&nbsp
+                    More Info</button></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        @else
+          <table id="userIndex2" class="table table-sm table-bordered table-hover">
+            <tbody>
+              <tr>
+                <td>
+                  No Actionables: Closed Patient Records
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        @endif
       </div>
     </div>
+
     <!-- TO DO List -->
     <div class="card">
       <div class="card-header">

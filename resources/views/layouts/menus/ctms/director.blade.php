@@ -88,7 +88,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>On Boarding
+                  <p>Stage 1: On Boarding
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -99,7 +99,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Patient Decisions
+                  <p>Stage 2: Patient Decisions
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -111,7 +111,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Follow-Ups
+                  <p>Stage 3: Follow-Ups
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -128,6 +128,18 @@
                 </a>
                 <ul class="nav nav-treeview">
                   @include('layouts.menus.items.patientms.data-review')
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Stage 4: Closure
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+
+                <ul class="nav nav-treeview">
+                  @include('layouts.menus.items.patientms.patient-record-closure')
                 </ul>
               </li>
             </ul>

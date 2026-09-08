@@ -26,3 +26,11 @@
   </a>
 @endif
 <!-- ./col -->
+<!-- ./col -->
+@if (count($closedPatients) > 0)
+  <a href="/patient-record-closure" class="btn btn-app bg-info mr-4">
+    <span class="badge bg-danger">{{ count($closedPatients) }}</span>
+    <i class="ion ion-person"></i>Closures: M A C
+  </a>
+@endif
+<!-- ./col -->

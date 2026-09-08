@@ -34,17 +34,18 @@ class PatientRecordClosure extends Component
     public $patientClosure;
 
     //Form openings
-    public $panel_primary_info = false;
-    public $panel_life_style = false;
+    //public $panel_primary_info = false;
+    //public $panel_life_style = false;
 
     public $p1 = false;
     public $p2 = false;
-    public $p3 = false;
-    public $p4 = false;
-    public $p5 = false;
+    //public $p3 = false;
+    //public $p4 = false;
+    //public $p5 = false;
 
     //data object variables
     public $id;
+    /*
     public $patientPrimaryInfo;
     public $ls_infox;
     public $clinical_info;
@@ -61,12 +62,13 @@ class PatientRecordClosure extends Component
     public $cardTittle;
     public $date_created;
     public $VAScore;
+    */
 
     // important
     public $created_at;
     public $empty_result;
 
-    public $entry="update";
+
 
     public $highlightedId = null;
 
@@ -79,14 +81,12 @@ class PatientRecordClosure extends Component
         {
             $status = ['sealed'];
             $this->editQuery($status);
-            //$this->draftPatients = Patient::whereIn('status',['draft','verified','approved'])->get();
         }
         if( Auth::user()->hasAnyRole(['director']) )
         {
-            $status = ['sealed'];
+            $status = ['closed','exited'];
 
             $this->editQuery($status);
-            //$this->draftPatients = Patient::whereIn('status',['draft','verified','approved','sealed'])->get();
         }
 
         return view('livewire.ctms.closures.patient-record-closure');
@@ -97,44 +97,39 @@ class PatientRecordClosure extends Component
         $this->patientClosure = Patient::whereIn('status',$status)->get();
     }
 
+    /*
     public function selectedPatient($id)
     {
         //dd($id);
         $this->patient_uuid = $id;
-        //dd($this->patient_uuid);
-        $this->patientInfoButtons = true;
         $this->highlightedId = $id;
     }
+    */
 
-
-    public function initiatePatientDataClosure($id)
+    public function openPanelP1($id)
     {
         //dd($id);
         $this->patient_uuid = $id;
-        
         $this->highlightedId = $id;
-
-        //dd($this->patient_uuid);
         $this->closeAllPanels();
         $this->p1 = true;
     }
 
-
+    public function openPanelP2($id)
+    {
+        $this->patient_uuid = $id;
+        $this->highlightedId = $id;
+        $this->closeAllPanels();
+        $this->p2 = true;
+    }
 
     public function closeAllPanels()
     {
         $p1 = false;
         $p2 = false;
-        $p3 = false;
-        $p4 = false;
-        $p5 = false;
-        /*
-        $p6 = false;
-        $p7 = false;
-        $p8 = false;
-        $p9 = false;
-        $p10 = false;
-        */
+        //$p3 = false;
+        //$p4 = false;
+        //$p5 = false;
     }
 
 }
