@@ -125,6 +125,10 @@
       @include('livewire.ctms.datatables.rmq-replies-data-table')
     @endif
 
+    @if ($p11)
+      <livewire:patients.patient-status-update :patient_uuid="$patient_uuid" :data_type="$data_type" />
+    @endif
+
     @if ($PatientStatusPanel)
       <section class="content">
         <div class="container-fluid">
@@ -232,8 +236,6 @@
                 </tbody>
               </table>
               <!-- /existing data on Follow-ups here -->
-
-              <!-- /.row -->
               <!--Divider-->
               <hr class="border-b-2 border-warning my-2 mx-2">
               <!--Divider-->

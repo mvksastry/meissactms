@@ -210,9 +210,9 @@ class PatientInformation extends Component
 
     public function fnClinicalInfo($id)
     {
-        $this->clinical_info = ClinicalData::where('patient_uuid', $id)->where('data_type', 'pre-enrollment')->first();
-        $this->cardTittle = "Clinical Data";
-        $this->date_created = $this->clinical_info->created_at;
+       // $this->clinical_info = ClinicalData::where('patient_uuid', $id)->where('data_type', 'pre-enrollment')->first();
+       // $this->cardTittle = "Clinical Data";
+       // $this->date_created = $this->clinical_info->created_at;
 
         //now set for all other parameters
         $this->ci1Obj  = BloodRoutine::where('status', 'draft')

@@ -173,8 +173,8 @@ return [
                 '100' => 'on-boarding-began',
         '120' => 'on-boarding-aborted',
                 '130' => 'on-boarding-complete',
-                '140' => 'pre-enrollment-data',
-        '150' => 'pre-enrollment-aborted',
+        '140' => 'pre-enrollment-data-capture-aborted',
+                '150' => 'pre-enrollment-data-capture-began',
                 '160' => 'pre-enrollment-data-capture-complete',
 
         '170' => 'patient-aborted-at-discectomy',	
@@ -217,7 +217,7 @@ return [
 
         'abort_steps' => [
                 '120', 
-                '150',
+                '140',
                 '170',
                 '210',
                 '230',

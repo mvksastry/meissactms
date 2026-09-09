@@ -113,6 +113,7 @@ class PatientStatusUpdate extends Component
         switch ($role) {
 
             case 'senior_resident':
+                $input['status_code'] = 150; //data capture began first time.
                 $input['status_by'] = Auth::user()->name; //this line can be removed as not used
                 $input['status'] = 'confirmed';
                 $input['date_updated'] = date('Y-m-d'); //this line can be removed as not used
@@ -149,10 +150,12 @@ class PatientStatusUpdate extends Component
         {
             // update timelines
             //now update timeline
+            $steps = config('ctms.steps');
             $patient = Patient::where('patient_uuid', $patient_uuid)->first();
             $name = $patient->name;
             $event = "Change of Data Status";
-            $tl_msg = "Status Changed to ".$patient->status;
+            $tl_msg = $steps[$patient->status_code];
+            //$tl_msg = "Status Changed to ".$patient->status;
             $updateTimeline = $this->savePatientTimeline($patient_uuid, $name, $event, $tl_msg);
 
             $this->dispatch('closeStatusPanel');

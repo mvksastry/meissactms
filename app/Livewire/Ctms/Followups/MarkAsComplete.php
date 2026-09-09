@@ -152,8 +152,6 @@ class MarkAsComplete extends Component
     {
         if(in_array($this->fu_number, $this->fu_array))
         {
-            
-            
             if($this->fu_number === "unscheduled")
             {
                 $this->data_type = $this->fu_number;
@@ -161,10 +159,9 @@ class MarkAsComplete extends Component
                 $this->data_type = "follow-up-".$this->fu_number;
             }
             //$this->patientInfoButtons = true;
-            //$this->fixDataTypeForEntry();
+            //$this->mvksmvks();
             $this->p11 = true;
             $this->PatientStatusPanel = true;
-            
         }
         else {
             LivewireAlert::title('Select Followup')->warning()->asToast()->show();
@@ -195,36 +192,6 @@ class MarkAsComplete extends Component
         // ];
         //
         /////////////////////////////////////////////
-        $patient = Patient::where('patient_uuid', $this->patient_uuid)->first();
-
-        $status_code = $patient->status_code;
-
-        
-        $status_code = 160;
-        //assume that this is the array came back from db.
-        $steps = [   
-                      "10" => 'pre-enrollment', 
-                      "20" => 'follow-up-1', 
-                      "30" => 'follow-up-2', 
-                      "40" => 'follow-up-3', 
-                      "50" => 'follow-up-4', 
-                      "60" => 'follow-up-5', 
-                      "70" => "extra"
-        ];
-
-        $current_step = $steps[$status_code];
-        $key = array_search($this->data_type,$steps, true);
-        //dd($status_code, $current_step, $this->data_type);
-        if($current_step == $key)
-        {
-            LivewireAlert::title('reached step to perform this operation')->success()->show();
-
-        }else{
-            LivewireAlert::title('currently at step [ '.$current_step.' ]not reached step [ '.$key.' ] to perform this operation')->warning()->show();
-        }
-
-
-
     }
 
     public function fnResetAllVisiblePanels()

@@ -60,6 +60,7 @@ trait TDBStatusUpdates
         switch ($input['status']) {
 
              case 'confirmed':
+              $statusUpdate->status_code = $input['status_code']; //data capture began first time.
               $statusUpdate->comment_entered_by=  $input['status_comment'];
               $statusUpdate->entered_by = Auth::user()->name;
               $statusUpdate->entry_date = date('Y-m-d');

@@ -157,6 +157,7 @@ class EnrollmentDecisionComponent extends Component
     {
         $this->passObj->status_code = $status_code;
         $this->passObj->status_date = $status_date;
+        $this->passObj->save();
     }
 
     public function fnSaveDiscectomyData()
@@ -188,8 +189,9 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['discec_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $filtered['disc_info_date_entered']);
                 LivewireAlert::title("Discectomy info for Decision updated")->success()->show();
-                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info');
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Info, Updated Patient Table Status to ['.$filtered['stage_code'].']');
                 //dd($this->patient_uuid, $filtered);
 
             }
@@ -226,8 +228,9 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['discec_sample_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $filtered['discectomy_sample_info_date_entered']);
                 LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
-                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info');
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info, Updated Patient Table Status to ['.$filtered['stage_code'].']');
             }
 
         }else {
@@ -299,7 +302,7 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['qc_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-
+                $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $merged['qc_infos_date_entered']);
                 LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
                 Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
             }
@@ -374,6 +377,7 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['qc_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $merged['qc_infos_date_entered']);
                 $this->reset();
                 LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
                 Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
@@ -412,6 +416,7 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['qa_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $filtered['qa_infos_date_entered']);
                 $this->reset();
                 LivewireAlert::title("QA info for Decision updated")->success()->show();
 
@@ -472,6 +477,7 @@ class EnrollmentDecisionComponent extends Component
                             $this->enrObj->decision_date_entered = date('Y-m-d');
                             //dd($filtered['comment_decision'], $this->enrObj);
                             $this->enrObj->save();
+                            $patResult = $this->fnUpdatePatientTableForStatus($filtered['enrollment_decision'], date('Y-m-d'));
                             //$qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
                             LivewireAlert::title("In-Charge: Enrollment Decision Updated")->success()->show();
                         }
@@ -484,6 +490,7 @@ class EnrollmentDecisionComponent extends Component
                             $this->enrObj->approved_date = date('Y-m-d');
                             //dd($filtered['comment_decision'], $this->enrObj);
                             $this->enrObj->save();
+                            $patResult = $this->fnUpdatePatientTableForStatus($filtered['enrollment_decision'], date('Y-m-d'));
                             LivewireAlert::title("Director: Enrollment Decision Updated")->success()->show();
                         }
 
@@ -527,7 +534,7 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['stage_code'] = 350;
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
-
+                $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], date('Y-m-d'));
                 //now we have update ctms_activity table here. Why? 
                 // an entry on this patient must be there and hence update it.
                 //steps first query the activity table.
@@ -584,6 +591,7 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['transplant_status'] = $steps[$filtered['transplant_status']];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $filtered['transplant_info_date_entered']);
                 LivewireAlert::title("Transplant Status Updated! This Completes Enrollment")->success()->show();
                 $this->form_h->reset();
             }
