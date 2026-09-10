@@ -212,7 +212,12 @@ return [
                 '410' => 'follow-up-4',
                 '420' => 'follow-up-5',
                 '430' => 'closure-initiated',
-                '440' => 'patient-exited'
+                '440' => 'patient-exited',
+                '450' => 'patient-data-archived-initiated',
+                '460' => 'patient-data-archival-failed',
+                '470' => 'patient-data-archived-completed',
+                '480' => 'patient-data-archived-downloaded',
+                
         ],
 
         'abort_steps' => [

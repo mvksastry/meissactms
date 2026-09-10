@@ -50,12 +50,12 @@ class PatientRecordClosure extends Component
     {
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
         {
-            $status = ['sealed'];
+            $status = ['sealed','closed','exited'];
             $this->editQuery($status);
         }
         if( Auth::user()->hasAnyRole(['director']) )
         {
-            $status = ['closed','exited'];
+            $status = ['sealed','closed','exited'];
 
             $this->editQuery($status);
         }

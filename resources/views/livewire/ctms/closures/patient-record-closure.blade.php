@@ -46,7 +46,7 @@
                       <th>Name</th>
                       <th>Gender</th>
                       <th>Status</th>
-                      <th>Details</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -69,9 +69,12 @@
                         </td>
                         @hasrole('ctms_incharge')
                           <td>
-                            <button wire:click="openPanelP1('{{ $row->patient_uuid }}')"
-                              class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                              Initiate Closure</button>
+                            @if ($row->status_code < 440)
+                              <button wire:click="openPanelP1('{{ $row->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Initiate Closure</button>
+                            @endif
                           </td>
                         @endhasrole
                         @hasrole('director')
