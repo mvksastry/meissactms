@@ -205,7 +205,8 @@ return [
 
         '360' => 'transplantation-aborted',
                 '370' => 'transplantation-done',
-                
+
+                '375' => 'unscheduled',
                 '380' => 'follow-up-1',
                 '390' => 'follow-up-2',
                 '400' => 'follow-up-3',

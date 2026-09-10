@@ -48,15 +48,16 @@ class PatientFollowupStatusUpdate extends Component
 
     public $patient_uuid;
     public $status_comment;
+    public $data_type;
+    public $status_code;
     
     public $pcs;
 
-    public function mount($patient_uuid, $data_type, $status_code, $fu_number)
+    public function mount($patient_uuid, $data_type, $status_code)
     {
         $this->patient_uuid = $patient_uuid;
         $this->data_type = $data_type;
         $this->status_code = $status_code;
-        $this->fu_number = $fu_number;
 
         $this->setPatientCurrentStatus($patient_uuid);
     }

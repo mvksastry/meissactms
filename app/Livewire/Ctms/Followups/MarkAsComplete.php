@@ -36,83 +36,20 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class MarkAsComplete extends Component
 {
 
-    public $patientInfoButtons = false;
-
-    //form status
-    public $form_status = null;
-    public $openAllOtherForms = false;
-    public $showPrimaryInfo = true;
-
-    //new paitent global uuid
-    public $patient_uuid, $entry="update";
-
-    //panel definitions
-    public $newPatientEntrySteps = false;
-    public $newClinicalInvestigationsEntrySteps = false;
-
-    //Errors, Alers, Callouts
-
-    //state of panel on or off
-    public $stateOfNewPatientEntrySteps = "off";
-
-    //Form openings
-    public $p11 = false;
-    public $PatientStatusPanel = false;
-    
-    //variables
-    public $aadhar_id, $pan_num, $other_id, $report_dateope, $dicharge_rep_file;
-    public $opd_id, $ipd_id, $admission_date, $form_header;
-
-    //data object variables
-    public $id;
-    public $patientPrimaryInfo;
-    public $ls_infox;
-    public $clinical_info;
-    public $sensoryexam_info;
-    public $mdtre_info;
-    public $pfirmangrade_info;
-    public $vascore_info;
-    public $modq_info;
-    public $rmq_replies;
-
-    //common to all
+    // variables paitent global uuid
     public $enrolledPatients;
-
-    public $cardTittle;
-    public $date_created;
-    public $VAScore;
-
-    // important
-    public $created_at;
-    public $empty_result;
-
+    public $patient_uuid;
     public $follow_up = true;
     public $data_type;
+    public $status_code = null;
 
-    //edit route if user wants
-    public $edit_button = false;
+    //Panel openings
+    public $p11 = false;
 
-    //image upload related
-    public $image_category = null;
-    public $uploadImage = false;
-    public $imageInputFile;
-
-    //login credentials
+    public $id;
     public $entered_by;
 
-    //modals and callouts.
-
-    //public variable for checking status incomplete status
-    public $patient_data_status;
-
     public $fu_number;
-    public $fuselection = false;
-
-    //logged user
-    public $logged_user;
-
-    //follow-up value array
-    public $fu_array = ['unscheduled', 1, 2, 3, 4, 5];
 
     //row selected
     public $rowSelected;
@@ -121,9 +58,7 @@ class MarkAsComplete extends Component
     public function render()
     {
         $this->entered_by = Auth::user()->name;
-        $this->logged_user = Auth::user()->name;
 
-        
         //first get all active patient_uuid from enrollment table
         $enrolled = Enrollment::where('stage_code', 370)->pluck('patient_uuid')->toArray();
         //now get patient objects parent table, ideall not necessary to as we need only 
@@ -133,7 +68,6 @@ class MarkAsComplete extends Component
 
         //for testing comment above 4 lines and use the query below
         //$this->enrolledPatients = Patient::where('status', 'draft')->get();
-
 
         //dd($enrolled, $this->enrolledPatients);
         return view('livewire.ctms.followups.mark-as-complete');
@@ -150,6 +84,8 @@ class MarkAsComplete extends Component
 
     public function updatedFuNumber()
     {
+        $step_val = config('ctms.steps');
+
         if(in_array($this->fu_number, $this->fu_array))
         {
             if($this->fu_number === "unscheduled")
@@ -158,6 +94,8 @@ class MarkAsComplete extends Component
             }else {
                 $this->data_type = "follow-up-".$this->fu_number;
             }
+            //now get the key value of the step_val array
+            $this->status_code = array_search($this->data_type, $step_val); 
             $this->p11 = true;
             //$this->PatientStatusPanel = true;
         }
