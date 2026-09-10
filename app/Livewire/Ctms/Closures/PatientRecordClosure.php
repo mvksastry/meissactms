@@ -51,21 +51,23 @@ class PatientRecordClosure extends Component
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
         {
             $status = ['sealed','closed','exited'];
-            $this->editQuery($status);
+            $this->closureQuery($status);
         }
         if( Auth::user()->hasAnyRole(['director']) )
         {
             $status = ['sealed','closed','exited'];
 
-            $this->editQuery($status);
+            $this->closureQuery($status);
         }
 
         return view('livewire.ctms.closures.patient-record-closure');
     }
 
-    public function editQuery($status)
+    public function closureQuery($status)
     {
-        $this->patientClosure = Patient::whereIn('status',$status)->get();
+        //$this->patientClosure = Patient::whereIn('status',$status)->get();
+        //status_code > or = 400 means after 3 third follow-up done.
+        $this->patientClosure = Patient::where('status_code','>=', 400)->get();
     }
 
     /*
