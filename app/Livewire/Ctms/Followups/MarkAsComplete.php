@@ -158,56 +158,16 @@ class MarkAsComplete extends Component
             }else {
                 $this->data_type = "follow-up-".$this->fu_number;
             }
-            //$this->patientInfoButtons = true;
-            //$this->mvksmvks();
             $this->p11 = true;
-            $this->PatientStatusPanel = true;
+            //$this->PatientStatusPanel = true;
         }
         else {
             LivewireAlert::title('Select Followup')->warning()->asToast()->show();
         }
     }
 
-    public function fixDataTypeForEntry()
-    {
-        //first check if status of patient in patients table.
-        // if the status is not sealed, the data type is "pre-enrollment"
-        // if the data type is sealed then it must belong to follow-up 1 to 5 or extra-ordinary
-        // no entries in patients table as no columns present for modification.
-        //
-        // determine date of surgery and count number of days where window opens
-        // check whether entries for that window like Follow-up-1 or any such entries present
-        // if such entries present then that particular follow-up done.
-        // increment the follow-up number and show that window meaning that radio button.
-        // this is the simplest logic
-        // how to implement logic
-        // $steps = [   
-        //              "step-1" => 'pre-enrollment', 
-        //              "step-2" => 'follow-up-1', 
-        //              "step-3" => 'follow-up-2', 
-        //              "step-4" => 'follow-up-3', 
-        //              "step-5" => 'follow-up-4', 
-        //              "step-6" => 'follow-up-5', 
-        //              "step-7" => "extra"
-        // ];
-        //
-        /////////////////////////////////////////////
-    }
-
     public function fnResetAllVisiblePanels()
     {
-        /*
-        $this->p1 = false;
-        $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
-        $this->p6 = false;
-        $this->p7 = false;
-        $this->p8 = false;
-        $this->p9 = false;
-        $this->p10 = false;
-        */
         $this->p11 = false;
     }
 }

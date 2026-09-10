@@ -126,7 +126,8 @@
     @endif
 
     @if ($p11)
-      <livewire:patients.patient-status-update :patient_uuid="$patient_uuid" :data_type="$data_type" />
+      <livewire:patients.patient-followup-status-update :patient_uuid="$patient_uuid" :data_type="$data_type" :status_code="$status_code"
+        :fu_number="$fu_number" />
     @endif
 
     @if ($PatientStatusPanel)

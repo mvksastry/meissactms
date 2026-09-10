@@ -213,10 +213,10 @@ return [
                 '420' => 'follow-up-5',
                 '430' => 'closure-initiated',
                 '440' => 'patient-exited',
-                '450' => 'patient-data-archived-initiated',
+                '450' => 'patient-data-archival-initiated',
                 '460' => 'patient-data-archival-failed',
-                '470' => 'patient-data-archived-completed',
-                '480' => 'patient-data-archived-downloaded',
+                '470' => 'patient-data-archival-completed',
+                '480' => 'patient-data-archive-downloaded',
                 
         ],
 

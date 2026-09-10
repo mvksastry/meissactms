@@ -263,13 +263,9 @@ class PatientFollowup extends Component
         $enrolled = Enrollment::where('stage_code', 370)->pluck('patient_uuid')->toArray();
         //now get patient objects parent table, ideall not necessary to as we need only 
         //patient uuid to process. the patient object give opd_id etc..
-        $this->enrolledPatients = Patient::whereIn('patient_uuid', $enrolled)->get();
-        
-
+        $this->enrolledPatients = Patient::whereIn('patient_uuid', $enrolled)->where('status_code', '<=', 420)->get();
         //for testing comment above 4 lines and use the query below
         //$this->enrolledPatients = Patient::where('status', 'draft')->get();
-
-
         //dd($enrolled, $this->enrolledPatients);
         return view('livewire.ctms.followups.patient-followup');
     }
@@ -301,79 +297,6 @@ class PatientFollowup extends Component
             LivewireAlert::title('Select Followup')->warning()->asToast()->show();
         }
     }
-
-
-    /*
-    public function fnRedirectToEdit()
-    {
-        Log::channel('patient')->info('User [ '.$this->logged_user.' ] Redirected to Edit Patients');
-        $this->redirect(EditPatients::class);
-    }
-    
-    //--- UI related code only ---//
-
-    //main panel opening only
-    public function fnNewPatientEntrySteps()
-    {
-        //reset and show
-        $this->form_status = "new";
-        $this->newPatientEntrySteps = false;
-
-        //show now.
-        $this->newPatientEntrySteps = true;
-    }
-    */
-
-    #[On('resetPanelsForNewMessages')] 
-    public function resetMessagePanels()
-    {
-        $this->msg_panel = false;
-        $this->sys_panel = false;
-        
-        $this->sysAlertInfo = false;
-        $this->sysAlertSuccess = false;
-        $this->sysAlertWarning = false;
-        $this->sysAlertDanger = false;
-
-        $this->comInfo = false;
-        $this->comSuccess = false;
-        $this->comDanger = false;
-        $this->comWarning = false;
-    }
-
-    /*
-    #[On('newPatientUuidGenerated')] 
-    public function setPatientUuid($id)
-    {
-        $this->patient_uuid = $id;
-        $this->resetMessagePanels();
-
-        $this->msg_panel = true;
-        $this->comSuccess = "New Patient ID [ '.$id.' ] Created";
-        Log::channel('patient')->info($this->comSuccess);
-        //dd("event emitted and understood");
-        $this->showPrimaryInfo = false;
-        $this->openAllOtherForms = true;
-    }
-    */
-
-    /*
-    //respective forms
-    public function fnShowPrimaryInfoForm()
-    {
-        $this->fnResetAllVisiblePanels();
-        $this->p1 = true;
-        Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown New Patient Dashboard');
-    }
-
-    public function fnShowPrimaryInfoMesage()
-    {
-        $this->msg_panel = true;
-        $this->comWarning= "Patient Primary Info cannot be re-entered, Use Edit option";
-        Log::channel('patient')->info($this->comWarning);
-    }
-    */
-
 
     public function fnFULifeStyleData($patient_uuid)
     {
