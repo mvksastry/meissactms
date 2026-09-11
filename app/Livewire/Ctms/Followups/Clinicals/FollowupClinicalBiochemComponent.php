@@ -46,11 +46,9 @@ use App\Livewire\Forms\clinicals\FormMicroscopicExam;
 use App\Livewire\Forms\clinicals\FormRenalFunction;
 use App\Livewire\Forms\clinicals\FormUrineRoutine;
 
-
-
-
 //traits
 use App\Traits\TCtms\TPatientClinicalData;
+use App\Traits\TCtms\THandlesModelUpdates;
 //logs
 use Illuminate\Support\Facades\Log;
 //Livewire Alerts
@@ -60,6 +58,7 @@ class FollowupClinicalBiochemComponent extends Component
 {
    //Trait
     use TPatientClinicalData;
+    use THandlesModelUpdates;
 
     public $input;
 
@@ -171,12 +170,14 @@ class FollowupClinicalBiochemComponent extends Component
     public function fnBloodRoutine()
     {
         //dd("saving blood routine");
+        $modelName = "Blood Routine";
         $this->msg_panel = false;
         $this->form_a->validate();
         $this->input = $this->form_a->all();
         $this->setPatientDataType();
         //dd($this->input); // 
-
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             BloodRoutine::firstOrCreate($this->input);
@@ -197,16 +198,19 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Blood Routine Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnBloodSugar()
     {
         //dd("saving blood sugar");
+        $modelName = "Blood Sugar";
         $this->msg_panel = false;
         $this->form_b->validate();
         $this->input = $this->form_b->all();
         $this->setPatientDataType();
-
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             BloodSugar::firstOrCreate($this->input);
@@ -228,15 +232,19 @@ class FollowupClinicalBiochemComponent extends Component
         //dd($this->input); // 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Blood Sugar Data for Patient ['.$this->uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnBloodUrea()
     {
         //dd("saving blood urea");
+        $modelName = "Blood Urea";
         $this->form_c->validate();
         $this->input = $this->form_c->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             BloodUrea::firstOrCreate($this->input);
@@ -257,15 +265,19 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Blood Urea Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnChemExams()
     {
         //dd("saving chem exams");
+        $modelName = "Chemical Exam";
         $this->form_d->validate();
         $this->input = $this->form_d->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             ChemicalExam::firstOrCreate($this->input);
@@ -286,15 +298,19 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Chem Exam Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnCreatinine()
     {
         //dd("saving creatinine");
+        $modelName = "Creatinine";
         $this->form_e->validate();
         $this->input = $this->form_e->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             Creatinine::firstOrCreate($this->input);
@@ -315,15 +331,19 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Creatinine Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnCRP()
     {
         //dd("saving crp");
+        $modelName = "CRP";
         $this->form_f->validate();
         $this->input = $this->form_f->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             Crp::firstOrCreate($this->input);
@@ -344,15 +364,19 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] CRP Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnElectrolytes()
     {
         // dd("saving Electrolytes");
+        $modelName = "Electrolytes";
         $this->form_g->validate();
          $this->input = $this->form_g->all();
          $this->setPatientDataType();
         //dd($this->input); //
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             Electrolytes::firstOrCreate($this->input);
@@ -373,15 +397,19 @@ class FollowupClinicalBiochemComponent extends Component
         } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Electrolytes Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnGeneralSummary()
     {
         //dd("saving Gen Summary");
+        $modelName = "Gen Summary";
         $this->form_h->validate();
         $this->input = $this->form_h->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             GeneralSummary::firstOrCreate($this->input);
@@ -402,15 +430,19 @@ class FollowupClinicalBiochemComponent extends Component
         } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Gen Summary Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnIl6()
     {
         //dd("saving Il6");
+        $modelName = "IL-6";
         $this->form_i->validate();
         $this->input = $this->form_i->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             Il6::firstOrCreate($this->input);
@@ -431,15 +463,19 @@ class FollowupClinicalBiochemComponent extends Component
         } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] IL-6 Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnLabExams()
     {
         //dd("saving Lab Exams");
+        $modelName = "Lab Exam";
         $this->form_j->validate();
         $this->input = $this->form_j->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             LaboratoryExam::firstOrCreate($this->input);
@@ -460,15 +496,19 @@ class FollowupClinicalBiochemComponent extends Component
         } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Lab Exam Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnLiverFunction()
     {
         //dd("saving Liver Functions");
+        $modelName = "LFT";
         $this->form_k->validate();
         $this->input = $this->form_k->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             LiverFunction::firstOrCreate($this->input);
@@ -489,15 +529,19 @@ class FollowupClinicalBiochemComponent extends Component
         } 
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Liv function Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnMicroscopicExam()
     {
         //dd("saving Microscopic Exams");
+        $modelName = "Microscopics";
         $this->form_l->validate();
         $this->input = $this->form_l->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             MicroscopicExam::firstOrCreate($this->input);
@@ -518,15 +562,19 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Microscopic Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnRenalFunction()
     {
         //dd("saving Renal Functions");
+        $modelName = "RFT";
         $this->form_m->validate();
         $this->input = $this->form_m->all();
         $this->setPatientDataType();
         //dd($this->input); //
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             RenalFunction::firstOrCreate($this->input);
@@ -547,15 +595,19 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Renal Fn Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
     public function fnUrineRoutine()
     {
         //dd("saving Urine Routine");
+        $modelName = "Urine Routine";
         $this->form_n->validate();
         $this->input = $this->form_n->all();
         $this->setPatientDataType();
         //dd($this->input); // 
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $input);
+        /*
         if($this->input['data_type'] === "unscheduled")
         {
             UrineRoutine::firstOrCreate($this->input);
@@ -576,6 +628,7 @@ class FollowupClinicalBiochemComponent extends Component
         }
         $msg = 'User ['.Auth::user()->name.'] saved ['.$this->input['data_type'].'] Urine Data for Patient ['.$this->patient_uuid.']';
         Log::channel('patient')->info($msg);
+        */
     }
 
 

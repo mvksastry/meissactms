@@ -53,7 +53,7 @@ return [
                 'MODQ Score'    =>      \App\Models\Ctms\ModqScore::class,
                 'RMQ Reply'     =>      \App\Models\Ctms\RMQReply::class,
                 
-                'Blood Routime' =>      \App\Models\Ctms\Clinicals\BloodRoutine::class,
+                'Blood Routine' =>      \App\Models\Ctms\Clinicals\BloodRoutine::class,
                 'Blood Sugar'   =>      \App\Models\Ctms\Clinicals\BloodSugar::class,
                 'Blood Urea'    =>      \App\Models\Ctms\Clinicals\BloodUrea::class,
                 'Chemical Exam' =>      \App\Models\Ctms\Clinicals\ChemicalExam::class,
@@ -84,7 +84,7 @@ return [
                                 'V & A Score',
                                 'MODQ Score',
                                 'RMQ Reply',
-                                'Blood Routime',
+                                'Blood Routine',
                                 'Blood Sugar',
                                 'Blood Urea',
                                 'Chemical Exam',
