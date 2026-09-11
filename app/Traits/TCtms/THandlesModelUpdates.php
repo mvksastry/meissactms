@@ -62,10 +62,7 @@ trait THandlesModelUpdates
             });
 
             // Livewire success alert
-            LivewireAlert::title($message)
-                    ->success()
-                    ->asToast()
-                    ->show();
+            LivewireAlert::title($message)->success()->asToast()->show();
             // Success log
             Log::channel('patient')->info($this->formatLogMessage($message, $input, $patientUuid));
 
@@ -73,10 +70,7 @@ trait THandlesModelUpdates
         } catch (Throwable $e) {
             $errorMessage = "{$message} | Error: " . $e->getMessage();
 
-            LivewireAlert::title("Failed: {$errorMessage}")
-                    ->error()
-                    ->asToast()
-                    ->show();
+            LivewireAlert::title("Failed: {$errorMessage}")->error()->asToast()->show();
             // Failure log
             Log::channel('patient')->error($this->formatLogMessage($errorMessage, $input, $patientUuid) . ' | Error: ' . $e->getMessage());
             return false;
