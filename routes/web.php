@@ -50,7 +50,7 @@ use App\Livewire\Projects\GoalProgressLogs;
 
 // Livewire - Patient management
 use App\Livewire\Ctms\Datareview\PatientDataReviews;
-use App\Livewire\Ctms\Patients\ManagePatients;
+//use App\Livewire\Ctms\Patients\ManagePatients;
 use App\Livewire\Ctms\Patients\EditPatients;
 use App\Livewire\Ctms\Patients\PatientInformation;
 use App\Livewire\Ctms\Followups\PatientFollowup;
@@ -191,7 +191,7 @@ Route::middleware('auth')->group(function () {
 
 
     // ------- Livewire: Components All Roles------- //
-    Route::get('manage-patients', ManagePatients::class);
+    //Route::get('manage-patients', ManagePatients::class);
     Route::get('edit-patients', EditPatients::class)->name('edit-patients');
     Route::get('patient-information', PatientInformation::class);
     Route::get('home-enrollment', PatientEnrollmentProcess::class);
