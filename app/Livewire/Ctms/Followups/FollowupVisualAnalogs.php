@@ -15,7 +15,7 @@ use App\Livewire\Forms\PatientVAScoreForm;
 
 //Traits
 use App\Traits\Base;
-use App\Traits\TCtms\TVAScores;
+//use App\Traits\TCtms\TVAScores;
 
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
@@ -26,7 +26,7 @@ class FollowupVisualAnalogs extends Component
 {
     use Base;
     //Traits
-    use TVAScores;
+    //use TVAScores;
     //Form bindings
     public PatientVAScoreForm $form;
     //global patient uuid

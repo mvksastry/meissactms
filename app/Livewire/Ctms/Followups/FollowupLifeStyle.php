@@ -16,7 +16,7 @@ use App\Livewire\Forms\PatientLSForm;
 
 //traits-facades
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientLifeStyle;
+//use App\Traits\TCtms\TPatientLifeStyle;
 use App\Traits\TCtms\THandlesModelUpdates;
 use Livewire\WithFileUploads;
 //Livewire Alerts
@@ -28,7 +28,7 @@ class FollowupLifeStyle extends Component
 {
     use Base;
     //Trait binding
-    use TPatientLifeStyle;
+    //use TPatientLifeStyle;
     use THandlesModelUpdates;
 
     //Form bindings

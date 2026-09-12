@@ -17,7 +17,7 @@ use App\Livewire\Forms\PatientRMQForm;
 
 //Traits
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientRMQData;
+//use App\Traits\TCtms\TPatientRMQData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
@@ -55,7 +55,7 @@ class FollowupRmqScores extends Component
         24 => "I stay in bed most of the time because of my back.",
     ];
     */
-    use TPatientRMQData;
+    //use TPatientRMQData;
 
     //global patient uuid
     public $patient_uuid;

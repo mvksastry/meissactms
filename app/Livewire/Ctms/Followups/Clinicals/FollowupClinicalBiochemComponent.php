@@ -47,7 +47,7 @@ use App\Livewire\Forms\clinicals\FormRenalFunction;
 use App\Livewire\Forms\clinicals\FormUrineRoutine;
 
 //traits
-use App\Traits\TCtms\TPatientClinicalData;
+//use App\Traits\TCtms\TPatientClinicalData;
 use App\Traits\TCtms\THandlesModelUpdates;
 //logs
 use Illuminate\Support\Facades\Log;
@@ -57,7 +57,7 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class FollowupClinicalBiochemComponent extends Component
 {
    //Trait
-    use TPatientClinicalData;
+    //use TPatientClinicalData;
     use THandlesModelUpdates;
 
     public $input;

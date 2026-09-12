@@ -15,7 +15,7 @@ use App\Livewire\Forms\PfirmannForm;
 
 //Traits
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientPfirmannData;
+//use App\Traits\TCtms\TPatientPfirmannData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
@@ -25,7 +25,7 @@ class FollowupModifiedPfirmanns extends Component
 {
     use Base;
     //Trait for data handling
-    use TPatientPfirmannData;
+    //use TPatientPfirmannData;
     //Form bindings
     public PfirmannForm $form;
     //global patient uuid

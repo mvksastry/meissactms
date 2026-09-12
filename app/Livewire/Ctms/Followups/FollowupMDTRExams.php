@@ -15,7 +15,7 @@ use App\Livewire\Forms\MdtreForm;
 
 //Traits
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientMdtreData;
+//use App\Traits\TCtms\TPatientMdtreData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
@@ -25,7 +25,7 @@ class FollowupMDTRExams extends Component
 {
     use Base;
     //triats
-    use TPatientMdtreData;
+    //use TPatientMdtreData;
     //Form bindings
     public MdtreForm $form;
     //global patient uuid

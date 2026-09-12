@@ -16,7 +16,7 @@ use App\Livewire\Forms\ModqScoreForm;
 
 //Traits
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientModqScore;
+//use App\Traits\TCtms\TPatientModqScore;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
@@ -121,7 +121,7 @@ class FollowupModiqScores extends Component
     ]; 
     */
     //Traits
-    use TPatientModqScore;
+    //use TPatientModqScore;
 
     //global patient uuid
     public $patient_uuid;

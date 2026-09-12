@@ -8,19 +8,20 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 //models
+use App\Models\Ctms\Patient;
 use App\Models\Ctms\SensoryExamination;
 //forms
 use App\Livewire\Forms\PatientSEForm;
 //traits
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientSEData;
+//use App\Traits\TCtms\TPatientSEData;
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 
 class FollowupSensoryExams extends Component
 {
     use Base;
-    use TPatientSEData;
+//    use TPatientSEData;
     
     //Form bindings
     public PatientSEForm $form;
