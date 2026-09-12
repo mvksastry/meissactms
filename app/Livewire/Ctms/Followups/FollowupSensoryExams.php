@@ -48,11 +48,16 @@ class FollowupSensoryExams extends Component
 
     public function fnSaveSensoryExaminationData()
     {
+        $modelName = "Sensory Exam";
+        
+
         $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
+         $this->input['data_type'] = $this->data_type;
         //dd($this->input); // 
-        $result = $this->saveFollowupPatientSEInformation($this->input);
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $this->input);
+        //$result = $this->saveFollowupPatientSEInformation($this->input);
         LivewireAlert::title('Follow-up Sensory Exam Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved Sensory Exam data');
         //dd($result); //

@@ -51,11 +51,16 @@ class FollowupVisualAnalogs extends Component
 
     public function fnSaveVAscoreData()
     {
+        $modelName = "V & A Score";
+        
+
         $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
+        $this->input['data_type'] = $this->data_type;
         //dd($this->input); //
-        $result = $this->saveFollowupVAScores($this->input);
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $this->input);
+        //$result = $this->saveFollowupVAScores($this->input);
         LivewireAlert::title('Follow-up Visual Analog Scores Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' Visual Analog score data');
 

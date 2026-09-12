@@ -49,11 +49,14 @@ class FollowupModifiedPfirmanns extends Component
 
     public function fnSavePfirmannGrade()
     {
+        $modelName = "Pfirmann Grade";
         $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
+         $this->input['data_type'] = $this->data_type;
         //dd($this->input); //
-        $result = $this->saveFollowupPfirmannGrade($this->input);
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $this->input);
+        //$result = $this->saveFollowupPfirmannGrade($this->input);
         LivewireAlert::title('Follow-up Pfirmann Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' MPfirmann data');
         //dd($result); // 

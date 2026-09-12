@@ -91,14 +91,19 @@ class FollowupRmqScores extends Component
 
     public function fnSaveRMQInfo()
     {
+        $modelName = "RMQ Reply";
+        $input['data_type'] = $this->data_type;
+
         //dd($this->rmq_replies);
         $this->form->validate();
         $this->form->rmq_replies = json_encode($this->rmq_replies);
         
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
+         $this->input['data_type'] = $this->data_type;
         //dd($this->input); //
-        $result = $this->saveFollowupRMQ($this->input);
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $this->input);
+        //$result = $this->saveFollowupRMQ($this->input);
         LivewireAlert::title('Follow-up R M Q Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' RMQ data');
         //dd($result); // 

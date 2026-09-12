@@ -52,11 +52,16 @@ class FollowupMDTRExams extends Component
 
     public function fnSaveMDTREInfo()
     {
+        $modelName = "M&DTR Exam";
+        
+
         $this->form->validate();
         $this->input = $this->form->all();
         $this->input = $this->sanitizeInput($this->input);
+         $this->input['data_type'] = $this->data_type;
         //dd($this->input); //
-        $result = $this->saveFollowupMDTREInformation($this->input);
+        $result = $this->updateOrCreateDiagnosticTest($this->patient_uuid, $modelName, $this->input);
+        //$result = $this->saveFollowupMDTREInformation($this->input);
         LivewireAlert::title('Follow-up M&DTRE Data Saved...')->success()->asToast()->show();
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] saved '.$this->data_type.' MDTRE data');
         //dd($result); //
