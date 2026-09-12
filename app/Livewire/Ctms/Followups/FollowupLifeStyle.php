@@ -93,10 +93,7 @@ class FollowupLifeStyle extends Component
         $newLSinfo->cross_leg_sitting = $input['cross_leg_sitting'];
         $newLSinfo->standing = $input['standing'];
         $newLSinfo->sitting = $input['sitting'];
-        //$newLSinfo->ls3 = null;
-        //$newLSinfo->ls4 = null;
-        //$newLSinfo->ls5 = null;
-        //$newLSinfo->ls6 = null;
+        
         $newLSinfo->life_style_description = $input['life_style_description'];
 
         $newLSinfo->status = "draft";
