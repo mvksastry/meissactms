@@ -14,7 +14,7 @@ use App\Livewire\Forms\PatientOnboardingForm;
 
 //traits
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientPersonalInfo;
+//use App\Traits\TCtms\TPatientPersonalInfo;
 use App\Traits\TCtms\TPatientDuplicateCheck;
 //use App\Traits\TCtms\TDbEntries;
 use App\Traits\TCtms\TPatientOnboardInfo;
@@ -29,7 +29,7 @@ class PatientOnboardingSubmission extends Component
 {
     use Base;
     use TPatientDuplicateCheck;
-    use TPatientPersonalInfo;
+    //use TPatientPersonalInfo;
     //use TDbEntries;
     use TPatientOnboardInfo;
     use THandlesValidationAlerts;

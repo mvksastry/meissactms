@@ -16,17 +16,11 @@ use App\Models\Ctms\Patient;
 use App\Models\Ctms\PatientEpoch;
 
 //traits
-//use App\Traits\TCommon\Notes;
-//use App\Traits\TCommon\FileUploadHandler;
-//use App\Traits\TElab\ResearchProjectPermission;
-//
+
 use Illuminate\Support\Facades\Log;
 
 trait TPatientTimeline
 {
-    //use Base;
-    //use Notes;
-    //use FileUploadHandler;
 
     public function savePatientTimeline($patient_uuid, $name, $event, $tl_msg)
     {
