@@ -263,10 +263,10 @@ class PatientFollowup extends Component
         $enrolled = Enrollment::where('stage_code', 370)->pluck('patient_uuid')->toArray();
         //now get patient objects parent table, ideall not necessary to as we need only 
         //patient uuid to process. the patient object give opd_id etc..
-        //$this->enrolledPatients = Patient::whereIn('patient_uuid', $enrolled)->where('status_code', '<=', 420)->get();
-        
+        $this->enrolledPatients = Patient::whereIn('patient_uuid', $enrolled)->where('status_code', '<=', 420)->get();
+
         //for testing comment above 4 lines and use the query below
-        $this->enrolledPatients = Patient::where('status', 'draft')->get();
+        //$this->enrolledPatients = Patient::where('status', 'draft')->get();
         //dd($enrolled, $this->enrolledPatients);
         return view('livewire.ctms.followups.patient-followup');
     }
