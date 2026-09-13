@@ -10,19 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 //models
 use App\Models\Ctms\Patient;
-use App\Models\Ctms\LifeStyle;
-use App\Models\Ctms\ClinicalData;
-use App\Models\Ctms\SensoryExamination;
-use App\Models\Ctms\Mdtre;
-use App\Models\Ctms\PfirmannGrade;
-use App\Models\Ctms\VAScore;
-use App\Models\Ctms\ModqScore;
-use App\Models\Ctms\RMQReply;
+use App\Models\Ctms\Decisions\Enrollment;
+
+//Traits
+use App\Traits\Base;
+
 
 //Livewire Alerts
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 //logs
 use Illuminate\Support\Facades\Log;
+
 //uploads
 use Livewire\WithFileUploads;
 
@@ -33,6 +31,7 @@ class PatientRecordClosure extends Component
 
     public $p1 = false;
     public $p2 = false;
+    public $p3 = false;
 
     //data object variables
     public $id;
@@ -70,14 +69,12 @@ class PatientRecordClosure extends Component
         $this->patientClosure = Patient::where('status_code','>=', 400)->get();
     }
 
-    /*
-    public function selectedPatient($id)
+    public function closeAllPanels()
     {
-        //dd($id);
-        $this->patient_uuid = $id;
-        $this->highlightedId = $id;
+        $p1 = false;
+        $p2 = false;
+        $p3 = false;
     }
-    */
 
     public function openPanelP1($id)
     {
@@ -96,10 +93,15 @@ class PatientRecordClosure extends Component
         $this->p2 = true;
     }
 
-    public function closeAllPanels()
+    public function openArchivalPanel($id)
     {
-        $p1 = false;
-        $p2 = false;
+        $this->patient_uuid = $id;
+        $this->highlightedId = $id;
+        $this->closeAllPanels();
+        $this->p3 = true;
     }
+
+
+
 
 }

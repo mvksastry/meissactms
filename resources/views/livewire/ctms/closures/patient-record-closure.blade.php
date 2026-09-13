@@ -75,6 +75,12 @@
                                   class="ion ion-person"></i>&nbsp
                                 Initiate Closure</button>
                             @endif
+                            @if ($row->status_code >= 440)
+                              <button wire:click="openArchivalPanel('{{ $row->patient_uuid }}')"
+                                class="btn btn-block btn-warning rounded" type="button"><i
+                                  class="ion ion-person"></i>&nbsp
+                                Prepare Archieve</button>
+                            @endif
                           </td>
                         @endhasrole
                         @hasrole('director')
@@ -125,6 +131,9 @@
       @livewire('ctms.closures.data-closure-request', ['patient_uuid' => $patient_uuid], key($patient_uuid))
     @endif
 
+    @if ($p3)
+      @livewire('ctms.closures.patient-data-archivals', ['patient_uuid' => $patient_uuid], key($patient_uuid))
+    @endif
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

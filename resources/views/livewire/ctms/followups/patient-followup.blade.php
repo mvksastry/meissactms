@@ -32,12 +32,6 @@
             </h3>
           </div>
           <div class="card-body">
-            @if ($sys_panel)
-              @include('livewire.eac_sys_panel')
-            @endif
-            @if ($msg_panel)
-              @include('livewire.eac_msg_panel')
-            @endif
             <!-- /.col-12 -->
             <div class="row">
               @if (count($enrolledPatients) > 0)

@@ -2,6 +2,21 @@
 
 return [
 
+        'patient_path' => [
+
+                 "app/public/skls/patients/"
+        ],
+
+        'zip_temp_path' => [
+                
+                "app/public/skls/zips/"
+        ],
+
+        'archieve_path' => [
+                
+                "app/public/skls/archieves/"
+        ],
+
         'status_columns' => [
 
                 'confirmed' => [
