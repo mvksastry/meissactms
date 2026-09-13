@@ -82,15 +82,20 @@
                   <td>
                     <label>Transplant Status</label>
                     </br>
-                    {{ $enrollInfo->transplant_status }}
+                    {{ ucfirst($enrollInfo->transplant_status) }}
                   </td>
                 </tr>
 
                 <tr>
                   <td colspan="5">
+                    @php
+                      $av = explode("\n", $patientInfo->closure_comment);
+                    @endphp
                     <label>Closure Comment</label>
                     </br>
-                    {{ $patientInfo->closure_comment }}
+                    @foreach ($av as $val)
+                      {{ $val }} </br>
+                    @endforeach
                   </td>
                 </tr>
 
@@ -122,7 +127,12 @@
                 @if ($curArchieves->status == 1)
                   <tr>
                     <td colspan="4">
-                      {{ str_replace("\n", '<br>', $curArchieves->accessed_by) }}
+                      @php
+                        $av2 = explode("\n", $curArchieves->accessed_by);
+                      @endphp
+                      @foreach ($av2 as $val)
+                        {{ $val }} </br>
+                      @endforeach
                     </td>
                   </tr>
                   <tr>
