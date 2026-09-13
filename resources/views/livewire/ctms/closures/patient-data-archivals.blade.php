@@ -1,5 +1,9 @@
 <div>
 
+  @php
+    $steps = config('ctms.steps');
+  @endphp
+
   <section class="content p-2">
     <div class="container-fluid">
       <!-- COLOR PALETTE -->
@@ -56,12 +60,12 @@
                   <td>
                     <label>Status Code</label>
                     </br>
-                    {{ $patientInfo->status_code }}
+                    {{ $patientInfo->status_code }} : {{ ucfirst($steps[$patientInfo->status_code]) }}
                   </td>
                   <td>
                     <label>Status</label>
                     </br>
-                    {{ $patientInfo->status }}
+                    {{ ucfirst($patientInfo->status) }}
                   </td>
                   <td>
                     <label>Status Date</label>
@@ -118,8 +122,7 @@
                 @if ($curArchieves->status == 1)
                   <tr>
                     <td colspan="4">
-                      {{ $curArchieves->accessed_by }}
-
+                      {{ str_replace("\n", '<br>', $curArchieves->accessed_by) }}
                     </td>
                   </tr>
                   <tr>
