@@ -50,7 +50,7 @@ class PatientDataArchivals extends Component
 
         if($this->curArchieves)
         {
-            $result = $this->zipAndMove($uuid, $skls_id);
+            $result = $this->zipAndMove($uuid, $this->patientInfo,  $skls_id);
             // Decode to PHP associative array
         }
         else {
@@ -58,7 +58,7 @@ class PatientDataArchivals extends Component
         }
     }
 
-    public function downloadPatentDataZipArchieve($uuid)
+    public function downloadPatientDataZipArchieve()
     {
         $relativePath = $this->curArchieves->file_path.'/'. $this->curArchieves->filename;
         $absolutePath = storage_path($relativePath); // ✅ Full path

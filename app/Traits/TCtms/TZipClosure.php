@@ -26,7 +26,7 @@ trait TZipClosure
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function zipAndMove($patient_uuid, $skls_id)
+    public function zipAndMove($patient_uuid, $patientObj, $skls_id)
     {
 
         $patient_folder_path = "app/public/skls/patients/".$patient_uuid;
@@ -76,17 +76,6 @@ trait TZipClosure
 
             $zip->close();
 
-            $narc = new Archieve();
-
-            $narc->patient_uuid = $patient_uuid;
-            $narc->description = 'Archive of SKLS Patient ID: ' . $zipFileName;
-            $narc->archieved_by = Auth::user()->name;
-            $narc->date_archieved = date('Y-m-d');
-            $narc->filename = $zipFileName;
-            $narc->file_path = $archieve_path;
-            $narc->status = 1;
-            $narc->save();
-            
             // Destination folder inside storage/app
             $destinationFolder = storage_path($archieve_path);
 
@@ -98,10 +87,27 @@ trait TZipClosure
             // Move ZIP file to destination
             $finalPath = $destinationFolder . '/' . $zipFileName;
             rename($tempZipPath, $finalPath);
-        
+
+            $narc = new Archieve();
+
+            $narc->patient_uuid = $patient_uuid;
+            $narc->description = 'Archive of SKLS Patient ID: ' . $zipFileName;
+            $narc->archieved_by = Auth::user()->name;
+            $narc->date_archieved = date('Y-m-d');
+            $narc->filename = $zipFileName;
+            $narc->file_path = $archieve_path;
+            $narc->status = 1;
+            $narc->save();
+
+            $patientObj->status_code = 470;
+            $patientObj->save();
+
             return $zipFileName;
 
         } catch (Exception $e) {
+            $patientObj->status_code = 460;
+            $patientObj->save();
+
             LivewireAlert::title($e->getMessage() )->warning()->show();
             return response()->json(['error' => $e->getMessage()], 500);
         }

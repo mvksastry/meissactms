@@ -137,8 +137,8 @@
                   </tr>
                   <tr>
                     <td>
-                      <button wire:click="downloadPatentDataZipArchieve('{{ $patientInfo->patient_uuid }}')"
-                        class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
+                      <button wire:click="downloadPatientDataZipArchieve()" class="btn btn-block btn-warning rounded"
+                        type="button"><i class="ion ion-person"></i>&nbsp
                         Download Archieve</button>
                     </td>
                     <td>
