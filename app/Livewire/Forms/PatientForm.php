@@ -34,7 +34,7 @@ class PatientForm extends Form
     #[Validate('nullable|alpha_num')]
     public $other_id = NULL;
 
-    #[Validate('nullable|alpha')]
+    #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $present_occupation = null;
 
     #[Validate('required|regex:/^[A-Za-z ]+$/')]
