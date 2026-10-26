@@ -7,7 +7,7 @@
     <tbody>
       <tr>
         <td colspan="1">
-          <label>Aadhar ID</label>
+          <label class="text-danger">Aadhar ID</label>
           </br>
           {{ $patientPrimaryInfo->aadhar_id }}
         </td>
@@ -24,7 +24,7 @@
         <td colspan="1">
           <label>Occupation</label>
           </br>
-          {{ $patientPrimaryInfo->aadhar_id }}
+          {{ $patientPrimaryInfo->present_occupation }}
         </td>
       </tr>
       <tr>

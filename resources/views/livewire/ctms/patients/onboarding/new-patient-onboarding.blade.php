@@ -34,7 +34,7 @@
               <div class="row">
                 <div class="col-sm-4 col-md-2">
                   <button wire:click="fnOnBoarding()" type="button" class="btn btn-block btn-primary"><i
-                      class="ion ion-person"></i>&nbsp Initiate On-Boarding</button>
+                      class="ion ion-person"></i>&nbsp Initiate On-Boarding To Director</button>
                 </div>
               </div>
               <hr class="border-b-2 border-warning my-2 mx-2">
@@ -45,7 +45,7 @@
                       <th>Center</th>
                       <th>Clinic</th>
                       <th>Name</th>
-                      <th>Gender</th>
+                      <th>Aadhar ID</th>
                       <th>On-Boarding Status</th>
                       <th>Details</th>
                     </tr>
@@ -63,8 +63,7 @@
                           {{ $row->name }}
                         </td>
                         <td>
-                          {{ $row->gender }}
-                        </td>
+                          {{ $row->aadhar_id }}
                         <td>
                           {{ ucfirst($row->ob_status) }}
                         </td>
@@ -98,7 +97,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-tag"></i>
-                Pending Request for On-Boarding
+                On-Boarding Requests Pending For Approval
               </h3>
             </div>
             <div class="card-body">
@@ -112,7 +111,7 @@
                         <th>Center</th>
                         <th>Clinic</th>
                         <th>Name</th>
-                        <th>Gender</th>
+                        <th>Aadhar ID</th>
                         <th>On-Boarding Status</th>
                         <th>Details</th>
                       </tr>
@@ -130,7 +129,7 @@
                             {{ $row->name }}
                           </td>
                           <td>
-                            {{ $row->gender }}
+                            {{ $row->aadhar_id }}
                           </td>
                           <td>
                             {{ ucfirst($row->ob_status) }}

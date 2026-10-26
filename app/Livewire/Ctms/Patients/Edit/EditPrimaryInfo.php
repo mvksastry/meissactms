@@ -39,7 +39,7 @@ class EditPrimaryInfo extends Component
     public $center_id, $ctarm_id, $opd_id, $in_patient_id, $admission_date;
     public $name, $nick_name, $alias_name, $gender, $date_of_birth, $age, $occupation, $primary_phone_number, $alternate_phone_number;
     public $emergency_contact_name, $emergency_contact_phone, $alternate_contact_name, $alternate_contact_phone;
-    public $height, $height_unit="centimeters", $weight, $weight_unit="kg", $bmi;
+    public $height, $height_unit="cm", $weight, $weight_unit="kg", $bmi;
     public $consent_status, $consent_date, $consent_av, $consent_approval_date, $consent_approval_reference,$consent_approval_file;
     public $gen_surgical_info, $surgery_at_lumbar, $malignancies, $general_medical_history, $infections_suffered;
     public $general_inflammatory_diseases,$ankylosing_spondylosis,$rheumatoid_arthritis,$chronic_kidney_issues;
@@ -49,6 +49,8 @@ class EditPrimaryInfo extends Component
     public $past_complaints, $present_complaints, $past_medications, $present_medications, $addictive_substance_use;
     public $non_addictive_substance_use, $past_history, $notable_family_history, $before_problem_occupation;
     public $general_habits;
+
+    //public $commented;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
@@ -93,6 +95,7 @@ class EditPrimaryInfo extends Component
     {
         $this->form->validate();
         $this->input = $this->form->all();
+        //dd($this->input);
         $this->input = $this->sanitizeInput($this->input);
         $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
         //dd($this->input); // 
@@ -130,16 +133,18 @@ class EditPrimaryInfo extends Component
         $this->form->alternate_contact_name = $this->patientPrimaryInfo->alternate_contact_name;
         $this->form->alternate_contact_phone = $this->patientPrimaryInfo->alternate_contact_phone;
         $this->form->height = $this->patientPrimaryInfo->height;
-        $this->form->height_unit = $this->patientPrimaryInfo->height_unit; 
+        $this->form->height_unit = "cm"; 
         $this->form->weight = $this->patientPrimaryInfo->weight;
-        $this->form->weight_unit = $this->patientPrimaryInfo->weight_unit;
+        $this->form->weight_unit = "kg";
         $this->form->bmi = $this->patientPrimaryInfo->bmi;
-        $this->form->consent_status = $this->patientPrimaryInfo->consent_status;
+
+        $this->form->consent_status = "yes";
         $this->form->consent_date = $this->patientPrimaryInfo->consent_date;
-        $this->form->consent_av = $this->patientPrimaryInfo->consent_av;
-        $this->form->consent_approval_date = $this->patientPrimaryInfo->consent_approval_date;
-        $this->form->consent_approval_reference = $this->patientPrimaryInfo->consent_approval_reference;
-        $this->form->consent_approval_file = $this->patientPrimaryInfo->consent_approval_file;
+        $this->form->consent_av = null;
+        $this->form->consent_approval_date = null;
+        $this->form->consent_approval_reference = null;
+        $this->form->consent_approval_file = null;
+
         $this->form->gen_surgical_info = $this->patientPrimaryInfo->gen_surgical_info;
         $this->form->surgery_at_lumbar = $this->patientPrimaryInfo->surgery_at_lumbar;
         $this->form->malignancies = $this->patientPrimaryInfo->malignancies;
@@ -179,6 +184,7 @@ class EditPrimaryInfo extends Component
         $this->form->general_habits = $this->patientPrimaryInfo->general_habits;
         $this->form->status = $this->patientPrimaryInfo->status;
         $this->form->status_date = $this->patientPrimaryInfo->status_date;
+
         $this->form->comment_entered_by = $this->patientPrimaryInfo->comment_entered_by;
         $this->form->entered_by = Auth::user()->name;
         $this->form->entry_date = date('Y-m-d');
@@ -188,6 +194,10 @@ class EditPrimaryInfo extends Component
     {       
         $this->msg_panel = true;
         $name = $input['name'];
+        $newCommet = date('Y-m-d')." : ". Auth::user()->name." : ".$input['commented'];
+        $input['comment_entered_by'] = $input['comment_entered_by']. "\n". $newCommet;
+        unset($input['commented']);
+        //dd($input);
         try {
             $updatedPrimaryInfo = Patient::where('patient_uuid', $uuid)->update($input);
             if ($updatedPrimaryInfo) {        

@@ -90,7 +90,7 @@ class PatientOnboardingSubmission extends Component
                 LivewireAlert::title('Duplicate Entry Found...')->warning()->asToast()->show();
                 Log::channel('patient')->info($msg);
             } else {
-                $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
+             //   $this->input['age'] = $this->getAgeFromDoB($this->input['date_of_birth']);
                 $result = $this->savePatientOnBoardingInformation($this->input);
                 LivewireAlert::title('Patient On-Boarding ['.$result.'] Data Saved...')->info()->asToast()->show();
                 $msg = 'User ['.Auth::user()->name.'] Saved On-Boarding Patient information for ['.$result.']';

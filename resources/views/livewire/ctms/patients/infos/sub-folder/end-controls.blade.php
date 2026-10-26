@@ -4,7 +4,7 @@
         <th colspan="3" align="center"></th>
       </tr>
     </thead>
-    <tbody>        
+    <tbody>
       <tr>
         <td colspan="1">
           <label>Entered By</label>
@@ -13,8 +13,9 @@
         <td colspan="1">
           <label>Entry Date</label>
           </br>{{ $patientPrimaryInfo->entry_date }}
-         </td>
+        </td>
       </tr>
+
       <tr>
         <td colspan="1">
           <label>Verified By</label>
@@ -29,12 +30,17 @@
         <td colspan="1">
           <label>Entry Sealed By</label>
           </br>{{ $patientPrimaryInfo->entry_sealed_by }}
-       </td>
+        </td>
         <td colspan="2">
           <label>Sealed Date</label>
           </br>{{ $patientPrimaryInfo->entry_sealed_date }}
         </td>
       </tr>
+      <tr>
+        <td colspan="2">
+          <label>Comment</label>
+          </br>{{ $patientPrimaryInfo->comment_entered_by }}
+        </td>
+      </tr>
     </tbody>
   </table>
-  

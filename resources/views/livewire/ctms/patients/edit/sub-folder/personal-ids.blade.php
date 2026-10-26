@@ -14,13 +14,14 @@
       </tr>
       <tr>
         <td>
-          <label>Aadhar ID</label>
-          <input wire:model="form.aadhar_id" class="form-control" value="{{ $patientPrimaryInfo->aadhar_id }}"
+          <label class="text-danger">Aadhar ID*</label>
+          <input wire:model="form.aadhar_id" readonly class="form-control" value="{{ $patientPrimaryInfo->aadhar_id }}"
             type="text">
         </td>
         <td>
           <label>PAN</label>
-          <input wire:model="form.pan_num" class="form-control" value="{{ $patientPrimaryInfo->pan_num }}" type="text">
+          <input wire:model="form.pan_num" class="form-control" value="{{ $patientPrimaryInfo->pan_num }}"
+            type="text">
         </td>
         <td>
           <label>Other ID</label>
@@ -40,7 +41,7 @@
       </tr>
       <tr>
         <td colspan="1">
-          <label>Name</label>
+          <label class="text-danger">Name</label>
           <input wire:model="form.name" readonly class="form-control" value="{{ $patientPrimaryInfo->name }}"
             type="text">
         </td>
@@ -55,16 +56,15 @@
             type="text">
         </td>
         <td colspan="1">
-          <label>Gender</label>
-          <input wire:model="form.gender" readonly class="form-control" value="{{ $patientPrimaryInfo->gender }}"
-            type="text">
+          <label class="text-danger">Gender*</label>
+          <input wire:model="form.gender" class="form-control" value="{{ $patientPrimaryInfo->gender }}" type="text">
         </td>
       </tr>
       <tr>
         <td colspan="1">
-          <label>Date of Birth</label>
-          <input wire:model="form.date_of_birth" readonly class="form-control"
-            value="{{ $patientPrimaryInfo->date_of_birth }}" type="date">
+          <label class="text-danger">Date of Birth*</label>
+          <input wire:model="form.date_of_birth" class="form-control" value="{{ $patientPrimaryInfo->date_of_birth }}"
+            type="date">
         </td>
         <td colspan="1">
           <label>Age (In Years, Auto Calculated)</label>
@@ -72,8 +72,8 @@
             type="text">
         </td>
         <td colspan="1">
-          <label>Primary Phone</label>
-          <input wire:model="form.primary_phone_number" readonly class="form-control"
+          <label class="text-danger">Primary Phone*</label>
+          <input wire:model="form.primary_phone_number" class="form-control"
             value="{{ $patientPrimaryInfo->primary_phone_number }}" type="text">
         </td>
         <td colspan="1">
@@ -106,5 +106,5 @@
     </tbody>
   </table>
 
-  <button wire:click="fnSaveEditPrimaryInfo()" class="btn btn-warning font-normal mt-3 rounded">EDIT PRIMARY
+  <button wire:click="fnSaveEditPrimaryInfo()" class="btn btn-warning font-normal mt-3 rounded">SAVE PRIMARY
     INFO</button>

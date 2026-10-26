@@ -1,35 +1,37 @@
 <table id="userIndex2" class="table table-sm table-bordered table-hover">
-      <thead>
-        <tr>
-          <th colspan="4" align="center">Physical Features</th>
-        </tr>
-      </thead>
-      <tbody> 
-        <tr>
-          <td colspan="1">
-            <label>Height</label>
-            <input wire:model="form.height" class="form-control" value="{{ $patientPrimaryInfo->height }}"  type="text">
-          </td>
-          <td colspan="1">
-            <label>Height Unit</label>
-            <input wire:model="form.height_unit" class="form-control" value="{{ $patientPrimaryInfo->height_unit }}"  type="text">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="1">
-            <label>Weight</label>
-            <input wire:model="form.weight" class="form-control" value="{{ $patientPrimaryInfo->weight }}"  type="text">
-          </td>
-          <td colspan="1">
-            <label>Weight Unit</label>
-            <input wire:model="form.weight_unit" class="form-control" value="{{ $patientPrimaryInfo->weight_unit }}"  type="text">    
-          </td>
-          <td colspan="1">
-            <label>BMI</label>
-            <input wire:model="form.bmi" class="form-control" value="{{ $patientPrimaryInfo->bmi }}"  type="text">
-          </td>
-        </tr>
-      </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th colspan="4" align="center">Physical Features</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="1">
+        <label>Height (in cm)</label>
+        <input wire:model="form.height" class="form-control" value="{{ $patientPrimaryInfo->height }}" type="text">
+      </td>
+      <td colspan="1">
+        <label>Height Unit </label>
+        <input wire:model="form.height_unit" class="form-control" readonly
+          value="{{ $patientPrimaryInfo->height_unit }}" type="text">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1">
+        <label>Weight (in kg)</label>
+        <input wire:model="form.weight" class="form-control" value="{{ $patientPrimaryInfo->weight }}" type="text">
+      </td>
+      <td colspan="1">
+        <label>Weight Unit</label>
+        <input wire:model="form.weight_unit" class="form-control" readonly
+          value="{{ $patientPrimaryInfo->weight_unit }}" type="text">
+      </td>
+      <td colspan="1">
+        <label>BMI</label>
+        <input wire:model="form.bmi" class="form-control" value="{{ $patientPrimaryInfo->bmi }}" type="text">
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <button wire:click="fnSaveEditPrimaryInfo()" class="btn btn-warning font-normal mt-3 rounded">EDIT PRIMARY INFO</button>
+<button wire:click="fnSaveEditPrimaryInfo()" class="btn btn-warning font-normal mt-3 rounded">SAVE PRIMARY INFO</button>

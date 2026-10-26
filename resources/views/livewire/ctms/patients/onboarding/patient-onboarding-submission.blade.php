@@ -63,7 +63,7 @@
 
                       <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-                          @include('livewire.ctms.patients.onboarding.new-onboarding-form')
+                          @includeIf('livewire.ctms.patients.onboarding.new-onboarding-form')
                         </div>
                       </div><!-- ./End of Tab div -->
 

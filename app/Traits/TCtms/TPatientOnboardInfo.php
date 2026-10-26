@@ -40,8 +40,8 @@ trait TPatientOnboardInfo
           $newPatientInfo->ctarm_id =  1;
 
           $newPatientInfo->opd_id =  $input['opd_id'];
-          $newPatientInfo->in_patient_id =  $input['in_patient_id'];
-          $newPatientInfo->admission_date =  $input['admission_date'];
+        //  $newPatientInfo->in_patient_id =  $input['in_patient_id'];
+        //  $newPatientInfo->admission_date =  $input['admission_date'];
 
           //controls
           // above and below blocks are unchanged
@@ -58,10 +58,11 @@ trait TPatientOnboardInfo
           //----------------------------------------//
           //personal info
           $newPatientInfo->name =  $input['name'];
-          $newPatientInfo->gender =  ucfirst($input['gender']);
-          $newPatientInfo->date_of_birth =  $input['date_of_birth'];
-          $newPatientInfo->age =  $input['age'];
-          $newPatientInfo->primary_phone_number =  $input['primary_phone_number'];
+        //  $newPatientInfo->gender =  ucfirst($input['gender']);
+        //  $newPatientInfo->date_of_birth =  $input['date_of_birth'];
+        //  $newPatientInfo->age =  $input['age'];
+          $newPatientInfo->aadhar_id =  $input['aadhar_id'];
+        //  $newPatientInfo->primary_phone_number =  $input['primary_phone_number'];
           
           //status
           $newPatientInfo->status_code = 100; //very important, default null untill approval done
