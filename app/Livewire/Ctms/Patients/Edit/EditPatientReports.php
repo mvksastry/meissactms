@@ -325,9 +325,13 @@ class EditPatientReports extends Component
                 $input['report_description'] = $this->file_codex[$input['file_code']];
 
                 $oldFile = $this->getOldFileInfo($input['file_code']);
-                $oldfile->report_status = 'invalid';
-                $of_name = $oldFile->file_name;
-                $oldfile->save();
+
+                if($oldFile)
+                {
+                    $oldfile->report_status = 'invalid';
+                    $of_name = $oldFile->file_name;
+                    $oldfile->save();
+                }
 
                 $newFile = ClinicalReports::insert($input);
             }
