@@ -7,9 +7,10 @@
     <tbody>
       <tr>
         <td colspan="3">
-          <label>Comment</label>
+          <label>Comment Entered By (Previous Entry)</label>
           </br>
-          {{ $patientPrimaryInfo->comment_entered_by }}
+          <input wire:model="form.comment_entered_by" class="form-control" type="text">
+
         </td>
       </tr>
       <tr>
