@@ -9,7 +9,7 @@ trait THandlesValidationAlerts
     protected function handleValidation($form)
     {
         try {
-          $this->form->validate();
+          $form->validate();
           return null; // no errors
         } catch (ValidationException $e) {
           return $e->validator->errors()->all(); // return array of error strings
