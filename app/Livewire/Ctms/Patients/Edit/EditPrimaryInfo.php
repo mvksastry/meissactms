@@ -194,6 +194,7 @@ class EditPrimaryInfo extends Component
     {       
         $this->msg_panel = true;
         $name = $input['name'];
+        $input['comment_entered_by'] = $this->patientPrimaryInfo->comment_entered_by;
         $newCommet = date('Y-m-d')." : ". Auth::user()->name." : ".$input['commented'];
         $input['comment_entered_by'] = $input['comment_entered_by']. "\n". $newCommet;
         unset($input['commented']);
