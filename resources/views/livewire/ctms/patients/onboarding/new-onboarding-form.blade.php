@@ -50,7 +50,7 @@
     <tbody>
       <tr>
         <td colspan="2">
-          <label>Comment</label>
+          <label class="text-danger">Comment*</label>
           <input wire:model.defer="form.comment_entered_by" id="comment_entered_by" type="text" value="null"
             class="form-control" placeholder="Comment">
         </td>

@@ -50,7 +50,7 @@ class EditPrimaryInfo extends Component
     public $non_addictive_substance_use, $past_history, $notable_family_history, $before_problem_occupation;
     public $general_habits;
 
-    //public $commented;
+    public $commented;
 
     //Errors, Alers, Callouts
     public $sys_panel = false;
