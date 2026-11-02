@@ -13,7 +13,7 @@ class FormCrp extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9]+$/|max:20')]
     public $in_patient_id = null;
 
-    #[Validate('date')]
+    #[Validate('nullable|date')]
     public $admission_date = null;
 
     

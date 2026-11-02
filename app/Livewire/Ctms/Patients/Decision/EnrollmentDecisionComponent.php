@@ -234,7 +234,7 @@ class EnrollmentDecisionComponent extends Component
             }
 
         }else {
-            LivewireAlert::title("Saample Data Entry Step NOT Reached Or Elapsed")->success()->show();
+            LivewireAlert::title("Saample Data Entry Step NOT Reached Or Elapsed")->warningcd()->show();
         }
     }
                     

@@ -61,7 +61,7 @@ class PatientForm extends Form
     #[Validate('nullable|numeric')]
     public $alternate_phone_number = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
+    #[Validate('nullable|regex:/^[A-Za-z0-9,.\-\/ :; ]+$/')]
     public $address = null;
 
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-\/ ]+$/')]
@@ -229,9 +229,12 @@ class PatientForm extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $anyother_habbits = null;
 
-    //#[Validate('nullable|regex:/^[A-Za-z0-9:.,;\-_\/ ]+$/')]
-    //public $comment_entered_by = null;   
 
+    //below this is the correct line and must be used everywhere
+    #[Validate('nullable|regex:/^[A-Za-z0-9:.,;\-_\/ \r?\n ]+$/')]                     
+    public $comment_entered_by = null;   
+
+    
     #[Validate('nullable|regex:/^[A-Za-z0-9:.,:\-_\/ ]+$/')]
     public $commented = null;
 

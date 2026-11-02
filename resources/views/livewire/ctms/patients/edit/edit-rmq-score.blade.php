@@ -201,7 +201,7 @@
                             </table>
 
                             <button wire:click="fnEditRMQInfo()"
-                              class="btn btn-success text-white font-normal mt-3 rounded">EDIT RMQ INFO</button>
+                              class="btn btn-success text-white font-normal mt-3 rounded">SAVE RMQ INFO</button>
                           </div>
                           <!-- /.tab-pane -->
                           <!-- /.tab-content -->

@@ -43,7 +43,7 @@
       <tr>
         <td colspan="4">
           <label>Non Addictive Substances</label>
-          <input wire:model="form.non_additictive_substance_use" class="form-control"
+          <input wire:model="form.non_addictive_substance_use" class="form-control"
             value="{{ $patientPrimaryInfo->non_addictive_substance_use }}" type="text">
         </td>
       </tr>

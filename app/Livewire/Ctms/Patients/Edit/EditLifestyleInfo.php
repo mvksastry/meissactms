@@ -79,10 +79,6 @@ class EditLifestyleInfo extends Component
         $this->form->cross_leg_sitting = $ls_info->cross_leg_sitting;
         $this->form->standing = $ls_info->standing;
         $this->form->sitting = $ls_info->sitting;
-        //$this->form->ls3 = $ls_info->ls3;
-        //$this->form->ls4 = $ls_info->ls4;
-        //$this->form->ls5 = $ls_info->ls5;
-        //$this->form->ls6 = $ls_info->ls6;
         $this->form->life_style_description = $ls_info->life_style_description;
         $this->form->status = $ls_info->status;
         $this->form->status_date = $ls_info->status_date;
@@ -98,6 +94,21 @@ class EditLifestyleInfo extends Component
         //dd($this->input);
         $this->msg_panel = true;
         $name = $this->uuid;
+
+        $this->input['comment_entered_by'] = $this->ls_info->comment_entered_by;
+
+        if( !empty($this->input['new_comment']) ) 
+        {
+            $newCommet = date('Y-m-d')." : ". Auth::user()->name." : ".$this->input['new_comment'];
+            $this->input['comment_entered_by'] = $this->input['comment_entered_by']. "\n". $newCommet;
+        }
+
+        if (array_key_exists('new_comment', $this->input)) 
+        {
+            unset($this->input['new_comment']);
+        } 
+
+
         try {
             $result = LifeStyle::where('patient_uuid', $this->uuid)->update($this->input);
             if ($result) {        

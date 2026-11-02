@@ -57,7 +57,7 @@
     <tr>
       <td colspan="4">
         <label>Rheumatoid Arthritis</label>
-        <input wire:model="form.rhematoid_arthiritis" class="form-control"
+        <input wire:model="form.rheumatoid_arthritis" class="form-control"
           value="{{ $patientPrimaryInfo->rheumatoid_arthritis }}" type="text">
       </td>
     </tr>

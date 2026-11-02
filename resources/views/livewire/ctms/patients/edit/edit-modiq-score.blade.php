@@ -821,7 +821,7 @@
                             </table>
 
                             <button wire:click="fnEditModqScoreData()"
-                              class="btn btn-warning font-normal mt-3 rounded">EDIT MODQ INFO</button>
+                              class="btn btn-warning font-normal mt-3 rounded">SAVE MODQ INFO</button>
                           </div>
                           <!-- /.tab-pane -->
                           <!-- /.tab-content -->

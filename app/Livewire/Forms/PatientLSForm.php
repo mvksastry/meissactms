@@ -31,8 +31,12 @@ class PatientLSForm extends Form
     #[Validate('nullable|regex:/^[A-Za-z0-9,.\-_\/ ]+$/')]
     public $life_style_description = null;
 
-    #[Validate('nullable|regex:/^[A-Za-z0-9.,:\-_\/ ]+$/')]
-    public $comment_entered_by = null;
+    //below this is the correct line and must be used everywhere
+    #[Validate('nullable|regex:/^[A-Za-z0-9:.,;\-_\/ \r?\n ]+$/')]                     
+    public $comment_entered_by = null; 
+
+    #[Validate('nullable|regex:/^[A-Za-z0-9:.,:\-_\/ ]+$/')]
+    public $new_comment = null;
 
     #[Validate('nullable|regex:/^[A-Za-z ]+$/')]
     public $entered_by = null;

@@ -83,8 +83,8 @@ class BloodSugarComponent extends Component
                                         ->where('data_type', $this->data_type)
                                         ->first();
         $this->form_b->opd_id = $this->passObj->opd_id;
-        $this->form_b->in_patient_id = $this->passObj->in_patient_id;
-        $this->form_b->admission_date = $this->passObj->admission_date;
+        //$this->form_b->in_patient_id = $this->passObj->in_patient_id;
+        //$this->form_b->admission_date = $this->passObj->admission_date;
 
         $this->form_b->fasting = $this->passObj->fasting;
         $this->form_b->post_prandial = $this->passObj->post_prandial;

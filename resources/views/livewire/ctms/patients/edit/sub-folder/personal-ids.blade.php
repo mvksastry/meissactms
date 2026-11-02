@@ -24,12 +24,12 @@
             type="text">
         </td>
         <td>
-          <label>Other ID</label>
+          <label>Other ID (Blank OK)</label>
           <input wire:model="form.other_id" class="form-control" value="{{ $patientPrimaryInfo->other_id }}"
             type="text">
         </td>
         <td colspan="1">
-          <label>Occupation</label>
+          <label>Occupation (Blank OK)</label>
           <input wire:model="form.present_occupation" class="form-control"
             value="{{ $patientPrimaryInfo->present_occupation }}" type="text">
         </td>
@@ -46,12 +46,12 @@
             type="text">
         </td>
         <td colspan="1">
-          <label>Nick Name</label>
+          <label>Nick Name (Blank OK)</label>
           <input wire:model="form.nick_name" class="form-control" value="{{ $patientPrimaryInfo->nick_name }}"
             type="text">
         </td>
         <td colspan="1">
-          <label>Alias Name</label>
+          <label>Alias Name (Blank OK)</label>
           <input wire:model="form.alias_name" class="form-control" value="{{ $patientPrimaryInfo->alias_name }}"
             type="text">
         </td>
@@ -77,7 +77,7 @@
             value="{{ $patientPrimaryInfo->primary_phone_number }}" type="text">
         </td>
         <td colspan="1">
-          <label>Alternate Phone</label>
+          <label>Alternate Phone (Blank OK)</label>
           <input wire:model="form.alternate_phone_number" class="form-control"
             value="{{ $patientPrimaryInfo->alternate_phone_number }}" type="text">
         </td>

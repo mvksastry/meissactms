@@ -167,6 +167,7 @@ class EditPrimaryInfo extends Component
         $this->form->ihd_family = $this->patientPrimaryInfo->ihd_family;
         $this->form->paralysis_self = $this->patientPrimaryInfo->paralysis_self;
         $this->form->paralysis_family = $this->patientPrimaryInfo->paralysis_family;
+
         $this->form->consumption_non_tgp = $this->patientPrimaryInfo->consumption_non_tgp;
         $this->form->consumption_tobacco = $this->patientPrimaryInfo->consumption_tobacco;
         $this->form->consumption_gutka = $this->patientPrimaryInfo->consumption_gutka;
@@ -195,9 +196,19 @@ class EditPrimaryInfo extends Component
         $this->msg_panel = true;
         $name = $input['name'];
         $input['comment_entered_by'] = $this->patientPrimaryInfo->comment_entered_by;
-        $newCommet = date('Y-m-d')." : ". Auth::user()->name." : ".$input['commented'];
-        $input['comment_entered_by'] = $input['comment_entered_by']. "\n". $newCommet;
-        unset($input['commented']);
+
+        if( !empty($input['commented']) ) 
+        {
+            $newCommet = date('Y-m-d')." : ". Auth::user()->name." : ".$input['commented'];
+            $input['comment_entered_by'] = $input['comment_entered_by']. "\n". $newCommet;
+        }
+
+        if (array_key_exists('commented', $input)) 
+        {
+            unset($input['commented']);
+        } 
+
+        
         //dd($input);
         try {
             $updatedPrimaryInfo = Patient::where('patient_uuid', $uuid)->update($input);

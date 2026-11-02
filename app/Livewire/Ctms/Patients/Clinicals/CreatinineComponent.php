@@ -85,8 +85,8 @@ class CreatinineComponent extends Component
                                     ->where('data_type', $this->data_type)
                                     ->first();
         $this->form_e->opd_id = $this->passObj->opd_id;
-        $this->form_e->in_patient_id = $this->passObj->in_patient_id;
-        $this->form_e->admission_date = $this->passObj->admission_date;
+        //$this->form_e->in_patient_id = $this->passObj->in_patient_id;
+        //$this->form_e->admission_date = $this->passObj->admission_date;
 
         $this->form_e->serum_creatinine = $this->passObj->serum_creatinine;
 
