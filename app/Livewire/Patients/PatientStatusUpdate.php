@@ -35,7 +35,7 @@ use App\Models\Ctms\Clinicals\RenalFunction;
 use App\Models\Ctms\Clinicals\UrineRoutine;
 
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientStatus;
+//use App\Traits\TCtms\TPatientStatus;
 use App\Traits\TCtms\TPatientTimeline;
 use App\Traits\TCtms\TDBStatusUpdates;
 
@@ -43,7 +43,7 @@ class PatientStatusUpdate extends Component
 {
     //
     use Base;
-    use TPatientStatus;
+    //use TPatientStatus;
     use TPatientTimeline;
     use TDBStatusUpdates;
 

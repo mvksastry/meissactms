@@ -9,8 +9,9 @@
         <td colspan="3">
           <label>Comment Entered By (Previous Entry)</label>
           </br>
+          {{ $patientPrimaryInfo->comment_entered_by }}
+          </br>
           <input wire:model="form.comment_entered_by" class="form-control" type="text">
-
         </td>
       </tr>
       <tr>
