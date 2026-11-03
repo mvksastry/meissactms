@@ -53,14 +53,25 @@ class PatientEnrollmentProcess extends Component
     public function render()
     {
         $this->sealed_patients = Patient::where('status','sealed')->get();
-        $this->enroll_status = Enrollment::where('stage_code','>=', 160)
-                                            //->where('stage_code','<', 370)
-                                            ->get();
+        
         //dd($this->enroll_status);
         $this->entered_by = Auth::user()->name;
         //dd($this->confirmedPatients);
         Log::channel('patient')->info('User [ '.Auth::user()->name.' ] shown Enrollment Decision home page');
         return view('livewire.ctms.patients.decision.patient-enrollment-process');
+    }
+
+    public function selectedPatientForEnrollment($patient_uuid)
+    {
+        //dd($patient_uuid);
+        $this->patient_uuid = $patient_uuid;
+        $this->enroll_status = Enrollment::where('patient_uuid',$patient_uuid)
+                                            ->where('stage_code','>=', 160)
+                                            ->get();
+        //$objPatient = Patient::where('patient_uuid', $patient_uuid)->first();
+        $this->p2 = true;
+        //$this->setPanels();
+       // dd('selectedPatientForEnrollment', $this->patient_uuid);
     }
 
     public function selectedPatient($patient_uuid)
@@ -75,6 +86,7 @@ class PatientEnrollmentProcess extends Component
     {        
         $this->resetAllPanels();
         $this->p1 = true;
+        $this->p2 = true;
     }
 
     public function resetAllPanels()

@@ -12,7 +12,8 @@
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-chart-pie mr-1"></i>Sensory Examinations - Dermatome Grades :
-                  <label class="text-danger">{{ $data_type }}</label></h3>
+                  <label class="text-danger">{{ $data_type }}</label>
+                </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
                     <!--
@@ -84,11 +85,11 @@
                                     </td>
                                     <td>
                                       <label>In Patient ID</label>
-                                      </br>{{ $sensoryexam_info->opd_id }}
+                                      </br>{{ $sensoryexam_info->ipd_id }}
                                     </td>
                                     <td>
                                       <label>Admission Date</label>
-                                      </br>{{ $sensoryexam_info->opd_id }}
+                                      </br>{{ $sensoryexam_info->admission_date }}
                                     </td>
                                   </tr>
                                 </tbody>

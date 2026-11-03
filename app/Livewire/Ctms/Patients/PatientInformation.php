@@ -116,41 +116,41 @@ class PatientInformation extends Component
 		{
             $this->activePatients = Patient::where('status', 'draft')->get();
             $this->activePatients->search_status = "draft";
-            $this->search_status = "draft";
+            $this->search_status = array("draft");
         }
 
         if( Auth::user()->hasAnyRole(['senior_resident']) )
 		{
             $this->activePatients = Patient::where('status', 'draft')->get();
             $this->activePatients->search_status = "draft";
-            $this->search_status = "draft";
+            $this->search_status = array("draft");
         }
 
         if( Auth::user()->hasAnyRole(['clinical_manager']) )
 		{
             $this->activePatients = Patient::where('status', 'confirmed')->get();
             $this->activePatients->search_status = "confirmed";
-            $this->search_status = "confirmed";
+            $this->search_status = array("confirmed");
         }
 
         if( Auth::user()->hasAnyRole(['ctms_incharge']) )
 		{
             $this->activePatients = Patient::whereIn('status', ['verified'])->get();
-            $this->activePatients->search_status = "approved/sealed";
-            $this->search_status = "['approved','sealed']";
+            $this->activePatients->search_status = "verified/approved/sealed";
+            $this->search_status = array('verified', 'sealed', 'approved');
         }
 
         if( Auth::user()->hasAnyRole(['cro']) )
 		{
             $this->activePatients = Patient::where('status', 'sealed')->get();
             $this->activePatients->search_status = "sealed";
-            $this->search_status = "sealed";
+            $this->search_status = array("sealed");
         }
 
         if( Auth::user()->hasAnyRole(['director']) )
 		{
             $this->activePatients = Patient::whereIn('status', ['approved','sealed'])->get();
-            $this->search_status = "['approved','sealed']";
+            $this->search_status = array("approved", "sealed");
         }
 
         //dd($this->activePatients);
@@ -224,23 +224,23 @@ class PatientInformation extends Component
        // $this->date_created = $this->clinical_info->created_at;
 
         //now set for all other parameters
-        $this->ci1Obj  = BloodRoutine::where('status', $this->search_status)
+        $this->ci1Obj  = BloodRoutine::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci2Obj  = BloodSugar::where('status', $this->search_status)
+        $this->ci2Obj  = BloodSugar::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci3Obj  = BloodUrea::where('status', $this->search_status)
+        $this->ci3Obj  = BloodUrea::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci4Obj  = ChemicalExam::where('status', $this->search_status)
+        $this->ci4Obj  = ChemicalExam::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci5Obj  = Creatinine::where('status', $this->search_status)
+        $this->ci5Obj  = Creatinine::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
@@ -248,35 +248,35 @@ class PatientInformation extends Component
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci7Obj  = Electrolytes::where('status', $this->search_status)
+        $this->ci7Obj  = Electrolytes::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci8Obj  = GeneralSummary::where('status', $this->search_status)
+        $this->ci8Obj  = GeneralSummary::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci9Obj  = Il6::where('status', $this->search_status)
+        $this->ci9Obj  = Il6::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci10Obj = LaboratoryExam::where('status', $this->search_status)
+        $this->ci10Obj = LaboratoryExam::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci11Obj = LiverFunction::where('status', $this->search_status)
+        $this->ci11Obj = LiverFunction::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci12Obj = MicroscopicExam::where('status', $this->search_status)
+        $this->ci12Obj = MicroscopicExam::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci13Obj = RenalFunction::where('status', $this->search_status)
+        $this->ci13Obj = RenalFunction::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();
-        $this->ci14Obj = UrineRoutine::where('status', $this->search_status)
+        $this->ci14Obj = UrineRoutine::whereIn('status', $this->search_status)
         ->where('patient_uuid', $this->patient_uuid)
         ->where('data_type', 'pre-enrollment')
         ->first();

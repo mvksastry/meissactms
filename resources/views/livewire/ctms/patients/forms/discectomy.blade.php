@@ -20,6 +20,11 @@
           <input wire:model.defer="form_a.discectomy_admission_date" id="aadhar_id" type="date" value="null"
             class="form-control" placeholder="Admission Date">
         </td>
+        <td>
+          <label>Discectomy Date</label>
+          <input wire:model.defer="form_a.discectomy_date" type="date" class="form-control"
+            placeholder="Surgery Date">
+        </td>
       </tr>
     </tbody>
   </table>
@@ -30,13 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <label>Discectomy Date</label>
-          <input wire:model.defer="form_a.discectomy_date" type="date" class="form-control"
-            placeholder="Surgery Date">
-        </td>
-      </tr>
+
       <tr>
         <td>
           <label>Names of Surgenons</label>

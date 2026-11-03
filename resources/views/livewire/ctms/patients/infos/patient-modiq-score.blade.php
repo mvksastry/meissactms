@@ -221,42 +221,7 @@
                                    </td>
                                  </tr>
                                @endhasanyrole
-                               @hasanyrole('ctms_manager|ctms_incharge|director')
-                                 <tr>
-                                   <td colspan="2">
-                                     <label>Comment by Verified</label>
-                                     </br>{{ $modq_info->comment_verified_by }}
-                                   </td>
-                                 </tr>
-                                 <tr>
-                                   <td colspan="1">
-                                     <label>Verified By</label>
-                                     </br>{{ $modq_info->verified_by }}
-                                   </td>
-                                   <td colspan="1">
-                                     <label>Verified Date</label>
-                                     </br>{{ $modq_info->verified_date }}
-                                   </td>
-                                 </tr>
-                               @endhasanyrole
-                               @hasanyrole('ctms_incharge|director')
-                                 <tr>
-                                   <td colspan="2">
-                                     <label>Comment by Sealed Authority</label>
-                                     </br>{{ $modq_info->comment_sealed_by }}
-                                   </td>
-                                 </tr>
-                                 <tr>
-                                   <td colspan="1">
-                                     <label>Entry Sealed By</label>
-                                     </br>{{ $modq_info->entry_sealed_by }}
-                                   </td>
-                                   <td colspan="2">
-                                     <label>Sealed Date</label>
-                                     </br>{{ $modq_info->entry_sealed_date }}
-                                   </td>
-                                 </tr>
-                               @endhasanyrole
+
                              </tbody>
                            </table>
                          </div>

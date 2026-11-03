@@ -106,6 +106,7 @@ class EnrollmentDecisionComponent extends Component
         $this->passObj = Patient::where('patient_uuid', $this->patient_uuid)->first();
         $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
         $this->enFileObj = EnrollmentFiles::where('patient_uuid', $this->patient_uuid)->get();
+        $this->form_a->opd_id = $this->passObj->opd_id;
         //dd($this->enFileObj);
         $this->fnGoNogo();
     }

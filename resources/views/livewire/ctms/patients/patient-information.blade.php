@@ -99,7 +99,7 @@
                             </td>
                           @else
                             <td>
-                              Nothing to Clear
+                              Nothing to Confirm
                             </td>
                           @endif
 
@@ -114,7 +114,7 @@
                             </td>
                           @else
                             <td>
-                              Nothing to Approve
+                              Nothing to Verify
                             </td>
                           @endif
                         @endhasrole
