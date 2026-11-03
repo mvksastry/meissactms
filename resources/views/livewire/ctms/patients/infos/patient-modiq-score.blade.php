@@ -182,7 +182,7 @@
                                  <td colspan="1">
                                    <label>In Patient ID</label>
                                    </br>
-                                   {{ $modq_info->in_patient_id }}
+                                   {{ $modq_info->ipd_id }}
 
                                  </td>
                                  <td colspan="1">
@@ -203,7 +203,7 @@
                                </tr>
                              </thead>
                              <tbody>
-                               @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
+                               @hasanyrole('junior_resident|senior_resident|clinical_manager|ctms_incharge|director')
                                  <tr>
                                    <td colspan="2">
                                      <label>Comment By Entered</label>

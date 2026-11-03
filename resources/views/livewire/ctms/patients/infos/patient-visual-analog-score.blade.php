@@ -88,11 +88,11 @@
                                     </td>
                                     <td>
                                       <label>In Patient ID</label>
-                                      </br>{{ $vascore_info->opd_id }}
+                                      </br>{{ $vascore_info->ipd_id }}
                                     </td>
                                     <td>
                                       <label>Admission Date</label>
-                                      </br>{{ $vascore_info->opd_id }}
+                                      </br>{{ $vascore_info->admission_date }}
                                     </td>
                                   </tr>
                                 </tbody>
@@ -103,7 +103,7 @@
                               <table id="userIndex2" class="table table-sm table-bordered table-hover">
                                 <thead>
                                   <tr>
-                                    <th colspan="6" align="center"></th>
+                                    <th colspan="3" align="center"></th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -114,7 +114,7 @@
                                     </td>
                                     <td colspan="1">
                                       <label>"Faces" Pain Rating Scale</label>
-                                      </br>{{ $vascore_info->pfr_scale }}
+                                      </br>{{ $vascore_info->fpr_scale }}
                                     </td>
                                     <td colspan="1">
                                       <label>---</label>
@@ -133,7 +133,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
+                                  @hasanyrole('junior_resident|senior_resident|clinical_manager|ctms_incharge|director')
                                     <tr>
                                       <td colspan="2">
                                         <label>Entered By</label>

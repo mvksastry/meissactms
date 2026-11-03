@@ -113,7 +113,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
+                                  @hasanyrole('junior_resident|senior_resident|clinical_manager|ctms_incharge|director')
                                     <tr>
                                       <td colspan="2">
                                         <label>Entered By</label>

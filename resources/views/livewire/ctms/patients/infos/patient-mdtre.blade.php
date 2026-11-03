@@ -111,11 +111,11 @@
                                     </td>
                                     <td>
                                       <label>In Patient ID</label>
-                                      </br>{{ $mdtre_info->opd_id }}
+                                      </br>{{ $mdtre_info->ipd_id }}
                                     </td>
                                     <td>
                                       <label>Admission Date</label>
-                                      </br>{{ $mdtre_info->opd_id }}
+                                      </br>{{ $mdtre_info->admission_date }}
                                     </td>
                                   </tr>
                                 </tbody>
@@ -236,7 +236,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  @hasanyrole('junior_resident|senior_resident|ctms_manager|ctms_incharge|director')
+                                  @hasanyrole('junior_resident|senior_resident|clinical_manager|ctms_incharge|director')
                                     <tr>
                                       <td colspan="2">
                                         <label>Entered By</label>
