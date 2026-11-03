@@ -79,7 +79,7 @@
                         <td>
                           <button wire:click="selectedPatientForEnrollment('{{ $row->patient_uuid }}')"
                             class="btn btn-block btn-warning rounded" type="button"><i class="ion ion-person"></i>&nbsp
-                            Begin Enrollment</button>
+                            Enrollment Info</button>
                         </td>
                       </tr>
                     @endforeach
@@ -156,7 +156,7 @@
                                 <button wire:click="selectedPatient('{{ $row->patient_uuid }}')"
                                   class="btn btn-block btn-warning rounded" type="button"><i
                                     class="ion ion-person"></i>&nbsp
-                                  Enrollment</button>
+                                  Enrollment Input</button>
                               @endif
                             @endhasrole
                             @hasrole('director')
@@ -173,7 +173,7 @@
                                   <button wire:click="selectedPatient('{{ $row->patient_uuid }}')"
                                     class="btn btn-block btn-warning rounded" type="button"><i
                                       class="ion ion-person"></i>&nbsp
-                                    Enrollment</button>
+                                    Enrollment Input</button>
                                 @endif
                               @endhasrole
 
@@ -182,7 +182,7 @@
                                   <button wire:click="selectedPatient('{{ $row->patient_uuid }}')"
                                     class="btn btn-block btn-warning rounded" type="button"><i
                                       class="ion ion-person"></i>&nbsp
-                                    Enrollment</button>
+                                    Enrollment Input</button>
                                 @endif
                               @endhasrole
                             @else

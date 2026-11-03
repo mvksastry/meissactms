@@ -103,7 +103,7 @@
 
       <tr>
         <td>
-          <label>Comprehensive Batch Report 3</label>
+          <label>Comprehensive Batch MF Report 3</label>
           <input wire:model.defer="form_x.qc_report_3" type="file" class="form-control" placeholder="Sample ID">
           @error('form_x.qc_report_3')
             <span class="text-danger error">{{ $message }}</span>

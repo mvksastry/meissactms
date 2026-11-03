@@ -235,7 +235,7 @@ class EnrollmentDecisionComponent extends Component
             }
 
         }else {
-            LivewireAlert::title("Saample Data Entry Step NOT Reached Or Elapsed")->warningcd()->show();
+            LivewireAlert::title("Saample Data Entry Step NOT Reached Or Elapsed")->warning()->show();
         }
     }
                     
@@ -260,7 +260,8 @@ class EnrollmentDecisionComponent extends Component
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_1 For Decision');
                     $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
                 }else {
-                    LivewireAlert::titile($msg)->warning()->show();
+                    $msg = "QC_REP_1 File Upload Failed, Please Check File Type and Size";
+                    LivewireAlert::title($msg)->warning()->show();
                 }
             } 
 
@@ -276,7 +277,8 @@ class EnrollmentDecisionComponent extends Component
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_2 For Decision');
                     $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
                 }else {
-                    LivewireAlert::titile($msg)->warning()->show();
+                    $msg = "QC_REP_2 File Upload Failed, Please Check File Type and Size";
+                    LivewireAlert::title($msg)->warning()->show();
                 }
             } 
             
@@ -335,7 +337,8 @@ class EnrollmentDecisionComponent extends Component
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_3 For Decision');
                     $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
                 }else {
-                    LivewireAlert::titile($msg)->warning()->show();
+                    $msg = "QC_REP_3 File Upload Failed, Please Check File Type and Size";
+                    LivewireAlert::title($msg)->warning()->show();
                 }
             } 
 
@@ -350,7 +353,8 @@ class EnrollmentDecisionComponent extends Component
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_COA For Decision');
                     $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
                 }else {
-                    LivewireAlert::titile($msg)->warning()->show();
+                    $msg = "QC_COA File Upload Failed, Please Check File Type and Size";
+                    LivewireAlert::title($msg)->warning()->show();
                 }
             } 
 
