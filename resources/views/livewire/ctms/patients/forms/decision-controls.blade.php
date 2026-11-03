@@ -42,7 +42,7 @@
           @include('livewire.ctms.patients.decision.all-infos-green-red')
         </td>
         <td>
-          @if ($enrObj->stage_code < 340)
+          @if ($enrObj->stage_code <= 340 || $enrObj->status != 'approved')
             @include('livewire.ctms.patients.decision.decision-form')
           @endif
         </td>

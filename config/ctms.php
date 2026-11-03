@@ -214,6 +214,7 @@ return [
                 '320' => 'QA-accepted',
 
         '330' => 'enrollment-aborted',
+                '335' => 'enrollment-cleared-for-approval',
                 '340' => 'enrollment-completed',
 
                 '350' => 'admin-assigned-control-numbers',

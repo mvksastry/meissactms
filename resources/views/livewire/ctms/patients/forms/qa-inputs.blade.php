@@ -36,7 +36,7 @@
         <td>
           <label>Comments</label>
           <input wire:model.defer="form_e.qa_enrollment_comment" type="text" class="form-control"
-            placeholder="Unique ID Number">
+            placeholder="QA Comments">
         </td>
       </tr>
       <tr>

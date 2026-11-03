@@ -1,4 +1,4 @@
-  @if ($this->enrObj->qc_status_code != 240)
+  @if ($enrObj->qc_status_code != 240)
     <table id="userIndex2" class="table table-sm table-bordered table-hover">
       <thead>
         <tr>
@@ -42,13 +42,12 @@
               class="form-control" placeholder="Other Infos 2">
           </td>
         </tr>
+        <!--
         <tr>
           <td>
             <label>Report 2</label>
             <input wire:model.defer="form_x.qc_report_2" type="file" class="form-control" placeholder="MFR Code">
-            @error('form_x.qc_report_2')
-              <span class="text-danger error">{{ $message }}</span>
-            @enderror
+
           </td>
           <td>
             <label>Report 2 Description</label>
@@ -56,6 +55,7 @@
               class="form-control" placeholder="Other Infos 2">
           </td>
         </tr>
+      -->
         <tr>
           <td>
             <button wire:click="fnSaveEnrolQCPart1Data()"
@@ -146,8 +146,7 @@
       </tr>
       <tr>
         <td>
-          <button wire:click="fnSaveEnrolPart2QCData()"
-            class="btn btn-success text-white font-normal mt-3 rounded">ADD
+          <button wire:click="fnSaveEnrolPart2QCData()" class="btn btn-success text-white font-normal mt-3 rounded">ADD
             QC PART -2 REPORT</button>
         </td>
       </tr>

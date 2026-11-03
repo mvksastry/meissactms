@@ -55,21 +55,30 @@
                         <ul class="nav nav-pills ml-auto p-2">
                           <li class="nav-item"><a class="nav-link" href="#tab_1" data-toggle="tab">Instructions</a>
                           </li>
-                          <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Discectomy</a></li>
+                          @hasrole('ctms_incharge')
+                            <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Discectomy</a></li>
 
-                          <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Samples</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Samples</a></li>
+                          @endhasrole
 
                           @hasrole('qc_incharge')
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">QC</a></li>
                           @endhasrole
+
                           @hasrole('qa_incharge')
                             <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">QA</a></li>
                           @endhasrole
-                          <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Decision</a></li>
-                          <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">Administrative</a>
-                          </li>
-                          <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">Transplantation</a>
-                          </li>
+                          @hasanyrole(['ctms_incharge', 'director'])
+                            <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">Decision</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">Administrative</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_8" data-toggle="tab">Transplantation</a>
+                            </li>
+                          @endhasanyrole
+                          @hasrole('ctms_incharge')
+                            <li class="nav-item"><a class="nav-link" href="#tab_9" data-toggle="tab">Documents</a>
+                            </li>
+                          @endhasrole
                         </ul>
                       </div><!-- /.card-header -->
                       <div class="card-body">
@@ -114,6 +123,11 @@
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_8">
                               @include('livewire.ctms.patients.forms.transplantation')
+                            </div>
+                          @endhasanyrole
+                          @hasanyrole(['ctms_incharge'])
+                            <div class="tab-pane" id="tab_9">
+                              @include('livewire.ctms.patients.forms.final_documents')
                             </div>
                           @endhasanyrole
                           <!-- /.tab-pane -->

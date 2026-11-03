@@ -91,8 +91,21 @@ class EnrollmentDecisionComponent extends Component
 
     public $enrollment_decision, $decision_comment, $go = false;
 
+    
     ///code dependent activation
     public $code170200, $code1112, $code1413, $code2019, $code2221;
+
+    //panel definitions
+    public $p1 = true;
+    public $p2 = true;
+    public $p3 = true;
+    public $p4 = true;
+    public $p5 = true;
+    public $p6 = true;
+    public $p7 = true;
+    public $p8 = true;
+    public $p9 = true;
+    public $p10 = true;
 
     public function setActiveTab($tab) 
     {
@@ -232,7 +245,9 @@ class EnrollmentDecisionComponent extends Component
                 $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $filtered['discectomy_sample_info_date_entered']);
                 LivewireAlert::title("Discectomy Sample info for Decision updated")->success()->show();
                 Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved Discectomy Sample Info, Updated Patient Table Status to ['.$filtered['stage_code'].']');
-            }
+           
+                $this->p3 = false;
+           }
 
         }else {
             LivewireAlert::title("Saample Data Entry Step NOT Reached Or Elapsed")->warning()->show();
@@ -244,6 +259,20 @@ class EnrollmentDecisionComponent extends Component
         if($this->enrObj->stage_code == 220 && $this->enrObj->stage_code < 300)
         { 
             //$this->form_x->validate();
+
+            $errors = $this->handleValidation($this->form_d);
+
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            }  
+
             $repfiles = [];
             $qc_report_file_count = 0;
             $fileinfo['patient_uuid'] = $this->patient_uuid;
@@ -258,14 +287,15 @@ class EnrollmentDecisionComponent extends Component
                 $result = $this->uploadEnrollemntFile($this->form_x->qc_report_1, $fileinfo);
                 if($result['status'])
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_1 For Decision');
-                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                    $qc_report_file_count = $qc_report_file_count + 1;
+                    $repfiles['qc_report_file_count'] = $qc_report_file_count + 1;
                 }else {
                     $msg = "QC_REP_1 File Upload Failed, Please Check File Type and Size";
                     LivewireAlert::title($msg)->warning()->show();
                 }
             } 
 
-
+            /*
             if ($this->form_x->qc_report_2) 
             {
                 $this->validate([
@@ -275,14 +305,16 @@ class EnrollmentDecisionComponent extends Component
                 $result = $this->uploadEnrollemntFile($this->form_x->qc_report_2, $fileinfo);
                 if($result['status'])
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_2 For Decision');
-                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                    $qc_report_file_count = $qc_report_file_count + 1;
+                    $repfiles['qc_report_file_count'] = $qc_report_file_count + 1;
                 }else {
                     $msg = "QC_REP_2 File Upload Failed, Please Check File Type and Size";
                     LivewireAlert::title($msg)->warning()->show();
                 }
             } 
-            
-            $errors = $this->handleValidation($this->form_d);
+            */
+
+            //$errors = $this->handleValidation($this->form_d);
 
             if ($errors) {
                 // Fire SweetAlert in component
@@ -305,9 +337,10 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['qc_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
                 $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $merged['qc_infos_date_entered']);
-                LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
-                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
+                LivewireAlert::title("Discectomy QC info & [".$qc_report_file_count."] Files for Decision updated")->success()->show();
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$qc_report_file_count.'] Files');
             }
         } else {
             LivewireAlert::title("QC Step 1 Not Reached or Elapsed")->warning()->show();
@@ -322,6 +355,28 @@ class EnrollmentDecisionComponent extends Component
         if($this->enrObj->stage_code > 220 && $this->enrObj->stage_code < 300)
         { 
             //$this->form_x->validate();
+
+            $errors = $this->handleValidation($this->form_i);
+
+            if ($errors) {
+                // Fire SweetAlert in component
+                LivewireAlert::title('Validation Failed')
+                    ->error()
+                    ->html(implode('<br>', $errors))
+                    ->position('center')
+                    ->timer(null)
+                    ->toast(false)
+                    ->show();
+            }
+        
+            $this->validate([
+                'form_x.qc_report_3' => 'required|file|mimes:pdf|max:5120', // 5MB
+            ]);
+
+            $this->validate([
+                'form_x.qc_coa' => 'required|file|mimes:pdf|max:5120', // 5MB
+            ]);
+
             $repfiles = [];
             $qc_report_file_count = 0;
             $fileinfo['patient_uuid'] = $this->patient_uuid;
@@ -335,7 +390,8 @@ class EnrollmentDecisionComponent extends Component
                 $result = $this->uploadEnrollemntFile($this->form_x->qc_report_3, $fileinfo);
                 if($result['status'])
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_REP_3 For Decision');
-                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                    $qc_report_file_count = $qc_report_file_count + 1;
+                    $repfiles['qc_report_file_count'] = $qc_report_file_count + 1;
                 }else {
                     $msg = "QC_REP_3 File Upload Failed, Please Check File Type and Size";
                     LivewireAlert::title($msg)->warning()->show();
@@ -351,7 +407,8 @@ class EnrollmentDecisionComponent extends Component
                 $result = $this->uploadEnrollemntFile($this->form_x->qc_coa, $fileinfo);
                 if($result['status'])
                 {   Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Saved QC_COA For Decision');
-                    $repfiles['qc_report_file_count'] = $this->qc_report_file_count + 1;
+                $qc_report_file_count = $qc_report_file_count + 1;
+                    $repfiles['qc_report_file_count'] = $qc_report_file_count + 1;
                 }else {
                     $msg = "QC_COA File Upload Failed, Please Check File Type and Size";
                     LivewireAlert::title($msg)->warning()->show();
@@ -382,10 +439,11 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['qc_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
                 $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $merged['qc_infos_date_entered']);
                 $this->reset();
-                LivewireAlert::title("Discectomy QC info & [".$this->qc_report_file_count."] Files for Decision updated")->success()->show();
-                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$this->qc_report_file_count.'] Files');
+                LivewireAlert::title("Discectomy QC info & [".$qc_report_file_count."] Files for Decision updated")->success()->show();
+                Log::channel('patient')->info('User [ '.Auth::user()->name.' ] Discectomy QC info & ['.$qc_report_file_count.'] Files');
 
             }
 
@@ -421,6 +479,7 @@ class EnrollmentDecisionComponent extends Component
                 $filtered['qa_status_code'] = $filtered['stage_code'];
                 //dd($filtered);
                 $qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
+                $this->enrObj = Enrollment::where('patient_uuid', $this->patient_uuid)->first();
                 $patResult = $this->fnUpdatePatientTableForStatus($filtered['stage_code'], $filtered['qa_infos_date_entered']);
                 $this->reset();
                 LivewireAlert::title("QA info for Decision updated")->success()->show();
@@ -439,7 +498,7 @@ class EnrollmentDecisionComponent extends Component
 
         if($this->go)
         {
-            if($this->enrObj->stage_code == 320 || $this->enrObj->stage_code == 340)
+            if($this->enrObj->stage_code >= 320 || $this->enrObj->stage_code == 340)
             {
                 $errors = $this->handleValidation($this->form_f);
 
@@ -477,10 +536,10 @@ class EnrollmentDecisionComponent extends Component
                             //dd($filtered);
                             $this->enrObj->status = 'pending';
 
-                            $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
+                            $this->enrObj->appendComment('decision_comment', $filtered['comment_decision1']);
                             $this->enrObj->decision_entered_by = Auth::user()->name;
                             $this->enrObj->decision_date_entered = date('Y-m-d');
-                            //dd($filtered['comment_decision'], $this->enrObj);
+                            //dd($filtered['comment_decision1'], $this->enrObj);
                             $this->enrObj->save();
                             $patResult = $this->fnUpdatePatientTableForStatus($filtered['enrollment_decision'], date('Y-m-d'));
                             //$qr = Enrollment::where('patient_uuid', $this->patient_uuid)->update($filtered);
@@ -490,10 +549,10 @@ class EnrollmentDecisionComponent extends Component
                         if( Auth::user()->hasAnyRole(['director']) )
                         {
                             $this->enrObj->status = 'approved';
-                            $this->enrObj->appendComment('decision_comment', $filtered['comment_decision']);
+                            $this->enrObj->appendComment('decision_comment', $filtered['comment_decision2']);
                             $this->enrObj->approved_by = Auth::user()->name;
                             $this->enrObj->approved_date = date('Y-m-d');
-                            //dd($filtered['comment_decision'], $this->enrObj);
+                            //dd($filtered['comment_decision2'], $this->enrObj);
                             $this->enrObj->save();
                             $patResult = $this->fnUpdatePatientTableForStatus($filtered['enrollment_decision'], date('Y-m-d'));
                             LivewireAlert::title("Director: Enrollment Decision Updated")->success()->show();

@@ -42,10 +42,10 @@
                   <tr>
                     <td>
                       <label>Enrollment Comment</label>
-                      <input wire:model.live="form_f.comment_decision" type="text" class="form-control"
+                      <input wire:model.live="form_f.comment_decision1" type="text" class="form-control"
                         placeholder="Patient Enrollment Comment">
                       </br>
-                      @error('form_f.decision_comment')
+                      @error('form_f.comment_decision1')
                         <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </td>
@@ -65,9 +65,9 @@
                           @endphp
                           @if ($go)
                             <div class="form-check">
-                              <input wire:model.live="form_f.enrollment_decision" value="340" class="form-check-input"
+                              <input wire:model.live="form_f.enrollment_decision" value="335" class="form-check-input"
                                 type="radio" name="radio1">
-                              <label class="form-check-label">Enrollment Complete</label>
+                              <label class="form-check-label">Enrollment Cleared for Approval</label>
                             </div>
                           @endif
                           </br>
@@ -89,9 +89,9 @@
                   <tr>
                     <td>
                       <label>Enrollment Comment</label>
-                      <input wire:model.live="form_f.comment_decision" type="text" class="form-control"
+                      <input wire:model.live="form_f.comment_decision2" type="text" class="form-control"
                         placeholder="Patient Enrollment Comment">
-                      @error('form_f.decision_comment')
+                      @error('form_f.comment_decision2')
                         <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </td>

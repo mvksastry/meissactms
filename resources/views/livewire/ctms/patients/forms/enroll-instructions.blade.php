@@ -16,16 +16,6 @@
     <tbody>
 
       <tr>
-        <td colspan="2">
-          <button class='btn btn-secondary text-white font-normal rounded'>
-            OPD ID: {{ $enrObj->opd_id }}</button> &nbsp;&nbsp;&nbsp;&nbsp;
-          <button class='btn btn-secondary text-white font-normal rounded'>
-            IPD ID: {{ $enrObj->discectomy_ipd_id }} </button> &nbsp;&nbsp;&nbsp;&nbsp;
-          <button class='btn btn-secondary text-white font-normal rounded'>
-            Admission Date: {{ $enrObj->discectomy_admission_date }} </button> &nbsp;&nbsp;&nbsp;&nbsp;
-        </td>
-      </tr>
-      <tr>
         <td>
           <label>Tab: Discectomy</label>
 

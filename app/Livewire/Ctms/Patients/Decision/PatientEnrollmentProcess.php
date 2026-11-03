@@ -93,23 +93,6 @@ class PatientEnrollmentProcess extends Component
     {
         $this->p1 = false;
         $this->p2 = false;
-        $this->p3 = false;
-        $this->p4 = false;
-        $this->p5 = false;
+        
     }
-
-    /*
-    private function enrollmentInsertQuery($patient_uuid, $opd_id)
-    {
-        $result = Enrollment::where('patient_uuid', $patient_uuid)->first();
-
-        if($result)
-        {
-            return $result;
-        }else {
-            $result = Enrollment::insert(['patient_uuid'=>$patient_uuid, "opd_id"=>$opd_id]);
-            return $result;
-        }
-    }
-    */
 }
