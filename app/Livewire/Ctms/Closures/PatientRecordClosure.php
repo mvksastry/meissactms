@@ -66,7 +66,7 @@ class PatientRecordClosure extends Component
     {
         //$this->patientClosure = Patient::whereIn('status',$status)->get();
         //status_code > or = 400 means after 3 third follow-up done.
-        $this->patientClosure = Patient::where('status_code','>=', 400)->get();
+        $this->patientClosure = Patient::where('status_code','>=', 370)->get();
     }
 
     public function closeAllPanels()

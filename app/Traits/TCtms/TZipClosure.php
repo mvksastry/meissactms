@@ -41,7 +41,7 @@ trait TZipClosure
 
             // Validate source directory
             if (!is_dir($sourceDir)) {
-                LivewireAlert::title("patient Directory Not Found" )->success()->show();
+                LivewireAlert::title("patient Directory Not Found" )->warning()->show();
                 return response()->json(['error' => 'Source directory does not exist.'], 404);
             }
 
