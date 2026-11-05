@@ -59,7 +59,7 @@
                           {{ $row->name }}
                         </td>
                         <td>
-                          {{ $row->gender }}
+                          {{ ucfirst($row->gender) }}
                         </td>
                         <td>
                           {{ ucfirst($row->status) }}

@@ -15,7 +15,7 @@ use App\Livewire\Forms\PatientCIForm;
 
 //traits
 use App\Traits\Base;
-use App\Traits\TCtms\TPatientClinicalData;
+//use App\Traits\TCtms\TPatientClinicalData;
 //logs
 use Illuminate\Support\Facades\Log;
 //Livewire Alerts
@@ -25,7 +25,7 @@ class FollowupClinicalInvestigations extends Component
 {
     use Base;
    //Trait
-    use TPatientClinicalData;
+    //use TPatientClinicalData;
 
     //Form bindings
     public PatientCIForm $form;

@@ -53,8 +53,8 @@ class DataClosureRequest extends Component
         // Logic to initiate data closure
         // For example, you might want to update the patient's status or create a closure record
         // You can also add validation and error handling as needed
-        $this->patientInfo->status_code = 430;
-        $this->patientInfo->closure_code = 430; // Example closure code
+        $this->patientInfo->status_code = 730;
+        $this->patientInfo->closure_code = 730; // Example closure code
 
         $this->patientInfo->appendComment('closure_comment', $this->form['closure_comment']);
         $this->patientInfo->closed_by = $this->form['initiated_by'];
@@ -81,8 +81,8 @@ class DataClosureRequest extends Component
         $patient = Patient::where('patient_uuid', $this->patient_uuid)->first();
 
         if ($patient) {
-            $patient->status_code = 440; // Update the status code to indicate closure completed
-            $patient->closure_code = 440; // Update the closure code to indicate closure completed
+            $patient->status_code = 740; // Update the status code to indicate closure completed
+            $patient->closure_code = 740; // Update the closure code to indicate closure completed
             $patient->status = 'exited'; // Update the status to 'exited' or any other appropriate status
             $patient->status_date = now()->toDateString(); // Update the status date to the current date
             $patient->appendComment('closure_comment', $this->form['closure_comment']);

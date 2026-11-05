@@ -99,13 +99,13 @@ trait TZipClosure
             $narc->status = 1;
             $narc->save();
 
-            $patientObj->status_code = 470;
+            $patientObj->status_code = 770;
             $patientObj->save();
 
             return $zipFileName;
 
         } catch (Exception $e) {
-            $patientObj->status_code = 460;
+            $patientObj->status_code = 760;
             $patientObj->save();
 
             LivewireAlert::title($e->getMessage() )->warning()->show();

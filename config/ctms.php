@@ -228,12 +228,14 @@ return [
                 '400' => 'follow-up-3',
                 '410' => 'follow-up-4',
                 '420' => 'follow-up-5',
-                '430' => 'closure-initiated',
-                '440' => 'patient-exited',
-                '450' => 'patient-data-archival-initiated',
-                '460' => 'patient-data-archival-failed',
-                '470' => 'patient-data-archival-completed',
-                '480' => 'patient-data-archive-downloaded',
+                
+                '730' => 'closure-initiated', // earlier 430
+                '740' => 'closure-completed', // earlier 440
+                '740' => 'patient-exited', // earlier 440
+                '750' => 'patient-data-archival-initiated', // earlier 450
+                '760' => 'patient-data-archival-failed', // earlier 460
+                '770' => 'patient-data-archival-completed', // earlier 470
+                '780' => 'patient-data-archive-downloaded', // earlier 480
                 
         ],
 

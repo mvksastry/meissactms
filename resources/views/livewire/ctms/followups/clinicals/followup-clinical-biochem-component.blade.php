@@ -57,7 +57,8 @@
                             <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Over</a></li> -->
                             <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">RBI</a></li>
                             <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">LFT&Elec</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">RFT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#tab_5" data-toggle="tab">RFT/BUN/CRT</a>
+                            </li>
                             <li class="nav-item"><a class="nav-link" href="#tab_6" data-toggle="tab">BS/CRP/IL6</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#tab_7" data-toggle="tab">PLI</a></li>
